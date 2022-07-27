@@ -1,0 +1,75 @@
+
+#heatDetails{
+    position: relative;
+    top: 150px;
+    font-family: montserrat;   
+    left: 50px;
+    width: 300px;
+    padding-top:100px ;
+    padding-bottom:100px ;
+}
+
+.heat{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color:var(--main-color); 
+    text-align:center;
+    font-size:30px;
+}
+
+.target{
+    width: 100px;
+}
+
+.div_wod{
+    font-size: 20px;
+}
+
+.chrono{
+    font-size: 60px;
+}
+
+.time{
+    position: relative;
+    font-size: 2rem;
+    left: 800px;
+    top: 50px;
+}
+
+#timecap{
+    font-size: 0.7rem;
+}
+
+.wod{
+    font-size: 22px;
+    background-color:var(--second-color);
+    color: var(--tx-second-color);
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+.division{
+    font-size: 26px;
+}
+
+.wodrow{
+    text-transform: uppercase;
+    font-family: montserrat;   
+    background-color: var(--second-color);
+    color: var(--tx-second-color);
+    font-size: 18px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.logoFv{
+    width: 150px;
+}
+
+.logoSK{
+    width: 100px;
+}
+
+.logoEvent{
+    width: 70px;
+}

@@ -1,0 +1,23 @@
+{
+    "BgColor": "rgba(0,0,0,0)",
+    "ChronoColor": "#000000",
+    "TxChronoColor": "#ffffff",
+    "WodColor": "#ffde00",
+    "TxWodColor": "#000000",
+    "MainColor": "#080707",
+    "SecondColor": "#ffde01",
+    "FinishRankColor": "#c31d97",
+    "FirstRankColor": "#eac43e",
+    "SecondRankColor": "#e12018",
+    "ThirdRankColor": "#000000",
+    "TransparenceLogo": 0.01,
+    "Border": false,
+    "TxMainColor": "#ffffff",
+    "TxSecondColor": "#000000",
+    "TxFinishRankColor": "#ffffff",
+    "TxFirstRankColor": "#ffffff",
+    "TxSecondRankColor": "#000000",
+    "TxThirdRankColor": "#ffffff",
+    "PositionXChrono": "183",
+    "PositionYChrono": "50"
+}

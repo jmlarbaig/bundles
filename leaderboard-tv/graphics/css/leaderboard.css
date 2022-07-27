@@ -1,0 +1,109 @@
+.tableur{
+    position: relative;
+    font-family: montserrat;
+    display: block;    
+    width: var(--width_screen);
+    border-collapse: separate;
+    border-spacing: 0 5px; 
+}
+
+tbody td {
+    width: var(--width_screen);
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
+
+.leaderboard {
+    font-size: 30px;
+    top:-60px;
+    position: relative;
+    display: block;
+    border-collapse: separate;
+    border-spacing: 0 5px;
+}
+
+.athletes tr {
+    position: absolute;    
+    -moz-transition-duration: 1s;
+    -webkit-transition-duration: 1s;
+    -ms-transition-duration: 1s;
+}
+
+.leaderboard #athletes .rank{
+    width: var(--width_rank);
+    text-align: center;
+    color: var(--tx-main-color);
+    border-right: 2px solid white;
+    background-color: var(--main-color);
+}
+
+
+.leaderboard #athletes .lane{
+    width: var(--width_lane);
+    max-width: var(--width_lane);
+    text-align: center;
+    color: var(--tx-main-color);
+    background-color: var(--main-color);
+    filter: blur(0px);
+}
+
+.leaderboard #athletes .name {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  	width:var(--width_name); 
+  	max-width:var(--width_name); 
+      color: var(--tx-main-color);
+    text-transform: uppercase;
+    background-color: var(--main-color);
+}
+.leaderboard #athletes .affiliate {
+    overflow: hidden;
+    text-overflow: clip;
+    text-overflow: ellipsis;
+    width:var(--width_affiliate); 
+    max-width:var(--width_name); 
+    white-space: nowrap;
+    color: var(--tx-main-color);
+    background-color: var(--main-color);
+}
+
+.leaderboard .score {
+    width:var(--width_score); 
+    max-width: 50px;
+    color: var(--tx-main-color);
+    background-color: var(--main-color);
+    text-align: center;
+}
+
+.leaderboard .flag {
+    width:var(--width_flag); 
+    background-color: var(--main-color);
+    text-align: center;
+}
+
+.leaderboard .flag img {
+    border-radius: 50px;
+}
+
+.leaderboard .athletes .circle_progress{
+    border-bottom: 1px solid grey;
+    border-top: 1px solid grey;
+}
+
+.leaderboard .athlete svg{
+    height: 40px;
+    width: 100%;
+}
+
+.leaderboard .mvt{
+    width:var(--width_mvt); 
+    border-left: 2px solid;
+    text-align: center;
+    background-color: var(--main-color);
+    color: var(--tx-main-color);
+    table-layout: fixed;
+    overflow-wrap: break-word;
+    width: 17%;
+    text-transform: uppercase;
+}

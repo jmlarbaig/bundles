@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	
+	<link rel="stylesheet" href="css/leaderboard.css">
+	<link rel="stylesheet" href="css/lane.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+
+
+</head>
+<body>
+	<div class='wrapper_V1 box_1'>
+		<h1>OVERLAY configuration by FUNCTIONNAL VISION</h1>	
+		<div class="wrapper">
+
+			<div class='switch_box col-2'>
+				<label for="logo">LOGO EVENT</label>
+				<input type="checkbox" class="switch_1" id="logo"/>
+				<label for="showChrono">CHRONO</label>
+				<input type="checkbox" class="switch_1" id="showChrono" />
+				<label for="showFlag">WOD</label>
+				<input type="checkbox" class="switch_1" id="showWod" />
+			</div>
+
+			<div class='switch_box col-2'>
+				<label for="fortime_amrap">FORTIME / AMRAP</label>
+				<input type="checkbox" class="switch_1" id="fortime_amrap" />
+				<label for="heatDetails">HEAT DETAILS</label>
+				<input type="checkbox" class="switch_1" id="heatDetails" />
+				<label for="showFlag">FLAG</label>
+				<input type="checkbox" class="switch_1" id="showFlag" />
+				<label for="showLeader">LEADERBOARD</label>
+				<input type="checkbox" class="switch_1" id="showLeader" />
+			</div>
+
+			<!-- <div class='switch_box col-2'>
+				<label for="widthLogo">Largeur Logo</label>
+				<input type="number" class="switch_1" id="widthLogo" />
+			</div> -->
+
+			<div class='switch_box col-2'>
+				<label for="NameLower">Affichage Leaderboard TV</label>
+				<div class='wrapper'>
+					<button type="button" id="affichage_newWindows" class="button-27" onclick="affichage_leaderboardTV()"> AFFICHER </button>
+				</div>
+				<label for="NameLower">Affichage Progress View </label>
+				<div class='wrapper'>
+					<button type="button" id="affichage_newWindows" class="button-27" onclick="affichage_ProgressView()"> AFFICHER </button>
+				</div>
+			</div>
+
+			<!-- <div class='switch_box'>
+				<label for="logo">LOGO EVENT</label>
+				<button type="button" id="actualiser_assets" onclick="actualiserLogo()"> ACTUALISER </button>
+				<label for="logo_assets">Choisir le LOGO:</label>
+				<select name="logo_assets" id="logo-select">
+				</select>
+			</div> -->
+
+		</div>
+		<div class='wrapper'>
+			<button type="button" id="actualiser" class="button-27" onclick="Actualiser()"> ACTUALISER </button>
+		</div>
+	</div>
+
+	<div class='wrapper_V1 box_2'>
+		<h1>Presentation Video Athletes / Teams</h1>	
+		<div class="wrapper box_2" id="lane__video">
+			
+		</div>
+	</div>
+
+	<div class='wrapper_V1 box_2'>
+		<h1>Sponsors Videos</h1>	
+		<div class="wrapper box_2" id="pub__video">
+			
+		</div>
+	</div>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js" type="text/javascript"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+    <script src="./js/tools.js" type="text/javascript"></script>
+    <script src="./js/lane.js" type="text/javascript"></script>
+    <script src="./js/video.js" type="text/javascript"></script>
+    <script src="./leaderboard.js" type="text/javascript"></script>
+
+</body>
+</html>

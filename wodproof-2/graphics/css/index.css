@@ -1,0 +1,25 @@
+#wodproofLocation{
+    position: absolute;
+    top: 15%;
+    right: 2%;
+    width: 300px;
+}
+
+#chronoLocation{
+    position: absolute;
+    font-size: 60px;
+    top: 5%;
+    left: 2%;
+}
+
+#chrono{
+    font-size: 100px;
+}
+
+#ergdetails{
+    position: absolute;
+    font-size: 60px;
+    bottom: 10%;
+    left: 2%;
+    color: white;
+}

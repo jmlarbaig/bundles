@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	
+	<link rel="stylesheet" href="css/configuration.css">
+	<link rel="stylesheet" href="css/lane.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+
+
+</head>
+<body>
+	<div class='wrapper_V1 box_1'>
+		<h1>CONFIGURATION OVERLAY</h1>	
+		<div class="wrapper">
+
+			<table>
+				<caption style="text-align: center;">Colors Leaderboard</caption>
+				<tr>
+					<td>
+						<div class='switch_box'>
+							<label for="sponsor">Background Color</label>
+							<input type="color" id="bg__color" class="bg__color" value="#34C924"/>
+						</div>
+					</td>
+					<td>
+						<div class='switch_box'>
+							<label for="sponsor">Chrono Color</label>
+							<input type="color" id="chrono_color" class="bg__color" value="#34C924"/>
+						</div>
+					</td>
+					<td>
+						<div class='switch_box'>
+							<label for="sponsor">Text Chrono Color</label>
+							<input type="color" id="tx_chrono_color" class="bg__color" value="#34C924"/>
+						</div>
+					</td>
+					<td>
+						<div class='switch_box'>
+							<label for="sponsor">Wod Color</label>
+							<input type="color" id="wod_color" class="bg__color" value="#34C924"/>
+						</div>
+					</td>
+					<td>
+						<div class='switch_box'>
+							<label for="sponsor">Text Wod Color</label>
+							<input type="color" id="tx_wod_color" class="bg__color" value="#34C924"/>
+						</div>
+					</td>
+				</tr>
+				<tr>
+
+					<td>
+						<div class='switch_box'>
+							<label for="sponsor">Main Color</label>
+							<input type="color" id="main__color" class="bg__color" value="#F41313"/>
+						</div>
+					</td>
+					<td>
+						<div class='switch_box'>
+							<label for="sponsor">Text Main Color</label>
+							<input type="color" id="tx_main__color" class="bg__color" value="#F41313"/>
+						</div>
+					</td>
+					<td>
+						<div class='switch_box'>
+							<label for="sponsor">Second Color</label>
+							<input type="color" id="second__color" class="bg__color" value="rgba(255,255,255,1)"/>
+						</div>
+					</td>
+					<td>
+						<div class='switch_box'>
+							<label for="sponsor">Text Second Color</label>
+							<input type="color" id="tx_second__color" class="bg__color" value="#F41313"/>
+						</div>
+					</td>
+				</tr>
+
+				<tr>
+					<td>
+						<div class='switch_box'>
+							<label for="sponsor">Finish rank Color</label>
+							<input type="color" id="finish__color" class="bg__color" value="#bc9d11"/>
+						</div>
+					</td>
+					<td>
+						<div class='switch_box'>
+							<label for="sponsor">#1 Color</label>
+							<input type="color" id="first_rank__color" class="bg__color" value="#F41313"/>
+						</div>
+					</td>
+					<td>
+						<div class='switch_box'>
+							<label for="sponsor">#2 Color</label>
+							<input type="color" id="second_rank__color" class="bg__color" value="rgba(255,255,255,1))"/>
+						</div>
+					</td>
+					<td>
+						<div class='switch_box'>
+							<label for="sponsor">#3 Color</label>
+							<input type="color" id="third_rank__color" class="bg__color" value="rgba(255,255,255,1))"/>
+						</div>
+					<td>
+				</tr>
+
+				<tr>
+					<td>
+						<div class='switch_box'>
+							<label for="sponsor">Text Finish Color</label>
+							<input type="color" id="tx_finish__color" class="bg__color" value="#bc9d11"/>
+						</div>
+					</td>
+					<td>
+						<div class='switch_box'>
+							<label for="sponsor">Text #1 Color</label>
+							<input type="color" id="tx_first_rank__color" class="bg__color" value="#F41313"/>
+						</div>
+					</td>
+					<td>
+						<div class='switch_box'>
+							<label for="sponsor">Text #2 Color</label>
+							<input type="color" id="tx_second_rank__color" class="bg__color" value="rgba(255,255,255,1))"/>
+						</div>
+					</td>
+					<td>
+						<div class='switch_box'>
+							<label for="sponsor">Text #3 Color</label>
+							<input type="color" id="tx_third_rank__color" class="bg__color" value="rgba(255,255,255,1))"/>
+						</div>
+					<td>
+				</tr>
+
+				<tr>
+					<td>
+						<div class='switch_box'>
+							<label for="sponsor">Logo Opacity</label>
+							<input type="range" id="transparence_logo" min="1" max="100" value="100"/>
+						</div>
+					</td>
+				</tr>
+
+			</table>
+
+			<div class='switch_box col-2'>
+				<label for="bg_trans">BACKGROUND TRANSPARENT</label>
+				<input type="checkbox" class="switch_1" id="bg_trans"/>
+				<label for="border">BORDER / NONE</label>
+				<input type="checkbox" class="switch_1" id="border"/>
+			</div>
+
+			<table>
+
+				<tr>
+					<td>
+						<div class='switch_box'>
+							<label for="sponsor">Position X Chrono</label>
+							<input type="number" id="positionX_chrono" class="bg__color" value=0/>
+						</div>
+						<div class='switch_box'>
+							<label for="sponsor">Position Y Chrono</label>
+							<input type="number" id="positionY_chrono" class="bg__color" value=0/>
+						</div>
+					</td>
+				</tr>
+
+				<!-- <caption style="text-align: center;">Colors Versus</caption>
+
+				<tr>
+					<td>
+						<div class='switch_box'>
+							<label for="sponsor">Cell Background Color</label>
+							<input type="color" id="cl_bg_color" class="bg__color" value="#34C924"/>
+						</div>
+					</td>
+					<td>
+						<div class='switch_box'>
+							<label for="sponsor">Text Background Color</label>
+							<input type="color" id="tx_bg_color" class="bg__color" value="#bc9d11"/>
+						</div>
+					</td>
+				</tr>
+
+				<tr>
+					<td>
+						<div class='switch_box'>
+							<label for="sponsor">Left Rank Color</label>
+							<input type="color" id="lf_rk_color" class="bg__color" value="#F41313"/>
+						</div>
+					</td>
+					<td>
+						<div class='switch_box'>
+							<label for="sponsor">Right Rank Color</label>
+							<input type="color" id="rg_rk_color" class="bg__color" value="#F41313"/>
+						</div>
+					</td>
+				</tr>				
+				
+				<tr>
+					<td>
+						<div class='switch_box'>
+							<label for="sponsor">Left Text Rank Color</label>
+							<input type="color" id="lf_tx_rk_color" class="bg__color" value="#F41313"/>
+						</div>
+					</td>
+					<td>
+						<div class='switch_box'>
+							<label for="sponsor">Right Text Rank Color</label>
+							<input type="color" id="rg_tx_rk_color" class="bg__color" value="#F41313"/>
+						</div>
+					</td>
+				</tr>
+
+				<tr>
+					<td>
+						<div class='switch_box'>
+							<label for="sponsor">Left Score Color</label>
+							<input type="color" id="lf_sc_color" class="bg__color" value="rgba(255,255,255,1)"/>
+						</div>
+					</td>
+					<td>
+						<div class='switch_box'>
+							<label for="sponsor">Right Score Color</label>
+							<input type="color" id="rg_sc_color" class="bg__color" value="rgba(255,255,255,1))"/>
+						</div>
+					</td>
+				</tr>
+
+				<tr>
+					<td>
+						<div class='switch_box'>
+							<label for="sponsor">Left Text Score Color</label>
+							<input type="color" id="lf_tx_sc_color" class="bg__color" value="rgba(255,255,255,1))"/>
+						</div>
+					</td>
+					<td>
+						<div class='switch_box'>
+							<label for="sponsor">Right Text Score Color</label>
+							<input type="color" id="rg_tx_sc_color" class="bg__color" value="rgba(255,255,255,1))"/>
+						</div>
+					<td>
+				</tr> -->
+
+			</table>
+		</div>
+		<div class='wrapper'>
+			<button type="button" id="actualiser" class="button-27" onclick="Actualiser()"> CONFIGURER </button>
+		</div>
+	</div>
+
+	<div class='wrapper_V1 box_2'>
+		<h1>Sponsors Videos</h1>	
+		<div class="wrapper box_2" id="pub__video">
+			
+		</div>
+	</div>
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js" type="text/javascript"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+    <script src="./configuration.js" type="text/javascript"></script>
+
+</body>
+</html>

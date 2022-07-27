@@ -1,0 +1,101 @@
+
+.heatDetails{
+    position: absolute;
+    top: 180px;
+    font-family: montserrat;   
+    left: 116px;
+    font-size: 18px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+#chronoLocation{
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    position: absolute;
+    top: var(--Y-position-chrono);
+    right: var(--X-position-chrono);
+    text-align: center;
+    background-color:  var(--chrono-color);
+    color:  var(--tx-chrono-color);
+    border-radius: 10px;
+    padding: 10px 10px 10px 10px;
+}
+
+
+.chrono{
+    font-size: 2.2rem;
+    /* box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; */
+}
+
+.heat{
+    color: var(--tx-main-color);
+    background-color:  var(--main-color);
+}
+
+.target{
+    padding-top: 5px;
+    padding-bottom: 5px;
+    width: 50px;
+    max-width: 50px;
+}
+
+.time{
+    position: relative;
+    font-size: 2rem;
+    color: var(--tx-main-color);
+}
+
+#timecap{
+    font-size: 1.3rem;
+    color: var(--tx-main-color);
+}
+
+.logoSK{
+    width: 60px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid;
+}
+
+#pop:hover{
+    animation: pop 0.3s linear 1;
+  }
+
+@keyframes pop{
+    50%  {transform: scale(1.2);}
+  }
+
+  #wodDetails{
+    position: absolute;
+    top: 212px;
+    font-family: montserrat;   
+    background-color: var(--main-color);
+    color: var(--tx-main-color);
+    right: 105px;
+    font-size: 16px;
+    text-align: center;
+    margin-top: 10px;
+    border-radius: 10%;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border-radius: 10px;
+    width: 300px;
+}
+
+  .wod{
+      text-transform: uppercase;
+}
+
+.wodDiv{
+    font-size: 2rem;
+    border-bottom: 1px solid black;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: var(--main-color);
+    color: var(--tx-main-color);
+}
+
+.wodDescription{
+    background-color: var(--wod-color);
+    color: var(--tx-wod-color);
+    padding-top: 15px;
+    padding-bottom: 10px;
+    border-radius: 0px 0px 10px 10px;
+}

@@ -1,0 +1,19 @@
+
+.lane_C{
+    width: 100px;
+    text-align: center;
+    border: 2px solid #E94E1B;
+    text-transform: uppercase;
+}
+
+.lane{
+    font-size: 1rem;
+}
+
+.name{
+    max-height: 40px;
+}
+
+.aff{
+    max-height: 40px;
+}

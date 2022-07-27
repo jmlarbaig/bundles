@@ -1,0 +1,6 @@
+{
+    "staticServer": "JSON/BOT/Static.json",
+    "timeStatic": "1000",
+    "dynamicServer": "JSON/BOT/Dynamics.json",
+    "timeDynamics": "500"
+}

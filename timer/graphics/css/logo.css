@@ -1,0 +1,26 @@
+#logoLocation{
+    position: absolute;
+    top:50px;
+    left: 100px;
+}
+
+
+
+.presta{
+    width: 200px;
+}
+
+
+.logoSK{
+    width: 500px;
+}
+
+.logoFV{
+    width: 550px;
+}
+
+.logoEvent{
+    width: 50px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid;
+}

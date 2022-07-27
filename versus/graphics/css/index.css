@@ -1,0 +1,67 @@
+:root {
+    --main-color: rgba(0,0,0,0.9);
+    --second-color: black;
+    --finish-color: black;
+    --firstRank-color: black;
+    --secondRank-color: black;
+    --thirdRank-color: black;
+
+    --tx-main-color: white;
+    --tx-second-color: white;
+    --tx-finish-color: white;
+    --tx-firstRank-color: white;
+    --tx-secondRank-color: white;
+    --tx-thirdRank-color: white;
+
+    --chrono-color:white;
+    --tx-chrono-color:white;
+
+    --wod-color:white;
+    --tx-wod-color:white;
+
+    /* --cellbg-color : rgba(0,0,0,0.9);
+    --tx-cellbg-color : rgba(255,255,255,0.9);
+
+    --left-rk-color : rgba(0,0,0,0.9);
+    --tx-left-rk-color : rgba(255,255,255,0.9);
+    --right-rk-color : rgba(0,0,0,0.9);
+    --tx-right-rk-color : rgba(255,255,255,0.9);
+
+    --left-sc-color : rgba(0,0,0,0.9);
+    --tx-left-sc-color : rgba(255,255,255,0.9);
+    --right-sc-color : rgba(0,0,0,0.9);
+    --tx-right-sc-color : rgba(255,255,255,0.9); */
+
+
+    --widthLogoEvent: 250px;
+  }
+
+
+@font-face {
+    font-family: "bebas";
+    src: url("../fonts/BebasNeue.otf");
+}
+
+@font-face {
+    font-family: "strasua";
+    src: url("../fonts/strasua.ttf");
+}
+
+@font-face {
+    font-family: "oswald";
+    src: url("../fonts/Oswald-Regular.ttf");
+}
+
+@font-face {
+    font-family: "montserrat";
+    src: url("../fonts/Montserrat-Bold.ttf");
+}
+
+
+.table tbody {
+    font-family: montserrat;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 0.1rem;
+    font-size: 1rem;
+}

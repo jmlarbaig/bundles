@@ -1,0 +1,48 @@
+:root {
+    --main-color: rgba(0,0,0,0.9);
+    --second-color: black;
+    --finish-color: black;
+    --firstRank-color: black;
+    --secondRank-color: black;
+    --thirdRank-color: black;
+
+    --tx-main-color: white;
+    --tx-second-color: white;
+    --tx-finish-color: white;
+    --tx-firstRank-color: white;
+    --tx-secondRank-color: white;
+    --tx-thirdRank-color: white;
+
+    --transparence: 100%;
+  }
+
+.logoBody{
+    position: absolute;
+    z-index: -1;
+    top : 20%;
+    right: 27%;
+    width: 25%;
+    opacity: var(--transparence);
+}
+
+@font-face {
+    font-family: "bebas";
+    src: url("../fonts/BebasNeue.otf");
+}
+
+@font-face {
+    font-family: "strasua";
+    src: url("../fonts/strasua.ttf");
+}
+
+@font-face {
+    font-family: "oswald";
+    src: url("../fonts/Oswald-Regular.ttf");
+}
+
+@font-face {
+    font-family: "montserrat";
+    src: url("../fonts/Montserrat-Bold.ttf");
+}
+
+

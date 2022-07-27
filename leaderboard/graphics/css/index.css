@@ -1,0 +1,58 @@
+:root {
+    --main-color: rgba(0,0,0,0.9);
+    --second-color: black;
+    --finish-color: black;
+    --firstRank-color: black;
+    --secondRank-color: black;
+    --thirdRank-color: black;
+
+    --chrono-color:white;
+    --tx-chrono-color:white;
+
+    --wod-color:white;
+    --tx-wod-color:white;
+
+    --tx-main-color: white;
+    --tx-second-color: white;
+    --tx-finish-color: white;
+    --tx-firstRank-color: white;
+    --tx-secondRank-color: white;
+    --tx-thirdRank-color: white;
+
+    --X-position-chrono: 105px;
+    --Y-position-chrono: 63px;
+
+    --widthLogoEvent: 250px;
+    --heigth: 29px;
+    --border: 0px 10px 10px 0px;
+  }
+
+
+@font-face {
+    font-family: "bebas";
+    src: url("../fonts/BebasNeue.otf");
+}
+
+@font-face {
+    font-family: "strasua";
+    src: url("../fonts/strasua.ttf");
+}
+
+@font-face {
+    font-family: "oswald";
+    src: url("../fonts/Oswald-Regular.ttf");
+}
+
+@font-face {
+    font-family: "montserrat";
+    src: url("../fonts/Montserrat-Bold.ttf");
+}
+
+
+.table tbody {
+    font-family: montserrat;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 0.1rem;
+    font-size: 1rem;
+}

@@ -1,0 +1,132 @@
+.lowerThird{
+    position: absolute;
+    bottom: 150px;
+    left: 100px;
+}
+
+.lowerChild{
+    left: 210px;
+    background-color: var(--main-color);
+}
+
+.benchmarkChildren{
+    font-size: 12px;
+    color: var(--main-color);
+    margin: 0px;
+    padding: 2px 2px;
+}
+
+.benchmarkChildren2{
+    font-size: 12px;
+    color: black;
+    margin: 0px;
+    padding: 2px 2px;
+}
+
+.benchmarkChildren{
+    font-size: 12px;
+    color: var(--main-color);
+    margin: 0px;
+    padding: 2px 2px;
+}
+
+.benchmarkChildren2{
+    font-size: 12px;
+    color: black;
+    margin: 0px;
+    padding: 2px 2px;
+}
+
+
+/* Lower Third Manuel  */
+
+.lowerThirdChildrenVoid{
+    font-family: montserrat;
+    margin-left:10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.lowerThirdVoid{
+    position: absolute;
+    bottom: 150px;
+    left: 100px;
+}
+
+.lowerChildVoid{
+    text-transform: uppercase;
+    left: 210px;      
+}
+
+.img_lower{
+    background-color: var(--main-color);
+    color: var(--tx-main-color);
+    margin-top: 5px;
+    margin-bottom: 5px;
+    text-align:center;    
+    margin-left: auto;
+    margin-right: auto;
+    object-fit: none;
+    height: 100px;
+    width: 200px;
+}
+
+.sponsor{
+    padding-top: 5px;
+    padding-bottom: 5px;
+    vertical-align: middle;
+    object-fit: cover;
+    height: 100px;
+    width: 200px;
+}
+
+.text_lower{
+    position: relative;
+    top: 15px;
+    height: 100px;
+    width: 900px;
+    color: var(--tx-main-color);
+    border-top  : 50px solid var(--main-color);
+    border-right : 50px solid transparent;
+    margin-right: 10px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.text_lower_name{
+    position: relative;
+    top: -50px;
+    padding-left: 10px;
+    padding-top: 10px;
+    width: 400px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.text_lower_function{
+    position: relative;
+    top: -50px;
+    width: 600px;
+    background-color: var(--second-color);
+    color: var(--tx-second-color);
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 15px;
+    font-style: italic;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.qrcodeC{
+    position: relative;
+    left: -200px;
+    padding: 10px;
+    align-items: center;
+    margin:auto;
+    text-align:center; 
+    background-color: rgba(0,0,0,0);  
+}

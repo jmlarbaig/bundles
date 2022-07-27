@@ -1,0 +1,13 @@
+#logoLocation{
+    position: absolute;
+    top:50px;
+    left: 100px;
+}
+
+.logo{
+    width: 400px;
+}
+
+.presta{
+    width: 400px;
+}

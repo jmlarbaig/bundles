@@ -1,0 +1,129 @@
+
+.tableur{
+    position: absolute;
+    top:260px;
+    font-family: montserrat;
+    left: 75px;
+    display: block;
+    width: 700px;
+    /* height: 800px; */
+}
+
+.leaderboard{
+    margin-top: 12px;
+    position: relative;
+    display: block;
+    border-collapse: separate;
+    border-spacing: 0 ;
+    width:700px;
+    opacity: 90%;
+}
+
+.leaderboard thead tr th{
+    font-size: 12px;
+    background-color: var(--second-color);
+    color: var(--tx-second-color);
+    width: 110px;
+    max-width: 110px;
+    padding-left: 10px;
+}
+
+.leaderboard thead .rank{
+    background-color: rgba(0,0,0,0);
+}
+
+.leaderboard thead .repTarget{
+    background-color: var(--second-color);
+    text-align: right;
+    padding-right: 10px;
+    /* border-radius: 0px 10px 10px 0px ; */
+}
+
+.athletes {
+    top:-29px;
+    position: relative;
+}
+
+.athletes tr {
+    width: 700px;
+    font-size: 12px;
+    position: absolute;    
+    -moz-transition-duration: 0.7s;
+    -webkit-transition-duration: 0.7s;
+    -ms-transition-duration: 0.7s;
+    /* padding: auto; */
+    opacity: 99%;
+}
+
+.leaderboard .rank{
+    padding-right: 10px;
+    text-align: right;
+    color: var(--tx-second-color);
+    width: 30px;
+    max-width: 30px;
+    border-right: 2px solid white;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    height: 29px;
+}
+
+.leaderboard .lane{
+    padding-right: 5px;
+    padding-left: 5px;
+    text-align: left;
+    color: var(--tx-main-color);
+    width: 40px;
+    max-width: 40px;
+    background-color: var(--main-color);
+    filter: blur(0px);
+    height: 29px;
+}
+
+.leaderboard .name {
+    text-transform: uppercase;
+    width: 80px;
+    max-width: 80px;
+    padding-left: 5px;
+    width: 150px;
+    color: var(--tx-main-color);
+    background-color: var(--main-color);
+    height: 29px;
+}
+
+.leaderboard .score {
+    width: 50px;
+    max-width: 100px;
+    padding-left: 10px;
+    padding-right: 10px;
+    color: var(--tx-main-color);
+    background-color: var(--main-color);
+    text-align: right;
+    /* border-radius: 0px 10px 10px 0; */
+    border-radius: --(border);
+    height: 29px;
+}
+
+.leaderboard .flag {
+    padding-right: 5px;
+    padding-left: 5px;
+    height: 29px;
+    background-color: var(--main-color);
+}
+
+.leaderboard .flag img {
+    border-radius: 50px;
+    height: 27px;
+}
+
+.popup{
+    width: 100px;
+    text-transform: uppercase;
+    padding-left: 10px;
+    padding-right: 10px;
+    text-align: center;
+    color: var(--tx-main-color);
+    background-color: var(--main-color);
+    max-width: 100px;
+    height: 29px;
+    /* border-radius: 10px 10px 10px 10px; */
+}

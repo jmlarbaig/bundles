@@ -1,0 +1,31 @@
+:root {
+    --main-color: rgba(0,0,0,0.9);
+    --second-color: #F41313;
+
+
+    --finish-color: #bc9d11;
+    --firstRank-color: #F41313;
+    --secondRank-color: rgba(255,255,255,1);
+    --thirdRank-color: rgba(255,255,255,1);
+  }
+
+
+@font-face {
+    font-family: "bebas";
+    src: url("../fonts/BebasNeue.otf");
+}
+
+@font-face {
+    font-family: "strasua";
+    src: url("../fonts/strasua.ttf");
+}
+
+@font-face {
+    font-family: "oswald";
+    src: url("../fonts/Oswald-Regular.ttf");
+}
+
+@font-face {
+    font-family: "montserrat";
+    src: url("../fonts/Montserrat-Bold.ttf");
+}

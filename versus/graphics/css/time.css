@@ -1,0 +1,97 @@
+
+.heatDetails{
+    position: absolute;
+    top: 180px;
+    font-family: montserrat;   
+    left: 116px;
+    font-size: 18px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+
+.chrono{
+    margin-right: 20px;
+    margin-left: 20px;
+    -ms-flex-wrap:nowrap;
+    flex-wrap: nowrap;
+    text-align: center;
+    position: relative;
+    top:10px;
+    color: var(--tx-chrono-color);
+    background-color: var(--chrono-color);
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 2.2rem;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    max-width: 170px;
+    height: 138px;
+    border-radius: 15px;
+}
+
+.heat{
+    background-color:  var(--main-color);
+}
+
+.target{
+    padding-top: 5px;
+    padding-bottom: 5px;
+    width: 50px;
+    max-width: 50px;
+}
+
+.time{
+    position: relative;
+    font-size: 2rem;
+    color: white;
+}
+
+#timecap{
+    font-size: 0.9rem;
+}
+
+.logoSK{
+    width: 100px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid;
+}
+
+#pop:hover{
+    animation: pop 0.3s linear 1;
+  }
+
+@keyframes pop{
+    50%  {transform: scale(1.2);}
+  }
+
+  #wodDetails{
+    position: absolute;
+    top: 212px;
+    font-family: montserrat;   
+    right: 105px;
+    font-size: 16px;
+    text-align: center;
+    margin-top: 10px;
+    border-radius: 10%;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+  .wod{
+      text-transform: uppercase;
+}
+
+.wodDiv{
+    font-size: 2rem;
+    border-bottom: 1px solid black;
+    padding: 10px;
+    padding-top: 10px;
+    padding-bottom: 5px;
+    background-color: var(--main-color);
+}
+
+.wodDescription{
+    padding: 10px;
+    background-color: var(--wod-color);
+    color: var(--tx-wod-color);
+    padding-top: 10px;
+    border-radius: 0px 0px 10px 10px;
+}

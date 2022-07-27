@@ -1,0 +1,171 @@
+{
+  "eventId": 6000,
+  "workoutId": 32016,
+  "heatId": 188237,
+  "eventName": "Battle of Legends",
+  "workoutName": "WOD 2 : narval ",
+  "heatName": "Heat 1 Scale H/H",
+  "location": "Rebaix",
+  "logoUrl": "https://competitioncorner.net/file.aspx/mainFilesystem?Events%2Flogo+battle_cropped.png",
+  "heatTime": "09:45",
+  "heatInfo": [
+    {
+      "heatId": 188237,
+      "type": "amrap",
+      "description": "",
+      "heatsSize": 10,
+      "timeCap": 1,
+      "format": "team",
+      "scoreLabel": "",
+      "createDate": "2021-10-26T08:42:37"
+    }
+  ],
+  "WorkoutInfo": [
+    {
+      "description": "<p>1 rameur</p><p>Tiebreak</p><p></p><p>Complex</p><p></p>",
+      "mvt_id": [
+        0,
+        1,
+        2
+      ],
+      "mvt_names": [
+        "rameur",
+        "Tiebreak",
+        "Complex"
+      ],
+      "mvt_reps": [
+        1,
+        0,
+        0
+      ],
+      "mvt_units": [
+        "r",
+        "",
+        "r"
+      ],
+      "mvt_sources": [
+        1,
+        0,
+        1
+      ],
+      "mvt_score_type": [
+        1,
+        2,
+        1
+      ],
+      "mvt_max_times": [
+        0,
+        0,
+        0
+      ],
+      "increments": [
+        1,
+        0,
+        1
+      ],
+      "total_reps": 1,
+      "series": [],
+      "rounds": 0,
+      "rep_per_rounds": 0,
+      "mvt_round": [],
+      "mvt_series": [],
+      "division": "Scale H_H",
+      "mvt_type": "series"
+    }
+  ],
+  "athletes": [
+    {
+      "lane": 1,
+      "displayName": "BenjOul",
+      "rank": 0,
+      "overallPoints": 0,
+      "affiliate": "",
+      "division": "Scale H_H",
+      "countryCode": "BEL"
+    },
+    {
+      "lane": 2,
+      "displayName": "Chouchou & Chouchou",
+      "rank": 0,
+      "overallPoints": 0,
+      "affiliate": "",
+      "division": "Scale H_H",
+      "countryCode": "BEL"
+    },
+    {
+      "lane": 3,
+      "displayName": "kinder surprise",
+      "rank": 0,
+      "overallPoints": 0,
+      "affiliate": "",
+      "division": "Scale H_H",
+      "countryCode": "BEL"
+    },
+    {
+      "lane": 4,
+      "displayName": "Les M\u00e2les F\u00eateurs",
+      "rank": 0,
+      "overallPoints": 0,
+      "affiliate": "",
+      "division": "Scale H_H",
+      "countryCode": "BEL"
+    },
+    {
+      "lane": 5,
+      "displayName": "Los Desperados",
+      "rank": 0,
+      "overallPoints": 0,
+      "affiliate": "",
+      "division": "Scale H_H",
+      "countryCode": "BEL"
+    },
+    {
+      "lane": 6,
+      "displayName": "Master and baby",
+      "rank": 0,
+      "overallPoints": 0,
+      "affiliate": "",
+      "division": "Scale H_H",
+      "countryCode": "BEL"
+    },
+    {
+      "lane": 7,
+      "displayName": "MLTEAM 1",
+      "rank": 0,
+      "overallPoints": 0,
+      "affiliate": "",
+      "division": "Scale H_H",
+      "countryCode": "BEL"
+    },
+    {
+      "lane": 8,
+      "displayName": "Razboinicii ",
+      "rank": 0,
+      "overallPoints": 0,
+      "affiliate": "",
+      "division": "Scale H_H",
+      "countryCode": "BEL"
+    },
+    {
+      "lane": 9,
+      "displayName": "Team Belotte ",
+      "rank": 0,
+      "overallPoints": 0,
+      "affiliate": "",
+      "division": "Scale H_H",
+      "countryCode": "BEL"
+    },
+    {
+      "lane": 10,
+      "displayName": "Team Chap'",
+      "rank": 0,
+      "overallPoints": 0,
+      "affiliate": "",
+      "division": "Scale H_H",
+      "countryCode": "BEL"
+    }
+  ],
+  "totalRecordsCount": 2,
+  "recordsCount": 2,
+  "wodType": "amrap"
+}

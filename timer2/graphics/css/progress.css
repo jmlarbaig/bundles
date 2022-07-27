@@ -1,0 +1,97 @@
+#tableHeader{
+}
+
+table{
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 5px;
+}
+table tbody td {
+
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
+
+table thead {
+    font-family: montserrat;
+    font-size: 20px;
+}
+
+table tbody {
+    font-family: montserrat;
+}
+
+.leaderboard #athletes tr{
+    font-size: 25px;
+}
+
+
+.leaderboard #athletes .rank{
+    width: 4%;
+    text-align: center;
+    color: white;
+    border-right: 2px solid white;
+    background-color: var(--main-color);
+}
+
+
+.leaderboard #athletes .lane{
+    width: 3%;
+    text-align: center;
+    color: white;
+    background-color: var(--main-color);
+    filter: blur(0px);
+}
+
+.leaderboard #athletes .name {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 300px;
+    width: 300px;
+    color: white;
+    background-color: var(--main-color);
+}
+.leaderboard #athletes .affiliate {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 250px;
+    width: 250px;
+    color: white;
+    background-color: var(--main-color);
+}
+
+.leaderboard .score {
+    width: 50px;
+    max-width: 50px;
+    color: rgb(255,255,255);
+    background-color: var(--main-color);
+    text-align: center;
+}
+
+.leaderboard .flag {
+    width: 5%;
+    background-color: var(--main-color);
+    text-align: center;
+}
+
+.leaderboard .flag img {
+    border-radius: 50px;
+}
+
+.leaderboard .athletes .circle_progress{
+}
+
+.leaderboard .athlete svg{
+    height: 40px;
+    width: 100%;
+}
+
+.leaderboard .mvt{
+    border-left: 2px solid;
+    text-align: center;
+    background-color: var(--main-color);
+    color: white;
+    table-layout: fixed;
+    overflow-wrap: break-word;
+    width: 10%;
+}

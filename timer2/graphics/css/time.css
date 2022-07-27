@@ -1,0 +1,56 @@
+
+#heatDetails{
+    position: relative;
+    top: 150px;
+    font-family: montserrat;   
+    left: 50px;
+    font-size: 10px;
+    width: 300px;
+}
+
+body{
+    background-color:var(--main-color); 
+}
+
+.heat{
+    height: 1080px;
+    background-color:var(--main-color); 
+    text-align:center;
+    font-size:200px;
+}
+
+.target{
+    width: 100px;
+}
+
+.time{
+    position: relative;
+    color: white;
+}
+
+.chrono{
+    padding-top: 10px;
+}
+
+#timecap{
+    font-size: 100px;
+    padding-top: 10px;
+}
+
+.logoSK{
+    width: 500px;
+    padding-bottom: 50px;
+    border-bottom: 1px solid;
+}
+
+.logoFV{
+    width: 550px;
+    padding-bottom: 50px;
+    border-bottom: 1px solid;
+}
+
+.logoEvent{
+    width: 50px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid;
+}

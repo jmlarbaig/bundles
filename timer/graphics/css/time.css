@@ -1,0 +1,48 @@
+
+#heatDetails{
+    position: relative;
+    top: 150px;
+    font-family: montserrat;   
+    left: 50px;
+    font-size: 10px;
+    width: 300px;
+}
+
+.heat{
+    top: 100px;
+    height: 1080px; 
+    background-color:var(--main-color); 
+    text-align:center;
+    font-size:200px;
+}
+
+.target{
+    width: 250px;
+}
+
+.time{
+    position: relative;
+    left: 800px;
+    top: 50px;
+}
+
+#timecap{
+    font-size: 0.7rem;
+}
+
+.wod{
+    font-size: 22px;
+    background-color:var(--second-color);
+    color: white;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+.wodrow{
+    font-family: montserrat;   
+    font-size: 30px;
+    background-color: var(--second-color);
+    color: white;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}

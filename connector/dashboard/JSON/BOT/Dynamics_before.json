@@ -1,0 +1,668 @@
+{
+  "NtpTimeStart": "17:11:29.293",
+  "eventId": 5034,
+  "workoutid": 36997,
+  "heatid": 226747,
+  "eventName": "Break-Out Throwdown - 4\u00e8me \u00e9dition 2022",
+  "workoutName": "WOD 6 By TYCE",
+  "heatName": "H18 RX H\\H",
+  "status": "0",
+  "athletes": [
+    {
+      "lane": 1,
+      "division": "RX H\\H",
+      "CurrentRank": 9,
+      "score_abs": 0,
+      "score_rel": 0,
+      "currentRound": 1,
+      "tieBreak": "",
+      "status": "W",
+      "result": "",
+      "currentMouvement": [
+        {
+          "mouvementName": "40 Cal_erg",
+          "nextMouvement": "",
+          "repTarget": 0,
+          "rep/min": 0,
+          "power": 0,
+          "cal_h": 0,
+          "s/m": 0
+        }
+      ],
+      "log_mvt": [
+        {
+          "0 R1 35 Cal_erg": "01:53.4",
+          "1 R1 9 T2B": "00:22.0",
+          "2 R1 9 Thruster": "00:27.3",
+          "3 R1 7 T2B": "00:21.6",
+          "4 R1 7 Thruster": "00:26.7",
+          "5 R1 5 T2B": "00:17.9",
+          "6 R1 5 Thruster": "00:17.9",
+          "7 R1 7 MU-BAR": "00:28.4",
+          "8 R1 7 snatch": "00:27.4",
+          "9 R1 5 MU-BAR": "00:23.5",
+          "10 R1 5 snatch": "00:24.9",
+          "11 R1 3 MU-BAR": "00:20.8",
+          "12 R1 3 snatch": "00:15.6",
+          "13 R1 5 triple_touc": "00:31.9"
+        }
+      ],
+      "log_round_time": [
+        []
+      ]
+    },
+    {
+      "lane": 2,
+      "division": "RX H\\H",
+      "CurrentRank": 6,
+      "score_abs": 0,
+      "score_rel": 0,
+      "currentRound": 1,
+      "tieBreak": "",
+      "status": "W",
+      "result": "",
+      "currentMouvement": [
+        {
+          "mouvementName": "40 Cal_erg",
+          "nextMouvement": "",
+          "repTarget": 0,
+          "rep/min": 0,
+          "power": 0,
+          "cal_h": 0,
+          "s/m": 0
+        }
+      ],
+      "log_mvt": [
+        {
+          "0 R1 35 Cal_erg": "01:38.4",
+          "1 R1 9 T2B": "00:25.7",
+          "2 R1 9 Thruster": "00:23.2",
+          "3 R1 7 T2B": "00:24.5",
+          "4 R1 7 Thruster": "00:16.8",
+          "5 R1 5 T2B": "00:20.0",
+          "6 R1 5 Thruster": "00:22.9",
+          "7 R1 7 MU-BAR": "00:27.4",
+          "8 R1 7 snatch": "00:32.5",
+          "9 R1 5 MU-BAR": "00:30.6",
+          "10 R1 5 snatch": "00:29.2",
+          "11 R1 3 MU-BAR": "00:27.6",
+          "12 R1 3 snatch": "00:10.0",
+          "13 R1 5 triple_touc": "00:30.5"
+        }
+      ],
+      "log_round_time": [
+        []
+      ]
+    },
+    {
+      "lane": 3,
+      "division": "RX H\\H",
+      "CurrentRank": 3,
+      "score_abs": 0,
+      "score_rel": 0,
+      "currentRound": 1,
+      "tieBreak": "",
+      "status": "W",
+      "result": "",
+      "currentMouvement": [
+        {
+          "mouvementName": "40 Cal_erg",
+          "nextMouvement": "",
+          "repTarget": 0,
+          "rep/min": 0,
+          "power": 0,
+          "cal_h": 0,
+          "s/m": 0
+        }
+      ],
+      "log_mvt": [
+        {
+          "0 R1 35 Cal_erg": "01:31.5",
+          "1 R1 9 T2B": "00:23.5",
+          "2 R1 9 Thruster": "00:32.5",
+          "3 R1 7 T2B": "00:20.8",
+          "4 R1 7 Thruster": "00:28.5",
+          "5 R1 5 T2B": "00:20.9",
+          "6 R1 5 Thruster": "00:23.8",
+          "7 R1 7 MU-BAR": "00:27.8",
+          "8 R1 7 snatch": "00:34.1",
+          "9 R1 5 MU-BAR": "00:31.1",
+          "10 R1 5 snatch": "00:32.4",
+          "11 R1 3 MU-BAR": "00:25.4",
+          "12 R1 3 snatch": "00:23.6",
+          "13 R1 5 triple_touc": "00:03.6"
+        }
+      ],
+      "log_round_time": [
+        []
+      ]
+    },
+    {
+      "lane": 4,
+      "division": "RX H\\H",
+      "CurrentRank": 2,
+      "score_abs": 0,
+      "score_rel": 0,
+      "currentRound": 1,
+      "tieBreak": "",
+      "status": "W",
+      "result": "",
+      "currentMouvement": [
+        {
+          "mouvementName": "40 Cal_erg",
+          "nextMouvement": "",
+          "repTarget": 0,
+          "rep/min": 0,
+          "power": 0,
+          "cal_h": 0,
+          "s/m": 0
+        }
+      ],
+      "log_mvt": [
+        {
+          "0 R1 35 Cal_erg": "01:32.8",
+          "1 R1 9 T2B": "00:22.9",
+          "2 R1 9 Thruster": "00:23.0",
+          "3 R1 7 T2B": "00:19.8",
+          "4 R1 7 Thruster": "00:23.3",
+          "5 R1 5 T2B": "00:17.5",
+          "6 R1 5 Thruster": "00:17.5",
+          "7 R1 7 MU-BAR": "00:26.9",
+          "8 R1 7 snatch": "00:34.1",
+          "9 R1 5 MU-BAR": "00:30.7",
+          "10 R1 5 snatch": "00:34.6",
+          "11 R1 3 MU-BAR": "00:25.9",
+          "12 R1 3 snatch": "00:21.9",
+          "13 R1 5 triple_touc": "00:28.5"
+        }
+      ],
+      "log_round_time": [
+        []
+      ]
+    },
+    {
+      "lane": 5,
+      "division": "RX H\\H",
+      "CurrentRank": 14,
+      "score_abs": 0,
+      "score_rel": 0,
+      "currentRound": 0,
+      "tieBreak": "",
+      "status": "W",
+      "result": "",
+      "currentMouvement": [
+        {
+          "mouvementName": "",
+          "nextMouvement": "",
+          "repTarget": 0,
+          "rep/min": 0,
+          "power": 0,
+          "cal_h": 0,
+          "s/m": 0
+        }
+      ],
+      "log_mvt": [
+        {
+          "0 R1 35 Cal_erg": "01:46.5",
+          "1 R1 9 T2B": "00:22.3",
+          "2 R1 9 Thruster": "00:31.0",
+          "3 R1 7 T2B": "00:25.2",
+          "4 R1 7 Thruster": "00:29.9",
+          "5 R1 5 T2B": "00:23.2",
+          "6 R1 5 Thruster": "00:24.5",
+          "7 R1 7 MU-BAR": "00:32.6",
+          "8 R1 7 snatch": "00:47.0",
+          "9 R1 5 MU-BAR": "00:31.6",
+          "10 R1 5 snatch": "00:29.9",
+          "11 R1 3 MU-BAR": "00:15.7"
+        }
+      ],
+      "log_round_time": [
+        []
+      ]
+    },
+    {
+      "lane": 6,
+      "division": "RX H\\H",
+      "CurrentRank": 7,
+      "score_abs": 0,
+      "score_rel": 0,
+      "currentRound": 1,
+      "tieBreak": "",
+      "status": "W",
+      "result": "",
+      "currentMouvement": [
+        {
+          "mouvementName": "40 Cal_erg",
+          "nextMouvement": "",
+          "repTarget": 0,
+          "rep/min": 0,
+          "power": 0,
+          "cal_h": 0,
+          "s/m": 0
+        }
+      ],
+      "log_mvt": [
+        {
+          "0 R1 35 Cal_erg": "01:25.8",
+          "1 R1 9 T2B": "00:19.6",
+          "2 R1 9 Thruster": "00:27.1",
+          "3 R1 7 T2B": "00:22.9",
+          "4 R1 7 Thruster": "00:24.6",
+          "5 R1 5 T2B": "00:24.0",
+          "6 R1 5 Thruster": "00:17.7",
+          "7 R1 7 MU-BAR": "00:26.7",
+          "8 R1 7 snatch": "00:22.5",
+          "9 R1 5 MU-BAR": "00:23.5",
+          "10 R1 5 snatch": "00:20.7",
+          "11 R1 3 MU-BAR": "00:20.4",
+          "12 R1 3 snatch": "00:15.9",
+          "13 R1 5 triple_touc": "00:58.3",
+          "14 R1 5 C&J": "00:00.9"
+        }
+      ],
+      "log_round_time": [
+        []
+      ]
+    },
+    {
+      "lane": 7,
+      "division": "RX H\\H",
+      "CurrentRank": 15,
+      "score_abs": 0,
+      "score_rel": 0,
+      "currentRound": 1,
+      "tieBreak": "",
+      "status": "W",
+      "result": "",
+      "currentMouvement": [
+        {
+          "mouvementName": "40 Cal_erg",
+          "nextMouvement": "",
+          "repTarget": 0,
+          "rep/min": 0,
+          "power": 0,
+          "cal_h": 0,
+          "s/m": 0
+        }
+      ],
+      "log_mvt": [
+        {
+          "0 R1 35 Cal_erg": "01:46.5",
+          "1 R1 9 T2B": "00:25.4",
+          "2 R1 9 Thruster": "00:23.9",
+          "3 R1 7 T2B": "00:17.8",
+          "4 R1 7 Thruster": "00:19.9",
+          "5 R1 5 T2B": "00:14.3",
+          "6 R1 5 Thruster": "00:17.5",
+          "7 R1 7 MU-BAR": "00:27.3",
+          "8 R1 7 snatch": "00:24.1",
+          "9 R1 5 MU-BAR": "00:36.7",
+          "10 R1 5 snatch": "00:21.2",
+          "11 R1 3 MU-BAR": "00:30.7",
+          "12 R1 3 snatch": "00:16.9",
+          "13 R1 5 triple_touc": "00:37.1"
+        }
+      ],
+      "log_round_time": [
+        []
+      ]
+    },
+    {
+      "lane": 8,
+      "division": "RX H\\H",
+      "CurrentRank": 8,
+      "score_abs": 0,
+      "score_rel": 0,
+      "currentRound": 0,
+      "tieBreak": "",
+      "status": "W",
+      "result": "",
+      "currentMouvement": [
+        {
+          "mouvementName": "",
+          "nextMouvement": "",
+          "repTarget": 0,
+          "rep/min": 0,
+          "power": 0,
+          "cal_h": 0,
+          "s/m": 0
+        }
+      ],
+      "log_mvt": [
+        {
+          "0 R1 35 Cal_erg": "01:21.8",
+          "1 R1 9 T2B": "00:24.8",
+          "2 R1 9 Thruster": "00:31.0",
+          "3 R1 7 T2B": "00:47.3",
+          "4 R1 7 Thruster": "00:32.5",
+          "5 R1 5 T2B": "00:37.1",
+          "6 R1 5 Thruster": "00:20.8",
+          "7 R1 7 MU-BAR": "00:25.9",
+          "8 R1 7 snatch": "00:31.8",
+          "9 R1 5 MU-BAR": "00:24.5",
+          "10 R1 5 snatch": "00:21.8",
+          "11 R1 3 MU-BAR": "00:22.8",
+          "12 R1 3 snatch": "00:10.9",
+          "13 R1 5 triple_touc": "00:06.4"
+        }
+      ],
+      "log_round_time": [
+        []
+      ]
+    },
+    {
+      "lane": 9,
+      "division": "RX H\\H",
+      "CurrentRank": 11,
+      "score_abs": 0,
+      "score_rel": 0,
+      "currentRound": 0,
+      "tieBreak": "",
+      "status": "W",
+      "result": "",
+      "currentMouvement": [
+        {
+          "mouvementName": "",
+          "nextMouvement": "",
+          "repTarget": 0,
+          "rep/min": 0,
+          "power": 0,
+          "cal_h": 0,
+          "s/m": 0
+        }
+      ],
+      "log_mvt": [
+        {
+          "0 R1 35 Cal_erg": "01:28.4",
+          "1 R1 9 T2B": "00:21.4",
+          "2 R1 9 Thruster": "00:21.7",
+          "3 R1 7 T2B": "00:22.9",
+          "4 R1 7 Thruster": "00:22.8",
+          "5 R1 5 T2B": "00:23.1",
+          "6 R1 5 Thruster": "00:18.7",
+          "7 R1 7 MU-BAR": "00:32.9",
+          "8 R1 7 snatch": "00:26.2",
+          "9 R1 5 MU-BAR": "00:46.1",
+          "10 R1 5 snatch": "00:28.9",
+          "11 R1 3 MU-BAR": "00:29.2",
+          "12 R1 3 snatch": "00:17.6",
+          "13 R1 5 triple_touc": "00:19.6"
+        }
+      ],
+      "log_round_time": [
+        []
+      ]
+    },
+    {
+      "lane": 10,
+      "division": "RX H\\H",
+      "CurrentRank": 1,
+      "score_abs": 0,
+      "score_rel": 0,
+      "currentRound": 1,
+      "tieBreak": "",
+      "status": "W",
+      "result": "",
+      "currentMouvement": [
+        {
+          "mouvementName": "40 Cal_erg",
+          "nextMouvement": "",
+          "repTarget": 0,
+          "rep/min": 0,
+          "power": 0,
+          "cal_h": 0,
+          "s/m": 0
+        }
+      ],
+      "log_mvt": [
+        {
+          "0 R1 35 Cal_erg": "01:40.8",
+          "1 R1 9 T2B": "00:21.6",
+          "2 R1 9 Thruster": "00:23.3",
+          "3 R1 7 T2B": "00:19.4",
+          "4 R1 7 Thruster": "00:21.1",
+          "5 R1 5 T2B": "00:17.0",
+          "6 R1 5 Thruster": "00:17.5",
+          "7 R1 7 MU-BAR": "00:24.9",
+          "8 R1 7 snatch": "00:25.0",
+          "9 R1 5 MU-BAR": "00:22.7",
+          "10 R1 5 snatch": "00:24.7",
+          "11 R1 3 MU-BAR": "00:19.5",
+          "12 R1 3 snatch": "00:19.0",
+          "13 R1 5 triple_touc": "00:59.6",
+          "14 R1 5 C&J": "00:03.3"
+        }
+      ],
+      "log_round_time": [
+        []
+      ]
+    },
+    {
+      "lane": 11,
+      "division": "RX H\\H",
+      "CurrentRank": 13,
+      "score_abs": 0,
+      "score_rel": 0,
+      "currentRound": 0,
+      "tieBreak": "",
+      "status": "W",
+      "result": "",
+      "currentMouvement": [
+        {
+          "mouvementName": "",
+          "nextMouvement": "",
+          "repTarget": 0,
+          "rep/min": 0,
+          "power": 0,
+          "cal_h": 0,
+          "s/m": 0
+        }
+      ],
+      "log_mvt": [
+        {
+          "0 R1 35 Cal_erg": "01:31.2",
+          "1 R1 9 T2B": "00:25.9",
+          "2 R1 9 Thruster": "00:24.9",
+          "3 R1 7 T2B": "00:26.0",
+          "4 R1 7 Thruster": "00:25.5",
+          "5 R1 5 T2B": "00:19.9",
+          "6 R1 5 Thruster": "00:20.6",
+          "7 R1 7 MU-BAR": "00:27.6",
+          "8 R1 7 snatch": "00:27.6",
+          "9 R1 5 MU-BAR": "00:23.9",
+          "10 R1 5 snatch": "00:22.2",
+          "11 R1 3 MU-BAR": "00:17.9",
+          "12 R1 3 snatch": "00:12.5",
+          "13 R1 5 triple_touc": "00:53.7"
+        }
+      ],
+      "log_round_time": [
+        []
+      ]
+    },
+    {
+      "lane": 12,
+      "division": "RX H\\H",
+      "CurrentRank": 4,
+      "score_abs": 0,
+      "score_rel": 0,
+      "currentRound": 1,
+      "tieBreak": "",
+      "status": "W",
+      "result": "",
+      "currentMouvement": [
+        {
+          "mouvementName": "40 Cal_erg",
+          "nextMouvement": "",
+          "repTarget": 0,
+          "rep/min": 0,
+          "power": 0,
+          "cal_h": 0,
+          "s/m": 0
+        }
+      ],
+      "log_mvt": [
+        {
+          "0 R1 35 Cal_erg": "01:35.3",
+          "1 R1 9 T2B": "00:20.0",
+          "2 R1 9 Thruster": "00:22.3",
+          "3 R1 7 T2B": "00:18.3",
+          "4 R1 7 Thruster": "00:20.4",
+          "5 R1 5 T2B": "00:14.4",
+          "6 R1 5 Thruster": "00:16.6",
+          "7 R1 7 MU-BAR": "00:27.7",
+          "8 R1 7 snatch": "00:23.9",
+          "9 R1 5 MU-BAR": "00:29.1",
+          "10 R1 5 snatch": "00:27.2",
+          "11 R1 3 MU-BAR": "00:23.5",
+          "12 R1 3 snatch": "00:13.7",
+          "13 R1 5 triple_touc": "00:44.7",
+          "14 R1 5 C&J": "00:21.2",
+          "15 R1 3 triple_touc": "00:00.8"
+        }
+      ],
+      "log_round_time": [
+        []
+      ]
+    },
+    {
+      "lane": 13,
+      "division": "RX H\\H",
+      "CurrentRank": 10,
+      "score_abs": 0,
+      "score_rel": 0,
+      "currentRound": 1,
+      "tieBreak": "",
+      "status": "W",
+      "result": "",
+      "currentMouvement": [
+        {
+          "mouvementName": "40 Cal_erg",
+          "nextMouvement": "",
+          "repTarget": 0,
+          "rep/min": 0,
+          "power": 0,
+          "cal_h": 0,
+          "s/m": 0
+        }
+      ],
+      "log_mvt": [
+        {
+          "0 R1 35 Cal_erg": "01:34.7",
+          "1 R1 9 T2B": "00:25.6",
+          "2 R1 9 Thruster": "00:25.0",
+          "3 R1 7 T2B": "00:11.8",
+          "4 R1 7 Thruster": "00:26.7",
+          "5 R1 5 T2B": "00:12.1",
+          "6 R1 5 Thruster": "00:25.2",
+          "7 R1 7 MU-BAR": "00:19.8",
+          "8 R1 7 snatch": "00:18.3",
+          "9 R1 5 MU-BAR": "00:26.1",
+          "10 R1 5 snatch": "00:16.8",
+          "11 R1 3 MU-BAR": "00:20.6",
+          "12 R1 3 snatch": "00:14.9",
+          "13 R1 5 triple_touc": "00:52.1",
+          "14 R1 5 C&J": "00:21.0",
+          "15 R1 3 triple_touc": "00:08.7"
+        }
+      ],
+      "log_round_time": [
+        []
+      ]
+    },
+    {
+      "lane": 14,
+      "division": "RX H\\H",
+      "CurrentRank": 5,
+      "score_abs": 0,
+      "score_rel": 0,
+      "currentRound": 0,
+      "tieBreak": "",
+      "status": "W",
+      "result": "",
+      "currentMouvement": [
+        {
+          "mouvementName": "",
+          "nextMouvement": "",
+          "repTarget": 0,
+          "rep/min": 0,
+          "power": 0,
+          "cal_h": 0,
+          "s/m": 0
+        }
+      ],
+      "log_mvt": [
+        {
+          "0 R1 35 Cal_erg": "01:28.5",
+          "1 R1 9 T2B": "00:21.2",
+          "2 R1 9 Thruster": "00:24.5",
+          "3 R1 7 T2B": "00:19.4",
+          "4 R1 7 Thruster": "00:22.3",
+          "5 R1 5 T2B": "00:16.5",
+          "6 R1 5 Thruster": "00:25.8",
+          "7 R1 7 MU-BAR": "00:19.8",
+          "8 R1 7 snatch": "00:18.8",
+          "9 R1 5 MU-BAR": "00:23.7",
+          "10 R1 5 snatch": "00:18.6",
+          "11 R1 3 MU-BAR": "00:21.7",
+          "12 R1 3 snatch": "00:12.5",
+          "13 R1 5 triple_touc": "01:20.2",
+          "14 R1 5 C&J": "00:06.5"
+        }
+      ],
+      "log_round_time": [
+        []
+      ]
+    },
+    {
+      "lane": 15,
+      "division": "RX H\\H",
+      "CurrentRank": 12,
+      "score_abs": 0,
+      "score_rel": 0,
+      "currentRound": 1,
+      "tieBreak": "",
+      "status": "W",
+      "result": "",
+      "currentMouvement": [
+        {
+          "mouvementName": "40 Cal_erg",
+          "nextMouvement": "",
+          "repTarget": 0,
+          "rep/min": 0,
+          "power": 0,
+          "cal_h": 0,
+          "s/m": 0
+        }
+      ],
+      "log_mvt": [
+        {
+          "0 R1 35 Cal_erg": "01:17.6",
+          "1 R1 9 T2B": "00:20.8",
+          "2 R1 9 Thruster": "00:19.0",
+          "3 R1 7 T2B": "00:15.5",
+          "4 R1 7 Thruster": "00:16.3",
+          "5 R1 5 T2B": "00:12.4",
+          "6 R1 5 Thruster": "00:13.1",
+          "7 R1 7 MU-BAR": "00:28.1",
+          "8 R1 7 snatch": "00:23.4",
+          "9 R1 5 MU-BAR": "00:29.1",
+          "10 R1 5 snatch": "00:19.1",
+          "11 R1 3 MU-BAR": "00:23.1",
+          "12 R1 3 snatch": "00:13.4",
+          "13 R1 5 triple_touc": "00:28.6",
+          "14 R1 5 C&J": "00:18.2",
+          "15 R1 3 triple_touc": "00:18.5",
+          "16 R1 3 C&J": "00:11.0",
+          "17 R1 1 triple_touc": "00:09.0",
+          "18 R1 1 C&J": "00:09.8",
+          "19 R1 1 Sprint_fina": "00:02.1"
+        }
+      ],
+      "log_round_time": [
+        []
+      ]
+    }
+  ]
+}

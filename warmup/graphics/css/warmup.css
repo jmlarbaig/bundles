@@ -1,0 +1,85 @@
+
+#header1{
+    padding-top: 20px;
+    padding-bottom: 20px;
+    background-color: Black;
+    color: white;
+    border-bottom: solid 1px white;
+}
+
+.header_{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.global{
+    margin-left: 10px;
+    margin-right: 10px;
+    text-transform: uppercase;
+}
+
+.global:nth-child(1) .first{
+    background-color: red;
+}
+
+.global:nth-child(2) .first{
+    background-color: blue;
+}
+
+.global:nth-child(3) .first{
+    background-color: orange;
+}
+
+.first{
+    border-bottom: 1px white solid;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.WodName{
+    padding-top: 10px;
+    padding-bottom: 10px;
+
+}
+
+.format_location{
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.hours{
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.title{
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.description{
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.tab_participants{
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0 5px;
+}
+
+.tab_participants th{
+    border: 1px solid #ddd;
+    padding: 8px;
+    background-color: #04AA6D;
+    color:white
+}
+
+.tab_participants td{
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+.tab_participants tr:nth-child(odd){background-color: white; color: black}
+.tab_participants tr:nth-child(even){background-color: #f2f2f2; color: black}

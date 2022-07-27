@@ -1,0 +1,32 @@
+#logoLocation{
+    position: absolute;
+}
+
+#logoLocation {
+    width: 200px;
+}
+
+.logoSponsor{
+    width: 60px;
+}
+
+.presta{
+    width: 200px;
+}
+
+#fvLocation{
+    position: absolute;
+    top: 200px;
+    right: 100px;
+    background-color:  var(--main-color);
+    padding: 1%;
+    border-radius: 20px;
+}
+
+#fvLocation h3{
+    color: white
+}
+
+#fvLocation .logo{
+    width: 100px;
+}

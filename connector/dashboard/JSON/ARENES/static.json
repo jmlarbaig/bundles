@@ -1,0 +1,338 @@
+{
+    "eventId": 5034,
+    "workoutId": 36996,
+    "heatId": 213467,
+    "eventName": "Arvernes Contest Back to CrossFit  Powered by Kairos",
+    "workoutName": "WOD 1",
+    "heatName": "Heat 1",
+    "location": "AUBIERE",
+    "logoUrl": "https://competitioncorner.net/file.aspx/mainFilesystem?Events%2FLogo+Arvernes+Contest+-+R%C3%A9seaux+sociaux_cropped.png",
+    "heatTime": "08:00",
+    "heatInfo": [
+        {
+            "heatId": 213464,
+            "type": "amrap",
+            "description": "",
+            "heatsSize": 12,
+            "timeCap": 12,
+            "format": "team",
+            "scoreLabel": "",
+            "createDate": "2022-03-08T00:22:15"
+        }
+    ],
+    "WorkoutInfo": [
+        {
+            "description": "<p>4 run 200</p><p>2 rounds</p><p>15 box step over</p><p>12 hang snach</p><p>Tiebreak</p><p></p>",
+            "mvt_id": [
+                0,
+                1,
+                2,
+                3,
+                4,
+                5,
+                6
+            ],
+            "mvt_names": [
+                "Run",
+                "r1 step o",
+                "r1 h. snach",
+                "Tiebreak",
+                "r2 step o",
+                "r2 h. snach",
+                "Tiebreak"
+            ],
+            "mvt_reps": [
+                4,
+                15,
+                12,
+                0,
+                15,
+                12,
+                0
+            ],
+            "mvt_units": [
+                "r",
+                "r",
+                "r",
+                "",
+                "r",
+                "r",
+                ""
+            ],
+            "mvt_sources": [
+                1,
+                9,
+                9,
+                8,
+                9,
+                9,
+                8
+            ],
+            "mvt_score_type": [
+                1,
+                1,
+                1,
+                2,
+                1,
+                1,
+                2
+            ],
+            "mvt_max_times": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+            ],
+            "increments": [
+                1,
+                1,
+                1,
+                0,
+                1,
+                1,
+                0
+            ],
+            "total_reps": 58,
+            "series": [],
+            "rounds": 2,
+            "rep_per_rounds": 27,
+            "mvt_round": [
+                {
+                    "rep_per_round": 27,
+                    "mvt_id": [
+                        [
+                            1,
+                            2,
+                            3
+                        ],
+                        [
+                            4,
+                            5,
+                            6
+                        ]
+                    ],
+                    "rounds": 2
+                }
+            ],
+            "mvt_series": [],
+            "division": "Homme - Femme",
+            "mvt_type": "series"
+        },
+        {
+            "description": "<p>4 run 200</p><p>2 rounds</p><p>15 box step over</p><p>12 hang snach</p><p>Tiebreak</p><p></p>",
+            "mvt_id": [
+                0,
+                1,
+                2,
+                3,
+                4,
+                5,
+                6
+            ],
+            "mvt_names": [
+                "Run",
+                "r1 step o",
+                "r1 h. snach",
+                "Tiebreak",
+                "r2 step o",
+                "r2 h. snach",
+                "Tiebreak"
+            ],
+            "mvt_reps": [
+                4,
+                15,
+                12,
+                0,
+                15,
+                12,
+                0
+            ],
+            "mvt_units": [
+                "r",
+                "r",
+                "r",
+                "",
+                "r",
+                "r",
+                ""
+            ],
+            "mvt_sources": [
+                1,
+                9,
+                9,
+                8,
+                9,
+                9,
+                8
+            ],
+            "mvt_score_type": [
+                1,
+                1,
+                1,
+                2,
+                1,
+                1,
+                2
+            ],
+            "mvt_max_times": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+            ],
+            "increments": [
+                1,
+                1,
+                1,
+                0,
+                1,
+                1,
+                0
+            ],
+            "total_reps": 58,
+            "series": [],
+            "rounds": 2,
+            "rep_per_rounds": 27,
+            "mvt_round": [
+                {
+                    "rep_per_round": 27,
+                    "mvt_id": [
+                        [
+                            1,
+                            2,
+                            3
+                        ],
+                        [
+                            4,
+                            5,
+                            6
+                        ]
+                    ],
+                    "rounds": 2
+                }
+            ],
+            "mvt_series": [],
+            "division": "Homme - Homme ",
+            "mvt_type": "series"
+        }
+    ],
+    "athletes": [
+        {
+            "lane": 1,
+            "displayName": "Crossfateur ",
+            "rank": 0,
+            "overallPoints": 0,
+            "affiliate": "",
+            "division": "Homme - Femme",
+            "countryCode": "FRA"
+        },
+        {
+            "lane": 2,
+            "displayName": "Bonnie&Clyde",
+            "rank": 0,
+            "overallPoints": 0,
+            "affiliate": "",
+            "division": "Homme - Femme",
+            "countryCode": "FRA"
+        },
+        {
+            "lane": 3,
+            "displayName": "KIKI ET STACH",
+            "rank": 0,
+            "overallPoints": 0,
+            "affiliate": "",
+            "division": "Homme - Femme",
+            "countryCode": "FRA"
+        },
+        {
+            "lane": 4,
+            "displayName": "On fait un paquito?",
+            "rank": 0,
+            "overallPoints": 0,
+            "affiliate": "",
+            "division": "Homme - Femme",
+            "countryCode": "FRA"
+        },
+        {
+            "lane": 5,
+            "displayName": "NO REP NO GAIN",
+            "rank": 0,
+            "overallPoints": 0,
+            "affiliate": "",
+            "division": "Homme - Femme",
+            "countryCode": "FRA"
+        },
+        {
+            "lane": 6,
+            "displayName": "Les petits volcans",
+            "rank": 0,
+            "overallPoints": 0,
+            "affiliate": "",
+            "division": "Homme - Femme",
+            "countryCode": "FRA"
+        },
+        {
+            "lane": 7,
+            "displayName": "Tuche Ensemble",
+            "rank": 0,
+            "overallPoints": 0,
+            "affiliate": "",
+            "division": "Homme - Femme",
+            "countryCode": "FRA"
+        },
+        {
+            "lane": 8,
+            "displayName": "Les frites à 1€",
+            "rank": 0,
+            "overallPoints": 0,
+            "affiliate": "",
+            "division": "Homme - Femme",
+            "countryCode": "FRA"
+        },
+        {
+            "lane": 9,
+            "displayName": "Team Beerbell's",
+            "rank": 0,
+            "overallPoints": 0,
+            "affiliate": "",
+            "division": "Homme - Femme",
+            "countryCode": "FRA"
+        },
+        {
+            "lane": 10,
+            "displayName": "Bricolo et Bricolette",
+            "rank": 0,
+            "overallPoints": 0,
+            "affiliate": "",
+            "division": "Homme - Femme",
+            "countryCode": "FRA"
+        },
+        {
+            "lane": 11,
+            "displayName": "COQUELICOTS",
+            "rank": 0,
+            "overallPoints": 0,
+            "affiliate": "",
+            "division": "Homme - Femme",
+            "countryCode": null
+        },
+        {
+            "lane": 12,
+            "displayName": "Les Blonds Tamalou ",
+            "rank": 0,
+            "overallPoints": 0,
+            "affiliate": "",
+            "division": "Homme - Femme",
+            "countryCode": "FRA"
+        }
+    ],
+    "totalRecordsCount": 2,
+    "recordsCount": 2,
+    "wodType": "amrap"
+}
