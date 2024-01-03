@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <!-- JQUERY -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css"
+        integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap-theme.min.css"
+        integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ" crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/js/bootstrap.min.js"
+        integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd"
+        crossorigin="anonymous"></script>
+
+
+    <title>Leaderboard</title>
+
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/colors.css">
+    <link rel="stylesheet" href="css/video.css">
+
+    <link rel="stylesheet" href="css/header/header_top.css">
+    <link rel="stylesheet" href="css/leaderboard/overlay_top.css">
+
+    <script src="./assets/flag.js" type="text/javascript"></script>
+
+    <script src="./js/tools.js" type="text/javascript"></script>
+    <script src="./js/style_leaderboard.js" type="text/javascript"></script>
+    <script src="./js/wod.js" type="text/javascript"></script>
+    <script src="./js/heat.js" type="text/javascript"></script>
+    <script src="./js/time.js" type="text/javascript"></script>
+    <script src="./js/static.js" type="text/javascript"></script>
+    <script src="./js/dynamic.js" type="text/javascript"></script>
+
+
+</head>
+
+<body class="screen">
+
+    <div class="flex-container">
+        <div class="flex-item video-content">
+            <video id="video" autoplay muted>
+                <source id="sourceVid" src="" type="video/mp4">
+            </video>
+        </div>
+    </div>
+
+
+    <div class="header">
+
+        <div class="box_logo" style="display: none;">
+            <div id="logo" class="logo"></div>
+        </div>
+
+        <div class="box_chrono" style="display: none;">
+            <div id="chrono" class="chrono"></div>
+        </div>
+
+        <div class="box_heat" style="display: none;">
+            <div id="heat" class="heat"></div>
+        </div>
+
+    </div>
+
+    <div class="leaderboards" id="leaderboards"></div>
+
+    <div class="box_bandeau" id="box_bandeau" style="display: none;"></div>
+
+    <div class="frame" id="frame"></div>
+
+
+    <div class="sponsorLogo" id="sponsorLogo"></div>
+
+
+    <script src="./index.js" type="text/javascript"></script>
+
+</body>
+
+</html>

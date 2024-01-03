@@ -1,0 +1,51 @@
+.waiting{
+    position: absolute;
+    background-color: var(--back_color);
+    width: fit-content;
+    padding: 0px 20px;
+    margin: 10px 0px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    box-shadow: 2px 5px rgb(0, 0, 0), 6px 8px rgb(136, 136, 136);
+    border-radius: 10px 0px 10px 0px;
+}
+
+.detailsWaiting{
+    text-align: center;
+    min-width: 500px;
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+    border-left: solid 2px white;
+}
+
+.nextEvent{
+    font-size: 1.6em;
+    font: 800;
+    padding: 5px;
+    background-color: var(--subheader_color);
+    color: var(--tx_subheader_color);
+    text-transform: uppercase;
+
+}
+
+.localisation{
+    font-size: 1.2em;
+    font: 600;
+    padding: 5px;
+    padding-bottom: 10px;
+    background: linear-gradient(90deg, var(--header_color) 0%, var(--header_color) 50%, var(--header_color) 100%);
+    color: var(--tx_header_color);
+    text-transform: uppercase;
+    border-bottom: solid white 2px;
+    margin-bottom: 5px;
+}
+
+.eventName{
+    font-size: 0.8em;
+    font: 200;
+    padding: 10px;
+    color: white;
+    text-transform: uppercase;
+}

@@ -1,0 +1,32 @@
+.header{
+  width: 100%;
+}
+
+.header .infos{
+  text-align: center;
+}
+
+.body{
+  width: 100%;
+}
+
+.input-form{
+  display: flex;
+  flex-direction: row;
+  margin: 10px auto;
+  width: 200px;
+  padding: 10px 10px;
+}
+
+.input-form:nth-child(odd){
+  background-color: rgb(176, 176, 176);
+  color: rgb(241, 241, 241);
+}
+
+.input-form label{
+  width: 150px;
+}
+
+.input-form input{
+  width: 50px;
+}

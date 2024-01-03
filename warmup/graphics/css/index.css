@@ -1,0 +1,114 @@
+:root {
+    --bg__color: rgba(0,0,0,0);
+
+    --main_color: rgba(0,0,0,0.9);
+    --second_color: black;
+    --finish_color: black;
+    --first_rank_color: black;
+    --second_rank_color: black;
+    --third_rank_color: black;
+
+    --chrono_color:white;
+    --tx_chrono_color:white;
+
+    --wod_color:white;
+    --tx_wod_color:white;
+
+    --tx_main_color: white;
+    --tx_second_color: white;
+    --tx_finish_color: white;
+    --tx_firstRank_color: white;
+    --tx_secondRank_color: white;
+    --tx_thirdRank_color: white;
+
+    --position_x_chrono: 300px;
+    --position_y_chrono: 75px;
+
+    --position_x_heat: 320px;
+    --position_y_heat: 320px;
+
+    --position_x_logo : 110px;
+    --position_y_logo : 40px;
+
+    --position_x_leaderboard : 200px;
+    --position_y_leaderboard : 75px;
+
+    --widthLogoEvent: 250px;
+
+    --heigth: 29px;
+    --height_ath_side : 40px;
+    --height_ath_top : 60px;
+    --height_ath_tv : 60px;
+    --padding_ath_content: 10px;
+    --border: 0px 10px 10px 0px;
+
+    --font-select:'Typographica';
+
+    }
+
+
+    @font-face {
+        font-family: "Adarsh";
+        src: url("../fonts/Adarsh-Sans-Regular.otf");
+    }
+
+    @font-face {
+        font-family: "Antonio";
+        src: url("../fonts/Antonio-Regular.ttf");
+    }
+
+    @font-face {
+        font-family: "Bebas";
+        src: url("../fonts/BebasNeue.otf");
+    }
+
+    @font-face {
+        font-family: "Circo";
+        src: url("../fonts/Circo.ttf");
+    }
+
+    @font-face {
+        font-family: "Coamei";
+        src: url("../fonts/Coamei-Regular.ttf");
+    }
+
+    @font-face {
+        font-family: "Hoop";
+        src: url("../fonts/Hoop_Regular.otf");
+    }
+
+    @font-face {
+        font-family: "Montserrat";
+        src: url("../fonts/Montserrat-Bold.ttf");
+    }
+
+    @font-face {
+        font-family: "Oswald";
+        src: url("../fonts/Oswald-Regular.ttf");
+    }
+
+    @font-face {
+        font-family: "Power";
+        src: url("../fonts/PowerrMedium.ttf");
+    }
+
+    @font-face {
+        font-family: "Roboto";
+        src: url("../fonts/Roboto-Medium.ttf");
+    }
+
+    @font-face {
+        font-family: "Strasua";
+        src: url("../fonts/strasua.ttf");
+    }
+
+    @font-face {
+        font-family: "Typographica";
+        src: url("../fonts/Typographica.ttf");
+    }
+
+
+    body{
+        background-color: rgb(46, 46, 46);
+        font-family: var(--font-select);
+    }

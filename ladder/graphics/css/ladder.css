@@ -1,0 +1,32 @@
+.ladder{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.header{
+    text-align: center;
+    height: auto;
+    position: sticky;
+    top:0px;
+    padding-top: 10px;
+    overflow: hidden;  /* code added to prevent scroll */
+    background-color: white;
+}
+
+.tableWeights{
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+}
+
+.rowWeight{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 60px;
+}
+
+#score{
+}

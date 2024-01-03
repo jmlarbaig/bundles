@@ -1,0 +1,133 @@
+#warmUp_body{
+    padding: 10px;
+    margin: 10px;
+    background-color: rgb(46, 46, 46);
+    color: white;
+}
+
+#header1{
+    padding-top: 20px;
+    padding-bottom: 20px;
+    background-color: rgb(46, 46, 46);
+    color: white;
+    border-bottom: solid 1px white;
+}
+
+.header_{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#logo{
+    text-align: center;
+    margin: auto;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 100px;
+    height: 100px;
+}
+
+.hTime{
+}
+
+#time{
+    max-width: 300px;
+    background-color: white;
+    margin: auto;
+    padding: 10px;
+    color: red;
+}
+
+.global{
+    margin-left: 10px;
+    margin-right: 10px;
+    text-transform: uppercase;
+}
+
+.global:nth-child(1) .first{
+    color:rgb(255, 255, 255);
+    background: linear-gradient(90deg, var(--main_color) 0%, rgb(13, 146, 84) 50%, var(--main_color) 100%);
+}
+
+.global:nth-child(2) .first{
+    color:rgb(255, 255, 255);
+    background: linear-gradient(90deg, var(--main_color) 0%, rgb(28, 38, 127) 50%, var(--main_color) 100%);
+}
+
+.global:nth-child(3) .first{
+    color:rgb(255, 255, 255);
+    background: linear-gradient(90deg, var(--main_color) 0%, rgb(209, 74, 20) 50%, var(--main_color) 100%);
+}
+
+.first{
+    border-bottom: 1px white solid;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.WodName{
+    padding-top: 10px;
+    padding-bottom: 10px;
+
+}
+
+.format_location{
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.hHours{
+    width: 400px;    
+    border: 2px solid var(--second_color);
+    margin: auto;
+    background-color: white;
+    color: black;
+}
+
+.hours{
+    padding-top: 10px;
+}
+
+.title{
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.description{
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.tab_participants{
+    margin: auto;
+    width: 80%;
+    border-collapse: collapse;
+    border-spacing: 0 5px;
+}
+
+.tab_participants th{
+    border: 1px solid #ddd;
+    padding: 8px;
+    background-color: rgb(122, 122, 122);
+    color:white
+}
+
+.tab_participants td{
+    border: 1px solid #ddd;
+    padding: 8px;
+    max-width: 150px;
+}
+
+.tab_participants tr:nth-child(odd){
+    background-color: white;
+    color: black
+}
+.tab_participants tr:nth-child(even){
+    background-color: #f2f2f2;
+    color: black
+}
+
+.division{
+}

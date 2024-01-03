@@ -1,0 +1,125 @@
+{
+  "name": "lowerthird",
+  "version": "0.0.0",
+  "description": "",
+  "homepage": "",
+  "author": {
+    "name": "JM",
+    "email": "jeanmarie.larbaig@gmail.com",
+    "url": ""
+  },
+  "files": [
+    "dashboard",
+    "graphics",
+    "extension.js",
+    "extension"
+  ],
+  "keywords": [
+    "",
+    "nodecg-bundle"
+  ],
+  "nodecg": {
+    "compatibleRange": "^1.9.0",
+    "dashboardPanels": [
+      {
+        "name": "presentatorLowerthird",
+        "title": "Presentator LowerThirds",
+        "file": "presentatorLowerthird.html",
+        "fullbleed": false,
+        "width": 8,
+        "headerColor": "#525F78",
+        "workspace": "LowerThird Workspace"
+      },
+      {
+        "name": "freeLowerthird",
+        "title": "Free Lowerthird",
+        "file": "freeLowerthird.html",
+        "fullbleed": false,
+        "width": 3,
+        "headerColor": "#525F78",
+        "workspace": "LowerThird Workspace"
+      },
+      {
+        "name": "waitingLowerthird",
+        "title": "Waiting Lowerthird",
+        "file": "waitingLowerthird.html",
+        "fullbleed": false,
+        "width": 3,
+        "headerColor": "#525F78",
+        "workspace": "LowerThird Workspace"
+      },
+      {
+        "name": "WorkoutsLowerthird",
+        "title": "Workout Lowerthird",
+        "file": "workoutLowerthird.html",
+        "fullbleed": false,
+        "width": 3,
+        "headerColor": "#525F78",
+        "workspace": "LowerThird Workspace"
+      },
+      {
+        "name": "AthleteLowerthird",
+        "title": "Athlete Free Lowerthird",
+        "file": "athlete.html",
+        "fullbleed": false,
+        "width": 3,
+        "headerColor": "#525F78",
+        "workspace": "LowerThird Workspace"
+      },
+      {
+        "name": "Configuration",
+        "title": "Configuration Lowerthird",
+        "file": "configuration.html",
+        "fullbleed": false,
+        "width": 3,
+        "headerColor": "#525F78",
+        "workspace": "LowerThird Workspace"
+      }
+    ],
+    "graphics": [
+      {
+        "file": "lowerthirds.html",
+        "width": 1920,
+        "height": 1080
+      },
+      {
+        "file": "free.html",
+        "width": 1920,
+        "height": 1080
+      },
+      {
+        "file": "athlete.html",
+        "width": 1920,
+        "height": 1080
+      },
+      {
+        "file": "presentator.html",
+        "width": 1920,
+        "height": 1080
+      },
+      {
+        "file": "waiting.html",
+        "width": 1920,
+        "height": 1080
+      },
+      {
+        "file": "workout.html",
+        "width": 1920,
+        "height": 1080
+      }
+    ],
+    "assetCategories": [
+      {
+        "name": "sponsorsLowerThirds",
+        "title": "Sponsors Lower Thirds",
+        "allowedTypes": [
+          "jpeg",
+          "jpg",
+          "png"
+        ]
+      }
+    ]
+  },
+  "repository": "git@gitlab.com:jeanmarie.larbaig/bundlesfv",
+  "license": "Apache-2.0"
+}

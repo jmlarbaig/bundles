@@ -1,0 +1,49 @@
+.rowHeat {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-around;
+    background-color: black;
+    color: white;
+    border-bottom: white solid 2px;
+}
+
+.wodDescription {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-around;
+    font-size: larger;
+    background-color: black;
+    color: white;
+    text-transform: uppercase;
+}
+
+.cis_ath {
+    overflow-x: auto;
+}
+
+.rowHeat span {
+    font-size: 20px;
+}
+
+.rowHeat h3 {
+    font-size: 30px;
+    color: white;
+}
+
+.repTarget_Team {
+    padding-left: 20px;
+}
+
+
+.division {
+    padding-left: 20px;
+}

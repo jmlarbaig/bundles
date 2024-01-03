@@ -1,0 +1,23 @@
+body {
+    height: 1080px;
+    background-color: black;
+}
+
+video {
+    width: auto;
+    height: auto;
+}
+.flex-container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.flex-item {
+    padding: 1em;
+    width: 100%;
+    flex-basis: 50%;
+}
+
+.video-content {
+}

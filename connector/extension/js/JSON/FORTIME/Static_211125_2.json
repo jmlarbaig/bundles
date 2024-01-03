@@ -1,0 +1,1029 @@
+{
+  "eventId": 6000,
+  "workoutId": 31790,
+  "heatId": 182579,
+  "eventName": "Battle of Legends",
+  "workoutName": "WOD 1: Achille",
+  "heatName": "Heat 2 Scale F/H",
+  "location": "Rebaix",
+  "logoUrl": "https://competitioncorner.net/file.aspx/mainFilesystem?Events%2Flogo+battle_cropped.png",
+  "heatTime": "08:08",
+  "heatInfo": [
+    {
+      "heatId": 182579,
+      "type": "time",
+      "description": "",
+      "heatsSize": 10,
+      "timeCap": 5,
+      "format": "team",
+      "scoreLabel": "",
+      "createDate": "2021-10-19T04:58:33"
+    }
+  ],
+  "WorkoutInfo": [
+    {
+      "description": "<p>5 rounds</p><p>3 RUN A</p><p>3 RUN B</p><p></p>",
+      "mvt_id": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "mvt_names": [
+        "RUN A",
+        "RUN B",
+        "RUN A",
+        "RUN B",
+        "RUN A",
+        "RUN B",
+        "RUN A",
+        "RUN B",
+        "RUN A",
+        "RUN B"
+      ],
+      "mvt_reps": [
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "mvt_units": [
+        "r",
+        "r",
+        "r",
+        "r",
+        "r",
+        "r",
+        "r",
+        "r",
+        "r",
+        "r"
+      ],
+      "mvt_sources": [
+        9,
+        9,
+        9,
+        9,
+        9,
+        9,
+        9,
+        9,
+        9,
+        9
+      ],
+      "mvt_score_type": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "mvt_max_times": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "increments": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "total_reps": 30,
+      "series": [],
+      "rounds": 5,
+      "rep_per_rounds": 6,
+      "mvt_round": [
+        {
+          "rep_per_round": 6,
+          "mvt_id": [
+            [
+              0,
+              1
+            ],
+            [
+              2,
+              3
+            ],
+            [
+              4,
+              5
+            ],
+            [
+              6,
+              7
+            ],
+            [
+              8,
+              9
+            ]
+          ],
+          "rounds": 5
+        }
+      ],
+      "mvt_series": [],
+      "division": "RX F_H",
+      "mvt_type": "series"
+    },
+    {
+      "description": "<p>5 rounds</p><p>3 RUN A</p><p>3 RUN B</p><p></p>",
+      "mvt_id": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "mvt_names": [
+        "RUN A",
+        "RUN B",
+        "RUN A",
+        "RUN B",
+        "RUN A",
+        "RUN B",
+        "RUN A",
+        "RUN B",
+        "RUN A",
+        "RUN B"
+      ],
+      "mvt_reps": [
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "mvt_units": [
+        "r",
+        "r",
+        "r",
+        "r",
+        "r",
+        "r",
+        "r",
+        "r",
+        "r",
+        "r"
+      ],
+      "mvt_sources": [
+        9,
+        9,
+        9,
+        9,
+        9,
+        9,
+        9,
+        9,
+        9,
+        9
+      ],
+      "mvt_score_type": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "mvt_max_times": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "increments": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "total_reps": 30,
+      "series": [],
+      "rounds": 5,
+      "rep_per_rounds": 6,
+      "mvt_round": [
+        {
+          "rep_per_round": 6,
+          "mvt_id": [
+            [
+              0,
+              1
+            ],
+            [
+              2,
+              3
+            ],
+            [
+              4,
+              5
+            ],
+            [
+              6,
+              7
+            ],
+            [
+              8,
+              9
+            ]
+          ],
+          "rounds": 5
+        }
+      ],
+      "mvt_series": [],
+      "division": "Scale F_F",
+      "mvt_type": "series"
+    },
+    {
+      "description": "<p>5 rounds</p><p>3 RUN A</p><p>3 RUN B</p><p></p>",
+      "mvt_id": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "mvt_names": [
+        "RUN A",
+        "RUN B",
+        "RUN A",
+        "RUN B",
+        "RUN A",
+        "RUN B",
+        "RUN A",
+        "RUN B",
+        "RUN A",
+        "RUN B"
+      ],
+      "mvt_reps": [
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "mvt_units": [
+        "r",
+        "r",
+        "r",
+        "r",
+        "r",
+        "r",
+        "r",
+        "r",
+        "r",
+        "r"
+      ],
+      "mvt_sources": [
+        9,
+        9,
+        9,
+        9,
+        9,
+        9,
+        9,
+        9,
+        9,
+        9
+      ],
+      "mvt_score_type": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "mvt_max_times": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "increments": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "total_reps": 30,
+      "series": [],
+      "rounds": 5,
+      "rep_per_rounds": 6,
+      "mvt_round": [
+        {
+          "rep_per_round": 6,
+          "mvt_id": [
+            [
+              0,
+              1
+            ],
+            [
+              2,
+              3
+            ],
+            [
+              4,
+              5
+            ],
+            [
+              6,
+              7
+            ],
+            [
+              8,
+              9
+            ]
+          ],
+          "rounds": 5
+        }
+      ],
+      "mvt_series": [],
+      "division": "RX F_F",
+      "mvt_type": "series"
+    },
+    {
+      "description": "<p>Workout</p>",
+      "mvt_id": [
+        0
+      ],
+      "mvt_names": [
+        "Workout"
+      ],
+      "mvt_reps": [
+        0
+      ],
+      "mvt_units": [
+        "r"
+      ],
+      "mvt_sources": [
+        1
+      ],
+      "mvt_score_type": [
+        1
+      ],
+      "mvt_max_times": [
+        0
+      ],
+      "increments": [
+        1
+      ],
+      "total_reps": 0,
+      "series": [],
+      "rounds": 0,
+      "rep_per_rounds": 0,
+      "mvt_round": [],
+      "mvt_series": [],
+      "division": "Inter",
+      "mvt_type": "series"
+    },
+    {
+      "description": "<p>5 rounds</p><p>3 RUN A</p><p>3 RUN B</p><p></p>",
+      "mvt_id": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "mvt_names": [
+        "RUN A",
+        "RUN B",
+        "RUN A",
+        "RUN B",
+        "RUN A",
+        "RUN B",
+        "RUN A",
+        "RUN B",
+        "RUN A",
+        "RUN B"
+      ],
+      "mvt_reps": [
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "mvt_units": [
+        "r",
+        "r",
+        "r",
+        "r",
+        "r",
+        "r",
+        "r",
+        "r",
+        "r",
+        "r"
+      ],
+      "mvt_sources": [
+        9,
+        9,
+        9,
+        9,
+        9,
+        9,
+        9,
+        9,
+        9,
+        9
+      ],
+      "mvt_score_type": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "mvt_max_times": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "increments": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "total_reps": 30,
+      "series": [],
+      "rounds": 5,
+      "rep_per_rounds": 6,
+      "mvt_round": [
+        {
+          "rep_per_round": 6,
+          "mvt_id": [
+            [
+              0,
+              1
+            ],
+            [
+              2,
+              3
+            ],
+            [
+              4,
+              5
+            ],
+            [
+              6,
+              7
+            ],
+            [
+              8,
+              9
+            ]
+          ],
+          "rounds": 5
+        }
+      ],
+      "mvt_series": [],
+      "division": "RX H_H",
+      "mvt_type": "series"
+    },
+    {
+      "description": "<p>5 rounds</p><p>3 RUN A</p><p>3 RUN B</p><p></p>",
+      "mvt_id": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "mvt_names": [
+        "RUN A",
+        "RUN B",
+        "RUN A",
+        "RUN B",
+        "RUN A",
+        "RUN B",
+        "RUN A",
+        "RUN B",
+        "RUN A",
+        "RUN B"
+      ],
+      "mvt_reps": [
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "mvt_units": [
+        "r",
+        "r",
+        "r",
+        "r",
+        "r",
+        "r",
+        "r",
+        "r",
+        "r",
+        "r"
+      ],
+      "mvt_sources": [
+        9,
+        9,
+        9,
+        9,
+        9,
+        9,
+        9,
+        9,
+        9,
+        9
+      ],
+      "mvt_score_type": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "mvt_max_times": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "increments": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "total_reps": 30,
+      "series": [],
+      "rounds": 5,
+      "rep_per_rounds": 6,
+      "mvt_round": [
+        {
+          "rep_per_round": 6,
+          "mvt_id": [
+            [
+              0,
+              1
+            ],
+            [
+              2,
+              3
+            ],
+            [
+              4,
+              5
+            ],
+            [
+              6,
+              7
+            ],
+            [
+              8,
+              9
+            ]
+          ],
+          "rounds": 5
+        }
+      ],
+      "mvt_series": [],
+      "division": "Scale F_H",
+      "mvt_type": "series"
+    },
+    {
+      "description": "<p>Workout</p>",
+      "mvt_id": [
+        0
+      ],
+      "mvt_names": [
+        "Workout"
+      ],
+      "mvt_reps": [
+        0
+      ],
+      "mvt_units": [
+        "r"
+      ],
+      "mvt_sources": [
+        1
+      ],
+      "mvt_score_type": [
+        1
+      ],
+      "mvt_max_times": [
+        0
+      ],
+      "increments": [
+        1
+      ],
+      "total_reps": 0,
+      "series": [],
+      "rounds": 0,
+      "rep_per_rounds": 0,
+      "mvt_round": [],
+      "mvt_series": [],
+      "division": "Inter",
+      "mvt_type": "series"
+    },
+    {
+      "description": "<p>5 rounds</p><p>3 RUN A</p><p>3 RUN B</p><p></p>",
+      "mvt_id": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "mvt_names": [
+        "RUN A",
+        "RUN B",
+        "RUN A",
+        "RUN B",
+        "RUN A",
+        "RUN B",
+        "RUN A",
+        "RUN B",
+        "RUN A",
+        "RUN B"
+      ],
+      "mvt_reps": [
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "mvt_units": [
+        "r",
+        "r",
+        "r",
+        "r",
+        "r",
+        "r",
+        "r",
+        "r",
+        "r",
+        "r"
+      ],
+      "mvt_sources": [
+        9,
+        9,
+        9,
+        9,
+        9,
+        9,
+        9,
+        9,
+        9,
+        9
+      ],
+      "mvt_score_type": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "mvt_max_times": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "increments": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "total_reps": 30,
+      "series": [],
+      "rounds": 5,
+      "rep_per_rounds": 6,
+      "mvt_round": [
+        {
+          "rep_per_round": 6,
+          "mvt_id": [
+            [
+              0,
+              1
+            ],
+            [
+              2,
+              3
+            ],
+            [
+              4,
+              5
+            ],
+            [
+              6,
+              7
+            ],
+            [
+              8,
+              9
+            ]
+          ],
+          "rounds": 5
+        }
+      ],
+      "mvt_series": [],
+      "division": "Scale H_H",
+      "mvt_type": "series"
+    },
+    {
+      "description": "<p>Workout</p>",
+      "mvt_id": [
+        0
+      ],
+      "mvt_names": [
+        "Workout"
+      ],
+      "mvt_reps": [
+        0
+      ],
+      "mvt_units": [
+        "r"
+      ],
+      "mvt_sources": [
+        1
+      ],
+      "mvt_score_type": [
+        1
+      ],
+      "mvt_max_times": [
+        0
+      ],
+      "increments": [
+        1
+      ],
+      "total_reps": 0,
+      "series": [],
+      "rounds": 0,
+      "rep_per_rounds": 0,
+      "mvt_round": [],
+      "mvt_series": [],
+      "division": "Inter",
+      "mvt_type": "series"
+    }
+  ],
+  "athletes": [
+    {
+      "lane": 1,
+      "displayName": "Clown and Jerk",
+      "rank": 0,
+      "overallPoints": 0,
+      "affiliate": "",
+      "division": "Scale F_H",
+      "countryCode": "BEL"
+    },
+    {
+      "lane": 2,
+      "displayName": "GrossesFrites",
+      "rank": 0,
+      "overallPoints": 0,
+      "affiliate": "",
+      "division": "Scale F_H",
+      "countryCode": "BEL"
+    },
+    {
+      "lane": 3,
+      "displayName": "kirua et bisuketto",
+      "rank": 0,
+      "overallPoints": 0,
+      "affiliate": "",
+      "division": "Scale F_H",
+      "countryCode": "BEL"
+    },
+    {
+      "lane": 4,
+      "displayName": "Les antoignies",
+      "rank": 0,
+      "overallPoints": 0,
+      "affiliate": "",
+      "division": "Scale F_H",
+      "countryCode": "BEL"
+    },
+    {
+      "lane": 5,
+      "displayName": "Les Boudins",
+      "rank": 0,
+      "overallPoints": 0,
+      "affiliate": "",
+      "division": "Scale F_H",
+      "countryCode": "BEL"
+    },
+    {
+      "lane": 6,
+      "displayName": "Les Boulettes ",
+      "rank": 0,
+      "overallPoints": 0,
+      "affiliate": "",
+      "division": "Scale F_H",
+      "countryCode": "BEL"
+    },
+    {
+      "lane": 7,
+      "displayName": "Les bras cass\u00e9s",
+      "rank": 0,
+      "overallPoints": 0,
+      "affiliate": "",
+      "division": "Scale F_H",
+      "countryCode": null
+    },
+    {
+      "lane": 8,
+      "displayName": "les quadra's",
+      "rank": 0,
+      "overallPoints": 0,
+      "affiliate": "",
+      "division": "Scale F_H",
+      "countryCode": "BEL"
+    },
+    {
+      "lane": 9,
+      "displayName": "Les salam\u00e8ches ",
+      "rank": 0,
+      "overallPoints": 0,
+      "affiliate": "",
+      "division": "Scale F_H",
+      "countryCode": "BEL"
+    },
+    {
+      "lane": 10,
+      "displayName": "No Weights ",
+      "rank": 0,
+      "overallPoints": 0,
+      "affiliate": "",
+      "division": "Scale F_H",
+      "countryCode": "BEL"
+    }
+  ],
+  "totalRecordsCount": 2,
+  "recordsCount": 2,
+  "wodType": "time"
+}

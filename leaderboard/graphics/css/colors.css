@@ -1,0 +1,86 @@
+.finish_rank {
+    background-color: var(--finish_color);
+    color: var(--tx_finish_color);
+    fill: var(--finish_color);
+}
+
+.first_rank {
+    background-color: var(--first_rank_color);
+    color: var(--tx_first_rank_color);
+    fill: var(--first_rank_color);
+}
+
+.second_rank {
+    background-color: var(--second_rank_color);
+    color: var(--tx_second_rank_color);
+    fill: var(--second_rank_color);
+}
+
+.third_rank {
+    background-color: var(--third_rank_color);
+    color: var(--tx_third_rank_color);
+    fill: var(--third_rank_color);
+}
+
+.other_rank {
+    background-color: var(--second_color);
+    color: var(--tx_second_color);
+    fill: var(--second_color);
+}
+
+.up_rank {
+    background-color: green;
+    color: white;
+
+}
+
+.down_rank {
+    background-color: red;
+    color: white;
+}
+
+.intial_rank {
+    padding: 0;
+}
+
+.initial_rank_versus {
+    padding: 0;
+    background-color: rgb(251, 251, 251);
+    color: black;
+}
+
+.initial_rank_top {
+    background-color: rgb(237, 237, 237);
+    color: black;
+}
+
+.deuxcent {
+
+    background-color: rgb(159, 13, 196);
+    color: rgb(255, 255, 255);
+}
+
+.cent {
+    background-color: rgb(13, 196, 17);
+    color: rgb(255, 255, 255);
+}
+
+.soixantequinze {
+    background-color: rgb(185, 209, 32);
+    color: rgb(255, 255, 255);
+}
+
+.cinquante {
+    background-color: rgb(210, 127, 32);
+    color: rgb(255, 255, 255);
+}
+
+.vingtcinq {
+    background-color: rgb(255, 0, 0);
+    color: white;
+}
+
+.zero {
+    background-color: rgb(170, 170, 170);
+    color: white;
+}

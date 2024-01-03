@@ -1,0 +1,77 @@
+.textArea{
+    position: absolute;
+    min-width: 350px;
+    box-shadow: 2px 5px rgb(0, 0, 0), 6px 8px rgb(136, 136, 136);
+    border-radius: 10px 0px 10px 0px;
+}
+
+.first{
+    background-color: var(--back_color);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+
+.headerSubheader{
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.header{ 
+     white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    background: linear-gradient(90deg, var(--header_color) 0%, var(--header_color) 50%, var(--header_color) 100%);
+    color: var(--tx_header_color);
+    padding: 5px;
+    border-bottom: solid 2px white;
+    text-transform: uppercase;
+    text-align: center;
+    font-size: var(--ft_size_header);
+}
+
+.subheader{
+    background-color: var(--subheader_color);
+    color: var(--tx_subheader_color);
+    padding: 5px;
+    text-transform: uppercase;
+    text-align: center;
+    font-size: var(--ft_size_subheader);
+}
+
+.second{
+    background-color: var(--content_color);
+    color: var(--tx_content_color);
+    font-size: var(--ft_size_content);
+    padding: 5px 20px;
+    height: max-content;
+    border-radius: 0px 0px 10px 0px;
+}
+
+#sponsorWorkout{
+    background-color: var(--sponsor_color);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin: auto;
+    height: var(--ft_height_sponsor);
+    background-origin: content-box;
+    padding: 10px;
+}
+
+#sponsorFree{
+    background-color: var(--sponsor_color);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    margin: auto;
+    height: var(--ft_height_sponsor);
+    background-origin: content-box;
+    padding: 10px;
+}

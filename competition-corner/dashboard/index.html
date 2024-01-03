@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>Competition Corner Control</title>
+
+	<!-- JQUERY -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap-theme.min.css" integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ" crossorigin="anonymous">
+
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+
+	<link rel="stylesheet" href="./css/index.css"/>
+
+</head>
+<body>
+	<div class="container">	
+		<div class="col center">
+			<h4>How Many Athlete On Table ?</h4>
+			<div class="row">
+				<input type="number" id="rowNumber"></input>
+			</div>
+			<hr class="solid">
+			<h4>Attribution Lane Control</h4>
+			<div class="row">
+				<label for="sponsor-lane-select">Sponsor</label>
+				<select name="sponsor" id="sponsor-lane-select">
+					<option value="">--Please choose a sponsor--</option>
+				</select>
+			</div>
+			<div class="row">
+				<button id="minus" name="lane" onclick="changeLane()">Previous 10</button>
+				<button id="plus" name="lane" onclick="changeLane()">Next 10</button>
+			</div>
+
+			<div class="col">
+				<div class="input-form">
+					<label for="country-heat">Country</label>
+					<input type="checkbox" class="checkbox" name="lane" id="country-lane" checked/>
+				</div>
+				<div class="input-form">
+					<label for="affiliation-heat">affiliation</label>
+					<input type="checkbox" class="checkbox" name="lane" id="affiliation-lane" checked/>
+				</div>
+			</div>
+
+			<hr class="solid">
+			<h4>Heat Results </h4>
+			<div class="row">
+				<label for="workout_heat-select">Which Workouts</label>
+				<select name="workout_heat" id="workout_heat-select">
+					<option value="">--Please choose an division--</option>
+				</select>
+			</div>
+			<div class="row">
+				<label for="heat-select">Which Heat</label>
+				<select name="heat" id="heat-select">
+					<option value="">--Please choose a workout--</option>
+				</select>
+			</div>
+			<div class="row">
+				<label for="sponsor-heat-select">Sponsor</label>
+				<select name="sponsor" id="sponsor-heat-select">
+					<option value="">--Please choose a sponsor--</option>
+				</select>
+			</div>
+			<div class="row">
+				<button id="minus" name="heats" onclick="changeLane()">Previous 10</button>
+				<button id="plus" name="heats" onclick="changeLane()">Next 10</button>
+			</div>
+			<div class="col">
+				<div class="input-form">
+					<label for="country-heat">Country</label>
+					<input type="checkbox" class="checkbox" name="heat"  id="country-heat" checked/>
+				</div>
+				<div class="input-form">
+					<label for="affiliation-heat">affiliation</label>
+					<input type="checkbox" class="checkbox" name="heat"  id="affiliation-heat" checked/>
+				</div>
+			</div>
+			
+			<hr class="solid">
+			<h4>Overall Standing Division By Workout Control</h4>
+			<div class="row">
+				<label for="division-select">Which Division</label>
+				<select name="division" id="division-select">
+					<option value="">--Please choose an division--</option>
+				</select>
+			</div>
+			<div class="row">
+				<label for="workout_division-select">Which Workout</label>
+				<select name="workout_division" id="workout_division-select">
+					<option value="">--Please choose a workout--</option>
+				</select>
+			</div>
+			<div class="row">
+				<label for="sponsor-overall-division-select">Sponsor</label>
+				<select name="sponsor" id="sponsor-overall-division-select">
+					<option value="">--Please choose a sponsor--</option>
+				</select>
+			</div>
+			<div class="row">
+				<button id="minus" name="osDivWod" onclick="changeLane()">Previous 10</button>
+				<button id="plus" name="osDivWod" onclick="changeLane()">Next 10</button>
+			</div>
+
+			<div class="col">
+				<div class="input-form">
+					<label for="country-heat">Country</label>
+					<input type="checkbox" class="checkbox" name="overall-division" id="country-overall-division" checked/>
+				</div>
+				<div class="input-form">
+					<label for="affiliation-heat">affiliation</label>
+					<input type="checkbox" class="checkbox" name="overall-division" id="affiliation-overall-division" checked/>
+				</div>
+			</div>
+
+		</div>
+	</div>
+	<script src="./js/function.js"></script>
+	<script src="index.js"></script>
+</html>

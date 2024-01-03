@@ -1,0 +1,178 @@
+:root {
+    --bg__color: rgba(0,0,0,0);
+
+
+    --font-select:'Typographica';
+
+    --back_color: white;
+    --header_color: white;
+    --tx_header_color: white;
+    --ft_size_header: 30px;
+
+    --subheader_color: white;
+    --tx_subheader_color: white;
+    --ft_size_subheader: 20px;
+
+    --content_color: white;
+    --tx_content_color: white;
+    --ft_size_content: 20px;
+    --sponsor_color: white;
+    --ft_height_sponsor : 100px;
+
+    }
+
+
+    @font-face {
+        font-family: "Adarsh";
+        src: url("../fonts/Adarsh-Sans-Regular.otf");
+    }
+
+    @font-face {
+        font-family: "Antonio";
+        src: url("../fonts/Antonio-Regular.ttf");
+    }
+
+    @font-face {
+        font-family: "Bebas";
+        src: url("../fonts/BebasNeue.otf");
+    }
+
+    @font-face {
+        font-family: "Circo";
+        src: url("../fonts/Circo.ttf");
+    }
+
+    @font-face {
+        font-family: "Coamei";
+        src: url("../fonts/Coamei-Regular.ttf");
+    }
+
+    @font-face {
+        font-family: "Hoop";
+        src: url("../fonts/Hoop_Regular.otf");
+    }
+
+    @font-face {
+        font-family: "Montserrat";
+        src: url("../fonts/Montserrat-Bold.ttf");
+    }
+
+    @font-face {
+        font-family: "Oswald";
+        src: url("../fonts/Oswald-Regular.ttf");
+    }
+
+    @font-face {
+        font-family: "Power";
+        src: url("../fonts/PowerrMedium.ttf");
+    }
+
+    @font-face {
+        font-family: "Roboto";
+        src: url("../fonts/Roboto-Medium.ttf");
+    }
+
+    @font-face {
+        font-family: "Strasua";
+        src: url("../fonts/strasua.ttf");
+    }
+
+    @font-face {
+        font-family: "Typographica";
+        src: url("../fonts/Typographica.ttf");
+    }
+
+
+    body{
+        background-color: transparent;
+        font-family: var(--font-select);
+    }
+
+
+    .effect{
+        -moz-transition-duration: 0.7s;
+        -webkit-transition-duration: 0.7s;
+        -ms-transition-duration: 0.7s;
+    }
+
+    .logo_event{
+        margin: 0px 20px;
+        width: 70px;
+        height: 70px;
+        background-position: center;
+        background-size: contain;
+        background-repeat: no-repeat;
+    }
+
+    #waiting .logo_event{
+        margin: 0px 20px;
+        width: 100px;
+        height: 100px;
+        background-position: center;
+        background-size: contain;
+        background-repeat: no-repeat;
+    }
+
+    .sponsor{
+        width: 100px;
+        height: 100px;
+        margin: 0px 10px;
+        background-position: center;
+        background-size: contain;
+        background-repeat: no-repeat;
+    }
+
+    #waiting .sponsor{
+        background-color: var(--sponsor_color);
+        background-position: center;
+        background-size: contain;
+        background-repeat: no-repeat;
+        height: var(--ft_height_sponsor);
+        margin: 0px 20px;
+    }
+    
+    .qrCode{
+        position: relative;
+        top:-10px;
+        width: 100px;
+        height: 100px;
+    }
+
+
+
+    /* Positions */
+
+    .top_left{
+        top:75px;
+        left: 75px;
+    }
+
+    .top_center{
+        top:75px;
+        left: 50%;
+        -webkit-transform: translate( -50%);
+        transform: translate( -50%);
+    }
+
+    .top_right{
+        top:75px;
+        right: 75px;
+    }
+
+    .bottom_left{
+        bottom:75px;
+        left: 75px;
+    }
+
+    .bottom_center{
+        bottom:75px;
+        left: 50%;
+
+        -webkit-transform: translate( -50%);
+        transform: translate( -50%);
+    }
+
+    .bottom_right{
+        bottom:75px;
+        right: 75px;
+    }

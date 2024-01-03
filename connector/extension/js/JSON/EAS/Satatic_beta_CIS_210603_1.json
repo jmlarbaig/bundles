@@ -1,0 +1,164 @@
+{
+  "eventId": 5330,
+  "workoutId": 30799,
+  "heatId": 175821,
+  "eventName": "Marathon row by Kairos",
+  "workoutName": "Marathon Row",
+  "heatName": "Heat 1",
+  "location": "soignies",
+  "logoUrl": "https://competitioncorner.net/file.aspx/mainFilesystem?Events%2FMarathon_Rameur(3)_cropped.png",
+  "heatTime": "10:30 AM",
+  "heatInfo": [
+    {
+      "heatId": 175821,
+      "type": "time",
+      "description": "",
+      "heatsSize": 11,
+      "timeCap": 240,
+      "format": "team",
+      "scoreLabel": "",
+      "createDate": "2021-09-18T15:56:43"
+    }
+  ],
+  "WorkoutInfo": [
+    {
+      "description": "<p>42000m Row</p><p></p>",
+      "mvt_id": [
+        0
+      ],
+      "mvt_names": [
+        "42000m Row"
+      ],
+      "mvt_reps": [
+        42000
+      ],
+      "mvt_units": [
+        "m"
+      ],
+      "mvt_sources": [
+        2
+      ],
+      "mvt_score_type": [
+        1
+      ],
+      "mvt_max_times": [
+        0
+      ],
+      "increments": [
+        1
+      ],
+      "total_reps": 42000,
+      "series": [],
+      "rounds": 0,
+      "rep_per_rounds": 0,
+      "mvt_round": [],
+      "mvt_series": [],
+      "division": "Team",
+      "mvt_type": "series"
+    }
+  ],
+  "athletes": [
+    {
+      "lane": 1,
+      "displayName": "The Sunken Ship",
+      "rank": 0,
+      "overallPoints": 0,
+      "affiliate": "",
+      "division": "Team",
+      "countryCode": "BEL"
+    },
+    {
+      "lane": 2,
+      "displayName": "ROWngers",
+      "rank": 0,
+      "overallPoints": 0,
+      "affiliate": "",
+      "division": "Team",
+      "countryCode": "BEL"
+    },
+    {
+      "lane": 3,
+      "displayName": "Les Rookies de 6000",
+      "rank": 0,
+      "overallPoints": 0,
+      "affiliate": "",
+      "division": "Team",
+      "countryCode": "BEL"
+    },
+    {
+      "lane": 4,
+      "displayName": "The 4 fantastic",
+      "rank": 0,
+      "overallPoints": 0,
+      "affiliate": "",
+      "division": "Team",
+      "countryCode": "BEL"
+    },
+    {
+      "lane": 5,
+      "displayName": "Heliaca Sea Team 2.0",
+      "rank": 0,
+      "overallPoints": 0,
+      "affiliate": "",
+      "division": "Team",
+      "countryCode": "BEL"
+    },
+    {
+      "lane": 6,
+      "displayName": "In Deep Ship",
+      "rank": 0,
+      "overallPoints": 0,
+      "affiliate": "",
+      "division": "Team",
+      "countryCode": "ITA"
+    },
+    {
+      "lane": 7,
+      "displayName": "Les Softenons",
+      "rank": 0,
+      "overallPoints": 0,
+      "affiliate": "",
+      "division": "Team",
+      "countryCode": "BEL"
+    },
+    {
+      "lane": 8,
+      "displayName": "Team 6000",
+      "rank": 0,
+      "overallPoints": 0,
+      "affiliate": "",
+      "division": "Team",
+      "countryCode": "BEL"
+    },
+    {
+      "lane": 9,
+      "displayName": "The crazy row",
+      "rank": 0,
+      "overallPoints": 0,
+      "affiliate": "",
+      "division": "Team",
+      "countryCode": "BEL"
+    },
+    {
+      "lane": 10,
+      "displayName": "C kwa un marathon",
+      "rank": 0,
+      "overallPoints": 0,
+      "affiliate": "",
+      "division": "Team",
+      "countryCode": "BEL"
+    },
+    {
+      "lane": 11,
+      "displayName": "Usain Boat",
+      "rank": 0,
+      "overallPoints": 0,
+      "affiliate": "",
+      "division": "Team",
+      "countryCode": "BEL"
+    }
+  ],
+  "totalRecordsCount": 2,
+  "recordsCount": 2,
+  "wodType": "time"
+}

@@ -1,0 +1,133 @@
+.box_logo {
+    position: absolute;
+    bottom: 40px;
+    right: 40px;
+    width: var(--widthLogoEvent);
+    height: var(--widthLogoEvent);
+}
+
+.logo {
+    width: var(--widthLogoEvent);
+    height: var(--widthLogoEvent);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.box_chrono {
+    display: flex;
+    text-shadow: 2px 2px 4px #000000;
+    text-align: left;
+    /* box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; */
+    position: absolute;
+    /* background-color: var(--chrono_color); */
+    color: white;
+    top: var(--position_y_chrono);
+    left: var(--position_x_chrono);
+    margin: auto;
+    align-items: center;
+    padding: 10px auto;
+    z-index: 1;
+    -moz-transition-duration: 0.7s;
+    -webkit-transition-duration: 0.7s;
+    -ms-transition-duration: 0.7s;
+}
+
+.chrono {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+#time {
+    width: 120px;
+    font-family: "Digit";
+    font-size: 3em;
+    margin: auto;
+    /* border-bottom: solid white 1px; */
+}
+
+#cap {
+    font-style: italic;
+    padding: 0px 10px;
+    /* background-color: black; */
+    color: white;
+    margin: 0px auto;
+}
+
+.box_heat {
+    position: absolute;
+    color: var(--tx_main_color);
+    font-family: Slenco;
+    font-weight: 800;
+    top: var(--position_y_heat);
+    left: var(--position_x_heat);
+    font-size: 1.4rem;
+    /* box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; */
+    text-shadow: 2px 2px 4px #000000;
+    height: 75px;
+    width: max-content;
+}
+
+#heat {}
+
+#workout {
+    margin: auto;
+    font-size: 1.6em;
+    font-weight: 800;
+}
+
+#division {
+    margin: auto;
+    font-size: 1em;
+    font-weight: 600;
+    font-style: italic;
+    text-transform: uppercase;
+}
+
+.heat_name {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    text-transform: uppercase;
+    /* padding: 5px 2px 5px 2px; */
+}
+
+.heatlow {
+    width: fit-content;
+    min-width: 250px;
+    max-width: 350px;
+    overflow: hidden;
+    margin-left: 10px;
+}
+
+
+.mainSponsor {
+    position: absolute;
+    left: 20px;
+    bottom: 40px;
+    margin-right: 5px;
+    width: 200px;
+    text-align: center;
+    margin-top: 5px;
+    height: 60px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    /* <------ */
+    background-position: center center;
+    /* optional, center the image */
+    /* box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; */
+}
+
+.target {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    width: 50px;
+    max-width: 50px;
+}
+
+.box_svg {
+    position: absolute;
+    z-index: -10;
+}

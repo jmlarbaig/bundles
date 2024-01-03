@@ -1,0 +1,227 @@
+.leaderboards {
+    z-index: 10;
+    position: absolute;
+    font-size: 1rem;
+    height: 50px;
+    width: 1630px;
+    top: 100px;
+    left: 290px;
+}
+
+.leaderboardsBottom {
+    z-index: 10;
+    position: absolute;
+    font-size: 1rem;
+    height: 50px;
+    width: 1920px;
+    bottom: 0px;
+    left: 0px;
+}
+
+.leaderboard:nth-child(1) {
+    width: var(--width_calc_top);
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    /* box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; */
+    -moz-transition-duration: 0.7s;
+    -webkit-transition-duration: 0.7s;
+    -ms-transition-duration: 0.7s;
+}
+
+.leaderboard:nth-child(2) {
+    width: var(--width_calc_top);
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    /* box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; */
+    -moz-transition-duration: 0.7s;
+    -webkit-transition-duration: 0.7s;
+    -ms-transition-duration: 0.7s;
+}
+
+
+.leaderboard .athletes {
+    display: flex;
+    flex-direction: row;
+    font-weight: 900;
+    font-size: var(--sizeFontAthlete_top);
+    -moz-transition-duration: 0.7s;
+    -webkit-transition-duration: 0.7s;
+    -ms-transition-duration: 0.7s;
+}
+
+.leaderboard .athlete {
+    -moz-transition-duration: 0.7s;
+    -webkit-transition-duration: 0.7s;
+    -ms-transition-duration: 0.7s;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    color: black;
+}
+
+.leaderboard .athletes .ath {
+    z-index: 10;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: var(--height_ath_top);
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border-right: solid 2px rgba(0, 0, 0, 0.582);
+}
+
+.ath:after {}
+
+.leaderboard .athlete .rank {
+    height: var(--height_ath_top);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 45px;
+    margin: auto;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.leaderboard .athlete .ath_sub {
+    display: flex;
+    flex-direction: row;
+    width: 199px;
+}
+
+.leaderboard .athlete .lane {
+    height: var(--height_ath_top);
+    display: flex;
+    align-items: center;
+    text-align: center;
+    width: 45px;
+    margin: auto;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    justify-content: center;
+    text-align: center;
+}
+
+.leaderboard .athlete .name {
+    height: var(--height_ath_top);
+    display: flex;
+    align-items: center;
+    text-transform: uppercase;
+    font-weight: 900;
+    width: 155px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    min-width: 0;
+}
+
+.leaderboard .athlete .score {
+    /* haut left right bas */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80px;
+    max-width: 80px;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    box-shadow: 7px 2px 23px -20px rgba(0, 0, 0, 1) inset;
+    -webkit-box-shadow: 7px 2px 23px -20px rgba(0, 0, 0, 1) inset;
+    -moz-box-shadow: 7px 2px 23px -20px rgba(0, 0, 0, 1) inset;
+    height: 50px;
+}
+
+
+.rounds {
+    width: 45px;
+    max-width: 45px;
+    text-align: center;
+    background-color: white;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.popup {
+    /* haut left right bas */
+    z-index: 1;
+    width: 244px;
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 1em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    height: var(--height_popup_top);
+    -moz-transition-duration: 1s;
+    -webkit-transition-duration: 1s;
+    -ms-transition-duration: 1s;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.leaderboard .athletes .powered {
+    /* haut left right bas */
+    padding: 0px 10px 0px 10px;
+    text-align: center;
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-size: 12px;
+    width: 300px;
+}
+
+
+.box_bandeau {
+    padding: 10px;
+    z-index: 20;
+    width: calc(1920px);
+    overflow: hidden;
+    position: absolute;
+    display: flex;
+    background: linear-gradient(90deg, var(--first_linear_gradient) 0%, var(--second_linear_gradient) 18%, var(--first_linear_gradient) 35%, var(--second_linear_gradient) 66%, var(--first_linear_gradient) 100%);
+    color: white;
+    bottom: 0px;
+    left: 0px;
+    font-size: 30px;
+}
+
+.bandeau {
+    display: inline-block;
+    /* modèle de boîte en ligne */
+    padding-right: 2em;
+    /* un peu d'espace pour la transition */
+    padding-left: 100%;
+    /* placement à droite du conteneur */
+    white-space: nowrap;
+    /* pas de passage à la ligne */
+    animation: defilement-rtl 30s infinite linear;
+}
+
+.bandeau span {
+    width: max-content;
+}
+
+
+@keyframes defilement-rtl {
+    0% {
+        transform: translate3d(0, 0, 0);
+        /* position initiale à droite */
+    }
+
+    100% {
+        transform: translate3d(-100%, 0, 0);
+        /* position finale à gauche */
+    }
+}

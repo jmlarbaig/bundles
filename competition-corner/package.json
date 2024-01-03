@@ -1,0 +1,71 @@
+{
+  "name": "competition-corner",
+  "version": "0.0.0",
+  "description": "",
+  "homepage": "",
+  "author": {
+    "name": "JM",
+    "email": "jeanmarie.larbaig@gmail.com",
+    "url": ""
+  },
+  "files": [
+    "dashboard",
+    "graphics",
+    "extension.js",
+    "extension"
+  ],
+  "keywords": [
+    "",
+    "nodecg-bundle"
+  ],
+  "nodecg": {
+    "compatibleRange": "^1.9.0",
+    "dashboardPanels": [
+      {
+        "name": "competition-corner",
+        "title": "Competition Corner Control",
+        "file": "index.html",
+        "fullbleed": false,
+        "width": 4,
+        "headerColor": "#525F78",
+        "workspace": "Main Workspace"
+      }
+    ],
+    "graphics": [
+      {
+        "file": "all.html",
+        "width": 1920,
+        "height": 1080
+      },
+      {
+        "file": "attribution-lane.html",
+        "width": 1920,
+        "height": 1080
+      },
+      {
+        "file": "heat-result.html",
+        "width": 1920,
+        "height": 1080
+      },
+      {
+        "file": "overall-division-workout.html",
+        "width": 1920,
+        "height": 1080
+      }
+    ],
+    "assetCategories": [
+      {
+        "name": "sponsorCC",
+        "title": "Sponsors For Competition Corner Window",
+        "allowedTypes": [
+          "jpg",
+          "jpeg",
+          "gif",
+          "png"
+        ]
+      }
+    ]
+  },
+  "repository": "git@gitlab.com:jeanmarie.larbaig/bundlesfv",
+  "license": "Apache-2.0"
+}

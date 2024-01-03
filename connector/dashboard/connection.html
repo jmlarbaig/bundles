@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Connection Panel</title>
+
+	<!-- JQUERY -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap-theme.min.css" integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ" crossorigin="anonymous">
+
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+
+	<link rel="stylesheet" href="css/connector.css">
+	<script src='./js/replicants.js'></script>
+	<script src="./js/tools.js"></script>
+
+</head>
+<body>
+	<div class="container">
+		<div class="row box">
+			<div class="led-box col">
+					<div id="led_ipAdresse" class="led led-red"></div>
+					<h4>IP ADRESS</h4>
+					<p id="ipAdresse"></p>
+			</div>
+			<div class="led-box col">
+					<div id="led_NTP" class="led led-red"></div>
+					<h4>NTP</h4>
+					<p id="ntpTime"></p>
+					<p id="ntpIp"></p>
+			</div>
+			<div class="led-box col">
+					<div id="led_MQTT" class="led led-red"></div>
+					<h4>MQTT</h4>
+					<p id="mqttMSG"></p>
+			</div>
+		</div>
+		<div class="row box">
+			<div class="led-box col">
+				<div id="led_cc" class="led led-red"></div>
+				<h4>CC State</h4>
+				<p id="State_cc"></p>
+			</div>
+			<div class="led-box col">
+				<div id="led_static" class="led led-red"></div>
+				<h4>SK State Static</h4>
+				<p id="State_static"></p>
+			</div>
+			<div class="led-box col">
+				<div id="led_dynamic" class="led led-red"></div>
+				<h4>SK State Dynamic</h4>
+				<p id="State_dynamic"></p>
+			</div>
+		</div>
+		<div class="col box">
+			<h3>Competition Corner</h3>
+			<div class="input-form">
+				<label class="ip_adresse-label">Username : </label>
+				<input type='text' id='usernameCC'></input>
+			</div>
+			<div class="input-form">
+				<label class="ip_adresse-label">Password : </label>
+				<input type='password' id='passwordCC'></input>
+			</div>
+			<div class="input-form">
+				<label class="eventId-label">Event Id : </label>
+				<input type='number' id='eventId'></input>
+			</div>
+			<h3>Scoring Kairos</h3>
+			<div class="input-form">
+				<label class="ip_adresse-label">IP Adress : </label>
+				<input type='text' id='address_IP'></input>
+			</div>
+			<div class="log-button">
+				<button type='button' id='connection_but' onclick='Connection()'> Connection </button>
+				<button type='button' id='deconnection_but' onclick='Deconnection()'> Deconnection </button>
+			</div>
+		</div>
+		<div class="col box">
+			<h3>NTP Adresse</h3>
+			<div class="input-form" id="ntpForm">
+				<label class="ip_adresse-label">IP Adress : </label>
+				<input type='radio' name='NTPradio' id="local" value="local">Local Ip</input>
+				<input type='radio' name='NTPradio' id="custom" value="custom" ><input type="text" id="adresse_ntp"></input></input>
+			</div>
+			<div class="log-button">
+				<button type='button' id='updateButton' onclick='updateNtp()'> Update </button>
+			</div>
+		</div>
+
+</body>
+	<script src="index.js"></script>
+
+	</html>
+

@@ -1,0 +1,716 @@
+html {
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    height: 100%;
+    min-height: 100%;
+    -webkit-text-size-adjust: 100%;
+    -webkit-font-smoothing: antialiased;
+    font-size: 14px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    font-family: Roboto, sans-serif;
+    color: #000
+}
+
+body {
+    font-family: Roboto, sans-serif;
+    color: #757575;
+    width: 100%;
+    margin: 0;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    min-height: 100%;
+    -webkit-text-size-adjust: 100%;
+    -webkit-font-smoothing: antialiased;
+    position: relative;
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: .1px;
+    line-height: 24px
+}
+
+body.is-overflow {
+    overflow: hidden
+}
+
+body * {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box
+}
+
+h1 {
+    color: #000;
+    margin: 0;
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 48px;
+    padding: 0
+}
+
+h1+h2 {
+    margin-top: 32px
+}
+
+h1+h3 {
+    margin-top: 32px
+}
+
+h1+p {
+    margin-top: 12px
+}
+
+h1+ol,
+h1+ul {
+    margin-top: 32px
+}
+
+h1+.table-responsive,
+h1+table {
+    margin-top: 32px
+}
+
+h2 {
+    color: #000;
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 32px;
+    margin: 0
+}
+
+h2+h2 {
+    margin-top: 36px
+}
+
+h2+h3 {
+    margin-top: 32px
+}
+
+h2+p {
+    margin-top: 12px
+}
+
+h2+ol,
+h2+ul {
+    margin-top: 18px
+}
+
+h2+.table-responsive,
+h2+table {
+    margin-top: 16px
+}
+
+h3 {
+    /* color: #000; */
+    margin: 0;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 28px
+}
+
+h3+h2 {
+    margin-top: 42px
+}
+
+h3+h3 {
+    margin-top: 36px
+}
+
+h3+p {
+    margin-top: 12px
+}
+
+h3+ol,
+h3+ul {
+    margin-top: 18px
+}
+
+ol,
+ul {
+    margin: 18px 0 0 32px;
+    padding: 0;
+    list-style-position: outside
+}
+
+ol+h2,
+ul+h2 {
+    margin-top: 42px
+}
+
+ol+h3,
+ul+h3 {
+    margin-top: 36px
+}
+
+ol+p,
+ul+p {
+    margin-top: 18px
+}
+
+ol+ol,
+ol+ul,
+ul+ol,
+ul+ul {
+    margin-top: 18px
+}
+
+a,
+input,
+li,
+p {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: .1px;
+    line-height: 24px
+}
+
+a {
+    color: #4285f4;
+    cursor: pointer
+}
+
+a:focus,
+a:hover {
+    color: #1266f1;
+    text-decoration: underline;
+    outline: 0;
+    -webkit-box-shadow: none;
+    box-shadow: none
+}
+
+li+li {
+    margin-top: 6px
+}
+
+.label,
+label {
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 20px;
+    letter-spacing: .2px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    margin: 0;
+    display: block
+}
+
+.btn,
+button {
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 20px;
+    letter-spacing: .6px;
+    text-transform: uppercase
+}
+
+figure {
+    margin: 21px 0
+}
+
+img {
+    width: auto;
+    max-width: 100%;
+    height: auto;
+    max-height: 100%
+}
+
+*+p {
+    margin-top: 18px
+}
+
+p+h2 {
+    margin-top: 42px
+}
+
+p+h3 {
+    margin-top: 36px
+}
+
+p+ol,
+p+ul {
+    margin-top: 18px
+}
+
+.underline {
+    text-decoration: underline
+}
+
+.text--primary {
+    color: #4285f4
+}
+
+.text-hint {
+    color: #9e9e9e
+}
+
+
+.cis_ath {
+    display: flex;
+    flex-flow: row wrap;
+    min-height: fit-content;
+    width: fit-content;
+}
+
+.cueCardParents {
+    width: 300px;
+    margin: 10px;
+    padding: 5px;
+    border: black 2px solid;
+    border-radius: 1%;
+    zoom: 60%;
+}
+
+.box_lane_name {
+    text-align: center;
+    padding: 10px;
+    min-height: 200px;
+}
+
+.cueCardParents:nth-child(odd) .box_lane_name {
+    background-color: #9e9e9e;
+    color: white;
+}
+
+.lane {
+    font-size: 30px;
+}
+
+.cards-list {
+    margin-top: 16px;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-justify-content: space-around;
+    -ms-flex-pack: distribute;
+    justify-content: space-around;
+    -webkit-align-content: flex-start;
+    -ms-flex-line-pack: start;
+    align-content: flex-start;
+    -webkit-box-align: stretch;
+    -webkit-align-items: stretch;
+    -ms-flex-align: stretch;
+    align-items: stretch
+}
+
+@media only screen and (min-width: 1024px) {
+    .cards-list {
+        -webkit-box-pack: start;
+        -webkit-justify-content: flex-start;
+        -ms-flex-pack: start;
+        justify-content: center
+    }
+}
+
+.cards-list+h2 {
+    margin-top: 8px
+}
+
+.cards-list .card-item {
+    /* min-width: 100px; */
+    -webkit-box-flex: 0;
+    -webkit-flex: none;
+    -ms-flex: none;
+    flex: none
+}
+
+/* @media only screen and (max-width: 1023px) {
+    .cards-list .card-item {
+        max-width:320px;
+        margin-right: 24px
+    }
+}
+
+@media only screen and (max-width: 479px) {
+    .cards-list .card-item {
+        margin-right:0
+    }
+}
+
+@media only screen and (min-width: 1024px) {
+    .cards-list .card-item {
+        max-width:352px
+    }
+} */
+
+.card-item {
+    background-color: #fff;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+    margin-bottom: 24px;
+    width: -webkit-calc(100% - 24px);
+    width: calc(100% - 24px)
+}
+
+/* @media only screen and (min-width: 480px) {
+    .card-item {
+        width:320px
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    .card-item {
+        width:-webkit-calc(100% - 24px);
+        width: calc(100% - 24px)
+    }
+}
+
+@media only screen and (min-width: 1024px) {
+    .card-item {
+        width:-webkit-calc(33% - 14px);
+        width: calc(33% - 14px);
+        margin-right: 24px
+    }
+}
+
+@media only screen and (min-width: 480px) {
+    .card-item:nth-child(2n) {
+        margin-right:24px
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    .card-item:nth-child(2n) {
+        margin-right:0
+    }
+}
+
+@media only screen and (min-width: 1024px) {
+    .card-item:nth-child(2n) {
+        margin-right:24px
+    }
+} */
+
+.card-item .card {
+    width: 100%
+}
+
+.card-item {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+.card__athlete {
+    padding: 5px 5px;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+}
+
+.card__athlete__avatar {
+    width: 50px;
+    height: 50px;
+    overflow: hidden;
+    border: 0;
+    -webkit-border-radius: 100%;
+    border-radius: 100%;
+    margin-right: 16px;
+    text-align: center;
+    -webkit-box-flex: 0;
+    -webkit-flex: none;
+    -ms-flex: none;
+    flex: none;
+    background-color: #9e9e9e;
+    background-position: center center;
+    background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    background-size: cover
+}
+
+.card__athlete__avatar .material-icons {
+    color: #fff;
+    line-height: 72px;
+    font-size: 36px
+}
+
+.card__athlete__name {
+    text-transform: uppercase;
+}
+
+.card__info {
+    border-bottom: 1px solid #9e9e9e;
+    border-top: 1px solid #9e9e9e;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    overflow: hidden
+}
+
+.card__info>div {
+    padding: 5px 5px;
+    text-align: center;
+    -webkit-flex-basis: auto;
+    -ms-flex-preferred-size: auto;
+    flex-basis: auto
+}
+
+.card__info>div:last-child {
+    -webkit-box-flex: 0;
+    -webkit-flex: 0 1 50%;
+    -ms-flex: 0 1 50%;
+    flex: 0 1 50%
+}
+
+.card__info>div+div {
+    border-left: 1px solid #9e9e9e
+}
+
+.card__info span {
+    display: block;
+    color: #757575;
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: .1px;
+    line-height: 20px
+}
+
+.card__info p {
+    color: #000;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 24px;
+    min-height: 24px;
+    margin: 0
+}
+
+.card__wod {
+    border-bottom: 1px solid #9e9e9e;
+    border-top: 1px solid #9e9e9e;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    overflow: hidden;
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+.workout_list {
+    width: 100%;
+}
+
+.wodRank:nth-of-type(odd) {
+    background: #CCC
+}
+
+.wodRank:nth-of-type(even) {
+    background: #FFF
+}
+
+.card_info_workoutName {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 170px;
+}
+
+.card_info_workoutRank {
+    text-align: center;
+    width: 80px;
+}
+
+.card_info_workoutResult {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 130px;
+}
+
+.card__benchmark {
+    width: 100%;
+}
+
+.card__benchmark ul {
+    margin: 0;
+    padding: 0
+}
+
+.card__benchmark ul li {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex
+}
+
+.card__benchmark ul li+li {
+    margin-top: 8px
+}
+
+.card__benchmark__key {
+    color: #757575;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: .1px;
+    text-transform: capitalize
+}
+
+.card__benchmark__val {
+    margin-left: auto;
+    color: #000;
+    font-size: 15px;
+    font-weight: 400;
+    letter-spacing: .1px;
+    line-height: 24px;
+    text-transform: capitalize
+}
+
+.table--athlete-list tbody {
+    border-bottom: 1px solid #000
+}
+
+.table--athlete-list th.exercise+.exercise {
+    padding-left: 0;
+    border-left: 0
+}
+
+.table--athlete-list th+.exercise {
+    padding-left: 40px;
+    border-left: 1px solid #9e9e9e
+}
+
+.table--athlete-list .ttl-row {
+    background-color: #f5f5f5
+}
+
+.table--athlete-list .ttl-row td {
+    font-weight: 500
+}
+
+.table--athlete-list .athlete-row+.athlete-row {
+    border-top: 1px solid #9e9e9e
+}
+
+.table--athlete-list .athlete-row+.ttl-row {
+    border-top: 1px solid #000
+}
+
+.table--athlete-list .athlete-row td {
+    padding: 16px 40px 16px 0
+}
+
+.table--athlete-list .athlete-row td.exercise {
+    white-space: nowrap
+}
+
+.table--athlete-list .athlete-row td.exercise+.exercise {
+    padding-left: 0;
+    border-left: 0
+}
+
+.table--athlete-list .athlete-row td+.exercise {
+    padding-left: 40px;
+    border-left: 1px solid #9e9e9e
+}
+
+.table--athlete-list .athlete-row td div,
+.table--athlete-list .athlete-row td span {
+    color: #757575
+}
+
+.table--athlete-list .athlete-row td div:first-child,
+.table--athlete-list .athlete-row td span:first-child {
+    color: #000;
+    font-weight: 500
+}
+
+.table--athlete-list .athlete-row .athlete {
+    position: relative;
+    padding-left: 64px
+}
+
+.table--athlete-list .athlete-row .athlete__avatar {
+    height: 48px;
+    width: 48px;
+    -webkit-border-radius: 100%;
+    border-radius: 100%;
+    border: 0;
+    outline: 0;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+    text-align: center;
+    background-color: #9e9e9e;
+    background-position: center center;
+    background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    background-size: cover
+}
+
+.table--athlete-list .athlete-row .athlete__avatar .material-icons {
+    color: #fff;
+    line-height: 48px;
+    font-size: 24px
+}
+
+.table--athlete-list .athlete-row .athlete__name {
+    color: #000;
+    font-weight: 500
+}
+
+.table--athlete-list .athlete-row .athlete__nation {
+    color: #757575
+}
+
+.pdf-footer {
+    padding: 20px 0 0 0;
+    margin: 0
+}
+
+.pdf-footer__ttl {
+    background: #616161;
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    line-height: 20px;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    padding: 4px 50px;
+    margin-bottom: 12px
+}
+
+.pdf-footer__dscr {
+    color: #9e9e9e;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px
+}
+
+.pdf-footer__dscr.text-right {
+    margin-top: 20px
+}
+
+input[type=text] {
+    margin: 10px auto;
+    height: 40px;
+    width: 100%;
+}
+
+select {
+    margin: 10px auto;
+    height: 40px;
+    width: 100%;
+}

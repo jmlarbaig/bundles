@@ -1,0 +1,89 @@
+.header {
+    z-index: 100;
+    background-size: contain;
+    position: absolute;
+    width: 100px;
+    color: white;
+    background-position: center;
+    background-repeat: no-repeat;
+    top: 30px;
+    left: 50%;
+    -webkit-transform: translate(-50%);
+    transform: translate(-50%);
+}
+
+.box_chrono {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin: auto;
+    width: 100px;
+    height: 70px;
+    font-size: 1.5em;
+    border-radius: 10px 10px 0px 0px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+
+.chrono {
+    margin: auto;
+    font-size: 1.5em;
+}
+
+#time {
+    font-family: "Digit";
+}
+
+#cap {
+    font-size: 0.5em;
+}
+
+.box_heat {
+    background-color: var(--main_color);
+    color: var(--tx_main_color);
+    padding: 5px;
+    border-radius: 0px 0px 10px 10px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+}
+
+.heat_content {
+    text-align: center;
+}
+
+.mainSponsor {
+    position: absolute;
+    padding: 10px 10px 10px 10px;
+    bottom: 30px;
+    left: 50%;
+    -webkit-transform: translate(-50%);
+    transform: translate(-50%);
+    width: 120px;
+    height: 100px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    /* <------ */
+    background-position: center;
+    background-origin: content-box;
+}
+
+.box_mvt {
+    position: fixed;
+    background-color: var(--main_color);
+    color: var(--tx_main_color);
+    bottom: 10px;
+    width: 30%;
+    height: 40px;
+    text-transform: capitalize;
+    left: 50%;
+    -webkit-transform: translate(-50%);
+    transform: translate(-50%);
+    border-radius: 0px 0px 10px 10px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+    padding: 10px;
+}
+
+.box_mvt #mvt {
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

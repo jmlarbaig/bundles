@@ -1,0 +1,477 @@
+{
+  "NtpTimeStart": "14:05:49.902",
+  "eventId": 6319,
+  "workoutid": 33502,
+  "heatid": 196264,
+  "eventName": "Madrid CrossFit\u00ae Challenger 2021",
+  "workoutName": "WOD 2 - COMPLEX",
+  "heatName": "H02 RX",
+  "status": "T",
+  "athletes": [
+    {
+      "lane": 1,
+      "division": "Team RX",
+      "CurrentRank": 11,
+      "score_abs": 147,
+      "score_rel": -33,
+      "currentRound": 1,
+      "tieBreak": "",
+      "status": "T",
+      "result": "CAP 147",
+      "currentMouvement": [
+        {
+          "mouvementName": "T2B",
+          "nextMouvement": "",
+          "repTarget": 0,
+          "rep/min": 0,
+          "power": 0,
+          "cal_h": 0,
+          "s/m": 0
+        }
+      ],
+      "Log_mvt_time": [
+        {}
+      ],
+      "Log_serie_time": [
+        {}
+      ],
+      "Log_round_time": [
+        {}
+      ]
+    },
+    {
+      "lane": 2,
+      "division": "Team RX",
+      "CurrentRank": 2,
+      "score_abs": 180,
+      "score_rel": 180,
+      "currentRound": 1,
+      "tieBreak": "",
+      "status": "F",
+      "result": "00:13:51.78",
+      "currentMouvement": [
+        {
+          "mouvementName": "Sprint",
+          "nextMouvement": "",
+          "repTarget": 0,
+          "rep/min": 0,
+          "power": 0,
+          "cal_h": 0,
+          "s/m": 0
+        }
+      ],
+      "Log_mvt_time": [
+        {}
+      ],
+      "Log_serie_time": [
+        {}
+      ],
+      "Log_round_time": [
+        {}
+      ]
+    },
+    {
+      "lane": 3,
+      "division": "Team RX",
+      "CurrentRank": 3,
+      "score_abs": 177,
+      "score_rel": -3,
+      "currentRound": 1,
+      "tieBreak": "",
+      "status": "T",
+      "result": "CAP 177",
+      "currentMouvement": [
+        {
+          "mouvementName": "Sprint",
+          "nextMouvement": "",
+          "repTarget": 0,
+          "rep/min": 0,
+          "power": 0,
+          "cal_h": 0,
+          "s/m": 0
+        }
+      ],
+      "Log_mvt_time": [
+        {}
+      ],
+      "Log_serie_time": [
+        {}
+      ],
+      "Log_round_time": [
+        {}
+      ]
+    },
+    {
+      "lane": 4,
+      "division": "Team RX",
+      "CurrentRank": 1,
+      "score_abs": 180,
+      "score_rel": 180,
+      "currentRound": 1,
+      "tieBreak": "",
+      "status": "F",
+      "result": "00:12:38.69",
+      "currentMouvement": [
+        {
+          "mouvementName": "Sprint",
+          "nextMouvement": "",
+          "repTarget": 0,
+          "rep/min": 0,
+          "power": 0,
+          "cal_h": 0,
+          "s/m": 0
+        }
+      ],
+      "Log_mvt_time": [
+        {}
+      ],
+      "Log_serie_time": [
+        {}
+      ],
+      "Log_round_time": [
+        {}
+      ]
+    },
+    {
+      "lane": 5,
+      "division": "Team RX",
+      "CurrentRank": 5,
+      "score_abs": 169,
+      "score_rel": -11,
+      "currentRound": 1,
+      "tieBreak": "",
+      "status": "T",
+      "result": "CAP 169",
+      "currentMouvement": [
+        {
+          "mouvementName": "snatch",
+          "nextMouvement": "",
+          "repTarget": 0,
+          "rep/min": 0,
+          "power": 0,
+          "cal_h": 0,
+          "s/m": 0
+        }
+      ],
+      "Log_mvt_time": [
+        {}
+      ],
+      "Log_serie_time": [
+        {}
+      ],
+      "Log_round_time": [
+        {}
+      ]
+    },
+    {
+      "lane": 6,
+      "division": "Team RX",
+      "CurrentRank": 9,
+      "score_abs": 159,
+      "score_rel": -21,
+      "currentRound": 1,
+      "tieBreak": "",
+      "status": "T",
+      "result": "CAP 159",
+      "currentMouvement": [
+        {
+          "mouvementName": "T2B",
+          "nextMouvement": "",
+          "repTarget": 0,
+          "rep/min": 0,
+          "power": 0,
+          "cal_h": 0,
+          "s/m": 0
+        }
+      ],
+      "Log_mvt_time": [
+        {}
+      ],
+      "Log_serie_time": [
+        {}
+      ],
+      "Log_round_time": [
+        {}
+      ]
+    },
+    {
+      "lane": 7,
+      "division": "Team RX",
+      "CurrentRank": 14,
+      "score_abs": 105,
+      "score_rel": -75,
+      "currentRound": 1,
+      "tieBreak": "",
+      "status": "T",
+      "result": "CAP 105",
+      "currentMouvement": [
+        {
+          "mouvementName": "OVH SQUAT",
+          "nextMouvement": "",
+          "repTarget": 0,
+          "rep/min": 0,
+          "power": 0,
+          "cal_h": 0,
+          "s/m": 0
+        }
+      ],
+      "Log_mvt_time": [
+        {}
+      ],
+      "Log_serie_time": [
+        {}
+      ],
+      "Log_round_time": [
+        {}
+      ]
+    },
+    {
+      "lane": 8,
+      "division": "Team RX",
+      "CurrentRank": 10,
+      "score_abs": 157,
+      "score_rel": -23,
+      "currentRound": 1,
+      "tieBreak": "",
+      "status": "T",
+      "result": "CAP 157",
+      "currentMouvement": [
+        {
+          "mouvementName": "T2B",
+          "nextMouvement": "",
+          "repTarget": 0,
+          "rep/min": 0,
+          "power": 0,
+          "cal_h": 0,
+          "s/m": 0
+        }
+      ],
+      "Log_mvt_time": [
+        {}
+      ],
+      "Log_serie_time": [
+        {}
+      ],
+      "Log_round_time": [
+        {}
+      ]
+    },
+    {
+      "lane": 9,
+      "division": "Team RX",
+      "CurrentRank": 12,
+      "score_abs": 139,
+      "score_rel": -41,
+      "currentRound": 1,
+      "tieBreak": "",
+      "status": "T",
+      "result": "CAP 139",
+      "currentMouvement": [
+        {
+          "mouvementName": "MU-BAR",
+          "nextMouvement": "",
+          "repTarget": 0,
+          "rep/min": 0,
+          "power": 0,
+          "cal_h": 0,
+          "s/m": 0
+        }
+      ],
+      "Log_mvt_time": [
+        {}
+      ],
+      "Log_serie_time": [
+        {}
+      ],
+      "Log_round_time": [
+        {}
+      ]
+    },
+    {
+      "lane": 10,
+      "division": "Team RX",
+      "CurrentRank": 7,
+      "score_abs": 162,
+      "score_rel": -18,
+      "currentRound": 1,
+      "tieBreak": "",
+      "status": "T",
+      "result": "CAP 162",
+      "currentMouvement": [
+        {
+          "mouvementName": "C2B",
+          "nextMouvement": "",
+          "repTarget": 0,
+          "rep/min": 0,
+          "power": 0,
+          "cal_h": 0,
+          "s/m": 0
+        }
+      ],
+      "Log_mvt_time": [
+        {}
+      ],
+      "Log_serie_time": [
+        {}
+      ],
+      "Log_round_time": [
+        {}
+      ]
+    },
+    {
+      "lane": 11,
+      "division": "Team RX",
+      "CurrentRank": 4,
+      "score_abs": 171,
+      "score_rel": -9,
+      "currentRound": 1,
+      "tieBreak": "",
+      "status": "T",
+      "result": "CAP 171",
+      "currentMouvement": [
+        {
+          "mouvementName": "Sprint",
+          "nextMouvement": "",
+          "repTarget": 0,
+          "rep/min": 0,
+          "power": 0,
+          "cal_h": 0,
+          "s/m": 0
+        }
+      ],
+      "Log_mvt_time": [
+        {}
+      ],
+      "Log_serie_time": [
+        {}
+      ],
+      "Log_round_time": [
+        {}
+      ]
+    },
+    {
+      "lane": 12,
+      "division": "Team RX",
+      "CurrentRank": 15,
+      "score_abs": 0,
+      "score_rel": -180,
+      "currentRound": 0,
+      "tieBreak": "",
+      "status": "W",
+      "result": "",
+      "currentMouvement": [
+        {
+          "mouvementName": "",
+          "nextMouvement": "",
+          "repTarget": 0,
+          "rep/min": 0,
+          "power": 0,
+          "cal_h": 0,
+          "s/m": 0
+        }
+      ],
+      "Log_mvt_time": [
+        {}
+      ],
+      "Log_serie_time": [
+        {}
+      ],
+      "Log_round_time": [
+        {}
+      ]
+    },
+    {
+      "lane": 13,
+      "division": "Team RX",
+      "CurrentRank": 8,
+      "score_abs": 160,
+      "score_rel": -20,
+      "currentRound": 1,
+      "tieBreak": "",
+      "status": "T",
+      "result": "CAP 160",
+      "currentMouvement": [
+        {
+          "mouvementName": "T2B",
+          "nextMouvement": "",
+          "repTarget": 0,
+          "rep/min": 0,
+          "power": 0,
+          "cal_h": 0,
+          "s/m": 0
+        }
+      ],
+      "Log_mvt_time": [
+        {}
+      ],
+      "Log_serie_time": [
+        {}
+      ],
+      "Log_round_time": [
+        {}
+      ]
+    },
+    {
+      "lane": 14,
+      "division": "Team RX",
+      "CurrentRank": 13,
+      "score_abs": 109,
+      "score_rel": -71,
+      "currentRound": 1,
+      "tieBreak": "",
+      "status": "T",
+      "result": "CAP 109",
+      "currentMouvement": [
+        {
+          "mouvementName": "OVH SQUAT",
+          "nextMouvement": "",
+          "repTarget": 0,
+          "rep/min": 0,
+          "power": 0,
+          "cal_h": 0,
+          "s/m": 0
+        }
+      ],
+      "Log_mvt_time": [
+        {}
+      ],
+      "Log_serie_time": [
+        {}
+      ],
+      "Log_round_time": [
+        {}
+      ]
+    },
+    {
+      "lane": 15,
+      "division": "Team RX",
+      "CurrentRank": 6,
+      "score_abs": 165,
+      "score_rel": -15,
+      "currentRound": 1,
+      "tieBreak": "",
+      "status": "T",
+      "result": "CAP 165",
+      "currentMouvement": [
+        {
+          "mouvementName": "C2B",
+          "nextMouvement": "",
+          "repTarget": 0,
+          "rep/min": 0,
+          "power": 0,
+          "cal_h": 0,
+          "s/m": 0
+        }
+      ],
+      "Log_mvt_time": [
+        {}
+      ],
+      "Log_serie_time": [
+        {}
+      ],
+      "Log_round_time": [
+        {}
+      ]
+    }
+  ]
+}

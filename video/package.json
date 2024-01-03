@@ -1,0 +1,66 @@
+{
+  "name": "video",
+  "version": "0.0.0",
+  "description": "",
+  "homepage": "",
+  "author": {
+    "name": "JM",
+    "email": "49940774+jmlarbaig@users.noreply.github.com",
+    "url": ""
+  },
+  "files": [
+    "dashboard",
+    "graphics",
+    "extension.js",
+    "extension"
+  ],
+  "keywords": [
+    "",
+    "nodecg-bundle"
+  ],
+  "nodecg": {
+    "compatibleRange": "^1.9.0",
+    "dashboardPanels": [
+      {
+        "name": "video-control",
+        "title": "Videos Athletes",
+        "file": "video.html",
+        "fullbleed": false,
+        "width": 4,
+        "headerColor": "#525F78",
+        "workspace": "Video Workspace"
+      }
+    ],
+    "graphics": [
+      {
+        "file": "index.html",
+        "width": 1920,
+        "height": 1080
+      }
+    ],
+    "assetCategories": [
+      {
+        "name": "videoPub",
+        "title": "Pub Vidéo",
+        "allowedTypes": [
+          "mov",
+          "mp4",
+          "avi",
+          "flv"
+        ]
+      },
+      {
+        "name": "videoCall",
+        "title": "Video Call",
+        "allowedTypes": [
+          "mov",
+          "mp4",
+          "avi",
+          "flv"
+        ]
+      }
+    ]
+  },
+  "repository": "git@gitlab.com:jeanmarie.larbaig/bundlesfv",
+  "license": "Apache-2.0"
+}

@@ -1,0 +1,40 @@
+
+#header1{
+    font-family: montserrat;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    background-color: Black;
+    color: white;
+    border-bottom: solid 1px white;
+}
+
+.header_{
+    font-family: montserrat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.heatName{
+    font-family: montserrat;
+    font-size: 20px;
+    padding: 10px;
+    width: 100%;
+    text-align: center;
+    color: var(--main-color);
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background-color: var(--second-color);
+}
+
+.heattab{
+    font-family: montserrat;
+    border-top: solid black 1px;
+    border-bottom: solid black 1px;
+    width: 100%;
+}
+
+.heattab, th, td{
+    padding-top: 10px;
+    padding-bottom: 10px;
+}

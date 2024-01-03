@@ -1,0 +1,42 @@
+{
+  "name": "ladder",
+  "version": "0.0.0",
+  "description": "",
+  "homepage": "",
+  "author": {
+    "name": "JM",
+    "email": "jeanmarie.larbaig@gmail.com",
+    "url": ""
+  },
+  "files": [
+    "dashboard",
+    "graphics",
+    "extension.js",
+    "extension"
+  ],
+  "keywords": [
+    "",
+    "nodecg-bundle"
+  ],
+  "nodecg": {
+    "compatibleRange": "^1.9.0",
+    "graphics": [
+      {
+        "file": "index.html",
+        "width": 1920,
+        "height": 1080
+      }
+    ],
+    "assetCategories": [
+      {
+        "name": "ladder",
+        "title": "Ladder Json",
+        "allowedTypes": [
+          "json"
+        ]
+      }
+    ]
+  },
+  "repository": "https://github.com/nodecg/nodecg.git",
+  "license": "Apache-2.0"
+}

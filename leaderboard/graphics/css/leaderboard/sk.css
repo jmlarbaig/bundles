@@ -1,0 +1,179 @@
+body {
+    background-color: rgb(190, 190, 190);
+}
+
+.header {
+    background-color: rgb(190, 190, 190);
+    color: white;
+}
+
+.leaderboards {
+    background-color: rgb(232, 232, 232);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    -moz-transition-duration: 0.7s;
+    -webkit-transition-duration: 0.7s;
+    -ms-transition-duration: 0.7s;
+}
+
+.leaderboard {
+    display: flex;
+    flex-direction: column;
+    -moz-transition-duration: 0.7s;
+    -webkit-transition-duration: 0.7s;
+    -ms-transition-duration: 0.7s;
+}
+
+.leaderboard .header {
+    text-transform: uppercase;
+    height: 100px;
+    padding: 20px 20px;
+    font-weight: 900;
+    font-size: 2em;
+    padding: 0px 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: var(--second_color);
+    color: var(--tx_second_color);
+    border-bottom: 2px white solid;
+    -moz-transition-duration: 0.7s;
+    -webkit-transition-duration: 0.7s;
+    -ms-transition-duration: 0.7s;
+}
+
+
+.leaderboard .division {
+    width: 15%;
+}
+
+
+.leaderboard #mvt {
+    width: 70%;
+    text-transform: capitalize;
+
+}
+
+.leaderboard #mvt span:nth-child(1) {
+    -moz-transition-duration: 0.7s;
+    -webkit-transition-duration: 0.7s;
+    -ms-transition-duration: 0.7s;
+    border: solid 5px red;
+    padding: 10px;
+}
+
+.leaderboard .repTar {
+    text-align: right;
+    margin: auto;
+    width: 15%;
+    background-color: var(--second_color);
+}
+
+.leaderboard table {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    border-collapse: separate;
+    border-spacing: 0;
+    border-top: 1px solid grey;
+}
+
+
+.leaderboard .athletes {
+    font-weight: 900;
+    font-size: 24px;
+    -moz-transition-duration: 0.7s;
+    -webkit-transition-duration: 0.7s;
+    -ms-transition-duration: 0.7s;
+}
+
+.leaderboard .athlete {
+    text-transform: uppercase;
+    -moz-transition-duration: 0.7s;
+    -webkit-transition-duration: 0.7s;
+    -ms-transition-duration: 0.7s;
+}
+
+.leaderboard .lane {
+    visibility: visible;
+    width: 10%;
+    text-align: center;
+    filter: blur(0px);
+}
+
+.leaderboard .name {
+    visibility: visible;
+    text-align: center;
+    padding: 5px 5px;
+    text-align: left;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.leaderboard .name:hover {
+    cursor: pointer;
+    background-color: rgb(137, 137, 137);
+    color: rgb(237, 237, 237);
+}
+
+.leaderboard .score {
+    visibility: visible;
+    width: 10%;
+    text-align: center;
+}
+
+.leaderboard .popup {
+    visibility: visible;
+    text-align: center;
+    width: 10%;
+}
+
+.leaderboard .state {
+    visibility: visible;
+    text-align: center;
+    width: 10%;
+}
+
+.leaderboard .timeAth {
+    visibility: visible;
+    text-align: center;
+    width: 10%;
+}
+
+.leaderboard .repAth {
+    visibility: visible;
+    text-align: center;
+    width: 10%;
+}
+
+.leaderboard .flag {
+    text-align: center;
+    width: 60px;
+    max-width: 60px;
+}
+
+.leaderboard .flag .box_flag {
+    width: 30px;
+    margin: auto;
+    height: 30px;
+    border-radius: 50%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.leaderboard button {
+    width: 100px;
+}
+
+.leaderboard button:first-child {
+    background-color: rgb(71, 71, 179);
+    color: white
+}
+
+.leaderboard button:nth-child(2) {
+    background-color: rgb(216, 75, 75);
+    color: white
+}

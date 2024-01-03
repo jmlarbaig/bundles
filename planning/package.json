@@ -1,0 +1,34 @@
+{
+  "name": "planning",
+  "version": "0.0.0",
+  "description": "",
+  "homepage": "",
+  "author": {
+    "name": "JM",
+    "email": "49940774+jmlarbaig@users.noreply.github.com",
+    "url": ""
+  },
+  "files": [
+    "dashboard",
+    "graphics",
+    "extension.js",
+    "extension"
+  ],
+  "keywords": [
+    "",
+    "nodecg-bundle"
+  ],
+  "nodecg": {
+    "compatibleRange": "^1.9.0",
+    "dashboardPanels": [
+      {
+        "name": "planning",
+        "title": "Planning",
+        "file": "index.html",
+        "fullbleed": true
+      }
+    ]
+  },
+  "repository": "git@gitlab.com:jeanmarie.larbaig/bundlesfv",
+  "license": "Apache-2.0"
+}

@@ -1,0 +1,33 @@
+{
+  "name": "timer",
+  "version": "0.0.0",
+  "description": "",
+  "homepage": "",
+  "author": {
+    "name": "JM",
+    "email": "49940774+jmlarbaig@users.noreply.github.com",
+    "url": ""
+  },
+  "files": [
+    "dashboard",
+    "graphics",
+    "extension.js",
+    "extension"
+  ],
+  "keywords": [
+    "",
+    "nodecg-bundle"
+  ],
+  "nodecg": {
+    "compatibleRange": "^1.9.0",
+    "graphics": [
+      {
+        "file": "timer-1.html",
+        "width": 1920,
+        "height": 1080
+      }
+    ]
+  },
+  "repository": "git@gitlab.com:jeanmarie.larbaig/bundlesfv",
+  "license": "Apache-2.0"
+}

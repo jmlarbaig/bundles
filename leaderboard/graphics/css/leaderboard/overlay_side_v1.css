@@ -1,0 +1,234 @@
+.leaderboards {
+    font-size: 1rem;
+    -moz-transition-duration: 0.7s;
+    -webkit-transition-duration: 0.7s;
+    -ms-transition-duration: 0.7s;
+}
+
+.leaderboard {
+    top: var(--position_y_leaderboard_v1);
+    left: var(--position_x_leaderboard_v1);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    opacity: 92%;
+    width: 300px;
+    -moz-transition-duration: 0.7s;
+    -webkit-transition-duration: 0.7s;
+    -ms-transition-duration: 0.7s;
+}
+
+/* .leaderboard:nth-child(1){
+    top:var(--position_y_leaderboard);
+    left: var(--position_x_leaderboard);
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    opacity: 92%;
+    width: 300px;
+    -moz-transition-duration: 0.7s;
+    -webkit-transition-duration: 0.7s;
+    -ms-transition-duration: 0.7s;
+} */
+
+/* .leaderboard:nth-child(2){
+    top:var(--position_y_leaderboard);
+    right: 130px;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    opacity: 92%;
+    width: 300px;
+    -moz-transition-duration: 0.7s;
+    -webkit-transition-duration: 0.7s;
+    -ms-transition-duration: 0.7s;
+} */
+
+.leaderboard:nth-child(3) {
+
+    display: none;
+}
+
+.leaderboard:nth-child(4) {
+    display: none;
+}
+
+
+.leaderboard .header {
+    height: 35px;
+    font-weight: 900;
+    font-size: 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-left: 10px;
+    background-color: var(--second_color);
+    color: var(--tx_second_color);
+    border-bottom: 2px white solid;
+    padding-bottom: 5px;
+    padding-top: 5px;
+    -moz-transition-duration: 0.7s;
+    -webkit-transition-duration: 0.7s;
+    -ms-transition-duration: 0.7s;
+}
+
+
+.leaderboard .division {
+    font-size: 16px;
+    width: 200px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.leaderboard .repTar {
+    text-align: right;
+    margin: auto;
+    font-size: 14px;
+    background-color: var(--second_color);
+    padding-right: 10px;
+}
+
+.leaderboard .athletes {
+    color: var(--tx_second_color);
+    display: flex;
+    flex-direction: column;
+    font-weight: 900;
+    font-size: 20px;
+    -moz-transition-duration: 0.7s;
+    -webkit-transition-duration: 0.7s;
+    -ms-transition-duration: 0.7s;
+}
+
+.leaderboard .athlete {
+    -moz-transition-duration: 0.7s;
+    -webkit-transition-duration: 0.7s;
+    -ms-transition-duration: 0.7s;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+}
+
+.leaderboard .athletes .ath {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: var(--height_ath_side);
+    background-color: var(--main_color);
+    color: var(--tx_main_color);
+    margin: auto;
+}
+
+.leaderboard .athlete .rank {
+    padding: 5px 0px 0px 5px;
+    text-align: center;
+    width: 45px;
+    padding-right: 7px;
+    border-right: 2px solid white;
+    height: var(--height_ath_side);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.leaderboard .athlete .lane {
+    /* haut left right bas */
+    padding: 5px 5px 5px 5px;
+    text-align: center;
+    width: 50px;
+    filter: blur(0px);
+    height: var(--height_ath_side);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.leaderboard .athlete .name {
+    /* haut rigth bas left */
+    padding: 5px 10px;
+    text-transform: uppercase;
+    font-weight: 900;
+    width: var(--px_name_v1);
+    min-width: 200px;
+    max-width: var(--px_name_v1);
+    height: var(--height_ath_side);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    -moz-transition-duration: 0.7s;
+    -webkit-transition-duration: 0.7s;
+    -ms-transition-duration: 0.7s;
+}
+
+.leaderboard .athlete .score {
+    /* haut left right bas */
+    padding: 5px 10px 10px 5px;
+    width: 80px;
+    max-width: 120px;
+    text-align: center;
+    border-radius: --(border);
+    height: var(--height_ath_side);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.leaderboard .athlete .flag {
+    /* haut left right bas */
+    padding: 5px 5px 5px 5px;
+    height: var(--height_ath_side);
+    width: 40px;
+    align-items: center;
+}
+
+.leaderboard .athlete .flag .box_flag {
+    border-radius: 50px;
+    height: 30px;
+    width: 30px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.rounds {
+    width: 45px;
+    max-width: 45px;
+    text-align: center;
+    background-color: white;
+    height: var(--height_ath_side);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.popup {
+    /* haut left right bas */
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 14px;
+    height: 20px;
+    color: var(--tx_second_color);
+    background-color: var(--second_color);
+    -moz-transition-duration: 1s;
+    -webkit-transition-duration: 1s;
+    -ms-transition-duration: 1s;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.leaderboard .athletes .powered {
+    /* haut left right bas */
+    padding: 0px 10px 0px 10px;
+    text-align: center;
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: var(--second_color);
+    color: var(--tx_second_color);
+    height: var(--height_ath_side);
+    font-size: 12px;
+    width: 300px;
+}

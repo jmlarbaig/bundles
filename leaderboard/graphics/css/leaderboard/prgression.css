@@ -1,0 +1,228 @@
+.leaderboards {
+    position: relative;
+    width: 100%;
+    background-color: rgb(232, 232, 232);
+    font-size: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    -moz-transition-duration: 0.7s;
+    -webkit-transition-duration: 0.7s;
+    -ms-transition-duration: 0.7s;
+    top: 100px;
+    height: 100%;
+}
+
+.leaderboard {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    opacity: 92%;
+    width: 100%;
+    -moz-transition-duration: 0.7s;
+    -webkit-transition-duration: 0.7s;
+    -ms-transition-duration: 0.7s;
+}
+
+.leaderboard .header {
+    padding: 20px 20px;
+    font-weight: 900;
+    font-size: 30px;
+    padding: 0px 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: var(--second_color);
+    color: var(--tx_second_color);
+    border-bottom: 2px white solid;
+    -moz-transition-duration: 0.7s;
+    -webkit-transition-duration: 0.7s;
+    -ms-transition-duration: 0.7s;
+}
+
+
+.leaderboard .division {
+    font-size: 16px;
+    width: 200px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+
+.leaderboard #mvt {
+    width: 70%;
+    text-transform: capitalize;
+
+}
+
+.leaderboard #mvt span:nth-child(1) {
+    -moz-transition-duration: 0.7s;
+    -webkit-transition-duration: 0.7s;
+    -ms-transition-duration: 0.7s;
+    border: solid 5px red;
+    padding: 10px;
+}
+
+.leaderboard .repTar {
+    text-align: right;
+    margin: auto;
+    width: 15%;
+    background-color: var(--second_color);
+}
+
+.leaderboard .athletes {
+    color: var(--tx_second_color);
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    font-weight: 900;
+    font-size: 24px;
+    -moz-transition-duration: 0.7s;
+    -webkit-transition-duration: 0.7s;
+    -ms-transition-duration: 0.7s;
+}
+
+.leaderboard .athlete {
+    -moz-transition-duration: 0.7s;
+    -webkit-transition-duration: 0.7s;
+    -ms-transition-duration: 0.7s;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+}
+
+.leaderboard .athletes .ath {
+    font-size: 1.2em;
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    margin: 5px 0px;
+    background-color: var(--main_color);
+    color: var(--tx_main_color);
+}
+
+.leaderboard .athlete .rank {
+    padding: 5px 10px;
+    text-align: center;
+    width: 70px;
+    border-left: 2px solid white;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.leaderboard .athlete .lane {
+    /* haut left right bas */
+    padding: 5px 10px;
+    text-align: center;
+    width: 100px;
+    filter: blur(0px);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.leaderboard .athlete .name {
+    /* haut rigth bas left */
+    padding: 5px 10px;
+    text-transform: uppercase;
+    font-weight: 900;
+    width: 20%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.leaderboard .athlete .affiliate {
+    /* haut rigth bas left */
+    padding: 5px 10px;
+    text-transform: uppercase;
+    font-weight: 900;
+    width: 15%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.circle_progress {
+    background-color: rgb(231, 231, 231);
+    width: 30%;
+    margin: 0px 10px;
+    border-right: 20px solid red;
+}
+
+.leaderboard .athlete svg {
+    height: 50px;
+    width: 100%;
+}
+
+
+.circle {
+    box-shadow: rgba(43, 43, 43, 0.2) 0px 7px 29px 0px;
+}
+
+.leaderboard .athlete .score {
+    /* haut left right bas */
+    padding: 5px 10px;
+    width: 10%;
+    text-align: center;
+    border-radius: --(border);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.leaderboard .athlete .popup {
+    /* haut left right bas */
+    text-transform: uppercase;
+    padding: 5px 10px;
+    width: 15%;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 250px;
+}
+
+.leaderboard .athlete .flag {
+    /* haut left right bas */
+    padding: 5px 10px;
+    width: 40px;
+    align-items: center;
+}
+
+.leaderboard .athlete .flag .box_flag {
+    border-radius: 50px;
+    height: 30px;
+    width: 30px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.rounds {
+    width: 45px;
+    max-width: 45px;
+    text-align: center;
+    background-color: white;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.leaderboard .athletes .powered {
+    /* haut left right bas */
+    padding: 5px 10px;
+    text-align: center;
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: var(--second_color);
+    color: var(--tx_second_color);
+    font-size: 12px;
+    width: 300px;
+}

@@ -1,0 +1,52 @@
+.headPresentator{
+    position: absolute;
+}
+
+.presentator{
+    position: relative;
+    background-color: var(--back_color);
+    width: fit-content;
+    margin: 15px 0px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    box-shadow: 2px 5px rgb(0, 0, 0), 6px 8px rgb(136, 136, 136);
+    border-radius: 10px 0px 10px 0px;
+}
+
+.details{
+    min-width: 300px;
+    display: flex;
+    flex-direction: column;
+    border-left: solid 2px white;
+}
+
+.name{
+    font-size: 1.6em;
+    font: 800;
+    padding: 5px 10px;
+    background: linear-gradient(90deg,var(--header_color) 0%, var(--header_color) 84%);;
+    color: var(--tx_header_color);
+    text-transform: uppercase;
+    font-size: var(--ft_size_subheader);
+}
+
+.function{
+    font-size: 1.2em;
+    font: 600;
+    padding: 5px 10px;
+    padding-bottom: 10px;
+    background-color: var(--subheader_color);
+    color: var(--tx_subheader_color);
+    text-transform: uppercase;
+    font-size: var(--ft_size_content);
+}
+
+.eventName{
+    font-size: 0.8em;
+    font: 200;
+    padding: 10px;
+    color: white;
+    text-transform: uppercase;
+    text-align: center;
+}

@@ -1,0 +1,118 @@
+.box_logo {
+    position: absolute;
+    top: var(--position_y_logo_v1);
+    left: var(--position_x_logo_v1);
+    width: var(--widthLogoEvent_v1);
+    height: var(--widthLogoEvent_v1);
+    -moz-transition-duration: 0.7s;
+    -webkit-transition-duration: 0.7s;
+    -ms-transition-duration: 0.7s;
+}
+
+.logo {
+    width: var(--widthLogoEvent_v1);
+    height: var(--widthLogoEvent_v1);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.box_chrono {
+    text-align: center;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    position: absolute;
+    background-color: var(--chrono_color);
+    color: var(--tx_chrono_color);
+    top: var(--position_y_chrono_v1);
+    left: var(--position_x_chrono_v1);
+    width: 150px;
+    margin: auto;
+    align-items: center;
+    padding: 10px auto;
+    z-index: 1;
+    -moz-transition-duration: 0.7s;
+    -webkit-transition-duration: 0.7s;
+    -ms-transition-duration: 0.7s;
+}
+
+#time {
+    font-size: 2em;
+    padding: 10px 0px;
+    margin: auto;
+    /* border-bottom: solid white 1px; */
+}
+
+#cap {
+    padding: 10px;
+    background-color: black;
+    color: white;
+    margin: 0px auto;
+}
+
+#heat {
+    position: absolute;
+    font-weight: 800;
+    top: var(--position_y_heat_v1);
+    /* font-family: montserrat;    */
+    left: var(--position_x_heat_v1);
+    font-size: 1.4rem;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    color: var(--tx_main_color);
+    background-color: var(--main_color);
+    height: 75px;
+    width: max-content;
+}
+
+#workout {
+    margin: auto;
+    font-size: 1.6em;
+    font-weight: 800;
+}
+
+#division {
+    margin: auto;
+    font-size: 1em;
+    font-weight: 600;
+    font-style: italic;
+    text-transform: uppercase;
+}
+
+.heat_name {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    text-transform: uppercase;
+    /* padding: 5px 2px 5px 2px; */
+}
+
+.heatlow {
+    width: fit-content;
+    min-width: 250px;
+    max-width: 350px;
+    overflow: hidden;
+    margin-left: 10px;
+    background-color: var(--main_color);
+    color: var(--tx-main-color);
+}
+
+
+.mainSponsor {
+    margin-right: 5px;
+    width: 200px;
+    text-align: center;
+    margin-top: 5px;
+    height: 60px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    /* <------ */
+    background-position: center center;
+    /* optional, center the image */
+}
+
+.target {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    width: 50px;
+    max-width: 50px;
+}

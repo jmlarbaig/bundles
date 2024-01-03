@@ -1,0 +1,212 @@
+    :root {
+        --bg__color: rgba(0, 0, 0, 0);
+
+        --main_color: rgba(0, 0, 0, 0.9);
+        --second_color: black;
+        --finish_color: black;
+        --first_rank_color: black;
+        --second_rank_color: black;
+        --third_rank_color: black;
+
+        --chrono_color: white;
+        --tx_chrono_color: white;
+
+        --box_logo_color: white;
+        --tx_logo_color: white;
+
+        --tx_main_color: white;
+        --tx_second_color: white;
+        --tx_finish_color: white;
+        --tx_firstRank_color: white;
+        --tx_secondRank_color: white;
+        --tx_thirdRank_color: white;
+
+        --position_x_chrono: 300px;
+        --position_y_chrono: 75px;
+
+        --position_x_heat: 320px;
+        --position_y_heat: 320px;
+
+        --position_x_logo: 110px;
+        --position_y_logo: 40px;
+
+        --position_x_leaderboard: 200px;
+        --position_y_leaderboard: 75px;
+
+        --widthLogoEvent: 250px;
+        --px_name: 200px;
+
+
+        --position_x_chrono_v1: 300px;
+        --position_y_chrono_v1: 75px;
+
+        --position_x_heat_v1: 320px;
+        --position_y_heat_v1: 320px;
+
+        --position_x_logo_v1: 110px;
+        --position_y_logo_v1: 40px;
+
+        --position_x_leaderboard_v1: 200px;
+        --position_y_leaderboard_v1: 75px;
+
+        --widthLogoEvent_v1: 250px;
+        --px_name_v1: 200px;
+        --px_score: 50px;
+
+        --heigth: 29px;
+        --height_ath_side: 30px;
+        --height_ath_top: 50px;
+        --height_ath_tv: 60px;
+        --padding_ath_content: 11px;
+        --border: 0px 10px 10px 0px;
+
+        --font-select: 'Typographica';
+
+        --first_linear_gradient: black;
+        --second_linear_gradient: black;
+
+
+        --first_left_bg_color: black;
+        --second_left_bg_color: black;
+        --first_right_bg_color: black;
+        --second_right_bg_color: black;
+
+        --width_top: 1930px;
+        --width_box_heat: 1780px;
+        --width_calc_top: 1630px;
+
+
+        --widthLogoEvent_top: 150px;
+        --sizeFontHeader_top: 30px;
+        --sizeFontChrono_top: 30px;
+        --sizeFontAthlete_top: 30px;
+        --height_popup_top: 45px;
+
+        --text_presented_by: "Presented";
+        --size_font_presented: 30px;
+
+        --zoom: 100%;
+
+    }
+
+
+    @font-face {
+        font-family: "Adarsh";
+        src: url("../fonts/Adarsh-Sans-Regular.otf");
+    }
+
+    @font-face {
+        font-family: "Antonio";
+        src: url("../fonts/Antonio-Regular.ttf");
+    }
+
+    @font-face {
+        font-family: "Bebas";
+        src: url("../fonts/BebasNeue.otf");
+    }
+
+    @font-face {
+        font-family: "Circo";
+        src: url("../fonts/Circo.ttf");
+    }
+
+    @font-face {
+        font-family: "Coamei";
+        src: url("../fonts/Coamei-Regular.ttf");
+    }
+
+    @font-face {
+        font-family: "Hoop";
+        src: url("../fonts/Hoop_Regular.otf");
+    }
+
+    @font-face {
+        font-family: "Montserrat";
+        src: url("../fonts/Montserrat-Bold.ttf");
+    }
+
+    @font-face {
+        font-family: "Oswald";
+        src: url("../fonts/Oswald-Regular.ttf");
+    }
+
+    @font-face {
+        font-family: "Power";
+        src: url("../fonts/PowerrMedium.ttf");
+    }
+
+    @font-face {
+        font-family: "Roboto";
+        src: url("../fonts/Roboto-Medium.ttf");
+    }
+
+    @font-face {
+        font-family: "Strasua";
+        src: url("../fonts/strasua.ttf");
+    }
+
+    @font-face {
+        font-family: "Typographica";
+        src: url("../fonts/Typographica.ttf");
+    }
+
+    @font-face {
+        font-family: "Digit";
+        src: url("../fonts/DS-DIGI.TTF");
+    }
+
+
+    @font-face {
+        font-family: "Slenco";
+        src: url("../fonts/Slenco-Black.otf");
+    }
+
+    @font-face {
+        font-family: "headway";
+        src: url("../fonts/HEADWAY.ttf");
+    }
+
+    @font-face {
+        font-family: "okta";
+        src: url("../fonts/Okta\ Bold\ Italic.otf");
+    }
+
+    body {
+        background-color: var(--bg__color);
+        font-family: var(--font-select);
+        background-size: cover;
+        zoom: var(--zoom);
+    }
+
+    .nobody {
+        background-color: var(--main_color);
+    }
+
+    .screen {
+        overflow: hidden;
+        height: 1080px;
+        width: 1920px;
+    }
+
+    .laneBody {
+        background-color: transparent;
+    }
+
+    .frame {
+        background-color: transparent;
+    }
+
+    iframe {
+        position: fixed;
+        top: 0px;
+        bottom: 0px;
+        right: 0px;
+        left: 0px;
+        width: 1920px;
+        height: 1080px;
+        border: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        z-index: 100;
+    }

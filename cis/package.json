@@ -1,0 +1,35 @@
+{
+  "name": "cis",
+  "version": "0.0.0",
+  "description": "",
+  "homepage": "",
+  "author": {
+    "name": "JM",
+    "email": "jeanmarie.larbaig@gmail.com",
+    "url": ""
+  },
+  "files": [
+    "dashboard",
+    "graphics",
+    "extension.js",
+    "extension"
+  ],
+  "keywords": [
+    "",
+    "nodecg-bundle"
+  ],
+  "nodecg": {
+    "compatibleRange": "^1.9.0",
+    "dashboardPanels": [
+      {
+        "name": "lowerthird-athletes",
+        "title": "Lowerthird Athletes Control",
+        "file": "index.html",
+        "fullbleed": true,
+        "headerColor": "#525F78"
+      }
+    ]
+  },
+  "repository": "git@gitlab.com:jeanmarie.larbaig/bundlesfv",
+  "license": "Apache-2.0"
+}

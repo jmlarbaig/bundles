@@ -1,0 +1,112 @@
+{
+  "name": "leaderboard",
+  "version": "0.0.0",
+  "description": "",
+  "homepage": "",
+  "author": {
+    "name": "JM",
+    "email": "49940774+jmlarbaig@users.noreply.github.com",
+    "url": ""
+  },
+  "files": [
+    "dashboard",
+    "graphics",
+    "extension.js",
+    "extension"
+  ],
+  "keywords": [
+    "",
+    "nodecg-bundle"
+  ],
+  "nodecg": {
+    "compatibleRange": "^1.9.0",
+    "dashboardPanels": [
+      {
+        "name": "overlay-control",
+        "title": "Overlay Control",
+        "file": "overlay.html",
+        "fullbleed": false,
+        "width": 7,
+        "headerColor": "#525F78",
+        "workspace": "Main Workspace"
+      },
+      {
+        "name": "timer",
+        "title": "Manual Timer Control",
+        "file": "timer.html",
+        "fullbleed": false,
+        "width": 3,
+        "headerColor": "#525F78",
+        "workspace": "Main Workspace"
+      },
+      {
+        "name": "adjusttimer",
+        "title": "Adjust Timer",
+        "file": "adjustTimer.html",
+        "fullbleed": false,
+        "width": 3,
+        "headerColor": "#525F78",
+        "workspace": "Main Workspace"
+      }
+    ],
+    "graphics": [
+      {
+        "file": "overlay_side.html",
+        "width": 1920,
+        "height": 1080
+      },
+      {
+        "file": "overlay_side_v1.html",
+        "width": 1920,
+        "height": 1080
+      },
+      {
+        "file": "overlay_top.html",
+        "width": 1920,
+        "height": 1080
+      },
+      {
+        "file": "progression.html",
+        "width": 1920,
+        "height": 1080
+      },
+      {
+        "file": "leaderboard.html",
+        "width": 1920,
+        "height": 1080
+      },
+      {
+        "file": "commentator.html",
+        "width": 1920,
+        "height": 1080
+      },
+      {
+        "file": "sk.html",
+        "width": 1920,
+        "height": 1080
+      },
+      {
+        "file": "echo.html",
+        "width": 1920,
+        "height": 1080
+      },
+      {
+        "file": "lane.html",
+        "width": 1920,
+        "height": 1080
+      },
+      {
+        "file": "versus.html",
+        "width": 1920,
+        "height": 1080
+      },
+      {
+        "file": "head_judge.html",
+        "width": 1920,
+        "height": 1080
+      }
+    ]
+  },
+  "repository": "git@gitlab.com:jeanmarie.larbaig/bundlesfv",
+  "license": "Apache-2.0"
+}
