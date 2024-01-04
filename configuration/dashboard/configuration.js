@@ -1,6 +1,7 @@
 
 const AssetsColors = nodecg.Replicant('assets:config');
 const Colors = nodecg.Replicant('Colors');
+const Fonts = nodecg.Replicant('assets:font');
 
 var participantEvent = {}
 var participantsCurrentHeats = {}
@@ -53,6 +54,30 @@ AssetsColors.on('change', (newValue, oldValue) => {
         }
         console.log(newValue);
         // nodecg.sendMessage('colorOverwrite', data);
+    }
+})
+
+
+Fonts.on('change', (newValue, oldValue) => {
+    if (newValue != oldValue) {
+        $("#font-select option").remove()
+        $("#font-select").append('< option value = "Adarsh" > Adarsh</option >')
+        $("#font-select").append('<option value="Antonio">Antonio</option>')
+        $("#font-select").append('<option value="Bebas">Bebas</option>')
+        $("#font-select").append('<option value="Circo">Circo</option>')
+        $("#font-select").append('<option value="Coamei">Coamei</option>')
+        $("#font-select").append('<option value="Hoop">Hoop</option>')
+        $("#font-select").append('<option value="Montserrat">Montserrat</option>')
+        $("#font-select").append('<option value="Oswald">Oswald</option>')
+        $("#font-select").append('<option value="Power">Power</option>')
+        $("#font-select").append('<option value="Roboto">Roboto</option>')
+        $("#font-select").append('<option value="Strasua">Strasua</option>')
+        $("#font-select").append('<option value="Typographica">Typographica</option>')
+
+        let personalFontTab = newValue;
+        Object.keys(personalFontTab).forEach((font) => {
+            $("#font-select").append('<option value="' + personalFontTab[font].name + '">' + personalFontTab[font].name + '</option>')
+        })
     }
 })
 

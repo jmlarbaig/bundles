@@ -78,9 +78,17 @@
 
         --widthLogoEvent_top: 150px;
         --sizeFontHeader_top: 30px;
+        --sizeFontWorkoutHeat_top: 30px;
         --sizeFontChrono_top: 30px;
+        --sizeFontMvt_top: 30px;
+        --sizeFontTimecap_top: 30px;
         --sizeFontAthlete_top: 30px;
         --height_popup_top: 45px;
+        --sizeFont_popup_top: 20px;
+        --widthLane_top: 45px;
+
+        --firstMvt_color: rgb(223, 18, 86);
+        --restMvt_color: rgba(105, 105, 105, 0.712);
 
         --text_presented_by: "Presented";
         --size_font_presented: 30px;

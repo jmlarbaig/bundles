@@ -33,6 +33,7 @@ let varPresented;
 const timerNTP = nodecg.Replicant('timerNTP', 'connector');
 const setupLeaderboard = nodecg.Replicant('setupLeaderboard');
 
+const Fonts = nodecg.Replicant('assets:font', 'configuration');
 const Colors = nodecg.Replicant('Colors', 'configuration');
 
 const adjustT = nodecg.Replicant('adjustT')
@@ -535,6 +536,21 @@ setupLeaderboard.on('change', (newValue, oldValue) => {
 
 })
 
+function loadFont(name, url) {
+    var newStyle = document.createElement('style');
+    newStyle.appendChild(document.createTextNode('@font-face{font-family: ' + name + '; src: url(' + url + ');}'));
+    document.body.appendChild(newStyle)
+}
+
+Fonts.on('change', (newValue, oldValue) => {
+    if (newValue != oldValue) {
+        let tabFont = newValue
+        Object.keys(tabFont).forEach((font) => {
+            loadFont(tabFont[font].name, tabFont[font].url)
+        })
+    }
+})
+
 Colors.on('change', (newValue, oldValue) => {
 
     let tabColor = newValue
@@ -542,6 +558,10 @@ Colors.on('change', (newValue, oldValue) => {
     Object.keys(newValue).forEach((color, index) => {
 
         let _color = tabColor[color]
+
+        if (color == 'font-select') {
+
+        }
 
         if (overlay == 'commentator' && color == 'bg__color') {
             _color = 'black'

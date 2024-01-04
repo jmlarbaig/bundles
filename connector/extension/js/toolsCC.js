@@ -32,6 +32,7 @@ module.exports = (nodecg, Connected) => {
 
     function connectionCC(user, passwd, event) {
         cc.logCC(user, passwd).then((_token_) => {
+            console.log("Token : ", _token_)
             token.value = _token_
             cc.dashboardEventCC(event).then((res) => {
                 const { id, name, affiliates, divisions } = res

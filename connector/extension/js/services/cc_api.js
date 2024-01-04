@@ -21,6 +21,7 @@ module.exports = () => {
                     'Content-Type': "application/json",
                     'cache-control':
                         '[no-cache,  no-store,  max-age=0,  must-revalidate], expires: [0], pragma: [no-cache]',
+                    'Charset': 'utf-8',
                 }
             })
             .then(response => response.json())
@@ -28,7 +29,7 @@ module.exports = () => {
                 token = d.access_token
                 return d.access_token
             }).catch(e => {
-                console.log(e)
+                console.log("error : ", e)
             })
 
     }
@@ -43,7 +44,7 @@ module.exports = () => {
                 'Charset': 'utf-8',
                 'Authorization': 'Bearer ' + token
             }
-        }).then(response => response.json())
+        }).then(response => response.json()).catch((e) => { console.log(e) })
     }
 
     async function getHeatsTopScore(workoutId, divisionId) {
@@ -56,7 +57,7 @@ module.exports = () => {
                 'Charset': 'utf-8',
                 'Authorization': 'Bearer ' + token
             }
-        }).then(response => response.json())
+        }).then(response => response.json()).catch((e) => { console.log(e) })
     }
 
     async function loadInfoEventCC(eventId) {
@@ -68,18 +69,43 @@ module.exports = () => {
     async function loadWorkouts(eventId) {
         return fetch("https://competitioncorner.net/api2/v1/events/" + eventId + "/workouts/", {
             method: "GET",
-            headers: { 'Authorization': 'Bearer ' + token }
-        }).then(response => response.json())
+            headers: {
+                'Content-Type': "application/json",
+                'cache-control':
+                    '[no-cache,  no-store,  max-age=0,  must-revalidate], expires: [0], pragma: [no-cache]',
+                'Charset': 'utf-8',
+                'Authorization': 'Bearer ' + token
+            }
+        }).then(response => response.json()).catch((e) => { console.log(e) })
     }
 
     async function loadWorkoutsPlanning(eventId) {
-        return fetch("https://competitioncorner.net/api2/v1/schedule/events/" + eventId + "/workouts")
-            .then(response => response.json())
+        return fetch("https://competitioncorner.net/api2/v1/schedule/events/" + eventId + "/workouts?preview=false", {
+            method: "GET",
+            headers: {
+                'Content-Type': "application/json",
+                'cache-control':
+                    '[no-cache,  no-store,  max-age=0,  must-revalidate], expires: [0], pragma: [no-cache]',
+                'Charset': 'utf-8',
+                'Authorization': 'Bearer ' + token
+            }
+        }
+        )
+            .then(response => response.json()).catch((e) => { console.log(e) })
     }
 
     async function loadHeats(workoutId) {
-        return fetch('https://competitioncorner.net/api2/v1/schedule/workout/' + workoutId)
-            .then((response) => response.json())
+        return fetch('https://competitioncorner.net/api2/v1/schedule/workout/' + workoutId, {
+            method: "GET",
+            headers: {
+                'Content-Type': "application/json",
+                'cache-control':
+                    '[no-cache,  no-store,  max-age=0,  must-revalidate], expires: [0], pragma: [no-cache]',
+                'Charset': 'utf-8',
+                'Authorization': 'Bearer ' + token
+            }
+        })
+            .then((response) => response.json()).catch((e) => { console.log(e) })
     }
 
     async function loadParticpant(eventId, workoutID) {
@@ -92,7 +118,7 @@ module.exports = () => {
                 'Charset': 'utf-8',
                 'Authorization': 'Bearer ' + token
             }
-        }).then((response) => response.json());
+        }).then((response) => response.json()).catch((e) => { console.log(e) });
     }
 
     async function loadAttributionLane(eventId, workoutId, heatId, start, end) {
@@ -107,7 +133,7 @@ module.exports = () => {
             },
         }).then((response) => {
             return response.json();
-        }).catch((err) => { return err })
+        }).catch((err) => { return err }).catch((e) => { console.log(e) })
     }
 
     async function loadHeatResults(eventId, workoutId, heatId, start, end) {

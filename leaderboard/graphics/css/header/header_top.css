@@ -6,7 +6,6 @@
     width: var(--width_top);
     height: 100px;
     color: white;
-    text-transform: capitalize;
 }
 
 /* top | right | bottom | left */
@@ -61,7 +60,7 @@
 }
 
 .header .box_heat .heat .heat_content .details {
-    font-size: var(--sizeFontHeader_top);
+    font-size: var(--sizeFontWorkoutHeat_top);
     display: flex;
     flex-wrap: nowrap;
     flex-direction: row;
@@ -93,7 +92,9 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    color: rgba(105, 105, 105, 0.712);
+    color: var(--restMvt_color);
+    text-transform: capitalize;
+    font-size: var(--sizeFontMvt_top);
 }
 
 #mvt span {
@@ -101,7 +102,7 @@
 }
 
 #mvt span:first-child {
-    color: rgb(223, 18, 86);
+    color: var(--firstMvt_color);
     font-weight: 800;
 }
 
@@ -161,10 +162,10 @@
 }
 
 .header .box_chrono .chrono #cap {
-    font-size: 0.8em;
+    font-size: var(--sizeFontTimecap_top);
     background-color: var(--main_color);
     color: var(--tx_main_color);
-    margin: 15px auto;
+    margin: 1px auto;
     width: 120px;
     padding: 5px;
     text-align: center;

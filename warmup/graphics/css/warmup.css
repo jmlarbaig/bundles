@@ -1,25 +1,25 @@
-#warmUp_body{
+#warmUp_body {
     padding: 10px;
     margin: 10px;
-    background-color: rgb(46, 46, 46);
-    color: white;
+    background-color: rgb(255, 255, 255);
+    color: black;
 }
 
-#header1{
+#header1 {
     padding-top: 20px;
     padding-bottom: 20px;
-    background-color: rgb(46, 46, 46);
-    color: white;
-    border-bottom: solid 1px white;
+    background-color: rgb(255, 255, 255);
+    color: black;
+    border-bottom: solid 1px black;
 }
 
-.header_{
+.header_ {
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-#logo{
+#logo {
     text-align: center;
     margin: auto;
     background-position: center;
@@ -29,105 +29,108 @@
     height: 100px;
 }
 
-.hTime{
-}
+.hTime {}
 
-#time{
+#time {
     max-width: 300px;
     background-color: white;
     margin: auto;
     padding: 10px;
     color: red;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    -webkit-box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    -moz-box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
-.global{
+.global {
     margin-left: 10px;
     margin-right: 10px;
     text-transform: uppercase;
 }
 
-.global:nth-child(1) .first{
-    color:rgb(255, 255, 255);
+.global:nth-child(1) .first {
+    color: rgb(255, 255, 255);
     background: linear-gradient(90deg, var(--main_color) 0%, rgb(13, 146, 84) 50%, var(--main_color) 100%);
 }
 
-.global:nth-child(2) .first{
-    color:rgb(255, 255, 255);
+.global:nth-child(2) .first {
+    color: rgb(255, 255, 255);
     background: linear-gradient(90deg, var(--main_color) 0%, rgb(28, 38, 127) 50%, var(--main_color) 100%);
 }
 
-.global:nth-child(3) .first{
-    color:rgb(255, 255, 255);
+.global:nth-child(3) .first {
+    color: rgb(255, 255, 255);
     background: linear-gradient(90deg, var(--main_color) 0%, rgb(209, 74, 20) 50%, var(--main_color) 100%);
 }
 
-.first{
+.first {
     border-bottom: 1px white solid;
     padding-top: 10px;
     padding-bottom: 10px;
 }
 
-.WodName{
+.WodName {
     padding-top: 10px;
     padding-bottom: 10px;
 
 }
 
-.format_location{
+.format_location {
     padding-top: 10px;
     padding-bottom: 10px;
 }
 
-.hHours{
-    width: 400px;    
+.hHours {
+    width: 400px;
     border: 2px solid var(--second_color);
     margin: auto;
     background-color: white;
     color: black;
 }
 
-.hours{
+.hours {
     padding-top: 10px;
 }
 
-.title{
-    padding-top: 10px;
-    padding-bottom: 10px;
-}
-
-.description{
+.title {
     padding-top: 10px;
     padding-bottom: 10px;
 }
 
-.tab_participants{
+.description {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.tab_participants {
     margin: auto;
     width: 80%;
     border-collapse: collapse;
     border-spacing: 0 5px;
 }
 
-.tab_participants th{
+.tab_participants th {
     border: 1px solid #ddd;
     padding: 8px;
     background-color: rgb(122, 122, 122);
-    color:white
+    color: white
 }
 
-.tab_participants td{
+.tab_participants td {
     border: 1px solid #ddd;
     padding: 8px;
     max-width: 150px;
 }
 
-.tab_participants tr:nth-child(odd){
+.tab_participants tr:nth-child(odd) {
     background-color: white;
     color: black
 }
-.tab_participants tr:nth-child(even){
+
+.tab_participants tr:nth-child(even) {
     background-color: #f2f2f2;
     color: black
 }
 
-.division{
-}
+.division {}

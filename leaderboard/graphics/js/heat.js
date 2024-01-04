@@ -67,8 +67,8 @@ function styleHeat_top(element) {
     let $item = $(
         '<div class="heat_content">' +
         '<div class="details">' +
-        '<div id="workout" class="detail" > ' + element.workoutName.toLowerCase() + ' - </div>' +
-        '<div id="division" class="detail"> ' + element.heatName.toLowerCase() + ' </div>' +
+        '<div id="workout" class="detail" > ' + element.externalName + ' - </div>' +
+        '<div id="division" class="detail"> ' + element.heatName + ' </div>' +
         '<div id="mvt" class="text-nowrap text-truncate"></div>' +
         '</div>' +
         '<div class="box_mainSponsor">' +
@@ -85,7 +85,7 @@ function styleHeat_side(element) {
     let $item = $(
         '<div class="heat_name">' +
         '<div class="heatlow">' +
-        '<div id="workout" class="m-auto text-nowrap text-truncate" > ' + element.workoutName + ' </div>' +
+        '<div id="workout" class="m-auto text-nowrap text-truncate" > ' + element.externalName + ' </div>' +
         '<div id="division" class="m-auto text-nowrap text-truncate"> ' + element.heatName + '</div>' +
         '</div>' +
         '</div>'
@@ -97,7 +97,7 @@ function styleHeat_TV(element) {
     let $item = $(
         '<div class="heat_content">' +
         '<div class="details">' +
-        '<div id="workout" class="detail" > ' + element.workoutName + ' </div>' +
+        '<div id="workout" class="detail" > ' + element.externalName + ' </div>' +
         '<div id="division" class="detail"> ' + element.heatName + ' </div>' +
         '</div>' +
         '<div class="box_FVSK">' +
@@ -115,7 +115,7 @@ function styleHeat_Versus(element) {
     let $item = $(
         '<div class="heat_content">' +
         '<div class="details">' +
-        '<div id="workout" class="detail" > ' + element.workoutName + ' </div>' +
+        '<div id="workout" class="detail" > ' + element.externalName + ' </div>' +
         '<div id="division" class="detail"> ' + element.heatName + ' </div>' +
         '</div>' +
         // '<div class="box_FVSK">' +

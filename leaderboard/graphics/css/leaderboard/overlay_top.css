@@ -100,7 +100,7 @@
     display: flex;
     align-items: center;
     text-align: center;
-    width: 45px;
+    width: var(--widthLane_top);
     margin: auto;
     white-space: nowrap;
     overflow: hidden;
@@ -115,7 +115,6 @@
     align-items: center;
     text-transform: uppercase;
     font-weight: 900;
-    width: 155px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -160,6 +159,7 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    font-size: var(--sizeFont_popup_top);
     padding-top: 10px;
     padding-bottom: 10px;
     height: var(--height_popup_top);
