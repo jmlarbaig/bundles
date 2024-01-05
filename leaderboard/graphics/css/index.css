@@ -87,6 +87,12 @@
         --sizeFont_popup_top: 20px;
         --widthLane_top: 45px;
 
+        --fontWorkout-select: 'Typographica';
+        --fontAthlete-select: 'Typographica';
+        --fontChrono-select: 'Typographica';
+        --fontPresented-select: 'Typographica';
+
+
         --firstMvt_color: rgb(223, 18, 86);
         --restMvt_color: rgba(105, 105, 105, 0.712);
 

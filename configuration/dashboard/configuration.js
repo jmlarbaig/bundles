@@ -60,23 +60,36 @@ AssetsColors.on('change', (newValue, oldValue) => {
 
 Fonts.on('change', (newValue, oldValue) => {
     if (newValue != oldValue) {
-        $("#font-select option").remove()
-        $("#font-select").append('< option value = "Adarsh" > Adarsh</option >')
-        $("#font-select").append('<option value="Antonio">Antonio</option>')
-        $("#font-select").append('<option value="Bebas">Bebas</option>')
-        $("#font-select").append('<option value="Circo">Circo</option>')
-        $("#font-select").append('<option value="Coamei">Coamei</option>')
-        $("#font-select").append('<option value="Hoop">Hoop</option>')
-        $("#font-select").append('<option value="Montserrat">Montserrat</option>')
-        $("#font-select").append('<option value="Oswald">Oswald</option>')
-        $("#font-select").append('<option value="Power">Power</option>')
-        $("#font-select").append('<option value="Roboto">Roboto</option>')
-        $("#font-select").append('<option value="Strasua">Strasua</option>')
-        $("#font-select").append('<option value="Typographica">Typographica</option>')
+
+        let listOfSelect = ['font', 'fontWorkout', 'fontAthlete', 'fontChrono', 'fontPresented']
+
+        for (let i = 0; i > listOfSelect.length; i++) {
+            element = listOfSelect[i];
+            console.log("#" + element + "-select")
+            $("#" + element + "-select").remove()
+            $("#" + element + "-select").append('<option value="Adarsh">Adarsh</option>')
+            $("#" + element + "-select").append('<option value="Antonio">Antonio</option>')
+            $("#" + element + "-select").append('<option value="Bebas">Bebas</option>')
+            $("#" + element + "-select").append('<option value="Circo">Circo</option>')
+            $("#" + element + "-select").append('<option value="Coamei">Coamei</option>')
+            $("#" + element + "-select").append('<option value="Hoop">Hoop</option>')
+            $("#" + element + "-select").append('<option value="Montserrat">Montserrat</option>')
+            $("#" + element + "-select").append('<option value="Oswald">Oswald</option>')
+            $("#" + element + "-select").append('<option value="Power">Power</option>')
+            $("#" + element + "-select").append('<option value="Roboto">Roboto</option>')
+            $("#" + element + "-select").append('<option value="Strasua">Strasua</option>')
+            $("#" + element + "-select").append('<option value="Typographica">Typographica</option>')
+
+        }
+
 
         let personalFontTab = newValue;
         Object.keys(personalFontTab).forEach((font) => {
             $("#font-select").append('<option value="' + personalFontTab[font].name + '">' + personalFontTab[font].name + '</option>')
+            $("#fontWorkout-select").append('<option value="' + personalFontTab[font].name + '">' + personalFontTab[font].name + '</option>')
+            $("#fontAthlete-select").append('<option value="' + personalFontTab[font].name + '">' + personalFontTab[font].name + '</option>')
+            $("#fontChrono-select").append('<option value="' + personalFontTab[font].name + '">' + personalFontTab[font].name + '</option>')
+            $("#fontPresented-select").append('<option value="' + personalFontTab[font].name + '">' + personalFontTab[font].name + '</option>')
         })
     }
 })

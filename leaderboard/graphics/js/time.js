@@ -90,7 +90,10 @@ function updateTime() {
             chrono = msToTime(timeDiffStart);
         }
     }
-    document.getElementById("time").innerHTML = chrono;
+    if (!chrono.includes('undefined')) {
+        document.getElementById("time").innerHTML = chrono;
+
+    }
 
 }
 

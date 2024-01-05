@@ -6,6 +6,7 @@
     width: var(--width_top);
     height: 100px;
     color: white;
+    font-family: var(--fontWorkout-select);
 }
 
 /* top | right | bottom | left */
@@ -125,6 +126,8 @@
     width: 200px;
     font-size: var(--size_font_presented);
     text-align: right;
+
+    font-family: var(--fontPresented-select);
 }
 
 
@@ -153,6 +156,7 @@
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     background-color: var(--chrono_color);
     color: var(--tx_chrono_color);
+    font-family: var(--fontChrono-select);
 }
 
 .header .box_chrono .chrono {
