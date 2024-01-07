@@ -90,10 +90,27 @@ function treatReptarget(repTarget) {
 }
 
 function treatDisplayName(displayName) {
+    let char = [];
+    let newName = "";
     if (heat.formatWod == "individual") {
-        let char = [];
-        char = displayName.toString().split(/\s+/)
-        newName = char[0].substring(0, 1) + ". " + char[1] + " " + (char[2] || "")
+        switch (setupLeaderboard.value.nameSelect) {
+            case 'first':
+                char = displayName.toString().split(/\s+/)
+                newName = char[0]
+                break;
+            case 'last':
+                char = displayName.toString().split(/\s+/)
+                newName = char[1] + " " + (char[2] || "")
+                break;
+            case 'pointFirst':
+                char = displayName.toString().split(/\s+/)
+                newName = char[0].substring(0, 1) + ". " + char[1] + " " + (char[2] || "")
+                break;
+            case 'full':
+                newName = displayName.toString()
+                break;
+        }
+
     }
     else {
         newName = displayName.toLowerCase().replace("crossfit", "");
