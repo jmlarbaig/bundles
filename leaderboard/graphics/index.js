@@ -602,7 +602,7 @@ function createOptionWorkout(data) {
     $("#workoutsMqtt").append('<option value=0>-- Please Choose Workout --</option>')
 
     for (let workout of data) {
-        $("#workoutsMqtt").append('<option value=' + workout.id + '>' + workout.name + '</option>');
+        $("#workoutsMqtt").append('<option value=' + workout.id + '>' + workout.name + '(' + workout.format.substring(0, 1) + ')</option>');
     }
 }
 

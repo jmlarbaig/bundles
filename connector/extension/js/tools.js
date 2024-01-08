@@ -79,7 +79,6 @@ module.exports = (nodecg, ip_ntp) => {
         else {
             mqttTools.disconnectMQTT()
             // ip_broker = '51.83.46.83';
-            ip_broker = '';
             ip_ntp = 'time.google.com'
             // mqttTools.connectionMQTT(ip_broker)
         }
