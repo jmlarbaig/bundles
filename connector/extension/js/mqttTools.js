@@ -28,8 +28,10 @@ module.exports = (nodecg) => {
     let lastWorkouts;
     let lastDiv;
     let launchTimer = null;
+    let online = false;
 
-    function connectionMQTT(ip_broker) {
+    function connectionMQTT(ip_broker, _location) {
+        online = _location;
         if (client == null) {
             client = mqtt.connect('mqtt://' + ip_broker + ':1883');
             streamMQTT()
@@ -49,22 +51,26 @@ module.exports = (nodecg) => {
         client.on('connect', function () {
             console.log('Connected MQTT')
             Mqtt_connected.value = { connected: true, error: '' };
-            client.subscribe('kairos/+/ERG/#');
-            client.subscribe('kairos/Minos');
-            client.subscribe('kairos/+/SCORE');
-            // client.subscribe('kairos/+/eventDescription');
-            client.subscribe('kairos/request');
-            client.subscribe('kairos/timer');
-            // client.subscribe(`kairos/+/heat_start_time`);
-            // client.subscribe(`kairos/+/nextHeat`);
-            client.subscribe(`kairos/eventId`);
-            client.subscribe(`kairos/+/currentHeat`);
-            // client.subscribe(`kairos/+/heat_status`);
-            // client.subscribe(`kairos/+/currentDiv`);
-            client.subscribe(`kairos/+/workouts`);
-            getEvent()
-            getListWorkouts();
-            getCurrentHeat();
+            if (online) {
+
+            } else {
+                client.subscribe('kairos/+/ERG/#');
+                client.subscribe('kairos/Minos');
+                client.subscribe('kairos/+/SCORE');
+                // client.subscribe('kairos/+/eventDescription');
+                client.subscribe('kairos/request');
+                client.subscribe('kairos/timer');
+                // client.subscribe(`kairos/+/heat_start_time`);
+                // client.subscribe(`kairos/+/nextHeat`);
+                client.subscribe(`kairos/eventId`);
+                client.subscribe(`kairos/+/currentHeat`);
+                // client.subscribe(`kairos/+/heat_status`);
+                // client.subscribe(`kairos/+/currentDiv`);
+                client.subscribe(`kairos/+/workouts`);
+                getEvent()
+                getListWorkouts();
+                getCurrentHeat();
+            }
         })
 
         client.on('disconnect', () => {
@@ -114,20 +120,20 @@ module.exports = (nodecg) => {
                     heatMQTT.value = _currentHeat
                 }
             } else if (topic.includes('request')) {
-                if (message == 'heatChrono') {
-                    if (launchTimer != null) {
-                        clearTimeout(launchTimer)
-                        launchTimer = null;
-                    }
-                    launchTimer = setTimeout(() => {
-                        let epoch = Date.now()
-                        //TODO Changemnt du NaN NaN 
-                        if (chrono) {
-                            let chronoForPublish = `00:${msToTime(epoch - chrono - countdown + 1000)}.0`;
-                            client.publish(`kairos/${_eventId}/chronoHeat`, `${chronoForPublish};${epoch}`)
-                        }
-                    }, 2000)
-                }
+                // if (message == 'heatChrono') {
+                //     if (launchTimer != null) {
+                //         clearTimeout(launchTimer)
+                //         launchTimer = null;
+                //     }
+                //     launchTimer = setTimeout(() => {
+                //         let epoch = Date.now()
+                //         //TODO Changemnt du NaN NaN 
+                //         if (chrono) {
+                //             let chronoForPublish = `00:${msToTime(epoch - chrono - countdown + 1000)}.0`;
+                //             client.publish(`kairos/${_eventId}/chronoHeat`, `${chronoForPublish};${epoch}`)
+                //         }
+                //     }, 2000)
+                // }
             } else if (topic.includes('timer')) {
                 if (message != '') {
                     if (message != '0') {

@@ -74,13 +74,13 @@ module.exports = (nodecg, ip_ntp) => {
             _ip_ntp = ip_ntp;
 
             mqttTools.disconnectMQTT()
-            mqttTools.connectionMQTT(ip_broker)
+            mqttTools.connectionMQTT(ip_broker, false)
         }
         else {
             mqttTools.disconnectMQTT()
-            // ip_broker = '51.83.46.83';
+            ip_broker = '51.83.46.83';
             ip_ntp = 'time.google.com'
-            // mqttTools.connectionMQTT(ip_broker)
+            // mqttTools.connectionMQTT(ip_broker, true)
         }
 
         time(ip_ntp)
@@ -102,7 +102,7 @@ module.exports = (nodecg, ip_ntp) => {
     changeIpAdresse()
 
     setInterval(checkIpKairos, 1000);
-    setInterval(timer, 1000)
+    setInterval(timer, 10000)
 
     console.log('submodule ', __filename, ' is init')
 }
