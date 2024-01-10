@@ -25,6 +25,10 @@ module.exports = (nodecg, Connected) => {
     const HeatResults = nodecg.Replicant('HeatResults')
     const OSDivisionWorkout = nodecg.Replicant('OSDivisionWorkout')
 
+    const HeatResultsFromCC = nodecg.Replicant('HeatResults')
+    const OSDivisionWorkoutFromCC = nodecg.Replicant('OSDivisionWorkout')
+    const OSResultFromCC = nodecg.Replicant('OSResult')
+
     const eventId = nodecg.Replicant('eventId', { defaultValue: 0, persistent: false })
     const TopScore = nodecg.Replicant('TopScore')
     const WorkoutInfos = nodecg.Replicant('WorkoutInfos');
@@ -84,6 +88,24 @@ module.exports = (nodecg, Connected) => {
                 warmup.updateWorkout(value)
             }
         }
+    })
+
+    nodecg.listenFor('actualiser-heatResults', (value, ack) => {
+        cc.loadHeatResultsFromFileCC().then((value) => {
+            HeatResultsFromCC.value = value
+        })
+    })
+
+    nodecg.listenFor('actualiser-overallResultsByWorkout', (value, ack) => {
+        cc.loadDivisionResultsFromFileCC().then((value) => {
+            OSDivisionWorkoutFromCC.value = value
+        })
+    })
+
+    nodecg.listenFor('actualiser-overallResults', (val, ack) => {
+        cc.loadOverallResultsFromFileCC().then((value) => {
+            OSResultFromCC.value = value
+        })
     })
 
     nodecg.listenFor('attribution_lane', (value, ack) => {

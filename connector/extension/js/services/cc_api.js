@@ -246,6 +246,54 @@ module.exports = () => {
         }).then((response) => response.json())
     }
 
+    ///////////////////////////////////////////
+
+    ///////////////////////////////////////////
+
+    ///////////////////////////////////////////
+
+    ///////////////////////////////////////////
+
+    async function loadHeatResultsFromFileCC() {
+        return fetch("https://competitioncorner.net/api2/v1/events/10738/cuecard/heat-results/f/3/file.json", {
+            method: "GET",
+            headers: {
+                'Content-Type': "application/json",
+                'cache-control':
+                    '[no-cache,  no-store,  max-age=0,  must-revalidate], expires: [0], pragma: [no-cache]',
+                'Charset': 'utf-8',
+                'Authorization': 'Bearer ' + token.value
+            }
+        }).then((response) => response.json())
+    }
+
+    async function loadDivisionResultsFromFileCC() {
+        return fetch("https://competitioncorner.net/api2/v1/events/10738/cuecard/division-results/f/3/file.json", {
+            method: "GET",
+            headers: {
+                'Content-Type': "application/json",
+                'cache-control':
+                    '[no-cache,  no-store,  max-age=0,  must-revalidate], expires: [0], pragma: [no-cache]',
+                'Charset': 'utf-8',
+                'Authorization': 'Bearer ' + token.value
+            }
+        }).then((response) => response.json())
+    }
+
+    async function loadOverallResultsFromFileCC() {
+        return fetch("https://competitioncorner.net/api2/v1/events/10738/cuecard/standings/f/3/file.json", {
+            method: "GET",
+            headers: {
+                'Content-Type': "application/json",
+                'cache-control':
+                    '[no-cache,  no-store,  max-age=0,  must-revalidate], expires: [0], pragma: [no-cache]',
+                'Charset': 'utf-8',
+                'Authorization': 'Bearer ' + token.value
+            }
+        }).then((response) => response.json())
+    }
+
+
     return {
         logCC,
         dashboardEventCC,
@@ -263,5 +311,8 @@ module.exports = () => {
         loadOverallStanding,
         loadWorkoutsByDivision,
         loadHeatsByWorkout,
+        loadHeatResultsFromFileCC,
+        loadDivisionResultsFromFileCC,
+        loadOverallResultsFromFileCC
     }
 }
