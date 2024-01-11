@@ -626,7 +626,6 @@ function changeHeat() {
     data.workoutId = $('#workoutsMqtt').val()
     data.heatId = $('#heatsMqtt').val()
 
-    console.log(data)
 
     resetChrono()
     nodecg.sendMessageToBundle('change_heat', 'connector', data)

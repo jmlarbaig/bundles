@@ -102,7 +102,7 @@ module.exports = (nodecg, ip_ntp) => {
     changeIpAdresse()
 
     setInterval(checkIpKairos, 1000);
-    setInterval(timer, 10000)
+    setInterval(timer, 1000)
 
     console.log('submodule ', __filename, ' is init')
 }
