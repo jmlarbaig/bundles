@@ -255,7 +255,7 @@ module.exports = () => {
     ///////////////////////////////////////////
 
     async function loadHeatResultsFromFileCC() {
-        return fetch("https://competitioncorner.net/api2/v1/events/10738/cuecard/heat-results/f/3/file.json", {
+        return fetch("https://competitioncorner.net/api2/v1/events/10738/cuecard/heat-results/f/3/file.json?per_page=50	", {
             method: "GET",
             headers: {
                 'Content-Type': "application/json",
@@ -268,7 +268,7 @@ module.exports = () => {
     }
 
     async function loadDivisionResultsFromFileCC() {
-        return fetch("https://competitioncorner.net/api2/v1/events/10738/cuecard/division-results/f/3/file.json", {
+        return fetch("https://competitioncorner.net/api2/v1/events/10738/cuecard/division-results/f/3/file.json?per_page=50", {
             method: "GET",
             headers: {
                 'Content-Type': "application/json",
@@ -281,7 +281,7 @@ module.exports = () => {
     }
 
     async function loadOverallResultsFromFileCC() {
-        return fetch("https://competitioncorner.net/api2/v1/events/10738/cuecard/standings/f/3/file.json", {
+        return fetch("https://competitioncorner.net/api2/v1/events/10738/cuecard/standings/f/3/file.json?per_page=50", {
             method: "GET",
             headers: {
                 'Content-Type': "application/json",
