@@ -81,9 +81,9 @@ module.exports = (nodecg, Connected) => {
                     AttributionLane.value = lane
                 })
             }
-            if (value.athletes.length > 0 && athletesDataCC != null) {
-                updateCIS(athletesDataCC, value.athletes)
-            }
+            // if (value.athletes.length > 0 && athletesDataCC != null) {
+            //     updateCIS(athletesDataCC, value.athletes)
+            // }
             if (value != undefined) {
                 warmup.updateWorkout(value)
             }
@@ -192,9 +192,9 @@ module.exports = (nodecg, Connected) => {
             if (static.workoutId != 0 && static.athletes.length > 0) {
                 updateScoreToBeat(static.workoutId, static.athletes)
             }
-            if (static.athletes.length > 0 && athletesDataCC != null) {
-                updateCIS(athletesDataCC, static.athletes)
-            }
+            // if (static.athletes.length > 0 && athletesDataCC != null) {
+            //     updateCIS(athletesDataCC, static.athletes)
+            // }
             if (static != undefined) {
                 warmup.updateWorkout(static)
             }
@@ -239,12 +239,14 @@ module.exports = (nodecg, Connected) => {
     }
 
     async function updateCIS(liste_cc, warmUp) {
+        console.log(warmUp)
         let listeCurrentHeat = []
         let listeCurrentHeat_ath = []
         let listParticipants = warmUp.wod.participants
         let athletesOfCurrentHeat = warmUp.heat.stations
         athletesOfCurrentHeat.forEach(athlete => {
             let partName = athlete.participantName;
+            console.log(partName)
 
             if (partName[partName.length - 1] == ' ') {
                 partName = partName.substring(0, partName.length - 1)

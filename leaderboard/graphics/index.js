@@ -382,16 +382,16 @@ logoEvent.on('change', (newValue, oldValue) => {
 });
 
 
-mainSponsors.on('change', (newValue) => {
-    if (newValue.length > 0) {
+// mainSponsors.on('change', (newValue) => {
+//     if (newValue.length > 0) {
 
-        $(".mainSponsor").css("background-image", "url(" + newValue[0].url + ")");
-        $(".mainSponsor").toggle("slide")
-    }
-    else {
-        $(".mainSponsor").toggle("slide")
-    }
-})
+//         $(".mainSponsor").css("background-image", "url(" + newValue[0].url + ")");
+//         $(".mainSponsor").toggle("slide")
+//     }
+//     else {
+//         $(".mainSponsor").toggle("slide")
+//     }
+// })
 
 
 bottomSponsors.on('change', (newValue) => {
@@ -437,6 +437,19 @@ setupLeaderboard.on('change', (newValue, oldValue) => {
                 break;
         }
     })
+
+    if (newValue.mainSponsorSelect != '') {
+
+        $(".mainSponsor").css("background-image", "url(" + newValue.mainSponsorSelect + ")");
+
+        if (!$(".mainSponsor").is(':visible')) {
+            $(".mainSponsor").fadeIn()
+        }
+    }
+    else {
+        $(".mainSponsor").fadeOut()
+    }
+
 
 
     if (!newValue.manualChrono) {

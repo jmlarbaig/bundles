@@ -80,7 +80,7 @@ module.exports = () => {
     }
 
     async function loadWorkoutsPlanning(eventId) {
-        return fetch("https://competitioncorner.net/api2/v1/schedule/events/" + eventId + "/workouts?preview=false", {
+        return fetch("https://competitioncorner.net/api2/v1/schedule/events/" + eventId + "/workouts?preview=true&showHiddenWorkouts=true&showInternalNames=true'", {
             method: "GET",
             headers: {
                 'Content-Type': "application/json",
@@ -95,7 +95,7 @@ module.exports = () => {
     }
 
     async function loadHeats(workoutId) {
-        return fetch('https://competitioncorner.net/api2/v1/schedule/workout/' + workoutId, {
+        return fetch('https://competitioncorner.net/api2/v1/schedule/workout/' + workoutId + '?preview=true&showHiddenWorkouts=true&showInternalNames=true', {
             method: "GET",
             headers: {
                 'Content-Type': "application/json",

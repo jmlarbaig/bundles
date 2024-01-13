@@ -12,24 +12,32 @@ module.exports = (nodecg, cc) => {
 
 		cc.loadWorkoutsPlanning(data.eventId).then((response) => {
 
-			// console.log(response)
+			console.log("Workout ID ", data.workoutId)
 
 			WorkoutTab = response.workouts;
 
 			for (let i = 0; i < WorkoutTab.length; i++) {
 
+
+				console.log('WorkoutTab[i].id:  ', WorkoutTab[i].id)
+
 				if (WorkoutTab[i].id == data.workoutId) {
+
+					console.log('update Heats')
 
 					updateHeats(WorkoutTab[i], data.eventId).then((tab) => {
 
+						console.log("Tab : ", tab)
+						// console.log(data.eventName)
+
 						if (WorkoutTab[i + 1] != undefined) {
-							i++
+							i++;
 							updateHeats(WorkoutTab[i], data.eventId).then(() => {
-								// console.log('5')
+								console.log('5')
 								updateWarmUp(data.eventName, data.workoutId, data.heatId)
 							})
 						} else {
-							// console.log('4')
+							console.log('4')
 							updateWarmUp(data.eventName, data.workoutId, data.heatId)
 						}
 					})
@@ -52,6 +60,10 @@ module.exports = (nodecg, cc) => {
 
 	function updateWarmUp(eventName, workoutId, heatId) {
 
+		console.log('eventName', eventName)
+		console.log('workoutId', workoutId)
+		console.log('heatId', heatId)
+
 		try {
 
 			let heatWUP = []
@@ -61,7 +73,10 @@ module.exports = (nodecg, cc) => {
 
 			if (WorkoutTab != undefined) {
 				for (let i = 0; i < WorkoutTab.length; i++) {
+
+					console.log('WorkoutTab[i].id = ', WorkoutTab[i].id)
 					if (WorkoutTab[i].id == workoutId) {
+						console.log('WorkoutTab[i].heats : ', WorkoutTab[i].heats)
 						for (let y = 0; y < WorkoutTab[i].heats.length; y++) {
 							if (WorkoutTab[i].heats[y].id == heatId) {
 								current.wod = (WorkoutTab[i])
@@ -118,14 +133,16 @@ module.exports = (nodecg, cc) => {
 				heatWUP.push(next)
 				heatWUP.push(warm)
 
-				let obeject = {
+				let object = {
 					'eventName': eventName,
 					'warmUp': heatWUP
 				}
 
-				listWarmpUp.value = obeject
+				listWarmpUp.value = object
 
-				nodecg.sendMessage('update_CIS', obeject.warmUp[0])
+				console.log("WarmUp : ", object)
+
+				nodecg.sendMessage('update_CIS', object.warmUp[0])
 			}
 		}
 		catch (e) {

@@ -120,20 +120,20 @@ module.exports = (nodecg) => {
                     heatMQTT.value = _currentHeat
                 }
             } else if (topic.includes('request')) {
-                // if (message == 'heatChrono') {
-                //     if (launchTimer != null) {
-                //         clearTimeout(launchTimer)
-                //         launchTimer = null;
-                //     }
-                //     launchTimer = setTimeout(() => {
-                //         let epoch = Date.now()
-                //         //TODO Changemnt du NaN NaN 
-                //         if (chrono) {
-                //             let chronoForPublish = `00:${msToTime(epoch - chrono - countdown + 1000)}.0`;
-                //             client.publish(`kairos/${_eventId}/chronoHeat`, `${chronoForPublish};${epoch}`)
-                //         }
-                //     }, 2000)
-                // }
+                if (message == 'heatChrono') {
+                    if (launchTimer != null) {
+                        clearTimeout(launchTimer)
+                        launchTimer = null;
+                    }
+                    launchTimer = setTimeout(() => {
+                        let epoch = Date.now()
+                        //TODO Changemnt du NaN NaN 
+                        if (chrono) {
+                            let chronoForPublish = `00:${msToTime(epoch - chrono - countdown + 1000)}.0`;
+                            client.publish(`kairos/${_eventId}/chronoHeat`, `${chronoForPublish};${epoch}`)
+                        }
+                    }, 2000)
+                }
             } else if (topic.includes('timer')) {
                 if (message != '') {
                     if (message != '0') {
@@ -329,8 +329,10 @@ module.exports = (nodecg) => {
         if (client.connected) {
             let _i = infos.split("_");
             let lane = _i[0];
-            if (parseInt(_i[0]) < 10) {
+            if (parseInt(_i[0]) < 100 && parseInt(_i[0]) > 9) {
                 lane = "0" + _i[0];
+            } else if (parseInt(_i[0]) < 10 && parseInt(_i[0]) > 1) {
+                lane = "00" + _i[0];
             }
             console.log(`kairos/minos${lane}/${_i[1]}`);
             client.publish(`kairos/minos${lane}/${_i[1]}`, `reject`);

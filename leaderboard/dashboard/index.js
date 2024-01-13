@@ -12,6 +12,9 @@ const ipAddress = nodecg.Replicant('ipAddress', 'connector')
 const athletesHeat = nodecg.Replicant('athletesHeat')
 
 
+const mainSponsors = nodecg.Replicant('assets:mainSponsor', 'connector')
+
+
 var participantEvent = {}
 var participantsCurrentHeats = {}
 var currentHeat = {}
@@ -117,3 +120,29 @@ function uncheckedParameters() {
         }
     }
 }
+
+mainSponsors.on('change', (newValue, oldValue) => {
+    console.log(newValue)
+    $("#mainSponsorSelect option").remove()
+
+    if (newValue.length > 0) {
+
+        $('#mainSponsorSelect').append($('<option>', {
+            value: '',
+            text: 'Please, choose sponsor'
+        }));
+        newValue.forEach((e, i) => {
+
+            $('#mainSponsorSelect').append($('<option>', {
+                value: e.url,
+                text: e.name
+            }));
+        })
+    } else {
+
+        $('#mainSponsorSelect').append($('<option>', {
+            value: '',
+            text: 'No sponsor'
+        }));
+    }
+})
