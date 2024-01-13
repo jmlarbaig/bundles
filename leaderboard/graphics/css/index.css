@@ -192,7 +192,6 @@
         font-family: var(--font-select);
         background-size: cover;
         zoom: var(--zoom);
-        letter-spacing: var(--letter_spacing);
     }
 
     .nobody {
