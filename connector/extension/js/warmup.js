@@ -12,32 +12,32 @@ module.exports = (nodecg, cc) => {
 
 		cc.loadWorkoutsPlanning(data.eventId).then((response) => {
 
-			console.log("Workout ID ", data.workoutId)
+			// console.log("Workout ID ", data.workoutId)
 
 			WorkoutTab = response.workouts;
 
 			for (let i = 0; i < WorkoutTab.length; i++) {
 
 
-				console.log('WorkoutTab[i].id:  ', WorkoutTab[i].id)
+				// console.log('WorkoutTab[i].id:  ', WorkoutTab[i].id)
 
 				if (WorkoutTab[i].id == data.workoutId) {
 
-					console.log('update Heats')
+					// console.log('update Heats')
 
 					updateHeats(WorkoutTab[i], data.eventId).then((tab) => {
 
-						console.log("Tab : ", tab)
+						// console.log("Tab : ", tab)
 						// console.log(data.eventName)
 
 						if (WorkoutTab[i + 1] != undefined) {
 							i++;
 							updateHeats(WorkoutTab[i], data.eventId).then(() => {
-								console.log('5')
+								// console.log('5')
 								updateWarmUp(data.eventName, data.workoutId, data.heatId)
 							})
 						} else {
-							console.log('4')
+							// console.log('4')
 							updateWarmUp(data.eventName, data.workoutId, data.heatId)
 						}
 					})
@@ -60,9 +60,9 @@ module.exports = (nodecg, cc) => {
 
 	function updateWarmUp(eventName, workoutId, heatId) {
 
-		console.log('eventName', eventName)
-		console.log('workoutId', workoutId)
-		console.log('heatId', heatId)
+		// console.log('eventName', eventName)
+		// console.log('workoutId', workoutId)
+		// console.log('heatId', heatId)
 
 		try {
 
@@ -74,9 +74,9 @@ module.exports = (nodecg, cc) => {
 			if (WorkoutTab != undefined) {
 				for (let i = 0; i < WorkoutTab.length; i++) {
 
-					console.log('WorkoutTab[i].id = ', WorkoutTab[i].id)
+					// console.log('WorkoutTab[i].id = ', WorkoutTab[i].id)
 					if (WorkoutTab[i].id == workoutId) {
-						console.log('WorkoutTab[i].heats : ', WorkoutTab[i].heats)
+						// console.log('WorkoutTab[i].heats : ', WorkoutTab[i].heats)
 						for (let y = 0; y < WorkoutTab[i].heats.length; y++) {
 							if (WorkoutTab[i].heats[y].id == heatId) {
 								current.wod = (WorkoutTab[i])
@@ -140,7 +140,7 @@ module.exports = (nodecg, cc) => {
 
 				listWarmpUp.value = object
 
-				console.log("WarmUp : ", object)
+				// console.log("WarmUp : ", object)
 
 				nodecg.sendMessage('update_CIS', object.warmUp[0])
 			}

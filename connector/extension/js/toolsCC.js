@@ -239,7 +239,7 @@ module.exports = (nodecg, Connected) => {
     }
 
     async function updateCIS(liste_cc, warmUp) {
-        console.log(warmUp)
+        // console.log(warmUp)
         let listeCurrentHeat = []
         let listeCurrentHeat_ath = []
         let listParticipants = warmUp.wod.participants
