@@ -329,12 +329,21 @@ module.exports = (nodecg) => {
         if (client.connected) {
             let _i = infos.split("_");
             let lane = _i[0];
-            if (parseInt(_i[0]) < 100 && parseInt(_i[0]) > 9) {
-                lane = "0" + _i[0];
-            } else if (parseInt(_i[0]) < 10 && parseInt(_i[0]) > 1) {
-                lane = "00" + _i[0];
+            let _ip = _i[1].toString();
+
+            if (parseInt(_i[0]) < 10) {
+                lane = "0".concat(_i[0]);
             }
-            console.log(`kairos/minos${lane}/${_i[1]}`);
+
+            if (parseInt(_i[1]) < 10) {
+                _ip = "00".concat(_i[1].toString());
+            } else if (parseInt(_i[1]) >= 10 && parseInt(_i[1]) < 100) {
+                _ip = "0".concat(_i[1].toString());
+            }
+
+            console.log(lane)
+            console.log(_ip)
+
             client.publish(`kairos/minos${lane}/${_i[1]}`, `reject`);
         }
     })
