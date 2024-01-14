@@ -17,7 +17,11 @@ module.exports = function (nodecg) {
         }
     } else {
         console.log("Creating the file")
-        fs.writeFileSync(colorFile, JSON.stringify(Colors.value));
+        var val = JSON.stringify(Colors.value)
+        if (val == undefined) {
+            val = {}
+        }
+        fs.writeFileSync(colorFile, val.toString());
     }
 
     nodecg.listenFor('colorOverwrite', (value, ack) => {

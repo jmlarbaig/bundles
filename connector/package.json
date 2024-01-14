@@ -8,6 +8,12 @@
     "email": "jeanmarie.larbaig@gmail.com",
     "url": ""
   },
+  "dependencies": {
+    "convert-excel-to-json": "^1.7.0",
+    "ip": "^1.1.8",
+    "mqtt": "^1.1.8",
+    "ntp-client": "^0.5.3"
+  },
   "files": [
     "dashboard",
     "graphics",
@@ -19,7 +25,7 @@
     "nodecg-bundle"
   ],
   "nodecg": {
-    "compatibleRange": "^1.9.0",
+    "compatibleRange": "^1.9.0||^2",
     "dashboardPanels": [
       {
         "name": "connection",

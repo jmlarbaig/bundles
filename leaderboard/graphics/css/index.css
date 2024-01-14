@@ -88,6 +88,8 @@
         --widthLane_top: 45px;
 
         --fontWorkout-select: 'Typographica';
+        --firstFontWorkout-select: 'Typographica';
+        --othersFontWorkout-select: 'Typographica';
         --fontAthlete-select: 'Typographica';
         --fontChrono-select: 'Typographica';
         --fontPresented-select: 'Typographica';
