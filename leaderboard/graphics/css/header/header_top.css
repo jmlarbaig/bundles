@@ -95,19 +95,19 @@
     text-overflow: ellipsis;
     color: var(--restMvt_color);
     text-transform: capitalize;
-    font-size: var(--sizeFontMvt_top);
 }
 
 #mvt span {
     padding: 10px;
     letter-spacing: var(--letter_spacing);
     font-family: var(--othersFontWorkout-select);
+    font-size: var(--sizeFontOthersMvt_top);
 }
 
 #mvt span:first-child {
     color: var(--firstMvt_color);
     font-weight: 800;
-
+    font-size: var(--sizeFontFirstMvt_top);
     font-family: var(--firstFontWorkout-select);
 }
 
