@@ -400,7 +400,7 @@ bottomSponsors.on('change', (newValue) => {
     $list.find(".sponsorImg").remove();
 
     if (newValue.length > 0) {
-        $("#sponsorLogo").css('background-color', "black")
+        $("#sponsorLogo").css('background-color', "rgba(0,0,0,0)")
         newValue.forEach(element => {
             var $item = $('<img class="sponsorImg" id="sponsorImg" src="' + element.url + '"></img>')
             $list.append($item);
