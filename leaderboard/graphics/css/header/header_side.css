@@ -73,13 +73,13 @@
 
 #workout {
     margin: auto;
-    font-size: 1.6em;
+    font-size: var(--SizeFontWorkoutNameOverlaySide);
     font-weight: 800;
 }
 
 #division {
     margin: auto;
-    font-size: 1em;
+    font-size: var(--SizeFontHeatNameOverlaySide);
     font-weight: 600;
     font-style: italic;
     text-transform: uppercase;

@@ -95,6 +95,13 @@
         --fontChrono-select: 'Typographica';
         --fontPresented-select: 'Typographica';
 
+        --SizeFontRepTargetOverlaySide: 20px;
+
+        --SizeNameoverlaySide: 20px;
+        --SizeFontDivisionOverlaySide: 20px;
+        --SizeFontWorkoutNameOverlaySide: 20px;
+
+        --SizeFontHeatNameOverlaySide: 20px;
 
         --firstMvt_color: rgb(223, 18, 86);
         --restMvt_color: rgba(105, 105, 105, 0.712);
@@ -250,5 +257,5 @@
     .sponsorImg {
         height: var(--hieghtBottomLogo);
         margin: 10px;
-        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        /* box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; */
     }
