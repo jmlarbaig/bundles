@@ -1,64 +1,5 @@
 
-const athletes_init = {
-    "lane": 0,
-    "displayName": "",
-    "rank": 0,
-    "overallPoints": 0,
-    "age": 0,
-    "heigth": 0,
-    "weight": 0,
-    "affiliate": "",
-    "division": "",
-    "status": "",
-    "CurrentRank": 0,
-    "score_abs": 0,
-    "score_rel": 0,
-    "currentRound": 0,
-    "tieBreak": "",
-    "result": "",
-    "currentMouvement": [
-        {
-            "mouvementName": "0",
-            "nextMouvement": "",
-            "repTarget": 0,
-            "rep/min": 0,
-            "power": 0,
-            "cal_h": 0,
-            "s/m": 0
-        }
-    ],
-    "Log_mvt_time": [
-        {
-        }
-    ],
-    "Log_serie_time": [
-        {
-        }
-    ],
-    "Log_round_time": [
-        {}
-    ],
-    "countryCode": "",
-    "benchmark": [
-        {
-            "ForTime": {
-                "fran": "",
-                "helen": "",
-                "grace": "",
-                "filthy": "",
-                "sprint400m": "",
-                "run5k": "",
-                "twoKRow": "",
-                "fightgonebad": "",
-                "cleanJerk": "",
-                "deadlift": "",
-                "crossfitTotal": 0,
-                "snatch": "",
-                "backSquat": ""
-            }
-        }
-    ]
-}
+
 
 
 var athletesDivision = {}
@@ -70,7 +11,10 @@ var height_tot = 0
 function resetLeaderboard(newData) {
     try {
 
-
+        if (overlay == "overlay_wpa") {
+            $("#ath_left").find('.score').text('')
+            $("#ath_right").find('.score').text('')
+        }
 
         var data = { athletes: "" }
         data.athletes = newData
@@ -81,10 +25,12 @@ function resetLeaderboard(newData) {
             setupLeaderboard.value.leaderboards != true ? $(".leaderboards").hide() : ""
         }
 
+        if (overlay == "overlay_wpa") {
+            $('.rank').hide()
+            $("#ath_left").find('.score').text('')
+            $("#ath_right").find('.score').text('')
+        }
 
-
-        var $tab = $(".leaderboards")
-        $tab.find(".leaderboard").remove();
 
         //! on traite le wod en cours 
 
@@ -116,14 +62,25 @@ function resetLeaderboard(newData) {
         }
 
         //! Initialisation des athletes dans un seul format avec un triage par division
-
+        // ! On crée un tableau par division
         athletesDivision = treatDivisions(divisionsNames, data.athletes)
 
-        // ! On crée un tableau par division
+
+        var $tabBox = $(".box_heat")
+        $tabBox.find(".topLeaderboard").remove();
+
+        var $tab = $(".leaderboards")
+        $tab.find(".leaderboard").remove();
+
+
+
+
+        // ! On crée un leaderboard par division
         Object.values(athletesDivision).forEach((elementDiv, indexDivision) => {
 
             listOfAth.push("<span>#" + divisionsNames[indexDivision] + "</span>")
 
+            let $tabItemBox;
             let $tabItem;
             switch (overlay) {
                 case 'overlay_side':
@@ -153,27 +110,42 @@ function resetLeaderboard(newData) {
                 case 'versus':
                     $tabItem = headerVersus(indexDivision)
                     break;
+                case 'overlay_wpa':
+                    $tabItemBox = headerVersusTopWPA();
+                    if (athletesDivision[0].length > 2) {
+                        $tabItem = headerVersusWPA(divisionsNames, indexDivision)
+                    }
+                    break;
             }
 
-            if (overlay == "versus") {
-                indexDivision == 0 ? $tab.append($tabItem) : '';
+            if (overlay == "versus" || overlay == "overlay_wpa") {
+                indexDivision == 0 && $tabBox.append($tabItemBox);
+                if (athletesDivision[0].length > 2) {
+                    $tab.append($tabItem);
+                } else {
+                    indexDivision == 0 && $tab.append($tabItem);
+                }
             } else {
                 $tabItem.hide()
+
                 $tab.append($tabItem);
                 setTimeout(() => {
                     $tabItem.show(1000)
-
                 })
             }
-
 
             if (overlay == 'commentator') {
                 createStatsHeader(indexDivision);
             }
 
+            let $listBox;
             let $list;
             if (overlay == "versus") {
                 $list = $("#leaderboard" + indexDivision);
+            } else if (overlay == "overlay_wpa") {
+                $listBox = $("#topLeaderboard")
+                $list = $("#leaderboard" + indexDivision + " #athletes");
+                $listBox.find(".athleteTop").remove();
             } else {
                 $list = $("#leaderboard" + indexDivision + " #athletes");
             }
@@ -184,6 +156,7 @@ function resetLeaderboard(newData) {
 
             Object.values(elementDiv).forEach((elementAth, indexAthletes) => {
 
+                let $itemBox;
                 let $item;
                 switch (overlay) {
                     case 'overlay_side':
@@ -212,6 +185,16 @@ function resetLeaderboard(newData) {
                         break;
                     case 'versus':
                         $item = leaderboardVersus(elementAth)
+                        break;
+                    case 'overlay_wpa':
+                        console.log(athletesDivision[0].length > 2)
+                        if (athletesDivision[0].length > 2) {
+                            $itemBox = leaderboardVersusTopSTWPA();
+                            $item = leaderboardVersusSideWPA(elementAth)
+                        } else {
+                            $item = leaderboardVersusTopWPA(elementAth)
+                        }
+                        break;
                 }
 
                 elementAth.$item = $item;
@@ -222,6 +205,13 @@ function resetLeaderboard(newData) {
                 if (overlay == "versus") {
                     if (indexAthletes == 0 || indexAthletes == 1) {
                         $list.append($item);
+                    }
+                } else if (overlay == "overlay_wpa") {
+                    if (athletesDivision[0].length > 2) {
+                        indexAthletes == 0 && $listBox.append($itemBox);
+                        $list.append($item);
+                    } else {
+                        $listBox.append($item);
                     }
                 } else {
 
@@ -235,8 +225,7 @@ function resetLeaderboard(newData) {
                 if (overlay == 'versus') {
                     elementAth.$item.slideDown(1000)
                 } else {
-                    if (overlay != 'overlay_side' && overlay != 'overlay_side_v1') {
-
+                    if (overlay != 'overlay_side' && overlay != 'overlay_side_v1' && overlay != 'overlay_wpa') {
                         elementAth.$item.fadeIn(1000)
                     }
                 }
@@ -289,7 +278,7 @@ function resetLeaderboard(newData) {
 
                         $('#box_svg').slideDown(1000)
                         setTimeout(() => {
-                            if (overlay == 'overlay_side' || overlay == 'overlay_side_v1') {
+                            if (overlay == 'overlay_side' || overlay == 'overlay_side_v1' || overlay == 'overlay_wpa') {
                                 elementAth.$item.toggle("slide")
                             }
 

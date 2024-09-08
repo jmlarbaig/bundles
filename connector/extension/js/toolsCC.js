@@ -246,7 +246,7 @@ module.exports = (nodecg, Connected) => {
         let athletesOfCurrentHeat = warmUp.heat.stations
         athletesOfCurrentHeat.forEach(athlete => {
             let partName = athlete.participantName;
-            console.log(partName)
+            // console.log(partName)
 
             if (partName[partName.length - 1] == ' ') {
                 partName = partName.substring(0, partName.length - 1)
@@ -269,11 +269,13 @@ module.exports = (nodecg, Connected) => {
 
                 listeCurrentHeat[athlete.station].ath = []
 
-                if (liste_cc.Team.hasOwnProperty(partName)) {
+                // console.log(liste_cc)
+
+                if (liste_cc != null && liste_cc.Team.hasOwnProperty(partName)) {
                     listeCurrentHeat[athlete.station].ath = liste_cc.Team[partName]
                     listeCurrentHeat[athlete.station].type = 'team'
                 }
-                if (liste_cc.Individual.hasOwnProperty(partName)) {
+                if (liste_cc != null && liste_cc.Individual.hasOwnProperty(partName)) {
                     listeCurrentHeat[athlete.station].ath = liste_cc.Individual[partName]
                     listeCurrentHeat[athlete.station].type = 'individual'
                 }

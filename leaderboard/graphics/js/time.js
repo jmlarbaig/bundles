@@ -16,7 +16,7 @@ function updateTime() {
 
 
 
-    if (overlay == 'overlay_side' || overlay == 'overlay_side_v1') {
+    if (overlay == 'overlay_side' || overlay == 'overlay_side_v1' || overlay == 'overlay_wpa') {
         $(".chrono").css("color", "rgb(255,255,255")
     } else {
         $(".box_chrono").css("background-color", Clrs.chrono_color)
@@ -39,7 +39,7 @@ function updateTime() {
         if (overlay != 'lane') {
             $('#cap').fadeOut(1000)
         }
-        if (overlay == 'overlay_side' || overlay == 'overlay_side_v1') {
+        if (overlay == 'overlay_side' || overlay == 'overlay_side_v1' || overlay == 'overlay_wpa') {
             $(".chrono").css("color", "rgb(255,50,80")
         } else {
             $(".box_chrono").css("background-color", "rgba(255,50,80,1)")
@@ -75,7 +75,7 @@ function updateTime() {
 
     }
     if (timeDiffTimeCap > -30000 && timeDiffTimeCap < 0 && timeDiffStart > 0) {
-        if (overlay == 'overlay_side' || overlay == 'overlay_side_v1') {
+        if (overlay == 'overlay_side' || overlay == 'overlay_side_v1' || overlay == 'overlay_wpa') {
             $(".chrono").css("color", "rgb(255,50,80")
         } else {
             $(".box_chrono").css("background-color", "rgba(255,50,80,1)")

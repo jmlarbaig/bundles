@@ -36,47 +36,47 @@ module.exports = function (nodecg) {
     router.get('/echo:id', (req, res) => {
         let lane = req.params.id;
         res.redirect(url.format({
-            pathname:"/bundles/leaderboard/graphics/echo.html",
+            pathname: "/bundles/leaderboard/graphics/echo.html",
             query: {
-               "lane": lane,
-             }
-          }));
+                "lane": lane,
+            }
+        }));
     });
 
     router.get('/lane:id', (req, res) => {
         let lane = req.params.id;
         res.redirect(url.format({
-            pathname:"/bundles/leaderboard/graphics/lane.html",
+            pathname: "/bundles/leaderboard/graphics/lane.html",
             query: {
-               "lane": lane,
-             }
-          }));
+                "lane": lane,
+            }
+        }));
     });
 
-    nodecg.mount('/leaderboard', router);
+    //nodecg.mount('/leaderboard', router);
 
 
     const setupLeaderboard = nodecg.Replicant('setupLeaderboard')
 
-    if (fs.existsSync(setupFile)) {   
+    if (fs.existsSync(setupFile)) {
         try {
             setupLeaderboard.value = JSON.parse(fs.readFileSync(setupFile))
-          } 
+        }
         catch (err) {
             console.error(err)
-          }
-	}else{
+        }
+    } else {
         console.log("Creating the file")
         fs.writeFileSync(setupFile, "{}");
     }
 
-    nodecg.listenFor('setupFile', (value, ack) =>{
+    nodecg.listenFor('setupFile', (value, ack) => {
         let data = JSON.stringify(value);
-        fs.writeFile(setupFile, data, 'utf8',function(err) {
+        fs.writeFile(setupFile, data, 'utf8', function (err) {
             if (err) throw err;
             console.log('complete');
-            })
-            setupLeaderboard.value = value
+        })
+        setupLeaderboard.value = value
     })
 
 };

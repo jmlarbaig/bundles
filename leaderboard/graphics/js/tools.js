@@ -18,6 +18,24 @@ function timeToDateTime(time) {
     }
 }
 
+function timeToTimestamp(time) {
+    // trame : 00:00:06.10
+    var times = time.split(':');
+    if (times.length == 3) {
+        var hours = parseInt(times[0]) * 3600;
+        var minutes = parseInt(times[1]) * 60000;
+        var secmili = times[2].split('.');
+        var seconds = parseInt(secmili[0]) * 1000;
+        var mili = parseInt(secmili[1]);
+
+
+        var timestamp = hours + minutes + seconds + mili;
+
+        // Pas de milliseconds dans le constructeur Date
+        return timestamp;
+    }
+}
+
 function msToTime(s) {
     var ms = s % 1000;
     s = (s - ms) / 1000;
@@ -28,6 +46,18 @@ function msToTime(s) {
     if (secs < 10) { secs = '0' + secs }
     if (mins < 10) { mins = '0' + mins }
     return mins + ':' + secs;
+}
+
+function msToTime2(s) {
+    var ms = s % 1000;
+    s = (s - ms) / 1000;
+    var secs = s % 60;
+    s = (s - secs) / 60;
+    var mins = s % 60;
+    var hrs = (s - mins) / 60;
+    if (secs < 10) { secs = '0' + secs }
+    if (mins < 10) { mins = '0' + mins }
+    return mins + ':' + secs + '.' + ms;
 }
 
 function msToTimeSK(s) {
@@ -133,27 +163,44 @@ function treatWorkouts(data) {
             auth[division] = false
         }
 
-        console.log('Workout :', auth)
+        // console.log('Workout :', auth)
     }
+}
+
+
+const athletes_init = {
+    "lane": 0,
+    "displayName": "",
+    "rank": 0,
+    "affiliate": "",
+    "division": "",
+    "status": "",
+    "OldRank": 0,
+    "CurrentRank": 0,
+    "score_abs": 0,
+    "score_rel": 0,
+    "currentRound": 0,
+    "tieBreak": "",
+    "result": "",
+    "currentMvt": {}
 }
 
 function treatDivisions(divisions, newAth) {
 
     let leaderboards = [];
 
-    for (var y = 0; y < divisions.length; y++) {
+    for (let y = 0; y < divisions.length; y++) {
         let _athletes = new Array();
         for (let i = 0; i < newAth.length; i++) {
-            // console.log("i =", i)
             if (newAth[i] != undefined) {
                 if (newAth[i].division == divisions[y]) {
-                    _athletes[i] = JSON.parse(JSON.stringify(athletes_init));
-                    _athletes[i] = Object.assign({}, _athletes[i], newAth[i])
-                    if (_athletes[i].countryCode == "" || _athletes[i].countryCode == null) { _athletes[i].countryCode = "FR" }
+                    _athletes.push(JSON.parse(JSON.stringify(athletes_init)));
+                    _athletes[_athletes.length - 1] = { ..._athletes[i], ...newAth[i] }
+                    if (_athletes[_athletes.length - 1].countryCode == "" || _athletes[_athletes.length - 1].countryCode == null) { _athletes[_athletes.length - 1].countryCode = "FR" }
                     else {
-                        for (let f = 0; f < flag.length; f++) {
-                            if (_athletes[i].countryCode == flag[f]["3L"]) {
-                                _athletes[i].countryCode = flag[f]["2L"];
+                        for (const element of flag) {
+                            if (_athletes[_athletes.length - 1].countryCode == element["3L"]) {
+                                _athletes[_athletes.length - 1].countryCode = element["2L"];
                                 break;
                             }
                         }
@@ -161,7 +208,6 @@ function treatDivisions(divisions, newAth) {
                 }
             }
         }
-        // console.log(_athletes)
         leaderboards[y] = _athletes
     }
     return leaderboards;
@@ -179,6 +225,9 @@ function reposition(leaderboard, athletes) {
         case 'overlay_top':
             repoLeft(leaderboard, athletes)
             break;
+        case 'overlay_wpa':
+            repoWpa(leaderboard, athletes);
+            break;
         default:
             repoTop(leaderboard, athletes);
             break;
@@ -195,7 +244,7 @@ function repoLeft(lead_, aths_) {
         } else {
             margin = 0;
         }
-        console.log(lead_)
+        // console.log(lead_)
         if (elm.$item.find(lead_) != undefined) {
             elm.$item.css("left", y + "px");
             if (elm.$item.is(':hidden')) {
@@ -210,11 +259,30 @@ function repoLeft(lead_, aths_) {
 function repoTop(lead_, aths_) {
     //initialisation la position de départ
     let y = parseInt($(lead_ + " .header").css('height').replace('px', ''));
+    // console.table("Aths : ", aths_)
     Object.values(aths_).forEach(elm => {
         if (elm.$item.find(lead_) != undefined) {
             elm.$item.css("top", y + "px");
             y += elm.$item.height();
             y += parseInt(elm.$item.css('margin').split(' ')[0].replace('px', ''));
+        }
+    })
+}
+
+function repoWpa(lead_, aths_) {
+    //initialisation la position de départ
+    let y = parseInt($(lead_ + " .header").css('height').replace('px', ''));
+    //console.table("Aths : ", aths_)
+    Object.values(aths_).forEach(elm => {
+        if (elm.$item.find(lead_) != undefined) {
+            if (elm.status != '0') {
+                !elm.$item.is(':visible') && elm.$item.show()
+                elm.$item.css("top", y + "px");
+                y += elm.$item.height();
+                y += parseInt(elm.$item.css('margin').split(' ')[0].replace('px', ''));
+            } else {
+                elm.$item.hide();
+            }
         }
     })
 }
@@ -228,6 +296,77 @@ function fetchNewData(data, lane) {
     return null;
 }
 
+
+
+
+/////////////// MVT
+
+
+function TreatMvt(elementAth) {
+    let currentMvt = {}
+
+    // On regarde si la division a bien des mouvements, si le type de workout est un repmax
+    // console.log(workouts.find((element) => element.division == elementAth.division))
+    console.log("Workout lenght", workouts.length)
+    console.log("elementAth Division", elementAth.division)
+    console.log("Workout ", workouts)
+    console.log("Workout ID", workouts.find((element) => element.division == elementAth.division).mvt_id.length)
+
+    if ((auth[elementAth.division] || heat.typeWod == 'repmax') && workouts.length > 0 && workouts.find((element) => element.division == elementAth.division).mvt_id.length > 1) {
+        if (elementAth.result == "") {
+            switch (heat.typeWod) {
+                case 'amrap':
+                    currentMvt = mvtIndexAmrap(elementAth.score_abs, elementAth.division, elementAth.log_round_time[0].length + 1)
+                    break;
+                case 'repmax':
+                    currentMvt = mvtIndexRepMax(elementAth.score_abs, elementAth.loadAttempted)
+                    break;
+                case 'time':
+                    currentMvt = mvtIndexForTime(elementAth.score_abs, elementAth.division)
+                    break;
+                default:
+                    break;
+            }
+        } else {
+            currentMvt = mvtIndexFinish(elementAth.division)
+        }
+    } else {
+        currentMvt = {
+            'scoreAbsMvt': elementAth.score_abs,
+            'scoreRelMvt': elementAth.score_rel,
+            'id': 1,
+            'repTarget': 0,
+            'mvtNames': 'WORKOUT',
+            'rounds': 0,
+            'totalReps': 0,
+            'arrayMvt': {}
+        }
+    }
+
+    return currentMvt;
+}
+
+function mvtIndexFinish(division) {
+    // console.log("FINISH - Division = ", division)
+    let index = 0;
+    let arrayMvt = [];
+    for (let wod of workouts) {
+        if (wod.division == division) {
+
+            return ({
+                'scoreAbsMvt': wod.totalRep,
+                'scoreRelMvt': 0,
+                'id': wod.mvt_id[wod.mvt_id.length - 1],
+                'repTarget': wod.repTarget,
+                'mvtNames': 'FINISH',
+                'rounds': 0,
+                'totalReps': wod.totalRep,
+                'arrayMvt': {}
+            })
+        }
+    }
+    return ({ 'scoreAbsMvt': 0, 'scoreRelMvt': 0, 'id': 0, 'repTarget': 0, 'rounds': 0, 'totalReps': 0, 'mvtNames': 'WORKOUT', 'arrayMvt': ['WORKOUTS'] })
+}
 
 function mvtIndexForTime(nbrReps, division) {
     // console.log("FOR TIMENbr De reps = ", nbrReps, " & Division = ", division)
@@ -358,14 +497,16 @@ function mvtIndexRepMax(nbrReps, loadAttempted) {
 }
 
 
+
+
 function launchAutomaticSchedule() {
     timerAutomatic2 = setTimeout(() => {
 
         // nodecg.sendMessageToBundle('heat_result', 'connector', { workoutHeatSelected: eventInfos.value.workoutId, heatSelected: eventInfos.value.heatId, num_heats: 10 })
 
         let config = setupLeaderboard.value;
-        console.log("before")
-        console.table(configBefore)
+        // console.log("before")
+        // console.table(configBefore)
         configBefore = setupLeaderboard.value;
 
         config.box_chrono = false;
@@ -390,4 +531,391 @@ function launchAutomaticSchedule() {
 
         }, 10000)
     }, 2000)
+}
+
+
+function changeColor(ath, element) {
+    let rank = ath.CurrentRank
+    if (overlay == 'overlay_top' || overlay == 'versus') {
+        rank != 1 ? rank = 4 : rank
+    }
+    switch (rank) {
+        case 1:
+            ath.$item.find(element).addClass('first_rank')
+            ath.$item.find(element).removeClass('initial_rank_top second_rank third_rank other_rank', false)
+            overlay == 'versus' && ath.$item.find(element).removeClass('initial_rank_versus')
+            break;
+        case 2:
+            ath.$item.find(element).addClass('second_rank')
+            ath.$item.find(element).toggleClass('first_rank third_rank other_rank', false)
+            break;
+        case 3:
+            ath.$item.find(element).addClass('third_rank')
+            ath.$item.find(element).toggleClass('second_rank first_rank other_rank', false)
+            break;
+        default:
+            if (overlay != 'overlay_top') {
+                ath.$item.find(element).addClass('other_rank')
+                ath.$item.find(element).toggleClass('second_rank third_rank first_rank', false)
+            } else if (overlay == 'versus') {
+                ath.$item.find(element).addClass('initial_rank_versus')
+                ath.$item.find(element).removeClass('first_rank second_rank third_rank other_rank')
+            } else {
+                ath.$item.find(element).addClass('initial_rank_top')
+                ath.$item.find(element).removeClass('first_rank second_rank third_rank')
+            } break;
+    }
+}
+
+
+
+function changeRank(elementAth) {
+    if (overlay == 'overlay_side' || overlay == 'overlay_side_v1') {
+        if (elementAth.CurrentRank != elementAth.OldRank && elementAth.score_abs != 0) {
+            if (elementAth.CurrentRank < elementAth.OldRank) {
+                elementAth.$item.find('.rank').addClass('up_rank')
+            } else if (elementAth.CurrentRank > elementAth.OldRank) {
+                elementAth.$item.find('.rank').addClass('down_rank')
+            }
+            setTimeout(() => {
+                elementAth.$item.find('.rank').removeClass('up_rank down_rank')
+
+            }, 1500)
+        }
+    }
+
+    changeLaneToRank(elementAth)
+}
+
+function treatBigScreenMvt(elementAth) {
+    if (heat.typeWod == 'amrap' && !Number.isNaN(elementAth.currentMvt.rounds)) {
+        percent = (elementAth.currentMvt.scoreRelMvt / elementAth.currentMvt.totalReps) * 95
+        elementAth.$item.find(".rounds").text("R" + (elementAth.currentMvt.rounds));
+        elementAth.$item.find(".popup").text("R" + (elementAth.currentMvt.rounds) + ' - ' + elementAth.currentMvt.mvtNames);
+        elementAth.$item.find(".popup_top").text("R" + (elementAth.currentMvt.rounds) + ' - ' + elementAth.currentMvt.mvtNames);
+    } else {
+        percent = (elementAth.score_abs / elementAth.currentMvt.totalReps) * 95
+        elementAth.$item.find(".popup").text(elementAth.currentMvt.mvtNames);
+        elementAth.$item.find(".popup_top").text(elementAth.currentMvt.mvtNames);
+    }
+    elementAth.$item.find(".popup").show();
+    elementAth.$item.find(".popup_top").show();
+    $('#circle' + elementAth.lane).css("transform", "translateX(" + percent + "%)");
+}
+
+function treatFinishStatus(elementAth) {
+    let result = elementAth.result;
+    elementAth.$item.find(".popup").text(result.toString().slice(result.length - 9, result.length - 8) != "0" ? result = result.toString().slice(result.length - 8, result.length) : result.toString().slice(result.length - 7, result.length - 6) != "0" ? result = result.toString().slice(result.length - 7, result.length) : result = result.toString().slice(result.length - 6, result.length));
+    elementAth.$item.find(".popup").show();
+    elementAth.$item.find(".popup_top").text(result.toString().slice(result.length - 9, result.length - 8) != "0" ? result = result.toString().slice(result.length - 8, result.length) : result.toString().slice(result.length - 7, result.length - 6) != "0" ? result = result.toString().slice(result.length - 7, result.length) : result = result.toString().slice(result.length - 6, result.length));
+    elementAth.$item.find(".popup_top").show();
+    elementAth.$item.find(".score").text('FIN')
+    if (overlay == 'progression') {
+        $('#circle' + elementAth.lane).css("transform", "translateX(95%)");
+    }
+}
+
+function treatTimeCapStatus(elementAth) {
+    let result = elementAth.score_abs;
+    elementAth.$item.find(".popup").show();
+    elementAth.$item.find(".popup_top").show();
+    elementAth.$item.find(".score").text('FIN');
+    elementAth.$item.find(".popup").text('CAP ' + result);
+    elementAth.$item.find(".popup_top").text('CAP ' + result);
+}
+
+
+function treatTextMvt(mvts) {
+    if (overlay == "versus" && heat.typeWod != 'repmax') {
+        if (mvts != "") {
+            $('.box_mvt').slideDown(1000)
+            $('.box_mvt').find('#mvt').html(mvts)
+        } else {
+            $('.box_mvt').hide()
+        }
+    } else {
+        $('#mvt').html(mvts)
+        $('.mvt').html(mvts)
+    }
+}
+
+
+function showSprint(elementAth) {
+    elementAth.$item.find(".popup").text("SPRINT");
+    elementAth.$item.find(".popup").show();
+    elementAth.$item.find(".score").text(chrono);
+}
+
+function showRepMax(elementAth) {
+    if (elementAth.currentMvt.repTarget != elementAth.currentMvt.scoreAbsMvt) {
+        elementAth.$item.find(".popup").html('TRY &#10140; ' + elementAth.currentMvt.repTarget);
+        overlay == 'versus' ? elementAth.$item.find(".popup").slideDown(1000) : elementAth.$item.find(".popup").fadeIn(1000);
+        elementAth.$item.find(".popup_top").html('TRY &#10140; ' + elementAth.currentMvt.repTarget);
+        overlay == 'versus' ? elementAth.$item.find(".popup_top").slideDown(1000) : elementAth.$item.find(".popup_top").fadeIn(1000);
+    } else {
+        elementAth.$item.find(".popup").html('');
+        overlay == 'versus' ? elementAth.$item.find(".popup").slideUp(1000) : elementAth.$item.find(".popup").fadeOut(1000);
+        elementAth.$item.find(".popup_top").html('');
+        overlay == 'versus' ? elementAth.$item.find(".popup_top").slideUp(1000) : elementAth.$item.find(".popup_top").fadeOut(1000);
+    }
+    elementAth.$item.find(".score").text(elementAth.currentMvt.scoreAbsMvt + ' KG');
+}
+
+function showRepMvtInScore(elementAth) {
+    elementAth.$item.find(".score").show();
+    switch (setupLeaderboard.value.scoreConfig) {
+        case 'abs_score':
+            elementAth.$item.find(".score").text(elementAth.score_abs)
+            hideMvtInPopup(elementAth)
+            break;
+        case 'rel_score':
+            elementAth.$item.find(".score").text(elementAth.score_rel)
+            hideMvtInPopup(elementAth)
+            break;
+        case 'mvt_score':
+            console.log(elementAth.displayName)
+            console.log(elementAth.currentMvt)
+            if (elementAth.currentMvt.mvtNames.toUpperCase() != "WORKOUT") {
+                elementAth.$item.find(".score").text(elementAth.currentMvt.scoreAbsMvt + "/" + elementAth.currentMvt.repTarget);
+                showMvtInPopup(elementAth)
+            } else {
+                elementAth.$item.find(".score").text(elementAth.currentMvt.scoreAbsMvt);
+                hideMvtInPopup(elementAth)
+            }
+            break;
+        default:
+    }
+}
+
+function showMvtInPopup(elementAth) {
+    elementAth.$item.find(".popup").show();
+    elementAth.$item.find(".popup").text(elementAth.currentMvt.mvtNames);
+    elementAth.$item.find(".popup_top").show();
+    elementAth.$item.find(".popup_top").text(elementAth.currentMvt.mvtNames);
+}
+
+function hideMvtInPopup(elementAth) {
+    elementAth.$item.find(".popup").hide();
+    elementAth.$item.find(".popup").text();
+    elementAth.$item.find(".popup_top").hide();
+    elementAth.$item.find(".popup_top").text();
+}
+
+
+function treatLeaderboardAuto() {
+    if ($('.leaderboard').is(':visible')) {
+        if (overlay.search("overlay") >= 0 || overlay == 'versus') {
+
+            timerAutomatic1 = setTimeout(() => {
+                // $('#box_svg').slideUp(1000)
+                // $('.leaderboard').slideUp(1000)
+                // $('.box_chrono').slideUp(1000)
+                // $('.box_heat').slideUp(1000)
+                // $(".mainSponsor").slideUp(1000)
+                if (overlay == 'versus') {
+
+                    $('.box_mvt').slideUp(1000)
+                }
+                if (setupLeaderboard.value.automaticSchedule) {
+                    launchAutomaticSchedule()
+                }
+            }, 5000)
+        }
+    }
+}
+
+
+function treatDisplayMvtForOthers(elementAth, idToCompare) {
+    // Si l'athlète présent avant est à un mouvement différent de toi, on affiche le mouvement)
+    if (elementAth.currentMvt.id != idToCompare) {
+        if (heat.typeWod == 'amrap' && !Number.isNaN(elementAth.currentMvt.rounds)) {
+            elementAth.$item.find(".rounds").text("R" + (elementAth.currentMvt.rounds));
+            elementAth.$item.find(".popup").text("R" + (elementAth.currentMvt.rounds) + ' - ' + elementAth.currentMvt.mvtNames);
+            elementAth.$item.find(".popup_top").text("R" + (elementAth.currentMvt.rounds) + ' - ' + elementAth.currentMvt.mvtNames);
+        } else {
+            elementAth.$item.find(".popup").text(elementAth.currentMvt.mvtNames);
+            elementAth.$item.find(".popup_top").text(elementAth.currentMvt.mvtNames);
+        }
+        elementAth.$item.find(".popup").show();
+        elementAth.$item.find(".popup_top").show();
+    }
+    else {
+        elementAth.$item.find(".popup").hide();
+        elementAth.$item.find(".popup_top").hide();
+    }
+}
+
+function treatDisplayMvtFirst(elementAth) {
+    if (elementAth.currentMvt.mvtNames == "" || elementAth.currentMvt.mvtNames.includes("Workout")) {
+        overlay != "versus" && elementAth.$item.find(".popup").hide();
+        overlay != "versus" && elementAth.$item.find(".popup_top").hide();
+    }
+    else {
+        if (heat.typeWod == 'amrap' && !Number.isNaN(elementAth.currentMvt.rounds)) {
+            elementAth.$item.find(".popup").text("R" + (elementAth.currentMvt.rounds) + ' - ' + elementAth.currentMvt.mvtNames);
+            elementAth.$item.find(".popup_top").text("R" + (elementAth.currentMvt.rounds) + ' - ' + elementAth.currentMvt.mvtNames);
+        } else {
+            elementAth.$item.find(".popup").text(elementAth.currentMvt.mvtNames);
+            elementAth.$item.find(".popup_top").text(elementAth.currentMvt.mvtNames);
+        }
+        elementAth.$item.find(".popup").show();
+        elementAth.$item.find(".popup_top").show();
+    }
+}
+
+function hiddenAthlete(elementAth) {
+    if (elementAth.CurrentRank > 1 && elementAth.$item.is(':visible')) {
+        setTimeout(() => {
+            elementAth.$item.fadeOut(1000);
+        }, 5000)
+    }
+}
+
+function showHiddenAthlete(elementAth) {
+    setTimeout(() => {
+        elementAth.$item.fadeIn(1000)
+    }, 3000)
+}
+
+function treatPerfArray(elementAth) {
+    if (overlay == 'commentator') {
+        if (bestPerf[elementAth.lane] == undefined) {
+            bestPerf[elementAth.lane] = []
+        }
+        Object.values(elementAth.log_mvt[0]).forEach((time, index) => {
+
+            if (time != '00:00.0') {
+                if (elementAth.$item.find("#mvt_id_" + index + "_" + elementAth.lane).text() == '-') {
+
+                    let secondes = time.split(':').map(Number)
+                    let min = secondes[0] * 60;
+                    let total = secondes[1] + min
+
+                    if (total > 3) {
+                        elementAth.$item.find("#mvt_id_" + index + "_" + elementAth.lane).text(time)
+                        bestPerf[elementAth.lane][index] = total
+
+                        if (best[index] == undefined) {
+                            best[index] = total
+                        }
+
+                        if (bestPerf[elementAth.lane][index] <= best[index]) {
+                            best[index] = bestPerf[elementAth.lane][index]
+
+                            $('#leaderboard' + key).find('.mvt_id_' + index).removeClass('bestStat');
+                            elementAth.$item.find("#mvt_id_" + index + "_" + elementAth.lane).addClass('bestStat');
+                        }
+
+                    }
+                }
+            }
+        })
+    }
+}
+
+function changeLaneToRank(elementAth) {
+    elementAth.OldRank = elementAth.CurrentRank
+    elementAth.$item.find(".rank").text(elementAth.CurrentRank);
+}
+
+
+function treatResultTimeWPA(elementAth) {
+    let time = 0;
+    let index = 0;
+    if (elementAth.result != "" && elementAth.result.includes(':')) {
+        time = timeToTimestamp(elementAth.result)
+        index++;
+    }
+    return { time, index };
+}
+
+function treatResultDisplayRepWPA(score) {
+    let r = [0, 0];
+    if (score[0].rep > score[1].rep) {
+        r[0] = score[0].rep
+        r[1] = score[1].rep - score[0].rep
+    } else if (score[0].rep < score[1].rep) {
+        r[0] = score[0].rep - score[1].rep
+        r[1] = score[1].rep
+    } else {
+        r[0] = score[0].rep
+        r[1] = score[1].rep
+    }
+
+    let m = 'TOTAL';
+    if (setupLeaderboard.value.timeConfig == 'avg') {
+        m = 'AVERAGE'
+    }
+
+    if (score[0].time != 0) {
+        $("#ahtTop1").find('.popup_top').show()
+        $("#ahtTop1").find('.popup_top').text("TIME " + m + ": " + msToTime2(score[0].time))
+
+        $("#ahtTop1").find('.score').text(r[0])
+    } else {
+        $("#ahtTop1").find('.popup_top').hide()
+        $("#ahtTop1").find('.popup_top').text('')
+        $("#ahtTop1").find('.score').text(r[0])
+    }
+    if (score[1].time != 0) {
+        $("#ahtTop2").find('.popup_top').show()
+        $("#ahtTop2").find('.popup_top').text("TIME " + m + ": " + msToTime2(score[1].time))
+        $("#ahtTop2").find('.score').text(r[1])
+    } else {
+        $("#ahtTop2").find('.popup_top').hide()
+        $("#ahtTop2").find('.popup_top').text('')
+        $("#ahtTop2").find('.score').text(r[1])
+    }
+}
+
+
+function treatResultDisplayResultWPA(score) {
+
+    if (score[0].time != 0) {
+        $("#ahtTop1").find('.popup_top').show()
+        $("#ahtTop1").find('.score').text(msToTime2(score[0].time))
+        $("#ahtTop1").find('.popup_top').text(score[0].rep)
+    } else {
+        $("#ahtTop1").find('.popup_top').hide()
+        $("#ahtTop1").find('.popup_top').text('')
+        let n = "CAP " + score[0].rep
+        if (heat.typeWod == 'repmax') {
+            n = score[0].rep
+        }
+        $("#ahtTop1").find('.score').text(n)
+    }
+
+    if (score[1].time != 0) {
+        $("#ahtTop2").find('.popup_top').show()
+        $("#ahtTop2").find('.score').text(msToTime2(score[1].time))
+        $("#ahtTop2").find('.popup_top').text(score[1].rep)
+    } else {
+        $("#ahtTop2").find('.popup_top').hide()
+        $("#ahtTop2").find('.popup_top').text('')
+        let n = "CAP " + score[1].rep
+        if (heat.typeWod == 'repmax') {
+            n = score[1].rep
+        }
+        $("#ahtTop2").find('.score').text(n)
+    }
+}
+
+
+function hideWaitingWPA(score) {
+    $("#ahtTop1").find('.popup_top').hide()
+    // $("#ahtTop1").find('.score').text(score[0].rep)
+    $("#ahtTop1").find('.score').text("WAITING")
+    $("#ahtTop2").find('.popup_top').hide()
+    // $("#ahtTop2").find('.score').text(score[1].rep)
+    $("#ahtTop2").find('.score').text("WAITING")
+}
+
+
+function hideResultWPA(score) {
+    $("#ahtTop1").find('.popup_top').hide()
+    // $("#ahtTop1").find('.score').text(score[0].rep)
+    $("#ahtTop1").find('.score').text("STBY")
+    $("#ahtTop2").find('.popup_top').hide()
+    // $("#ahtTop2").find('.score').text(score[1].rep)
+    $("#ahtTop2").find('.score').text("STBY")
 }

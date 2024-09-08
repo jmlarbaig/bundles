@@ -11,6 +11,9 @@ function resetHeat(data) {
             case 'overlay_top':
                 $item = styleHeat_top(data)
                 break;
+            case 'overlay_wpa':
+                $item = styleHeat_wpa(data)
+                break;
             case 'overlay_side':
                 $item = styleHeat_side(data)
                 break;
@@ -75,6 +78,22 @@ function styleHeat_top(element) {
         '<div class="presented" id="prt">' + varPresented + '</div>' +
         '<div class="mainSponsor">' +
         '</div>' +
+        '</div>' +
+        '</div>'
+    );
+    return $item
+}
+
+function styleHeat_wpa(element) {
+    let $item = $(
+        '<div class="heat_content">' +
+        '<div class="details">' +
+        // '<div id="workout" class="detail" > ' + element.externalName + ' - </div>' +
+        '<div class="detail" id="eventName" > TYR WZA SOCAL ' + Colors.value.text_day + '</div>' +
+        '<div class="detail" > | </div>' +
+        '<div class="detail" id="floor" > ' + Colors.value.text_floor + ' </div>' +
+        // '<div id="division" class="detail"> ' + element.heatName + ' </div>' +
+        // '<div id="mvt" class="text-nowrap text-truncate"></div>' +
         '</div>' +
         '</div>'
     );

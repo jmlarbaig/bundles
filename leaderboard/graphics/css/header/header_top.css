@@ -5,8 +5,8 @@
     left: -10px;
     width: var(--width_top);
     height: 100px;
-    color: white;
-    font-family: var(--fontWorkout-select);
+    color: var(--tx_second_color);
+     font-family: var(--fontWorkout-select);
 }
 
 /* top | right | bottom | left */
@@ -44,7 +44,7 @@
     height: 100px;
     background: rgb(2, 0, 36);
     background: linear-gradient(90deg, var(--first_linear_gradient) 0%, var(--second_linear_gradient) 18%, var(--first_linear_gradient) 35%, var(--second_linear_gradient) 66%, var(--first_linear_gradient) 100%);
-    color: white;
+    color: var(--tx_second_color);
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 

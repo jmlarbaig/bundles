@@ -1,0 +1,73 @@
+.header {
+    display: block;
+    position: absolute;
+    top: 0px;
+    left: -10px;
+    width: var(--width_top);
+    height: 100px;
+    color: white;
+    font-family: var(--fontWorkout-select);
+}
+
+/* top | right | bottom | left */
+
+.header .box_logo {
+    z-index: 50;
+    position: absolute;
+    top: var(--position_y_logo_padel);
+    left: var(--position_x_logo_padel);
+    text-align: right;
+    width: var(--widthLogoEvent_padel);
+    height: 150px;
+    background-color: var(--box_logo_color);
+    text-align: center;
+}
+
+.header .box_logo .logo {
+    margin: auto;
+    padding: 15px;
+    width: var(--widthLogoEvent_padel);
+    height: 150px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    /* <------ */
+    background-position: center;
+    background-origin: content-box;
+}
+
+
+
+
+.header .box_heat .heat .heat_content .box_mainSponsor .mainSponsor {
+    padding: 10px 10px 10px 10px;
+    width: 120px;
+    height: 100px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    /* <------ */
+    background-position: center;
+    background-origin: content-box;
+}
+
+.box_chrono {
+    z-index: 2;
+    position: absolute;
+    top: var(--position_y_chrono_padel);
+    left: var(--position_x_chrono_padel);
+    min-width: 150px;
+    padding: 10px 20px;
+    color: var(--tx_chrono_color);
+    background-color: var(--chrono_color);
+    font-size: var(--sizeFontChrono_padel);
+    /* -webkit-box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0, 0, 0, 0);
+    box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0, 0, 0, 0); */
+    color: var(--tx_chrono_color);
+    font-family: var(--fontChrono-select);
+    border-radius: 10px 0px 10px 0px;
+}
+
+.box_chrono .chrono {
+    padding: auto;
+    margin: auto;
+    text-align: center;
+}

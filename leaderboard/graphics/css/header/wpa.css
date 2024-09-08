@@ -1,0 +1,190 @@
+.header_i {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: space-between;
+    position: absolute;
+    top: 0px;
+    padding: 0px 20px;
+    width: 1920px;
+    color: white;
+    font-family: var(--fontWorkout-select);
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    background: linear-gradient(90deg, var(--first_linear_gradient) 0%, var(--second_linear_gradient) 18%, var(--first_linear_gradient) 35%, var(--second_linear_gradient) 66%, var(--first_linear_gradient) 100%);
+}
+
+/* top | right | bottom | left */
+
+.header_i .box_logo {
+    margin: 0px 25px;
+    z-index: 50;
+    text-align: right;
+    height: 120px;
+    text-align: center;
+}
+
+.header_i .box_logo .logo {
+    margin: auto;
+    width: var(--widthLogoEvent_top);
+    height: var(--widthLogoEvent_top);
+    background-repeat: no-repeat;
+    background-size: contain;
+    /* <------ */
+    background-position: center;
+    background-origin: content-box;
+}
+
+.header_i .box_heat {
+    right: 100px;
+    z-index: 40;
+    height: 110px;
+}
+
+.header_i .box_heat .heat {}
+
+.header_i .box_heat .heat .heat_content {
+    display: flex;
+    flex-direction: row;
+    height: 50px;
+}
+
+.header_i .box_heat .heat .heat_content .details {
+    word-spacing: 40px;
+    font-size: var(--sizeFontWorkoutHeat_top);
+    font-family: var(--fontDay-select);
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    height: 50px;
+    padding: 0px 20px;
+    min-width: 1100px;
+    color: var(--detailHeader);
+}
+
+.header_i .box_heat .heat .heat_content .details .detail {
+    min-width: fit-content;
+    padding-right: 5px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+#eventName {
+    font-family: var(--fontDay-select);
+    font-size: var(--sizeFontWorkoutHeat_top);
+    text-transform: uppercase;
+}
+
+#floor {
+    font-family: var(--fontFloor-select);
+    font-size: var(--sizeFontWorkoutHeat_top);
+    text-transform: uppercase;
+}
+
+#day {
+    font-size: var(--sizeFontWorkoutHeat_top);
+    font-family: var(--fontDay-select);
+}
+
+#mvt::before {
+    content: '';
+    border-left: 4px solid rgba(105, 105, 105, 0.712);
+    margin: 20px;
+}
+
+.header_i .box_heat .heat .heat_content .details #mvt {
+    font-weight: 800;
+    -moz-transition-duration: 0.7s;
+    -webkit-transition-duration: 0.7s;
+    -ms-transition-duration: 0.7s;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: var(--restMvt_color);
+    text-transform: capitalize;
+}
+
+#mvt span {
+    padding: 10px;
+    letter-spacing: var(--letter_spacing);
+    font-family: var(--othersFontWorkout-select);
+    font-size: var(--sizeFontOthersMvt_top);
+}
+
+#mvt span:first-child {
+    color: var(--firstMvt_color);
+    font-weight: 800;
+    font-size: var(--sizeFontFirstMvt_top);
+    font-family: var(--firstFontWorkout-select);
+}
+
+#mvt span:first-child::before {
+    content: "•";
+}
+
+.header_i .box_mainSponsor {
+    width: 430px;
+    height: 100px;
+    padding: 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: end;
+    border-left: 2px var(--detailHeader) solid;
+    position: relative;
+}
+
+.header_i .box_mainSponsor .presented {
+    padding: 10px 10px 10px 10px;
+    width: 200px;
+    font-size: var(--size_font_presented);
+    text-align: center;
+    font-family: var(--fontPresented-select);
+}
+
+
+
+.header_i .box_mainSponsor .mainSponsor {
+    /* padding: 10px 10px 10px 10px; */
+    width: 230px;
+    height: 100px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    /* <------ */
+    background-position: center;
+    background-origin: content-box;
+}
+
+.header_i .box_chrono {
+    z-index: 2;
+    width: 180px;
+    color: white;
+    font-size: var(--sizeFontChrono_top);
+    font-family: var(--fontChrono-select);
+    height: 80px;
+    border: 3px white solid;
+    /* border-right: solid white 2px; */
+    margin: 0px 25px;
+    display: flex;
+}
+
+.header_i .box_chrono .chrono {
+    margin: auto;
+    width: 150px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.header_i .box_chrono .chrono #cap {
+    font-size: var(--sizeFontTimecap_top);
+    color: var(--tx_main_color);
+    margin: 1px auto;
+    width: 150px;
+    padding: 5px;
+    text-align: center;
+}

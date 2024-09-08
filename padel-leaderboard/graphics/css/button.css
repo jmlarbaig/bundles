@@ -1,0 +1,14 @@
+.info{
+    background-color: grey;
+    color: white;
+}
+
+.success{
+    background-color: rgb(37, 170, 41);
+    color: white;
+}
+
+.danger{
+    background-color: rgb(170, 37, 37);
+    color: white;
+}

@@ -75,7 +75,7 @@ let laneEcho = 0
 let overlay = ''
 
 // if is android
-var isAndroid = false;
+let isAndroid = false;
 
 $('document').ready(() => {
     console.log(document)
@@ -101,16 +101,15 @@ $('document').ready(() => {
     // heightWindowd = window.outerHeight;
 
 
-    widthWindow = window.innerWidth;
-    heightWindowd = window.innerHeight;
+    let widthWindow = window.innerWidth;
+    let heightWindowd = window.innerHeight;
 
     if (Android) {
         isAndroid = true;
 
     }
     document.querySelector(':root').style.setProperty('--zoom', (widthWindow / 1920) * 100 + '%');
-    console.log(widthWindow)
-    console.log(heightWindowd)
+
 })
 
 let newHeat = false;
@@ -121,6 +120,9 @@ eventInfos.on('change', (newValue, oldValue) => {
     if (newValue != undefined) {
         if (JSON.stringify(newValue) !== JSON.stringify(oldValue)) {
             resetHeat(newValue);
+            if (overlay == 'overlay_wpa') {
+                resetLeaderboard(s_athletes.value)
+            }
             if (newValue.heatId != heat.heatId) {
                 if ($('#box_svg').is(':visible')) {
                     $('#box_svg').slideUp(1000)
@@ -326,7 +328,7 @@ manualChrono.on('change', (newValue, oldValue) => {
 
 d_athletes.on('change', (newValue, oldValue) => {
     if (overlay != 'sk' || overlay != 'head_judge') {
-        if (newValue != undefined && statusWorkout != 0) {
+        if (newValue != undefined) {
             updateDynamics(newValue, statusWorkout);
         }
     }
@@ -356,11 +358,14 @@ TopScore.on('change', (newValue, oldValue) => {
     // console.log("top Score = ",newValue[0][0].scores[0].score)
     if (newValue != undefined && newValue.length > 0) {
         let index = 0;
-        if (!newValue[0].hasOwnProperty('error')) {
-            for (let teams of newValue[0]) {
-                console.log("top index =", index)
-                $('.repTarget' + index).html("-> " + teams.scores[0].score)
-                index++
+        console.log(newValue)
+        if (newValue[0] != null) {
+            if (!newValue[0].hasOwnProperty('error')) {
+                for (let teams of newValue[0]) {
+                    console.log("top index =", index)
+                    $('.repTarget' + index).html("-> " + teams.scores[0].score)
+                    index++
+                }
             }
         }
     }
@@ -382,16 +387,17 @@ logoEvent.on('change', (newValue, oldValue) => {
 });
 
 
-// mainSponsors.on('change', (newValue) => {
-//     if (newValue.length > 0) {
+mainSponsors.on('change', (newValue) => {
+    if (newValue.length > 0) {
+        console.log(newValue[0].url)
 
-//         $(".mainSponsor").css("background-image", "url(" + newValue[0].url + ")");
-//         $(".mainSponsor").toggle("slide")
-//     }
-//     else {
-//         $(".mainSponsor").toggle("slide")
-//     }
-// })
+        $(".mainSponsor").css("background-image", "url(" + newValue[0].url + ")");
+        $(".mainSponsor").toggle("slide")
+    }
+    else {
+        $(".mainSponsor").toggle("slide")
+    }
+})
 
 
 bottomSponsors.on('change', (newValue) => {
@@ -578,6 +584,16 @@ Colors.on('change', (newValue, oldValue) => {
 
         if (overlay == 'commentator' && color == 'bg__color') {
             _color = 'black'
+        }
+
+        if (color == "text_floor") {
+            $("#floor").text(_color);
+            varPresented = _color;
+        }
+
+        if (color == "text_day") {
+            $("#day").text(_color);
+            varPresented = _color;
         }
 
         if (color == "text_presented_by") {

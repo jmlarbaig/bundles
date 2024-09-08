@@ -94,6 +94,8 @@
         --fontAthlete-select: 'Typographica';
         --fontChrono-select: 'Typographica';
         --fontPresented-select: 'Typographica';
+        --fontDay-select: 'Typographica';
+        --fontFloor-select: 'Typographica';
 
         --SizeFontRepTargetOverlaySide: 20px;
 
@@ -117,6 +119,8 @@
         --hieghtBottomLogo: 50px;
         --positionRightBottomLogo: 10px;
         --positionBottomBottomLogo: 200px;
+        --detailHeader: rgb(0, 0, 0);
+        --sizeFontScore_top: 20px;
     }
 
 

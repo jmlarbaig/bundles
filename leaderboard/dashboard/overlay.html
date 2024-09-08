@@ -136,12 +136,35 @@
 							<input type="checkbox" class="checkbox" id="manualChrono" />
 						</div>
 					</div>
-					<h3>Configuration Score</h3>
+					<!-- <h3>Configuration Score</h3>
 					<div class='col box'>
 						<div class="input-form">
 							<label for="scoreConfig">Absolute / Per Mouvement</label>
 							<input type="checkbox" class="checkbox" id="scoreConfig" />
 						</div>
+					</div> -->
+					<div class="input">
+						<label for="scoreConfig">Scoring</label>
+						<select type="select" id="scoreConfig">
+							<option value="abs_score">Absolute</option>
+							<option value="rel_score">Relative</option>
+							<option value="mvt_score">Mouvement</option>
+						</select>
+					</div>
+					<div class="input">
+						<label for="timeConfig">WPA - TIME AVG // ACC</label>
+						<select type="select" id="timeConfig">
+							<option value="avg">Average</option>
+							<option value="acc">Accumulate</option>
+						</select>
+					</div>
+
+					<div class="input">
+						<label for="viewConfig">WPA - TEAM or INDIV/TEAM</label>
+						<select type="select" id="viewConfig">
+							<option value="team">TEAM</option>
+							<option value="indiv">INDIV/TEAM</option>
+						</select>
 					</div>
 					<h3>Configuration Automatique</h3>
 					<div class='col box'>

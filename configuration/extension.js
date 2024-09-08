@@ -21,7 +21,7 @@ module.exports = function (nodecg) {
         if (val == undefined) {
             val = {}
         }
-        fs.writeFileSync(colorFile, val.toString());
+        fs.writeFileSync(colorFile, val.toString(), null, 4);
     }
 
     nodecg.listenFor('colorOverwrite', (value, ack) => {
