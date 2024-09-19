@@ -579,8 +579,8 @@ function leaderboardVersusSideWPA(data) {
         '<div class="athlete" id="aht' + data.lane + '">' +
         '<div class="popup text-nowrap text-truncate">' + '</div>' +
         '<div class="ath">' +
-        '<div class="rank text-nowrap text-truncate"> ' + '</div>' +
-        '<div class="lane text-nowrap text-truncate"># ' + data.lane + '</div>' +
+        // '<div class="rank text-nowrap text-truncate"> ' + '</div>' +
+        // '<div class="lane text-nowrap text-truncate"># ' + data.lane + '</div>' +
         '<div class="flag">' + '<div class="box_flag" ></div> ' + '</div>' +
         '<div class="text-nowrap text-truncate text-left name">' + name + '</div>' +
         '<div class="score text-nowrap text-center text-truncate"></div>' +
