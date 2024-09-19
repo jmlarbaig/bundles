@@ -43,27 +43,41 @@ function resetLeaderboard(newData) {
 
         let listOfAth = [];
 
-
-        for (let athletes of data.athletes) {
-            if (!divisionsNames.includes(athletes.division)) {
-                divisionsNames.push(athletes.division)
+        if (overlay != 'overlay_wpa') {
+            for (let athletes of data.athletes) {
+                if (!divisionsNames.includes(athletes.division)) {
+                    divisionsNames.push(athletes.division)
+                }
             }
-        }
-
-        //! on retient le rep targets
-
-        for (let y = 0; y < divisionsNames.length; y++) {
-            for (let wod of workouts) {
-                if (divisionsNames[y] == wod.division) {
-                    repTarget[y] = wod.total_reps
-                    workouts[y] = wod;
+        } else {
+            for (let athletes of data.athletes) {
+                if (!divisionsNames.includes(athletes.affiliate)) {
+                    divisionsNames.push(athletes.affiliate)
                 }
             }
         }
 
+
+
+        //! on retient le rep targets
+
+        if (overlay != 'overlay_wpa') {
+            for (let y = 0; y < divisionsNames.length; y++) {
+                for (let wod of workouts) {
+                    if (divisionsNames[y] == wod.division) {
+                        repTarget[y] = wod.total_reps
+                        workouts[y] = wod;
+                    }
+                }
+            }
+        }
+
+
         //! Initialisation des athletes dans un seul format avec un triage par division
         // ! On crée un tableau par division
         athletesDivision = treatDivisions(divisionsNames, data.athletes)
+
+
 
 
         var $tabBox = $(".box_heat")
@@ -77,6 +91,9 @@ function resetLeaderboard(newData) {
 
         // ! On crée un leaderboard par division
         Object.values(athletesDivision).forEach((elementDiv, indexDivision) => {
+
+            console.log("index DIvision : ", indexDivision)
+            console.log("divisionsNames[indexDivision] : ", divisionsNames[indexDivision])
 
             listOfAth.push("<span>#" + divisionsNames[indexDivision] + "</span>")
 
@@ -145,7 +162,11 @@ function resetLeaderboard(newData) {
             } else if (overlay == "overlay_wpa") {
                 $listBox = $("#topLeaderboard")
                 $list = $("#leaderboard" + indexDivision + " #athletes");
-                $listBox.find(".athleteTop").remove();
+                if (athletesDivision[0].length > 2) {
+                    $listBox.find(".athleteTop").remove();
+                } else {
+                    indexDivision == 0 && $listBox.find(".athleteTop").remove();
+                }
             } else {
                 $list = $("#leaderboard" + indexDivision + " #athletes");
             }
@@ -211,6 +232,7 @@ function resetLeaderboard(newData) {
                         indexAthletes == 0 && $listBox.append($itemBox);
                         $list.append($item);
                     } else {
+                        console.log("$Item : ", $item)
                         $listBox.append($item);
                     }
                 } else {

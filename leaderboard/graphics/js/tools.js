@@ -193,15 +193,31 @@ function treatDivisions(divisions, newAth) {
         let _athletes = new Array();
         for (let i = 0; i < newAth.length; i++) {
             if (newAth[i] != undefined) {
-                if (newAth[i].division == divisions[y]) {
-                    _athletes.push(JSON.parse(JSON.stringify(athletes_init)));
-                    _athletes[_athletes.length - 1] = { ..._athletes[i], ...newAth[i] }
-                    if (_athletes[_athletes.length - 1].countryCode == "" || _athletes[_athletes.length - 1].countryCode == null) { _athletes[_athletes.length - 1].countryCode = "FR" }
-                    else {
-                        for (const element of flag) {
-                            if (_athletes[_athletes.length - 1].countryCode == element["3L"]) {
-                                _athletes[_athletes.length - 1].countryCode = element["2L"];
-                                break;
+                if (overlay != 'overlay_wpa') {
+                    if (newAth[i].division == divisions[y]) {
+                        _athletes.push(JSON.parse(JSON.stringify(athletes_init)));
+                        _athletes[_athletes.length - 1] = { ..._athletes[i], ...newAth[i] }
+                        if (_athletes[_athletes.length - 1].countryCode == "" || _athletes[_athletes.length - 1].countryCode == null) { _athletes[_athletes.length - 1].countryCode = "FR" }
+                        else {
+                            for (const element of flag) {
+                                if (_athletes[_athletes.length - 1].countryCode == element["3L"]) {
+                                    _athletes[_athletes.length - 1].countryCode = element["2L"];
+                                    break;
+                                }
+                            }
+                        }
+                    }
+                } else {
+                    if (newAth[i].affiliate == divisions[y]) {
+                        _athletes.push(JSON.parse(JSON.stringify(athletes_init)));
+                        _athletes[_athletes.length - 1] = { ..._athletes[i], ...newAth[i] }
+                        if (_athletes[_athletes.length - 1].countryCode == "" || _athletes[_athletes.length - 1].countryCode == null) { _athletes[_athletes.length - 1].countryCode = "FR" }
+                        else {
+                            for (const element of flag) {
+                                if (_athletes[_athletes.length - 1].countryCode == element["3L"]) {
+                                    _athletes[_athletes.length - 1].countryCode = element["2L"];
+                                    break;
+                                }
                             }
                         }
                     }
