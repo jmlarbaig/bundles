@@ -101,6 +101,21 @@ function updateDynamics(newScoring, status) {
                         // En fonction des status de l'athlète :
                         switch (elemAth[i].status) {
                             case '0':
+                                switch (heat.typeWod) {
+                                    case 'repmax':
+                                        showRepMax(elemAth[i])
+                                        break;
+                                    default:
+                                        showRepMvtInScore(elemAth[i])
+                                        if (setupLeaderboard.value.scoreConfig == 'mvt_score') {
+                                            if (i != 0) {
+                                                treatDisplayMvtForOthers(elemAth[i], elemAth[i - 1].currentMvt.id)
+                                            } else {
+                                                treatDisplayMvtFirst(elemAth[i])
+                                            }
+                                        }
+                                        break;
+                                }
                                 break;
                             case 'S':
                                 break;
@@ -231,7 +246,17 @@ function updateDynamics(newScoring, status) {
                 } else {
                     (height_tot += elemAth[i].$item.height() + 10)
                 }
+
+
+                if (overlay == "overlay_wpa") {
+                    if (elemAth.length <= 2) {
+                        width = elemAth[i].$item.find('.score').width() + Math.round(parseInt(elemAth[i].$item.find('.score').css('padding').split(' ')[1].replace('px', '')) * 2) - 2
+                        console.log(width)
+                        elemAth[i].$item.find('.popup_top').width(width)
+                    }
+                }
             })
+
 
             if (overlay != "versus" || overlay != 'overlay_wpa') {
                 if (elemAth.length > 2) {

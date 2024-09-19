@@ -664,17 +664,19 @@ function showSprint(elementAth) {
 
 function showRepMax(elementAth) {
     if (elementAth.currentMvt.repTarget != elementAth.currentMvt.scoreAbsMvt) {
-        elementAth.$item.find(".popup").html('TRY &#10140; ' + elementAth.currentMvt.repTarget);
-        overlay == 'versus' ? elementAth.$item.find(".popup").slideDown(1000) : elementAth.$item.find(".popup").fadeIn(1000);
-        elementAth.$item.find(".popup_top").html('TRY &#10140; ' + elementAth.currentMvt.repTarget);
-        overlay == 'versus' ? elementAth.$item.find(".popup_top").slideDown(1000) : elementAth.$item.find(".popup_top").fadeIn(1000);
+        if (elementAth.currentMvt.repTarget != 0) {
+            elementAth.$item.find(".popup").html('TRY &#10140; ' + elementAth.currentMvt.repTarget);
+            overlay == 'versus' ? elementAth.$item.find(".popup").slideDown(1000) : elementAth.$item.find(".popup").fadeIn(1000);
+            elementAth.$item.find(".popup_top").html('TRY &#10140; ' + elementAth.currentMvt.repTarget);
+            overlay == 'versus' ? elementAth.$item.find(".popup_top").slideDown(1000) : elementAth.$item.find(".popup_top").fadeIn(1000);
+        }
     } else {
         elementAth.$item.find(".popup").html('');
         overlay == 'versus' ? elementAth.$item.find(".popup").slideUp(1000) : elementAth.$item.find(".popup").fadeOut(1000);
         elementAth.$item.find(".popup_top").html('');
         overlay == 'versus' ? elementAth.$item.find(".popup_top").slideUp(1000) : elementAth.$item.find(".popup_top").fadeOut(1000);
     }
-    elementAth.$item.find(".score").text(elementAth.currentMvt.scoreAbsMvt + ' KG');
+    elementAth.$item.find(".score").text(elementAth.currentMvt.scoreAbsMvt + ' LBS');
 }
 
 function showRepMvtInScore(elementAth) {
@@ -704,10 +706,13 @@ function showRepMvtInScore(elementAth) {
 }
 
 function showMvtInPopup(elementAth) {
+    const reg = new RegExp("\(([^\)]+)\).", "g")
+    let mvt = elementAth.currentMvt.mvtNames.replace(/(([^\)]+)\).)/g, "")
+    console.log(mvt)
     elementAth.$item.find(".popup").show();
-    elementAth.$item.find(".popup").text(elementAth.currentMvt.mvtNames);
+    elementAth.$item.find(".popup").text(mvt);
     elementAth.$item.find(".popup_top").show();
-    elementAth.$item.find(".popup_top").text(elementAth.currentMvt.mvtNames);
+    elementAth.$item.find(".popup_top").text(mvt);
 }
 
 function hideMvtInPopup(elementAth) {
@@ -743,14 +748,17 @@ function treatLeaderboardAuto() {
 
 function treatDisplayMvtForOthers(elementAth, idToCompare) {
     // Si l'athlète présent avant est à un mouvement différent de toi, on affiche le mouvement)
+
+    let mvt = elementAth.currentMvt.mvtNames.replace(/(([^\)]+)\).)/g, "")
+    console.log(mvt)
     if (elementAth.currentMvt.id != idToCompare) {
         if (heat.typeWod == 'amrap' && !Number.isNaN(elementAth.currentMvt.rounds)) {
             elementAth.$item.find(".rounds").text("R" + (elementAth.currentMvt.rounds));
-            elementAth.$item.find(".popup").text("R" + (elementAth.currentMvt.rounds) + ' - ' + elementAth.currentMvt.mvtNames);
-            elementAth.$item.find(".popup_top").text("R" + (elementAth.currentMvt.rounds) + ' - ' + elementAth.currentMvt.mvtNames);
+            elementAth.$item.find(".popup").text("R" + (elementAth.currentMvt.rounds) + ' - ' + mvt);
+            elementAth.$item.find(".popup_top").text("R" + (elementAth.currentMvt.rounds) + ' - ' + mvt);
         } else {
-            elementAth.$item.find(".popup").text(elementAth.currentMvt.mvtNames);
-            elementAth.$item.find(".popup_top").text(elementAth.currentMvt.mvtNames);
+            elementAth.$item.find(".popup").text(mvt);
+            elementAth.$item.find(".popup_top").text(mvt);
         }
         elementAth.$item.find(".popup").show();
         elementAth.$item.find(".popup_top").show();
@@ -762,6 +770,8 @@ function treatDisplayMvtForOthers(elementAth, idToCompare) {
 }
 
 function treatDisplayMvtFirst(elementAth) {
+    let mvt = elementAth.currentMvt.mvtNames.replace(/(([^\)]+)\).)/g, "")
+    console.log(mvt)
     if (elementAth.currentMvt.mvtNames == "" || elementAth.currentMvt.mvtNames.includes("Workout")) {
         overlay != "versus" && elementAth.$item.find(".popup").hide();
         overlay != "versus" && elementAth.$item.find(".popup_top").hide();
@@ -771,8 +781,8 @@ function treatDisplayMvtFirst(elementAth) {
             elementAth.$item.find(".popup").text("R" + (elementAth.currentMvt.rounds) + ' - ' + elementAth.currentMvt.mvtNames);
             elementAth.$item.find(".popup_top").text("R" + (elementAth.currentMvt.rounds) + ' - ' + elementAth.currentMvt.mvtNames);
         } else {
-            elementAth.$item.find(".popup").text(elementAth.currentMvt.mvtNames);
-            elementAth.$item.find(".popup_top").text(elementAth.currentMvt.mvtNames);
+            elementAth.$item.find(".popup").text(mvt);
+            elementAth.$item.find(".popup_top").text(mvt);
         }
         elementAth.$item.find(".popup").show();
         elementAth.$item.find(".popup_top").show();

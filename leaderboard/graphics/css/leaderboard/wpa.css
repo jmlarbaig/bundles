@@ -59,7 +59,7 @@
     text-align: center;
     min-height: 50px;
     padding: 10px 20px;
-    min-width: 100px;
+    min-width: 150px;
     background-color: white;
     font-size: var(--sizeFontScore_top);
     box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
@@ -77,7 +77,7 @@
 
 .athTop_detail .popup_top {
     z-index: 10;
-    width: 200px;
+    width: 94px;
     padding: 5px;
     text-align: center;
     margin-right: 0px;
@@ -94,6 +94,8 @@
     -webkit-transition-duration: 1s;
     -ms-transition-duration: 1s;
     white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 
