@@ -260,7 +260,6 @@ function repoLeft(lead_, aths_) {
         } else {
             margin = 0;
         }
-        // console.log(lead_)
         if (elm.$item.find(lead_) != undefined) {
             elm.$item.css("left", y + "px");
             if (elm.$item.is(':hidden')) {
@@ -277,10 +276,17 @@ function repoTop(lead_, aths_) {
     let y = parseInt($(lead_ + " .header").css('height').replace('px', ''));
     // console.table("Aths : ", aths_)
     Object.values(aths_).forEach(elm => {
+        // console.log("elm.displayName :", elm.displayName)
+        // console.log("elm.status :", elm.status)
         if (elm.$item.find(lead_) != undefined) {
-            elm.$item.css("top", y + "px");
-            y += elm.$item.height();
-            y += parseInt(elm.$item.css('margin').split(' ')[0].replace('px', ''));
+            if (elm.status != '0') {
+                !elm.$item.is(':visible') && elm.$item.show()
+                elm.$item.css("top", y + "px");
+                y += elm.$item.height();
+                y += parseInt(elm.$item.css('margin').split(' ')[0].replace('px', ''));
+            } else {
+                elm.$item.hide();
+            }
         }
     })
 }

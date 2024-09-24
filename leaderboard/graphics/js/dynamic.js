@@ -63,8 +63,6 @@ function updateDynamics(newScoring, status) {
 
         // console.log(arrayWAP)
 
-
-
         Object.values(athletesDivision).forEach((elemAth, key) => {
 
 

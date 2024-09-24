@@ -301,7 +301,7 @@ function resetLeaderboard(newData) {
                         $('#box_svg').slideDown(1000)
                         setTimeout(() => {
                             if (overlay == 'overlay_side' || overlay == 'overlay_side_v1' || overlay == 'overlay_wpa') {
-                                elementAth.$item.toggle("slide")
+                                // elementAth.$item.toggle("slide")
                             }
 
                         }, 1000)
