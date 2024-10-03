@@ -10,14 +10,15 @@ const file_wod = __dirname + '/lowerThirdWodConfig.json'
 const fs = require('fs');
 
 module.exports = function (nodecg) {
+
+    const router = nodecg.Router();
     const lowerThirdConfig = nodecg.Replicant('lowerThirdConfig')
     const LowerThirdPres = nodecg.Replicant('LowerThirdPres')
     const LowerThirdWaiting = nodecg.Replicant('LowerThirdWaiting')
     const LowerThirdFree = nodecg.Replicant('LowerThirdFree')
     const lowerThirdData = nodecg.Replicant('lowerThirdData');
     const lowerThirdWodConfig = nodecg.Replicant('lowerThirdWodConfig', { defaultValue: [] });
-
-    const router = nodecg.Router();
+    const cmdFromStreamDeck = nodecg.Replicant('cmdFromStreamDeck')
 
     if (fs.existsSync(file_config)) {
         try {
@@ -125,24 +126,12 @@ module.exports = function (nodecg) {
         })
     })
 
-    router.post('/chrono', (req, res) => {
-        // showChrono.value = req.body.show
+    nodecg.mount('/lowerthird', router);
+    router.post('/lowerthirdathlete', (req, res) => {
+        console.log(req.body)
+        cmdFromStreamDeck.value = req.body;
     });
 
-    router.post('/wod', (req, res) => {
-    });
-
-    router.post('/leaderboard', (req, res) => {
-    });
-
-    router.post('/flag', (req, res) => {
-    });
-
-    router.post('/affiliate', (req, res) => {
-    });
-
-    router.post('/logo', (req, res) => {
-    });
 
 
 };

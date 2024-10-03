@@ -34,6 +34,19 @@ function updateFront(data) {
                 '<div>' +
                 '<input type="text" id="textLower_' + val.lane + '" class="textLower"/>' +
                 '</div>' +
+                '<label for="position">Position</label>' +
+                '<select id="position_' + val.lane + '" class="position">' +
+                '<option value="top_left">Top Left</option>' +
+                '<option value="top_center_left">Top Center Left</option>' +
+                '<option value="top_center">Top Center</option>' +
+                '<option value="top_center_right">Top Center Right</option>' +
+                '<option value="top_right">Top Right</option>' +
+                '<option value="bottom_left">Bottom Left</option>' +
+                '<option value="bottom_center_left">Bottom Center Right</option>' +
+                '<option value="bottom_center">Bottom Center</option>' +
+                '<option value="bottom_center_right">Bottom Center Left</option>' +
+                '<option value="bottom_right">Bottom Right</option>' +
+                '</select>' +
                 '<div class="input-checkbox">' +
                 '<input type="checkbox" id="ath_' + val.lane + '" onclick="askAffichage()"/>' +
                 '<span class="toogle"></span>' +

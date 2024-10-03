@@ -2,7 +2,7 @@
 const listCis = nodecg.Replicant('CIS', 'connector')
 
 const lowerThirdData = nodecg.Replicant('lowerThirdData', 'lowerthird')
-
+const cmdFromStreamDeck = nodecg.Replicant('cmdFromStreamDeck', 'lowerthird')
 
 let listeCurrentHeat;
 
@@ -12,6 +12,10 @@ listCis.on('change', (newValue, oldValue) => {
         listeCurrentHeat = newValue
         updateFront(newValue)
     }
+})
+
+cmdFromStreamDeck.on('change', (newValue) => {
+    askAffichageFromStreamDeck(newValue)
 })
 
 

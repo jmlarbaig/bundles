@@ -327,19 +327,23 @@ function createAthleteLowerthird(infos) {
     const { lane, displayName, text, data, checked, subtype, position } = infos
 
     if (checked) {
+        console.log('checed')
 
         if ($root.find('#athlete_' + lane).length > 0) {
+            console.log('1')
             $('#athlete_' + lane).find('#name').text(displayName)
+            console.log(subtype)
             if (subtype == 'athletes') {
                 createAthletes(data, lane)
             } else {
-                createSubType(text, lane)
+                createSubType(text, lane, position)
             }
-            changeClass('#headAthletes', position)
+            // changeClass('#headAthletes', position)
             $('#athlete_' + lane).slideDown(1000)
         } else {
+            console.log('2')
             let $item = $(
-                '<div id="athlete_' + lane + '" class="athlete">' +
+                '<div id="athlete_' + lane + '" class="athlete ' + position + '">' +
                 '<div class="logo_event">' +
                 '</div>' +
                 '<div class="detailsAth">' +
@@ -357,15 +361,16 @@ function createAthleteLowerthird(infos) {
 
             $(".logo_event").css("background-image", "url(" + eventLogo + ")")
             // console.log(data)
+            // changeClass('#athlete_', position)
 
 
             if (subtype == 'athletes') {
                 createAthletes(data, lane)
             } else {
-                createSubType(text, lane)
+                createSubType(text, lane, position)
             }
 
-            changeClass('#headAthletes', position)
+            // changeClass('#athlete_', position)
 
             $item.slideDown(1000)
         }
@@ -380,18 +385,19 @@ function createAthleteLowerthird(infos) {
 
 }
 
-function createSubType(text, lane) {
+function createSubType(text, lane, position) {
     let $subAth = $root.find('#athlete_' + lane + ' .subtype');
     $subAth.find('.sub').remove()
     let $subItem = $(
         '<div class="sub">' + text + '</div>'
     )
 
+    changeClass('#athlete_' + lane, position)
     $subAth.append($subItem)
 }
 
 
-function createAthletes(data, lane) {
+function createAthletes(data, lane, position) {
     const { ath } = data
 
 
@@ -399,6 +405,10 @@ function createAthletes(data, lane) {
     $subAth.find('ul').remove()
 
     $subAth.append('<ul></ul>')
+
+    // changeClass('#athlete_' + lane, position)
+    // console.log('test')
+
 
 
 

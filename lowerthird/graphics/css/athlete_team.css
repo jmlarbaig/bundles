@@ -1,10 +1,13 @@
 .headAthletes {
-    position: absolute;
+    /* position: absolute;
     display: flex;
-    flex-direction: row;
+    flex-direction: row; */
 }
 
 .athlete {
+    position: absolute;
+    display: flex;
+    flex-direction: row;
     background-color: var(--back_color);
     /* width: fit-content; */
     min-width: 650px;

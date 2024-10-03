@@ -1,5 +1,5 @@
 {
-    "cc": "connecting",
-    "static": "connecting",
-    "dynamic": "connecting"
+    "cc": "deconnected",
+    "static": "deconnected",
+    "dynamic": "deconnected"
 }

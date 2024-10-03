@@ -9,6 +9,7 @@ const setupFile = __dirname + '/setupFile.json'
 module.exports = function (nodecg) {
 
     const router = nodecg.Router();
+    nodecg.mount('/leaderboard', router);
     router.post('/chrono', (req, res) => {
         showChrono.value = req.body.show
     });
@@ -18,6 +19,7 @@ module.exports = function (nodecg) {
     });
 
     router.post('/leaderboard', (req, res) => {
+        console.log(req.body)
         showLeaderboard_lead.value = req.body.show
     });
 

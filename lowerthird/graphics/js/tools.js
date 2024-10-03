@@ -5,10 +5,14 @@ const listClass = [
     'bottom_left',
     'bottom_center',
     'bottom_right',
+    'top_center_left',
+    'top_center_right',
+    'bottom_center_left',
+    'bottom_center_right',
 ]
 
-function createLowerThird(data){
-    switch(data.type){
+function createLowerThird(data) {
+    switch (data.type) {
         case 'presentator':
             createPresentator(data)
             break;
@@ -31,26 +35,26 @@ function createLowerThird(data){
 }
 
 
-function generateQrCode(link, $item, width, height){
+function generateQrCode(link, $item, width, height) {
 
     new QRCode($item[0].id, {
         text: link,
         width: width || 50,
-        height: height ||  50,
-        colorDark : "#000000",
-        colorLight : "#ffffff",
-        correctLevel : QRCode.CorrectLevel.H
+        height: height || 50,
+        colorDark: "#000000",
+        colorLight: "#ffffff",
+        correctLevel: QRCode.CorrectLevel.H
     });
 }
 
 
-function changeClass(selector, myClass){
+function changeClass(selector, myClass) {
     console.log(selector)
     console.log(myClass)
-    for(let _class of listClass){
-        if(_class != myClass){
+    for (let _class of listClass) {
+        if (_class != myClass) {
             $(selector).removeClass(_class)
-        }else{
+        } else {
             $(selector).addClass(myClass)
         }
     }
