@@ -97,9 +97,10 @@
 .heatlow {
     width: fit-content;
     min-width: 250px;
-    max-width: 350px;
+    /* max-width: 350px; */
     overflow: hidden;
     margin-left: 10px;
+    margin-right: 10px;
 }
 
 

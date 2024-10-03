@@ -16,6 +16,7 @@ module.exports = (nodecg, Connected) => {
 
     // Data from Competition Corner
     const affiliateStats = nodecg.Replicant('affiliateStats')
+    const crossfitAthlete = nodecg.Replicant('crossfitAthlete')
 
     const Divisions = nodecg.Replicant('Divisions')
     const WorkoutsDivision = nodecg.Replicant('WorkoutsDivision')
@@ -46,6 +47,10 @@ module.exports = (nodecg, Connected) => {
                 idEvent = id
                 console.log(idEvent)
                 Connected.value.cc = 'connected'
+            })
+            // AJOUTER L'API pour athlete crossfit
+            cc.loadAthleteOnEvent(event).then(data => {
+                crossfitAthlete.value = data
             })
             cc.loadWorkouts(event).then(data => {
                 WorkoutInfos.value = data

@@ -332,7 +332,7 @@ function TreatMvt(elementAth) {
     console.log("Workout lenght", workouts.length)
     console.log("elementAth Division", elementAth.division)
     console.log("Workout ", workouts)
-    console.log("Workout ID", workouts.find((element) => element.division == elementAth.division).mvt_id.length)
+    // console.log("Workout ID", workouts.find((element) => element.division == elementAth.division).mvt_id.length)
 
     if ((auth[elementAth.division] || heat.typeWod == 'repmax') && workouts.length > 0 && workouts.find((element) => element.division == elementAth.division).mvt_id.length > 1) {
         if (elementAth.result == "") {

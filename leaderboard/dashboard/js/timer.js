@@ -4,12 +4,12 @@ const adjustT = nodecg.Replicant('adjustT')
 
 let dataToSend = {
     'timer': "00:01:00",
-    'timecap':0,
-    'launchedTimer' : 'false',
-    'resetTimer' : 'stop'
+    'timecap': 0,
+    'launchedTimer': 'false',
+    'resetTimer': 'stop'
 }
 
-function startTimer(){
+function startTimer() {
 
     let now = Date().split(' ')[4]
     dataToSend.timer = now
@@ -18,8 +18,8 @@ function startTimer(){
     manualChrono.value = dataToSend;
 }
 
-function stopTimer(){
-    
+function stopTimer() {
+
     let now = Date().split(' ')[4]
     dataToSend.timer = now
     dataToSend.timecap = $('#manualTimecap').val()
@@ -27,7 +27,7 @@ function stopTimer(){
     manualChrono.value = dataToSend;
 }
 
-function resetTimer(){
+function resetTimer() {
     let now = Date().split(' ')[4]
     dataToSend.timer = now
     dataToSend.timecap = $('#manualTimecap').val()
@@ -36,15 +36,18 @@ function resetTimer(){
 
     manualChrono.value = dataToSend
 
-    setTimeout(()=>{
+    setTimeout(() => {
         dataToSend.resetTimer = false;
         manualChrono.value = dataToSend
     }, 1000)
 }
 
+function resetAdjust() {
+    adjustT.value = 0;
+}
 
-function adjustTimer(){
-    switch(event.target.id){
+function adjustTimer() {
+    switch (event.target.id) {
         case 'plus1':
             adjustT.value += 1000
             break;
@@ -67,3 +70,7 @@ function adjustTimer(){
             break;
     }
 }
+
+adjustT.on('change', (newValue) => {
+    $('#offset_timer').text(newValue / 1000 + " s")
+})

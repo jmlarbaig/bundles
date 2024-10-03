@@ -293,6 +293,21 @@ module.exports = () => {
         }).then((response) => response.json())
     }
 
+    async function loadAthleteOnEvent(eventId) {
+        return fetch("https://competitioncorner.net/api2/v1/events/" + eventId + "/crossfit-athletes", {
+            method: "GET",
+            headers: {
+                'Content-Type': "application/json",
+                'cache-control':
+                    '[no-cache,  no-store,  max-age=0,  must-revalidate], expires: [0], pragma: [no-cache]',
+                'Charset': 'utf-8',
+                'Authorization': 'Bearer ' + token
+            },
+        }).then((response) => {
+            return response.json();
+        }).catch((err) => { return err })
+    }
+
 
     return {
         logCC,
@@ -313,6 +328,7 @@ module.exports = () => {
         loadHeatsByWorkout,
         loadHeatResultsFromFileCC,
         loadDivisionResultsFromFileCC,
-        loadOverallResultsFromFileCC
+        loadOverallResultsFromFileCC,
+        loadAthleteOnEvent
     }
 }

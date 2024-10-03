@@ -1,13 +1,15 @@
-.headAthletes{
+.headAthletes {
     position: absolute;
+    display: flex;
+    flex-direction: row;
 }
 
-.athlete{
+.athlete {
     background-color: var(--back_color);
     /* width: fit-content; */
     min-width: 650px;
     /* padding: 0px 20px; */
-    margin: 10px 0px;
+    margin: 10px 10px;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -15,25 +17,25 @@
     border-radius: 10px 0px 10px 0px;
 }
 
-.detailsAth{
+.detailsAth {
     width: 100%;
     display: flex;
     flex-direction: column;
     /* border-left: solid 2px white; */
 }
 
-.firstAth{
+.firstAth {
     font-size: 1.6em;
     font: 800;
     padding: 10px 20px;
-    background: var(--header_color) ;
+    background: var(--header_color);
     color: var(--tx_header_color);
     text-transform: uppercase;
     text-align: left;
     font-size: var(--ft_size_header);
 }
 
-.subtype{
+.subtype {
     padding: 10px 20px;
     background: linear-gradient(90deg, var(--subheader_color) 0%, var(--subheader_color) 50%, var(--subheader_color) 100%);
     color: var(--tx_subheader_color);
@@ -43,26 +45,26 @@
     border-radius: 0px 0px 10px 0px;
 }
 
-.sub{
+.sub {
     display: flex;
     flex-direction: row;
     align-items: center;
 }
 
-.sub ul{
+.sub ul {
     padding-left: 0ch;
     margin-bottom: 0px;
 }
 
-.sub li::before{
-    content: '\21E2 ' ;
+.sub li::before {
+    content: '\21E2 ';
 }
 
-.affiliation{
+.affiliation {
     font-style: italic;
 }
 
-.ath{
+.ath {
     width: fit-content;
     display: flex;
     flex-direction: row;
@@ -71,16 +73,17 @@
     padding: 5px;
     white-space: nowrap;
 }
-.ath h4{
+
+.ath h4 {
     font-size: 1.5em;
 }
 
-.ath span{
+.ath span {
     font-size: 1.1em;
     width: fit-content;
 }
 
-.avatar{
+.avatar {
     margin-right: 20px;
     background-position: center;
     background-size: cover;
@@ -90,16 +93,15 @@
     border-radius: 50%;
 }
 
-.overall{
-}
+.overall {}
 
-.wods{
+.wods {
     font-size: 1em;
     display: flex;
     flex-direction: row;
 }
 
-.wod{
+.wod {
     border-left: solid 2px white;
     border-right: solid 2px white;
     margin: 0px 5px;

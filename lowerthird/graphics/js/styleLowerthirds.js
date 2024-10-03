@@ -413,14 +413,8 @@ function createAthletes(data, lane) {
 
         let $subItem = $(
             '<li class="sub">' + fullName + '</li>'
-            //     // '<div class="avatar" id="avatar'+ lane + '_'+index +'" ></div>' +
-            //     '<h4 class="fullName" >' + fullName + '</h4>' +
-            //     // '<span class="affiliateAth"> / ' + aff + '</span>' +
-            // '</li>'
         )
         $subAth.find('ul').append($subItem)
-        // if(instagram != ''){
-        //     generateQrCode('https://www.instagram.com/'+instagram, $subItem.find('#avatar'+ lane + '_'+index))
         if (avatarPath != '' && avatarPath != null) {
             $("#avatar" + lane + '_' + index).css("background-image", "url(" + (avatarPath) + ")")
         } else {

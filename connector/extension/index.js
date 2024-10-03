@@ -24,7 +24,23 @@ module.exports = function (nodecg) {
     const OSDivisionWorkoutFromCC = nodecg.Replicant('OSDivisionWorkout')
     const OSResultFromCC = nodecg.Replicant('OSResult')
 
-    Connected.value = connect
+
+    const connectionPath = path.join(__dirname, "statusFile.json");
+
+    if (fs.existsSync(connectionPath)) {
+        try {
+            const data_ = JSON.parse(fs.readFileSync(connectionPath))
+            Connected.value = data_
+            console.log(data_.static)
+        }
+        catch (err) {
+            console.error(err)
+        }
+    } else {
+        console.log("Creating the file")
+        fs.writeFileSync(connectionPath, JSON.stringify(connect, undefined, 4));
+    }
+
 
     let cc = require('./js/toolsCC')(nodecg, Connected)
     let sk = require('./js/toolsSK')(nodecg, Connected)
@@ -82,13 +98,24 @@ module.exports = function (nodecg) {
         dataConfig.value = value
     }
 
+    function writeStatus(value) {
+        let data = JSON.stringify(value, undefined, 4);
+        fs.writeFileSync(connectionPath, data)
+        Connected.value = value
+    }
+
+    if (Connected.value.static == 'connected' || Connected.value.static == 'connecting') {
+        if (dataConfig.value != {}) {
+            nodecg.sendMessage('connection', dataConfig.value)
+        }
+    }
 
 
     nodecg.listenFor('connection', (value, ack) => {
 
         nodecg.sendMessage('reconnection')
 
-        let data = { cc: 'connecting', 'static': 'connecting', 'dynamic': 'connecting' }
+        let data = { 'cc': 'connecting', 'static': 'connecting', 'dynamic': 'connecting' }
         Connected.value = data;
 
         const { user, passwd, event, addIp, ntpAdress } = value
@@ -97,17 +124,19 @@ module.exports = function (nodecg) {
         sk.connectionSK(addIp)
 
         writeConfig(value)
+        writeStatus(data)
 
     })
 
     nodecg.listenFor('deconnection', (value, ack) => {
-        let data = { cc: 'deconnecting', 'static': 'deconnecting', 'dynamic': 'deconnecting' }
+        let data = { 'cc': 'deconnecting', 'static': 'deconnecting', 'dynamic': 'deconnecting' }
         Connected.value = data;
 
         sk.deconnectionSK()
 
-        data = { cc: 'deconnected', 'static': 'deconnected', 'dynamic': 'deconnected' }
+        data = { 'cc': 'deconnected', 'static': 'deconnected', 'dynamic': 'deconnected' }
         Connected.value = data;
+        writeStatus(data)
     })
 
 

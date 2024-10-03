@@ -28,23 +28,30 @@ const athletes_infos = {
 
 module.exports = (nodecg) => {
 
-    const data_ath = nodecg.Replicant('assets:dataAth')
+    // const data_ath = nodecg.Replicant('assets:dataAth')
 
-    data_ath.on('change', (newValue, oldValue) => {
+    const crossfitAthlete = nodecg.Replicant('crossfitAthlete')
+
+    crossfitAthlete.on('change', (newValue, oldValue) => {
         if (newValue.length > 0) {
             if (JSON.stringify(newValue) != JSON.stringify(oldValue)) {
                 let ath = [];
                 let liste_cc = { 'Team': [], 'Individual': [] }
+                const result = newValue
 
-                const result = excelToJson({
-                    sourceFile: __dirname + '/../../../..' + newValue[0].url,
-                    columnToKey: {
-                        '*': '{{columnHeader}}'
-                    }
-                });
+                // const result = excelToJson({
+                //     sourceFile: __dirname + '/../../../..' + newValue[0].url,
+                //     columnToKey: {
+                //         '*': '{{columnHeader}}'
+                //     }
+                // });
 
-                if (result.hasOwnProperty('default')) {
-                    Object.values(result.default).forEach((val, index) => {
+                console.log(result)
+
+                // if (result.hasOwnProperty('default')) {
+                if (result != {}) {
+                    // Object.values(result.default).forEach((val, index) => {
+                    Object.values(result).forEach((val, index) => {
                         ath[index] = Object.assign({}, athletes_infos, val);
                         if (val.Format == "Team") {
                             let team_name = val['Team Name']
