@@ -210,6 +210,7 @@ module.exports = (nodecg, Connected) => {
 
     nodecg.listenFor('liste_ath_cc_update', value => {
         athletesDataCC = value
+        console.log(athletesDataCC)
     })
 
     nodecg.listenFor('update_CIS', value => {
@@ -249,9 +250,9 @@ module.exports = (nodecg, Connected) => {
         let listeCurrentHeat_ath = []
         let listParticipants = warmUp.wod.participants
         let athletesOfCurrentHeat = warmUp.heat.stations
+        // console.log(athletesOfCurrentHeat)
         athletesOfCurrentHeat.forEach(athlete => {
             let partName = athlete.participantName;
-            // console.log(partName)
 
             if (partName[partName.length - 1] == ' ') {
                 partName = partName.substring(0, partName.length - 1)
@@ -264,6 +265,8 @@ module.exports = (nodecg, Connected) => {
                 listeCurrentHeat[athlete.station].lane = listeCurrentHeat[athlete.station].station
                 let moreDatas = listParticipants.find(x => x.id === athlete.participantId)
 
+                // console.log("moredata = ", moreDatas)
+
                 listeCurrentHeat[athlete.station].points = moreDatas.points
                 listeCurrentHeat[athlete.station].rank = moreDatas.rank
                 listeCurrentHeat[athlete.station].height = moreDatas.height
@@ -274,18 +277,23 @@ module.exports = (nodecg, Connected) => {
 
                 listeCurrentHeat[athlete.station].ath = []
 
-                // console.log(liste_cc)
+                console.log("partName", partName)
+                console.log("partName", partName)
+                console.log(liste_cc.Individual.hasOwnProperty(partName))
 
                 if (liste_cc != null && liste_cc.Team.hasOwnProperty(partName)) {
                     listeCurrentHeat[athlete.station].ath = liste_cc.Team[partName]
                     listeCurrentHeat[athlete.station].type = 'team'
                 }
                 if (liste_cc != null && liste_cc.Individual.hasOwnProperty(partName)) {
+                    console.log(partName)
+                    console.log(liste_cc.Individual)
                     listeCurrentHeat[athlete.station].ath = liste_cc.Individual[partName]
                     listeCurrentHeat[athlete.station].type = 'individual'
                 }
 
                 cc.loadParticpantId(idEvent, parseInt(athlete.participantId)).then((result) => {
+                    // console.log(result)
 
                     listeCurrentHeat[athlete.station].qualifierRank = result.qualifierRank
                     listeCurrentHeat[athlete.station].workoutRank = [{}]
@@ -301,17 +309,22 @@ module.exports = (nodecg, Connected) => {
 
                     listeCurrentHeat_ath[athlete.station] = { 'ath_infos': [] }
 
+                    console.log(listeCurrentHeat[athlete.station].ath.length)
+
 
                     if (listeCurrentHeat[athlete.station].ath.length > 0) {
                         listeCurrentHeat[athlete.station].ath.forEach((ath, index) => {
+                            console.log("ath", ath)
                             let alias = (ath['First Name'].toLowerCase() + ' ' + ath['Last Name'].toLowerCase()).replaceAll(' ', '-')
+                            // console.log(alias)
 
                             let ath_infos = {}
 
                             cc.loadAthlete(alias).then((result) => {
+                                console.log(result)
                                 if (result.error == 'Athlete not found') {
                                     ath_infos.fullName = ath['First Name'] + ' ' + ath['Last Name'];
-                                    ath_infos.crossfitAffiliateName = ath['Affiliate'];
+                                    ath_infos.crossfitAffiliateName = ath['affiliate'];
                                     listeCurrentHeat_ath[athlete.station].ath_infos[index] = { ...ath_infos }
                                 } else {
                                     listeCurrentHeat_ath[athlete.station].ath_infos[index] = { ...result }

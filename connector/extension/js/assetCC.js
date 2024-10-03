@@ -46,15 +46,16 @@ module.exports = (nodecg) => {
                 //     }
                 // });
 
-                // console.log(result)
+                console.log(result)
 
                 // if (result.hasOwnProperty('default')) {
                 if (result != {}) {
                     // Object.values(result.default).forEach((val, index) => {
                     Object.values(result).forEach((val, index) => {
+                        // console.log(val.divisionFormat)
                         ath[index] = Object.assign({}, athletes_infos, val);
-                        if (val.Format == "Team") {
-                            let team_name = val['Team Name']
+                        if (val.divisionFormat == "team") {
+                            let team_name = val.teamName
 
                             if (team_name.includes('"')) {
                                 while (team_name.includes('"', -2)) {
@@ -68,9 +69,9 @@ module.exports = (nodecg) => {
 
                             liste_cc['Team'][team_name].push(val)
                         }
-                        else if (val.Format == "Individual") {
+                        else if (val.divisionFormat == "individual") {
 
-                            let fullName = val['First Name'] + ' ' + val['Last Name']
+                            let fullName = val.fullName
                             liste_cc['Individual'][fullName] = []
                             liste_cc['Individual'][fullName].push(val)
                         }
