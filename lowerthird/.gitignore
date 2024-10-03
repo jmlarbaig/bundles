@@ -4,3 +4,9 @@ bower_components
 
 
 configDefault.json
+
+/extension/lowerThirdConfig.json
+/extension/lowerThirdFree.json
+/extension/lowerThirdPres.json
+/extension/lowerThirdWaiting.json
+/extension/lowerThirdWodConfig.json
