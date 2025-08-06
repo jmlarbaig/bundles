@@ -349,6 +349,7 @@ function TreatMvt(elementAth) {
                     currentMvt = mvtIndexAmrap(elementAth.score_abs, elementAth.division, elementAth.log_round_time[0].length + 1)
                     break;
                 case 'repmax':
+                    console.log('Load' + elementAth.loadAttempted)
                     currentMvt = mvtIndexRepMax(elementAth.score_abs, elementAth.loadAttempted)
                     break;
                 case 'time':
@@ -359,6 +360,10 @@ function TreatMvt(elementAth) {
             }
         } else {
             currentMvt = mvtIndexFinish(elementAth.division)
+        }
+    } else if (heat.typeWod == 'repmax') {
+        if (elementAth.result == "") {
+            currentMvt = mvtIndexRepMax(elementAth.score_abs, elementAth.loadAttempted)
         }
     } else {
         currentMvt = {
@@ -708,13 +713,13 @@ function treatTimeCapStatus(elementAth) {
         elementAth.$item.find(".popup").hide();
         elementAth.$item.find(".popup_top").hide();
         elementAth.$item.find(".score").show();
-        elementAth.$item.find(".score").text(result + ' Reps');
+        elementAth.$item.find(".score").text(result + ' ' + setupLeaderboard.value.unitSelect);
     } else {
         elementAth.$item.find(".popup").show();
         elementAth.$item.find(".popup_top").show();
         elementAth.$item.find(".score").text('FIN');
-        elementAth.$item.find(".popup").text(result + ' Reps');
-        elementAth.$item.find(".popup_top").text(result + ' Reps');
+        elementAth.$item.find(".popup").text(result + ' ' + setupLeaderboard.value.unitSelect);
+        elementAth.$item.find(".popup_top").text(result + ' ' + setupLeaderboard.value.unitSelect);
     }
 }
 
@@ -741,11 +746,12 @@ function showSprint(elementAth) {
 }
 
 function showRepMax(elementAth) {
+    console.log('REP TARGET : ' + elementAth.currentMvt.repTarget)
     if (elementAth.currentMvt.repTarget != elementAth.currentMvt.scoreAbsMvt) {
         if (elementAth.currentMvt.repTarget != 0) {
-            elementAth.$item.find(".popup").html('TRY &#10140; ' + elementAth.currentMvt.repTarget);
-            overlay == 'versus' ? elementAth.$item.find(".popup").slideDown(1000) : elementAth.$item.find(".popup").fadeIn(1000);
-            elementAth.$item.find(".popup_top").html('TRY &#10140; ' + elementAth.currentMvt.repTarget);
+            elementAth.$item.find(".popup").html('TRY &#10140; ' + elementAth.currentMvt.repTarget + ' ' + setupLeaderboard.value.unitSelect);
+            overlay == 'versus' ? elementAth.$item.find(".popup").slideDown(1000) : elementAth.$item.find(".popup").show();
+            elementAth.$item.find(".popup_top").html('TRY &#10140; ' + elementAth.currentMvt.repTarget + ' ' + setupLeaderboard.value.unitSelect);
             overlay == 'versus' ? elementAth.$item.find(".popup_top").slideDown(1000) : elementAth.$item.find(".popup_top").fadeIn(1000);
         }
     } else {
@@ -754,7 +760,7 @@ function showRepMax(elementAth) {
         elementAth.$item.find(".popup_top").html('');
         overlay == 'versus' ? elementAth.$item.find(".popup_top").slideUp(1000) : elementAth.$item.find(".popup_top").fadeOut(1000);
     }
-    elementAth.$item.find(".score").text(elementAth.currentMvt.scoreAbsMvt + ' LBS');
+    elementAth.$item.find(".score").text(elementAth.currentMvt.scoreAbsMvt + ' ' + setupLeaderboard.value.unitSelect);
 }
 
 function showRepMvtInScore(elementAth) {

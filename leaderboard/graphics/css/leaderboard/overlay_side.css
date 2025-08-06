@@ -291,8 +291,8 @@
 
 .mainSponsor {
     position: absolute;
-    top: 15px;
-    right: 15px;
+    top: var(--position_y_sponsor);
+    left: var(--position_x_sponsor);
     z-index: 10;
 }
 
