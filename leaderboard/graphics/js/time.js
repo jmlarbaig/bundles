@@ -113,7 +113,7 @@ function showTime(Cap) {
 
         let $item = $(
             '<div id="time"> </div>' +
-            '<div id="cap">CAP ' + Cap + '</div>'
+            '<div id="cap">Timecap ' + Cap + '</div>'
         );
 
 

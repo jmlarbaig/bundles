@@ -1,7 +1,80 @@
+:root {
+    /* Couleurs de base */
+    --primary-color: #1e88e5;
+    --secondary-color: #26a69a;
+    --accent-color: #ff5722;
+
+    /* Couleurs de texte */
+    --text-light: #ffffff;
+    --text-dark: #212121;
+    --text-muted: #757575;
+
+    /* Couleurs de fond */
+    --bg-dark: rgba(33, 33, 33, 0.85);
+    --bg-light: rgba(245, 245, 245, 0.9);
+    --bg-gradient-dark: linear-gradient(90deg, rgba(33, 33, 33, 0.85) 0%, rgba(66, 66, 66, 0.7) 100%);
+    --bg-gradient-light: linear-gradient(90deg, rgba(240, 240, 240, 0.85) 0%, rgba(224, 224, 224, 0.7) 100%);
+
+    /* Couleurs pour le premier, deuxième et troisième */
+    --gold-color: #ffd700;
+    --silver-color: #c0c0c0;
+    --bronze-color: #cd7f32;
+    --gold-gradient: linear-gradient(90deg, rgba(212, 175, 55, 0.7) 0%, rgba(10, 10, 10, 0.7) 100%);
+    --silver-gradient: linear-gradient(90deg, rgba(192, 192, 192, 0.7) 0%, rgba(10, 10, 10, 0.7) 100%);
+    --bronze-gradient: linear-gradient(90deg, rgba(205, 127, 50, 0.7) 0%, rgba(10, 10, 10, 0.7) 100%);
+
+    /* Effets */
+    --shadow-light: 0 2px 5px rgba(0, 0, 0, 0.1);
+    --shadow-medium: 0 5px 15px rgba(0, 0, 0, 0.2);
+    --shadow-strong: 0 10px 25px rgba(0, 0, 0, 0.3);
+    --border-radius-sm: 4px;
+    --border-radius-md: 8px;
+    --border-radius-lg: 16px;
+    --border-light: 1px solid rgba(255, 255, 255, 0.2);
+    --border-dark: 1px solid rgba(0, 0, 0, 0.2);
+
+    /* Animations */
+    --transition-fast: all 0.3s ease;
+    --transition-normal: all 0.5s ease;
+    --transition-slow: all 0.7s ease;
+
+    /* Variables de mise en page */
+    --spacing-xs: 4px;
+    --spacing-sm: 8px;
+    --spacing-md: 16px;
+    --spacing-lg: 24px;
+    --spacing-xl: 32px;
+}
+
+/* Thème sombre (par défaut) */
+.theme-dark {
+    --main-bg-color: var(--bg-dark);
+    --main-text-color: var(--text-light);
+    --header-bg: var(--bg-gradient-dark);
+    --border-color: var(--border-light);
+    --shadow: var(--shadow-medium);
+}
+
+/* Thème clair */
+.theme-light {
+    --main-bg-color: var(--bg-light);
+    --main-text-color: var(--text-dark);
+    --header-bg: var(--bg-gradient-light);
+    --border-color: var(--border-dark);
+    --shadow: var(--shadow-light);
+}
+
 .finish_rank {
     background-color: var(--finish_color);
     color: var(--tx_finish_color);
     fill: var(--finish_color);
+}
+
+.finish_rank_ath {
+    /* box-shadow: var(--finish_color) 0 2px 5px; */
+    /* border: var(--finish_color) 2px solid; */
+    border-left: var(--finish_color) 10px solid;
+    background-color: var(--finish_color);
 }
 
 .first_rank {
@@ -10,10 +83,24 @@
     fill: var(--first_rank_color);
 }
 
+.first_rank_ath {
+    /* box-shadow: var(--first_rank_color) 0 2px 5px; */
+    /* border: var(--second_color) 2px solid; */
+    background-color: var(--second_color);
+    border-left: var(--second_color) 10px solid;
+}
+
 .second_rank {
     background-color: var(--second_rank_color);
     color: var(--tx_second_rank_color);
     fill: var(--second_rank_color);
+}
+
+.second_rank_ath {
+    /* box-shadow: var(--second_rank_color) 0 2px 5px; */
+    /* border: var(--second_color) 2px solid; */
+    border-left: var(--second_color) 10px solid;
+    background-color: var(--second_color);
 }
 
 .third_rank {
@@ -22,10 +109,24 @@
     fill: var(--third_rank_color);
 }
 
+.third_rank_ath {
+    /* box-shadow: var(--third_rank_color) 0 2px 5px; */
+    /* border: var(--second_color) 2px solid; */
+    border-left: var(--second_color) 10px solid;
+    background-color: var(--second_color);
+}
+
 .other_rank {
     background-color: var(--second_color);
     color: var(--tx_second_color);
     fill: var(--second_color);
+}
+
+.other_rank_ath {
+    /* box-shadow: var(--second_color) 0 2px 5px; */
+    /* border: var(--second_color) 2px solid; */
+    background-color: var(--second_color);
+    border-left: var(--second_color) 10px solid;
 }
 
 .up_rank {

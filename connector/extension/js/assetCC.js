@@ -46,7 +46,7 @@ module.exports = (nodecg) => {
                 //     }
                 // });
 
-                console.log(result)
+                // console.log(result)
 
                 // if (result.hasOwnProperty('default')) {
                 if (result != {}) {

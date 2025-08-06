@@ -271,21 +271,29 @@ function repoLeft(lead_, aths_) {
     })
 }
 
+function noJudge(ath) {
+    ath.$item.find('rank').text('DNF');
+    ath.$item.css('opacity', '0.2');
+}
+
+function withJudge(ath) {
+    ath.$item.css('opacity', '1');
+}
+
 function repoTop(lead_, aths_) {
     //initialisation la position de départ
     let y = parseInt($(lead_ + " .header").css('height').replace('px', ''));
     // console.table("Aths : ", aths_)
     Object.values(aths_).forEach(elm => {
-        // console.log("elm.displayName :", elm.displayName)
-        // console.log("elm.status :", elm.status)
         if (elm.$item.find(lead_) != undefined) {
-            if (elm.status != '0') {
+            if (true) {
+                // if (elm.status != '0') {
                 !elm.$item.is(':visible') && elm.$item.show()
                 elm.$item.css("top", y + "px");
                 y += elm.$item.height();
                 y += parseInt(elm.$item.css('margin').split(' ')[0].replace('px', ''));
             } else {
-                elm.$item.hide();
+                // elm.$item.hide();
             }
         }
     })
@@ -589,6 +597,53 @@ function changeColor(ath, element) {
     }
 }
 
+function changeColorFinish(ath, element) {
+    console.log("ath :", ath)
+    console.log("element : ", element)
+    ath.$item.find(element).addClass('finish_rank')
+    ath.$item.find(element).removeClass('initial_rank first_rank second_rank third_rank other_rank', false)
+    overlay == 'versus' && ath.$item.find(element).removeClass('initial_rank_versus')
+}
+
+function changeColorFinishAth(ath, element) {
+    ath.$item.find(element).addClass('finish_rank_ath')
+    ath.$item.find(element).removeClass('initial_rank_top_ath first_rank_ath second_rank_ath third_rank_ath other_rank_ath', false)
+    overlay == 'versus' && ath.$item.find(element).removeClass('initial_rank_versus')
+}
+
+function changeColorAth(ath, element) {
+    let rank = ath.CurrentRank
+    if (overlay == 'overlay_top' || overlay == 'versus') {
+        rank != 1 ? rank = 4 : rank
+    }
+    switch (rank) {
+        case 1:
+            ath.$item.find(element).addClass('first_rank_ath')
+            ath.$item.find(element).removeClass('initial_rank_top_ath second_rank_ath third_rank_ath other_rank_ath', false)
+            overlay == 'versus' && ath.$item.find(element).removeClass('initial_rank_versus')
+            break;
+        case 2:
+            ath.$item.find(element).addClass('second_rank_ath')
+            ath.$item.find(element).toggleClass('first_rank_ath third_rank_ath other_rank_ath', false)
+            break;
+        case 3:
+            ath.$item.find(element).addClass('third_rank_ath')
+            ath.$item.find(element).toggleClass('second_rank_ath first_rank_ath other_rank_ath', false)
+            break;
+        default:
+            if (overlay != 'overlay_top') {
+                ath.$item.find(element).addClass('other_rank_ath')
+                ath.$item.find(element).toggleClass('second_rank_ath third_rank_ath first_rank_ath', false)
+            } else if (overlay == 'versus') {
+                ath.$item.find(element).addClass('initial_rank_versus_ath')
+                ath.$item.find(element).removeClass('first_rank_ath second_rank_ath third_rank_ath other_rank_ath')
+            } else {
+                ath.$item.find(element).addClass('initial_rank_top_ath')
+                ath.$item.find(element).removeClass('first_rank_ath second_rank_ath third_rank_ath')
+            } break;
+    }
+}
+
 
 
 function changeRank(elementAth) {
@@ -627,11 +682,20 @@ function treatBigScreenMvt(elementAth) {
 
 function treatFinishStatus(elementAth) {
     let result = elementAth.result;
-    elementAth.$item.find(".popup").text(result.toString().slice(result.length - 9, result.length - 8) != "0" ? result = result.toString().slice(result.length - 8, result.length) : result.toString().slice(result.length - 7, result.length - 6) != "0" ? result = result.toString().slice(result.length - 7, result.length) : result = result.toString().slice(result.length - 6, result.length));
-    elementAth.$item.find(".popup").show();
-    elementAth.$item.find(".popup_top").text(result.toString().slice(result.length - 9, result.length - 8) != "0" ? result = result.toString().slice(result.length - 8, result.length) : result.toString().slice(result.length - 7, result.length - 6) != "0" ? result = result.toString().slice(result.length - 7, result.length) : result = result.toString().slice(result.length - 6, result.length));
-    elementAth.$item.find(".popup_top").show();
-    elementAth.$item.find(".score").text('FIN')
+    if (overlay == "overlay_side") {
+        elementAth.$item.find(".score").show()
+        elementAth.$item.find(".score").text(result.toString().slice(result.length - 9, result.length - 8) != "0" ? result = result.toString().slice(result.length - 8, result.length) : result.toString().slice(result.length - 7, result.length - 6) != "0" ? result = result.toString().slice(result.length - 7, result.length) : result = result.toString().slice(result.length - 6, result.length));
+        elementAth.$item.find(".popup").hide();
+        elementAth.$item.find(".popup_top").text(result.toString().slice(result.length - 9, result.length - 8) != "0" ? result = result.toString().slice(result.length - 8, result.length) : result.toString().slice(result.length - 7, result.length - 6) != "0" ? result = result.toString().slice(result.length - 7, result.length) : result = result.toString().slice(result.length - 6, result.length));
+        elementAth.$item.find(".popup_top").hide();
+        // elementAth.$item.find(".score").text('FIN')
+    } else {
+        elementAth.$item.find(".popup").text(result.toString().slice(result.length - 9, result.length - 8) != "0" ? result = result.toString().slice(result.length - 8, result.length) : result.toString().slice(result.length - 7, result.length - 6) != "0" ? result = result.toString().slice(result.length - 7, result.length) : result = result.toString().slice(result.length - 6, result.length));
+        elementAth.$item.find(".popup").show();
+        elementAth.$item.find(".popup_top").text(result.toString().slice(result.length - 9, result.length - 8) != "0" ? result = result.toString().slice(result.length - 8, result.length) : result.toString().slice(result.length - 7, result.length - 6) != "0" ? result = result.toString().slice(result.length - 7, result.length) : result = result.toString().slice(result.length - 6, result.length));
+        elementAth.$item.find(".popup_top").show();
+        elementAth.$item.find(".score").text('FIN')
+    }
     if (overlay == 'progression') {
         $('#circle' + elementAth.lane).css("transform", "translateX(95%)");
     }
@@ -639,11 +703,19 @@ function treatFinishStatus(elementAth) {
 
 function treatTimeCapStatus(elementAth) {
     let result = elementAth.score_abs;
-    elementAth.$item.find(".popup").show();
-    elementAth.$item.find(".popup_top").show();
-    elementAth.$item.find(".score").text('FIN');
-    elementAth.$item.find(".popup").text('CAP ' + result);
-    elementAth.$item.find(".popup_top").text('CAP ' + result);
+
+    if (overlay == "overlay_side") {
+        elementAth.$item.find(".popup").hide();
+        elementAth.$item.find(".popup_top").hide();
+        elementAth.$item.find(".score").show();
+        elementAth.$item.find(".score").text(result + ' Reps');
+    } else {
+        elementAth.$item.find(".popup").show();
+        elementAth.$item.find(".popup_top").show();
+        elementAth.$item.find(".score").text('FIN');
+        elementAth.$item.find(".popup").text(result + ' Reps');
+        elementAth.$item.find(".popup_top").text(result + ' Reps');
+    }
 }
 
 
@@ -697,8 +769,6 @@ function showRepMvtInScore(elementAth) {
             hideMvtInPopup(elementAth)
             break;
         case 'mvt_score':
-            console.log(elementAth.displayName)
-            console.log(elementAth.currentMvt)
             if (elementAth.currentMvt.mvtNames.toUpperCase() != "WORKOUT") {
                 elementAth.$item.find(".score").text(elementAth.currentMvt.scoreAbsMvt + "/" + elementAth.currentMvt.repTarget);
                 showMvtInPopup(elementAth)
@@ -709,6 +779,9 @@ function showRepMvtInScore(elementAth) {
             break;
         default:
     }
+}
+function hideRepMvtInScore(elementAth) {
+    elementAth.$item.find(".score").hide();
 }
 
 function showMvtInPopup(elementAth) {
@@ -849,6 +922,7 @@ function changeLaneToRank(elementAth) {
     elementAth.OldRank = elementAth.CurrentRank
     elementAth.$item.find(".rank").text(elementAth.CurrentRank);
 }
+
 
 
 function treatResultTimeWPA(elementAth) {

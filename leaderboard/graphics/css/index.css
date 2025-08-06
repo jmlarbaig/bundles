@@ -245,6 +245,22 @@
         z-index: 100;
     }
 
+    .backgroundOverlay {
+        position: fixed;
+        top: 0px;
+        bottom: 0px;
+        right: 0px;
+        left: 0px;
+        width: 1920px;
+        height: 1080px;
+        border: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        z-index: -50;
+
+    }
+
     .sponsorLogo {
         background-color: black;
         width: 70%;

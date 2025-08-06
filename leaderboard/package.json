@@ -110,6 +110,15 @@
         "width": 1920,
         "height": 1080
       }
+    ],
+    "assetCategories": [
+      {
+        "name": "backgroundOverlay",
+        "title": "Background Overlay",
+        "allowedTypes": [
+          "png"
+        ]
+      }
     ]
   },
   "repository": "git@gitlab.com:jeanmarie.larbaig/bundlesfv",

@@ -10,7 +10,7 @@ function headerSide(divisions, indexDivision, repTarget) {
         '<div id="leaderboard' + indexDivision + '" class="leaderboard">' +
         '<div class="header">' +
         '<div class="text-nowrap text-truncate text-left division">' + divisions[indexDivision] + '</div>' +
-        '<div class="repTar text-nowrap text-truncate repTarget' + [indexDivision] + '">' + reps + '</div>' +
+        // '<div class="repTar text-nowrap text-truncate repTarget' + [indexDivision] + '">' + reps + '</div>' +
         '</div>' +
         '<div id="athletes" class="athletes">' +
         '</div>' +
@@ -30,7 +30,7 @@ function overlaySide(data) {
         '<div class="athlete" id="aht' + data.lane + '">' +
         '<div class="popup text-nowrap text-truncate">' + '</div>' +
         '<div class="ath">' +
-        '<div class="rank text-nowrap text-truncate"> ' + '</div>' +
+        '<div class="subrank"><div class="rank text-nowrap text-truncate"> ' + '</div></div>' +
         '<div class="lane text-nowrap text-truncate"># ' + data.lane + '</div>' +
         '<div class="flag">' + '<div class="box_flag" ></div> ' + '</div>' +
         '<div class="text-nowrap text-truncate text-left name">' + name + '</div>' +
@@ -487,7 +487,7 @@ function headerSideWPA(divisions, indexDivision) {
         '<div id="leaderboard' + indexDivision + '" class="leaderboard">' +
         '<div class="header">' +
         '<div class="text-nowrap text-truncate text-left division">' + divisions[indexDivision] + '</div>' +
-        '<div class="repTar text-nowrap text-truncate repTarget' + [indexDivision] + '">' + reps + '</div>' +
+        // '<div class="repTar text-nowrap text-truncate repTarget' + [indexDivision] + '">' + reps + '</div>' +
         '</div>' +
         '<div id="athletes" class="athletes">' +
         '</div>' +

@@ -97,14 +97,20 @@ function updateDynamics(newScoring, status) {
                     case 'W':
 
                         // En fonction des status de l'athlète :
+                        // console.log(elemAth[i])
                         switch (elemAth[i].status) {
                             case '0':
+                                // console.log("Athlete with statut 0 :", elemAth[i])
+
+                                noJudge(elemAth[i])
+                                hideMvtInPopup(elemAth[i])
+                                hideRepMvtInScore(elemAth[i])
                                 switch (heat.typeWod) {
                                     case 'repmax':
-                                        showRepMax(elemAth[i])
+                                        // showRepMax(elemAth[i])
                                         break;
                                     default:
-                                        showRepMvtInScore(elemAth[i])
+                                        // showRepMvtInScore(elemAth[i])
                                         if (setupLeaderboard.value.scoreConfig == 'mvt_score') {
                                             if (i != 0) {
                                                 treatDisplayMvtForOthers(elemAth[i], elemAth[i - 1].currentMvt.id)
@@ -118,11 +124,12 @@ function updateDynamics(newScoring, status) {
                             case 'S':
                                 break;
                             case 'W':
-
+                                withJudge(elemAth[i])
+                                // console.log("Athlete with statut W :", elemAth[i])
                                 changeRank(elemAth[i]);
                                 !elemAth[i].$item.find(".score").is(':visible') && elemAth[i].$item.find(".score").show();
 
-                                console.log(elemAth[i].currentMvt)
+                                // console.log(elemAth[i].currentMvt)
                                 // ON CHECK SI ON EST AU SPRINT
                                 if (elemAth[i].currentMvt.mvtNames.toUpperCase().includes("SPRINT")) {
                                     showSprint(elemAth[i])
@@ -149,38 +156,7 @@ function updateDynamics(newScoring, status) {
                                             }
                                             break;
                                     }
-
-                                    switch (overlay) {
-                                        case 'progression':
-                                        case 'commentator':
-                                        case 'leaderboard':
-                                            treatBigScreenMvt(elemAth[i]);
-                                            changeColor(elemAth[i], ".popup")
-                                            changeColor(elemAth[i], ".rank")
-                                            changeColor(elemAth[i], ".score")
-                                            changeColor(elemAth[i], ".circle")
-                                            break;
-                                        case 'overlay_top':
-                                            changeColor(elemAth[i], ".rank")
-                                            changeColor(elemAth[i], ".ath_sub")
-                                            changeColor(elemAth[i], ".popup")
-                                            changeColor(elemAth[i], ".score")
-                                            break;
-                                        case 'overlay_side':
-                                            changeColor(elemAth[i], ".rank")
-                                            changeColor(elemAth[i], ".popup")
-                                            changeColor(elemAth[i], ".score")
-                                            break;
-                                        case 'versus':
-                                            changeColor(elemAth[i], ".popup")
-                                            changeColor(elemAth[i], ".score")
-                                            break;
-                                        default:
-                                            changeColor(elemAth[i], ".popup")
-                                            changeColor(elemAth[i], ".rank")
-                                            changeColor(elemAth[i], ".score")
-                                            break;
-                                    }
+                                    changeFunction(overlay, elemAth[i])
                                 }
 
                                 if (overlay == "overlay_wpa" && elemAth.length > 2) {
@@ -193,7 +169,11 @@ function updateDynamics(newScoring, status) {
                                 if (!alreadyPassed) {
                                     treatTextMvt('FINISH')
                                 }
+                                console.log("pop")
                                 changeRank(elemAth[i]);
+                                changeColorFinish(elemAth[i], ".ath")
+                                changeColorFinishAth(elemAth[i], ".ath")
+                                changeColorFinish(elemAth[i], ".rank")
                                 treatFinishStatus(elemAth[i]);
                                 overlay == 'overlay_top' && hiddenAthlete(elemAth[i])
 
@@ -205,6 +185,9 @@ function updateDynamics(newScoring, status) {
                                 break;
                             case 'T':
                                 changeRank(elemAth[i]);
+                                changeColorFinish(elemAth[i], ".ath")
+                                changeColorFinishAth(elemAth[i], ".ath")
+                                changeColorFinish(elemAth[i], ".rank")
                                 treatTimeCapStatus(elemAth[i]);
 
                                 if (overlay == "overlay_wpa" && elemAth.length > 2) {
@@ -224,6 +207,9 @@ function updateDynamics(newScoring, status) {
                             treatResultDisplayResultWPA(arrayWAP)
                         }
                         changeLaneToRank(elemAth[i])
+                        changeColorFinish(elemAth[i], ".ath")
+                        changeColorFinishAth(elemAth[i], ".ath")
+                        changeColorFinish(elemAth[i], ".rank")
                         if (elemAth[i].status == "F") {
                             treatFinishStatus(elemAth[i])
                         } else {
@@ -272,4 +258,40 @@ function updateDynamics(newScoring, status) {
     catch (e) {
         console.log(e)
     }
-}    
+}
+
+
+function changeFunction(overlay, elementAth) {
+    switch (overlay) {
+        case 'progression':
+        case 'commentator':
+        case 'leaderboard':
+            treatBigScreenMvt(elementAth);
+            changeColor(elementAth, ".popup")
+            changeColor(elementAth, ".rank")
+            changeColor(elementAth, ".score")
+            changeColor(elementAth, ".circle")
+            break;
+        case 'overlay_top':
+            changeColor(elementAth, ".rank")
+            changeColor(elementAth, ".ath_sub")
+            changeColor(elementAth, ".popup")
+            // changeColor(elementAth, ".score")
+            break;
+        case 'overlay_side':
+            changeColor(elementAth, ".rank")
+            changeColor(elementAth, ".popup")
+            changeColorAth(elementAth, ".ath")
+            // changeColor(elementAth, ".score")
+            break;
+        case 'versus':
+            changeColor(elementAth, ".popup")
+            changeColor(elementAth, ".score")
+            break;
+        default:
+            changeColor(elementAth, ".popup")
+            changeColor(elementAth, ".rank")
+            changeColor(elementAth, ".score")
+            break;
+    }
+}

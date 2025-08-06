@@ -1,4 +1,3 @@
-
 // initialization
 let athlete;
 let athletes;
@@ -29,6 +28,9 @@ let timerAutomatic4 = null;
 
 let showDrapeau;
 let varPresented;
+
+
+const backgroundOverlay = nodecg.Replicant('assets:backgroundOverlay', 'leaderboard')
 
 const timerNTP = nodecg.Replicant('timerNTP', 'connector');
 const setupLeaderboard = nodecg.Replicant('setupLeaderboard');
@@ -386,6 +388,16 @@ logoEvent.on('change', (newValue, oldValue) => {
     }
 });
 
+backgroundOverlay.on('change', (newValue) => {
+    if (newValue.length > 0) {
+        console.log(newValue)
+        $(".backgroundOverlay").css("background-image", "url(" + newValue[0].url + ")");
+        $(".backgroundOverlay").show()
+    }
+    else {
+        $(".backgroundOverlay").hide()
+    }
+})
 
 mainSponsors.on('change', (newValue) => {
     if (newValue.length > 0) {
@@ -745,3 +757,79 @@ nodecg.listenFor('reset_timer', () => {
     }
     resetTimer()
 })
+
+// Fonction pour ajouter des transitions fluides lors des changements de classement
+function addRankChangeEffects() {
+    // Stocker les positions précédentes
+    let previousPositions = {};
+
+    // Fonction pour vérifier et appliquer les changements de classement
+    function checkForRankChanges() {
+        const athletes = document.querySelectorAll('.leaderboard .athlete');
+
+        athletes.forEach((athlete, index) => {
+            const athleteName = athlete.querySelector('.name').textContent;
+            const currentRank = index + 1;
+
+            // Si l'athlète était dans un classement précédent
+            if (previousPositions[athleteName] !== undefined) {
+                const previousRank = previousPositions[athleteName];
+
+                // Si le classement a changé
+                if (previousRank !== currentRank) {
+                    // Ajouter une classe appropriée
+                    if (previousRank > currentRank) {
+                        // L'athlète a gagné des places
+                        athlete.classList.add('rank-improved');
+                        setTimeout(() => athlete.classList.remove('rank-improved'), 2000);
+                    } else {
+                        // L'athlète a perdu des places
+                        athlete.classList.add('rank-decreased');
+                        setTimeout(() => athlete.classList.remove('rank-decreased'), 2000);
+                    }
+                }
+            }
+
+            // Mettre à jour la position pour la prochaine vérification
+            previousPositions[athleteName] = currentRank;
+        });
+    }
+
+    // Vérifier les changements toutes les 3 secondes
+    setInterval(checkForRankChanges, 3000);
+}
+
+// Fonction pour détecter les nouveaux athlètes ajoutés au classement
+function detectNewAthletes() {
+    const knownAthletes = new Set();
+
+    // Vérifier si de nouveaux athlètes ont été ajoutés
+    function checkForNewAthletes() {
+        const athletes = document.querySelectorAll('.leaderboard .athlete');
+
+        athletes.forEach((athlete) => {
+            const athleteName = athlete.querySelector('.name').textContent;
+
+            if (!knownAthletes.has(athleteName)) {
+                // Nouvel athlète détecté
+                knownAthletes.add(athleteName);
+                athlete.classList.add('new-athlete');
+                setTimeout(() => athlete.classList.remove('new-athlete'), 3000);
+            }
+        });
+    }
+
+    // Vérifier les nouveaux athlètes toutes les 3 secondes
+    setInterval(checkForNewAthletes, 3000);
+}
+
+// Mise à jour de l'initialisation
+document.addEventListener('DOMContentLoaded', () => {
+    highlightFirstPlace();
+    addAnimationEffects();
+    addRankChangeEffects();
+    detectNewAthletes();
+
+    // Exécuter highlightFirstPlace périodiquement
+    setInterval(highlightFirstPlace, 2000);
+});
