@@ -2,6 +2,7 @@
 const AssetsColors = nodecg.Replicant('assets:config');
 const Colors = nodecg.Replicant('Colors');
 const Fonts = nodecg.Replicant('assets:font');
+const chronoState = nodecg.Replicant('ChronoState', 'leaderboard')
 
 var participantEvent = {}
 var participantsCurrentHeats = {}
@@ -114,3 +115,9 @@ Colors.on('change', (value) => {
         }
     })
 })
+
+
+function ShowChrono() {
+    console.log('change chrono state')
+    chronoState.value = !chronoState.value;
+}

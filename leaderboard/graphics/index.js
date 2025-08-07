@@ -48,6 +48,8 @@ const nowNtp = nodecg.Replicant('nowNtp', 'connector')
 
 const listCis = nodecg.Replicant('CIS', 'connector')
 
+const chronoState = nodecg.Replicant('ChronoState')
+
 // Destructuration du fichier static
 const eventInfos = nodecg.Replicant('eventInfos', 'connector');
 const heatInfos = nodecg.Replicant('heatInfos', 'connector');
@@ -833,3 +835,19 @@ document.addEventListener('DOMContentLoaded', () => {
     // Exécuter highlightFirstPlace périodiquement
     setInterval(highlightFirstPlace, 2000);
 });
+
+chronoState.on('change', (newValue) => {
+    console.log('change chrono state to ', newValue)
+    if (newValue != null) {
+        newValue == true ? $('#box_chrono').show(1000) : $('#box_chrono').hide(1000)
+        if (newValue == true) {
+            $('#time').show(1000)
+            $('#time').text('00:00')
+        } else {
+            $('#time').show(1000)
+            $('#time').text('')
+        }
+        newValue == true ? $('#cap').show(1000) : $('#cap').hide(1000)
+    }
+
+})
