@@ -35,19 +35,21 @@
 
 .chrono {
     display: flex;
-    flex-direction: row;
+    flex-direction: var(--flex_direction_timer_cap);
     align-items: center;
 }
 
 #time {
+    text-align: center;
     width: 120px;
     font-family: "Digit";
-    font-size: 3em;
+    font-size: var(--size_font_chrono);
     margin: auto;
     /* border-bottom: solid white 1px; */
 }
 
 #cap {
+    font-size: var(--size_font_cap);
     font-style: italic;
     padding: 0px 10px;
     /* background-color: black; */

@@ -2,8 +2,8 @@ function resetHeat(data) {
 
     try {
         var $list = $("#heat");
-        $list.find(".heat_name").remove();
-        $list.find(".heat_content").remove();
+        $list.find("#division").remove();
+        $list.find("#workout").remove();
 
         let $item;
 

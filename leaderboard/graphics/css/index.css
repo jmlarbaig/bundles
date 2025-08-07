@@ -31,10 +31,12 @@
         --position_x_sponsor: 15px;
         --position_y_sponsor: 15px;
 
-
-
+        --size_font_chrono: 3em;
+        --size_font_cap: 1em;
         --position_x_logo: 110px;
         --position_y_logo: 40px;
+
+        --flex_direction_timer_cap: row;
 
         --position_x_leaderboard: 200px;
         --position_y_leaderboard: 75px;
