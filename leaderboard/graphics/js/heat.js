@@ -102,12 +102,9 @@ function styleHeat_wpa(element) {
 
 function styleHeat_side(element) {
     let $item = $(
-        '<div class="heat_name">' +
-        '<div class="heatlow">' +
         '<div id="workout" class="m-auto text-nowrap text-truncate" > ' + element.externalName + ' </div>' +
-        '<div id="division" class="m-auto text-nowrap text-truncate"> ' + element.heatName + '</div>' +
-        '</div>' +
-        '</div>'
+        '<div id="division" class="m-auto text-nowrap text-truncate"> ' + element.heatName + '</div>'
+
     );
     return $item
 }
