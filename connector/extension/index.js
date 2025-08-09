@@ -2,6 +2,7 @@
 const fs = require('fs');
 const path = require('path');
 
+const cors = require('cors');
 
 
 let connect = {
@@ -13,6 +14,12 @@ let connect = {
 
 
 module.exports = function (nodecg) {
+
+    nodecg.router.use(cors({
+        origin: '*', // en dev on peut autoriser tout, en prod restreindre
+        methods: ['GET', 'POST', 'PUT', 'DELETE'],
+        allowedHeaders: ['Content-Type', 'Authorization']
+    }));
 
     require('events').EventEmitter.defaultMaxListeners = 0;
 
