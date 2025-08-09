@@ -15,7 +15,6 @@ let connect = {
 
 module.exports = function (nodecg) {
 
-    nodecg.router.use(cors({ origin: '*' }));
 
 
     require('events').EventEmitter.defaultMaxListeners = 0;
@@ -56,6 +55,7 @@ module.exports = function (nodecg) {
     const pkgPath = path.join(__dirname, "connectionFile.json");
 
 
+    router.use(cors({ origin: '*' }));
 
     router.post('/companion', (req, res) => {
         console.log("Bien recu :", req.body)
