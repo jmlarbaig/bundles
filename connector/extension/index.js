@@ -15,11 +15,8 @@ let connect = {
 
 module.exports = function (nodecg) {
 
-    nodecg.router.use(cors({
-        origin: '*', // en dev on peut autoriser tout, en prod restreindre
-        methods: ['GET', 'POST', 'PUT', 'DELETE'],
-        allowedHeaders: ['Content-Type', 'Authorization']
-    }));
+    nodecg.router.use(cors({ origin: '*' }));
+
 
     require('events').EventEmitter.defaultMaxListeners = 0;
 
@@ -119,7 +116,6 @@ module.exports = function (nodecg) {
 
     nodecg.listenFor('loadCCData', (value, ack) => {
         if (value) {
-            console.log("Loading CC data with:", value)
             cc.connectionCC(value.user, value.passwd, value.event)
         }
     })
