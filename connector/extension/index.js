@@ -110,6 +110,13 @@ module.exports = function (nodecg) {
         }
     }
 
+    nodecg.listenFor('loadCCData', (value, ack) => {
+        if (value) {
+            console.log("Loading CC data with:", value)
+            cc.connectionCC(value.user, value.passwd, value.event)
+        }
+    })
+
 
     nodecg.listenFor('connection', (value, ack) => {
 
@@ -120,7 +127,6 @@ module.exports = function (nodecg) {
 
         const { user, passwd, event, addIp, ntpAdress } = value
 
-        cc.connectionCC(user, passwd, event)
         sk.connectionSK(addIp)
 
         writeConfig(value)

@@ -10,6 +10,7 @@ module.exports = () => {
             'username': username,
             'password': password
         }
+        console.log("Logging in to CC with data:", data);
 
         let sign_url = "https://competitioncorner.net/api2/v1/accounts/login"
 
@@ -34,8 +35,22 @@ module.exports = () => {
 
     }
 
+
     async function dashboardEventCC(eventId) {
         return fetch("https://competitioncorner.net/api2/v1/events/" + eventId + "/dashboard", {
+            method: "GET",
+            headers: {
+                'Content-Type': "application/json",
+                'cache-control':
+                    '[no-cache,  no-store,  max-age=0,  must-revalidate], expires: [0], pragma: [no-cache]',
+                'Charset': 'utf-8',
+                'Authorization': 'Bearer ' + token
+            }
+        }).then(response => response.json()).catch((e) => { console.log(e) })
+    }
+
+    async function loadFloors(eventId) {
+        return fetch("https://competitioncorner.net/api2/v1/events/" + eventId + "/workout-locations/list", {
             method: "GET",
             headers: {
                 'Content-Type': "application/json",
@@ -312,6 +327,7 @@ module.exports = () => {
     return {
         logCC,
         dashboardEventCC,
+        loadFloors,
         loadWorkouts,
         getHeatsTopScore,
         loadInfoEventCC,

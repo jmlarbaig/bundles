@@ -18,6 +18,8 @@ module.exports = (nodecg, Connected) => {
     const affiliateStats = nodecg.Replicant('affiliateStats')
     const crossfitAthlete = nodecg.Replicant('crossfitAthlete')
 
+    const Floors = nodecg.Replicant('Floors', { defaultValue: [], persistent: true })
+
     const Divisions = nodecg.Replicant('Divisions')
     const WorkoutsDivision = nodecg.Replicant('WorkoutsDivision')
     const Heats = nodecg.Replicant('HeatsWorkout')
@@ -36,10 +38,12 @@ module.exports = (nodecg, Connected) => {
     const token = nodecg.Replicant('TOKEN', { defaultValue: null, persistent: false });
 
     function connectionCC(user, passwd, event) {
+        console.log("Connecting to CC with user:", user, "passwd : ", passwd, " and event:", event);
         cc.logCC(user, passwd).then((_token_) => {
             console.log("Token : ", _token_)
             token.value = _token_
             cc.dashboardEventCC(event).then((res) => {
+                console.log("Dashboard event CC response:", res);
                 const { id, name, affiliates, divisions } = res
                 affiliateStats.value = affiliates
                 Divisions.value = divisions
@@ -47,6 +51,12 @@ module.exports = (nodecg, Connected) => {
                 idEvent = id
                 console.log(idEvent)
                 Connected.value.cc = 'connected'
+            })
+            cc.loadFloors(event).then((floors) => {
+                Floors.value = floors
+                console.log(Floors.value)
+            }).catch(e => {
+                Connected.value.cc = 'error : ' + e
             })
             // AJOUTER L'API pour athlete crossfit
             cc.loadAthleteOnEvent(event).then(data => {
@@ -69,6 +79,7 @@ module.exports = (nodecg, Connected) => {
                     })
                 }
             })
+
         }).catch(e => {
             Connected.value.cc = 'error : ' + e
         })
