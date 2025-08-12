@@ -14,7 +14,7 @@
     display: flex;
     flex-direction: column;
     opacity: 92%;
-    width: 350px;
+    width: 500px;
     transition: all 0.7s ease;
     /* box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4); */
     border-radius: 4px;
