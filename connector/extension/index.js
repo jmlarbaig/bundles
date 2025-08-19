@@ -128,9 +128,15 @@ module.exports = function (nodecg) {
         let data = { 'cc': 'connecting', 'static': 'connecting', 'dynamic': 'connecting' }
         Connected.value = data;
 
-        const { user, passwd, event, addIp, ntpAdress } = value
+        const { user, passwd, event, addIp, ntpAdress, floorId } = value
 
-        sk.connectionSK(addIp)
+        let connectionIp = addIp + floorId
+
+        if (connectionIp.substring(connectionIp.length - 1) != '/') {
+            connectionIp = connectionIp + '/'
+        }
+
+        sk.connectionSK(connectionIp)
 
         writeConfig(value)
         writeStatus(data)

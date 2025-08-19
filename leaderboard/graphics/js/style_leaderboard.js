@@ -11,6 +11,7 @@ function headerSide(divisions, indexDivision, repTarget) {
         '<div class="header">' +
         '<div class="text-nowrap text-truncate text-left division">' + divisions[indexDivision] + '</div>' +
         // '<div class="repTar text-nowrap text-truncate repTarget' + [indexDivision] + '">' + reps + '</div>' +
+        // ' <div id="mvt" class="text-nowrap text-truncate text-left"></div>' +
         '</div>' +
         '<div id="athletes" class="athletes">' +
         '</div>' +

@@ -1,3 +1,4 @@
+
 // initialization
 let athlete;
 let athletes;
@@ -51,8 +52,8 @@ const listCis = nodecg.Replicant('CIS', 'connector')
 const chronoState = nodecg.Replicant('ChronoState')
 
 // Destructuration du fichier static
-const eventInfos = nodecg.Replicant('eventInfos', 'connector');
 const heatInfos = nodecg.Replicant('heatInfos', 'connector');
+const eventInfos = nodecg.Replicant('eventInfos', 'connector');
 const workoutInfo = nodecg.Replicant('workoutInfo', 'connector');
 const s_athletes = nodecg.Replicant('s_athletes', 'connector');
 
@@ -121,12 +122,13 @@ let newHeat = false;
 // on récupère les infos provenant du connecteur
 
 eventInfos.on('change', (newValue, oldValue) => {
-    if (newValue != undefined) {
+    if (newValue != undefined && JSON.stringify(newValue) !== JSON.stringify(oldValue)) {
         if (JSON.stringify(newValue) !== JSON.stringify(oldValue)) {
             resetHeat(newValue);
             if (overlay == 'overlay_wpa') {
                 resetLeaderboard(s_athletes.value)
             }
+            console.log('eventInfos change', newValue)
             if (newValue.heatId != heat.heatId) {
                 if ($('#box_svg').is(':visible')) {
                     $('#box_svg').slideUp(1000)
@@ -147,6 +149,7 @@ let heatSize = 0;
 
 heatInfos.on('change', (newValue, oldValue) => {
     if (JSON.stringify(newValue) !== JSON.stringify(oldValue)) {
+        console.log('heatInfos change', newValue)
         heat = typeWorkout(newValue)
         launchTimer()
         showTime(heat.timecap)
@@ -235,67 +238,82 @@ let endTime;
 let timerLaunch = null;
 
 function launchTimer() {
-    if (heat != {}) {
-        if (startTime != 0) {
-            var timecapIn = ((parseInt(tc.length ? parseInt(tc[1]) : 0) * 60) + parseInt(tc.length ? parseInt(tc[2]) : 0)) * 1000;
-            endTime = parseInt(startTime) + parseInt(timecapIn)
-            if (timerLaunch != null) {
-                clearInterval(timerLaunch)
-                timerLaunch = null;
-            }
-            timerLaunch = setInterval(updateTime, 500);
-        } else {
-            if (timerLaunch != null) {
-                clearInterval(timerLaunch)
-                timerLaunch = null;
-                $(".chrono").find('#time').text('STOP');
+    var launchInter = setInterval(() => {
+        if (heat != {}) {
+            if (startTime != 0 && heat.timecap != undefined && heat.timecap != '00:00') {
+                var timecapIn = ((parseInt(tc.length ? parseInt(tc[1]) : 0) * 60) + parseInt(tc.length ? parseInt(tc[2]) : 0)) * 1000;
+                endTime = parseInt(startTime) + parseInt(timecapIn)
+                console.log('endTime', endTime, 'startTime', startTime, 'timecapIn', timecapIn)
+                if (timerLaunch != null) {
+                    clearInterval(timerLaunch)
+                    timerLaunch = null;
+                }
+                timerLaunch = setInterval(updateTime, 500);
+
+                clearInterval(launchInter);
+                launchInter = null;
+            } else {
+                if (timerLaunch != null) {
+                    clearInterval(timerLaunch)
+                    timerLaunch = null;
+                    $(".chrono").find('#time').text('STOP');
+                }
             }
         }
-    }
+    }, 1000);
 }
 
 statusHeat.on('change', (newValue, oldValue) => {
     if (JSON.stringify(newValue) !== JSON.stringify(oldValue)) {
-        if (!setupLeaderboard.value.manualChrono) {
-            $(".chrono").find('#cap').text("CAP " + tc[1] + "'" + (tc[0] != "00" ? tc[0] : ''));
-            if (newValue.PosixTimeStart !== ntpStartTime) {
-                ntpStartTime = newValue.PosixTimeStart
-                startTime = parseInt(ntpStartTime);
-                launchTimer();
-                newHeat = false
+        // if (setupLeaderboard.hasOwnProperty('value') && setupLeaderboard.value != undefined) {
+        // if (!setupLeaderboard.value.manualChrono) {
+        var timer2 = setInterval(() => {
+            console.log('statusHeat change', newValue)
+            if (tc != undefined && tc.length > 0) {
+                clearInterval(timer2)
+                timer2 = null;
+                $(".chrono").find('#cap').text("CAP " + tc[1] + "'" + (tc[0] != "00" ? tc[0] : ''));
+                if (newValue.PosixTimeStart !== ntpStartTime) {
+                    newHeat = false
+                    ntpStartTime = newValue.PosixTimeStart
+                    startTime = parseInt(ntpStartTime);
+                    launchTimer();
+                }
+                // } else {
+                //     if (timerLaunch != null) {
+                //         clearInterval(timerLaunch)
+                //         timerLaunch = null;
+                //     }
+                // }
+                statusWorkout = newValue.status
+                if (overlay == 'sk' || overlay == 'head_judge') {
+                    switch (newValue.status) {
+                        case '0':
+                            $('.stateTimer').css('background-color', 'white')
+                            $('.stateTimer').css('color', 'black')
+                            $('#stateTimer').text('HEAT LOADED, VERIFY IF THIS THE GOOD HEAT')
+                            break;
+                        case 'R':
+                            $('.stateTimer').css('background-color', 'orange')
+                            $('.stateTimer').css('color', 'white')
+                            $('#stateTimer').text('STANDBY')
+                            break;
+                        case 'W':
+                            $('.stateTimer').css('background-color', 'green')
+                            $('.stateTimer').css('color', 'white')
+                            $('#stateTimer').text('HEAT LAUNCHED')
+                            break;
+                        case 'T':
+                            $('.stateTimer').css('background-color', 'orange')
+                            $('.stateTimer').css('color', 'black')
+                            $('#stateTimer').text('HEAT FINISHED')
+                            break;
+                    }
+                }
+            }
 
-            }
-        } else {
-            if (timerLaunch != null) {
-                clearInterval(timerLaunch)
-                timerLaunch = null;
-            }
-        }
-        statusWorkout = newValue.status
-        if (overlay == 'sk' || overlay == 'head_judge') {
-            switch (newValue.status) {
-                case '0':
-                    $('.stateTimer').css('background-color', 'white')
-                    $('.stateTimer').css('color', 'black')
-                    $('#stateTimer').text('HEAT LOADED, VERIFY IF THIS THE GOOD HEAT')
-                    break;
-                case 'R':
-                    $('.stateTimer').css('background-color', 'orange')
-                    $('.stateTimer').css('color', 'white')
-                    $('#stateTimer').text('STANDBY')
-                    break;
-                case 'W':
-                    $('.stateTimer').css('background-color', 'green')
-                    $('.stateTimer').css('color', 'white')
-                    $('#stateTimer').text('HEAT LAUNCHED')
-                    break;
-                case 'T':
-                    $('.stateTimer').css('background-color', 'orange')
-                    $('.stateTimer').css('color', 'black')
-                    $('#stateTimer').text('HEAT FINISHED')
-                    break;
-            }
-        }
+            // }
+        }, 1000)
     }
 })
 
@@ -305,6 +323,7 @@ manualChrono.on('change', (newValue, oldValue) => {
             $(".chrono").find('#cap').text('CAP ' + newValue.timecap + "'");
             switch (newValue.launchedTimer) {
                 case 'start':
+                    newHeat = false
                     ntpStartTime = newValue.timer
                     startTime = parseInt(ntpStartTime);
                     // endTime = timeToDateTime(ntpStartTime).setMinutes(startTime.getMinutes() + parseInt(newValue.timecap));
@@ -312,7 +331,6 @@ manualChrono.on('change', (newValue, oldValue) => {
                         clearInterval(timerLaunch)
                         timerLaunch = null;
                     }
-                    newHeat = false
                     timerLaunch = setInterval(updateTime, 500);
                     break;
                 case 'stop':
@@ -825,16 +843,16 @@ function detectNewAthletes() {
     setInterval(checkForNewAthletes, 3000);
 }
 
-// Mise à jour de l'initialisation
-document.addEventListener('DOMContentLoaded', () => {
-    highlightFirstPlace();
-    addAnimationEffects();
-    addRankChangeEffects();
-    detectNewAthletes();
+// // Mise à jour de l'initialisation
+// document.addEventListener('DOMContentLoaded', () => {
+//     highlightFirstPlace();
+//     addAnimationEffects();
+//     addRankChangeEffects();
+//     detectNewAthletes();
 
-    // Exécuter highlightFirstPlace périodiquement
-    setInterval(highlightFirstPlace, 2000);
-});
+//     // Exécuter highlightFirstPlace périodiquement
+//     setInterval(highlightFirstPlace, 2000);
+// });
 
 chronoState.on('change', (newValue) => {
     console.log('change chrono state to ', newValue)

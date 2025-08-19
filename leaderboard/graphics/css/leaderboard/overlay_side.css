@@ -21,6 +21,7 @@
     overflow: hidden;
 }
 
+
 /* .leaderboard:nth-child(1){
     top:var(--position_y_leaderboard);
     left: var(--position_x_leaderboard);
@@ -61,12 +62,12 @@
     font-family: 'Slenco', sans-serif;
     position: absolute;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
-    height: 40px;
+    height: 30px;
     font-weight: 900;
     font-size: var(--SizeFontHeaderOverlaySide);
     display: flex;
     flex-direction: row;
-    align-items: center;
+    align-items: left;
     padding-left: 15px;
     background: linear-gradient(90deg, rgba(40, 40, 40, 0.85) 0%, rgba(60, 60, 60, 0.7) 100%);
     color: white;
@@ -94,13 +95,48 @@
     padding-right: 10px;
 }
 
+#mvt::before {
+    content: '';
+    /* border-left: 4px solid rgba(105, 105, 105, 0.712); */
+    /* margin: 20px; */
+}
+
+#mvt {
+    font-weight: 800;
+    -moz-transition-duration: 0.7s;
+    -webkit-transition-duration: 0.7s;
+    -ms-transition-duration: 0.7s;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    /* color: var(--restMvt_color); */
+    text-transform: capitalize;
+}
+
+#mvt span {
+    padding: 10px;
+    letter-spacing: var(--letter_spacing);
+    font-family: var(--othersFontWorkout-select);
+}
+
+#mvt span:first-child {
+
+    color: var(--firstMvt_color);
+    font-weight: 800;
+    font-family: var(--firstFontWorkout-select);
+}
+
+#mvt span:first-child::before {
+    content: "•";
+}
+
 .leaderboard .athletes {
     color: var(--tx_second_color);
     display: flex;
     padding: 2px;
     flex-direction: column;
+    align-items: flex-start;
     font-weight: 900;
-    font-size: var(--SizeNameoverlaySide);
     transition: all 0.7s ease;
     margin: 0px 0px;
     gap: 4px;
@@ -120,7 +156,7 @@
     align-items: center;
     background-color: rgba(10, 10, 10, 0.7);
     color: var(--tx_main_color);
-    margin: auto;
+    /* margin: auto; */
     overflow: hidden;
     /* margin: 2px; */
     /* box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); */

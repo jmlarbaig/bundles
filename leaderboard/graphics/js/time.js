@@ -1,19 +1,27 @@
 
 function updateTime() {
 
+    console.log('updateTime called');
+
     let Ft_Ap = setupLeaderboard.value.fortimeAmrap;
+
+    console.log('ntp = ', timerNTP.value);
 
     let timer = parseInt(timerNTP.value) + (adjustT.value || 0)
 
     if (newHeat) {
+        console.log('newHeat is true, setting timer to startTime');
         timer = endTime
         adjustT.value = 0
     }
+
+    console.log('timer', timer, 'adjustT', adjustT.value, 'endTime', endTime, 'startTime', startTime);
 
     let timeDiffStart = timer - startTime;
     let timeDiffTimeCap = timer - endTime;
     let timeDiffEnd = endTime - timer;
 
+    console.log('timeDiffStart', timeDiffStart, 'timeDiffTimeCap', timeDiffTimeCap, 'timeDiffEnd', timeDiffEnd);
 
 
     if (overlay == 'overlay_side' || overlay == 'overlay_side_v1' || overlay == 'overlay_wpa') {

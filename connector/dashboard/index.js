@@ -88,8 +88,9 @@ async function Connection() {
         if (data.addIp.substring(data.addIp.length - 1) != '/') {
             data.addIp = data.addIp + '/'
         }
-        data.addIp = data.addIp + $('#floorList').val().toString()
+        // data.addIp = data.addIp + $('#floorList').val().toString()
         data.ntpAdress = $('#adresse_ntp').val().toString()
+        data.floorId = $('#floorList').val().toString()
         console.log("Connecting with data:", data)
         nodecg.sendMessage('connection', data)
 
@@ -154,6 +155,7 @@ nodecg.readReplicant('dataConfig', (value) => {
     $('#usernameCC').val(value.user)
     $('#passwordCC').val(value.passwd)
     $('#eventId').val(value.event)
+    $('#floorList').val(value.floorId)
     $('#local').attr('checked', true);
 })
 
