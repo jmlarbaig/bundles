@@ -107,7 +107,7 @@ function updateDynamics(newScoring, status) {
                                 hideRepMvtInScore(elemAth[i])
                                 switch (heat.typeWod) {
                                     case 'repmax':
-                                        // showRepMax(elemAth[i])
+                                        showRepMax(elemAth[i])
                                         break;
                                     default:
                                         // showRepMvtInScore(elemAth[i])

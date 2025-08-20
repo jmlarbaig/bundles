@@ -68,6 +68,10 @@
         --padding_ath_content: 11px;
         --border: 0px 10px 10px 0px;
 
+        --sizeFontPopupOverlaySide: 12px;
+        --sizeFontAthleteOverlaySide: 12px;
+
+
         --font-select: 'Typographica';
 
         --first_linear_gradient: black;

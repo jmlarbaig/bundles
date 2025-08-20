@@ -2,7 +2,7 @@
     position: absolute;
     top: var(--position_y_leaderboard);
     left: var(--position_x_leaderboard);
-    font-size: 1rem;
+    font-size: var(--SizeNameoverlaySide);
     transition: all 0.7s ease;
     height: calc(1000px);
     overflow: hidden;
@@ -169,7 +169,7 @@
 
 .leaderboard .athlete .rank {
     /* text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); */
-    padding: 6px 8px;
+    padding: 2px 8px;
     text-align: center;
     width: 45px;
     padding-right: 7px;
@@ -196,7 +196,7 @@
 
 .leaderboard .athlete .name {
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
-    padding: 6px 12px;
+    padding: 2px 12px;
     text-transform: uppercase;
     font-weight: 900;
     width: var(--px_name);
@@ -210,7 +210,7 @@
 }
 
 .leaderboard .athlete .score {
-    padding: 6px 12px;
+    padding: 2px 12px;
     width: var(--px_score);
     max-width: 120px;
     text-align: center;
@@ -275,10 +275,10 @@
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
     text-transform: uppercase;
     text-align: left;
-    padding: 5px;
+    padding: 2px;
     padding-left: 15px;
-    font-size: 14px;
-    height: 30px;
+    font-size: var(--sizeFontPopupOverlaySide);
+    /* height: 30px; */
     color: white;
     /* background-color: rgba(49, 49, 49, 0.64); */
     background-color: var(--second_color);
