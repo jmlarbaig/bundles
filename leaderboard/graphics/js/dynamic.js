@@ -6,6 +6,8 @@ let best = []
 function updateDynamics(newScoring, status) {
     try {
 
+        console.log("updateDynamics", status)
+
         let arrayWAP = []
         Object.values(athletesDivision).forEach((elemAth, key) => {
 
@@ -89,6 +91,12 @@ function updateDynamics(newScoring, status) {
             Object.keys(elemAth).forEach(i => {
                 switch (status) {
                     case '0':
+                        initialRankChange(elemAth[i], ".ath")
+                        initialRankChange(elemAth[i], ".rank")
+                        // initialRankChange(elemAth[i], ".popup")
+                        hideMvtInPopup(elemAth[i])
+                        hideRepMvtInScore(elemAth[i])
+                        initialRankChange(elemAth[i], ".score")
                         hideWaitingWPA(arrayWAP)
                         break;
                     case 'R':
@@ -124,6 +132,7 @@ function updateDynamics(newScoring, status) {
                             case 'S':
                                 break;
                             case 'W':
+                                console.log("pop W")
                                 withJudge(elemAth[i])
                                 // console.log("Athlete with statut W :", elemAth[i])
                                 changeRank(elemAth[i]);
@@ -169,7 +178,7 @@ function updateDynamics(newScoring, status) {
                                 if (!alreadyPassed) {
                                     treatTextMvt('FINISH')
                                 }
-                                console.log("pop")
+                                console.log("pop F")
                                 changeRank(elemAth[i]);
                                 changeColorFinish(elemAth[i], ".ath")
                                 changeColorFinishAth(elemAth[i], ".ath")
@@ -184,6 +193,7 @@ function updateDynamics(newScoring, status) {
 
                                 break;
                             case 'T':
+                                console.log("pop T")
                                 changeRank(elemAth[i]);
                                 changeColorFinish(elemAth[i], ".ath")
                                 changeColorFinishAth(elemAth[i], ".ath")

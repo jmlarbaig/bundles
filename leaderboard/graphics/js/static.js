@@ -9,6 +9,7 @@ var height_tot = 0
 
 
 function resetLeaderboard(newData) {
+    console.log("Start resetLeaderboard")
     try {
 
         if (overlay == "overlay_wpa") {

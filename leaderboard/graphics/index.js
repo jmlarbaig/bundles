@@ -224,7 +224,7 @@ s_athletes.on('change', (newValue, oldValue) => {
                 }, 10000)
             }, 2000)
         } else {
-
+            console.log('RESET resetLeaderboard')
             resetLeaderboard(newValue);
         }
 
@@ -272,6 +272,7 @@ statusHeat.on('change', (newValue, oldValue) => {
             if (tc != undefined && tc.length > 0) {
                 clearInterval(timer2)
                 timer2 = null;
+                // updateDynamics(d_athletes.value, newValue.status);
                 $(".chrono").find('#cap').text("CAP " + tc[1] + "'" + (tc[0] != "00" ? tc[0] : ''));
                 if (newValue.PosixTimeStart !== ntpStartTime) {
                     newHeat = false

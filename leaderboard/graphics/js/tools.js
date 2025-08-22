@@ -614,6 +614,20 @@ function changeColor(ath, element) {
     }
 }
 
+function initialRankChange(ath, element) {
+
+    if (overlay != 'overlay_top') {
+        ath.$item.find(element).addClass('initial_rank')
+        ath.$item.find(element).toggleClass('finish_rank finish_rank_ath second_rank third_rank first_rank', false)
+    } else if (overlay == 'versus') {
+        ath.$item.find(element).addClass('initial_rank_versus')
+        ath.$item.find(element).removeClass('first_rank second_rank third_rank other_rank')
+    } else {
+        ath.$item.find(element).addClass('initial_rank_top')
+        ath.$item.find(element).removeClass('first_rank second_rank third_rank')
+    }
+}
+
 function changeColorFinish(ath, element) {
     // console.log("ath :", ath)
     // console.log("element : ", element)
@@ -890,7 +904,8 @@ function treatDisplayMvtFirst(elementAth) {
         nextMvt = elementAth.currentMvt.arrayMvt[1].replace('<span>', "").replace('</span>', "")
     }
 
-    let textTomvt = repTarget + ' ' + mvt + ' THEN ' + nextMvt;
+    // let textTomvt = repTarget + ' ' + mvt + ' THEN ' + nextMvt;
+    let textTomvt = repTarget + ' ' + mvt;
 
     if (elementAth.currentMvt.mvtNames == "" || elementAth.currentMvt.mvtNames.includes("Workout")) {
         overlay != "versus" && elementAth.$item.find(".popup").hide();
