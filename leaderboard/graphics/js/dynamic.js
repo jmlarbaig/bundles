@@ -113,6 +113,7 @@ function updateDynamics(newScoring, status) {
                                 noJudge(elemAth[i])
                                 hideMvtInPopup(elemAth[i])
                                 hideRepMvtInScore(elemAth[i])
+                                changeRankToLane(elemAth[i])
                                 switch (heat.typeWod) {
                                     case 'repmax':
                                         showRepMax(elemAth[i])

@@ -614,6 +614,20 @@ function changeColor(ath, element) {
     }
 }
 
+function eraseInitialRank(ath, element) {
+
+    if (overlay != 'overlay_top') {
+        // ath.$item.find(element).addClass('')
+        ath.$item.find(element).toggleClass('initial_rank other_rank finish_rank finish_rank_ath second_rank second_rank_ath third_rank third_rank_ath first_rank first_rank_ath', false)
+    } else if (overlay == 'versus') {
+        ath.$item.find(element).addClass('initial_rank_versus')
+        ath.$item.find(element).removeClass(' first_rank second_rank third_rank other_rank')
+    } else {
+        ath.$item.find(element).addClass('initial_rank_top')
+        ath.$item.find(element).removeClass('first_rank second_rank third_rank')
+    }
+}
+
 function initialRankChange(ath, element) {
 
     if (overlay != 'overlay_top') {
@@ -714,11 +728,28 @@ function treatBigScreenMvt(elementAth) {
 function treatFinishStatus(elementAth) {
     let result = elementAth.result;
     if (overlay == "overlay_side") {
+        console.log("Resultat : ", result)
+
+        var t = result.toString().split(':');
+        console.log(t)
+        if (t[0] != "00") {
+            result = t[0] + ":" + t[1] + ":" + t[2].substring(0, 5);
+        }
+        else if (t[1] != "00") {
+            result = t[1] + ":" + t[2].substring(0, 5);
+        }
+        else {
+            result = "00:" + t[2].substring(0, 5);
+        }
+        console.log("Resultat modifié : ", result)
+
         elementAth.$item.find(".score").show()
-        elementAth.$item.find(".score").text(result.toString().slice(result.length - 9, result.length - 8) != "0" ? result = result.toString().slice(result.length - 8, result.length) : result.toString().slice(result.length - 7, result.length - 6) != "0" ? result = result.toString().slice(result.length - 7, result.length) : result = result.toString().slice(result.length - 6, result.length));
+        elementAth.$item.find(".score").text(result);
         elementAth.$item.find(".popup").hide();
-        elementAth.$item.find(".popup_top").text(result.toString().slice(result.length - 9, result.length - 8) != "0" ? result = result.toString().slice(result.length - 8, result.length) : result.toString().slice(result.length - 7, result.length - 6) != "0" ? result = result.toString().slice(result.length - 7, result.length) : result = result.toString().slice(result.length - 6, result.length));
+        elementAth.$item.find(".popup_top").text(result);
         elementAth.$item.find(".popup_top").hide();
+
+
         // elementAth.$item.find(".score").text('FIN')
     } else {
         elementAth.$item.find(".popup").text(result.toString().slice(result.length - 9, result.length - 8) != "0" ? result = result.toString().slice(result.length - 8, result.length) : result.toString().slice(result.length - 7, result.length - 6) != "0" ? result = result.toString().slice(result.length - 7, result.length) : result = result.toString().slice(result.length - 6, result.length));
@@ -803,6 +834,15 @@ function showRepMvtInScore(elementAth) {
         case 'mvt_score':
             if (elementAth.currentMvt.mvtNames.toUpperCase() != "WORKOUT") {
                 elementAth.$item.find(".score").text(elementAth.currentMvt.scoreAbsMvt + "/" + elementAth.currentMvt.repTarget);
+                showMvtInPopup(elementAth)
+            } else {
+                elementAth.$item.find(".score").text(elementAth.currentMvt.scoreAbsMvt);
+                hideMvtInPopup(elementAth)
+            }
+            break;
+        case 'mvt_total_score':
+            if (elementAth.currentMvt.mvtNames.toUpperCase() != "WORKOUT") {
+                elementAth.$item.find(".score").text(elementAth.score_abs + (elementAth.currentMvt.totalReps != 1 ? ('/' + elementAth.currentMvt.totalReps) : '') + ' (' + elementAth.currentMvt.scoreAbsMvt + ')');
                 showMvtInPopup(elementAth)
             } else {
                 elementAth.$item.find(".score").text(elementAth.currentMvt.scoreAbsMvt);
@@ -977,6 +1017,14 @@ function treatPerfArray(elementAth) {
 function changeLaneToRank(elementAth) {
     elementAth.OldRank = elementAth.CurrentRank
     elementAth.$item.find(".rank").text(elementAth.CurrentRank);
+}
+
+function changeRankToLane(elementAth) {
+    elementAth.OldRank = elementAth.CurrentRank
+    elementAth.$item.find(".rank").text(elementAth.lane);
+    eraseInitialRank(elementAth, ".rank")
+    eraseInitialRank(elementAth, ".ath")
+    eraseInitialRank(elementAth, ".popup")
 }
 
 
