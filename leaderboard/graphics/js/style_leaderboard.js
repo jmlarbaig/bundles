@@ -47,12 +47,13 @@ function overlaySide(data) {
     $item.find(".rounds").hide();
     $item.find(".score").hide();
     $item.find(".popup").hide();
+    $item.find(".lane").hide();
 
 
     $item.find(".triangle").hide();
 
     !setupLeaderboard.value.flag ? $item.find(".flag").hide() : "";
-    !setupLeaderboard.value.lane ? $item.find(".lane").hide() : "";
+    // !setupLeaderboard.value.lane ? $item.find(".lane").hide() : "";
     // !setupLeaderboard.value.lane ? $item.find(".rank").text(data.lane) : "";
     $item.find(".rank").text(data.lane)
     // $item.hide();

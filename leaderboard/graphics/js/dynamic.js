@@ -116,6 +116,7 @@ function updateDynamics(newScoring, status) {
                         // console.log(elemAth[i])
                         switch (elemAth[i].status) {
                             case '0':
+                                elemAth[i].$item.find(".lane").hide()
                                 noJudge(elemAth[i])
                                 hideMvtInPopup(elemAth[i])
                                 hideRepMvtInScore(elemAth[i])
@@ -142,7 +143,7 @@ function updateDynamics(newScoring, status) {
                                 changeRankToLane(elemAth[i])
                                 break;
                             case 'W':
-                                setupLeaderboard.value.lane ?? elemAth.$item.find(".lane").hide()
+                                setupLeaderboard.value.lane ? elemAth[i].$item.find(".lane").show() : elemAth[i].$item.find(".lane").hide()
                                 withJudge(elemAth[i])
                                 // console.log("Athlete with statut W :", elemAth[i])
                                 changeRank(elemAth[i]);
@@ -185,6 +186,7 @@ function updateDynamics(newScoring, status) {
 
                                 break;
                             case 'F':
+                                setupLeaderboard.value.lane ? elemAth[i].$item.find(".lane").show() : elemAth[i].$item.find(".lane").hide()
                                 if (!alreadyPassed) {
                                     treatTextMvt('FINISH')
                                 }
@@ -203,6 +205,7 @@ function updateDynamics(newScoring, status) {
 
                                 break;
                             case 'T':
+                                setupLeaderboard.value.lane ? elemAth[i].$item.find(".lane").show() : elemAth[i].$item.find(".lane").hide()
                                 console.log("pop T")
                                 changeRank(elemAth[i]);
                                 changeColorFinish(elemAth[i], ".ath")
