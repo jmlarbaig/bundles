@@ -6,7 +6,7 @@ let best = []
 function updateDynamics(newScoring, status) {
     try {
 
-        console.log("updateDynamics", status)
+        // console.log("updateDynamics", status)
 
         let arrayWAP = []
         Object.values(athletesDivision).forEach((elemAth, key) => {
@@ -74,6 +74,8 @@ function updateDynamics(newScoring, status) {
             // on trie les athlètes en fonction du status
             switch (status) {
                 case 'W':
+                    setupLeaderboard.value.rankingConfig == 'rank' ? elemAth.sort(ascendingRank) : elemAth.sort(ascendingLane)
+                    break;
                 case 'T':
                     elemAth.sort(ascendingRank);
                     break;
@@ -91,15 +93,21 @@ function updateDynamics(newScoring, status) {
             Object.keys(elemAth).forEach(i => {
                 switch (status) {
                     case '0':
-                        initialRankChange(elemAth[i], ".ath")
-                        initialRankChange(elemAth[i], ".rank")
                         // initialRankChange(elemAth[i], ".popup")
                         hideMvtInPopup(elemAth[i])
                         hideRepMvtInScore(elemAth[i])
+                        initialRankChange(elemAth[i], ".ath")
+                        initialRankChange(elemAth[i], ".rank")
                         initialRankChange(elemAth[i], ".score")
+
                         hideWaitingWPA(arrayWAP)
                         break;
                     case 'R':
+                        hideMvtInPopup(elemAth[i])
+                        hideRepMvtInScore(elemAth[i])
+                        initialRankChange(elemAth[i], ".ath")
+                        initialRankChange(elemAth[i], ".rank")
+                        initialRankChange(elemAth[i], ".score")
                         hideResultWPA(arrayWAP)
                         break;
                     case 'W':
@@ -108,8 +116,6 @@ function updateDynamics(newScoring, status) {
                         // console.log(elemAth[i])
                         switch (elemAth[i].status) {
                             case '0':
-                                // console.log("Athlete with statut 0 :", elemAth[i])
-
                                 noJudge(elemAth[i])
                                 hideMvtInPopup(elemAth[i])
                                 hideRepMvtInScore(elemAth[i])
@@ -131,9 +137,12 @@ function updateDynamics(newScoring, status) {
                                 }
                                 break;
                             case 'S':
+                                hideMvtInPopup(elemAth[i])
+                                hideRepMvtInScore(elemAth[i])
+                                changeRankToLane(elemAth[i])
                                 break;
                             case 'W':
-                                console.log("pop W")
+                                setupLeaderboard.value.lane ?? elemAth.$item.find(".lane").hide()
                                 withJudge(elemAth[i])
                                 // console.log("Athlete with statut W :", elemAth[i])
                                 changeRank(elemAth[i]);
@@ -141,7 +150,7 @@ function updateDynamics(newScoring, status) {
 
                                 // console.log(elemAth[i].currentMvt)
                                 // ON CHECK SI ON EST AU SPRINT
-                                if (elemAth[i].currentMvt.mvtNames.toUpperCase().includes("SPRINT")) {
+                                if (elemAth[i].currentMvt.mvtNames.toUpperCase().includes("SPRINT") || elemAth[i].currentMvt.mvtNames.toUpperCase().includes("FINISH")) {
                                     showSprint(elemAth[i])
                                 } else {
 

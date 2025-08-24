@@ -31,13 +31,15 @@ function overlaySide(data) {
         '<div class="athlete" id="aht' + data.lane + '">' +
         '<div class="popup text-nowrap text-truncate">' + '</div>' +
         '<div class="ath">' +
+        '<div class="triangle"></div>' +
         '<div class="subrank"><div class="rank text-nowrap text-truncate"> ' + '</div></div>' +
-        '<div class="lane text-nowrap text-truncate"># ' + data.lane + '</div>' +
+        '<div class="lane text-nowrap text-truncate">L' + data.lane + '</div>' +
         '<div class="flag">' + '<div class="box_flag" ></div> ' + '</div>' +
         '<div class="text-nowrap text-truncate text-left name">' + name + '</div>' +
         '<div class="score text-nowrap text-center text-truncate"></div>' +
         '<div class="text-nowrap text-truncate rounds">' + '</div>' +
         '</div>' +
+
         '</div>'
     );
 
@@ -46,9 +48,13 @@ function overlaySide(data) {
     $item.find(".score").hide();
     $item.find(".popup").hide();
 
+
+    $item.find(".triangle").hide();
+
     !setupLeaderboard.value.flag ? $item.find(".flag").hide() : "";
     !setupLeaderboard.value.lane ? $item.find(".lane").hide() : "";
-    !setupLeaderboard.value.lane ? $item.find(".rank").text(data.lane) : "";
+    // !setupLeaderboard.value.lane ? $item.find(".rank").text(data.lane) : "";
+    $item.find(".rank").text(data.lane)
     // $item.hide();
 
     return $item

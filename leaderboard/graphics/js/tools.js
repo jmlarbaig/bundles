@@ -618,7 +618,7 @@ function eraseInitialRank(ath, element) {
 
     if (overlay != 'overlay_top') {
         // ath.$item.find(element).addClass('')
-        ath.$item.find(element).toggleClass('initial_rank other_rank finish_rank finish_rank_ath second_rank second_rank_ath third_rank third_rank_ath first_rank first_rank_ath', false)
+        ath.$item.find(element).removeClass('initial_rank initial_rank_ath other_rank other_rank_ath finish_rank finish_rank_ath second_rank second_rank_ath third_rank third_rank_ath first_rank first_rank_ath', false)
     } else if (overlay == 'versus') {
         ath.$item.find(element).addClass('initial_rank_versus')
         ath.$item.find(element).removeClass(' first_rank second_rank third_rank other_rank')
@@ -695,12 +695,20 @@ function changeRank(elementAth) {
     if (overlay == 'overlay_side' || overlay == 'overlay_side_v1') {
         if (elementAth.CurrentRank != elementAth.OldRank && elementAth.score_abs != 0) {
             if (elementAth.CurrentRank < elementAth.OldRank) {
-                elementAth.$item.find('.rank').addClass('up_rank')
+                // elementAth.$item.find('.rank').addClass('up_rank')
+                elementAth.$item.find('.triangle').addClass('up_rank')
+                elementAth.$item.find('.triangle').addClass('triangle-up')
             } else if (elementAth.CurrentRank > elementAth.OldRank) {
-                elementAth.$item.find('.rank').addClass('down_rank')
+                // elementAth.$item.find('.rank').addClass('down_rank')
+                elementAth.$item.find('.triangle').addClass('triangle-down')
+                elementAth.$item.find('.triangle').addClass('triangle-down')
+
             }
+            elementAth.$item.find('.triangle').show()
             setTimeout(() => {
-                elementAth.$item.find('.rank').removeClass('up_rank down_rank')
+                // elementAth.$item.find('.rank').removeClass('up_rank down_rank')
+                elementAth.$item.find('.triangle').removeClass('triangle-down triangle-up')
+                elementAth.$item.find('.triangle').hide()
 
             }, 1500)
         }
@@ -765,12 +773,15 @@ function treatFinishStatus(elementAth) {
 
 function treatTimeCapStatus(elementAth) {
     let result = elementAth.score_abs;
+    let total = elementAth.currentMvt.totalReps;
+    let text2 = total != undefined ? (total != 1 ? '/' + total : '') : ''
+    let text = result
 
     if (overlay == "overlay_side") {
         elementAth.$item.find(".popup").hide();
         elementAth.$item.find(".popup_top").hide();
         elementAth.$item.find(".score").show();
-        elementAth.$item.find(".score").text(result + ' ' + setupLeaderboard.value.unitSelect);
+        elementAth.$item.find(".score").text(text + ' ' + setupLeaderboard.value.unitSelect);
     } else {
         elementAth.$item.find(".popup").show();
         elementAth.$item.find(".popup_top").show();
@@ -797,7 +808,7 @@ function treatTextMvt(mvts) {
 
 
 function showSprint(elementAth) {
-    elementAth.$item.find(".popup").text("SPRINT");
+    elementAth.$item.find(".popup").text("FINISH");
     elementAth.$item.find(".popup").show();
     elementAth.$item.find(".score").text(chrono);
 }
@@ -806,9 +817,9 @@ function showRepMax(elementAth) {
     // console.log('REP TARGET : ' + elementAth.currentMvt.repTarget)
     if (elementAth.currentMvt.repTarget != elementAth.currentMvt.scoreAbsMvt) {
         if (elementAth.currentMvt.repTarget != 0) {
-            elementAth.$item.find(".popup").html('TRY &#10140; ' + elementAth.currentMvt.repTarget + ' ' + setupLeaderboard.value.unitSelect);
+            elementAth.$item.find(".popup").html('ATTEMPTS &#10140; ' + elementAth.currentMvt.repTarget + ' ' + setupLeaderboard.value.unitSelect);
             overlay == 'versus' ? elementAth.$item.find(".popup").slideDown(1000) : elementAth.$item.find(".popup").show();
-            elementAth.$item.find(".popup_top").html('TRY &#10140; ' + elementAth.currentMvt.repTarget + ' ' + setupLeaderboard.value.unitSelect);
+            elementAth.$item.find(".popup_top").html('ATTEMPTS &#10140; ' + elementAth.currentMvt.repTarget + ' ' + setupLeaderboard.value.unitSelect);
             overlay == 'versus' ? elementAth.$item.find(".popup_top").slideDown(1000) : elementAth.$item.find(".popup_top").fadeIn(1000);
         }
     } else {

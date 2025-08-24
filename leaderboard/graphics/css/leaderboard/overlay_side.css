@@ -186,27 +186,35 @@
 .leaderboard .athlete .lane {
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
     padding: 2px 5px;
-    text-align: center;
-    width: 50px;
+    text-align: left;
+    width: var(--px_lane);
     filter: blur(0px);
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    font-size: var(--SizeLaneoverlaySide);
+    color: var(--second_color);
 }
 
 .leaderboard .athlete .name {
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
-    padding: 2px 12px;
+    padding: 2px 4px;
     text-transform: uppercase;
     font-weight: 900;
     width: var(--px_name);
-    min-width: 130px;
+    /* min-width: 130px; */
     max-width: var(--px_name);
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
     transition: all 0.7s ease;
     letter-spacing: 0.5px;
+}
+
+.triangle {
+    position: absolute;
+    left: 1px;
+    background-color: rgba(0, 0, 0, 0.0);
 }
 
 .leaderboard .athlete .score {
@@ -279,7 +287,7 @@
     padding-left: 15px;
     font-size: var(--sizeFontPopupOverlaySide);
     /* height: 30px; */
-    color: white;
+    color: var(--tx_second_color);
     /* background-color: rgba(49, 49, 49, 0.64); */
     background-color: var(--second_color);
     transition: all 0.7s ease;

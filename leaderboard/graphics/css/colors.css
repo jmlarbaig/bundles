@@ -144,6 +144,31 @@
     padding: 0;
 }
 
+.triangle-down {
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    /* moitié de la base */
+    border-right: 10px solid transparent;
+    /* moitié de la base */
+    border-top: 15px solid #e63946;
+    /* couleur + hauteur */
+    background-color: rgba(0, 0, 0, 0.0);
+}
+
+.triangle-up {
+    background-color: rgba(0, 0, 0, 0.0);
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    /* moitié de la base */
+    border-right: 10px solid transparent;
+    /* moitié de la base */
+    border-bottom: 15px solid #29b10e;
+    /* couleur + hauteur du triangle */
+    /* Ajuste la taille en changeant ces 3 valeurs */
+}
+
 .initial_rank_versus {
     padding: 0;
     background-color: rgb(251, 251, 251);

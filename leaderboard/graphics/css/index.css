@@ -43,10 +43,10 @@
 
         --widthLogoEvent: 250px;
         --px_name: 200px;
-
-
+        --px_lane: 10px;
         --position_x_chrono_v1: 300px;
         --position_y_chrono_v1: 75px;
+        --SizeLaneoverlaySide: 14px;
 
         --position_x_heat_v1: 320px;
         --position_y_heat_v1: 320px;
