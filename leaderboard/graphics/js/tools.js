@@ -193,35 +193,35 @@ function treatDivisions(divisions, newAth) {
         let _athletes = new Array();
         for (let i = 0; i < newAth.length; i++) {
             if (newAth[i] != undefined) {
-                if (overlay != 'overlay_wpa') {
-                    if (newAth[i].division == divisions[y]) {
-                        _athletes.push(JSON.parse(JSON.stringify(athletes_init)));
-                        _athletes[_athletes.length - 1] = { ..._athletes[i], ...newAth[i] }
-                        if (_athletes[_athletes.length - 1].countryCode == "" || _athletes[_athletes.length - 1].countryCode == null) { _athletes[_athletes.length - 1].countryCode = "FR" }
-                        else {
-                            for (const element of flag) {
-                                if (_athletes[_athletes.length - 1].countryCode == element["3L"]) {
-                                    _athletes[_athletes.length - 1].countryCode = element["2L"];
-                                    break;
-                                }
-                            }
-                        }
-                    }
-                } else {
-                    if (newAth[i].affiliate == divisions[y]) {
-                        _athletes.push(JSON.parse(JSON.stringify(athletes_init)));
-                        _athletes[_athletes.length - 1] = { ..._athletes[i], ...newAth[i] }
-                        if (_athletes[_athletes.length - 1].countryCode == "" || _athletes[_athletes.length - 1].countryCode == null) { _athletes[_athletes.length - 1].countryCode = "FR" }
-                        else {
-                            for (const element of flag) {
-                                if (_athletes[_athletes.length - 1].countryCode == element["3L"]) {
-                                    _athletes[_athletes.length - 1].countryCode = element["2L"];
-                                    break;
-                                }
+                // if (overlay != 'overlay_wpa') {
+                if (newAth[i].division == divisions[y]) {
+                    _athletes.push(JSON.parse(JSON.stringify(athletes_init)));
+                    _athletes[_athletes.length - 1] = { ..._athletes[i], ...newAth[i] }
+                    if (_athletes[_athletes.length - 1].countryCode == "" || _athletes[_athletes.length - 1].countryCode == null) { _athletes[_athletes.length - 1].countryCode = "FR" }
+                    else {
+                        for (const element of flag) {
+                            if (_athletes[_athletes.length - 1].countryCode == element["3L"]) {
+                                _athletes[_athletes.length - 1].countryCode = element["2L"];
+                                break;
                             }
                         }
                     }
                 }
+                // } else {
+                //     if (newAth[i].affiliate == divisions[y]) {
+                //         _athletes.push(JSON.parse(JSON.stringify(athletes_init)));
+                //         _athletes[_athletes.length - 1] = { ..._athletes[i], ...newAth[i] }
+                //         if (_athletes[_athletes.length - 1].countryCode == "" || _athletes[_athletes.length - 1].countryCode == null) { _athletes[_athletes.length - 1].countryCode = "FR" }
+                //         else {
+                //             for (const element of flag) {
+                //                 if (_athletes[_athletes.length - 1].countryCode == element["3L"]) {
+                //                     _athletes[_athletes.length - 1].countryCode = element["2L"];
+                //                     break;
+                //                 }
+                //             }
+                //         }
+                //     }
+                // }
             }
         }
         leaderboards[y] = _athletes
@@ -586,6 +586,8 @@ function changeColor(ath, element) {
     if (overlay == 'overlay_top' || overlay == 'versus') {
         rank != 1 ? rank = 4 : rank
     }
+
+    if (overlay == 'overlay_wpa') { return };
     switch (rank) {
         case 1:
             ath.$item.find(element).addClass('first_rank')
@@ -616,6 +618,8 @@ function changeColor(ath, element) {
 
 function eraseInitialRank(ath, element) {
 
+
+    if (overlay == 'overlay_wpa') { return };
     if (overlay != 'overlay_top') {
         // ath.$item.find(element).addClass('')
         ath.$item.find(element).removeClass('initial_rank initial_rank_ath other_rank other_rank_ath finish_rank finish_rank_ath second_rank second_rank_ath third_rank third_rank_ath first_rank first_rank_ath', false)
@@ -630,6 +634,7 @@ function eraseInitialRank(ath, element) {
 
 function initialRankChange(ath, element) {
 
+    if (overlay == 'overlay_wpa') { return };
     if (overlay != 'overlay_top') {
         ath.$item.find(element).addClass('initial_rank')
         ath.$item.find(element).toggleClass('finish_rank finish_rank_ath second_rank third_rank first_rank', false)
@@ -643,6 +648,8 @@ function initialRankChange(ath, element) {
 }
 
 function changeColorFinish(ath, element) {
+
+    if (overlay == 'overlay_wpa') { return };
     // console.log("ath :", ath)
     // console.log("element : ", element)
     ath.$item.find(element).addClass('finish_rank')
@@ -651,12 +658,16 @@ function changeColorFinish(ath, element) {
 }
 
 function changeColorFinishAth(ath, element) {
+
+    if (overlay == 'overlay_wpa') { return };
     ath.$item.find(element).addClass('finish_rank_ath')
     ath.$item.find(element).removeClass('initial_rank_top_ath first_rank_ath second_rank_ath third_rank_ath other_rank_ath', false)
     overlay == 'versus' && ath.$item.find(element).removeClass('initial_rank_versus')
 }
 
 function changeColorAth(ath, element) {
+
+    if (overlay == 'overlay_wpa') { return };
     let rank = ath.CurrentRank
     if (overlay == 'overlay_top' || overlay == 'versus') {
         rank != 1 ? rank = 4 : rank
@@ -733,23 +744,38 @@ function treatBigScreenMvt(elementAth) {
     $('#circle' + elementAth.lane).css("transform", "translateX(" + percent + "%)");
 }
 
+function treatTimeResult(time) {
+    var t = time.toString().split(':');
+    var result = "";
+    if (t[0] != "00") {
+        result = t[0] + ":" + t[1] + ":" + t[2].substring(0, 2);
+    }
+    else if (t[1] != "00") {
+        result = t[1] + ":" + t[2].substring(0, 2);
+    }
+    else {
+        result = "00:" + t[2].substring(0, 2);
+    }
+    return result;
+}
+
 function treatFinishStatus(elementAth) {
     let result = elementAth.result;
-    if (overlay == "overlay_side") {
-        console.log("Resultat : ", result)
+    var t = result.toString().split(':');
 
-        var t = result.toString().split(':');
-        console.log(t)
-        if (t[0] != "00") {
-            result = t[0] + ":" + t[1] + ":" + t[2].substring(0, 5);
-        }
-        else if (t[1] != "00") {
-            result = t[1] + ":" + t[2].substring(0, 5);
-        }
-        else {
-            result = "00:" + t[2].substring(0, 5);
-        }
-        console.log("Resultat modifié : ", result)
+    if (t[0] != "00") {
+        result = t[0] + ":" + t[1] + ":" + t[2].substring(0, 2);
+    }
+    else if (t[1] != "00") {
+        result = t[1] + ":" + t[2].substring(0, 2);
+    }
+    else {
+        result = "00:" + t[2].substring(0, 2);
+    }
+
+    console.log("Resultat Final : ", result)
+
+    if (overlay == "overlay_side" || overlay == "overlay_wpa") {
 
         elementAth.$item.find(".score").show()
         elementAth.$item.find(".score").text(result);
@@ -760,9 +786,9 @@ function treatFinishStatus(elementAth) {
 
         // elementAth.$item.find(".score").text('FIN')
     } else {
-        elementAth.$item.find(".popup").text(result.toString().slice(result.length - 9, result.length - 8) != "0" ? result = result.toString().slice(result.length - 8, result.length) : result.toString().slice(result.length - 7, result.length - 6) != "0" ? result = result.toString().slice(result.length - 7, result.length) : result = result.toString().slice(result.length - 6, result.length));
+        elementAth.$item.find(".popup").text(result);
         elementAth.$item.find(".popup").show();
-        elementAth.$item.find(".popup_top").text(result.toString().slice(result.length - 9, result.length - 8) != "0" ? result = result.toString().slice(result.length - 8, result.length) : result.toString().slice(result.length - 7, result.length - 6) != "0" ? result = result.toString().slice(result.length - 7, result.length) : result = result.toString().slice(result.length - 6, result.length));
+        elementAth.$item.find(".popup_top").text(result);
         elementAth.$item.find(".popup_top").show();
         elementAth.$item.find(".score").text('FIN')
     }
@@ -777,11 +803,15 @@ function treatTimeCapStatus(elementAth) {
     let text2 = total != undefined ? (total != 1 ? '/' + total : '') : ''
     let text = result
 
-    if (overlay == "overlay_side") {
+    if (overlay == "overlay_side" || overlay == "overlay_wpa") {
         elementAth.$item.find(".popup").hide();
         elementAth.$item.find(".popup_top").hide();
         elementAth.$item.find(".score").show();
-        elementAth.$item.find(".score").text(text + ' ' + setupLeaderboard.value.unitSelect);
+        if (overlay == 'overlay_side') {
+            elementAth.$item.find(".score").text(text + ' ' + setupLeaderboard.value.unitSelect);
+        } else {
+            elementAth.$item.find(".score").text(text);
+        }
     } else {
         elementAth.$item.find(".popup").show();
         elementAth.$item.find(".popup_top").show();
@@ -933,8 +963,10 @@ function treatDisplayMvtForOthers(elementAth, idToCompare) {
             elementAth.$item.find(".popup").text(textTomvt);
             elementAth.$item.find(".popup_top").text(textTomvt);
         }
-        elementAth.$item.find(".popup").show();
-        elementAth.$item.find(".popup_top").show();
+        if (overlay != "overlay_wpa") {
+            elementAth.$item.find(".popup").show();
+            elementAth.$item.find(".popup_top").show();
+        }
     }
     else {
         elementAth.$item.find(".popup").hide();
@@ -970,8 +1002,11 @@ function treatDisplayMvtFirst(elementAth) {
             elementAth.$item.find(".popup").text(textTomvt);
             elementAth.$item.find(".popup_top").text(textTomvt);
         }
-        elementAth.$item.find(".popup").show();
-        elementAth.$item.find(".popup_top").show();
+        if (overlay != "overlay_wpa") {
+            elementAth.$item.find(".popup").show();
+            elementAth.$item.find(".popup_top").show();
+        }
+
     }
 }
 
@@ -1092,6 +1127,8 @@ function treatResultDisplayRepWPA(score) {
 
 function treatResultDisplayResultWPA(score) {
 
+    console.log("SCORE WPA : ", score[0].time)
+
     if (score[0].time != 0) {
         $("#ahtTop1").find('.popup_top').show()
         $("#ahtTop1").find('.score').text(msToTime2(score[0].time))
@@ -1099,7 +1136,7 @@ function treatResultDisplayResultWPA(score) {
     } else {
         $("#ahtTop1").find('.popup_top').hide()
         $("#ahtTop1").find('.popup_top').text('')
-        let n = "CAP " + score[0].rep
+        let n = score[0].rep
         if (heat.typeWod == 'repmax') {
             n = score[0].rep
         }
@@ -1113,7 +1150,7 @@ function treatResultDisplayResultWPA(score) {
     } else {
         $("#ahtTop2").find('.popup_top').hide()
         $("#ahtTop2").find('.popup_top').text('')
-        let n = "CAP " + score[1].rep
+        let n = score[1].rep
         if (heat.typeWod == 'repmax') {
             n = score[1].rep
         }
@@ -1125,10 +1162,10 @@ function treatResultDisplayResultWPA(score) {
 function hideWaitingWPA(score) {
     $("#ahtTop1").find('.popup_top').hide()
     // $("#ahtTop1").find('.score').text(score[0].rep)
-    $("#ahtTop1").find('.score').text("WAITING")
+    $("#ahtTop1").find('.score').text("WPA")
     $("#ahtTop2").find('.popup_top').hide()
     // $("#ahtTop2").find('.score').text(score[1].rep)
-    $("#ahtTop2").find('.score').text("WAITING")
+    $("#ahtTop2").find('.score').text("WPA")
 }
 
 

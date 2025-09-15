@@ -12,7 +12,7 @@ function resetHeat(data) {
                 $item = styleHeat_top(data)
                 break;
             case 'overlay_wpa':
-                $item = styleHeat_wpa(data)
+                // $item = styleHeat_wpa(data)
                 break;
             case 'overlay_side':
                 $item = styleHeat_side(data)

@@ -85,7 +85,7 @@ function bandeau(indexDivision) {
     return $beandeauBottom
 }
 
-function overlayTop(data) {
+function Top(data) {
 
     let name = treatDisplayName(data.displayName);
     let flag = data.countryCode != "LOGO" ? ("https://flagcdn.com/" + data.countryCode.toLowerCase() + '.svg') : (logoEvent.value[0].url);
@@ -520,7 +520,8 @@ function headerVersusWPA(divisions, indexDivision) {
     let $headerTop = $(
         '<div id="leaderboard' + indexDivision + '" class="leaderboard">' +
         '<div class="header">' +
-        '<div class="text-nowrap text-truncate text-left division">' + divisions[indexDivision] + '</div>' +
+        // '<div class="text-nowrap text-truncate text-left division">' + divisions[indexDivision] + '</div>' +
+        '<div class="text-nowrap text-truncate text-left division"></div>' +
         '</div>' +
         '<div id="athletes" class="athletes">' +
         '</div>' +
@@ -537,19 +538,19 @@ function leaderboardVersusTopSTWPA() {
         '<div class="athleteTop" id="ahtTop1">' +
         '<div class="athTop_detail">' +
         '<div class="athTop">' +
-        '<div class="name">TEAM NA</div>' +
+        '<div class="name"></div>' +
         '<div class="score"></div>' +
         '</div>' +
-        '<div class="popup_top initial_rank_versus">' + '</div>' +
+        // '<div class="popup_top initial_rank_versus">' + '</div>' +
         '</div>' +
         '</div>' +
         '<div class="athleteTop" id="ahtTop2">' +
         '<div class="athTop_detail">' +
         '<div class="athTop">' +
-        '<div class="name">TEAM WORLD</div>' +
+        '<div class="name"></div>' +
         '<div class="score"></div>' +
         '</div>' +
-        '<div class="popup_top initial_rank_versus">' + '</div>' +
+        // '<div class="popup_top initial_rank_versus">' + '</div>' +
         '</div>' +
         '</div>'
     );
@@ -566,10 +567,11 @@ function leaderboardVersusTopWPA(data) {
         '<div class="athleteTop" id="ahtTop' + data.lane + '">' +
         '<div class="athTop_detail">' +
         '<div class="athTop">' +
-        '<div class="name">' + name + '</div>' +
+        // '<div class="name">' + name + '</div>' +
+        '<div class="name"></div>' +
         '<div class="score"></div>' +
         '</div>' +
-        '<div class="popup_top initial_rank_versus">' + '</div>' +
+        // '<div class="popup_top initial_rank_versus">' + '</div>' +
         '</div>' +
         '</div>'
     );
@@ -583,12 +585,25 @@ function leaderboardVersusSideWPA(data) {
     let name = treatDisplayName(data.displayName);
     let flag = data.countryCode != "LOGO" ? ("https://flagcdn.com/" + data.countryCode.toLowerCase() + '.svg') : (logoEvent.value[0].url);
 
+    console.log(" Leaderboard Versus Display", data)
+    let pathTobgimg = "./../img/"
+    let backgroundImage = "";
+    if (data.affiliate != undefined) {
+        if (data.affiliate.toLowerCase().includes('world')) {
+            pathTobgimg = "./../graphics/img/cadre_world.png"
+        } else if (data.affiliate.toLowerCase().includes('north')) {
+            pathTobgimg = "./../graphics/img/cadre_north_america.png"
+        }
+        backgroundImage = 'url(' + pathTobgimg + ')'
+    }
+
+    console.log(" Leaderboard Versus Display", data.affiliate, pathTobgimg, backgroundImage)
 
     let $item = $(
         '<div class="athlete" id="aht' + data.lane + '">' +
         '<div class="popup text-nowrap text-truncate">' + '</div>' +
         '<div class="ath">' +
-        // '<div class="rank text-nowrap text-truncate"> ' + '</div>' +
+        '<div class="rank text-nowrap text-truncate"> ' + '</div>' +
         // '<div class="lane text-nowrap text-truncate"># ' + data.lane + '</div>' +
         '<div class="flag">' + '<div class="box_flag" ></div> ' + '</div>' +
         '<div class="text-nowrap text-truncate text-left name">' + name + '</div>' +
@@ -597,6 +612,8 @@ function leaderboardVersusSideWPA(data) {
         '</div>' +
         '</div>'
     );
+
+    $item.find('.ath').css('background-image', backgroundImage)
 
     $item.find(".box_flag").css('background-image', 'url(' + flag + ')')
     $item.find(".rounds").hide();

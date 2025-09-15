@@ -10,8 +10,8 @@
     width: 1920px;
     color: white;
     font-family: var(--fontWorkout-select);
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    background: linear-gradient(90deg, var(--first_linear_gradient) 0%, var(--second_linear_gradient) 18%, var(--first_linear_gradient) 35%, var(--second_linear_gradient) 66%, var(--first_linear_gradient) 100%);
+    /* box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; */
+    /* background: linear-gradient(90deg, var(--first_linear_gradient) 0%, var(--second_linear_gradient) 18%, var(--first_linear_gradient) 35%, var(--second_linear_gradient) 66%, var(--first_linear_gradient) 100%); */
 }
 
 /* top | right | bottom | left */
@@ -159,13 +159,16 @@
 }
 
 .header_i .box_chrono {
+    left: var(--xChrono_top);
+    top: var(--yChrono_top);
+    position: absolute;
     z-index: 2;
     width: 180px;
     color: white;
     font-size: var(--sizeFontChrono_top);
     font-family: var(--fontChrono-select);
     height: 80px;
-    border: 3px white solid;
+    /* border: 3px white solid; */
     /* border-right: solid white 2px; */
     margin: 0px 25px;
     display: flex;

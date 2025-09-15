@@ -14,6 +14,8 @@ const athletesHeat = nodecg.Replicant('athletesHeat')
 
 const mainSponsors = nodecg.Replicant('assets:mainSponsor', 'connector')
 
+const backgroundOverlay = nodecg.Replicant('assets:backgroundOverlay', 'leaderboard')
+
 
 var participantEvent = {}
 var participantsCurrentHeats = {}
@@ -146,3 +148,32 @@ mainSponsors.on('change', (newValue, oldValue) => {
         }));
     }
 })
+
+
+backgroundOverlay.on('change', (newValue, oldValue) => {
+    console.log(newValue)
+    $("#overlayBackgroundSelect option").remove()
+
+    if (newValue.length > 0) {
+
+        $('#overlayBackgroundSelect').append($('<option>', {
+            value: '',
+            text: 'Please, choose sponsor'
+        }));
+        newValue.forEach((e, i) => {
+
+            $('#overlayBackgroundSelect').append($('<option>', {
+                value: e.url,
+                text: e.name
+            }));
+        })
+    } else {
+
+        $('#overlayBackgroundSelect').append($('<option>', {
+            value: '',
+            text: 'No sponsor'
+        }));
+    }
+})
+
+

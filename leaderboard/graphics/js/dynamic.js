@@ -14,17 +14,22 @@ function updateDynamics(newScoring, status) {
             cr = 0;
             height_tot = 0;
             let index = 0;
-            let scoreForWPA = {
-                rep: 0,
-                time: 0,
-            };
+            // let scoreForWPA = {
+            //     rep: 0,
+            //     time: 0,
+            // };
+
+            arrayWAP[0] = { rep: 0, time: 0 }
+            arrayWAP[1] = { rep: 0, time: 0 }
+
+            // console.log(arrayWAP)
 
 
             // on fait 2 each => 1 pour mettre à jour les datas, l'autre pour l'affichage des données.  
 
             // ON traite les datas quelque soit le status
 
-            let averageIndex = 0;
+            let averageIndex = [0, 0];
 
             Object.keys(elemAth).forEach(i => {
 
@@ -42,22 +47,35 @@ function updateDynamics(newScoring, status) {
                 // On traite les mouvements
                 elemAth[i].currentMvt = TreatMvt(elemAth[i]);
 
-                if (elemAth.length > 2) {
+                // if (elemAth.length > 2) {
+                console.log("Score WPA", arrayWAP)
+                if (elemAth[i].affiliate.toLowerCase().includes("north")) {
+                    // console.log("WORLD : elementAth[i]", elemAth[i])
                     // on mémorise le score pour les WPA
-                    scoreForWPA.rep += parseInt(elemAth[i].score_abs)
-                    scoreForWPA.time += treatResultTimeWPA(elemAth[i]).time
-                    averageIndex += treatResultTimeWPA(elemAth[i]).index
+                    arrayWAP[0].rep += parseInt(elemAth[i].score_rel)
+                    arrayWAP[0].time += treatResultTimeWPA(elemAth[i]).time
+                    averageIndex[0] += treatResultTimeWPA(elemAth[i]).index
+                } else if (elemAth[i].affiliate.toLowerCase().includes("world")) {
+                    // console.log("NORTH : elementAth[i]", elemAth[i])
+                    // on mémorise le score pour les WPA
+                    arrayWAP[1].rep += parseInt(elemAth[i].score_rel)
+                    arrayWAP[1].time += treatResultTimeWPA(elemAth[i]).time
+                    averageIndex[1] += treatResultTimeWPA(elemAth[i]).index
                 }
+                // }
 
                 //On traite le tableau des scores
                 treatPerfArray(elemAth[i])
 
             })
-            if (setupLeaderboard.value.timeConfig == 'avg' && scoreForWPA.time != 0) {
-                scoreForWPA.time = Math.round(scoreForWPA.time / averageIndex);
+            if (setupLeaderboard.value.timeConfig == 'avg' && arrayWAP[0].time != 0) {
+                arrayWAP[0].time = Math.round(arrayWAP[0].time / averageIndex[0]);
+            }
+            if (setupLeaderboard.value.timeConfig == 'avg' && arrayWAP[1].time != 0) {
+                arrayWAP[1].time = Math.round(arrayWAP[1].time / averageIndex[1]);
             }
 
-            arrayWAP[key] = scoreForWPA
+            // arrayWAP[key] = scoreForWPA
 
         })
 
@@ -146,7 +164,11 @@ function updateDynamics(newScoring, status) {
                                 setupLeaderboard.value.lane ? elemAth[i].$item.find(".lane").show() : elemAth[i].$item.find(".lane").hide()
                                 withJudge(elemAth[i])
                                 // console.log("Athlete with statut W :", elemAth[i])
+                                // if (overlay != 'overlay_wpa') {
                                 changeRank(elemAth[i]);
+                                // }
+
+
                                 !elemAth[i].$item.find(".score").is(':visible') && elemAth[i].$item.find(".score").show();
 
                                 // console.log(elemAth[i].currentMvt)
@@ -176,13 +198,16 @@ function updateDynamics(newScoring, status) {
                                             // }
                                             break;
                                     }
-                                    changeFunction(overlay, elemAth[i])
+                                    if (overlay != 'overlay_wpa') {
+                                        changeFunction(overlay, elemAth[i])
+                                    }
                                 }
 
-                                if (overlay == "overlay_wpa" && elemAth.length > 2) {
-                                    $('.rank').hide()
-                                    treatResultDisplayRepWPA(arrayWAP)
-                                }
+                                // if (overlay == "overlay_wpa" && elemAth.length > 2) {
+                                // $('.rank').hide()
+                                // console.log(arrayWAP)
+                                treatResultDisplayRepWPA(arrayWAP)
+                                // }
 
                                 break;
                             case 'F':
@@ -191,15 +216,17 @@ function updateDynamics(newScoring, status) {
                                     treatTextMvt('FINISH')
                                 }
                                 console.log("pop F")
-                                changeRank(elemAth[i]);
-                                changeColorFinish(elemAth[i], ".ath")
-                                changeColorFinishAth(elemAth[i], ".ath")
-                                changeColorFinish(elemAth[i], ".rank")
+                                if (overlay != 'overlay_wpa') {
+                                    changeRank(elemAth[i]);
+                                    changeColorFinish(elemAth[i], ".ath")
+                                    changeColorFinishAth(elemAth[i], ".ath")
+                                    changeColorFinish(elemAth[i], ".rank")
+                                }
                                 treatFinishStatus(elemAth[i]);
                                 overlay == 'overlay_top' && hiddenAthlete(elemAth[i])
 
-                                if (overlay == "overlay_wpa" && elemAth.length > 2) {
-                                    $('.rank').hide()
+                                if (overlay == "overlay_wpa") {
+                                    // $('.rank').hide()
                                     treatResultDisplayRepWPA(arrayWAP)
                                 }
 
@@ -207,14 +234,15 @@ function updateDynamics(newScoring, status) {
                             case 'T':
                                 setupLeaderboard.value.lane ? elemAth[i].$item.find(".lane").show() : elemAth[i].$item.find(".lane").hide()
                                 console.log("pop T")
-                                changeRank(elemAth[i]);
-                                changeColorFinish(elemAth[i], ".ath")
-                                changeColorFinishAth(elemAth[i], ".ath")
-                                changeColorFinish(elemAth[i], ".rank")
+                                if (overlay != 'overlay_wpa') {
+                                    changeRank(elemAth[i]);
+                                    changeColorFinish(elemAth[i], ".ath")
+                                    changeColorFinishAth(elemAth[i], ".ath")
+                                    changeColorFinish(elemAth[i], ".rank")
+                                }
                                 treatTimeCapStatus(elemAth[i]);
-
-                                if (overlay == "overlay_wpa" && elemAth.length > 2) {
-                                    $('.rank').hide()
+                                if (overlay == "overlay_wpa") {
+                                    // $('.rank').hide()
                                     treatResultDisplayRepWPA(arrayWAP)
                                 }
 
@@ -225,8 +253,8 @@ function updateDynamics(newScoring, status) {
 
                         break;
                     case 'T':
-                        if (overlay == "overlay_wpa" && elemAth.length > 2) {
-                            $('.rank').hide()
+                        if (overlay == "overlay_wpa") {
+                            // $('.rank').hide()
                             treatResultDisplayResultWPA(arrayWAP)
                         }
                         changeLaneToRank(elemAth[i])
@@ -258,7 +286,6 @@ function updateDynamics(newScoring, status) {
                 if (overlay == "overlay_wpa") {
                     if (elemAth.length <= 2) {
                         width = elemAth[i].$item.find('.score').width() + Math.round(parseInt(elemAth[i].$item.find('.score').css('padding').split(' ')[1].replace('px', '')) * 2) - 2
-                        console.log(width)
                         elemAth[i].$item.find('.popup_top').width(width)
                     }
                 }

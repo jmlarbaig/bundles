@@ -280,7 +280,7 @@
 }
 
 .popup {
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    /* text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); */
     text-transform: uppercase;
     text-align: left;
     padding: 2px;

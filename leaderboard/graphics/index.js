@@ -410,14 +410,14 @@ logoEvent.on('change', (newValue, oldValue) => {
 });
 
 backgroundOverlay.on('change', (newValue) => {
-    if (newValue.length > 0) {
-        console.log(newValue)
-        $(".backgroundOverlay").css("background-image", "url(" + newValue[0].url + ")");
-        $(".backgroundOverlay").show()
-    }
-    else {
-        $(".backgroundOverlay").hide()
-    }
+    // if (newValue.length > 0) {
+    //     console.log(newValue)
+    //     $(".backgroundOverlay").css("background-image", "url(" + newValue[0].url + ")");
+    //     $(".backgroundOverlay").show()
+    // }
+    // else {
+    //     $(".backgroundOverlay").hide()
+    // }
 })
 
 mainSponsors.on('change', (newValue) => {
@@ -487,6 +487,18 @@ setupLeaderboard.on('change', (newValue, oldValue) => {
     }
     else {
         $(".mainSponsor").fadeOut()
+    }
+
+    if (newValue.overlayBackgroundSelect != '') {
+
+        $(".backgroundOverlay").css("background-image", "url(" + newValue.overlayBackgroundSelect + ")");
+
+        if (!$(".backgroundOverlay").is(':visible')) {
+            $(".backgroundOverlay").fadeIn()
+        }
+    }
+    else {
+        $(".backgroundOverlay").fadeOut()
     }
 
 

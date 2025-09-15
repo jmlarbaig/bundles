@@ -133,6 +133,15 @@
         --positionBottomBottomLogo: 200px;
         --detailHeader: rgb(0, 0, 0);
         --sizeFontScore_top: 20px;
+
+        --xChrono_top: 0px;
+        --yChrono_top: 0px;
+
+        --xPositionScore_top: 0px;
+        --yPositionScore_top: 0px;
+
+        --x_leaderboard_top: 0px;
+        --y_leaderboard_top: 0px;
     }
 
 

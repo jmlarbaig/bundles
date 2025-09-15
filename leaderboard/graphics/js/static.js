@@ -44,34 +44,35 @@ function resetLeaderboard(newData) {
 
         let listOfAth = [];
 
-        if (overlay != 'overlay_wpa') {
-            for (let athletes of data.athletes) {
-                if (!divisionsNames.includes(athletes.division)) {
-                    divisionsNames.push(athletes.division)
-                }
-            }
-        } else {
-            for (let athletes of data.athletes) {
-                if (!divisionsNames.includes(athletes.affiliate)) {
-                    divisionsNames.push(athletes.affiliate)
-                }
+        console.log("data.athletes : ", data.athletes)
+        // if (overlay != 'overlay_wpa') {
+        for (let athletes of data.athletes) {
+            if (!divisionsNames.includes(athletes.division)) {
+                divisionsNames.push(athletes.division)
             }
         }
+        // } else {
+        //     for (let athletes of data.athletes) {
+        //         if (!divisionsNames.includes(athletes.affiliate)) {
+        //             divisionsNames.push(athletes.affiliate)
+        //         }
+        //     }
+        // }
 
 
 
         //! on retient le rep targets
 
-        if (overlay != 'overlay_wpa') {
-            for (let y = 0; y < divisionsNames.length; y++) {
-                for (let wod of workouts) {
-                    if (divisionsNames[y] == wod.division) {
-                        repTarget[y] = wod.total_reps
-                        workouts[y] = wod;
-                    }
+        // if (overlay != 'overlay_wpa') {
+        for (let y = 0; y < divisionsNames.length; y++) {
+            for (let wod of workouts) {
+                if (divisionsNames[y] == wod.division) {
+                    repTarget[y] = wod.total_reps
+                    workouts[y] = wod;
                 }
             }
         }
+        // }
 
 
         //! Initialisation des athletes dans un seul format avec un triage par division
@@ -137,6 +138,7 @@ function resetLeaderboard(newData) {
             }
 
             if (overlay == "versus" || overlay == "overlay_wpa") {
+                console.log("$tabItemBox : ", $tabItemBox)
                 indexDivision == 0 && $tabBox.append($tabItemBox);
                 if (athletesDivision[0].length > 2) {
                     $tab.append($tabItem);
@@ -209,8 +211,8 @@ function resetLeaderboard(newData) {
                         $item = leaderboardVersus(elementAth)
                         break;
                     case 'overlay_wpa':
-                        console.log(athletesDivision[0].length > 2)
-                        if (athletesDivision[0].length > 2) {
+                        // if (athletesDivision[0].length > 2) 
+                        if (elementDiv.length > 2) {
                             $itemBox = leaderboardVersusTopSTWPA();
                             $item = leaderboardVersusSideWPA(elementAth)
                         } else {
@@ -220,7 +222,9 @@ function resetLeaderboard(newData) {
                 }
 
                 elementAth.$item = $item;
-                elementAth.$item.hide()
+                if (overlay != "overlay_wpa" && elementDiv.length <= 2) {
+                    elementAth.$item.hide()
+                }
 
                 listOfAth.push("<span>#" + elementAth.lane + " - " + elementAth.displayName + "</span>")
 
@@ -229,11 +233,10 @@ function resetLeaderboard(newData) {
                         $list.append($item);
                     }
                 } else if (overlay == "overlay_wpa") {
-                    if (athletesDivision[0].length > 2) {
+                    if (elementDiv.length > 2) {
                         indexAthletes == 0 && $listBox.append($itemBox);
                         $list.append($item);
                     } else {
-                        console.log("$Item : ", $item)
                         $listBox.append($item);
                     }
                 } else {
