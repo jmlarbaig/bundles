@@ -956,16 +956,23 @@ function treatDisplayMvtForOthers(elementAth, idToCompare) {
 
     if (elementAth.currentMvt.id != idToCompare) {
         if (heat.typeWod == 'amrap' && !Number.isNaN(elementAth.currentMvt.rounds)) {
-            elementAth.$item.find(".rounds").text("R" + (elementAth.currentMvt.rounds));
-            elementAth.$item.find(".popup").text("R" + (elementAth.currentMvt.rounds) + ' - ' + textTomvt);
-            elementAth.$item.find(".popup_top").text("R" + (elementAth.currentMvt.rounds) + ' - ' + textTomvt);
+            if (mvt.includes('Rd')) {
+                elementAth.$item.find(".popup").text(textTomvt);
+                elementAth.$item.find(".popup_top").text(textTomvt);
+            } else {
+                elementAth.$item.find(".rounds").text("R" + (elementAth.currentMvt.rounds));
+                elementAth.$item.find(".popup").text("R" + (elementAth.currentMvt.rounds) + ' - ' + textTomvt);
+                elementAth.$item.find(".popup_top").text("R" + (elementAth.currentMvt.rounds) + ' - ' + textTomvt);
+            }
         } else {
             elementAth.$item.find(".popup").text(textTomvt);
             elementAth.$item.find(".popup_top").text(textTomvt);
         }
         if (overlay != "overlay_wpa") {
-            elementAth.$item.find(".popup").show();
-            elementAth.$item.find(".popup_top").show();
+            if (setupLeaderboard.value.scoreConfig == "mvt_score" || setupLeaderboard.value.scoreConfig == "mvt_total_score") {
+                elementAth.$item.find(".popup").show();
+                elementAth.$item.find(".popup_top").show();
+            }
         }
     }
     else {
@@ -996,184 +1003,190 @@ function treatDisplayMvtFirst(elementAth) {
     }
     else {
         if (heat.typeWod == 'amrap' && !Number.isNaN(elementAth.currentMvt.rounds)) {
-            elementAth.$item.find(".popup").text("R" + (elementAth.currentMvt.rounds) + ' - ' + textTomvt);
-            elementAth.$item.find(".popup_top").text("R" + (elementAth.currentMvt.rounds) + ' - ' + textTomvt);
-        } else {
-            elementAth.$item.find(".popup").text(textTomvt);
-            elementAth.$item.find(".popup_top").text(textTomvt);
-        }
-        if (overlay != "overlay_wpa") {
-            elementAth.$item.find(".popup").show();
-            elementAth.$item.find(".popup_top").show();
-        }
+            if (heat.typeWod == 'amrap' && !Number.isNaN(elementAth.currentMvt.rounds)) {
+                if (mvt.includes('Rd')) {
+                    elementAth.$item.find(".popup").text(textTomvt);
+                    elementAth.$item.find(".popup_top").text(textTomvt);
+                } else {
+                    elementAth.$item.find(".popup").text("R" + (elementAth.currentMvt.rounds) + ' - ' + textTomvt);
+                    elementAth.$item.find(".popup_top").text("R" + (elementAth.currentMvt.rounds) + ' - ' + textTomvt);
+                }
+            } else {
+                elementAth.$item.find(".popup").text(textTomvt);
+                elementAth.$item.find(".popup_top").text(textTomvt);
+            }
+            if (overlay != "overlay_wpa") {
+                elementAth.$item.find(".popup").show();
+                elementAth.$item.find(".popup_top").show();
+            }
 
+        }
     }
-}
 
-function hiddenAthlete(elementAth) {
-    if (elementAth.CurrentRank > 1 && elementAth.$item.is(':visible')) {
+    function hiddenAthlete(elementAth) {
+        if (elementAth.CurrentRank > 1 && elementAth.$item.is(':visible')) {
+            setTimeout(() => {
+                elementAth.$item.fadeOut(1000);
+            }, 5000)
+        }
+    }
+
+    function showHiddenAthlete(elementAth) {
         setTimeout(() => {
-            elementAth.$item.fadeOut(1000);
-        }, 5000)
+            elementAth.$item.fadeIn(1000)
+        }, 3000)
     }
-}
 
-function showHiddenAthlete(elementAth) {
-    setTimeout(() => {
-        elementAth.$item.fadeIn(1000)
-    }, 3000)
-}
+    function treatPerfArray(elementAth) {
+        if (overlay == 'commentator') {
+            if (bestPerf[elementAth.lane] == undefined) {
+                bestPerf[elementAth.lane] = []
+            }
+            Object.values(elementAth.log_mvt[0]).forEach((time, index) => {
 
-function treatPerfArray(elementAth) {
-    if (overlay == 'commentator') {
-        if (bestPerf[elementAth.lane] == undefined) {
-            bestPerf[elementAth.lane] = []
-        }
-        Object.values(elementAth.log_mvt[0]).forEach((time, index) => {
+                if (time != '00:00.0') {
+                    if (elementAth.$item.find("#mvt_id_" + index + "_" + elementAth.lane).text() == '-') {
 
-            if (time != '00:00.0') {
-                if (elementAth.$item.find("#mvt_id_" + index + "_" + elementAth.lane).text() == '-') {
+                        let secondes = time.split(':').map(Number)
+                        let min = secondes[0] * 60;
+                        let total = secondes[1] + min
 
-                    let secondes = time.split(':').map(Number)
-                    let min = secondes[0] * 60;
-                    let total = secondes[1] + min
+                        if (total > 3) {
+                            elementAth.$item.find("#mvt_id_" + index + "_" + elementAth.lane).text(time)
+                            bestPerf[elementAth.lane][index] = total
 
-                    if (total > 3) {
-                        elementAth.$item.find("#mvt_id_" + index + "_" + elementAth.lane).text(time)
-                        bestPerf[elementAth.lane][index] = total
+                            if (best[index] == undefined) {
+                                best[index] = total
+                            }
 
-                        if (best[index] == undefined) {
-                            best[index] = total
+                            if (bestPerf[elementAth.lane][index] <= best[index]) {
+                                best[index] = bestPerf[elementAth.lane][index]
+
+                                $('#leaderboard' + key).find('.mvt_id_' + index).removeClass('bestStat');
+                                elementAth.$item.find("#mvt_id_" + index + "_" + elementAth.lane).addClass('bestStat');
+                            }
+
                         }
-
-                        if (bestPerf[elementAth.lane][index] <= best[index]) {
-                            best[index] = bestPerf[elementAth.lane][index]
-
-                            $('#leaderboard' + key).find('.mvt_id_' + index).removeClass('bestStat');
-                            elementAth.$item.find("#mvt_id_" + index + "_" + elementAth.lane).addClass('bestStat');
-                        }
-
                     }
                 }
+            })
+        }
+    }
+
+    function changeLaneToRank(elementAth) {
+        elementAth.OldRank = elementAth.CurrentRank
+        elementAth.$item.find(".rank").text(elementAth.CurrentRank);
+    }
+
+    function changeRankToLane(elementAth) {
+        elementAth.OldRank = elementAth.CurrentRank
+        elementAth.$item.find(".rank").text(elementAth.lane);
+        eraseInitialRank(elementAth, ".rank")
+        eraseInitialRank(elementAth, ".ath")
+        eraseInitialRank(elementAth, ".popup")
+    }
+
+
+
+    function treatResultTimeWPA(elementAth) {
+        let time = 0;
+        let index = 0;
+        if (elementAth.result != "" && elementAth.result.includes(':')) {
+            time = timeToTimestamp(elementAth.result)
+            index++;
+        }
+        return { time, index };
+    }
+
+    function treatResultDisplayRepWPA(score) {
+        let r = [0, 0];
+        if (score[0].rep > score[1].rep) {
+            r[0] = score[0].rep
+            r[1] = score[1].rep - score[0].rep
+        } else if (score[0].rep < score[1].rep) {
+            r[0] = score[0].rep - score[1].rep
+            r[1] = score[1].rep
+        } else {
+            r[0] = score[0].rep
+            r[1] = score[1].rep
+        }
+
+        let m = 'TOTAL';
+        if (setupLeaderboard.value.timeConfig == 'avg') {
+            m = 'AVERAGE'
+        }
+
+        if (score[0].time != 0) {
+            $("#ahtTop1").find('.popup_top').show()
+            $("#ahtTop1").find('.popup_top').text("TIME " + m + ": " + msToTime2(score[0].time))
+
+            $("#ahtTop1").find('.score').text(r[0])
+        } else {
+            $("#ahtTop1").find('.popup_top').hide()
+            $("#ahtTop1").find('.popup_top').text('')
+            $("#ahtTop1").find('.score').text(r[0])
+        }
+        if (score[1].time != 0) {
+            $("#ahtTop2").find('.popup_top').show()
+            $("#ahtTop2").find('.popup_top').text("TIME " + m + ": " + msToTime2(score[1].time))
+            $("#ahtTop2").find('.score').text(r[1])
+        } else {
+            $("#ahtTop2").find('.popup_top').hide()
+            $("#ahtTop2").find('.popup_top').text('')
+            $("#ahtTop2").find('.score').text(r[1])
+        }
+    }
+
+
+    function treatResultDisplayResultWPA(score) {
+
+        console.log("SCORE WPA : ", score[0].time)
+
+        if (score[0].time != 0) {
+            $("#ahtTop1").find('.popup_top').show()
+            $("#ahtTop1").find('.score').text(msToTime2(score[0].time))
+            $("#ahtTop1").find('.popup_top').text(score[0].rep)
+        } else {
+            $("#ahtTop1").find('.popup_top').hide()
+            $("#ahtTop1").find('.popup_top').text('')
+            let n = score[0].rep
+            if (heat.typeWod == 'repmax') {
+                n = score[0].rep
             }
-        })
-    }
-}
-
-function changeLaneToRank(elementAth) {
-    elementAth.OldRank = elementAth.CurrentRank
-    elementAth.$item.find(".rank").text(elementAth.CurrentRank);
-}
-
-function changeRankToLane(elementAth) {
-    elementAth.OldRank = elementAth.CurrentRank
-    elementAth.$item.find(".rank").text(elementAth.lane);
-    eraseInitialRank(elementAth, ".rank")
-    eraseInitialRank(elementAth, ".ath")
-    eraseInitialRank(elementAth, ".popup")
-}
-
-
-
-function treatResultTimeWPA(elementAth) {
-    let time = 0;
-    let index = 0;
-    if (elementAth.result != "" && elementAth.result.includes(':')) {
-        time = timeToTimestamp(elementAth.result)
-        index++;
-    }
-    return { time, index };
-}
-
-function treatResultDisplayRepWPA(score) {
-    let r = [0, 0];
-    if (score[0].rep > score[1].rep) {
-        r[0] = score[0].rep
-        r[1] = score[1].rep - score[0].rep
-    } else if (score[0].rep < score[1].rep) {
-        r[0] = score[0].rep - score[1].rep
-        r[1] = score[1].rep
-    } else {
-        r[0] = score[0].rep
-        r[1] = score[1].rep
-    }
-
-    let m = 'TOTAL';
-    if (setupLeaderboard.value.timeConfig == 'avg') {
-        m = 'AVERAGE'
-    }
-
-    if (score[0].time != 0) {
-        $("#ahtTop1").find('.popup_top').show()
-        $("#ahtTop1").find('.popup_top').text("TIME " + m + ": " + msToTime2(score[0].time))
-
-        $("#ahtTop1").find('.score').text(r[0])
-    } else {
-        $("#ahtTop1").find('.popup_top').hide()
-        $("#ahtTop1").find('.popup_top').text('')
-        $("#ahtTop1").find('.score').text(r[0])
-    }
-    if (score[1].time != 0) {
-        $("#ahtTop2").find('.popup_top').show()
-        $("#ahtTop2").find('.popup_top').text("TIME " + m + ": " + msToTime2(score[1].time))
-        $("#ahtTop2").find('.score').text(r[1])
-    } else {
-        $("#ahtTop2").find('.popup_top').hide()
-        $("#ahtTop2").find('.popup_top').text('')
-        $("#ahtTop2").find('.score').text(r[1])
-    }
-}
-
-
-function treatResultDisplayResultWPA(score) {
-
-    console.log("SCORE WPA : ", score[0].time)
-
-    if (score[0].time != 0) {
-        $("#ahtTop1").find('.popup_top').show()
-        $("#ahtTop1").find('.score').text(msToTime2(score[0].time))
-        $("#ahtTop1").find('.popup_top').text(score[0].rep)
-    } else {
-        $("#ahtTop1").find('.popup_top').hide()
-        $("#ahtTop1").find('.popup_top').text('')
-        let n = score[0].rep
-        if (heat.typeWod == 'repmax') {
-            n = score[0].rep
+            $("#ahtTop1").find('.score').text(n)
         }
-        $("#ahtTop1").find('.score').text(n)
-    }
 
-    if (score[1].time != 0) {
-        $("#ahtTop2").find('.popup_top').show()
-        $("#ahtTop2").find('.score').text(msToTime2(score[1].time))
-        $("#ahtTop2").find('.popup_top').text(score[1].rep)
-    } else {
-        $("#ahtTop2").find('.popup_top').hide()
-        $("#ahtTop2").find('.popup_top').text('')
-        let n = score[1].rep
-        if (heat.typeWod == 'repmax') {
-            n = score[1].rep
+        if (score[1].time != 0) {
+            $("#ahtTop2").find('.popup_top').show()
+            $("#ahtTop2").find('.score').text(msToTime2(score[1].time))
+            $("#ahtTop2").find('.popup_top').text(score[1].rep)
+        } else {
+            $("#ahtTop2").find('.popup_top').hide()
+            $("#ahtTop2").find('.popup_top').text('')
+            let n = score[1].rep
+            if (heat.typeWod == 'repmax') {
+                n = score[1].rep
+            }
+            $("#ahtTop2").find('.score').text(n)
         }
-        $("#ahtTop2").find('.score').text(n)
     }
-}
 
 
-function hideWaitingWPA(score) {
-    $("#ahtTop1").find('.popup_top').hide()
-    // $("#ahtTop1").find('.score').text(score[0].rep)
-    $("#ahtTop1").find('.score').text("WPA")
-    $("#ahtTop2").find('.popup_top').hide()
-    // $("#ahtTop2").find('.score').text(score[1].rep)
-    $("#ahtTop2").find('.score').text("WPA")
-}
+    function hideWaitingWPA(score) {
+        $("#ahtTop1").find('.popup_top').hide()
+        // $("#ahtTop1").find('.score').text(score[0].rep)
+        $("#ahtTop1").find('.score').text("WPA")
+        $("#ahtTop2").find('.popup_top').hide()
+        // $("#ahtTop2").find('.score').text(score[1].rep)
+        $("#ahtTop2").find('.score').text("WPA")
+    }
 
 
-function hideResultWPA(score) {
-    $("#ahtTop1").find('.popup_top').hide()
-    // $("#ahtTop1").find('.score').text(score[0].rep)
-    $("#ahtTop1").find('.score').text("STBY")
-    $("#ahtTop2").find('.popup_top').hide()
-    // $("#ahtTop2").find('.score').text(score[1].rep)
-    $("#ahtTop2").find('.score').text("STBY")
-}
+    function hideResultWPA(score) {
+        $("#ahtTop1").find('.popup_top').hide()
+        // $("#ahtTop1").find('.score').text(score[0].rep)
+        $("#ahtTop1").find('.score').text("STBY")
+        $("#ahtTop2").find('.popup_top').hide()
+        // $("#ahtTop2").find('.score').text(score[1].rep)
+        $("#ahtTop2").find('.score').text("STBY")
+    }
