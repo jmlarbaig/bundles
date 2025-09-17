@@ -214,6 +214,11 @@ function updateDynamics(newScoring, status) {
                                     if (overlay != 'overlay_wpa') {
                                         changeFunction(overlay, elemAth[i])
                                     }
+                                    if (setupLeaderboard.value.scoreConfig == 'rel_score' || setupLeaderboard.value.scoreConfig == 'abs_score') {
+                                        if (overlay == 'progression' || overlay == 'commentator' || overlay == 'leaderboard') {
+                                            hideColMvt(elemAth[i])
+                                        }
+                                    }
                                 }
 
                                 // if (overlay == "overlay_wpa" && elemAth.length > 2) {

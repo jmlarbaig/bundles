@@ -907,6 +907,10 @@ function hideRepMvtInScore(elementAth) {
     elementAth.$item.find(".score").hide();
 }
 
+function hideColMvt(elementAth) {
+    elementAth.$item.find(".popup").hide();
+}
+
 function showMvtInPopup(elementAth) {
     const reg = new RegExp("\(([^\)]+)\).", "g")
     let mvt = elementAth.currentMvt.mvtNames.replace(/(([^\)]+)\).)/g, "")
