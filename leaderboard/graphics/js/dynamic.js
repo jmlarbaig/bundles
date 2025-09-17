@@ -19,8 +19,11 @@ function updateDynamics(newScoring, status) {
             //     time: 0,
             // };
 
-            arrayWAP[0] = { rep: 0, time: 0 }
-            arrayWAP[1] = { rep: 0, time: 0 }
+            console.log(workouts)
+
+            arrayWAP[0] = { rep: 0, time: 0, status: 'F', total_reps: workouts[0].total_reps }
+            arrayWAP[1] = { rep: 0, time: 0, status: 'F', total_reps: workouts[0].total_reps }
+
 
             // console.log(arrayWAP)
 
@@ -32,6 +35,7 @@ function updateDynamics(newScoring, status) {
             let averageIndex = [0, 0];
 
             Object.keys(elemAth).forEach(i => {
+
 
                 //On met en mémoire l'ancien rank
                 elemAth[i].OldRank = elemAth[i].CurrentRank
@@ -52,15 +56,23 @@ function updateDynamics(newScoring, status) {
                 if (elemAth[i].affiliate.toLowerCase().includes("north")) {
                     // console.log("WORLD : elementAth[i]", elemAth[i])
                     // on mémorise le score pour les WPA
-                    arrayWAP[0].rep += parseInt(elemAth[i].score_rel)
+                    console.log("NORTH : elementAth[i]", elemAth[i].score_abs)
+                    arrayWAP[0].rep += parseInt(elemAth[i].score_abs)
                     arrayWAP[0].time += treatResultTimeWPA(elemAth[i]).time
+                    if (arrayWAP[0].status == 'F') {
+                        arrayWAP[0].status = elemAth[i].status == 'F' ? 'F' : 'W'
+                    }
                     averageIndex[0] += treatResultTimeWPA(elemAth[i]).index
                 } else if (elemAth[i].affiliate.toLowerCase().includes("world")) {
                     // console.log("NORTH : elementAth[i]", elemAth[i])
                     // on mémorise le score pour les WPA
-                    arrayWAP[1].rep += parseInt(elemAth[i].score_rel)
+                    console.log("WORLD : elementAth[i]", elemAth[i].score_abs)
+                    arrayWAP[1].rep += parseInt(elemAth[i].score_abs)
                     arrayWAP[1].time += treatResultTimeWPA(elemAth[i]).time
                     averageIndex[1] += treatResultTimeWPA(elemAth[i]).index
+                    if (arrayWAP[1].status == 'F') {
+                        arrayWAP[1].status = elemAth[i].status == 'F' ? 'F' : 'T'
+                    }
                 }
                 // }
 
@@ -186,6 +198,7 @@ function updateDynamics(newScoring, status) {
                                     switch (heat.typeWod) {
                                         case 'repmax':
                                             showRepMax(elemAth[i])
+                                            overlay == 'overlay_wpa' && hideRank(elemAth[i])
                                             break;
                                         default:
                                             showRepMvtInScore(elemAth[i])
@@ -215,7 +228,6 @@ function updateDynamics(newScoring, status) {
                                 if (!alreadyPassed) {
                                     treatTextMvt('FINISH')
                                 }
-                                console.log("pop F")
                                 if (overlay != 'overlay_wpa') {
                                     changeRank(elemAth[i]);
                                     changeColorFinish(elemAth[i], ".ath")
@@ -226,7 +238,6 @@ function updateDynamics(newScoring, status) {
                                 overlay == 'overlay_top' && hiddenAthlete(elemAth[i])
 
                                 if (overlay == "overlay_wpa") {
-                                    // $('.rank').hide()
                                     treatResultDisplayRepWPA(arrayWAP)
                                 }
 
@@ -242,7 +253,6 @@ function updateDynamics(newScoring, status) {
                                 }
                                 treatTimeCapStatus(elemAth[i]);
                                 if (overlay == "overlay_wpa") {
-                                    // $('.rank').hide()
                                     treatResultDisplayRepWPA(arrayWAP)
                                 }
 

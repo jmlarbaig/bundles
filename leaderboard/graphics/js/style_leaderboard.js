@@ -619,6 +619,7 @@ function leaderboardVersusSideWPA(data) {
     $item.find(".rounds").hide();
     $item.find(".score").hide();
     $item.find(".popup").hide();
+    heat.typeWod != 'repmax' ? $item.find(".rank").show() : $item.find(".rank").hide();
     !setupLeaderboard.value.flag ? $item.find(".flag").hide() : "";
     !setupLeaderboard.value.lane ? $item.find(".lane").hide() : "";
     !setupLeaderboard.value.lane ? $item.find(".rank").text(data.lane) : "";

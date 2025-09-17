@@ -57,7 +57,8 @@ function msToTime2(s) {
     var hrs = (s - mins) / 60;
     if (secs < 10) { secs = '0' + secs }
     if (mins < 10) { mins = '0' + mins }
-    return mins + ':' + secs + '.' + ms;
+    console.log("Time : ", mins + ':' + secs)
+    return mins + ':' + secs;
 }
 
 function msToTimeSK(s) {
@@ -845,7 +846,8 @@ function showSprint(elementAth) {
 
 function showRepMax(elementAth) {
     // console.log('REP TARGET : ' + elementAth.currentMvt.repTarget)
-    if (elementAth.currentMvt.repTarget != elementAth.currentMvt.scoreAbsMvt) {
+
+    if (elementAth.currentMvt.repTarget != elementAth.currentMvt.scoreAbsMvt && overlay != 'overlay_wpa') {
         if (elementAth.currentMvt.repTarget != 0) {
             elementAth.$item.find(".popup").html('ATTEMPTS &#10140; ' + elementAth.currentMvt.repTarget + ' ' + setupLeaderboard.value.unitSelect);
             overlay == 'versus' ? elementAth.$item.find(".popup").slideDown(1000) : elementAth.$item.find(".popup").show();
@@ -874,7 +876,7 @@ function showRepMvtInScore(elementAth) {
             break;
         case 'mvt_score':
             if (elementAth.currentMvt.mvtNames.toUpperCase() != "WORKOUT") {
-                elementAth.$item.find(".score").text(elementAth.currentMvt.scoreAbsMvt + "/" + elementAth.currentMvt.repTarget);
+                elementAth.$item.find(".score").text(elementAth.currentMvt.repTarget != 0 ? elementAth.currentMvt.repTarget - elementAth.currentMvt.scoreAbsMvt : elementAth.currentMvt.scoreAbsMvt);
                 showMvtInPopup(elementAth)
             } else {
                 elementAth.$item.find(".score").text(elementAth.currentMvt.scoreAbsMvt);
@@ -883,13 +885,21 @@ function showRepMvtInScore(elementAth) {
             break;
         case 'mvt_total_score':
             if (elementAth.currentMvt.mvtNames.toUpperCase() != "WORKOUT") {
-                elementAth.$item.find(".score").text(elementAth.score_abs + (elementAth.currentMvt.totalReps != 1 ? ('/' + elementAth.currentMvt.totalReps) : '') + ' (' + elementAth.currentMvt.scoreAbsMvt + ')');
+                // elementAth.$item.find(".score").text(workouts[0].total_reps != 0 ? ((workouts[0].total_reps != 0 - elementAth.score_abs) : elementAth.score_abs) + (elementAth.currentMvt.totalReps != 0 ? ('/' + elementAth.currentMvt.totalReps) : '') + ' (' + elementAth.currentMvt.scoreAbsMvt + ')');
                 showMvtInPopup(elementAth)
             } else {
                 elementAth.$item.find(".score").text(elementAth.currentMvt.scoreAbsMvt);
                 hideMvtInPopup(elementAth)
             }
             break;
+        case 'remain_score':
+            if (elementAth.currentMvt.mvtNames.toUpperCase() != "WORKOUT") {
+                elementAth.$item.find(".score").text(elementAth.currentMvt.repTarget != 0 ? elementAth.currentMvt.repTarget - elementAth.currentMvt.scoreAbsMvt : elementAth.currentMvt.scoreAbsMvt);
+                showMvtInPopup(elementAth)
+            } else {
+                elementAth.$item.find(".score").text(elementAth.currentMvt.scoreAbsMvt);
+                hideMvtInPopup(elementAth)
+            }
         default:
     }
 }
@@ -1032,6 +1042,10 @@ function hiddenAthlete(elementAth) {
     }
 }
 
+function hideRank(elementAth) {
+    elementAth.$item.find(".rank").fadeOut(1000);
+}
+
 function showHiddenAthlete(elementAth) {
     setTimeout(() => {
         elementAth.$item.fadeIn(1000)
@@ -1101,16 +1115,31 @@ function treatResultTimeWPA(elementAth) {
 
 function treatResultDisplayRepWPA(score) {
     let r = [0, 0];
-    if (score[0].rep > score[1].rep) {
-        r[0] = score[0].rep
-        r[1] = score[1].rep - score[0].rep
-    } else if (score[0].rep < score[1].rep) {
-        r[0] = score[0].rep - score[1].rep
-        r[1] = score[1].rep
-    } else {
-        r[0] = score[0].rep
-        r[1] = score[1].rep
+
+    switch (setupLeaderboard.value.scoreConfig) {
+        case 'abs_score':
+            r[0] = score[0].rep
+            r[1] = score[1].rep
+            break;
+        case 'mvt_score':
+        case 'rel_score':
+            if (score[0].rep > score[1].rep) {
+                r[0] = score[0].rep
+                r[1] = score[1].rep - score[0].rep
+            } else if (score[0].rep < score[1].rep) {
+                r[0] = score[0].rep - score[1].rep
+                r[1] = score[1].rep
+            } else {
+                r[0] = score[0].rep
+                r[1] = score[1].rep
+            }
+            break;
+        case 'remain_score':
+            r[0] = score[0].total_reps - score[0].rep
+            r[1] = score[1].total_reps - score[1].rep
+            break;
     }
+
 
     let m = 'TOTAL';
     if (setupLeaderboard.value.timeConfig == 'avg') {
@@ -1120,8 +1149,7 @@ function treatResultDisplayRepWPA(score) {
     if (score[0].time != 0) {
         $("#ahtTop1").find('.popup_top').show()
         $("#ahtTop1").find('.popup_top').text("TIME " + m + ": " + msToTime2(score[0].time))
-
-        $("#ahtTop1").find('.score').text(r[0])
+        $("#ahtTop1").find('.score').text(msToTime2(score[0].time))
     } else {
         $("#ahtTop1").find('.popup_top').hide()
         $("#ahtTop1").find('.popup_top').text('')
@@ -1130,7 +1158,7 @@ function treatResultDisplayRepWPA(score) {
     if (score[1].time != 0) {
         $("#ahtTop2").find('.popup_top').show()
         $("#ahtTop2").find('.popup_top').text("TIME " + m + ": " + msToTime2(score[1].time))
-        $("#ahtTop2").find('.score').text(r[1])
+        $("#ahtTop2").find('.score').text(msToTime2(score[1].time))
     } else {
         $("#ahtTop2").find('.popup_top').hide()
         $("#ahtTop2").find('.popup_top').text('')
@@ -1141,32 +1169,33 @@ function treatResultDisplayRepWPA(score) {
 
 function treatResultDisplayResultWPA(score) {
 
-    console.log("SCORE WPA : ", score[0].time)
-
-    if (score[0].time != 0) {
+    var index = 0;
+    if (score[index].time != 0) {
         $("#ahtTop1").find('.popup_top').show()
-        $("#ahtTop1").find('.score').text(msToTime2(score[0].time))
-        $("#ahtTop1").find('.popup_top').text(score[0].rep)
+        $("#ahtTop1").find('.score').text(msToTime2(score[index].time))
+        $("#ahtTop1").find('.popup_top').text(score[index].rep)
     } else {
         $("#ahtTop1").find('.popup_top').hide()
         $("#ahtTop1").find('.popup_top').text('')
-        let n = score[0].rep
+        let n = score[index].rep
         if (heat.typeWod == 'repmax') {
-            n = score[0].rep
+            n = score[index].rep
         }
         $("#ahtTop1").find('.score').text(n)
     }
 
-    if (score[1].time != 0) {
+    index++
+
+    if (score[index].time != 0) {
         $("#ahtTop2").find('.popup_top').show()
-        $("#ahtTop2").find('.score').text(msToTime2(score[1].time))
-        $("#ahtTop2").find('.popup_top').text(score[1].rep)
+        $("#ahtTop2").find('.score').text(msToTime2(score[index].time))
+        $("#ahtTop2").find('.popup_top').text(score[index].rep)
     } else {
         $("#ahtTop2").find('.popup_top').hide()
         $("#ahtTop2").find('.popup_top').text('')
-        let n = score[1].rep
+        let n = score[index].rep
         if (heat.typeWod == 'repmax') {
-            n = score[1].rep
+            n = score[index].rep
         }
         $("#ahtTop2").find('.score').text(n)
     }
@@ -1180,6 +1209,7 @@ function hideWaitingWPA(score) {
     $("#ahtTop2").find('.popup_top').hide()
     // $("#ahtTop2").find('.score').text(score[1].rep)
     $("#ahtTop2").find('.score').text("WPA")
+
 }
 
 

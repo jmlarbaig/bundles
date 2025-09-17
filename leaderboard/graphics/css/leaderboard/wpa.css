@@ -60,10 +60,9 @@
 }
 
 .athTop .score {
-    text-align: center;
     min-height: 50px;
     min-width: 100px;
-    padding: 10px 20px;
+    padding: 10px;
     /* min-width: 150px; */
     /* background-color: white; */
     font-size: var(--sizeFontScore_top);
@@ -72,11 +71,13 @@
 
 .athleteTop:nth-child(1) .athTop_detail .athTop .score {
     color: var(--first_left_bg_color);
+    text-align: right;
     /* border: 3px solid var(--first_left_bg_color); */
 }
 
 .athleteTop:nth-child(2) .athTop_detail .athTop .score {
     color: var(--first_right_bg_color);
+    text-align: left;
     /* border: 3px solid var(--first_right_bg_color); */
 }
 
