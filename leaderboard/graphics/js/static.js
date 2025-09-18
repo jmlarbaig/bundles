@@ -211,7 +211,6 @@ function resetLeaderboard(newData) {
                         $item = leaderboardVersus(elementAth)
                         break;
                     case 'overlay_wpa':
-                        // if (athletesDivision[0].length > 2) 
                         if (elementDiv.length > 2) {
                             $itemBox = leaderboardVersusTopSTWPA();
                             $item = leaderboardVersusSideWPA(elementAth)

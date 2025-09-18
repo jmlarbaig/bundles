@@ -534,6 +534,7 @@ function headerVersusWPA(divisions, indexDivision) {
 
 function leaderboardVersusTopSTWPA() {
 
+
     let $item = $(
         '<div class="athleteTop" id="ahtTop1">' +
         '<div class="athTop_detail">' +
@@ -561,15 +562,19 @@ function leaderboardVersusTopSTWPA() {
 
 
 function leaderboardVersusTopWPA(data) {
-    let name = treatDisplayName(data.displayName);
+    let name = '   ';
+    if (!data.displayName.toLowerCase().includes('world') && !data.displayName.toLowerCase().includes('north')) {
+        name = treatDisplayName(data.displayName);
+    }
+
 
     let $item = $(
         '<div class="athleteTop" id="ahtTop' + data.lane + '">' +
         '<div class="athTop_detail">' +
         '<div class="athTop">' +
-        // '<div class="name">' + name + '</div>' +
-        '<div class="name"></div>' +
-        '<div class="score"></div>' +
+        '<div class="name">' + name + '</div>' +
+        // '<div class="name"></div>' +
+        '<div class="score">0</div>' +
         '</div>' +
         // '<div class="popup_top initial_rank_versus">' + '</div>' +
         '</div>' +

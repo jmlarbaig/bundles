@@ -13,12 +13,24 @@
 
 .athleteTop {
     display: flex;
-    min-height: 40px;
+    min-height: 68px;
     margin: 0px 0px;
     flex-direction: row;
     text-align: left;
+    min-width: 100px;
+    max-width: 100px;
 
     font-family: var(--fontAthlete-select);
+}
+
+.athleteTop:nth-child(1) {
+    justify-content: flex-end;
+
+}
+
+.athleteTop:nth-child(2) {
+    justify-content: flex-start;
+
 }
 
 .athTop_detail {
@@ -53,10 +65,22 @@
 }
 
 .athTop .name {
-    padding-left: 20px;
+    min-height: 18px;
+    /* padding-left: 20px; */
+    font-size: 10px;
     /* min-width: 250px; */
+    padding-bottom: 2px;
 
     /* font-size: var(--sizeFontAthlete_top); */
+}
+
+.athleteTop:nth-child(1) .athTop_detail .athTop .name {
+    padding-right: 10px;
+    text-align: right;
+}
+
+.athleteTop:nth-child(2) .athTop_detail .athTop .name {
+    padding-left: 10px;
 }
 
 .athTop .score {
@@ -88,7 +112,7 @@
     text-align: center;
     margin-right: 0px;
     border-radius: 0px 0px 10px 10px;
-    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+    /* box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px; */
     text-shadow: 2px 2px 4px #000000;
     text-transform: uppercase;
     text-align: center;
@@ -228,7 +252,7 @@
     position: absolute;
     display: flex;
     flex-direction: column;
-    margin: 5px 0px;
+    margin: 8px 0px;
 }
 
 .leaderboard .athletes .ath {

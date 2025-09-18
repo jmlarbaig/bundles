@@ -300,8 +300,8 @@ function updateDynamics(newScoring, status) {
 
                 if (overlay == "overlay_wpa") {
                     if (elemAth.length <= 2) {
-                        width = elemAth[i].$item.find('.score').width() + Math.round(parseInt(elemAth[i].$item.find('.score').css('padding').split(' ')[1].replace('px', '')) * 2) - 2
-                        elemAth[i].$item.find('.popup_top').width(width)
+                        // width = elemAth[i].$item.find('.score').width() + Math.round(parseInt(elemAth[i].$item.find('.score').css('padding').split(' ')[1].replace('px', '')) * 2) - 2
+                        // elemAth[i].$item.find('.popup_top').width(width)
                     }
                 }
             })
