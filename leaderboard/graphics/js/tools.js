@@ -1209,10 +1209,10 @@ function treatResultDisplayResultWPA(score) {
 function hideWaitingWPA(score) {
     $("#ahtTop1").find('.popup_top').hide()
     // $("#ahtTop1").find('.score').text(score[0].rep)
-    $("#ahtTop1").find('.score').text("WPA")
+    $("#ahtTop1").find('.score').text("TYR")
     $("#ahtTop2").find('.popup_top').hide()
     // $("#ahtTop2").find('.score').text(score[1].rep)
-    $("#ahtTop2").find('.score').text("WPA")
+    $("#ahtTop2").find('.score').text("TYR")
 
 }
 
