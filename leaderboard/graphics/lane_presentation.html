@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <!-- JQUERY -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css"
+        integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap-theme.min.css"
+        integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ" crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/js/bootstrap.min.js"
+        integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd"
+        crossorigin="anonymous"></script>
+    <!-- Charger Three.js -->
+    <script src="https://cdn.jsdelivr.net/npm/three@0.156.1/build/three.min.js"></script>
+
+    <title>Lane Présentation</title>
+
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/colors.css">
+    <link rel="stylesheet" href="css/video.css">
+
+    <!-- <link rel="stylesheet" href="css/header/header_top.css"> -->
+    <link rel="stylesheet" href="css/lane_presentation/main.css">
+
+    <!-- <script src="./assets/flag.js" type="text/javascript"></script> -->
+
+    <!-- <script src="./js/tools.js" type="text/javascript"></script>
+    <script src="./js/style_leaderboard.js" type="text/javascript"></script>
+    <script src="./js/wod.js" type="text/javascript"></script>
+    <script src="./js/heat.js" type="text/javascript"></script>
+    <script src="./js/time.js" type="text/javascript"></script>
+    <script src="./js/static.js" type="text/javascript"></script> -->
+    <!-- <script src="./js/dynamic.js" type="text/javascript"></script> -->
+
+
+</head>
+
+<body class="">
+
+    <div id="container"></div>
+    <!-- Définir OrbitControls manuellement depuis la version source -->
+    <script>
+        // document.getElementById('debug').innerText = "Statut: Three.js chargé, chargement des contrôles...";
+
+        // Définir OrbitControls manuellement
+        // Extrait du code source officiel de Three.js OrbitControls
+        // Source: https://github.com/mrdoob/three.js/blob/dev/examples/js/controls/OrbitControls.js
+        // Mais simplifié pour notre besoin
+        THREE.OrbitControls = function (object, domElement) {
+
+            this.object = object;
+            this.domElement = (domElement !== undefined) ? domElement : document;
+
+            // Public - API
+            this.enabled = true;
+            this.target = new THREE.Vector3();
+            this.enableDamping = false;
+            this.dampingFactor = 0.05;
+
+            // Rotation
+            this.enableRotate = true;
+            this.rotateSpeed = 1.0;
+
+            // Zoom
+            this.enableZoom = true;
+            this.zoomSpeed = 1.0;
+
+            this.update = function () {
+                // Mise à jour minimale pour la rotation
+                if (this.enableDamping) {
+                    // Simple implémentation du damping
+                }
+                return true;
+            };
+        };
+
+        // document.getElementById('debug').innerText = "Statut: OrbitControls défini";
+        console.log('OrbitControls défini globalement:', typeof THREE.OrbitControls);
+
+        // Charger le script principal
+        const mainScript = document.createElement('script');
+        mainScript.src = 'main.js';
+        mainScript.onload = function () {
+            // document.getElementById('debug').innerText = "Statut: Script principal chargé";
+            console.log('Script principal chargé');
+        };
+        document.body.appendChild(mainScript);
+    </script>
+
+    <!-- <script src="./index.js" type="text/javascript"></script> -->
+    <script src="./js/lane_main.js" type="text/javascript"></script>
+
+</body>
+
+</html>

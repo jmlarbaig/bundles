@@ -148,7 +148,7 @@ function leaderboardTV(data) {
         '<div class="lane text-nowrap text-truncate"># ' + data.lane + '</div>' +
         '<div class="flag">' + '<div class="box_flag" ></div> ' + '</div>' +
         '<div class="text-nowrap text-truncate text-left name">' + name + '</div>' +
-        '<div class="text-nowrap text-truncate text-left affiliate">' + data.affiliate + '</div>' +
+        // '<div class="text-nowrap text-truncate text-left affiliate">' + data.affiliate + '</div>' +
         '<div class="score text-nowrap text-center text-truncate"></div>' +
         '<div class="popup text-nowrap text-center text-truncate">HHH</div>' +
         '<div class="text-nowrap text-truncate rounds">' + '</div>' +
@@ -161,9 +161,9 @@ function leaderboardTV(data) {
     $item.find(".score").hide();
     $item.find(".popup").hide();
     !setupLeaderboard.value.flag ? $item.find(".flag").hide() : "";
-    // !setupLeaderboard.value.lane ? $item.find(".lane").hide() : "" ;
+    !setupLeaderboard.value.lane ? $item.find(".lane").hide() : "";
     !setupLeaderboard.value.lane ? $item.find(".rank").text(data.lane) : "";
-    // !setupLeaderboard.value.affiliate ? $item.find(".affiliate").hide() : "" ;
+    !setupLeaderboard.value.affiliate ? $item.find(".affiliate").hide() : "";
     // $item.hide();
 
     return $item
@@ -204,10 +204,10 @@ function progressView(data) {
     $item.find(".score").hide();
     $item.find(".popup").hide();
     !setupLeaderboard.value.flag ? $item.find(".flag").hide() : "";
-    // !setupLeaderboard.value.lane ? $item.find(".lane").hide() : "" ;
+    !setupLeaderboard.value.lane ? $item.find(".lane").hide() : "";
     !setupLeaderboard.value.lane ? $item.find(".rank").text(data.lane) : "";
-    // !setupLeaderboard.value.affiliate ? $item.find(".affiliate").hide() : "" ;
-    // !setupLeaderboard.value.lane ? $item.find(".lane").hide() : "" ;
+    !setupLeaderboard.value.affiliate ? $item.find(".affiliate").hide() : "";
+
     // $item.hide();
 
     return $item

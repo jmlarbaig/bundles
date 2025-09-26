@@ -109,6 +109,11 @@
         "file": "head_judge.html",
         "width": 1920,
         "height": 1080
+      },
+      {
+        "file": "lane_presentation.html",
+        "width": 1920,
+        "height": 1080
       }
     ],
     "assetCategories": [

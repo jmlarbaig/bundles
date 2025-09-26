@@ -279,7 +279,7 @@ function resetLeaderboard(newData) {
 
                     setTimeout(() => {
 
-                        $('.leaderboard').slideDown(1000)
+                        // $('.leaderboard').slideDown(1000)
 
                         if (setupLeaderboard.value.automaticSchedule) {
 
@@ -312,7 +312,7 @@ function resetLeaderboard(newData) {
 
                 } else {
 
-                    $('.leaderboard').slideDown(1000)
+                    // $('.leaderboard').slideDown(1000)
                 }
             })
 
