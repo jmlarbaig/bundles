@@ -1,4 +1,4 @@
-.header{
+.header {
     box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
     position: absolute;
     width: 100%;
@@ -6,19 +6,19 @@
     z-index: 20;
     display: flex;
     flex-direction: row;
-    justify-content:space-around;
+    justify-content: space-around;
     background-color: var(--main_color);
     color: var(--tx-main_color);
     padding: 10px 0px;
 }
 
-.box_logo{
+.box_logo {
     margin: auto auto;
     height: 100px;
     /* z-index: 21; */
 }
 
-.logo{
+.logo {
     height: 100px;
     width: 100px;
     background-position: center;
@@ -26,10 +26,11 @@
     background-size: contain;
 }
 
-.box_chrono{
+.box_chrono {
     border: solid 2px white;
+    border-radius: 10%;
     width: 15%;
-    height: 80px;
+    /* height: 90px; */
     transform-origin: 50% 50%;
     text-align: center;
     align-items: center;
@@ -38,56 +39,56 @@
     box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
 }
 
-.chrono{
-    font-size: 2em;
+.chrono {
+    font-size: 5em;
 }
 
-#time{
-    padding: 5px;
+#time {
+    /* padding: 5px; */
 }
 
-#cap{
-    font-size: 0.4em;
+#cap {
+    font-size: 0em;
     color: black;
 }
 
-.box_heat{
+.box_heat {
     color: white;
     width: 70%;
     padding: 5px;
     padding-left: 30px;
 }
 
-.heat_content{
+.heat_content {
     display: flex;
     flex-direction: row;
 }
 
-.details{
+.details {
     display: flex;
     flex-direction: column;
     width: 50%;
 }
 
-.details #workout{
-    font-size: 1.6em;
+.details #workout {
+    font-size: 2.5em;
 }
 
-.details #division{
-    font-size: 1.2em;
+.details #division {
+    font-size: 2em;
 }
 
-.box_mainSponsor{
+.box_mainSponsor {
     padding-top: 5px;
     display: flex;
     flex-direction: row;
 }
 
-.presented{
+.presented {
     padding-right: 20px;
 }
 
-.mainSponsor{
+.mainSponsor {
     width: 150px;
     height: 60px;
     background-position: center;
@@ -95,13 +96,13 @@
     background-size: contain;
 }
 
-.box_FVSK{
+.box_FVSK {
     display: flex;
     flex-direction: row;
     justify-content: center;
 }
 
-.FV{
+.FV {
     margin: 0px 5px;
     background-image: url('../../img/PRESTA/FV-logo.png');
     background-position: 2px 5px;
@@ -111,7 +112,7 @@
     height: 100px;
 }
 
-.SK{
+.SK {
     margin: 0px 5px;
     background-image: url('../../img/PRESTA/SK-logo.png');
     background-position: top;
