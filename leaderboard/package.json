@@ -47,6 +47,15 @@
         "width": 3,
         "headerColor": "#525F78",
         "workspace": "Main Workspace"
+      },
+      {
+        "name": "adjust3D",
+        "title": "Adjust 3D",
+        "file": "adjust3D.html",
+        "fullbleed": false,
+        "width": 2,
+        "headerColor": "#525F78",
+        "workspace": "Main Workspace"
       }
     ],
     "graphics": [

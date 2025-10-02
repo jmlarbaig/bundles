@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CrossFit Competition Floor Overlay</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #11111100;
+            /* Fond sombre pour mieux voir l'overlay transparent */
+        }
+
+        #info {
+            color: white;
+            font-family: Arial, sans-serif;
+            z-index: 100;
+            overflow: hidden;
+            background-color: #11111100;
+        }
+
+        #container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        #debug {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            color: white;
+            font-family: Arial, sans-serif;
+            z-index: 100;
+        }
+
+        /* Control panel styles */
+        #controls {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            color: white;
+            font-family: Arial, sans-serif;
+            z-index: 100;
+            min-width: 250px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        #controls h3 {
+            margin: 0 0 15px 0;
+            color: #4a9eff;
+            text-align: center;
+            font-size: 16px;
+        }
+
+        .control-group {
+            margin-bottom: 15px;
+        }
+
+        .control-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 12px;
+            color: #ccc;
+        }
+
+        .control-group input[type="range"] {
+            width: 100%;
+            height: 6px;
+            border-radius: 3px;
+            background: #333;
+            outline: none;
+            -webkit-appearance: none;
+        }
+
+        .control-group input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: #4a9eff;
+            cursor: pointer;
+        }
+
+        .control-value {
+            display: inline-block;
+            float: right;
+            font-size: 11px;
+            color: #4a9eff;
+            font-weight: bold;
+        }
+
+        .reset-button {
+            width: 100%;
+            padding: 8px;
+            background: #4a9eff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 12px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <!-- <div id="debug">Statut: Chargement...</div> -->
+
+        <!-- Control Panel -->
+        <div id="controls">
+            <h3>Configuration Perspective</h3>
+            <div class="control-group">
+                <label for="fov">Champ de vision (FOV) <span class="control-value" id="fov-value">70°</span></label>
+                <input type="range" id="fov" min="30" max="120" value="70" step="1" />
+            </div>
+            <div class="control-group">
+                <label for="distance">Distance caméra <span class="control-value" id="distance-value">7.5</span></label>
+                <input type="range" id="distance" min="3" max="15" value="7.5" step="0.1" />
+            </div>
+            <div class="control-group">
+                <label for="height">Hauteur caméra <span class="control-value" id="height-value">5</span></label>
+                <input type="range" id="height" min="1" max="10" value="5" step="0.1" />
+            </div>
+            <div class="control-group">
+                <label for="rotation-x">Rotation X <span class="control-value" id="rotation-x-value">0°</span></label>
+                <input type="range" id="rotation-x" min="-45" max="45" value="0" step="1" />
+            </div>
+            <div class="control-group">
+                <label for="rotation-y">Rotation Y <span class="control-value" id="rotation-y-value">0°</span></label>
+                <input type="range" id="rotation-y" min="-90" max="90" value="0" step="1" />
+            </div>
+            <div class="control-group">
+                <label for="position-x">Position X <span class="control-value" id="position-x-value">-0.1</span></label>
+                <input type="range" id="position-x" min="-10" max="10" value="-0.1" step="0.1" />
+            </div>
+            <div class="control-group">
+                <label for="position-z">Position Z <span class="control-value" id="position-z-value">0</span></label>
+                <input type="range" id="position-z" min="-10" max="10" value="0" step="0.1" />
+            </div>
+            <button class="reset-button" id="reset-camera">Réinitialiser</button>
+        </div>
+    </div>
+    <!-- Perspective Controls -->
+    <script src="./js/perspective-controls.js"></script>
+
+</body>
+
+</html>

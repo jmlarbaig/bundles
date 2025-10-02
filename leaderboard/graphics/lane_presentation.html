@@ -90,16 +90,22 @@
 
         // Charger le script principal
         const mainScript = document.createElement('script');
-        mainScript.src = 'main.js';
+        mainScript.src = 'lane_main.js';
         mainScript.onload = function () {
             // document.getElementById('debug').innerText = "Statut: Script principal chargé";
             console.log('Script principal chargé');
+            // Charger les contrôles de perspective
+            const perspectiveScript = document.createElement('script');
+            perspectiveScript.src = 'perspective-controls.js';
+            document.body.appendChild(perspectiveScript);
         };
         document.body.appendChild(mainScript);
     </script>
 
     <!-- <script src="./index.js" type="text/javascript"></script> -->
     <script src="./js/lane_main.js" type="text/javascript"></script>
+    <!-- <script src="./index.js" type="text/javascript"></script> -->
+    <script src="./js/perspective-controls.js" type="text/javascript"></script>
 
 </body>
 
