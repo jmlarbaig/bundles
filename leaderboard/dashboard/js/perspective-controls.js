@@ -9,30 +9,26 @@ let perspectiveControls = {
     positionZ: 0      // Nouveau
 };
 
-const perspectiveControlsReplicant = nodecg.Replicant('perspectiveControlsReplicant', {
-    fov: 70,
-    distance: 7.5,
-    height: 5,
-    rotationX: 0,
-    rotationY: 0,
-    positionX: -0.1,  // Nouveau
-    positionZ: 0      // Nouveau
-})
+const perspectiveControlsReplicant = nodecg.Replicant('perspectiveControlsReplicant')
 
 if (perspectiveControlsReplicant.value == null) {
-    perspectiveControlsReplicant.value = perspectiveControls
+    // perspectiveControlsReplicant.value = perspectiveControls
 }
 
 
+const fovSlider = document.getElementById('fov');
+const distanceSlider = document.getElementById('distance');
+const heightSlider = document.getElementById('height');
+const rotationXSlider = document.getElementById('rotation-x');
+const rotationYSlider = document.getElementById('rotation-y');
+const positionXSlider = document.getElementById('position-x');
+const positionZSlider = document.getElementById('position-z');
+const resetButton = document.getElementById('reset-camera');
+
+
+
+
 function initPerspectiveControls() {
-    const fovSlider = document.getElementById('fov');
-    const distanceSlider = document.getElementById('distance');
-    const heightSlider = document.getElementById('height');
-    const rotationXSlider = document.getElementById('rotation-x');
-    const rotationYSlider = document.getElementById('rotation-y');
-    const positionXSlider = document.getElementById('position-x');
-    const positionZSlider = document.getElementById('position-z');
-    const resetButton = document.getElementById('reset-camera');
 
     if (!fovSlider || !distanceSlider || !heightSlider || !rotationXSlider || !rotationYSlider || !positionXSlider || !positionZSlider) return;
 
@@ -40,12 +36,10 @@ function initPerspectiveControls() {
     fovSlider.addEventListener('input', (e) => {
         perspectiveControlsReplicant.value.fov = parseFloat(e.target.value);
         document.getElementById('fov-value').textContent = e.target.value + '°';
-        console.log(perspectiveControlsReplicant)
     });
 
     distanceSlider.addEventListener('input', (e) => {
         perspectiveControlsReplicant.value.distance = parseFloat(e.target.value);
-
         document.getElementById('distance-value').textContent = e.target.value;
     });
 
@@ -100,9 +94,16 @@ function initPerspectiveControls() {
     });
 }
 
-
-
-// Initialiser les contrôles après le chargement
-window.addEventListener('load', () => {
+perspectiveControlsReplicant.on('change', (newValue) => {
+    if (newValue != undefined) {
+        fovSlider.value = newValue.fov
+        distanceSlider.value = newValue.distance
+        heightSlider.value = newValue.height
+        rotationXSlider.value = newValue.rotationX
+        rotationYSlider.value = newValue.rotationY
+        positionXSlider.value = newValue.positionX
+        positionZSlider.value = newValue.positionZ
+    }
     setTimeout(initPerspectiveControls, 1000);
-});
+})
+
