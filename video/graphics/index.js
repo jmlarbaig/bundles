@@ -13,6 +13,10 @@ videoShow.on('change', (newValue) => {
             videosource.setAttribute('src', videoInfos.value);
             videocontainer.load();
             videocontainer.play();
+            $('#video').fadeIn(1000)
+            break;
+        case false:
+            $('#video').fadeOut(1000)
             break;
     }
 })

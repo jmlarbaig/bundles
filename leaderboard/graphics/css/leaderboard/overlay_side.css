@@ -193,7 +193,7 @@
     overflow: hidden;
     text-overflow: ellipsis;
     font-size: var(--SizeLaneoverlaySide);
-    color: var(--second_color);
+    color: white;
 }
 
 .leaderboard .athlete .name {

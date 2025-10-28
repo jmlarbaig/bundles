@@ -1,0 +1,86 @@
+<!-- display.html -->
+<!doctype html>
+<html lang="fr">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Affichage Timer</title>
+  <style>
+    body {
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      background: #0f1724;
+      color: #fff;
+      font-family: Inter, Arial, sans-serif;
+      transition: background 0.4s ease
+    }
+
+    .time {
+      font-size: 400px;
+      font-weight: 700
+    }
+
+    .phase {
+      font-size: 32px;
+      margin-top: 10px;
+      color: #94a3b8
+    }
+
+    .round {
+      font-size: 18px;
+      margin-top: 4px;
+      color: #7dd3fc
+    }
+  </style>
+</head>
+
+<body>
+  <div class="time" id="timeDisplay">00:40</div>
+  <div class="phase" id="phaseLabel">Prêt</div>
+  <!-- <div class="round" id="roundLabel">0</div> -->
+
+
+  <script>
+    const timeDisplay = document.getElementById('timeDisplay');
+    const phaseLabel = document.getElementById('phaseLabel');
+    const roundLabel = document.getElementById('roundLabel');
+
+
+    function formatTime(s) { const mm = Math.floor(s / 60); const ss = s % 60; return `${String(mm).padStart(2, '0')}:${String(ss).padStart(2, '0')}`; }
+
+    const timerInterval = nodecg.Replicant('timerInterval', 'leaderboard')
+
+    timerInterval.on('change', (e) => {
+      console.log(e)
+
+      if (e != undefined) {
+        const data = e;
+        if (!data || !data.type) return;
+        if (data.type === 'time') {
+          console.log('j')
+          timeDisplay.textContent = formatTime(data.remaining);
+          phaseLabel.textContent = (data.phase === 'work') ? 'Travail' : (data.phase === 'rest') ? 'Repos' : 'Prêt';
+          roundLabel.textContent = `Round ${data.round}`;
+          document.body.style.background = (data.phase === 'work') ? '#083344' : '#1e3a8a';
+        }
+        if (data.type === 'phase') {
+          phaseLabel.textContent = (data.phase === 'work') ? 'Travail' : 'Repos';
+          document.body.style.background = (data.phase === 'work') ? '#083344' : '#1e3a8a';
+        }
+        if (data.type === 'reset') {
+          timeDisplay.textContent = '00:40'; phaseLabel.textContent = 'Prêt'; roundLabel.textContent = '0'; document.body.style.background = '#0f1724';
+        }
+        if (data.type === 'done') {
+          timeDisplay.textContent = '00:00'; phaseLabel.textContent = 'Terminé'; document.body.style.background = '#14532d';
+        }
+      }
+    });
+  </script>
+</body>
+
+</html>

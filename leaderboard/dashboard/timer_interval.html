@@ -1,0 +1,183 @@
+<!-- control.html -->
+<!doctype html>
+<html lang="fr">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Contrôle du Timer 40s / 20s</title>
+  <style>
+    body {
+      font-family: Inter, Arial, sans-serif;
+      background: #0f1724;
+      color: #e6eef6;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      margin: 0
+    }
+
+    .card {
+      background: #111a2f;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+      width: 340px;
+      max-width: 90vw;
+      text-align: center
+    }
+
+    h1 {
+      margin-bottom: 12px;
+      font-size: 20px
+    }
+
+    .controls {
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+      margin: 12px 0
+    }
+
+    button {
+      padding: 8px 14px;
+      border: none;
+      border-radius: 8px;
+      background: #06b6d4;
+      color: #041018;
+      font-weight: 700;
+      cursor: pointer
+    }
+
+    .settings {
+      display: flex;
+      gap: 10px;
+      justify-content: space-between;
+      margin: 10px 0
+    }
+
+    .settings label {
+      font-size: 12px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      color: #94a3b8
+    }
+
+    input {
+      width: 70px;
+      padding: 4px;
+      border-radius: 6px;
+      border: none;
+      text-align: center;
+      background: #1e293b;
+      color: #e6eef6
+    }
+  </style>
+</head>
+
+<body>
+  <div class="card">
+    <h1>Contrôle du Timer</h1>
+    <div class="settings">
+      <label>Travail (s)<input type="number" id="workInput" value="40"></label>
+      <label>Repos (s)<input type="number" id="restInput" value="20"></label>
+      <label>Cycles<input type="number" id="cyclesInput" value="999"></label>
+    </div>
+    <div class="controls">
+      <button id="startBtn">Démarrer</button>
+      <button id="pauseBtn">Pause</button>
+      <button id="resetBtn">Réinitialiser</button>
+    </div>
+    <div class="controls">
+      <button id="plus1sBtn">+1s</button>
+      <button id="moins1sBtn">-1s</button>
+    </div>
+    <button id="openDisplay">Ouvrir l’affichage</button>
+  </div>
+
+
+  <script>
+    let displayWin = null;
+    let timerId = null;
+    let phase = 'ready';
+    let remaining = 0;
+    let workSec = 40, restSec = 20, cycles = 999, round = 0;
+
+
+    const startBtn = document.getElementById('startBtn');
+    const pauseBtn = document.getElementById('pauseBtn');
+    const resetBtn = document.getElementById('resetBtn');
+    const plus1s = document.getElementById('plus1sBtn');
+    const moins1s = document.getElementById('moins1sBtn');
+    const openBtn = document.getElementById('openDisplay');
+
+
+    const timerInterval = nodecg.Replicant('timerInterval', 'leaderboard')
+
+
+    function sendToDisplay(msg) {
+      timerInterval.value = msg
+      console.log(timerInterval.value)
+
+    }
+
+
+    function startTimer() {
+      if (phase === 'ready') { phase = 'work'; round = 1; remaining = workSec; }
+      if (timerId) return;
+      timerId = setInterval(() => {
+        remaining--;
+        if (remaining <= 0) {
+          if (phase === 'work') { phase = 'rest'; remaining = restSec; sendToDisplay({ type: 'phase', phase, round }); }
+          else if (phase === 'rest') {
+            if (round >= cycles) { clearInterval(timerId); timerId = null; phase = 'done'; sendToDisplay({ type: 'done' }); return; }
+            round++; phase = 'work'; remaining = workSec; sendToDisplay({ type: 'phase', phase, round });
+          }
+        }
+        sendToDisplay({ type: 'time', remaining, phase, round });
+      }, 1000);
+      sendToDisplay({ type: 'start', phase, round, remaining });
+    }
+
+
+    function pauseTimer() {
+      if (timerId) { clearInterval(timerId); timerId = null; sendToDisplay({ type: 'pause' }); }
+      else { startTimer(); }
+    }
+    function resetTimer() {
+      clearInterval(timerId); timerId = null; phase = 'ready'; remaining = workSec; round = 0;
+      sendToDisplay({ type: 'reset' });
+    }
+
+    function plus1sTimer() {
+      remaining++
+    }
+    function moins1sTimer() {
+      remaining--
+    }
+
+
+
+    openBtn.onclick = () => {
+      displayWin = window.open('display.html', 'displayWin', 'width=600,height=400');
+    }
+
+
+    startBtn.onclick = () => {
+      workSec = parseInt(document.getElementById('workInput').value) || 40;
+      restSec = parseInt(document.getElementById('restInput').value) || 20;
+      cycles = parseInt(document.getElementById('cyclesInput').value) || 8;
+      startTimer();
+    }
+    pauseBtn.onclick = pauseTimer;
+    resetBtn.onclick = resetTimer;
+
+    plus1s.onclick = plus1sTimer;
+    moins1s.onclick = moins1sTimer;
+  </script>
+</body>
+
+</html>

@@ -56,6 +56,15 @@
         "width": 2,
         "headerColor": "#525F78",
         "workspace": "Main Workspace"
+      },
+      {
+        "name": "timer_interval",
+        "title": "Timer Interval",
+        "file": "timer_interval.html",
+        "fullbleed": false,
+        "width": 2,
+        "headerColor": "#525F78",
+        "workspace": "Main Workspace"
       }
     ],
     "graphics": [
@@ -121,6 +130,11 @@
       },
       {
         "file": "lane_presentation.html",
+        "width": 1920,
+        "height": 1080
+      },
+      {
+        "file": "timer_interval.html",
         "width": 1920,
         "height": 1080
       }

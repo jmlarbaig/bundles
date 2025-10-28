@@ -50,9 +50,9 @@ function updateTime() {
         if (overlay == 'overlay_side' || overlay == 'overlay_side_v1' || overlay == 'overlay_wpa') {
             $(".chrono").css("color", "rgb(255,50,80")
         } else {
-            // $(".box_chrono").css("background-color", "rgba(255,50,80,1)")
+            $(".box_chrono").css("background-color", "rgba(255,50,80,1)")
             $(".box_chrono").css("color", "rgb(255,255,255")
-            // $(".chrono").css("background-color", "rgba(255,50,80,1)")
+            $(".chrono").css("background-color", "rgba(255,50,80,1)")
             $(".chrono").css("color", "rgb(255,255,255")
         }
         let ch = msToTime(timeDiffStart).split(':');

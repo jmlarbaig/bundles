@@ -885,7 +885,7 @@ function showRepMvtInScore(elementAth) {
             break;
         case 'mvt_total_score':
             if (elementAth.currentMvt.mvtNames.toUpperCase() != "WORKOUT") {
-                // elementAth.$item.find(".score").text(workouts[0].total_reps != 0 ? ((workouts[0].total_reps != 0 - elementAth.score_abs) : elementAth.score_abs) + (elementAth.currentMvt.totalReps != 0 ? ('/' + elementAth.currentMvt.totalReps) : '') + ' (' + elementAth.currentMvt.scoreAbsMvt + ')');
+                elementAth.$item.find(".score").text((elementAth.currentMvt.totalReps != 0 ? (workouts[0].total_reps - elementAth.score_abs) : elementAth.score_abs) + ' (' + (elementAth.currentMvt.repTarget - elementAth.currentMvt.scoreAbsMvt) + ')');
                 showMvtInPopup(elementAth)
             } else {
                 elementAth.$item.find(".score").text(elementAth.currentMvt.scoreAbsMvt);
