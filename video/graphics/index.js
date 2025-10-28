@@ -17,6 +17,5 @@ videoShow.on('change', (newValue) => {
             break;
         case false:
             $('#video').fadeOut(1000)
-            break;
     }
 })

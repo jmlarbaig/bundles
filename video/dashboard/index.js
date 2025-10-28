@@ -45,7 +45,7 @@ function affichageVideo() {
     setTimeout(function () {
         $(".button_lane").attr('disabled', false);
         videoShow.value = false;
-    }, 6000);
+    }, 6500);
 }
 
 // function resetVideoPub(data){

@@ -62,7 +62,7 @@
     font-family: 'Slenco', sans-serif;
     position: absolute;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
-    height: 30px;
+    /* height: 30px; */
     font-weight: 900;
     font-size: var(--SizeFontHeaderOverlaySide);
     display: flex;
@@ -71,7 +71,7 @@
     padding-left: 15px;
     background: linear-gradient(90deg, rgba(40, 40, 40, 0.85) 0%, rgba(60, 60, 60, 0.7) 100%);
     color: white;
-    border-bottom: 2px solid var(--second_color, #ffffff);
+    /* border-bottom: 2px solid var(--second_color, #ffffff); */
     left: 2px;
     transition: all 0.7s ease;
     width: 179px;
