@@ -308,9 +308,9 @@ function updateDynamics(newScoring, status) {
 
 
             if (overlay != "versus" || overlay != 'overlay_wpa') {
-                if (elemAth.length > 2) {
-                    reposition("#leaderboard" + key, elemAth);
-                }
+                // if (elemAth.length > 2) {
+                reposition("#leaderboard" + key, elemAth);
+                // }
             }
 
             if (overlay !== 'commentator') {

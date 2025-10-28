@@ -284,13 +284,16 @@ function withJudge(ath) {
 function repoTop(lead_, aths_) {
     //initialisation la position de départ
     let y = parseInt($(lead_ + " .header").css('height').replace('px', ''));
-    // console.table("Aths : ", aths_)
+    console.log("height Ath : ", y)
+    console.log("Lead : ", lead_)
+    console.table("Aths : ", aths_)
     Object.values(aths_).forEach(elm => {
         if (elm.$item.find(lead_) != undefined) {
             if (true) {
                 // if (elm.status != '0') {
                 !elm.$item.is(':visible') && elm.$item.show()
                 elm.$item.css("top", y + "px");
+                console.table("Aths : ", elm.$item.height())
                 y += elm.$item.height();
                 y += parseInt(elm.$item.css('margin').split(' ')[0].replace('px', ''));
             } else {
