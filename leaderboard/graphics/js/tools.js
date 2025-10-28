@@ -871,40 +871,44 @@ function showRepMvtInScore(elementAth) {
     switch (setupLeaderboard.value.scoreConfig) {
         case 'abs_score':
             elementAth.$item.find(".score").text(elementAth.score_abs)
-            hideMvtInPopup(elementAth)
+
             break;
         case 'rel_score':
             elementAth.$item.find(".score").text(elementAth.score_rel)
-            hideMvtInPopup(elementAth)
+
             break;
         case 'mvt_score':
-            if (elementAth.currentMvt.mvtNames.toUpperCase() != "WORKOUT") {
-                elementAth.$item.find(".score").text(elementAth.currentMvt.repTarget != 0 ? elementAth.currentMvt.repTarget - elementAth.currentMvt.scoreAbsMvt : elementAth.currentMvt.scoreAbsMvt);
-                showMvtInPopup(elementAth)
-            } else {
-                elementAth.$item.find(".score").text(elementAth.currentMvt.scoreAbsMvt);
-                hideMvtInPopup(elementAth)
-            }
+            elementAth.$item.find(".score").text(elementAth.currentMvt.scoreAbsMvt);
+
             break;
         case 'mvt_total_score':
             if (elementAth.currentMvt.mvtNames.toUpperCase() != "WORKOUT") {
-                elementAth.$item.find(".score").text((elementAth.currentMvt.totalReps != 0 ? (workouts[0].total_reps - elementAth.score_abs) : elementAth.score_abs) + ' (' + (elementAth.currentMvt.repTarget - elementAth.currentMvt.scoreAbsMvt) + ')');
-                showMvtInPopup(elementAth)
+                if (heat.typeWod == "amrap") {
+                    elementAth.$item.find(".score").text((elementAth.currentMvt.totalReps != 0 ? (elementAth.score_abs) : elementAth.score_abs) + ' (-' + (elementAth.currentMvt.repTarget - elementAth.currentMvt.scoreAbsMvt) + ')');
+                } else {
+                    elementAth.$item.find(".score").text((elementAth.currentMvt.totalReps != 0 ? ("-" + (workouts[0].total_reps - elementAth.score_abs)) : elementAth.score_abs) + ' (-' + (elementAth.currentMvt.repTarget - elementAth.currentMvt.scoreAbsMvt) + ')');
+                }
             } else {
                 elementAth.$item.find(".score").text(elementAth.currentMvt.scoreAbsMvt);
-                hideMvtInPopup(elementAth)
             }
             break;
-        case 'remain_score':
+        case 'remain_mvt':
             if (elementAth.currentMvt.mvtNames.toUpperCase() != "WORKOUT") {
-                elementAth.$item.find(".score").text(elementAth.currentMvt.repTarget != 0 ? elementAth.currentMvt.repTarget - elementAth.currentMvt.scoreAbsMvt : elementAth.currentMvt.scoreAbsMvt);
-                showMvtInPopup(elementAth)
+                elementAth.$item.find(".score").text(elementAth.currentMvt.repTarget != 0 ? ("-" + (elementAth.currentMvt.repTarget - elementAth.currentMvt.scoreAbsMvt)) : elementAth.currentMvt.scoreAbsMvt);
             } else {
                 elementAth.$item.find(".score").text(elementAth.currentMvt.scoreAbsMvt);
-                hideMvtInPopup(elementAth)
             }
         default:
     }
+
+    if (elementAth.currentMvt.mvtNames.toUpperCase() != "WORKOUT" && setupLeaderboard.value.showMvt) {
+        console.log("SHOW MVTS IN SCORE CONFIG : ", setupLeaderboard.value.showMvt)
+        showMvtInPopup(elementAth)
+    } else {
+        console.log("HIDE MVTS IN SCORE CONFIG : ", setupLeaderboard.value.showMvt)
+        hideMvtInPopup(elementAth)
+    }
+
 }
 function hideRepMvtInScore(elementAth) {
     elementAth.$item.find(".score").hide();
@@ -955,7 +959,7 @@ function treatLeaderboardAuto() {
 }
 
 
-function treatDisplayMvtForOthers(elementAth, idToCompare) {
+function treatDisplayMvtForOthers(elementAth, idToCompare, roundsToCompare) {
     // Si l'athlète présent avant est à un mouvement différent de toi, on affiche le mouvement)
     let repTarget = elementAth.currentMvt.repTarget;
 
@@ -970,8 +974,11 @@ function treatDisplayMvtForOthers(elementAth, idToCompare) {
     }
 
     let textTomvt = repTarget + ' ' + mvt;
-
-    if (elementAth.currentMvt.id != idToCompare) {
+    console.log("COMPARE ID : ", elementAth.currentMvt.id, " TO ", idToCompare)
+    console.log("COMPARE ROUNDs : ", elementAth.currentMvt.rounds, " TO ", roundsToCompare)
+    console.log(elementAth.currentMvt.id != idToCompare && elementAth.currentMvt.rounds != roundsToCompare)
+    if (elementAth.currentMvt.id != idToCompare || elementAth.currentMvt.rounds != roundsToCompare) {
+        console.log("DISPLAY MVTS FOR OTHERS")
         if (heat.typeWod == 'amrap' && !Number.isNaN(elementAth.currentMvt.rounds)) {
             if (mvt.includes('Rd')) {
                 elementAth.$item.find(".popup").text(textTomvt);
@@ -985,12 +992,12 @@ function treatDisplayMvtForOthers(elementAth, idToCompare) {
             elementAth.$item.find(".popup").text(textTomvt);
             elementAth.$item.find(".popup_top").text(textTomvt);
         }
-        if (overlay != "overlay_wpa") {
-            if (setupLeaderboard.value.scoreConfig == "mvt_score" || setupLeaderboard.value.scoreConfig == "mvt_total_score") {
-                elementAth.$item.find(".popup").show();
-                elementAth.$item.find(".popup_top").show();
-            }
-        }
+        // if (overlay != "overlay_wpa") {
+        //     if (setupLeaderboard.value.scoreConfig == "mvt_score" || setupLeaderboard.value.scoreConfig == "mvt_total_score") {
+        //         elementAth.$item.find(".popup").show();
+        //         elementAth.$item.find(".popup_top").show();
+        //     }
+        // }
     }
     else {
         elementAth.$item.find(".popup").hide();
@@ -1033,10 +1040,10 @@ function treatDisplayMvtFirst(elementAth) {
             elementAth.$item.find(".popup").text(textTomvt);
             elementAth.$item.find(".popup_top").text(textTomvt);
         }
-        if (overlay != "overlay_wpa") {
-            elementAth.$item.find(".popup").show();
-            elementAth.$item.find(".popup_top").show();
-        }
+        // if (overlay != "overlay_wpa") {
+        //     elementAth.$item.find(".popup").show();
+        //     elementAth.$item.find(".popup_top").show();
+        // }
 
     }
 }

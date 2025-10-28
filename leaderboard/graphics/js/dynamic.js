@@ -204,7 +204,7 @@ function updateDynamics(newScoring, status) {
                                             showRepMvtInScore(elemAth[i])
                                             // if (setupLeaderboard.value.scoreConfig == 'mvt_score') {
                                             if (i != 0) {
-                                                treatDisplayMvtForOthers(elemAth[i], elemAth[i - 1].currentMvt.id)
+                                                treatDisplayMvtForOthers(elemAth[i], elemAth[i - 1].currentMvt.id, elemAth[i - 1].currentMvt.rounds)
                                             } else {
                                                 treatDisplayMvtFirst(elemAth[i])
                                             }

@@ -130,6 +130,10 @@
 							<input type="checkbox" class="checkbox" id="lane" />
 						</div>
 						<div class="input-form">
+							<label for="showMvt">Mvt</label>
+							<input type="checkbox" class="checkbox" id="showMvt" />
+						</div>
+						<div class="input-form">
 							<label for="affiliate">Affiliation</label>
 							<input type="checkbox" class="checkbox" id="affiliate" />
 						</div>
@@ -163,11 +167,13 @@
 						<select type="select" id="scoreConfig">
 							<option value="abs_score">Absolute</option>
 							<option value="rel_score">Relative</option>
-							<option value="remain_score">Remaining</option>
+							<option value="remain_mvt">Remaining Mvt</option>
+							<option value="remain_score">Remaining Score</option>
 							<option value="mvt_score">Mouvement</option>
 							<option value="mvt_total_score">Mouvement + total </option>
 						</select>
 					</div>
+
 					<div class="input">
 						<label for="rankingConfig">Ranking Configuration</label>
 						<select type="select" id="rankingConfig">
