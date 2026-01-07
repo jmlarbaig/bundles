@@ -329,7 +329,7 @@ function resetLeaderboard(newData) {
                         scrollCollapse: true,
                         paging: false,
                         fixedColumns: {
-                            left: 4,
+                            left: 2,
                             right: 2
                         }
                     });

@@ -148,7 +148,9 @@ function updateDynamics(newScoring, status) {
                         // console.log(elemAth[i])
                         switch (elemAth[i].status) {
                             case '0':
-                                elemAth[i].$item.find(".lane").hide()
+                                if (overlay != 'commentator') {
+                                    elemAth[i].$item.find(".lane").hide()
+                                }
                                 noJudge(elemAth[i])
                                 hideMvtInPopup(elemAth[i])
                                 hideRepMvtInScore(elemAth[i])
@@ -175,7 +177,9 @@ function updateDynamics(newScoring, status) {
                                 changeRankToLane(elemAth[i])
                                 break;
                             case 'W':
-                                setupLeaderboard.value.lane ? elemAth[i].$item.find(".lane").show() : elemAth[i].$item.find(".lane").hide()
+                                if (overlay != 'commentator') {
+                                    setupLeaderboard.value.lane ? elemAth[i].$item.find(".lane").show() : elemAth[i].$item.find(".lane").hide()
+                                }
                                 withJudge(elemAth[i])
                                 // console.log("Athlete with statut W :", elemAth[i])
                                 // if (overlay != 'overlay_wpa') {
@@ -231,7 +235,9 @@ function updateDynamics(newScoring, status) {
 
                                 break;
                             case 'F':
-                                setupLeaderboard.value.lane ? elemAth[i].$item.find(".lane").show() : elemAth[i].$item.find(".lane").hide()
+                                if (overlay != 'commentator') {
+                                    setupLeaderboard.value.lane ? elemAth[i].$item.find(".lane").show() : elemAth[i].$item.find(".lane").hide()
+                                }
                                 if (!alreadyPassed) {
                                     treatTextMvt('FINISH')
                                 }
@@ -250,7 +256,9 @@ function updateDynamics(newScoring, status) {
 
                                 break;
                             case 'T':
-                                setupLeaderboard.value.lane ? elemAth[i].$item.find(".lane").show() : elemAth[i].$item.find(".lane").hide()
+                                if (overlay != 'commentator') {
+                                    setupLeaderboard.value.lane ? elemAth[i].$item.find(".lane").show() : elemAth[i].$item.find(".lane").hide()
+                                }
                                 console.log("pop T")
                                 if (overlay != 'overlay_wpa') {
                                     changeRank(elemAth[i]);
