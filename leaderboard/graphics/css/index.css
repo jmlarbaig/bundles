@@ -85,7 +85,7 @@
 
         --width_top: 1930px;
         --width_box_heat: 1780px;
-        --width_calc_top: 1630px;
+        --width_calc_top: 1470px;
 
 
         --widthLogoEvent_top: 150px;
@@ -142,6 +142,10 @@
 
         --x_leaderboard_top: 0px;
         --y_leaderboard_top: 0px;
+        --y_sponsor_top: 0px;
+        --x_sponsor_top: 0px;
+        --width_sponsor_top: 0px;
+        --height_sponsor_top: 0px;
     }
 
 

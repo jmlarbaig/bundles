@@ -10,6 +10,7 @@ function resetHeat(data) {
 
         switch (overlay) {
             case 'overlay_top':
+            case 'overlay_top_v2':
                 $item = styleHeat_top(data)
                 break;
             case 'overlay_wpa':
@@ -71,12 +72,12 @@ function styleHeat_top(element) {
     let $item = $(
         '<div class="heat_content">' +
         '<div class="details">' +
-        '<div id="workout" class="detail" > ' + element.externalName + ' - </div>' +
-        '<div id="division" class="detail"> ' + element.heatName + ' </div>' +
+        // '<div id="workout" class="detail" > ' + element.externalName + ' - </div>' +
+        // '<div id="division" class="detail"> ' + element.heatName + ' </div>' +
         '<div id="mvt" class="text-nowrap text-truncate"></div>' +
         '</div>' +
         '<div class="box_mainSponsor">' +
-        '<div class="presented" id="prt">' + varPresented + '</div>' +
+        // '<div class="presented" id="prt">' + varPresented + '</div>' +
         '<div class="mainSponsor">' +
         '</div>' +
         '</div>' +

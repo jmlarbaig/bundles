@@ -909,6 +909,61 @@
 								</div>
 							</div>
 						</div>
+
+
+						<div class="position-control">
+							<label for="x_sponsor_top"><i class="fas fa-user"></i>Position X Sponsor</label>
+							<div class="input-group">
+								<input type="number" id="x_sponsor_top" value=100 />
+								<div class="input-controls">
+									<button class="btn-control" onclick="incrementValue('x_sponsor_top', 5)"><i
+											class="fas fa-plus"></i></button>
+									<button class="btn-control" onclick="incrementValue('x_sponsor_top', -5)"><i
+											class="fas fa-minus"></i></button>
+								</div>
+							</div>
+						</div>
+
+						<div class="position-control">
+							<label for="y_sponsor_top"><i class="fas fa-star"></i>Position Y Sponsor</label>
+							<div class="input-group">
+								<input type="number" id="y_sponsor_top" value=50 />
+								<div class="input-controls">
+									<button class="btn-control" onclick="incrementValue('y_sponsor_top', 5)"><i
+											class="fas fa-plus"></i></button>
+									<button class="btn-control" onclick="incrementValue('y_sponsor_top', -5)"><i
+											class="fas fa-minus"></i></button>
+								</div>
+							</div>
+						</div>
+
+
+						<div class="position-control">
+							<label for="width_sponsor_top"><i class="fas fa-star"></i>Largeur Sponsor</label>
+							<div class="input-group">
+								<input type="number" id="width_sponsor_top" value=50 />
+								<div class="input-controls">
+									<button class="btn-control" onclick="incrementValue('width_sponsor_top', 5)"><i
+											class="fas fa-plus"></i></button>
+									<button class="btn-control" onclick="incrementValue('width_sponsor_top', -5)"><i
+											class="fas fa-minus"></i></button>
+								</div>
+							</div>
+						</div>
+
+						<div class="position-control">
+							<label for="height_sponsor_top"><i class="fas fa-star"></i>Hauteur Sponsor</label>
+							<div class="input-group">
+								<input type="number" id="height_sponsor_top" value=50 />
+								<div class="input-controls">
+									<button class="btn-control" onclick="incrementValue('height_sponsor_top', 5)"><i
+											class="fas fa-plus"></i></button>
+									<button class="btn-control" onclick="incrementValue('height_sponsor_top', -5)"><i
+											class="fas fa-minus"></i></button>
+								</div>
+							</div>
+						</div>
+
 					</div>
 				</div>
 			</div>
@@ -1632,6 +1687,7 @@
 				const event = new Event('change');
 				input.dispatchEvent(event);
 			}
+			Actualiser();
 		}
 	</script>
 </body>

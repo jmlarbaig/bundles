@@ -85,7 +85,7 @@ function bandeau(indexDivision) {
     return $beandeauBottom
 }
 
-function Top(data) {
+function overlayTop(data) {
 
     let name = treatDisplayName(data.displayName);
     let flag = data.countryCode != "LOGO" ? ("https://flagcdn.com/" + data.countryCode.toLowerCase() + '.svg') : (logoEvent.value[0].url);
@@ -96,8 +96,8 @@ function Top(data) {
         '<div class="ath">' +
         '<div class="rank initial_rank_top">' + data.lane + '</div>' +
         '<div class="ath_sub initial_rank_top">' +
-        '<div class="name ">' + name + '</div>' +
-        '<div class="lane ">#' + data.lane + '</div>' +
+        '<div class="name"><span class="initial">' + name.substring(0, 2) + "</span>" + name.substring(2) + '</div>' +
+        '<div class="lane">#' + data.lane + '</div>' +
         '</div>' +
         '<div class="score initial_rank_top"></div>' +
         '</div>' +
@@ -112,6 +112,7 @@ function Top(data) {
 
     return $item
 }
+
 
 //  Leaderboard TV
 
@@ -231,8 +232,8 @@ function headerCommentator(divisions, indexDivision, repTarget) {
         '<th scope="col" class="truncate lane box">LANE</th>' +
         '<th scope="col" class="truncate flag box">FLAG</th>' +
         '<th scope="col" class="truncate box text-nowrap text-truncate text-left name">NAME</th>' +
-        '<th scope="col" class="truncate box Opoint">O. Points</th>' +
-        '<th scope="col" class="truncate box Orank">O. Rank</th>' +
+        // '<th scope="col" class="truncate box Opoint">O. Points</th>' +
+        // '<th scope="col" class="truncate box Orank">O. Rank</th>' +
         '<th scope="col" class="truncate box rank">Rank</th>' +
         '<th scope="col" class="truncate box rounds text-nowrap text-truncate">Rounds</th>' +
         '<th scope="col" class="truncate box score align-items-xl-center">Scores</th>' +
@@ -298,8 +299,8 @@ function commentator(data) {
         '<td class="truncate lane">' + data.lane + '</td>' +
         '<td class="flag">' + '<div class="box_flag"> </div> ' + '</td>' +
         '<td class="truncate name" onclick="affichageStats()" id="showStats_' + data.lane + '">' + name + '</td>' +
-        '<td class="truncate Opoint" id="oP_' + data.lane + '">' + O_points + '</td>' +
-        '<td class="truncate Orank" id="oR_' + data.lane + '">' + O_rank + '</td>' +
+        // '<td class="truncate Opoint" id="oP_' + data.lane + '">' + O_points + '</td>' +
+        // '<td class="truncate Orank" id="oR_' + data.lane + '">' + O_rank + '</td>' +
         '<td class="truncate rank">' + parseInt(data.CurrentRank) + '</td>' +
         '<td class="truncate rounds text-nowrap text-truncate"></td>' +
         '<td class="truncate score align-items-xl-center">' + data.score_abs + '</td>' +

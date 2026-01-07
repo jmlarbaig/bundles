@@ -350,7 +350,7 @@ manualChrono.on('change', (newValue, oldValue) => {
 })
 
 d_athletes.on('change', (newValue, oldValue) => {
-    if (overlay != 'sk' || overlay != 'head_judge') {
+    if (overlay != 'sk' && overlay != 'head_judge') {
         if (newValue != undefined) {
             updateDynamics(newValue, statusWorkout);
         }

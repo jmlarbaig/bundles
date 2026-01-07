@@ -77,6 +77,13 @@
     background-color: var(--finish_color);
 }
 
+.finish_rank_ath_top {
+    /* box-shadow: var(--finish_color) 0 2px 5px; */
+    /* border: var(--finish_color) 2px solid; */
+    border-left: var(--finish_color) 10px solid;
+    background-color: var(--finish_color);
+}
+
 .first_rank {
     background-color: var(--first_rank_color);
     color: var(--tx_first_rank_color);
@@ -88,6 +95,10 @@
     /* border: var(--second_color) 2px solid; */
     background-color: var(--second_color);
     border-left: var(--second_color) 10px solid;
+}
+
+.first_rank_ath_top {
+    border: solid 2px rgb(221, 230, 128);
 }
 
 .second_rank {
@@ -103,6 +114,10 @@
     background-color: var(--second_color);
 }
 
+.second_rank_ath_top {
+    border: solid 1px rgba(255, 255, 255, 0.3);
+}
+
 .third_rank {
     background-color: var(--third_rank_color);
     color: var(--tx_third_rank_color);
@@ -116,6 +131,10 @@
     background-color: var(--second_color);
 }
 
+.third_rank_ath_top {
+    border: solid 1px rgba(255, 255, 255, 0.3)
+}
+
 .other_rank {
     background-color: var(--second_color);
     color: var(--tx_second_color);
@@ -127,6 +146,10 @@
     /* border: var(--second_color) 2px solid; */
     background-color: var(--second_color);
     border-left: var(--second_color) 10px solid;
+}
+
+.other_rank_ath_top {
+    border: solid 1px rgba(255, 255, 255, 0.3)
 }
 
 .up_rank {
@@ -175,9 +198,39 @@
     color: black;
 }
 
-.initial_rank_top {
-    background-color: rgb(237, 237, 237);
-    color: black;
+.initial_rank_ath {
+    background-color: rgba(237, 237, 237, 0);
+    color: white;
+    /* border: solid 1px rgba(255, 255, 255, 0.3); */
+}
+
+.initial_rank_top_ath {
+    border: solid 1px rgba(255, 255, 255, 0.3);
+}
+
+.first_rank_top {
+    background-color: rgba(237, 237, 237, 0);
+    color: white;
+    border: solid 2px rgb(181, 210, 36);
+}
+
+
+.second_rank_top {
+    background-color: rgba(237, 237, 237, 0);
+    color: white;
+    border: solid 1px rgba(255, 255, 255, 0.3);
+}
+
+.third_rank_top {
+    background-color: rgba(237, 237, 237, 0);
+    color: white;
+    border: solid 1px rgba(255, 255, 255, 0.3);
+}
+
+.other_rank_top {
+    background-color: rgba(237, 237, 237, 0);
+    color: white;
+    border: solid 1px rgba(255, 255, 255, 0.3);
 }
 
 .deuxcent {

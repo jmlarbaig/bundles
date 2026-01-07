@@ -47,7 +47,7 @@ module.exports = function (nodecg) {
 
     let cc = require('./js/toolsCC')(nodecg, Connected)
     let sk = require('./js/toolsSK')(nodecg, Connected)
-    require('./js/tools')(nodecg)
+    let mqtt = require('./js/tools')(nodecg)
 
     const router = nodecg.Router();
     const dataConfig = nodecg.Replicant('dataConfig')
@@ -137,6 +137,7 @@ module.exports = function (nodecg) {
         }
 
         sk.connectionSK(connectionIp)
+        // mqtt.connectionMQTT(addIp, false)
 
         writeConfig(value)
         writeStatus(data)

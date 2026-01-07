@@ -109,6 +109,7 @@ function resetLeaderboard(newData) {
                     $tabItem = headerSide(divisionsNames, indexDivision, repTarget)
                     break;
                 case 'overlay_top':
+                case 'overlay_top_v2':
                     $tabItem = headerTop(indexDivision)
                     break;
                 case 'leaderboard':
@@ -190,6 +191,7 @@ function resetLeaderboard(newData) {
                         $item = overlaySide(elementAth)
                         break;
                     case 'overlay_top':
+                    case 'overlay_top_v2':
                         $item = overlayTop(elementAth)
                         break;
                     case 'leaderboard':
@@ -259,7 +261,7 @@ function resetLeaderboard(newData) {
 
                 setTimeout(() => {
 
-                    if (overlay === 'overlay_top') { height_tot = height_top } else { (height_tot += elementAth.$item.height() + 10) }
+                    if (overlay.includes('overlay_top')) { height_tot = height_top } else { (height_tot += elementAth.$item.height() + 10) }
 
                     if (overlay != 'commentator' && overlay != 'sk') {
                         $("#leaderboard" + indexDivision + " #athletes").height(height_tot)
@@ -327,7 +329,7 @@ function resetLeaderboard(newData) {
                         scrollCollapse: true,
                         paging: false,
                         fixedColumns: {
-                            left: 3,
+                            left: 4,
                             right: 2
                         }
                     });

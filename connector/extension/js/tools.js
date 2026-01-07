@@ -4,7 +4,7 @@ const ip = require('ip');
 
 
 
-module.exports = (nodecg, ip_ntp) => {
+module.exports = (nodecg, ip_ntp, eventId, floorId) => {
 
     const ipAddress = nodecg.Replicant('ipAddress')
     const nowNtp = nodecg.Replicant('nowNtp')
@@ -74,11 +74,11 @@ module.exports = (nodecg, ip_ntp) => {
             _ip_ntp = ip_ntp;
 
             mqttTools.disconnectMQTT()
-            mqttTools.connectionMQTT(ip_broker, false)
+            // mqttTools.connectionMQTT(ip_broker, false)
         }
         else {
             mqttTools.disconnectMQTT()
-            ip_broker = '51.83.46.83';
+            ip_broker = '51.83.42.122';
             ip_ntp = 'time.google.com'
             // mqttTools.connectionMQTT(ip_broker, true)
         }

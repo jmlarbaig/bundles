@@ -27,9 +27,9 @@ function updateTime() {
     if (overlay == 'overlay_side' || overlay == 'overlay_side_v1' || overlay == 'overlay_wpa') {
         $(".chrono").css("color", "rgb(255,255,255")
     } else {
-        $(".box_chrono").css("background-color", Clrs.chrono_color)
+        // $(".box_chrono").css("background-color", Clrs.chrono_color)
         $(".box_chrono").css("color", Clrs.tx_chrono_color)
-        $(".chrono").css("background-color", Clrs.chrono_color)
+        // $(".chrono").css("background-color", Clrs.chrono_color)
         $(".chrono").css("color", Clrs.tx_chrono_color)
     }
 

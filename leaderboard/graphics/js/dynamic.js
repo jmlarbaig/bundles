@@ -51,12 +51,16 @@ function updateDynamics(newScoring, status) {
                 // On traite les mouvements
                 elemAth[i].currentMvt = TreatMvt(elemAth[i]);
 
+
+                //On traite le tableau des scores
+                treatPerfArray(elemAth[i])
+
                 // if (elemAth.length > 2) {
-                console.log("Score WPA", arrayWAP)
+                // console.log("Score WPA", arrayWAP)
                 if (elemAth[i].affiliate.toLowerCase().includes("north")) {
                     // console.log("WORLD : elementAth[i]", elemAth[i])
                     // on mémorise le score pour les WPA
-                    console.log("NORTH : elementAth[i]", elemAth[i].score_abs)
+                    // console.log("NORTH : elementAth[i]", elemAth[i].score_abs)
                     arrayWAP[0].rep += parseInt(elemAth[i].score_abs)
                     arrayWAP[0].time += treatResultTimeWPA(elemAth[i]).time
                     if (arrayWAP[0].status == 'F') {
@@ -66,7 +70,7 @@ function updateDynamics(newScoring, status) {
                 } else if (elemAth[i].affiliate.toLowerCase().includes("world")) {
                     // console.log("NORTH : elementAth[i]", elemAth[i])
                     // on mémorise le score pour les WPA
-                    console.log("WORLD : elementAth[i]", elemAth[i].score_abs)
+                    // console.log("WORLD : elementAth[i]", elemAth[i].score_abs)
                     arrayWAP[1].rep += parseInt(elemAth[i].score_abs)
                     arrayWAP[1].time += treatResultTimeWPA(elemAth[i]).time
                     averageIndex[1] += treatResultTimeWPA(elemAth[i]).index
@@ -76,8 +80,6 @@ function updateDynamics(newScoring, status) {
                 }
                 // }
 
-                //On traite le tableau des scores
-                treatPerfArray(elemAth[i])
 
             })
             if (setupLeaderboard.value.timeConfig == 'avg' && arrayWAP[0].time != 0) {
@@ -192,7 +194,7 @@ function updateDynamics(newScoring, status) {
 
                                     if (elemAth[i].result == "" && !alreadyPassed) {
                                         alreadyPassed = true;
-                                        treatTextMvt(elemAth[i].currentMvt.arrayMvt.toString().replaceAll(',', ' - ').replaceAll('_', ' '))
+                                        treatTextMvt(elemAth[i].currentMvt.arrayMvt.toString().replaceAll(',', '-').replaceAll('_', ' ').replace('-', ''));
                                     }
 
                                     switch (heat.typeWod) {
@@ -240,7 +242,7 @@ function updateDynamics(newScoring, status) {
                                     changeColorFinish(elemAth[i], ".rank")
                                 }
                                 treatFinishStatus(elemAth[i]);
-                                overlay == 'overlay_top' && hiddenAthlete(elemAth[i])
+                                overlay.includes('overlay_top') && hiddenAthlete(elemAth[i])
 
                                 if (overlay == "overlay_wpa") {
                                     treatResultDisplayRepWPA(arrayWAP)
@@ -282,7 +284,7 @@ function updateDynamics(newScoring, status) {
                             treatTimeCapStatus(elemAth[i])
                         }
                         treatLeaderboardAuto()
-                        if (overlay == 'overlay_top') {
+                        if (overlay.includes('overlay_top')) {
                             elemAth[i].$item.is(':hidden') && showHiddenAthlete(elemAth[i])
                             $('#mvt').text('FINISH')
                             $('.mvt').text('FINISH')
@@ -291,7 +293,7 @@ function updateDynamics(newScoring, status) {
                     default:
                         break;
                 }
-                if (overlay === 'overlay_top') {
+                if (overlay.includes('overlay_top')) {
                     height_tot = height_top
                 } else {
                     (height_tot += elemAth[i].$item.height() + 10)
@@ -353,10 +355,15 @@ function changeFunction(overlay, elementAth) {
             changeColor(elementAth, ".popup")
             changeColor(elementAth, ".score")
             break;
+
+        case 'overlay_top_v2':
+            changeColorAth(elementAth, ".ath")
+            break;
         default:
             changeColor(elementAth, ".popup")
             changeColor(elementAth, ".rank")
             changeColor(elementAth, ".score")
             break;
+
     }
 }

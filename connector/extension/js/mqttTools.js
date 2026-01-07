@@ -18,6 +18,7 @@ module.exports = (nodecg) => {
 
 
     let _eventId = 0
+    let floorId = 0
     let _workouts = []
     let _division = []
     let _currentHeat = {}
@@ -34,7 +35,7 @@ module.exports = (nodecg) => {
         online = _location;
         if (client == null) {
             client = mqtt.connect('mqtt://' + ip_broker + ':1883');
-            streamMQTT()
+            streamMQTT(_eventId, _floorId)
         } else {
             disconnectMQTT()
         }
@@ -47,29 +48,29 @@ module.exports = (nodecg) => {
         }
     }
 
-    function streamMQTT() {
+    function streamMQTT(eventId, floorId) {
         client.on('connect', function () {
             console.log('Connected MQTT')
             Mqtt_connected.value = { connected: true, error: '' };
             if (online) {
 
             } else {
-                client.subscribe('kairos/+/ERG/#');
-                client.subscribe('kairos/Minos');
-                client.subscribe('kairos/+/SCORE');
+                client.subscribe('kairos/' + eventId + '/' + floorId + '/ERG/#');
+                client.subscribe('kairos/' + eventId + '/' + floorId + '/Minos');
+                client.subscribe('kairos/' + eventId + '/' + floorId + '/SCORE');
                 // client.subscribe('kairos/+/eventDescription');
-                client.subscribe('kairos/request');
-                client.subscribe('kairos/timer');
+                //client.subscribe('kairos/request');
+                client.subscribe('kairos/' + eventId + '/' + floorId + '/timer');
                 // client.subscribe(`kairos/+/heat_start_time`);
                 // client.subscribe(`kairos/+/nextHeat`);
-                client.subscribe(`kairos/eventId`);
-                client.subscribe(`kairos/+/currentHeat`);
+                client.subscribe('kairos/' + eventId + '/' + floorId + '/eventId');
+                client.subscribe('kairos/' + eventId + '/' + floorId + '/currentHeat');
                 // client.subscribe(`kairos/+/heat_status`);
                 // client.subscribe(`kairos/+/currentDiv`);
-                client.subscribe(`kairos/+/workouts`);
-                getEvent()
-                getListWorkouts();
-                getCurrentHeat();
+                client.subscribe('kairos/' + eventId + '/' + floorId + '/workouts');
+                // getEvent()
+                // getListWorkouts();
+                // getCurrentHeat();
             }
         })
 
@@ -215,26 +216,26 @@ module.exports = (nodecg) => {
 
     function getEvent() {
         if (client.connected) {
-            client.publish('kairos/request', 'eventId');
+            client.publish('kairos/' + _eventId + '/' + _floorId + '/request', 'eventId');
         }
     }
 
     function getListWorkouts() {
         if (client.connected) {
-            client.publish('kairos/request', 'workouts');
+            client.publish('kairos/' + _eventId + '/' + _floorId + '/request', 'workouts');
         }
     }
 
     function getCurrentHeat() {
         if (client.connected) {
-            client.publish('kairos/request', 'currentHeat');
+            client.publish('kairos/' + _eventId + '/' + _floorId + '/request', 'currentHeat');
         }
     }
 
     function getHeatStatus() {
         if (client.connected) {
             if (_eventId == undefined && _eventId != 0) {
-                client.publish(`kairos/${_eventId}/timer`, '');
+                client.publish(`kairos/${_eventId}/${_floorId}/timer`, '');
             }
         }
     }
@@ -244,10 +245,10 @@ module.exports = (nodecg) => {
             if (_eventId == undefined && _eventId != 0) {
                 client.publish('kairos/request', 'eventId')
                 setTimeout(() => {
-                    client.publish(`kairos/${_eventId}/nextHeat`, `${workoutId},${heatId}`);
+                    client.publish(`kairos/${_eventId}/${_floorId}/nextHeat`, `${workoutId},${heatId}`);
                 }, 2000)
             } else {
-                client.publish(`kairos/${_eventId}/nextHeat`, `${workoutId},${heatId}`);
+                client.publish(`kairos/${_eventId}/${_floorId}/nextHeat`, `${workoutId},${heatId}`);
             }
         }
     }
@@ -284,7 +285,7 @@ module.exports = (nodecg) => {
         }
 
         if (client.connected) {
-            client.publish(`kairos/timer`, `${timer};${count * 1000};${epochTime}`);
+            client.publish(`kairos/${_eventId}/${_floorId}/timer`, `${timer};${count * 1000};${epochTime}`);
         }
     }
 
@@ -309,7 +310,7 @@ module.exports = (nodecg) => {
 
     nodecg.listenFor('reset_chrono_heat', (value) => {
         if (client != undefined) {
-            client.publish('kairos/timer', '0')
+            client.publish(`kairos/${_eventId}/${_floorId}/timer`, '0')
         }
     })
 
@@ -321,7 +322,7 @@ module.exports = (nodecg) => {
             } else {
                 message = lane + message;
             }
-            client.publish('kairos/Minos/AYTRequest', message)
+            client.publish(`kairos/${_eventId}/${_floorId}/Minos/AYTRequest`, message)
         }
     })
 
@@ -349,14 +350,14 @@ module.exports = (nodecg) => {
     })
 
     nodecg.listenFor('reloadWorkout', () => {
-        getListWorkouts();
+        // getListWorkouts();
         getCurrentHeat();
         getHeatStatus();
     })
 
     nodecg.listenFor('reloadWorkoutFromHermes', () => {
         if (client.connected) {
-            client.publish('kairos/command', 'Ask Reload Workouts')
+            client.publish(`kairos/${_eventId}/${_floorId}/command`, 'Ask Reload Workouts')
         }
     })
 

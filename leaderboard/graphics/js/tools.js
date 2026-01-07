@@ -240,6 +240,7 @@ function descendingLane(a, b) { return Number(a.lane) + Number(b.lane) }
 function reposition(leaderboard, athletes) {
     switch (overlay) {
         case 'overlay_top':
+        case 'overlay_top_v2':
             repoLeft(leaderboard, athletes)
             break;
         case 'overlay_wpa':
@@ -587,27 +588,45 @@ function launchAutomaticSchedule() {
 
 function changeColor(ath, element) {
     let rank = ath.CurrentRank
-    if (overlay == 'overlay_top' || overlay == 'versus') {
+    if (overlay.includes('overlay_top') || overlay == 'versus') {
         rank != 1 ? rank = 4 : rank
     }
 
     if (overlay == 'overlay_wpa') { return };
     switch (rank) {
         case 1:
-            ath.$item.find(element).addClass('first_rank')
-            ath.$item.find(element).removeClass('initial_rank_top second_rank third_rank other_rank', false)
-            overlay == 'versus' && ath.$item.find(element).removeClass('initial_rank_versus')
+            if (!overlay.includes('overlay_top')) {
+                ath.$item.find(element).addClass('first_rank')
+                ath.$item.find(element).removeClass('initial_rank_top second_rank third_rank other_rank', false)
+                overlay == 'versus' && ath.$item.find(element).removeClass('initial_rank_versus')
+            } else {
+                ath.$item.find(element).addClass('first_rank_top')
+                ath.$item.find(element).removeClass('initial_rank_top second_rank_top third_rank_top other_rank_top', false)
+            }
             break;
         case 2:
-            ath.$item.find(element).addClass('second_rank')
-            ath.$item.find(element).toggleClass('first_rank third_rank other_rank', false)
+            if (!overlay.includes('overlay_top')) {
+                ath.$item.find(element).addClass('second_rank')
+                ath.$item.find(element).toggleClass('first_rank third_rank other_rank', false)
+            } else {
+
+                ath.$item.find(element).addClass('second_rank_top')
+                ath.$item.find(element).toggleClass('first_rank_top third_rank_top other_rank_top', false)
+            }
             break;
         case 3:
-            ath.$item.find(element).addClass('third_rank')
-            ath.$item.find(element).toggleClass('second_rank first_rank other_rank', false)
+
+            if (!overlay.includes('overlay_top')) {
+                ath.$item.find(element).addClass('third_rank')
+                ath.$item.find(element).toggleClass('second_rank first_rank other_rank', false)
+            } else {
+
+                ath.$item.find(element).addClass('initial_rank_top')
+                ath.$item.find(element).toggleClass('second_rank_top first_rank_top other_rank_top', false)
+            }
             break;
         default:
-            if (overlay != 'overlay_top') {
+            if (!overlay.includes('overlay_top')) {
                 ath.$item.find(element).addClass('other_rank')
                 ath.$item.find(element).toggleClass('second_rank third_rank first_rank', false)
             } else if (overlay == 'versus') {
@@ -620,11 +639,12 @@ function changeColor(ath, element) {
     }
 }
 
+
 function eraseInitialRank(ath, element) {
 
 
     if (overlay == 'overlay_wpa') { return };
-    if (overlay != 'overlay_top') {
+    if (!overlay.includes('overlay_top')) {
         // ath.$item.find(element).addClass('')
         ath.$item.find(element).removeClass('initial_rank initial_rank_ath other_rank other_rank_ath finish_rank finish_rank_ath second_rank second_rank_ath third_rank third_rank_ath first_rank first_rank_ath', false)
     } else if (overlay == 'versus') {
@@ -639,7 +659,8 @@ function eraseInitialRank(ath, element) {
 function initialRankChange(ath, element) {
 
     if (overlay == 'overlay_wpa') { return };
-    if (overlay != 'overlay_top') {
+    if (overlay == 'overlay_top_v2') { return };
+    if (!overlay.includes('overlay_top')) {
         ath.$item.find(element).addClass('initial_rank')
         ath.$item.find(element).toggleClass('finish_rank finish_rank_ath second_rank third_rank first_rank', false)
     } else if (overlay == 'versus') {
@@ -654,6 +675,8 @@ function initialRankChange(ath, element) {
 function changeColorFinish(ath, element) {
 
     if (overlay == 'overlay_wpa') { return };
+
+    if (overlay == 'overlay_top_v2') { return };
     // console.log("ath :", ath)
     // console.log("element : ", element)
     ath.$item.find(element).addClass('finish_rank')
@@ -673,14 +696,19 @@ function changeColorAth(ath, element) {
 
     if (overlay == 'overlay_wpa') { return };
     let rank = ath.CurrentRank
-    if (overlay == 'overlay_top' || overlay == 'versus') {
+    if (overlay.includes('overlay_top') || overlay == 'versus') {
         rank != 1 ? rank = 4 : rank
     }
     switch (rank) {
         case 1:
-            ath.$item.find(element).addClass('first_rank_ath')
-            ath.$item.find(element).removeClass('initial_rank_top_ath second_rank_ath third_rank_ath other_rank_ath', false)
-            overlay == 'versus' && ath.$item.find(element).removeClass('initial_rank_versus')
+            if (!overlay.includes('overlay_top')) {
+                ath.$item.find(element).addClass('first_rank_ath')
+                ath.$item.find(element).removeClass('initial_rank_top_ath second_rank_ath third_rank_ath other_rank_ath', false)
+                overlay == 'versus' && ath.$item.find(element).removeClass('initial_rank_versus')
+            } else {
+                ath.$item.find(element).addClass('first_rank_ath_top')
+                ath.$item.find(element).removeClass('initial_rank_top_ath second_rank_ath_top third_rank_ath_top other_rank_ath_top', false)
+            }
             break;
         case 2:
             ath.$item.find(element).addClass('second_rank_ath')
@@ -691,9 +719,9 @@ function changeColorAth(ath, element) {
             ath.$item.find(element).toggleClass('second_rank_ath first_rank_ath other_rank_ath', false)
             break;
         default:
-            if (overlay != 'overlay_top') {
-                ath.$item.find(element).addClass('other_rank_ath')
-                ath.$item.find(element).toggleClass('second_rank_ath third_rank_ath first_rank_ath', false)
+            if (!overlay.includes('overlay_top')) {
+                ath.$item.find(element).addClass('other_rank_ath_top')
+                ath.$item.find(element).toggleClass('second_rank_ath_top third_rank_ath_top first_rank_ath_top', false)
             } else if (overlay == 'versus') {
                 ath.$item.find(element).addClass('initial_rank_versus_ath')
                 ath.$item.find(element).removeClass('first_rank_ath second_rank_ath third_rank_ath other_rank_ath')
@@ -1068,14 +1096,20 @@ function showHiddenAthlete(elementAth) {
 
 function treatPerfArray(elementAth) {
     if (overlay == 'commentator') {
+        console.log("TRAITEMENT DES PERFS POUR ATHLÈTE LANE : " + elementAth.lane)
+        console.log("bestPerf : " + bestPerf)
         if (bestPerf[elementAth.lane] == undefined) {
             bestPerf[elementAth.lane] = []
         }
         Object.values(elementAth.log_mvt[0]).forEach((time, index) => {
-
+            console.log("TIME POUR MVT INDEX " + index + " : ", time)
             if (time != '00:00.0') {
+                console.log("TRAITEMENT DU TEMPS : ", time)
+                console.log("VALEUR ACTUELLE DANS BEST PERF : ", bestPerf[elementAth.lane][index])
+                console.log(elementAth.$item.find("#mvt_id_" + index + "_" + elementAth.lane).text())
                 if (elementAth.$item.find("#mvt_id_" + index + "_" + elementAth.lane).text() == '-') {
-
+                    console.log("PAS DE VALEUR ENCORE, ON AJOUTE : ", time)
+                    elementAth.$item.find("#mvt_id_" + index + "_" + elementAth.lane).text(time)
                     let secondes = time.split(':').map(Number)
                     let min = secondes[0] * 60;
                     let total = secondes[1] + min
