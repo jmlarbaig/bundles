@@ -229,8 +229,8 @@ function headerCommentator(divisions, indexDivision, repTarget) {
         '<table id="table' + indexDivision + '" class="stripe row-border order-column" style="width:100%">' +
         '<thead>' +
         '<tr>' +
-        '<th scope="col" class="truncate lane box">LANE</th>' +
-        '<th scope="col" class="truncate flag box">FLAG</th>' +
+        '<th scope="col" class="truncate lane box">#</th>' +
+        '<th scope="col" class="truncate flag box">-</th>' +
         '<th scope="col" class="truncate box text-nowrap text-truncate text-left name">NAME</th>' +
         // '<th scope="col" class="truncate box Opoint">O. Points</th>' +
         // '<th scope="col" class="truncate box Orank">O. Rank</th>' +

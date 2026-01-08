@@ -1,7 +1,7 @@
 .header {
     box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
     width: 100%;
-    height: 100px;
+    height: 40px;
     z-index: 20;
     display: flex;
     flex-direction: row;
@@ -26,23 +26,26 @@
 }
 
 .box_chrono {
-    border: solid 2px white;
+    /* border: solid 2px white ; */
+
     width: 15%;
-    height: 80px;
+    /* height: 40px; */
     transform-origin: 50% 50%;
     text-align: center;
     align-items: center;
     z-index: 30;
-    background-color: rgb(210, 210, 210);
-    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+    /* background-color: rgb(210, 210, 210);
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px; */
 }
 
 .chrono {
-    font-size: 2em;
+    font-size: 1.6em;
+    color: rgb(181, 210, 36);
+    font-weight: 700;
 }
 
 #time {
-    padding: 5px;
+    /* padding: 5px; */
 }
 
 #cap {
@@ -54,25 +57,48 @@
     width: 70%;
     padding: 5px;
     padding-left: 30px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.box_heat .heat {
+    width: 100%
 }
 
 .heat_content {
     display: flex;
     flex-direction: row;
+    align-items: center;
+    justify-content: start;
+    text-transform: uppercase;
 }
 
 .details {
     display: flex;
-    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    flex-wrap: nowrap;
     width: 50%;
 }
 
 .details #workout {
     font-size: 1.6em;
+    color: rgb(181, 210, 36);
+    padding: 0px 10px;
+}
+
+.details #workout::after {
+    content: "//";
+    font-size: 1.2em;
+    color: rgb(181, 210, 36);
+    padding: 0px 10px;
 }
 
 .details #division {
     font-size: 1.2em;
+    padding: 0px 10px;
 }
 
 .box_mainSponsor {
@@ -97,6 +123,7 @@
     display: flex;
     flex-direction: row;
     justify-content: center;
+    align-items: center;
 }
 
 .FV {
@@ -105,8 +132,8 @@
     background-position: 2px 5px;
     background-size: contain;
     background-repeat: no-repeat;
-    width: 200px;
-    height: 100px;
+    width: 80px;
+    height: 40px;
 }
 
 .SK {
@@ -115,8 +142,8 @@
     background-position: top;
     background-size: contain;
     background-repeat: no-repeat;
-    width: 170px;
-    height: 100px;
+    width: 80px;
+    height: 40px;
 }
 
 .controlHeat {

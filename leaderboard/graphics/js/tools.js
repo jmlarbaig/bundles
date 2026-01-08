@@ -1101,37 +1101,68 @@ function treatPerfArray(elementAth) {
         if (bestPerf[elementAth.lane] == undefined) {
             bestPerf[elementAth.lane] = []
         }
-        Object.values(elementAth.log_mvt[0]).forEach((time, index) => {
-            console.log("TIME POUR MVT INDEX " + index + " : ", time)
-            if (time != '00:00.0') {
-                console.log("TRAITEMENT DU TEMPS : ", time)
-                console.log("VALEUR ACTUELLE DANS BEST PERF : ", bestPerf[elementAth.lane][index])
-                console.log(elementAth.$item.find("#mvt_id_" + index + "_" + elementAth.lane).text())
-                if (elementAth.$item.find("#mvt_id_" + index + "_" + elementAth.lane).text() == '-') {
-                    console.log("PAS DE VALEUR ENCORE, ON AJOUTE : ", time)
-                    elementAth.$item.find("#mvt_id_" + index + "_" + elementAth.lane).text(time)
-                    let secondes = time.split(':').map(Number)
-                    let min = secondes[0] * 60;
-                    let total = secondes[1] + min
+        Object.values(elementAth.log_mvt[0]).forEach((key, index) => {
+            console.log("INDEX MVT POUR ATHLÈTE LANE " + elementAth.lane + " : ", key)
+            let html = '';
+            Object.entries(key).forEach(([value, time]) => {
+                html += `${value.replaceAll('-', '')}: ${time}<br>`;
+            });
+            elementAth.$item.find("#mvt_id_" + index + "_" + elementAth.lane).html(html)
+            // Object.values(key).forEach((time) => {
+            //     console.log("TIME POUR MVT INDEX " + index + " : ", time)
+            //     let html = '';
 
-                    if (total > 3) {
-                        elementAth.$item.find("#mvt_id_" + index + "_" + elementAth.lane).text(time)
-                        bestPerf[elementAth.lane][index] = total
+            //     if (time != '00:00.0') {
+            //         if (!elementAth.$item.find("#mvt_id_" + index + "_" + elementAth.lane).text().includes(time)) {
+            //             console.log("PAS DE VALEUR ENCORE, ON AJOUTE : ", time)
+            //             elementAth.$item.find("#mvt_id_" + index + "_" + elementAth.lane).html(time)
+            //             // let secondes = time.split(':').map(Number)
+            //             // let min = secondes[0] * 60;
+            //             // let total = secondes[1] + min
 
-                        if (best[index] == undefined) {
-                            best[index] = total
-                        }
+            //             // if (total > 3) {
+            //             //     elementAth.$item.find("#mvt_id_" + index + "_" + elementAth.lane).html(time)
+            //             //     bestPerf[elementAth.lane][index] = total
 
-                        if (bestPerf[elementAth.lane][index] <= best[index]) {
-                            best[index] = bestPerf[elementAth.lane][index]
+            //             //     if (best[index] == undefined) {
+            //             //         best[index] = total
+            //             //     }
 
-                            $('#leaderboard' + key).find('.mvt_id_' + index).removeClass('bestStat');
-                            elementAth.$item.find("#mvt_id_" + index + "_" + elementAth.lane).addClass('bestStat');
-                        }
+            //             //     if (bestPerf[elementAth.lane][index] <= best[index]) {
+            //             //         best[index] = bestPerf[elementAth.lane][index]
 
-                    }
-                }
-            }
+            //             //         // $('#leaderboard' + key).find('.mvt_id_' + index).removeClass('bestStat');
+            //             //         elementAth.$item.find("#mvt_id_" + index + "_" + elementAth.lane).addClass('bestStat');
+            //             //     }
+
+            //             // }
+            //         } else if (elementAth.$item.find("#mvt_id_" + index + "_" + elementAth.lane).text() != '-' && elementAth.$item.find("#mvt_id_" + index + "_" + elementAth.lane).text() != time) {
+            //             console.log("VALEUR DIFFÉRENTE, ON AJOUTE : ", time)
+            //             let value = elementAth.$item.find("#mvt_id_" + index + "_" + elementAth.lane).text()
+            //             value = value + "<br>" + time
+            //             elementAth.$item.find("#mvt_id_" + index + "_" + elementAth.lane).html(value)
+            //             // let secondes = time.split(':').map(Number)
+            //             // let min = secondes[0] * 60;
+            //             // let total = secondes[1] + min
+
+            //             // if (total > 3) {
+            //             //     // elementAth.$item.find("#mvt_id_" + index + "_" + elementAth.lane).text(time)
+            //             //     bestPerf[elementAth.lane][index] = total
+
+            //             //     if (best[index] == undefined) {
+            //             //         best[index] = total
+            //             //     }
+
+            //             //     if (bestPerf[elementAth.lane][index] <= best[index]) {
+            //             //         best[index] = bestPerf[elementAth.lane][index]
+
+            //             //         // $('#leaderboard' + key).find('.mvt_id_' + index).removeClass('bestStat');
+            //             //         elementAth.$item.find("#mvt_id_" + index + "_" + elementAth.lane).addClass('bestStat');
+            //             //     }
+            //             // }
+            //         }
+            //     }
+            // });
         })
     }
 }

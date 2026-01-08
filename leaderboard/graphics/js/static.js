@@ -326,15 +326,18 @@ function resetLeaderboard(newData) {
                     $("#leaderboard" + indexDivision + " #table" + indexDivision).DataTable({
                         scrollY: "auto",
                         scrollX: true,
+                        filter: false,
+                        info: false,
                         scrollCollapse: true,
+                        stripeClasses: ['odd', 'even'],
                         paging: false,
                         fixedColumns: {
-                            left: 2,
+                            left: 3,
                             right: 2
                         }
                     });
 
-                }, 100)
+                }, 3000)
             }
 
 

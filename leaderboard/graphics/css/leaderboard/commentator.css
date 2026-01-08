@@ -1,5 +1,4 @@
-
-.leaderboards{
+.leaderboards {
     background-color: rgb(232, 232, 232);
     display: flex;
     flex-direction: column;
@@ -9,7 +8,7 @@
     -ms-transition-duration: 0.7s;
 }
 
-.leaderboard{
+.leaderboard {
     display: flex;
     flex-direction: column;
     -moz-transition-duration: 0.7s;
@@ -17,142 +16,157 @@
     -ms-transition-duration: 0.7s;
 }
 
-.leaderboard .header{
+.leaderboard .header {
     text-transform: uppercase;
-    height: 100px;
-    padding: 20px 20px;
+    height: 40px;
+    padding: 10px 10px;
     font-weight: 900;
-    font-size: 2em; 
-    padding: 0px 20px;
+    font-size: 1.2em;
     display: flex;
     flex-direction: row;
     align-items: center;
     background-color: var(--second_color);
     color: var(--tx_second_color);
-    border-bottom: 2px white solid;
+    border-bottom: 2px rgb(181, 210, 36) solid;
+    border-top: 2px rgb(181, 210, 36) solid;
     -moz-transition-duration: 0.7s;
     -webkit-transition-duration: 0.7s;
     -ms-transition-duration: 0.7s;
 }
 
 
-.leaderboard .division{
+.leaderboard .division {
     width: 15%;
 }
 
 
-.leaderboard #mvt{
+.leaderboard #mvt {
     width: 70%;
     text-transform: capitalize;
+    padding: 0px 5px;
 }
 
-.leaderboard #mvt span:first-child{
+.leaderboard #mvt span:first-child {
     -moz-transition-duration: 0.7s;
     -webkit-transition-duration: 0.7s;
     -ms-transition-duration: 0.7s;
-    border: solid 5px red;
-    padding: 10px;
+    color: rgb(181, 210, 36);
+    padding-right: 10px;
+    /* padding: 10px; */
 }
 
-.leaderboard .repTar{
+.leaderboard #mvt span {
+    padding: 0px 5px;
+    /* padding: 10px; */
+}
+
+.leaderboard #mvt span:first-child::after {
+    content: ' //';
+}
+
+.leaderboard .repTar {
     text-align: right;
-    margin: auto;
+    /* margin: auto; */
     width: 15%;
-    background-color: var(--second_color);
+    justify-content: end;
+    align-items: center;
+    /* background-color: var(--second_color); */
 }
 
-th, td { 
-    white-space: nowrap; 
+th,
+td {
+    white-space: nowrap;
     text-align: center;
     text-transform: uppercase;
 }
+
 div.dataTables_wrapper {
     border-collapse: collapse;
-    font-size: 24px;
+    font-size: 1.2em;
     width: 100%;
     margin: auto;
 }
 
 
-.lane{
+.lane {
     background-color: white;
     z-index: 10;
-    width: 100px;
+    /* width: 100px; */
 }
 
-.flag{
+.flag {
     background-color: white;
     z-index: 10;
-    width: 30px;
+    /* width: 30px; */
     height: 30px;
 }
 
-.box_flag{
+.box_flag {
     z-index: 10;
-    width: 30px;
+    /* width: 30px; */
     height: 30px;
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
 }
 
-.name{
+.name {
     background-color: white;
     z-index: 10;
     text-align: left;
-    width: 200px;
-    max-width: 200px;
+    /* width: 200px; */
+    /* max-width: 200px; */
 }
 
-.name:hover{
+.name:hover {
     background-color: grey;
     color: white;
     cursor: pointer;
 }
 
 
-.Opoint{
-    width: 70px;
-    max-width: 70px;
+.Opoint {
+    /* width: 70px; */
+    /* max-width: 70px; */
 }
 
-.Orank{
-    width: 70px;
-    max-width: 70px;
+.Orank {
+    /* width: 70px; */
+    /* max-width: 70px; */
 }
 
-.rank{
-    width: 70px;
-    max-width: 70px;
+.rank {
+    /* width: 70px; */
+    /* max-width: 70px; */
 }
 
-thead .score{
+thead .score {
     background-color: white;
 }
 
-.score{
+.score {
     z-index: 10;
-    width: 150px;
-    max-width: 150px;
+    /* width: 150px; */
+    /* max-width: 150px; */
 }
 
-.popup{
+.popup {
     background-color: white;
     z-index: 10;
-    width: 250px;
-    max-width: 250px;
+    /* width: 250px; */
+    /* max-width: 250px; */
 }
 
-.rounds{
+.rounds {
     background-color: white;
 }
 
-.bestStat{
+.bestStat {
     background-color: green;
     color: white;
 }
 
-.truncate{
+.truncate {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;

@@ -152,7 +152,7 @@ function createIndiv(data) {
 
     let $modal = $(
         '<div id="card" class="modal-content">' +
-        '<span class="close">&times;</span>' +
+        '<span class="close" aria-label="Fermer">&times;</span>' +
         '<div class="box_infos" id="' + accountId + '">' +
         '<div class="avatar"></div>' +
         '<div class="infos">' +
