@@ -822,7 +822,7 @@ function treatFinishStatus(elementAth) {
         elementAth.$item.find(".popup").show();
         elementAth.$item.find(".popup_top").text(result);
         elementAth.$item.find(".popup_top").show();
-        elementAth.$item.find(".score").text('FIN')
+        elementAth.$item.find(".score").text(result)
     }
     if (overlay == 'progression') {
         $('#circle' + elementAth.lane).css("transform", "translateX(95%)");
@@ -847,7 +847,7 @@ function treatTimeCapStatus(elementAth) {
     } else {
         elementAth.$item.find(".popup").show();
         elementAth.$item.find(".popup_top").show();
-        elementAth.$item.find(".score").text('FIN');
+        elementAth.$item.find(".score").text(text);
         elementAth.$item.find(".popup").text(result + ' ' + setupLeaderboard.value.unitSelect);
         elementAth.$item.find(".popup_top").text(result + ' ' + setupLeaderboard.value.unitSelect);
     }
