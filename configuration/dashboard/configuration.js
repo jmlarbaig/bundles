@@ -1,7 +1,8 @@
 
 const AssetsColors = nodecg.Replicant('assets:config');
-const Colors = nodecg.Replicant('Colors');
 const Fonts = nodecg.Replicant('assets:font');
+const Colors = nodecg.Replicant('Colors');
+
 const chronoState = nodecg.Replicant('ChronoState', 'leaderboard')
 
 var participantEvent = {}
@@ -34,6 +35,7 @@ function Actualiser() {
 
     const elmSelect = document.querySelectorAll('select');
     elmSelect.forEach(el => {
+        console.log(el.id + " : " + el.value)
         data[el.id] = el.value
     });
 
@@ -105,10 +107,10 @@ Colors.on('change', (value) => {
     console.log("Colors changed at ", Date.now())
 
     Object.keys(value).forEach((element, index) => {
+        console.log(element + " : " + value[element])
         if (typeof value[element] === 'boolean') {
             $("#" + element).prop("checked", value[element]);
-        } else if (value[element].includes('px')) {
-            console.log('px')
+        } else if (String(value[element]).includes('px')) {
             $("#" + element).val(value[element].replace('px', ''))
         } else {
             $("#" + element).val(value[element]);
