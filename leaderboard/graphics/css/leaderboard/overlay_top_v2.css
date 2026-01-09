@@ -127,7 +127,7 @@
     overflow: hidden;
     text-overflow: ellipsis;
     min-width: 180px;
-    letter-spacing: -2px;
+    letter-spacing: letter_spacing;
 }
 
 .leaderboard .athlete .name .initial {
