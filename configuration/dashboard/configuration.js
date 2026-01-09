@@ -1,8 +1,7 @@
 
 const AssetsColors = nodecg.Replicant('assets:config');
-const Fonts = nodecg.Replicant('assets:font');
 const Colors = nodecg.Replicant('Colors');
-
+const Fonts = nodecg.Replicant('assets:font');
 const chronoState = nodecg.Replicant('ChronoState', 'leaderboard')
 
 var participantEvent = {}
