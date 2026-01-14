@@ -293,7 +293,7 @@ function updateDynamics(newScoring, status) {
                         }
                         treatLeaderboardAuto()
                         if (overlay.includes('overlay_top')) {
-                            elemAth[i].$item.is(':hidden') && showHiddenAthlete(elemAth[i])
+                            // elemAth[i].$item.is(':hidden') && showHiddenAthlete(elemAth[i])
                             $('#mvt').text('FINISH')
                             $('.mvt').text('FINISH')
                         }
