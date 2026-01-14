@@ -166,6 +166,10 @@ workoutInfo.on('change', (newValue, oldValue) => {
     if (newValue != oldValue) {
         workouts = treatWorkouts(newValue);
         workouts = newValue
+        if (overlay.includes('overlay_top')) {
+            $('#mvt').text('')
+            $('.mvt').text('')
+        }
     }
 })
 

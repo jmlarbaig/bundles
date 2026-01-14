@@ -247,6 +247,7 @@ function updateDynamics(newScoring, status) {
                                     changeColorFinishAth(elemAth[i], ".ath")
                                     changeColorFinish(elemAth[i], ".rank")
                                 }
+                                !elemAth[i].$item.find(".score").is(':visible') && elemAth[i].$item.find(".score").show();
                                 treatFinishStatus(elemAth[i]);
                                 overlay.includes('overlay_top') && hiddenAthlete(elemAth[i])
 
@@ -293,7 +294,6 @@ function updateDynamics(newScoring, status) {
                         }
                         treatLeaderboardAuto()
                         if (overlay.includes('overlay_top')) {
-                            // elemAth[i].$item.is(':hidden') && showHiddenAthlete(elemAth[i])
                             $('#mvt').text('FINISH')
                             $('.mvt').text('FINISH')
                         }

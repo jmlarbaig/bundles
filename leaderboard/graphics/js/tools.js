@@ -346,6 +346,7 @@ function TreatMvt(elementAth) {
     // console.log("elementAth Division", elementAth.division)
     // console.log("Workout ", workouts)
     // console.log("Workout ID", workouts.find((element) => element.division == elementAth.division).mvt_id.length)
+    console.log("elementAth :", elementAth)
 
     if ((auth[elementAth.division] || heat.typeWod == 'repmax') && workouts.length > 0 && workouts.find((element) => element.division == elementAth.division).mvt_id.length > 1) {
         if (elementAth.result == "") {
@@ -514,38 +515,38 @@ function mvtIndexRepMax(nbrReps, loadAttempted) {
     let arrayMvt = [];
     for (let wod of workouts) {
         if (true) {
-            if (res != 0) {
-                // console.log("RepTarget= ", wod.mvt_reps[0])
-                if (res == wod.total_reps && wod.mvt_names[wod.mvt_names.length - 1] == "Sprint") {
-                    res = 0
-                    index = wod.mvt_names.length - 1
-                }
-                else {
-                    while (res >= 0) {
-                        res = (res - wod.mvt_reps[index])
-                        // console.log("je suis à l'index : ", index)
-                        if (res >= 0) {
-                            index++;
-                        }
-                    }
-                }
-            }
-            else {
-                index = 0
-                res = -wod.mvt_reps[index];
-            }
+            // if (res != 0) {
+            //     // console.log("RepTarget= ", wod.mvt_reps[0])
+            //     if (res == wod.total_reps && wod.mvt_names[wod.mvt_names.length - 1] == "Sprint") {
+            //         res = 0
+            //         index = wod.mvt_names.length - 1
+            //     }
+            //     else {
+            //         while (res >= 0) {
+            //             res = (res - wod.mvt_reps[index])
+            //             // console.log("je suis à l'index : ", index)
+            //             if (res >= 0) {
+            //                 index++;
+            //             }
+            //         }
+            //     }
+            // }
+            // else {
+            //     index = 0
+            //     res = -wod.mvt_reps[index];
+            // }
             for (let i = index; i < wod.mvt_names.length; i++) {
-                mvtToUP = wod.mvt_names[i].toLowerCase();
-                let r = 'MAX';
+                mvtToUP = wod.mvt_names[i].toLowerCase() != 'workout' ? wod.mvt_names[i].toLowerCase() : 'BARBELL';
+                let r = wod.mvt_names[i].toLowerCase() != 'workout' ? 'MAX' : '';
                 if (wod.mvt_reps[i] != 0) {
                     r = wod.mvt_reps[i].toString().toLowerCase()
                 }
-                arrayMvt.push("<span>" + r + ' ' + wod.mvt_names[i].toLowerCase() + "</span>")
+                arrayMvt.push("<span>" + r + ' ' + mvtToUP + "</span>")
             }
-            return ({ 'scoreAbsMvt': nbrReps, 'scoreRelMvt': res, 'id': 0, 'repTarget': loadAttempted, 'rounds': 0, 'totalReps': 1, 'mvtNames': 'Barbell', 'arrayMvt': ['BARBELL'] })
+            return ({ 'scoreAbsMvt': nbrReps, 'scoreRelMvt': nbrReps, 'id': 0, 'repTarget': loadAttempted, 'rounds': 0, 'totalReps': 1, 'mvtNames': 'Barbell', 'arrayMvt': arrayMvt })
         }
     }
-    return ({ 'scoreAbsMvt': res, 'scoreRelMvt': res, 'id': 0, 'repTarget': 0, 'rounds': 0, 'totalReps': 1, 'mvtNames': 'BARBELL', 'arrayMvt': ['WORKOUTS'] })
+    return ({ 'scoreAbsMvt': res, 'scoreRelMvt': res, 'id': 0, 'repTarget': loadAttempted, 'rounds': 0, 'totalReps': 1, 'mvtNames': 'BARBELL', 'arrayMvt': ['BARBELL'] })
 }
 
 
@@ -835,7 +836,7 @@ function treatTimeCapStatus(elementAth) {
     let text2 = total != undefined ? (total != 1 ? '/' + total : '') : ''
     let text = result
 
-    if (overlay == "overlay_side" || overlay == "overlay_wpa") {
+    if (overlay == "overlay_side" || overlay == "overlay_wpa" || overlay.includes("overlay_top")) {
         elementAth.$item.find(".popup").hide();
         elementAth.$item.find(".popup_top").hide();
         elementAth.$item.find(".score").show();
@@ -891,6 +892,7 @@ function showRepMax(elementAth) {
         elementAth.$item.find(".popup_top").html('');
         overlay == 'versus' ? elementAth.$item.find(".popup_top").slideUp(1000) : elementAth.$item.find(".popup_top").fadeOut(1000);
     }
+    console.log('SCORE ABS MVT : ' + elementAth.currentMvt.scoreAbsMvt)
     elementAth.$item.find(".score").text(elementAth.currentMvt.scoreAbsMvt + ' ' + setupLeaderboard.value.unitSelect);
 }
 
@@ -1077,10 +1079,16 @@ function treatDisplayMvtFirst(elementAth) {
 }
 
 function hiddenAthlete(elementAth) {
-    if (elementAth.CurrentRank > 1 && elementAth.$item.is(':visible')) {
+    if (setupLeaderboard.value.hiddenAthlete) {
+        if (elementAth.CurrentRank > 1 && elementAth.$item.is(':visible')) {
+            setTimeout(() => {
+                elementAth.$item.fadeOut(1000);
+            }, 5000)
+        }
+    } else if (!setupLeaderboard.value.hiddenAthlete && !elementAth.$item.is(':visible')) {
         setTimeout(() => {
-            elementAth.$item.fadeOut(1000);
-        }, 5000)
+            elementAth.$item.fadeIn(1000);
+        }, 100)
     }
 }
 
@@ -1096,16 +1104,17 @@ function showHiddenAthlete(elementAth) {
 
 function treatPerfArray(elementAth) {
     if (overlay == 'commentator') {
-        console.log("TRAITEMENT DES PERFS POUR ATHLÈTE LANE : " + elementAth.lane)
-        console.log("bestPerf : " + bestPerf)
         if (bestPerf[elementAth.lane] == undefined) {
             bestPerf[elementAth.lane] = []
         }
         Object.values(elementAth.log_mvt[0]).forEach((key, index) => {
-            console.log("INDEX MVT POUR ATHLÈTE LANE " + elementAth.lane + " : ", key)
             let html = '';
             Object.entries(key).forEach(([value, time]) => {
-                html += `${value.replaceAll('-', '')}: ${time}<br>`;
+                let text = `${value.replaceAll('-', '')}: ${time}<br>`;
+                if (heat.typeWod == 'time') {
+                    text = text.toLowerCase().replaceAll('rd 1:', '')
+                }
+                html += text;
             });
             elementAth.$item.find("#mvt_id_" + index + "_" + elementAth.lane).html(html)
             // Object.values(key).forEach((time) => {
