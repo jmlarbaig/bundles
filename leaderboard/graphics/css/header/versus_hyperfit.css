@@ -1,0 +1,108 @@
+.header {
+    z-index: 100;
+    background-size: contain;
+    position: absolute;
+    width: 700px;
+    color: white;
+    background-position: center;
+    background-repeat: no-repeat;
+    left: 50%;
+    -webkit-transform: translate(-50%);
+    transform: translate(-50%);
+    background-color: white;
+    border-radius: 0px 0px 10px 10px;
+}
+
+.box_chrono {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin: auto;
+    height: 200px;
+}
+
+.chrono {
+    position: relative;
+    top: -30px;
+    margin: auto;
+}
+
+#cap {
+    font-size: 0px;
+}
+
+#time {
+    font-family: "Digit";
+    font-size: 12em;
+    background: linear-gradient(90deg, rgb(207, 5, 105), rgb(68, 33, 172));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.box_logo {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin: auto;
+    padding: 10px;
+    position: relative;
+    top: -20px;
+}
+
+.logo_hyperfit {
+    width: 100%;
+    height: 70px;
+    margin: auto;
+    background-image: url('../../assets/logo_hyperfit.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+
+.heat_content {
+    text-align: center;
+}
+
+.mainSponsor {
+    position: absolute;
+    padding: 10px 10px 10px 10px;
+    bottom: 0px;
+    left: 50%;
+    -webkit-transform: translate(-50%);
+    transform: translate(-50%);
+    width: 120px;
+    height: 100px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    /* <------ */
+    background-position: center;
+    background-origin: content-box;
+    background-color: white;
+    width: 200px;
+    border-radius: 10px 10px 0px 0px;
+}
+
+.box_mvt {
+    position: fixed;
+    background-color: var(--main_color);
+    color: var(--tx_main_color);
+    bottom: 10px;
+    width: 30%;
+    height: 40px;
+    text-transform: capitalize;
+    left: 50%;
+    -webkit-transform: translate(-50%);
+    transform: translate(-50%);
+    border-radius: 0px 0px 10px 10px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+    padding: 10px;
+}
+
+.box_mvt #mvt {
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

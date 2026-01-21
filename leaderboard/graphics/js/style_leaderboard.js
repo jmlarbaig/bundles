@@ -486,6 +486,32 @@ function leaderboardVersus(data) {
 }
 
 
+// HEADER VERSUS HYPERFIT
+
+function headerVersusHyperfit(indexDivision) {
+    let $headerTop = $(
+        '<div id="leaderboard' + indexDivision + '" class="leaderboard">' +
+        '</div>'
+    );
+
+
+    return $headerTop
+}
+
+function leaderboardVersusHyperfit(data) {
+    let name = treatDisplayName(data.displayName);
+    let $item = $(
+        '<div class="athlete" id="aht' + data.lane + '">' +
+        '<div class="name">' + name + '</div>' +
+        '<div class="score"></div>' +
+        '<div class="popup">' + '</div>' +
+        '</div>'
+    );
+
+    return $item
+}
+
+
 
 // Header Versus WPA
 

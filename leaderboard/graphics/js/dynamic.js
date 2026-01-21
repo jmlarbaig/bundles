@@ -126,20 +126,24 @@ function updateDynamics(newScoring, status) {
                 switch (status) {
                     case '0':
                         // initialRankChange(elemAth[i], ".popup")
-                        hideMvtInPopup(elemAth[i])
-                        hideRepMvtInScore(elemAth[i])
-                        initialRankChange(elemAth[i], ".ath")
-                        initialRankChange(elemAth[i], ".rank")
-                        initialRankChange(elemAth[i], ".score")
+                        if (overlay != 'versus_hyperfit') {
+                            hideMvtInPopup(elemAth[i])
+                            hideRepMvtInScore(elemAth[i])
+                            initialRankChange(elemAth[i], ".ath")
+                            initialRankChange(elemAth[i], ".rank")
+                            initialRankChange(elemAth[i], ".score")
+                        }
 
                         hideWaitingWPA(arrayWAP)
                         break;
                     case 'R':
-                        hideMvtInPopup(elemAth[i])
-                        hideRepMvtInScore(elemAth[i])
-                        initialRankChange(elemAth[i], ".ath")
-                        initialRankChange(elemAth[i], ".rank")
-                        initialRankChange(elemAth[i], ".score")
+                        if (overlay != 'versus_hyperfit') {
+                            hideMvtInPopup(elemAth[i])
+                            hideRepMvtInScore(elemAth[i])
+                            initialRankChange(elemAth[i], ".ath")
+                            initialRankChange(elemAth[i], ".rank")
+                            initialRankChange(elemAth[i], ".score")
+                        }
                         hideResultWPA(arrayWAP)
                         break;
                     case 'W':
@@ -148,13 +152,16 @@ function updateDynamics(newScoring, status) {
                         // console.log(elemAth[i])
                         switch (elemAth[i].status) {
                             case '0':
-                                if (overlay != 'commentator') {
+
+                                if (overlay != 'commentator' || overlay != 'versus_hyperfit') {
                                     elemAth[i].$item.find(".lane").hide()
                                 }
-                                noJudge(elemAth[i])
-                                hideMvtInPopup(elemAth[i])
-                                hideRepMvtInScore(elemAth[i])
-                                changeRankToLane(elemAth[i])
+                                if (overlay != 'versus_hyperfit') {
+                                    noJudge(elemAth[i])
+                                    hideMvtInPopup(elemAth[i])
+                                    hideRepMvtInScore(elemAth[i])
+                                    changeRankToLane(elemAth[i])
+                                }
                                 switch (heat.typeWod) {
                                     case 'repmax':
                                         showRepMax(elemAth[i])
@@ -172,18 +179,23 @@ function updateDynamics(newScoring, status) {
                                 }
                                 break;
                             case 'S':
-                                hideMvtInPopup(elemAth[i])
-                                hideRepMvtInScore(elemAth[i])
-                                changeRankToLane(elemAth[i])
+                                if (overlay != 'versus_hyperfit') {
+
+                                    hideMvtInPopup(elemAth[i])
+                                    hideRepMvtInScore(elemAth[i])
+                                    changeRankToLane(elemAth[i])
+                                }
                                 break;
                             case 'W':
                                 if (overlay != 'commentator') {
                                     setupLeaderboard.value.lane ? elemAth[i].$item.find(".lane").show() : elemAth[i].$item.find(".lane").hide()
                                 }
-                                withJudge(elemAth[i])
-                                // console.log("Athlete with statut W :", elemAth[i])
-                                // if (overlay != 'overlay_wpa') {
-                                changeRank(elemAth[i]);
+                                if (overlay != 'versus_hyperfit') {
+                                    withJudge(elemAth[i])
+                                    // console.log("Athlete with statut W :", elemAth[i])
+                                    // if (overlay != 'overlay_wpa') {
+                                    changeRank(elemAth[i]);
+                                }
                                 // }
 
 
@@ -197,8 +209,10 @@ function updateDynamics(newScoring, status) {
 
 
                                     if (elemAth[i].result == "" && !alreadyPassed) {
-                                        alreadyPassed = true;
                                         treatTextMvt(elemAth[i].currentMvt.arrayMvt.toString().replaceAll(',', '-').replaceAll('_', ' ').replace('-', ''));
+                                        if (elemAth[i].CurrentRank == 1) {
+                                            alreadyPassed = true;
+                                        }
                                     }
 
                                     switch (heat.typeWod) {
@@ -209,10 +223,14 @@ function updateDynamics(newScoring, status) {
                                         default:
                                             showRepMvtInScore(elemAth[i])
                                             // if (setupLeaderboard.value.scoreConfig == 'mvt_score') {
-                                            if (i != 0) {
-                                                treatDisplayMvtForOthers(elemAth[i], elemAth[i - 1].currentMvt.id, elemAth[i - 1].currentMvt.rounds)
-                                            } else {
+                                            if (overlay == 'versus_hyperfit') {
                                                 treatDisplayMvtFirst(elemAth[i])
+                                            } else {
+                                                if (i != 0) {
+                                                    treatDisplayMvtForOthers(elemAth[i], elemAth[i - 1].currentMvt.id, elemAth[i - 1].currentMvt.rounds)
+                                                } else {
+                                                    treatDisplayMvtFirst(elemAth[i])
+                                                }
                                             }
                                             // }
                                             break;
@@ -239,7 +257,7 @@ function updateDynamics(newScoring, status) {
                                     setupLeaderboard.value.lane ? elemAth[i].$item.find(".lane").show() : elemAth[i].$item.find(".lane").hide()
                                 }
                                 if (!alreadyPassed) {
-                                    treatTextMvt('FINISH')
+                                    // treatTextMvt('FINISH')
                                 }
                                 if (overlay != 'overlay_wpa') {
                                     changeRank(elemAth[i]);
@@ -317,7 +335,7 @@ function updateDynamics(newScoring, status) {
             })
 
 
-            if (overlay != "versus" || overlay != 'overlay_wpa') {
+            if (!overlay.includes("versus") || overlay != 'overlay_wpa') {
                 // if (elemAth.length > 2) {
                 reposition("#leaderboard" + key, elemAth);
                 // }
@@ -363,7 +381,8 @@ function changeFunction(overlay, elementAth) {
             changeColor(elementAth, ".popup")
             changeColor(elementAth, ".score")
             break;
-
+        case 'versus_hyperfit':
+            break;
         case 'overlay_top_v2':
             changeColorAth(elementAth, ".ath")
             break;

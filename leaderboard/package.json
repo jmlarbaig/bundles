@@ -65,6 +65,15 @@
         "width": 2,
         "headerColor": "#525F78",
         "workspace": "Main Workspace"
+      },
+      {
+        "name": "hyperfit",
+        "title": "Hyperfit Dashboard",
+        "file": "hyperfit.html",
+        "fullbleed": false,
+        "width": 4,
+        "headerColor": "#525F78",
+        "workspace": "Main Workspace"
       }
     ],
     "graphics": [
@@ -140,6 +149,11 @@
       },
       {
         "file": "timer_interval.html",
+        "width": 1920,
+        "height": 1080
+      },
+      {
+        "file": "versus_hyperfit.html",
         "width": 1920,
         "height": 1080
       }

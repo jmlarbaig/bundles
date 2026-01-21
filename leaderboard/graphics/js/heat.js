@@ -39,6 +39,8 @@ function resetHeat(data) {
                 break;
             case 'versus':
                 $item = styleHeat_Versus(data)
+            case 'versus_hyperfit':
+                $item = styleHeat_VersusHyperfit(data)
                 break;
         }
 
@@ -141,6 +143,18 @@ function styleHeat_Versus(element) {
         //     '<div class="FV col">' + '</div>'+
         //     '<div class="SK col">' + '</div>'+
         // '</div>'+
+        '</div>'
+    );
+    return $item
+}
+
+function styleHeat_VersusHyperfit(element) {
+    let $item = $(
+        '<div class="heat_content">' +
+        '<div class="details">' +
+        '<div id="workout" class="detail" > ' + element.externalName + ' </div>' +
+        '<div id="division" class="detail"> ' + element.heatName + ' </div>' +
+        '</div>' +
         '</div>'
     );
     return $item

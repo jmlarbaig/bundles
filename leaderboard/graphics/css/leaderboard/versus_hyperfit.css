@@ -1,0 +1,85 @@
+.leaderboards {
+    position: relative;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+}
+
+.leaderboard {
+    display: flex;
+    flex-direction: row;
+    font-size: 1.5em;
+}
+
+.athlete {
+    display: flex;
+    width: 100%;
+    height: 1080px;
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+.athlete:nth-child(1) {
+    background: rgb(207, 5, 105);
+    color: white;
+}
+
+.athlete:nth-child(2) {
+    background: rgb(68, 33, 172);
+    color: white;
+}
+
+.athlete .name {
+    padding: 20px;
+    width: 100%;
+    font-size: 4em;
+    margin-bottom: 200px;
+}
+
+.athlete .score {
+    margin: auto;
+    font-size: 14em;
+}
+
+.athlete:nth-child(1) .name {
+    text-align: left;
+}
+
+.athlete:nth-child(2) .name {
+    text-align: right;
+}
+
+.athlete .popup {
+    z-index: 10;
+    margin: auto;
+    padding: 20px;
+    text-align: center;
+    width: 100%;
+    font-size: 6em;
+}
+
+.hyperfitPoints {
+    position: absolute;
+    top: 330px;
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    padding: 0 600px;
+    box-sizing: border-box;
+    z-index: 5;
+}
+
+.hfcPoints {
+    font-size: 5em;
+    font-weight: bold;
+    color: white;
+    /* text-shadow: 2px 2px 4px #000000; */
+}
+
+.hfcPoints:nth-child(1) {
+    text-align: left;
+}
+
+.hfcPoints:nth-child(2) {
+    text-align: right;
+}

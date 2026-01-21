@@ -73,6 +73,10 @@ const manualChrono = nodecg.Replicant('manualChrono')
 const workoutsMQTT = nodecg.Replicant('workoutsMQTT', 'connector')
 const heatMQTT = nodecg.Replicant('heatMQTT', 'connector')
 
+
+// Hyperfit Data
+const hyperfitPoints = nodecg.Replicant('hyperfitPoints')
+
 let laneEcho = 0
 
 // Initialisation du choix de la vue
@@ -886,3 +890,17 @@ chronoState.on('change', (newValue) => {
     }
 
 })
+
+
+hyperfitPoints.on('change', (newValue, oldValue) => {
+    if (JSON.stringify(newValue) != JSON.stringify(oldValue)) {
+        console.log('hyperfitPoints change', newValue)
+        updateHyperfitPoints(newValue)
+    }
+})
+
+function updateHyperfitPoints(data) {
+    console.log('updateHyperfitPoints', data)
+    $('.hyperfitPoints').find('#leftPoints').text(data.leftPoints)
+    $('.hyperfitPoints').find('#rightPoints').text(data.rightPoints)
+}

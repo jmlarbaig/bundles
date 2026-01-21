@@ -33,13 +33,12 @@ function updateTime() {
         $(".chrono").css("color", Clrs.tx_chrono_color)
     }
 
-    if (timeDiffTimeCap < 0 && (timeDiffStart) > 0) {
+    if (timeDiffTimeCap < 0 && timeDiffStart > 0) {
         if (overlay != 'lane') {
             $('#cap').fadeIn(1000)
         }
         if (heat.typeWod == "amrap" || Ft_Ap) {
             chrono = msToTime(timeDiffEnd)
-            // chrono = msToTime(timeDiffStart)
         }
         else {
             chrono = msToTime(timeDiffStart);
@@ -124,7 +123,6 @@ function showTime(Cap) {
             '<div id="time"> </div>' +
             '<div id="cap">Timecap ' + Cap + '</div>'
         );
-
 
         !setupLeaderboard.value.chrono && $("#box_chrono").hide();
         $list.append($item);

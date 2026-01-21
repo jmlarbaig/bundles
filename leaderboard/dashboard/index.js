@@ -11,15 +11,22 @@ const ipAddress = nodecg.Replicant('ipAddress', 'connector')
 
 const athletesHeat = nodecg.Replicant('athletesHeat')
 
+const s_athletes = nodecg.Replicant('s_athletes', 'connector');
 
 const mainSponsors = nodecg.Replicant('assets:mainSponsor', 'connector')
 
 const backgroundOverlay = nodecg.Replicant('assets:backgroundOverlay', 'leaderboard')
 
+const hyperfitPoints = nodecg.Replicant('hyperfitPoints')
 
 var participantEvent = {}
 var participantsCurrentHeats = {}
 var currentHeat = {}
+
+const hyperfitPts = {
+    leftPoints: 0,
+    rightPoints: 0
+};
 
 const eventInfos = nodecg.Replicant('eventInfos', 'connector');
 
@@ -176,4 +183,64 @@ backgroundOverlay.on('change', (newValue, oldValue) => {
     }
 })
 
+s_athletes.on('change', (newValue, oldValue) => {
+    $('#nameAthleteRight').innerHTML = ''
+    $('#nameAthleteLeft').innerHTML = ''
+    if (newValue != undefined) {
+        if (newValue[hyperfitPts.leftPoints] != undefined) {
+            $('#nameAthleteLeft').text(newValue[0].displayName.toUpperCase())
+        }
+        if (newValue[hyperfitPts.rightPoints] != undefined) {
+            $('#nameAthleteRight').text(newValue[1].displayName.toUpperCase())
+        }
+    }
 
+})
+
+hyperfitPoints.on('change', (newValue, oldValue) => {
+    console.log(newValue)
+    hyperfitPts.leftPoints = newValue.leftPoints
+    hyperfitPts.rightPoints = newValue.rightPoints
+    $('#leftPoints').val(hyperfitPts.leftPoints)
+    $('#rightPoints').val(hyperfitPts.rightPoints)
+})
+
+function plusPoint(side) {
+    console.log(side)
+    console.log(hyperfitPts)
+    if (side === 'right') {
+        hyperfitPts.rightPoints += 1
+        $('#rightPoints').val(hyperfitPts.rightPoints)
+        hyperfitPoints.value = hyperfitPts
+        return
+    } else if (side === 'left') {
+        hyperfitPts.leftPoints += 1
+        $('#leftPoints').val(hyperfitPts.leftPoints)
+        hyperfitPoints.value = hyperfitPts
+    }
+}
+
+function moinsPoint(side) {
+    if (side === 'right') {
+        if (hyperfitPts.rightPoints > 0) {
+            hyperfitPts.rightPoints -= 1
+            $('#rightPoints').val(hyperfitPts.rightPoints)
+            hyperfitPoints.value = hyperfitPts
+        }
+        return
+    } else if (side === 'left') {
+        if (hyperfitPts.leftPoints > 0) {
+            hyperfitPts.leftPoints -= 1
+            $('#leftPoints').val(hyperfitPts.leftPoints)
+            hyperfitPoints.value = hyperfitPts
+        }
+    }
+}
+
+function resetPoints() {
+    hyperfitPts.leftPoints = 0
+    hyperfitPts.rightPoints = 0
+    $('#leftPoints').val(hyperfitPts.leftPoints)
+    $('#rightPoints').val(hyperfitPts.rightPoints)
+    hyperfitPoints.value = hyperfitPts
+}

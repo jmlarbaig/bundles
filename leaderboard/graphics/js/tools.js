@@ -246,6 +246,9 @@ function reposition(leaderboard, athletes) {
         case 'overlay_wpa':
             repoWpa(leaderboard, athletes);
             break;
+        case 'versus_hyperfit':
+        case 'versus':
+            break;
         default:
             repoTop(leaderboard, athletes);
             break;
@@ -589,7 +592,7 @@ function launchAutomaticSchedule() {
 
 function changeColor(ath, element) {
     let rank = ath.CurrentRank
-    if (overlay.includes('overlay_top') || overlay == 'versus') {
+    if (overlay.includes('overlay_top') || overlay.includes('versus')) {
         rank != 1 ? rank = 4 : rank
     }
 
@@ -856,7 +859,7 @@ function treatTimeCapStatus(elementAth) {
 
 
 function treatTextMvt(mvts) {
-    if (overlay == "versus" && heat.typeWod != 'repmax') {
+    if (overlay.includes("versus") && heat.typeWod != 'repmax') {
         if (mvts != "") {
             $('.box_mvt').slideDown(1000)
             $('.box_mvt').find('#mvt').html(mvts)
@@ -1049,7 +1052,11 @@ function treatDisplayMvtFirst(elementAth) {
     }
 
     // let textTomvt = repTarget + ' ' + mvt + ' THEN ' + nextMvt;
+
     let textTomvt = repTarget + ' ' + mvt;
+    if (overlay == 'versus_hyperfit') {
+        textTomvt = elementAth.currentMvt.scoreRelMvt + ' ' + mvt;
+    }
 
     if (elementAth.currentMvt.mvtNames == "" || elementAth.currentMvt.mvtNames.includes("Workout")) {
         overlay != "versus" && elementAth.$item.find(".popup").hide();

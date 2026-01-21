@@ -94,8 +94,6 @@ function resetLeaderboard(newData) {
         // ! On crée un leaderboard par division
         Object.values(athletesDivision).forEach((elementDiv, indexDivision) => {
 
-            console.log("index DIvision : ", indexDivision)
-            console.log("divisionsNames[indexDivision] : ", divisionsNames[indexDivision])
 
             listOfAth.push("<span>#" + divisionsNames[indexDivision] + "</span>")
 
@@ -130,6 +128,9 @@ function resetLeaderboard(newData) {
                 case 'versus':
                     $tabItem = headerVersus(indexDivision)
                     break;
+                case 'versus_hyperfit':
+                    $tabItem = headerVersusHyperfit(indexDivision)
+                    break;
                 case 'overlay_wpa':
                     $tabItemBox = headerVersusTopWPA();
                     if (athletesDivision[0].length > 2) {
@@ -150,9 +151,15 @@ function resetLeaderboard(newData) {
                 $tabItem.hide()
 
                 $tab.append($tabItem);
-                setTimeout(() => {
-                    $tabItem.show(1000)
-                })
+                if (overlay.includes("versus")) {
+
+                    $tabItem.show()
+                } else {
+
+                    setTimeout(() => {
+                        $tabItem.show(1000)
+                    })
+                }
             }
 
             if (overlay == 'commentator') {
@@ -161,7 +168,7 @@ function resetLeaderboard(newData) {
 
             let $listBox;
             let $list;
-            if (overlay == "versus") {
+            if (overlay.includes("versus")) {
                 $list = $("#leaderboard" + indexDivision);
             } else if (overlay == "overlay_wpa") {
                 $listBox = $("#topLeaderboard")
@@ -212,6 +219,9 @@ function resetLeaderboard(newData) {
                     case 'versus':
                         $item = leaderboardVersus(elementAth)
                         break;
+                    case 'versus_hyperfit':
+                        $item = leaderboardVersusHyperfit(elementAth)
+                        break;
                     case 'overlay_wpa':
                         if (elementDiv.length > 2) {
                             $itemBox = leaderboardVersusTopSTWPA();
@@ -229,7 +239,7 @@ function resetLeaderboard(newData) {
 
                 listOfAth.push("<span>#" + elementAth.lane + " - " + elementAth.displayName + "</span>")
 
-                if (overlay == "versus") {
+                if (overlay.includes("versus")) {
                     if (indexAthletes == 0 || indexAthletes == 1) {
                         $list.append($item);
                     }
@@ -249,8 +259,9 @@ function resetLeaderboard(newData) {
                     }
                 }
 
-                if (overlay == 'versus') {
-                    elementAth.$item.slideDown(1000)
+                if (overlay.includes('versus')) {
+                    console.log("Versus overlay detected")
+                    // elementAth.$item.slideDown(1000)
                 } else {
                     if (overlay != 'overlay_side' && overlay != 'overlay_side_v1' && overlay != 'overlay_wpa') {
                         elementAth.$item.fadeIn(1000)
@@ -269,7 +280,7 @@ function resetLeaderboard(newData) {
                     }
 
                     statusHeat.status == '0' && athletesDivision[indexDivision].sort(ascendingLane);
-                    if (overlay != "versus") {
+                    if (!overlay.includes("versus")) {
                         reposition("#leaderboard" + indexDivision, athletesDivision[indexDivision]);
                     }
 
