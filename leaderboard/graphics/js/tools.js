@@ -45,6 +45,7 @@ function msToTime(s) {
     var hrs = (s - mins) / 60;
     if (secs < 10) { secs = '0' + secs }
     if (mins < 10) { mins = '0' + mins }
+    console.log("Timer : ", mins + ':' + secs)
     return mins + ':' + secs;
 }
 
@@ -288,9 +289,9 @@ function withJudge(ath) {
 function repoTop(lead_, aths_) {
     //initialisation la position de départ
     let y = parseInt($(lead_ + " .header").css('height').replace('px', ''));
-    console.log("height Ath : ", y)
-    console.log("Lead : ", lead_)
-    console.table("Aths : ", aths_)
+    // console.log("height Ath : ", y)
+    // console.log("Lead : ", lead_)
+    // console.table("Aths : ", aths_)
     Object.values(aths_).forEach(elm => {
         if (elm.$item.find(lead_) != undefined) {
             if (true) {
@@ -349,7 +350,7 @@ function TreatMvt(elementAth) {
     // console.log("elementAth Division", elementAth.division)
     // console.log("Workout ", workouts)
     // console.log("Workout ID", workouts.find((element) => element.division == elementAth.division).mvt_id.length)
-    console.log("elementAth :", elementAth)
+    // console.log("elementAth :", elementAth)
 
     if ((auth[elementAth.division] || heat.typeWod == 'repmax') && workouts.length > 0 && workouts.find((element) => element.division == elementAth.division).mvt_id.length > 1) {
         if (elementAth.result == "") {
@@ -809,7 +810,7 @@ function treatFinishStatus(elementAth) {
         result = "00:" + t[2].substring(0, 2);
     }
 
-    console.log("Resultat Final : ", result)
+    // console.log("Resultat Final : ", result)
 
     if (overlay == "overlay_side" || overlay == "overlay_wpa") {
 
@@ -895,7 +896,7 @@ function showRepMax(elementAth) {
         elementAth.$item.find(".popup_top").html('');
         overlay == 'versus' ? elementAth.$item.find(".popup_top").slideUp(1000) : elementAth.$item.find(".popup_top").fadeOut(1000);
     }
-    console.log('SCORE ABS MVT : ' + elementAth.currentMvt.scoreAbsMvt)
+    // console.log('SCORE ABS MVT : ' + elementAth.currentMvt.scoreAbsMvt)
     elementAth.$item.find(".score").text(elementAth.currentMvt.scoreAbsMvt + ' ' + setupLeaderboard.value.unitSelect);
 }
 
@@ -935,10 +936,10 @@ function showRepMvtInScore(elementAth) {
     }
 
     if (elementAth.currentMvt.mvtNames.toUpperCase() != "WORKOUT" && setupLeaderboard.value.showMvt) {
-        console.log("SHOW MVTS IN SCORE CONFIG : ", setupLeaderboard.value.showMvt)
+        // console.log("SHOW MVTS IN SCORE CONFIG : ", setupLeaderboard.value.showMvt)
         showMvtInPopup(elementAth)
     } else {
-        console.log("HIDE MVTS IN SCORE CONFIG : ", setupLeaderboard.value.showMvt)
+        // console.log("HIDE MVTS IN SCORE CONFIG : ", setupLeaderboard.value.showMvt)
         hideMvtInPopup(elementAth)
     }
 
@@ -1007,11 +1008,11 @@ function treatDisplayMvtForOthers(elementAth, idToCompare, roundsToCompare) {
     }
 
     let textTomvt = repTarget + ' ' + mvt;
-    console.log("COMPARE ID : ", elementAth.currentMvt.id, " TO ", idToCompare)
-    console.log("COMPARE ROUNDs : ", elementAth.currentMvt.rounds, " TO ", roundsToCompare)
+    // console.log("COMPARE ID : ", elementAth.currentMvt.id, " TO ", idToCompare)
+    // console.log("COMPARE ROUNDs : ", elementAth.currentMvt.rounds, " TO ", roundsToCompare)
     console.log(elementAth.currentMvt.id != idToCompare && elementAth.currentMvt.rounds != roundsToCompare)
     if (elementAth.currentMvt.id != idToCompare || elementAth.currentMvt.rounds != roundsToCompare) {
-        console.log("DISPLAY MVTS FOR OTHERS")
+        // console.log("DISPLAY MVTS FOR OTHERS")
         if (heat.typeWod == 'amrap' && !Number.isNaN(elementAth.currentMvt.rounds)) {
             if (mvt.includes('Rd')) {
                 elementAth.$item.find(".popup").text(textTomvt);

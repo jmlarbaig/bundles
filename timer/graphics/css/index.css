@@ -1,9 +1,9 @@
 :root {
-    --main-color: rgba(0,0,0,0.9);
+    --main-color: rgba(0, 0, 0, 0.9);
     --second-color: #a01111;
-  }
+}
 
-body{
+body {
     background-color: var(--main-color);
 }
 
@@ -12,132 +12,140 @@ body{
     src: url("../fonts/DS-DIGI.TTF");
 }
 
-.box_logo{
+.box_logo {
     opacity: 80%;
     filter: blur(50px);
     position: absolute;
     height: 100%;
     width: 100%;
     background-position: center;
-    background-repeat:repeat-x;
+    background-repeat: repeat-x;
     background-size: cover;
     background-clip: padding-box;
 }
 
-.logo{
+.logo {
     background-size: contain;
     position: absolute;
     width: 300px;
     height: 300px;
     background-position: center;
     background-repeat: no-repeat;
-    bottom: 300px;
-    left: 50%;
-    -webkit-transform: translate( -50%);
-    transform: translate( -50%);
+    top: 30px;
+    left: 25%;
+    -webkit-transform: translate(-50%);
+    transform: translate(-50%);
+    z-index: 40;
 }
 
-.box_chrono{
+.box_chrono {
     position: absolute;
-    top:30px;
+    top: 100px;
     left: 50%;
-    -webkit-transform: translate( -50%);
-    transform: translate( -50%);
+    width: 1400px;
+    padding: 50px;
+    -webkit-transform: translate(-50%);
+    transform: translate(-50%);
     text-align: center;
-    width: 50%;
     border-radius: 15px;
-    background-color: var(--main-color);
-    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    /* background-color: var(--main-color); */
+    /* box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px; */
 }
 
-.chrono{
+.chrono {
+    text-shadow: 2px 2px 4px #000000;
     font-size: 27rem;
     font-family: "Digit";
-    margin: -50px 0px -50px 0px;
 }
 
-#cap{
+#cap {
+    text-shadow: 2px 2px 4px #000000;
     border-radius: 10px;
     font-size: 5rem;
-    background-color: black;
     color: white;
+    position: relative;
+    top: -100px;
 }
 
-.mainSponsor{
+.mainSponsor {
     background-size: contain;
     position: absolute;
     width: 300px;
     height: 300px;
     background-position: center;
     background-repeat: no-repeat;
-    bottom:30px;
-    left: 50%;
-    -webkit-transform: translate( -50%);
-    transform: translate( -50%);
+    top: 30px;
+    left: 75%;
+    -webkit-transform: translate(-50%);
+    transform: translate(-50%);
 }
 
 @media (max-width: 1000px) {
-    .box_logo{
+    .box_logo {
         opacity: 80%;
         filter: blur(50px);
         position: absolute;
         height: 100%;
         width: 100%;
         background-position: center;
-        background-repeat:repeat-x;
+        background-repeat: repeat-x;
         background-size: cover;
         background-clip: padding-box;
     }
-    
-    .logo{
+
+    .logo {
         background-size: contain;
         position: absolute;
         width: 100px;
         height: 100px;
         background-position: center;
         background-repeat: no-repeat;
-        bottom: 200px;
-        left: 50%;
-        -webkit-transform: translate( -50%);
-        transform: translate( -50%);
+        top: 30px;
+        left: 25%;
+        -webkit-transform: translate(-50%);
+        transform: translate(-50%);
     }
-    
-    .box_chrono{
+
+    .box_chrono {
         position: absolute;
-        top:100px;
+        top: 100px;
         left: 50%;
-        -webkit-transform: translate( -50%);
-        transform: translate( -50%);
+        width: 1400px;
+        padding: 50px;
+        -webkit-transform: translate(-50%);
+        transform: translate(-50%);
         text-align: center;
-        width: 70%;
         border-radius: 15px;
-        background-color: var(--main-color);
-        box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+        /* background-color: var(--main-color);
+        box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px; */
     }
-    
-    .chrono{
-        font-size: 5rem;
+
+    .chrono {
+        text-shadow: 2px 2px 4px #000000;
+        font-size: 8rem;
         font-family: "Digit";
         margin: -50px 0px -50px 0px;
     }
-    
-    #cap{
+
+    #cap {
+        text-shadow: 2px 2px 4px #000000;
         border-radius: 10px;
-        font-size: 1rem;
-        background-color: black;
+        top: 30px;
+        font-size: 3rem;
+        /* background-color: black; */
         color: white;
     }
-    
-    .mainSponsor{
+
+    .mainSponsor {
         background-size: contain;
         position: absolute;
-        width: 200px;
-        height: 200px;
+        top: 30px;
+        width: 100px;
+        height: 100px;
         background-position: center;
         background-repeat: no-repeat;
-        bottom:30px;
-        left: 50%;
-        -webkit-transform: translate( -50%);
-        transform: translate( -50%);
+        left: 75%;
+        -webkit-transform: translate(-50%);
+        transform: translate(-50%);
     }
 }

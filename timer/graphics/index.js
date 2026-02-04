@@ -43,6 +43,7 @@ heatInfos.on('change', (newValue, oldValue) => {
     if (newValue != undefined) {
         heat = typeWorkout(newValue)
         launchTimer()
+        sonLaunch = false;
         showTime(heat.timecap)
     }
 })
@@ -55,6 +56,7 @@ let timerLaunch = null;
 
 
 function launchTimer() {
+    sonLaunch = false;
     if (heat != {}) {
         if (startTime != 0) {
             var timecapIn = ((parseInt(tc.length ? parseInt(tc[1]) : 0) * 60) + parseInt(tc.length ? parseInt(tc[2]) : 0)) * 1000;

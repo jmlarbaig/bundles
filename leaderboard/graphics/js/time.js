@@ -1,3 +1,7 @@
+const son_standby = new Audio("./assets/sounds/beep_standby.mp3");
+let sonLaunch = false;
+let audioReady = false;
+
 
 function updateTime() {
 
@@ -13,6 +17,8 @@ function updateTime() {
         console.log('newHeat is true, setting timer to startTime');
         timer = endTime
         adjustT.value = 0
+        sonLaunch = false;
+        console.log("reset sonLaunch")
     }
 
     console.log('timer', timer, 'adjustT', adjustT.value, 'endTime', endTime, 'startTime', startTime);
@@ -33,9 +39,14 @@ function updateTime() {
         $(".chrono").css("color", Clrs.tx_chrono_color)
     }
 
-    if (timeDiffTimeCap < 0 && timeDiffStart > 0) {
+    if (timeDiffTimeCap < 0 && timeDiffStart >= 0) {
         if (overlay != 'lane') {
             $('#cap').fadeIn(1000)
+        }
+        if (!sonLaunch && audioReady && timeDiffStart <= 1000) {
+            console.log('sound launch')
+            // son_standby.play();
+            sonLaunch = true;
         }
         if (heat.typeWod == "amrap" || Ft_Ap) {
             chrono = msToTime(timeDiffEnd)
@@ -55,7 +66,7 @@ function updateTime() {
             // $(".chrono").css("background-color", "rgba(255,50,80,1)")
             $(".chrono").css("color", "rgb(255,255,255")
         }
-        let ch = msToTime(timeDiffStart).split(':');
+        let ch = msToTime(timeDiffStart - 1000).split(':');
         let min = parseInt(ch[0].replace('0-', ''));
         let sec = parseInt(ch[1].replace('0-', ''));
         let minS = min
@@ -110,6 +121,8 @@ function resetTimer() {
     $(".chrono").css("background-color", Clrs.chrono_color)
     $(".chrono").css("color", Clrs.tx_chrono_color)
     document.getElementById("time").innerHTML = "00:00";
+    sonLaunch = false;
+    console.log("reset sonLaunch")
 }
 
 
@@ -133,3 +146,18 @@ function showTime(Cap) {
         console.log(e)
     }
 }
+
+function autoriserAudio() {
+    if (audioReady) return;
+
+    son_standby.play().then(() => {
+        son_standby.pause();
+        son_standby.currentTime = 0;
+        audioReady = true;
+        console.log("Audio autorisé ✅");
+    });
+}
+
+document.addEventListener("click", autoriserAudio, { once: true });
+document.addEventListener("keydown", autoriserAudio, { once: true });
+document.addEventListener("touchstart", autoriserAudio, { once: true });

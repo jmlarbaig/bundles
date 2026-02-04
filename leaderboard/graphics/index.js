@@ -155,6 +155,7 @@ heatInfos.on('change', (newValue, oldValue) => {
     if (JSON.stringify(newValue) !== JSON.stringify(oldValue)) {
         console.log('heatInfos change', newValue)
         heat = typeWorkout(newValue)
+        sonLaunch = false;
         launchTimer()
         showTime(heat.timecap)
         if (overlay == 'sk' || overlay == 'head_judge') {
@@ -737,7 +738,7 @@ function startChrono() {
 
     data.minutes = parseInt(timeCap.split(':')[1])
     data.secondes = parseInt(timeCap.split(':')[2])
-
+    sonLaunch = false;
 
     console.log(data)
 
