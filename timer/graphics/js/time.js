@@ -35,6 +35,9 @@ function updateTime() {
         else {
             chrono = msToTime(timeDiffStart);
         }
+        if (timeDiffStart <= 2000) {
+            chrono = "GO"
+        }
     } else if (timeDiffStart < 0 && timeDiffStart > - (60 * 60 * 1000)) {
         $('#cap').fadeOut(1000)
         $(".box_chrono").css("color", "rgba(255,50,80,1)")
@@ -53,6 +56,10 @@ function updateTime() {
         }
 
         chrono = '-' + minS + ':' + secS;
+        if (sec < 11 && sec > 8) {
+            chrono = "STANDBY"
+        }
+
     } else {
         $('#cap').fadeOut(1000)
         if (heat.timecap != '') {
@@ -70,6 +77,7 @@ function updateTime() {
         else {
             chrono = msToTime(timeDiffStart);
         }
+
     }
 
     console.log(chrono)
