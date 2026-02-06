@@ -48,11 +48,10 @@ function updateTime() {
         if (overlay != 'lane' && overlay != 'timer') {
             $('#cap').fadeIn(1000)
         }
-        if (!sonLaunch && audioReady && timeDiffStart <= 1000) {
+
+        if (audioReady && timeDiffStart < 1000 && timeDiffStart > 0) {
             console.log('sound launch')
             son_standby.play();
-            sonLaunch = true;
-            sonFinishLaunch = false;
         }
         if (heat.typeWod == "amrap" || Ft_Ap) {
             chrono = msToTime(timeDiffEnd)
@@ -96,7 +95,7 @@ function updateTime() {
         if (overlay != 'lane' && overlay != 'timer') {
             $('#cap').fadeOut(1000)
         }
-        if (audioReady && !sonFinishLaunch && onChronoBefore) {
+        if (audioReady && timeDiffTimeCap > 0 && timeDiffTimeCap < 1000) {
             console.log('sound launch')
             son_standby.play();
             sonLaunch = false;
@@ -108,7 +107,6 @@ function updateTime() {
         else {
             chrono = "00:00"
         }
-
     }
     // if (timeDiffTimeCap > -30000 && timeDiffTimeCap < 0 && timeDiffStart > 0) {
     //     if (overlay == 'overlay_side' || overlay == 'overlay_side_v1' || overlay == 'overlay_wpa') {
