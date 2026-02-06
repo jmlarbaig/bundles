@@ -101,6 +101,10 @@ function updateTime() {
             sonLaunch = false;
             sonFinishLaunch = true;
         }
+        if (overlay == 'timer') {
+            $(".box_chrono").css("color", Clrs.colorFontCountdownTimer)
+            $(".chrono").css("color", Clrs.colorFontCountdownTimer)
+        }
 
         if (timeDiffTimeCap > 0 && timeDiffTimeCap < (1000 * 10)) {
             chrono = "STOP"
