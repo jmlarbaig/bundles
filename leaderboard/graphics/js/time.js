@@ -43,7 +43,7 @@ function updateTime() {
         $(".chrono").css("color", Clrs.tx_chrono_color)
     }
 
-    if (timeDiffTimeCap < 0 && timeDiffStart >= 0) {
+    if (timeDiffTimeCap <= 0 && timeDiffStart >= 0) {
         onChronoBefore = true;
         if (overlay != 'lane' && overlay != 'timer') {
             $('#cap').fadeIn(1000)
@@ -63,7 +63,7 @@ function updateTime() {
         if (timeDiffStart <= 2000) {
             chrono = "GO"
         }
-    } else if (timeDiffStart < 0 && timeDiffStart > -(60 * 60 * 1000)) {
+    } else if (timeDiffStart < 0) {
         onChronoBefore = true;
         if (overlay != 'lane' && overlay != 'timer') {
             $('#cap').fadeOut(1000)
