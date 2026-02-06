@@ -102,8 +102,10 @@ function updateTime() {
             sonFinishLaunch = true;
         }
 
-        if (timeDiffTimeCap > 0 && timeDiffTimeCap < 3000) {
+        if (timeDiffTimeCap > 0 && timeDiffTimeCap < (1000 * 10)) {
             chrono = "STOP"
+        } else {
+            chrono = heat.timecap
         }
         // if (heat.timecap != '') {
         //     chrono = heat.timecap
