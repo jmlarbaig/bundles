@@ -17,6 +17,8 @@ const mainSponsors = nodecg.Replicant('assets:mainSponsor', 'connector')
 
 const backgroundOverlay = nodecg.Replicant('assets:backgroundOverlay', 'leaderboard')
 
+const backgroundTimer = nodecg.Replicant('assets:backgroundTimer', 'leaderboard')
+
 const hyperfitPoints = nodecg.Replicant('hyperfitPoints')
 
 var participantEvent = {}
@@ -165,7 +167,7 @@ backgroundOverlay.on('change', (newValue, oldValue) => {
 
         $('#overlayBackgroundSelect').append($('<option>', {
             value: '',
-            text: 'Please, choose sponsor'
+            text: 'Please, choose overlay'
         }));
         newValue.forEach((e, i) => {
 
@@ -178,7 +180,34 @@ backgroundOverlay.on('change', (newValue, oldValue) => {
 
         $('#overlayBackgroundSelect').append($('<option>', {
             value: '',
-            text: 'No sponsor'
+            text: 'No overlay'
+        }));
+    }
+})
+
+
+backgroundTimer.on('change', (newValue, oldValue) => {
+    console.log(newValue)
+    $("#backgroundTimerSelect option").remove()
+
+    if (newValue.length > 0) {
+
+        $('#backgroundTimerSelect').append($('<option>', {
+            value: '',
+            text: 'Please, choose background'
+        }));
+        newValue.forEach((e, i) => {
+
+            $('#backgroundTimerSelect').append($('<option>', {
+                value: e.url,
+                text: e.name
+            }));
+        })
+    } else {
+
+        $('#backgroundTimerSelect').append($('<option>', {
+            value: '',
+            text: 'No background'
         }));
     }
 })

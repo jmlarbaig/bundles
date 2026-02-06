@@ -146,6 +146,13 @@
         --x_sponsor_top: 0px;
         --width_sponsor_top: 0px;
         --height_sponsor_top: 0px;
+
+        --SizeFontChronoTimer: 0px;
+        --xValueTimer: 0px;
+        --yValueTimer: 0px;
+        --colorFontTimer: rgb(0, 0, 0);
+        --colorFontCountdownTimer: rgb(0, 0, 0);
+        --familyFontTimer-select: 'Typographica';
     }
 
 
@@ -230,6 +237,11 @@
         src: url("../fonts/Okta\ Bold\ Italic.otf");
     }
 
+    @font-face {
+        font-family: "Digit";
+        src: url("../fonts/DS-DIGI.TTF");
+    }
+
     body {
         background-color: var(--bg__color);
         font-family: var(--font-select);
@@ -283,7 +295,21 @@
         padding: 0;
         overflow: hidden;
         z-index: -50;
+    }
 
+    .backgroundTimer {
+        position: fixed;
+        top: 0px;
+        bottom: 0px;
+        right: 0px;
+        left: 0px;
+        width: 1920px;
+        height: 1080px;
+        border: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        z-index: -50;
     }
 
     .sponsorLogo {

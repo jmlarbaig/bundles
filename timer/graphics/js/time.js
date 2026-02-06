@@ -56,9 +56,6 @@ function updateTime() {
         }
 
         chrono = '-' + minS + ':' + secS;
-        if (sec < 11 && sec > 8) {
-            chrono = "STANDBY"
-        }
 
     } else {
         $('#cap').fadeOut(1000)

@@ -944,6 +944,13 @@ function showRepMvtInScore(elementAth) {
     }
 
 }
+
+function showRepPerSec(elementAth) {
+    if (elementAth.hasOwnProperty("timeOfRound"))
+        elementAth.$item.find(".reppersec").text(elementAth.timeOfRound)
+}
+
+
 function hideRepMvtInScore(elementAth) {
     elementAth.$item.find(".score").hide();
 }

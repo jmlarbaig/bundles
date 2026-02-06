@@ -222,6 +222,7 @@ function updateDynamics(newScoring, status) {
                                             break;
                                         default:
                                             showRepMvtInScore(elemAth[i])
+                                            showRepPerSec(elemAth[i])
                                             // if (setupLeaderboard.value.scoreConfig == 'mvt_score') {
                                             if (overlay == 'versus_hyperfit') {
                                                 treatDisplayMvtFirst(elemAth[i])

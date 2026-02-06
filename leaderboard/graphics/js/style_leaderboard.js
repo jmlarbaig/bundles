@@ -234,6 +234,7 @@ function headerCommentator(divisions, indexDivision, repTarget) {
         '<th scope="col" class="truncate box text-nowrap text-truncate text-left name">NAME</th>' +
         // '<th scope="col" class="truncate box Opoint">O. Points</th>' +
         // '<th scope="col" class="truncate box Orank">O. Rank</th>' +
+        '<th scope="col" class="truncate box reppersec">Rep/Sec</th>' +
         '<th scope="col" class="truncate box rank">Rank</th>' +
         '<th scope="col" class="truncate box rounds text-nowrap text-truncate">Rounds</th>' +
         '<th scope="col" class="truncate box score align-items-xl-center">Scores</th>' +
@@ -301,6 +302,7 @@ function commentator(data) {
         '<td class="truncate name" onclick="affichageStats()" id="showStats_' + data.lane + '">' + name + '</td>' +
         // '<td class="truncate Opoint" id="oP_' + data.lane + '">' + O_points + '</td>' +
         // '<td class="truncate Orank" id="oR_' + data.lane + '">' + O_rank + '</td>' +
+        '<td class="truncate reppersec"></td>' +
         '<td class="truncate rank">' + parseInt(data.CurrentRank) + '</td>' +
         '<td class="truncate rounds text-nowrap text-truncate"></td>' +
         '<td class="truncate score align-items-xl-center">' + data.score_abs + '</td>' +

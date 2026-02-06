@@ -156,6 +156,7 @@ heatInfos.on('change', (newValue, oldValue) => {
         console.log('heatInfos change', newValue)
         heat = typeWorkout(newValue)
         sonLaunch = false;
+        sonFinishLaunch = false;
         launchTimer()
         showTime(heat.timecap)
         if (overlay == 'sk' || overlay == 'head_judge') {
@@ -359,7 +360,7 @@ manualChrono.on('change', (newValue, oldValue) => {
 })
 
 d_athletes.on('change', (newValue, oldValue) => {
-    if (overlay != 'sk' && overlay != 'head_judge') {
+    if (overlay != 'sk' && overlay != 'head_judge' && overlay != 'timer') {
         if (newValue != undefined) {
             updateDynamics(newValue, statusWorkout);
         }
@@ -510,6 +511,17 @@ setupLeaderboard.on('change', (newValue, oldValue) => {
         $(".backgroundOverlay").fadeOut()
     }
 
+    if (newValue.backgroundTimerSelect != '') {
+        console.log("backgroundTimerSelect ", newValue.backgroundTimerSelect)
+        $(".backgroundTimer").css("background-image", "url(" + newValue.backgroundTimerSelect + ")");
+
+        if (!$(".backgroundTimer").is(':visible')) {
+            $(".backgroundTimer").fadeIn()
+        }
+    }
+    else {
+        $(".backgroundTimer").fadeOut()
+    }
 
 
     if (!newValue.manualChrono) {
@@ -739,6 +751,7 @@ function startChrono() {
     data.minutes = parseInt(timeCap.split(':')[1])
     data.secondes = parseInt(timeCap.split(':')[2])
     sonLaunch = false;
+    sonFinishLaunch = false;
 
     console.log(data)
 

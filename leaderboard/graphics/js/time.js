@@ -1,6 +1,8 @@
 const son_standby = new Audio("./assets/sounds/beep_standby.mp3");
 let sonLaunch = false;
 let audioReady = false;
+let sonFinishLaunch = false;
+let onChronoBefore = false;
 
 
 function updateTime() {
@@ -18,6 +20,7 @@ function updateTime() {
         timer = endTime
         adjustT.value = 0
         sonLaunch = false;
+        sonFinishLaunch = false;
         console.log("reset sonLaunch")
     }
 
@@ -32,21 +35,24 @@ function updateTime() {
 
     if (overlay == 'overlay_side' || overlay == 'overlay_side_v1' || overlay == 'overlay_wpa') {
         $(".chrono").css("color", "rgb(255,255,255")
+    } else if (overlay == "timer") {
+        $(".box_chrono").css("color", Clrs.colorFontTimer)
+        $(".chrono").css("color", Clrs.colorFontTimer)
     } else {
-        // $(".box_chrono").css("background-color", Clrs.chrono_color)
         $(".box_chrono").css("color", Clrs.tx_chrono_color)
-        // $(".chrono").css("background-color", Clrs.chrono_color)
         $(".chrono").css("color", Clrs.tx_chrono_color)
     }
 
     if (timeDiffTimeCap < 0 && timeDiffStart >= 0) {
+        onChronoBefore = true;
         if (overlay != 'lane') {
             $('#cap').fadeIn(1000)
         }
         if (!sonLaunch && audioReady && timeDiffStart <= 1000) {
             console.log('sound launch')
-            // son_standby.play();
+            son_standby.play();
             sonLaunch = true;
+            sonFinishLaunch = false;
         }
         if (heat.typeWod == "amrap" || Ft_Ap) {
             chrono = msToTime(timeDiffEnd)
@@ -55,15 +61,16 @@ function updateTime() {
             chrono = msToTime(timeDiffStart);
         }
     } else if (timeDiffStart < 0 && timeDiffStart > -(60 * 60 * 1000)) {
+        onChronoBefore = true;
         if (overlay != 'lane') {
             $('#cap').fadeOut(1000)
         }
         if (overlay == 'overlay_side' || overlay == 'overlay_side_v1' || overlay == 'overlay_wpa') {
             $(".chrono").css("color", "rgb(255,50,80")
+        } else if (overlay == 'timer') {
+            $(".box_chrono").css("color", Clrs.colorFontCountdownTimer)
+            $(".chrono").css("color", Clrs.colorFontCountdownTimer)
         } else {
-            // $(".box_chrono").css("background-color", "rgba(255,50,80,1)")
-            $(".box_chrono").css("color", "rgb(255,255,255")
-            // $(".chrono").css("background-color", "rgba(255,50,80,1)")
             $(".chrono").css("color", "rgb(255,255,255")
         }
         let ch = msToTime(timeDiffStart - 1000).split(':');
@@ -80,10 +87,16 @@ function updateTime() {
             secS = '0' + sec;
         }
 
-        chrono = '-' + minS + ':' + secS;
+        chrono = '' + minS + ':' + secS;
     } else {
         if (overlay != 'lane') {
             $('#cap').fadeOut(1000)
+        }
+        if (audioReady && !sonFinishLaunch && onChronoBefore) {
+            console.log('sound launch')
+            son_standby.play();
+            sonLaunch = false;
+            sonFinishLaunch = true;
         }
         if (heat.timecap != '') {
             chrono = heat.timecap
@@ -93,22 +106,22 @@ function updateTime() {
         }
 
     }
-    if (timeDiffTimeCap > -30000 && timeDiffTimeCap < 0 && timeDiffStart > 0) {
-        if (overlay == 'overlay_side' || overlay == 'overlay_side_v1' || overlay == 'overlay_wpa') {
-            $(".chrono").css("color", "rgb(255,50,80")
-        } else {
-            // $(".box_chrono").css("background-color", "rgba(255,50,80,1)")
-            $(".box_chrono").css("color", "rgb(255,255,255")
-            // $(".chrono").css("background-color", "rgba(255,50,80,1)")
-            $(".chrono").css("color", "rgb(255,255,255")
-        }
-        if (heat.typeWod == "amrap" || Ft_Ap) {
-            chrono = msToTime(timeDiffEnd)
-        }
-        else {
-            chrono = msToTime(timeDiffStart);
-        }
-    }
+    // if (timeDiffTimeCap > -30000 && timeDiffTimeCap < 0 && timeDiffStart > 0) {
+    //     if (overlay == 'overlay_side' || overlay == 'overlay_side_v1' || overlay == 'overlay_wpa') {
+    //         $(".chrono").css("color", "rgb(255,50,80")
+    //     } else {
+    //         // $(".box_chrono").css("background-color", "rgba(255,50,80,1)")
+    //         $(".box_chrono").css("color", "rgb(255,255,255")
+    //         // $(".chrono").css("background-color", "rgba(255,50,80,1)")
+    //         $(".chrono").css("color", "rgb(255,255,255")
+    //     }
+    //     if (heat.typeWod == "amrap" || Ft_Ap) {
+    //         chrono = msToTime(timeDiffEnd)
+    //     }
+    //     else {
+    //         chrono = msToTime(timeDiffStart);
+    //     }
+    // }
     if (!chrono.includes('undefined')) {
         document.getElementById("time").innerHTML = chrono;
     }

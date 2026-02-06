@@ -153,6 +153,11 @@
         "height": 1080
       },
       {
+        "file": "timer.html",
+        "width": 1920,
+        "height": 1080
+      },
+      {
         "file": "versus_hyperfit.html",
         "width": 1920,
         "height": 1080
@@ -164,6 +169,15 @@
         "title": "Background Overlay",
         "allowedTypes": [
           "png"
+        ]
+      },
+      {
+        "name": "backgroundTimer",
+        "title": "Background Timer",
+        "allowedTypes": [
+          "png",
+          "jpg",
+          "jpeg"
         ]
       }
     ]
