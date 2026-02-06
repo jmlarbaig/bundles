@@ -45,7 +45,7 @@ function updateTime() {
 
     if (timeDiffTimeCap < 0 && timeDiffStart >= 0) {
         onChronoBefore = true;
-        if (overlay != 'lane') {
+        if (overlay != 'lane' && overlay != 'timer') {
             $('#cap').fadeIn(1000)
         }
         if (!sonLaunch && audioReady && timeDiffStart <= 1000) {
@@ -62,7 +62,7 @@ function updateTime() {
         }
     } else if (timeDiffStart < 0 && timeDiffStart > -(60 * 60 * 1000)) {
         onChronoBefore = true;
-        if (overlay != 'lane') {
+        if (overlay != 'lane' && overlay != 'timer') {
             $('#cap').fadeOut(1000)
         }
         if (overlay == 'overlay_side' || overlay == 'overlay_side_v1' || overlay == 'overlay_wpa') {
@@ -89,7 +89,7 @@ function updateTime() {
 
         chrono = '' + minS + ':' + secS;
     } else {
-        if (overlay != 'lane') {
+        if (overlay != 'lane' && overlay != 'timer') {
             $('#cap').fadeOut(1000)
         }
         if (audioReady && !sonFinishLaunch && onChronoBefore) {
@@ -153,6 +153,9 @@ function showTime(Cap) {
         !setupLeaderboard.value.chrono && $("#box_chrono").hide();
         $list.append($item);
         $(".chrono").find('#cap').hide();
+        if (overlay == 'timer') {
+            $(".chrono").find('#cap').remove();
+        }
 
     }
     catch (e) {
