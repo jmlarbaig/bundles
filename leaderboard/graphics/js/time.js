@@ -101,12 +101,16 @@ function updateTime() {
             sonLaunch = false;
             sonFinishLaunch = true;
         }
-        if (heat.timecap != '') {
-            chrono = heat.timecap
+
+        if (timeDiffTimeCap > 0 && timeDiffTimeCap < 3000) {
+            chrono = "STOP"
         }
-        else {
-            chrono = "00:00"
-        }
+        // if (heat.timecap != '') {
+        //     chrono = heat.timecap
+        // }
+        // else {
+        //     chrono = "00:00"
+        // }
     }
     // if (timeDiffTimeCap > -30000 && timeDiffTimeCap < 0 && timeDiffStart > 0) {
     //     if (overlay == 'overlay_side' || overlay == 'overlay_side_v1' || overlay == 'overlay_wpa') {
