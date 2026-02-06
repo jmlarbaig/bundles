@@ -60,6 +60,10 @@ function updateTime() {
         else {
             chrono = msToTime(timeDiffStart);
         }
+
+        if (timeDiffStart <= 2000) {
+            chrono = "GO"
+        }
     } else if (timeDiffStart < 0 && timeDiffStart > -(60 * 60 * 1000)) {
         onChronoBefore = true;
         if (overlay != 'lane' && overlay != 'timer') {
