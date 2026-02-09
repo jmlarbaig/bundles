@@ -96,7 +96,7 @@ function overlayTop(data) {
         '<div class="ath">' +
         '<div class="rank initial_rank_top">' + data.lane + '</div>' +
         '<div class="ath_sub initial_rank_top">' +
-        '<div class="name"><span class="initial">' + name.substring(0, 2) + "</span>" + name.substring(2) + '</div>' +
+        '<div class="name"><span class="firstName">' + name.split(' ')[0] + ' </span><span class="lastName"> ' + name.split(' ')[1] + '</span></div>' +
         '<div class="lane">#' + data.lane + '</div>' +
         '</div>' +
         '<div class="score initial_rank_top"></div>' +

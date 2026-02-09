@@ -46,6 +46,18 @@
     /* box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; */
 }
 
+.header .box_heat #workout {
+    color: var(--firstMvt_color);
+}
+
+.header .box_heat .heat {
+    color: white;
+}
+
+.header .box_heat #division {
+    color: var(--firstMvt_color);
+}
+
 .header .box_heat .heat {
     display: inline-block;
     width: var(--width_box_heat);
@@ -60,14 +72,14 @@
 
 .header .box_heat .heat .heat_content .details {
     position: absolute;
-    top: 20px;
-    left: 275px;
+    top: 18px;
+    left: 260px;
     font-size: var(--sizeFontWorkoutHeat_top);
     display: flex;
     flex-wrap: nowrap;
     flex-direction: row;
     align-items: center;
-    width: 900px;
+    width: 1210px;
 }
 
 .header .box_heat .heat .heat_content .details .detail {
@@ -76,6 +88,29 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+}
+
+.shadow-container {
+    position: relative;
+    background: #000;
+    /* ou ton fond */
+    overflow: hidden;
+}
+
+.right-shadow {
+    position: relative;
+    background: #000;
+    /* ton fond */
+    overflow: hidden;
+}
+
+.fade-right {
+    -webkit-mask-image: linear-gradient(to left,
+            transparent 0%,
+            black 40%);
+    mask-image: linear-gradient(to left,
+            transparent 0%,
+            black 40%);
 }
 
 
@@ -106,9 +141,10 @@
     font-family: var(--firstFontWorkout-select);
 }
 
+/* 
 #mvt span:first-child::after {
     content: " // ";
-}
+} */
 
 .header .box_heat .heat .heat_content .box_mainSponsor {
 

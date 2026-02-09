@@ -271,7 +271,7 @@ function repoLeft(lead_, aths_) {
             if (elm.$item.is(':hidden')) {
                 y += 0 + margin
             } else {
-                y += elm.$item.width() + margin;
+                y += elm.$item.width() + (2 * margin);
             }
         }
     })
@@ -827,7 +827,7 @@ function treatFinishStatus(elementAth) {
         elementAth.$item.find(".popup").show();
         elementAth.$item.find(".popup_top").text(result);
         elementAth.$item.find(".popup_top").show();
-        elementAth.$item.find(".score").text(result)
+        elementAth.$item.find(".score").text('FIN')
     }
     if (overlay == 'progression') {
         $('#circle' + elementAth.lane).css("transform", "translateX(95%)");
