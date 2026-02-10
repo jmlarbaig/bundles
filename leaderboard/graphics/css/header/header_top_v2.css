@@ -47,7 +47,7 @@
 }
 
 .header .box_heat #workout {
-    color: var(--firstMvt_color);
+    color: var(--mainTop_color);
 }
 
 .header .box_heat .heat {
@@ -55,7 +55,7 @@
 }
 
 .header .box_heat #division {
-    color: var(--firstMvt_color);
+    color: var(--mainTop_color);
 }
 
 .header .box_heat .heat {

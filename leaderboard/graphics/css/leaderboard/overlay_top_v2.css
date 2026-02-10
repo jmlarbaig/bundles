@@ -76,7 +76,7 @@
     align-items: center;
     height: var(--height_ath_top);
     /* box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; */
-    border: solid 1px rgba(255, 255, 255, 0.3);
+    /* border: solid 1px rgba(255, 255, 255, 0.3); */
 }
 
 .ath:after {}
@@ -133,13 +133,14 @@
 }
 
 .leaderboard .athlete .firstName {
-    font-family: 'Roboto', sans-serif;
+    font-family: var(--firstName-select);
     font-size: 14px;
     font-weight: 200;
     padding-right: 2px;
 }
 
 .leaderboard .athlete .lastName {
+    font-family: var(--lastName-select);
     font-size: var(--sizeFontAthlete_top);
     font-weight: 800;
     padding-left: 2px;

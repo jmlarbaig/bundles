@@ -403,7 +403,7 @@ function mvtIndexFinish(division) {
                 'scoreRelMvt': 0,
                 'id': wod.mvt_id[wod.mvt_id.length - 1],
                 'repTarget': wod.repTarget,
-                'mvtNames': 'FINISH',
+                'mvtNames': '',
                 'rounds': 0,
                 'totalReps': wod.totalRep,
                 'arrayMvt': {}
@@ -708,7 +708,7 @@ function changeColorAth(ath, element) {
         case 1:
             if (!overlay.includes('overlay_top')) {
                 ath.$item.find(element).addClass('first_rank_ath')
-                ath.$item.find(element).removeClass('initial_rank_top_ath second_rank_ath third_rank_ath other_rank_ath', false)
+                ath.$item.find(element).removeClass('initial_rank_ath second_rank_ath third_rank_ath other_rank_ath', false)
                 overlay == 'versus' && ath.$item.find(element).removeClass('initial_rank_versus')
             } else {
                 ath.$item.find(element).addClass('first_rank_ath_top')

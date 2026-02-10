@@ -108,6 +108,8 @@
         --fontPresented-select: 'Typographica';
         --fontDay-select: 'Typographica';
         --fontFloor-select: 'Typographica';
+        --firstName-select: 'Typographica';
+        --lastName-select: 'Typographica';
 
         --SizeFontRepTargetOverlaySide: 20px;
 
@@ -153,6 +155,7 @@
         --colorFontTimer: rgb(0, 0, 0);
         --colorFontCountdownTimer: rgb(0, 0, 0);
         --familyFontTimer-select: 'Typographica';
+        --mainTop_color: rgb(0, 0, 0);
     }
 
 

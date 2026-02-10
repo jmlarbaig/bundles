@@ -313,8 +313,8 @@ function updateDynamics(newScoring, status) {
                         }
                         treatLeaderboardAuto()
                         if (overlay.includes('overlay_top')) {
-                            $('#mvt').text('FINISH')
-                            $('.mvt').text('FINISH')
+                            $('#mvt').text('')
+                            $('.mvt').text('')
                         }
                         break;
                     default:
