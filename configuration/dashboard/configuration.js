@@ -64,7 +64,7 @@ AssetsColors.on('change', (newValue, oldValue) => {
 Fonts.on('change', (newValue, oldValue) => {
     if (newValue != oldValue) {
 
-        let listOfSelect = ['font', 'fontWorkout', 'fontAthlete', 'fontChrono', 'fontPresented', 'othersFontWorkout', 'firstFontWorkout', 'fontPresented', 'fontDay', 'fontFloor', 'familyFontTimer', 'firstName', 'lastName']
+        let listOfSelect = ['font', 'fontWorkout', 'fontWorkoutTop', 'fontAthlete', 'fontChrono', 'fontPresented', 'othersFontWorkout', 'firstFontWorkout', 'fontPresented', 'fontDay', 'fontFloor', 'familyFontTimer', 'firstName', 'lastName']
 
         for (let i = 0; i > listOfSelect.length; i++) {
             element = listOfSelect[i];
@@ -90,6 +90,7 @@ Fonts.on('change', (newValue, oldValue) => {
         Object.keys(personalFontTab).forEach((font) => {
             $("#font-select").append('<option value="' + personalFontTab[font].name + '">' + personalFontTab[font].name + '</option>')
             $("#fontWorkout-select").append('<option value="' + personalFontTab[font].name + '">' + personalFontTab[font].name + '</option>')
+            $("#fontWorkoutTop-select").append('<option value="' + personalFontTab[font].name + '">' + personalFontTab[font].name + '</option>')
             $("#fontAthlete-select").append('<option value="' + personalFontTab[font].name + '">' + personalFontTab[font].name + '</option>')
             $("#fontChrono-select").append('<option value="' + personalFontTab[font].name + '">' + personalFontTab[font].name + '</option>')
             $("#firstFontWorkout-select").append('<option value="' + personalFontTab[font].name + '">' + personalFontTab[font].name + '</option>')
