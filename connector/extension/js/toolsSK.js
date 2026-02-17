@@ -46,11 +46,11 @@ module.exports = (nodecg, Connected) => {
         }
 
         if (addIp.includes('http')) {
-            intervalStatic = setInterval(getStatics, 1000, adr_IP_static)
-            intervalDynamic = setInterval(getDynamics, 1000, adr_IP_dynamics)
+            intervalStatic = setInterval(getStatics, 500, adr_IP_static)
+            intervalDynamic = setInterval(getDynamics, 500, adr_IP_dynamics)
         } else {
-            intervalStatic = setInterval(getStaticsFile, 1000, adr_IP_static)
-            intervalDynamic = setInterval(getDynamicsFile, 1000, adr_IP_dynamics)
+            intervalStatic = setInterval(getStaticsFile, 500, adr_IP_static)
+            intervalDynamic = setInterval(getDynamicsFile, 500, adr_IP_dynamics)
         }
     }
 

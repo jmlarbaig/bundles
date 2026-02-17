@@ -7,11 +7,7 @@ let onChronoBefore = false;
 
 function updateTime() {
 
-    console.log('updateTime called');
-
     let Ft_Ap = setupLeaderboard.value.fortimeAmrap;
-
-    console.log('ntp = ', timerNTP.value);
 
     let timer = parseInt(timerNTP.value) + (adjustT.value || 0)
 
@@ -24,13 +20,13 @@ function updateTime() {
         console.log("reset sonLaunch")
     }
 
-    console.log('timer', timer, 'adjustT', adjustT.value, 'endTime', endTime, 'startTime', startTime);
+    // console.log('timer', timer, 'adjustT', adjustT.value, 'endTime', endTime, 'startTime', startTime);
 
     let timeDiffStart = timer - startTime;
     let timeDiffTimeCap = timer - endTime;
     let timeDiffEnd = endTime - timer;
 
-    console.log('timeDiffStart', timeDiffStart, 'timeDiffTimeCap', timeDiffTimeCap, 'timeDiffEnd', timeDiffEnd);
+    // console.log('timeDiffStart', timeDiffStart, 'timeDiffTimeCap', timeDiffTimeCap, 'timeDiffEnd', timeDiffEnd);
 
 
     if (overlay == 'overlay_side' || overlay == 'overlay_side_v1' || overlay == 'overlay_wpa') {
@@ -51,7 +47,7 @@ function updateTime() {
 
         if (audioReady && timeDiffStart < 1000 && timeDiffStart > 0) {
             console.log('sound launch')
-            son_standby.play();
+            // son_standby.play();
         }
         if (heat.typeWod == "amrap" || Ft_Ap) {
             chrono = msToTime(timeDiffEnd)
@@ -97,7 +93,7 @@ function updateTime() {
         }
         if (audioReady && timeDiffTimeCap > 0 && timeDiffTimeCap < 1000) {
             console.log('sound launch')
-            son_standby.play();
+            // son_standby.play();
             sonLaunch = false;
             sonFinishLaunch = true;
         }

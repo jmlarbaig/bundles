@@ -37,24 +37,37 @@ function timeToTimestamp(time) {
 }
 
 function msToTime(s) {
-    var ms = s % 1000;
+    var ms = Math.round((s % 1000));
     s = (s - ms) / 1000;
-    var secs = s % 60;
+    var secs = Math.round((s % 60));
     s = (s - secs) / 60;
-    var mins = s % 60;
-    var hrs = (s - mins) / 60;
-    if (secs < 10) { secs = '0' + secs }
+    var mins = Math.round(((s % 60)));
+    var hrs = ((s - mins) / 60);
+    if (secs < 10) { secs = '0' + (secs) }
+    if (mins < 10) { mins = '0' + mins }
+    console.log("Timer : ", mins + ':' + secs)
+    return mins + ':' + secs;
+}
+
+function msToTimeCt(s) {
+    var ms = Math.floor((s % 1000));
+    s = (s - ms) / 1000;
+    var secs = Math.floor((s % 60));
+    s = (s - secs) / 60;
+    var mins = Math.floor(((s % 60)));
+    var hrs = ((s - mins) / 60);
+    if (secs < 10) { secs = '0' + (secs) }
     if (mins < 10) { mins = '0' + mins }
     console.log("Timer : ", mins + ':' + secs)
     return mins + ':' + secs;
 }
 
 function msToTime2(s) {
-    var ms = s % 1000;
+    var ms = Math.round(s % 1000);
     s = (s - ms) / 1000;
-    var secs = s % 60;
+    var secs = Math.round(s % 60);
     s = (s - secs) / 60;
-    var mins = s % 60;
+    var mins = Math.round(s % 60);
     var hrs = (s - mins) / 60;
     if (secs < 10) { secs = '0' + secs }
     if (mins < 10) { mins = '0' + mins }
@@ -692,9 +705,19 @@ function changeColorFinish(ath, element) {
 function changeColorFinishAth(ath, element) {
 
     if (overlay == 'overlay_wpa') { return };
-    ath.$item.find(element).addClass('finish_rank_ath')
-    ath.$item.find(element).removeClass('initial_rank_top_ath first_rank_ath second_rank_ath third_rank_ath other_rank_ath', false)
-    overlay == 'versus' && ath.$item.find(element).removeClass('initial_rank_versus')
+    if (overlay.includes('overlay_top')) {
+        if (ath.CurrentRank == 1) {
+            ath.$item.find(element).addClass('finish_first_rank_ath_top')
+            ath.$item.find(element).removeClass('initial_rank_top_ath finish_rank_ath_top second_rank_ath_top third_rank_ath_top other_rank_ath_top', false)
+        } else {
+            ath.$item.find(element).addClass('finish_rank_ath_top')
+            ath.$item.find(element).removeClass('initial_rank_ath finish_first_rank_ath_top first_rank_ath_top second_rank_ath_top third_rank_ath_top other_rank_ath_top', false)
+        }
+    } else {
+        ath.$item.find(element).addClass('finish_rank_ath')
+        ath.$item.find(element).removeClass('initial_rank_top_ath first_rank_ath second_rank_ath third_rank_ath other_rank_ath', false)
+        overlay == 'versus' && ath.$item.find(element).removeClass('initial_rank_versus')
+    }
 }
 
 function changeColorAth(ath, element) {
@@ -711,17 +734,28 @@ function changeColorAth(ath, element) {
                 ath.$item.find(element).removeClass('initial_rank_ath second_rank_ath third_rank_ath other_rank_ath', false)
                 overlay == 'versus' && ath.$item.find(element).removeClass('initial_rank_versus')
             } else {
-                ath.$item.find(element).addClass('first_rank_ath_top')
+                ath.$item.find(element).addClass('finish_first_rank_ath_top')
                 ath.$item.find(element).removeClass('initial_rank_top_ath second_rank_ath_top third_rank_ath_top other_rank_ath_top', false)
             }
             break;
         case 2:
-            ath.$item.find(element).addClass('second_rank_ath')
-            ath.$item.find(element).toggleClass('first_rank_ath third_rank_ath other_rank_ath', false)
+            if (!overlay.includes('overlay_top')) {
+                ath.$item.find(element).addClass('second_rank_ath')
+                ath.$item.find(element).toggleClass('first_rank_ath third_rank_ath other_rank_ath', false)
+            } else {
+                ath.$item.find(element).addClass('second_rank_ath_top')
+                ath.$item.find(element).toggleClass('first_rank_ath_top third_rank_ath_top other_rank_ath_top', false)
+            }
             break;
         case 3:
-            ath.$item.find(element).addClass('third_rank_ath')
-            ath.$item.find(element).toggleClass('second_rank_ath first_rank_ath other_rank_ath', false)
+            if (!overlay.includes('overlay_top')) {
+                ath.$item.find(element).addClass('third_rank_ath')
+                ath.$item.find(element).toggleClass('second_rank_ath first_rank_ath other_rank_ath', false)
+            } else {
+
+                ath.$item.find(element).addClass('third_rank_ath_top')
+                ath.$item.find(element).toggleClass('first_rank_ath_top second_rank_ath_top other_rank_ath_top', false)
+            }
             break;
         default:
             if (!overlay.includes('overlay_top')) {
@@ -828,6 +862,9 @@ function treatFinishStatus(elementAth) {
         elementAth.$item.find(".popup_top").text(result);
         elementAth.$item.find(".popup_top").show();
         elementAth.$item.find(".score").text('FIN')
+        if (overlay.includes("overlay_top")) {
+            elementAth.$item.find(".score").css("background-color", "rgb(181, 210, 36)");
+        }
     }
     if (overlay == 'progression') {
         $('#circle' + elementAth.lane).css("transform", "translateX(95%)");
@@ -952,7 +989,9 @@ function showRepPerSec(elementAth) {
 
 
 function hideRepMvtInScore(elementAth) {
-    elementAth.$item.find(".score").hide();
+    if (!overlay.includes("overlay_top")) {
+        elementAth.$item.find(".score").hide();
+    }
 }
 
 function hideColMvt(elementAth) {

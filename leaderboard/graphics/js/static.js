@@ -343,7 +343,7 @@ function resetLeaderboard(newData) {
                         stripeClasses: ['odd', 'even'],
                         paging: false,
                         fixedColumns: {
-                            left: 3,
+                            left: 4,
                             right: 2
                         }
                     });

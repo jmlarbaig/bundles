@@ -93,13 +93,13 @@ function overlayTop(data) {
 
     var $item = $(
         '<div class="athlete" id="aht' + data.lane + '">' +
-        '<div class="ath">' +
+        '<div class="ath initial_rank_top_ath">' +
         '<div class="rank initial_rank_top">' + data.lane + '</div>' +
         '<div class="ath_sub initial_rank_top">' +
         '<div class="name"><span class="firstName">' + name.split(' ')[0] + ' </span><span class="lastName"> ' + name.split(' ')[1] + '</span></div>' +
         '<div class="lane">#' + data.lane + '</div>' +
         '</div>' +
-        '<div class="score initial_rank_top"></div>' +
+        '<div class="score initial_rank_top">O</div>' +
         '</div>' +
         '<div class="popup initial_rank_top">' + '</div>' +
         '</div>'

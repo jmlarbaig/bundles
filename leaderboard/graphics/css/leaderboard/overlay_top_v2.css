@@ -75,6 +75,7 @@
     flex-direction: row;
     align-items: center;
     height: var(--height_ath_top);
+    padding-right: 5px;
     /* box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; */
     /* border: solid 1px rgba(255, 255, 255, 0.3); */
 }
@@ -119,9 +120,11 @@
 
 .leaderboard .athlete .name {
     height: var(--height_ath_top);
-    /* display: flex; */
-    align-items: center;
+    display: flex;
+    align-items: baseline;
     text-align: center;
+    position: relative;
+    bottom: -6px;
     justify-content: center;
     text-transform: uppercase;
     font-weight: 900;
@@ -134,7 +137,7 @@
 
 .leaderboard .athlete .firstName {
     font-family: var(--firstName-select);
-    font-size: 14px;
+    font-size: 16px;
     font-weight: 200;
     padding-right: 2px;
 }
@@ -164,7 +167,7 @@
     box-shadow: 7px 2px 23px -20px rgba(0, 0, 0, 1) inset;
     -webkit-box-shadow: 7px 2px 23px -20px rgba(0, 0, 0, 1) inset;
     -moz-box-shadow: 7px 2px 23px -20px rgba(0, 0, 0, 1) inset;
-    height: 46px;
+    height: 42px;
     background-color: white;
     color: black;
     font-size: var(--sizeFontScore_top);

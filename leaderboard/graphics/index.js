@@ -150,6 +150,7 @@ eventInfos.on('change', (newValue, oldValue) => {
 let tc
 let heat = {}
 let heatSize = 0;
+let timerToReset = null;
 
 heatInfos.on('change', (newValue, oldValue) => {
     if (JSON.stringify(newValue) !== JSON.stringify(oldValue)) {
@@ -163,6 +164,9 @@ heatInfos.on('change', (newValue, oldValue) => {
             $('#timeCapKairos').text(newValue[0].timeCap)
             heatSize = newValue[0].heatsSize
         }
+        timerToReset = setTimeout(() => {
+            resetLeaderboard(s_athletes.value)
+        }, 2000)
     }
 })
 
@@ -180,9 +184,11 @@ workoutInfo.on('change', (newValue, oldValue) => {
 })
 
 s_athletes.on('change', (newValue, oldValue) => {
-    console.log('update Static :', JSON.stringify(newValue) !== JSON.stringify(oldValue))
     if (JSON.stringify(newValue) !== JSON.stringify(oldValue)) {
 
+
+        clearInterval(timerToReset);
+        timerToReset = null;
         if (timerAutomatic1 != null) {
             clearInterval(timerAutomatic1)
             timerAutomatic1 = null;
@@ -258,7 +264,7 @@ function launchTimer() {
                     clearInterval(timerLaunch)
                     timerLaunch = null;
                 }
-                timerLaunch = setInterval(updateTime, 500);
+                timerLaunch = setInterval(updateTime, 100);
 
                 clearInterval(launchInter);
                 launchInter = null;
@@ -342,7 +348,7 @@ manualChrono.on('change', (newValue, oldValue) => {
                         clearInterval(timerLaunch)
                         timerLaunch = null;
                     }
-                    timerLaunch = setInterval(updateTime, 500);
+                    timerLaunch = setInterval(updateTime, 100);
                     break;
                 case 'stop':
                     if (timerLaunch != null) {
