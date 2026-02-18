@@ -863,8 +863,8 @@ function treatFinishStatus(elementAth) {
         elementAth.$item.find(".popup_top").show();
         elementAth.$item.find(".score").text('FIN')
         if (overlay.includes("overlay_top")) {
-            elementAth.$item.find(".score").css("background-color", "rgb(181, 210, 36)");
-            elementAth.$item.find(".score").css("color", "#E0FD53");
+            elementAth.$item.find(".score").css("background-color", "#E0FD53");
+            elementAth.$item.find(".score").css("color", "rgba(255, 255, 255, 1)");
         }
     }
     if (overlay == 'progression') {
