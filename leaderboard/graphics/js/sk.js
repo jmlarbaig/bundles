@@ -72,8 +72,8 @@ function BatteryLevel(ip, battery) {
         $('#aht' + ip).removeClass('deuxcent soixantequinze cinquante cent zero')
     } else {
 
-        $('#aht' + ip).addClass('zero')
-        $('#aht' + ip).removeClass('deuxcent soixantequinze cinquante cent vingtcinq')
+        $('#aht' + ip).addClass('vingtcinq')
+        $('#aht' + ip).removeClass('deuxcent soixantequinze cinquante cent zero')
     }
 
 }

@@ -57,9 +57,9 @@ function updateTime() {
             chrono = msToTime(timeDiffStart);
         }
 
-        if (timeDiffStart <= 2000) {
-            chrono = "GO"
-        }
+        // if (timeDiffStart <= 2000) {
+        //     chrono = "GO"
+        // }
     } else if (timeDiffStart < 0) {
         onChronoBefore = true;
         if (overlay != 'lane' && overlay != 'timer') {
@@ -86,8 +86,13 @@ function updateTime() {
         if (sec < 10) {
             secS = '0' + sec;
         }
-        chrono = '' + minS + ':' + secS;
-        chrono = "";
+        if (overlay == 'timer' || overlay == 'sk') {
+            chrono = '' + minS + ':' + secS;
+        }
+        else {
+
+            chrono = "";
+        }
     } else {
         if (overlay != 'lane' && overlay != 'timer') {
             $('#cap').fadeOut(1000)

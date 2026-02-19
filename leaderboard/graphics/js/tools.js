@@ -141,17 +141,18 @@ function treatDisplayName(displayName) {
         let splitName = splitFullName(displayName);
         switch (setupLeaderboard.value.nameSelect) {
             case 'first':
-                newName = '<div class="name"><span class="title">' + splitName.title + ' </span><span class="lastName"> ' + splitName.firstName + '</span></div>';
+                newName = '<div class="name"><span class="firstName">' + splitName.title + ' </span><span class="lastName"> ' + splitName.firstName + '</span></div>';
                 break;
             case 'last':
-                newName = '<div class="name"><span class="title">' + splitName.title + ' </span><span class="lastName"> ' + splitName.lastName + '</span></div>';
+                newName = '<div class="name"><span class="firstName">' + splitName.title + ' </span><span class="lastName"> ' + splitName.lastName + '</span></div>';
                 break;
             case 'pointFirst':
-                pointFirstName = splitName.firstName.substring(0, 1) + ". " + char[1] + " " + (char[2] || "")
-                newName = '<div class="name"><span class="title">' + splitName.title + ' </span><span class="firstName">' + pointFirstName + ' </span><span class="lastName"> ' + splitName.lastName + '</span></div>';
+                pointFirstName = splitName.firstName.substring(0, 1) + ". "
+                console.log(splitName.title)
+                newName = '<div class="name"><span class="firstName">' + splitName.title + ' </span><span class="firstName">' + pointFirstName + ' </span><span class="lastName"> ' + splitName.lastName + '</span></div>';
                 break;
             case 'full':
-                newName = '<div class="name"><span class="title">' + splitName.title + ' </span><span class="firstName">' + splitName.firstName + ' </span><span class="lastName"> ' + splitName.lastName + '</span></div>';
+                newName = '<div class="name"><span class="firstName">' + splitName.title + ' </span><span class="firstName">' + splitName.firstName + ' </span><span class="lastName"> ' + splitName.lastName + '</span></div>';
                 break;
         }
 
@@ -179,7 +180,7 @@ function splitFullName(fullName) {
         'general', 'général', 'gen', 'gen.', 'colonel', 'col', 'col.',
         'commandant', 'cmd', 'capitaine', 'cpt', 'lieutenant', 'lt', 'lt.',
         'sergent', 'sgt', 'sgt.', 'caporal', 'cpl', 'amiral', 'admiral',
-        'major', 'maj', 'maj.', 'marshal', 'maréchal', 'TSgt', 'SrA', 'SMSgt', 'MSgt'
+        'major', 'maj', 'maj.', 'marshal', 'maréchal', 'tsgt', 'sra', 'smsgt', 'msgt'
     ];
 
     const religieux = [
@@ -199,14 +200,18 @@ function splitFullName(fullName) {
 
     // --- TRAITEMENT ---
 
-    const parts = fullName.trim().replace(/\s+/g, ' ').split(' ');
+    const parts = fullName.trim().replace(/\s+/g, ' ').split(' ').map(p => p.toLowerCase());
+    console.log("Parts:", parts);
     let title = '';
     let remaining = [...parts];
 
     // Extraire les titres en début de chaîne (peut y en avoir plusieurs ex: "Dr. Prof.")
     while (remaining.length > 0 && allTitles.includes(remaining[0].toLowerCase().replace(',', ''))) {
+        console.log("Found title:", remaining[0]);
         title += (title ? ' ' : '') + remaining.shift();
     }
+
+    console.log("Title:", title, "Remaining:", remaining);
 
     if (remaining.length === 0) return { title, firstName: '', lastName: '' };
     if (remaining.length === 1) return { title, firstName: remaining[0], lastName: '' };
