@@ -151,6 +151,7 @@ module.exports = function (nodecg) {
         Connected.value = data;
 
         sk.deconnectionSK()
+        mqtt.disconnectMQTT()
 
         data = { 'cc': 'deconnected', 'static': 'deconnected', 'dynamic': 'deconnected' }
         Connected.value = data;
