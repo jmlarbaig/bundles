@@ -50,7 +50,8 @@ function updateTime() {
             // son_standby.play();
         }
         if (heat.typeWod == "amrap" || Ft_Ap) {
-            chrono = msToTime(timeDiffEnd)
+            // chrono = msToTime(timeDiffEnd)
+            chrono = msToTime(timeDiffStart);
         }
         else {
             chrono = msToTime(timeDiffStart);
@@ -85,8 +86,8 @@ function updateTime() {
         if (sec < 10) {
             secS = '0' + sec;
         }
-
         chrono = '' + minS + ':' + secS;
+        chrono = "";
     } else {
         if (overlay != 'lane' && overlay != 'timer') {
             $('#cap').fadeOut(1000)
@@ -103,9 +104,11 @@ function updateTime() {
         }
 
         if (timeDiffTimeCap > 0 && timeDiffTimeCap < (1000 * 10)) {
-            chrono = "STOP"
+            // chrono = "STOP"
+            chrono = ""
         } else {
-            chrono = heat.timecap
+            // chrono = heat.timecap
+            chrono = ""
         }
         // if (heat.timecap != '') {
         //     chrono = heat.timecap

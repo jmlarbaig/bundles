@@ -47,7 +47,8 @@ module.exports = function (nodecg) {
 
     let cc = require('./js/toolsCC')(nodecg, Connected)
     let sk = require('./js/toolsSK')(nodecg, Connected)
-    let mqtt = require('./js/tools')(nodecg)
+    let mq = require('./js/tools')(nodecg)
+    let mqtt = require('./js/mqttTools')(nodecg)
 
     const router = nodecg.Router();
     const dataConfig = nodecg.Replicant('dataConfig')
@@ -127,6 +128,7 @@ module.exports = function (nodecg) {
 
         let data = { 'cc': 'connecting', 'static': 'connecting', 'dynamic': 'connecting' }
         Connected.value = data;
+        mqttBroker = '95.216.5.175';
 
         const { user, passwd, event, addIp, ntpAdress, floorId } = value
 
@@ -137,7 +139,7 @@ module.exports = function (nodecg) {
         }
 
         sk.connectionSK(connectionIp)
-        // mqtt.connectionMQTT(addIp, false)
+        mqtt.connectionMQTT(mqttBroker, event, floorId, false)
 
         writeConfig(value)
         writeStatus(data)

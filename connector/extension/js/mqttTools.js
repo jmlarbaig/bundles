@@ -7,8 +7,7 @@ var dataTab = []
 module.exports = (nodecg) => {
 
     const dataRow = nodecg.Replicant('dataRow')
-    const dataMinos = nodecg.Replicant('dataMinos')
-    const dataMinosLane = nodecg.Replicant('dataMinosLane')
+    const dataMinos = nodecg.Replicant('dataMinos', { defaultValue: [], persistent: false })
     const Mqtt_connected = nodecg.Replicant('Mqtt_connected', { defaultValue: { connected: false, error: '' }, persistent: false })
     let client = null;
 
@@ -18,7 +17,7 @@ module.exports = (nodecg) => {
 
 
     let _eventId = 0
-    let floorId = 0
+    let _floorId = 0
     let _workouts = []
     let _division = []
     let _currentHeat = {}
@@ -31,11 +30,14 @@ module.exports = (nodecg) => {
     let launchTimer = null;
     let online = false;
 
-    function connectionMQTT(ip_broker, _location) {
+    function connectionMQTT(ip_broker, eventId, floorId, _location) {
         online = _location;
         if (client == null) {
             client = mqtt.connect('mqtt://' + ip_broker + ':1883');
-            streamMQTT(_eventId, _floorId)
+            _eventId = eventId;
+            _floorId = floorId;
+            streamMQTT(eventId, floorId)
+            Mqtt_connected.value = { connected: true, error: '' };
         } else {
             disconnectMQTT()
         }
@@ -50,31 +52,20 @@ module.exports = (nodecg) => {
 
     function streamMQTT(eventId, floorId) {
         client.on('connect', function () {
-            console.log('Connected MQTT')
-            Mqtt_connected.value = { connected: true, error: '' };
-            if (online) {
+            client.subscribe('kairos/' + eventId + '/' + floorId + '/ERG/#');
+            client.subscribe('kairos/' + eventId + '/' + floorId + '/takeLane');
+            client.subscribe('kairos/' + eventId + '/' + floorId + '/+/SCORE');
+            client.subscribe('kairos/' + eventId + '/' + floorId + '/timer');
+            client.subscribe('kairos/' + eventId + '/' + floorId + '/currentHeat');
 
-            } else {
-                client.subscribe('kairos/' + eventId + '/' + floorId + '/ERG/#');
-                client.subscribe('kairos/' + eventId + '/' + floorId + '/Minos');
-                client.subscribe('kairos/' + eventId + '/' + floorId + '/SCORE');
-                // client.subscribe('kairos/+/eventDescription');
-                //client.subscribe('kairos/request');
-                client.subscribe('kairos/' + eventId + '/' + floorId + '/timer');
-                // client.subscribe(`kairos/+/heat_start_time`);
-                // client.subscribe(`kairos/+/nextHeat`);
-                client.subscribe('kairos/' + eventId + '/' + floorId + '/eventId');
-                client.subscribe('kairos/' + eventId + '/' + floorId + '/currentHeat');
-                // client.subscribe(`kairos/+/heat_status`);
-                // client.subscribe(`kairos/+/currentDiv`);
-                client.subscribe('kairos/' + eventId + '/' + floorId + '/workouts');
-                // getEvent()
-                // getListWorkouts();
-                // getCurrentHeat();
-            }
         })
 
         client.on('disconnect', () => {
+            client.unsubscribe('kairos/' + eventId + '/' + floorId + '/ERG/#');
+            client.unsubscribe('kairos/' + eventId + '/' + floorId + '/takeLane');
+            client.unsubscribe('kairos/' + eventId + '/' + floorId + '/+/SCORE');
+            client.unsubscribe('kairos/' + eventId + '/' + floorId + '/timer');
+            client.subscribe('kairos/' + eventId + '/' + floorId + '/currentHeat');
             console.log('disconnected', new Date())
             Mqtt_connected.value = { connected: false, error: '' };
             // client.reconnect()
@@ -172,15 +163,16 @@ module.exports = (nodecg) => {
                 dataRow.value = dataTab;
 
             }
-            else if (topic.includes('Minos')) {
+            else if (topic.includes('takeLane')) {
                 let mes = message.toString().split(';');
 
                 let minos = Object.assign({}, floorMinos)
-                minos.ip = parseInt(mes[0])
-                minos.lane = parseInt(mes[1])
-                minos.type = parseInt(mes[2])
-                minos.battery = parseInt(mes[3])
-                minos.signal = (mes[4])
+                minos.ip = mes[1]
+                minos.lane = parseInt(mes[0])
+                // minos.type = parseInt(mes[2])
+                minos.type = 1;
+                minos.battery = (mes[2])
+                minos.signal = (mes[3])
 
                 tableOfMinosOnFloor[minos.ip] = minos;
 
@@ -190,7 +182,9 @@ module.exports = (nodecg) => {
                     tableOfMinosOnFloor[minos.ip].time = tableOfMinosLaneOnFloor[minos.lane].time;
                 }
 
-                dataMinos.value = tableOfMinosOnFloor
+                console.log("Minos connected : ", tableOfMinosOnFloor)
+
+                dataMinos.value = { ...tableOfMinosOnFloor }
 
                 if (tableTimer[minos.ip] != null) {
                     clearTimeout(tableTimer[minos.ip])
@@ -201,14 +195,15 @@ module.exports = (nodecg) => {
                 }, 5000)
             }
             else if (topic.includes('minos') && topic.includes('SCORE')) {
-                let lane = parseInt(topic.split('/')[1].replace("minos", ""))
+                let lane = parseInt(topic.split('/')[3].replace("minos", ""))
                 let mes = message.toString().split(';');
 
-                // console.log(mes)
+                console.log(lane)
+                console.log(mes)
 
                 tableOfMinosLaneOnFloor[lane] = {}
                 tableOfMinosLaneOnFloor[lane].status = mes[0] || 0;
-                tableOfMinosLaneOnFloor[lane].rep = mes[4] || 0;
+                tableOfMinosLaneOnFloor[lane].rep = parseFloat(mes[4]) || 0;
                 tableOfMinosLaneOnFloor[lane].time = mes[12] || 0;
             }
         })
@@ -327,7 +322,7 @@ module.exports = (nodecg) => {
     })
 
     nodecg.listenFor('reject_minos', (infos) => {
-        if (client.connected) {
+        if (client != undefined) {
             let _i = infos.split("_");
             let lane = _i[0];
             let _ip = _i[1].toString();
@@ -345,7 +340,7 @@ module.exports = (nodecg) => {
             console.log(lane)
             console.log(_ip)
 
-            client.publish(`kairos/minos${lane}/${_ip}`, `reject`);
+            client.publish(`kairos/${_eventId}/${_floorId}/minos/${_ip}/laneAction`, `reject`);
         }
     })
 

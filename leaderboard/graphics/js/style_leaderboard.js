@@ -35,7 +35,8 @@ function overlaySide(data) {
         '<div class="subrank"><div class="rank text-nowrap text-truncate"> ' + '</div></div>' +
         '<div class="lane text-nowrap text-truncate">L' + data.lane + '</div>' +
         '<div class="flag">' + '<div class="box_flag" ></div> ' + '</div>' +
-        '<div class="text-nowrap text-truncate text-left name">' + name + '</div>' +
+        // '<div class="text-nowrap text-truncate text-left name">' + name + '</div>' +
+        name +
         '<div class="score text-nowrap text-center text-truncate"></div>' +
         '<div class="text-nowrap text-truncate rounds">' + '</div>' +
         '</div>' +
@@ -90,13 +91,12 @@ function overlayTop(data) {
     let name = treatDisplayName(data.displayName);
     let flag = data.countryCode != "LOGO" ? ("https://flagcdn.com/" + data.countryCode.toLowerCase() + '.svg') : (logoEvent.value[0].url);
 
-
     var $item = $(
         '<div class="athlete" id="aht' + data.lane + '">' +
         '<div class="ath initial_rank_top_ath">' +
         '<div class="rank initial_rank_top">' + data.lane + '</div>' +
         '<div class="ath_sub initial_rank_top">' +
-        '<div class="name"><span class="firstName">' + name.split(' ')[0] + ' </span><span class="lastName"> ' + name.split(' ')[1] + '</span></div>' +
+        name +
         '<div class="lane">#' + data.lane + '</div>' +
         '</div>' +
         '<div class="score initial_rank_top">O</div>' +
@@ -148,7 +148,8 @@ function leaderboardTV(data) {
         '<div class="rank text-nowrap text-truncate"> ' + '</div>' +
         '<div class="lane text-nowrap text-truncate"># ' + data.lane + '</div>' +
         '<div class="flag">' + '<div class="box_flag" ></div> ' + '</div>' +
-        '<div class="text-nowrap text-truncate text-left name">' + name + '</div>' +
+        // '<div class="text-nowrap text-truncate text-left name">' + name + '</div>' +
+        name +
         // '<div class="text-nowrap text-truncate text-left affiliate">' + data.affiliate + '</div>' +
         '<div class="score text-nowrap text-center text-truncate"></div>' +
         '<div class="popup text-nowrap text-center text-truncate">HHH</div>' +
@@ -185,7 +186,8 @@ function progressView(data) {
         '<div class="ath">' +
         '<div class="lane text-nowrap text-truncate"># ' + data.lane + '</div>' +
         '<div class="flag">' + '<div class="box_flag" ></div> ' + '</div>' +
-        '<div class="text-nowrap text-truncate text-left name">' + name + '</div>' +
+        // '<div class="text-nowrap text-truncate text-left name">' + name + '</div>' +
+        name +
         '<div class="text-nowrap text-truncate text-left affiliate">' + data.affiliate + '</div>' +
         '<div class="rank text-nowrap text-truncate"> ' + data.rank + '</div>' +
         '<div class="circle_progress">' +
@@ -299,7 +301,8 @@ function commentator(data) {
         '<tr class="athlete" id="aht' + data.lane + '">' +
         '<td class="truncate lane">' + data.lane + '</td>' +
         '<td class="flag">' + '<div class="box_flag"> </div> ' + '</td>' +
-        '<td class="truncate name" onclick="affichageStats()" id="showStats_' + data.lane + '">' + name + '</td>' +
+        // '<td class="truncate name" onclick="affichageStats()" id="showStats_' + data.lane + '">' + name + '</td>' +
+        name +
         // '<td class="truncate Opoint" id="oP_' + data.lane + '">' + O_points + '</td>' +
         // '<td class="truncate Orank" id="oR_' + data.lane + '">' + O_rank + '</td>' +
         '<td class="truncate reppersec"></td>' +
@@ -425,7 +428,8 @@ function laneOverlay(data) {
 
     var $item = $(
         '<div class="athlete" id="aht' + data.lane + '">' +
-        '<div class="name">' + name + '</div>' +
+        // '<div class="name">' + name + '</div>' +
+        name +
         '<div class="rank initial_rank_top"></div>' +
         '<div class="popup_box">' +
         '<div class="score initial_rank_top"></div>' +
@@ -472,7 +476,8 @@ function leaderboardVersus(data) {
         '<div class="ath_detail">' +
         '<div class="ath">' +
         '<div class="rank initial_rank_versus">' + data.lane + '</div>' +
-        '<div class="name">' + name + '</div>' +
+        // '<div class="name">' + name + '</div>' +
+        name +
         '<div class="score"></div>' +
         '</div>' +
         '<div class="popup initial_rank_versus">' + '</div>' +
@@ -504,7 +509,8 @@ function leaderboardVersusHyperfit(data) {
     let name = treatDisplayName(data.displayName);
     let $item = $(
         '<div class="athlete" id="aht' + data.lane + '">' +
-        '<div class="name">' + name + '</div>' +
+        // '<div class="name">' + name + '</div>' +
+        name +
         '<div class="score"></div>' +
         '<div class="popup">' + '</div>' +
         '</div>'
@@ -601,7 +607,8 @@ function leaderboardVersusTopWPA(data) {
         '<div class="athleteTop" id="ahtTop' + data.lane + '">' +
         '<div class="athTop_detail">' +
         '<div class="athTop">' +
-        '<div class="name">' + name + '</div>' +
+        // '<div class="name">' + name + '</div>' +
+        name +
         // '<div class="name"></div>' +
         '<div class="score">0</div>' +
         '</div>' +
@@ -640,7 +647,8 @@ function leaderboardVersusSideWPA(data) {
         '<div class="rank text-nowrap text-truncate"> ' + '</div>' +
         // '<div class="lane text-nowrap text-truncate"># ' + data.lane + '</div>' +
         '<div class="flag">' + '<div class="box_flag" ></div> ' + '</div>' +
-        '<div class="text-nowrap text-truncate text-left name">' + name + '</div>' +
+        // '<div class="text-nowrap text-truncate text-left name">' + name + '</div>' +
+        name +
         '<div class="score text-nowrap text-center text-truncate"></div>' +
         '<div class="text-nowrap text-truncate rounds">' + '</div>' +
         '</div>' +

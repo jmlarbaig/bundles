@@ -138,30 +138,100 @@ function treatDisplayName(displayName) {
     let char = [];
     let newName = "";
     if (heat.formatWod == "individual") {
+        let splitName = splitFullName(displayName);
         switch (setupLeaderboard.value.nameSelect) {
             case 'first':
-                char = displayName.toString().split(/\s+/)
-                newName = char[0]
+                newName = '<div class="name"><span class="title">' + splitName.title + ' </span><span class="lastName"> ' + splitName.firstName + '</span></div>';
                 break;
             case 'last':
-                char = displayName.toString().split(/\s+/)
-                newName = char[1] + " " + (char[2] || "")
+                newName = '<div class="name"><span class="title">' + splitName.title + ' </span><span class="lastName"> ' + splitName.lastName + '</span></div>';
                 break;
             case 'pointFirst':
-                char = displayName.toString().split(/\s+/)
-                newName = char[0].substring(0, 1) + ". " + char[1] + " " + (char[2] || "")
+                pointFirstName = splitName.firstName.substring(0, 1) + ". " + char[1] + " " + (char[2] || "")
+                newName = '<div class="name"><span class="title">' + splitName.title + ' </span><span class="firstName">' + pointFirstName + ' </span><span class="lastName"> ' + splitName.lastName + '</span></div>';
                 break;
             case 'full':
-                newName = displayName.toString()
+                newName = '<div class="name"><span class="title">' + splitName.title + ' </span><span class="firstName">' + splitName.firstName + ' </span><span class="lastName"> ' + splitName.lastName + '</span></div>';
                 break;
         }
 
     }
     else {
-        newName = displayName.toLowerCase().replace("crossfit", "");
+        newName = '<div class="name"><span class="lastName"> ' + displayName.toLowerCase().replace("crossfit", "") + '</span></div>';
     }
-    return newName.toUpperCase();
+    return newName;
 }
+
+
+function splitFullName(fullName) {
+    if (!fullName || !fullName.trim()) {
+        return { title: '', firstName: '', lastName: '' };
+    }
+
+    // --- LISTES DE PRÉFIXES ---
+
+    const civilites = [
+        'mr', 'mr.', 'mrs', 'mrs.', 'ms', 'ms.', 'miss', 'mme', 'mme.', 'mle', 'mlle',
+        'dr', 'dr.', 'prof', 'prof.', 'professeur', 'docteur', 'me', 'me.', 'maitre'
+    ];
+
+    const militaires = [
+        'general', 'général', 'gen', 'gen.', 'colonel', 'col', 'col.',
+        'commandant', 'cmd', 'capitaine', 'cpt', 'lieutenant', 'lt', 'lt.',
+        'sergent', 'sgt', 'sgt.', 'caporal', 'cpl', 'amiral', 'admiral',
+        'major', 'maj', 'maj.', 'marshal', 'maréchal', 'TSgt', 'SrA', 'SMSgt', 'MSgt'
+    ];
+
+    const religieux = [
+        'father', 'fr', 'fr.', 'sister', 'sr', 'sr.', 'brother', 'br', 'br.',
+        'pastor', 'reverend', 'rev', 'rev.', 'bishop', 'archbishop',
+        'sheikh', 'sheik', 'imam', 'rabbi', 'père', 'soeur', 'abbé'
+    ];
+
+    // Particules de noblesse — restent attachées au lastName
+    const particules = [
+        'van', 'von', 'de', 'du', 'des', 'der', 'den',
+        'le', 'la', 'les', 'del', 'della', 'di', 'da',
+        'bin', 'bint', 'al', 'el', 'ibn', 'af', 'av', 'of'
+    ];
+
+    const allTitles = [...civilites, ...militaires, ...religieux];
+
+    // --- TRAITEMENT ---
+
+    const parts = fullName.trim().replace(/\s+/g, ' ').split(' ');
+    let title = '';
+    let remaining = [...parts];
+
+    // Extraire les titres en début de chaîne (peut y en avoir plusieurs ex: "Dr. Prof.")
+    while (remaining.length > 0 && allTitles.includes(remaining[0].toLowerCase().replace(',', ''))) {
+        title += (title ? ' ' : '') + remaining.shift();
+    }
+
+    if (remaining.length === 0) return { title, firstName: '', lastName: '' };
+    if (remaining.length === 1) return { title, firstName: remaining[0], lastName: '' };
+
+    // Détecter où commence le lastName (particule ou dernier mot)
+    let splitIndex = 1; // par défaut : 1er mot = firstName
+    for (let i = 1; i < remaining.length; i++) {
+        if (particules.includes(remaining[i].toLowerCase().replace(/[^a-zàâéèêëîïôùûüç-]/gi, ''))) {
+            splitIndex = i;
+            break;
+        }
+        // Si on atteint l'avant-dernier sans particule trouvée : le dernier mot = lastName
+        if (i === remaining.length - 1) {
+            splitIndex = remaining.length - 1;
+        }
+    }
+
+    return {
+        title,
+        firstName: remaining.slice(0, splitIndex).join(' '),
+        lastName: remaining.slice(splitIndex).join(' ')
+    };
+}
+
+
 
 let auth = {};
 

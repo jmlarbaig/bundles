@@ -78,9 +78,11 @@ module.exports = (nodecg, ip_ntp, eventId, floorId) => {
         }
         else {
             mqttTools.disconnectMQTT()
-            ip_broker = '51.83.42.122';
+            ip_broker = '95.216.5.175';
             ip_ntp = 'time.google.com'
-            // mqttTools.connectionMQTT(ip_broker, true)
+            console.log("eventId = ", eventId)
+            console.log("floorId = ", floorId)
+            mqttTools.connectionMQTT(ip_broker, eventId, floorId, true)
         }
 
         time(ip_ntp)
@@ -99,9 +101,9 @@ module.exports = (nodecg, ip_ntp, eventId, floorId) => {
         }
     }
 
-    changeIpAdresse()
+    // changeIpAdresse()
 
-    setInterval(checkIpKairos, 1000);
+    // setInterval(checkIpKairos, 1000);
     setInterval(timer, 1000)
 
     console.log('submodule ', __filename, ' is init')

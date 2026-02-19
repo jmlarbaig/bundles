@@ -75,8 +75,8 @@ function styleHeat_top(element) {
         '<div class="heat_content">' +
         '<div class="details fade-right">' +
         '<div id="workout" class="detail" > ' + element.externalName + ' </div>' +
-        '<div id="heat" class="detail"> // ' + element.heatName + ' // </div>' +
-        '<div id="division" class="detail"> RX\'D </div>' +
+        // '<div id="heat" class="detail"> // ' + element.heatName + ' // </div>' +
+        // '<div id="division" class="detail"> RX\'D </div>' +
         '<div id="mvt" class="text-nowrap text-truncate"></div>' +
         '</div>' +
         '<div class="box_mainSponsor">' +

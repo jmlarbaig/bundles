@@ -5,6 +5,8 @@ let tableOfMinos = []
 let minosOnFloor = 0;
 
 dataMinos.on('change', (newValue, oldValue) => {
+    console.log("oldValue Minos : ", oldValue)
+    console.log("newValue Minos : ", newValue)
     // if(JSON.stringify(newValue) != JSON.stringify(oldValue)){
     Object.values(newValue).forEach((minos) => {
         if (minos != null) {
