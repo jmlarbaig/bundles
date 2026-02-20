@@ -127,6 +127,7 @@ function updateDynamics(newScoring, status) {
                     case '0':
                         // initialRankChange(elemAth[i], ".popup")
                         if (overlay != 'versus_hyperfit') {
+                            showRepMvtInScore(elemAth[i])
                             hideMvtInPopup(elemAth[i])
                             hideRepMvtInScore(elemAth[i])
                             initialRankChange(elemAth[i], ".ath")
@@ -138,6 +139,7 @@ function updateDynamics(newScoring, status) {
                         break;
                     case 'R':
                         if (overlay != 'versus_hyperfit') {
+                            showRepMvtInScore(elemAth[i])
                             hideMvtInPopup(elemAth[i])
                             hideRepMvtInScore(elemAth[i])
                             initialRankChange(elemAth[i], ".ath")
@@ -157,6 +159,7 @@ function updateDynamics(newScoring, status) {
                                     elemAth[i].$item.find(".lane").hide()
                                 }
                                 if (overlay != 'versus_hyperfit') {
+                                    showRepMvtInScore(elemAth[i])
                                     noJudge(elemAth[i])
                                     hideMvtInPopup(elemAth[i])
                                     hideRepMvtInScore(elemAth[i])
@@ -180,7 +183,7 @@ function updateDynamics(newScoring, status) {
                                 break;
                             case 'S':
                                 if (overlay != 'versus_hyperfit') {
-
+                                    showRepMvtInScore(elemAth[i])
                                     hideMvtInPopup(elemAth[i])
                                     hideRepMvtInScore(elemAth[i])
                                     changeRankToLane(elemAth[i])
