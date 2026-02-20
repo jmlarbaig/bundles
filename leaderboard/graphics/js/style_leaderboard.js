@@ -240,7 +240,7 @@ function headerCommentator(divisions, indexDivision, repTarget) {
         '<th scope="col" class="truncate box rank">Rank</th>' +
         '<th scope="col" class="truncate box rounds text-nowrap text-truncate">Rounds</th>' +
         '<th scope="col" class="truncate box score align-items-xl-center">Scores</th>' +
-        '<th scope="col" class="truncate box popup text-nowrap text-truncate">Mouvement</th>' +
+        '<th scope="col" class="truncate box popup text-nowrap text-truncate">Movement</th>' +
         '</tr>' +
         '</thead>' +
         '<tbody id="athletes" class="athletes">' +

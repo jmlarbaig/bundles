@@ -73,20 +73,20 @@
     /* background-color: var(--second_color); */
 }
 
-th,
-td {
-    white-space: nowrap;
-    text-align: center;
-    text-transform: uppercase;
-}
 
 div.dataTables_wrapper {
     border-collapse: collapse;
     font-size: 1.2em;
     width: 100%;
     margin: auto;
+    table-layout: fixed;
 }
 
+div.dataTables_wrapper td {
+    /* white-space: normal;
+    overflow: hidden;
+    text-overflow: ellipsis; */
+}
 
 .lane {
     background-color: white;
@@ -97,14 +97,11 @@ div.dataTables_wrapper {
 .flag {
     background-color: white;
     z-index: 10;
-    width: 150px;
-    max-width: 150px;
     height: 20px;
 }
 
 .box_flag {
     z-index: 10;
-    /* width: 30px; */
     height: 20px;
     background-size: contain;
     background-position: center;
@@ -115,8 +112,6 @@ div.dataTables_wrapper {
     background-color: white;
     z-index: 10;
     text-align: left;
-    /* width: 200px; */
-    /* max-width: 200px; */
 }
 
 .name:hover {
@@ -125,6 +120,23 @@ div.dataTables_wrapper {
     cursor: pointer;
 }
 
+.reppersec {
+    background-color: white;
+    z-index: 10;
+    text-align: center;
+}
+
+th {
+    background-color: white;
+    z-index: 10;
+    text-align: center;
+}
+
+.bestStat {
+    background-color: green;
+    color: white;
+    font-weight: bold;
+}
 
 .Opoint {
     /* width: 70px; */
@@ -143,22 +155,24 @@ div.dataTables_wrapper {
 
 thead .score {
     background-color: white;
+    color: black;
 }
 
 .score {
+    background-color: white;
     z-index: 10;
-    /* width: 150px; */
-    /* max-width: 150px; */
+    color: black;
 }
 
 .popup {
     background-color: white;
+    background-color: white;
     z-index: 10;
-    /* width: 250px; */
-    /* max-width: 250px; */
+    color: black;
 }
 
 .rounds {
+    background-color: white;
     background-color: white;
 }
 

@@ -337,13 +337,14 @@ function resetLeaderboard(newData) {
                     $("#leaderboard" + indexDivision + " #table" + indexDivision).DataTable({
                         scrollY: "auto",
                         scrollX: true,
+                        autoWidth: false,   // 🔴 très important
                         filter: false,
                         info: false,
                         scrollCollapse: true,
                         stripeClasses: ['odd', 'even'],
                         paging: false,
                         fixedColumns: {
-                            left: 4,
+                            left: 5,
                             right: 2
                         }
                     });

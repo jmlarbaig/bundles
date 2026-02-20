@@ -734,8 +734,6 @@ function changeColor(ath, element) {
 
 
 function eraseInitialRank(ath, element) {
-
-
     if (overlay == 'overlay_wpa') { return };
     if (!overlay.includes('overlay_top')) {
         // ath.$item.find(element).addClass('')
@@ -878,12 +876,12 @@ function treatBigScreenMvt(elementAth) {
     if (heat.typeWod == 'amrap' && !Number.isNaN(elementAth.currentMvt.rounds)) {
         percent = (elementAth.currentMvt.scoreRelMvt / elementAth.currentMvt.totalReps) * 95
         elementAth.$item.find(".rounds").text("R" + (elementAth.currentMvt.rounds));
-        elementAth.$item.find(".popup").text("R" + (elementAth.currentMvt.rounds) + ' - ' + elementAth.currentMvt.mvtNames);
-        elementAth.$item.find(".popup_top").text("R" + (elementAth.currentMvt.rounds) + ' - ' + elementAth.currentMvt.mvtNames);
+        elementAth.$item.find(".popup").text("R" + (elementAth.currentMvt.rounds) + ' - ' + Math.abs(elementAth.currentMvt.scoreRelMvt) + ' ' + elementAth.currentMvt.mvtNames);
+        elementAth.$item.find(".popup_top").text("R" + (elementAth.currentMvt.rounds) + ' - ' + Math.abs(elementAth.currentMvt.scoreRelMvt) + ' ' + elementAth.currentMvt.mvtNames);
     } else {
         percent = (elementAth.score_abs / elementAth.currentMvt.totalReps) * 95
-        elementAth.$item.find(".popup").text(elementAth.currentMvt.mvtNames);
-        elementAth.$item.find(".popup_top").text(elementAth.currentMvt.mvtNames);
+        elementAth.$item.find(".popup").text(Math.abs(elementAth.currentMvt.scoreRelMvt) + ' ' + elementAth.currentMvt.mvtNames);
+        elementAth.$item.find(".popup_top").text(Math.abs(elementAth.currentMvt.scoreRelMvt) + ' ' + elementAth.currentMvt.mvtNames);
     }
     elementAth.$item.find(".popup").show();
     elementAth.$item.find(".popup_top").show();
@@ -1047,7 +1045,7 @@ function showRepMvtInScore(elementAth) {
         default:
     }
 
-    if (elementAth.currentMvt.mvtNames.toUpperCase() != "WORKOUT" && setupLeaderboard.value.showMvt) {
+    if (elementAth.currentMvt.mvtNames.toUpperCase() != "WORKOUT" && (setupLeaderboard.value.showMvt || overlay.includes("commentator"))) {
         // console.log("SHOW MVTS IN SCORE CONFIG : ", setupLeaderboard.value.showMvt)
         showMvtInPopup(elementAth)
     } else {
@@ -1070,7 +1068,7 @@ function hideRepMvtInScore(elementAth) {
 }
 
 function hideColMvt(elementAth) {
-    elementAth.$item.find(".popup").hide();
+    // elementAth.$item.find(".popup").hide();
 }
 
 function showMvtInPopup(elementAth) {
@@ -1129,6 +1127,8 @@ function treatDisplayMvtForOthers(elementAth, idToCompare, roundsToCompare) {
     }
 
     let textTomvt = repTarget + ' ' + mvt;
+
+    console.log("TEXTE TO MVt : ", textTomvt)
     // console.log("COMPARE ID : ", elementAth.currentMvt.id, " TO ", idToCompare)
     // console.log("COMPARE ROUNDs : ", elementAth.currentMvt.rounds, " TO ", roundsToCompare)
     console.log(elementAth.currentMvt.id != idToCompare && elementAth.currentMvt.rounds != roundsToCompare)
@@ -1180,6 +1180,8 @@ function treatDisplayMvtFirst(elementAth) {
         textTomvt = elementAth.currentMvt.scoreRelMvt + ' ' + mvt;
     }
 
+    console.log("TEXTE TO MVt : ", textTomvt)
+
     if (elementAth.currentMvt.mvtNames == "" || elementAth.currentMvt.mvtNames.includes("Workout")) {
         overlay != "versus" && elementAth.$item.find(".popup").hide();
         overlay != "versus" && elementAth.$item.find(".popup_top").hide();
@@ -1230,78 +1232,53 @@ function showHiddenAthlete(elementAth) {
         elementAth.$item.fadeIn(1000)
     }, 3000)
 }
-
 function treatPerfArray(elementAth) {
     if (overlay == 'commentator') {
         if (bestPerf[elementAth.lane] == undefined) {
-            bestPerf[elementAth.lane] = []
+            bestPerf[elementAth.lane] = [];
         }
-        Object.values(elementAth.log_mvt[0]).forEach((key, index) => {
+
+        for (const [key, rounds] of Object.entries(elementAth.log_mvt[0])) {
             let html = '';
-            Object.entries(key).forEach(([value, time]) => {
-                let text = `${value.replaceAll('-', '')}: ${time}<br>`;
+
+            for (const [round, time] of Object.entries(rounds)) {
+                let text = `${round.replaceAll('-', '')}: ${time}<br>`;
                 if (heat.typeWod == 'time') {
-                    text = text.toLowerCase().replaceAll('rd 1:', '')
+                    text = text.toLowerCase().replaceAll('rd 1:', '');
                 }
                 html += text;
-            });
-            elementAth.$item.find("#mvt_id_" + index + "_" + elementAth.lane).html(html)
-            // Object.values(key).forEach((time) => {
-            //     console.log("TIME POUR MVT INDEX " + index + " : ", time)
-            //     let html = '';
+            }
 
-            //     if (time != '00:00.0') {
-            //         if (!elementAth.$item.find("#mvt_id_" + index + "_" + elementAth.lane).text().includes(time)) {
-            //             console.log("PAS DE VALEUR ENCORE, ON AJOUTE : ", time)
-            //             elementAth.$item.find("#mvt_id_" + index + "_" + elementAth.lane).html(time)
-            //             // let secondes = time.split(':').map(Number)
-            //             // let min = secondes[0] * 60;
-            //             // let total = secondes[1] + min
+            // Extraire le temps absolu pour comparaison ex: "00:40.7 (00:40.7)" → 40.7s
+            const firstTime = Object.values(rounds)[0]; // "00:40.7 (00:40.7)"
+            const absolute = firstTime.split(" ")[1].replaceAll('(', '').replaceAll(')', '');   // "00:40.7"
+            const [min, sec] = absolute.split(":");
+            const totalSeconds = parseFloat(min) * 60 + parseFloat(sec);
 
-            //             // if (total > 3) {
-            //             //     elementAth.$item.find("#mvt_id_" + index + "_" + elementAth.lane).html(time)
-            //             //     bestPerf[elementAth.lane][index] = total
+            // Stocker le meilleur temps global par mouvement
+            if (best[key] === undefined || totalSeconds < best[key]) {
+                best[key] = totalSeconds;
+            }
 
-            //             //     if (best[index] == undefined) {
-            //             //         best[index] = total
-            //             //     }
+            // Stocker le temps de cet athlète pour ce mouvement
+            bestPerf[elementAth.lane][key] = totalSeconds;
 
-            //             //     if (bestPerf[elementAth.lane][index] <= best[index]) {
-            //             //         best[index] = bestPerf[elementAth.lane][index]
+            // Mettre à jour le HTML
+            elementAth.$item.find("#mvt_id_" + key + "_" + elementAth.lane).html(html);
+        }
 
-            //             //         // $('#leaderboard' + key).find('.mvt_id_' + index).removeClass('bestStat');
-            //             //         elementAth.$item.find("#mvt_id_" + index + "_" + elementAth.lane).addClass('bestStat');
-            //             //     }
+        // Après avoir mis à jour tous les athlètes, coloriser le meilleur
+        for (const [key] of Object.entries(elementAth.log_mvt[0])) {
+            // Retirer la classe de tous les athlètes pour ce mouvement
+            $(".mvt_id_" + key).removeClass('bestStat');
 
-            //             // }
-            //         } else if (elementAth.$item.find("#mvt_id_" + index + "_" + elementAth.lane).text() != '-' && elementAth.$item.find("#mvt_id_" + index + "_" + elementAth.lane).text() != time) {
-            //             console.log("VALEUR DIFFÉRENTE, ON AJOUTE : ", time)
-            //             let value = elementAth.$item.find("#mvt_id_" + index + "_" + elementAth.lane).text()
-            //             value = value + "<br>" + time
-            //             elementAth.$item.find("#mvt_id_" + index + "_" + elementAth.lane).html(value)
-            //             // let secondes = time.split(':').map(Number)
-            //             // let min = secondes[0] * 60;
-            //             // let total = secondes[1] + min
-
-            //             // if (total > 3) {
-            //             //     // elementAth.$item.find("#mvt_id_" + index + "_" + elementAth.lane).text(time)
-            //             //     bestPerf[elementAth.lane][index] = total
-
-            //             //     if (best[index] == undefined) {
-            //             //         best[index] = total
-            //             //     }
-
-            //             //     if (bestPerf[elementAth.lane][index] <= best[index]) {
-            //             //         best[index] = bestPerf[elementAth.lane][index]
-
-            //             //         // $('#leaderboard' + key).find('.mvt_id_' + index).removeClass('bestStat');
-            //             //         elementAth.$item.find("#mvt_id_" + index + "_" + elementAth.lane).addClass('bestStat');
-            //             //     }
-            //             // }
-            //         }
-            //     }
-            // });
-        })
+            // Retrouver quel athlète a le meilleur temps et lui ajouter la classe
+            for (const lane in bestPerf) {
+                if (bestPerf[lane][key] !== undefined && bestPerf[lane][key] === best[key]) {
+                    $("#mvt_id_" + key + "_" + lane).addClass('bestStat');
+                }
+            }
+        }
     }
 }
 

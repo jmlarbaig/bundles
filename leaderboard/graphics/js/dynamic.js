@@ -128,11 +128,13 @@ function updateDynamics(newScoring, status) {
                         // initialRankChange(elemAth[i], ".popup")
                         if (overlay != 'versus_hyperfit') {
                             showRepMvtInScore(elemAth[i])
-                            hideMvtInPopup(elemAth[i])
-                            hideRepMvtInScore(elemAth[i])
-                            initialRankChange(elemAth[i], ".ath")
-                            initialRankChange(elemAth[i], ".rank")
-                            initialRankChange(elemAth[i], ".score")
+                            if (!overlay.includes("commentator")) {
+                                hideMvtInPopup(elemAth[i])
+                                hideRepMvtInScore(elemAth[i])
+                                initialRankChange(elemAth[i], ".ath")
+                                initialRankChange(elemAth[i], ".rank")
+                                initialRankChange(elemAth[i], ".score")
+                            }
                         }
 
                         hideWaitingWPA(arrayWAP)
@@ -140,11 +142,13 @@ function updateDynamics(newScoring, status) {
                     case 'R':
                         if (overlay != 'versus_hyperfit') {
                             showRepMvtInScore(elemAth[i])
-                            hideMvtInPopup(elemAth[i])
-                            hideRepMvtInScore(elemAth[i])
-                            initialRankChange(elemAth[i], ".ath")
-                            initialRankChange(elemAth[i], ".rank")
-                            initialRankChange(elemAth[i], ".score")
+                            if (!overlay.includes("commentator")) {
+                                hideMvtInPopup(elemAth[i])
+                                hideRepMvtInScore(elemAth[i])
+                                initialRankChange(elemAth[i], ".ath")
+                                initialRankChange(elemAth[i], ".rank")
+                                initialRankChange(elemAth[i], ".score")
+                            }
                         }
                         hideResultWPA(arrayWAP)
                         break;
@@ -155,15 +159,17 @@ function updateDynamics(newScoring, status) {
                         switch (elemAth[i].status) {
                             case '0':
 
-                                if (overlay != 'commentator' || overlay != 'versus_hyperfit') {
+                                if (overlay != 'commentator' && overlay != 'versus_hyperfit') {
                                     elemAth[i].$item.find(".lane").hide()
                                 }
                                 if (overlay != 'versus_hyperfit') {
                                     showRepMvtInScore(elemAth[i])
-                                    noJudge(elemAth[i])
-                                    hideMvtInPopup(elemAth[i])
-                                    hideRepMvtInScore(elemAth[i])
-                                    changeRankToLane(elemAth[i])
+                                    if (!overlay.includes("commentator")) {
+                                        noJudge(elemAth[i])
+                                        hideMvtInPopup(elemAth[i])
+                                        hideRepMvtInScore(elemAth[i])
+                                        changeRankToLane(elemAth[i])
+                                    }
                                 }
                                 switch (heat.typeWod) {
                                     case 'repmax':
@@ -182,7 +188,7 @@ function updateDynamics(newScoring, status) {
                                 }
                                 break;
                             case 'S':
-                                if (overlay != 'versus_hyperfit') {
+                                if (overlay != 'versus_hyperfit' && overlay != 'commentator') {
                                     showRepMvtInScore(elemAth[i])
                                     hideMvtInPopup(elemAth[i])
                                     hideRepMvtInScore(elemAth[i])
@@ -193,12 +199,14 @@ function updateDynamics(newScoring, status) {
                                 if (overlay != 'commentator') {
                                     setupLeaderboard.value.lane ? elemAth[i].$item.find(".lane").show() : elemAth[i].$item.find(".lane").hide()
                                 }
-                                if (overlay != 'versus_hyperfit') {
+                                if (overlay != 'versus_hyperfit' && overlay != 'commentator') {
                                     withJudge(elemAth[i])
-                                    // console.log("Athlete with statut W :", elemAth[i])
-                                    // if (overlay != 'overlay_wpa') {
+                                }
+
+                                if (overlay != 'versus_hyperfit') {
                                     changeRank(elemAth[i]);
                                 }
+
                                 // }
 
 
@@ -222,6 +230,7 @@ function updateDynamics(newScoring, status) {
                                         case 'repmax':
                                             showRepMax(elemAth[i])
                                             overlay == 'overlay_wpa' && hideRank(elemAth[i])
+                                            overlay == 'commentator' && hideRank(elemAth[i])
                                             break;
                                         default:
                                             showRepMvtInScore(elemAth[i])
@@ -252,7 +261,7 @@ function updateDynamics(newScoring, status) {
                                 // if (overlay == "overlay_wpa" && elemAth.length > 2) {
                                 // $('.rank').hide()
                                 // console.log(arrayWAP)
-                                treatResultDisplayRepWPA(arrayWAP)
+                                // treatResultDisplayRepWPA(arrayWAP)
                                 // }
 
                                 break;
