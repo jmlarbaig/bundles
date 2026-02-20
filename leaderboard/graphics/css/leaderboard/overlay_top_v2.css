@@ -171,6 +171,7 @@
     background-color: white;
     color: black;
     font-size: var(--sizeFontScore_top);
+    font-family: var(--lastName-select);
 }
 
 
