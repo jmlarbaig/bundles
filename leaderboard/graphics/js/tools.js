@@ -37,11 +37,11 @@ function timeToTimestamp(time) {
 }
 
 function msToTime(s) {
-    var ms = Math.round((s % 1000));
+    var ms = Math.floor((s % 1000));
     s = (s - ms) / 1000;
-    var secs = Math.round((s % 60));
+    var secs = Math.floor((s % 60));
     s = (s - secs) / 60;
-    var mins = Math.round(((s % 60)));
+    var mins = Math.floor(((s % 60)));
     var hrs = ((s - mins) / 60);
     if (secs < 10) { secs = '0' + (secs) }
     if (mins < 10) { mins = '0' + mins }
@@ -58,7 +58,7 @@ function msToTimeCt(s) {
     var hrs = ((s - mins) / 60);
     if (secs < 10) { secs = '0' + (secs) }
     if (mins < 10) { mins = '0' + mins }
-    console.log("Timer : ", mins + ':' + secs)
+    // console.log("Timer : ", mins + ':' + secs)
     return mins + ':' + secs;
 }
 
@@ -71,7 +71,7 @@ function msToTime2(s) {
     var hrs = (s - mins) / 60;
     if (secs < 10) { secs = '0' + secs }
     if (mins < 10) { mins = '0' + mins }
-    console.log("Time : ", mins + ':' + secs)
+    // console.log("Time : ", mins + ':' + secs)
     return mins + ':' + secs;
 }
 

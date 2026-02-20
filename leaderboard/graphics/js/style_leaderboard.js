@@ -301,8 +301,8 @@ function commentator(data) {
         '<tr class="athlete" id="aht' + data.lane + '">' +
         '<td class="truncate lane">' + data.lane + '</td>' +
         '<td class="flag">' + '<div class="box_flag"> </div> ' + '</td>' +
-        // '<td class="truncate name" onclick="affichageStats()" id="showStats_' + data.lane + '">' + name + '</td>' +
-        name +
+        '<td class="truncate name" onclick="affichageStats()" id="showStats_' + data.lane + '">' + data.displayName + '</td>' +
+        // data.displayName +
         // '<td class="truncate Opoint" id="oP_' + data.lane + '">' + O_points + '</td>' +
         // '<td class="truncate Orank" id="oR_' + data.lane + '">' + O_rank + '</td>' +
         '<td class="truncate reppersec"></td>' +

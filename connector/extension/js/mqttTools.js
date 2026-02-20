@@ -198,9 +198,6 @@ module.exports = (nodecg) => {
                 let lane = parseInt(topic.split('/')[3].replace("minos", ""))
                 let mes = message.toString().split(';');
 
-                console.log(lane)
-                console.log(mes)
-
                 tableOfMinosLaneOnFloor[lane] = {}
                 tableOfMinosLaneOnFloor[lane].status = mes[0] || 0;
                 tableOfMinosLaneOnFloor[lane].rep = parseFloat(mes[4]) || 0;

@@ -39,7 +39,7 @@ function updateTime() {
         $(".chrono").css("color", Clrs.tx_chrono_color)
     }
 
-    if (timeDiffTimeCap <= 0 && timeDiffStart >= 0) {
+    if (timeDiffTimeCap <= 0 && timeDiffStart >= 0 && timeDiffEnd > 0 && startTime != 0) {
         onChronoBefore = true;
         if (overlay != 'lane' && overlay != 'timer') {
             $('#cap').fadeIn(1000)
@@ -57,21 +57,18 @@ function updateTime() {
             chrono = msToTime(timeDiffStart);
         }
 
-        // if (timeDiffStart <= 2000) {
-        //     chrono = "GO"
-        // }
-    } else if (timeDiffStart < 0) {
+    } else if (timeDiffStart < 0 && startTime != 0) {
         onChronoBefore = true;
         if (overlay != 'lane' && overlay != 'timer') {
             $('#cap').fadeOut(1000)
         }
         if (overlay == 'overlay_side' || overlay == 'overlay_side_v1' || overlay == 'overlay_wpa') {
-            $(".chrono").css("color", "rgb(255,50,80")
+            // $(".chrono").css("color", "rgb(255,50,80")
         } else if (overlay == 'timer') {
-            $(".box_chrono").css("color", Clrs.colorFontCountdownTimer)
-            $(".chrono").css("color", Clrs.colorFontCountdownTimer)
+            // $(".box_chrono").css("color", Clrs.colorFontCountdownTimer)
+            // $(".chrono").css("color", Clrs.colorFontCountdownTimer)
         } else {
-            $(".chrono").css("color", "rgb(255,255,255")
+            // $(".chrono").css("color", "rgb(255,255,255")
         }
         let ch = msToTime(timeDiffStart - 1000).split(':');
         let min = parseInt(ch[0].replace('0-', ''));
@@ -90,8 +87,7 @@ function updateTime() {
             chrono = '' + minS + ':' + secS;
         }
         else {
-
-            chrono = "";
+            chrono = "00:00";
         }
     } else {
         if (overlay != 'lane' && overlay != 'timer') {
@@ -109,18 +105,18 @@ function updateTime() {
         }
 
         if (timeDiffTimeCap > 0 && timeDiffTimeCap < (1000 * 10)) {
-            // chrono = "STOP"
-            chrono = ""
+            chrono = "00:00"
+            // chrono = ""
         } else {
             // chrono = heat.timecap
-            chrono = ""
+            chrono = "00:00"
         }
-        // if (heat.timecap != '') {
-        //     chrono = heat.timecap
-        // }
-        // else {
-        //     chrono = "00:00"
-        // }
+        if (heat.timecap != '') {
+            chrono = "00:00"
+        }
+        else {
+            chrono = "00:00"
+        }
     }
     // if (timeDiffTimeCap > -30000 && timeDiffTimeCap < 0 && timeDiffStart > 0) {
     //     if (overlay == 'overlay_side' || overlay == 'overlay_side_v1' || overlay == 'overlay_wpa') {
@@ -162,7 +158,7 @@ function showTime(Cap) {
         $list.find("#cap").remove();
 
         let $item = $(
-            '<div id="time"> </div>' +
+            '<div id="time">00:00</div>' +
             '<div id="cap">Timecap ' + Cap + '</div>'
         );
 

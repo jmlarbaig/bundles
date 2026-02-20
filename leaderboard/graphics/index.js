@@ -272,7 +272,7 @@ function launchTimer() {
                 if (timerLaunch != null) {
                     clearInterval(timerLaunch)
                     timerLaunch = null;
-                    $(".chrono").find('#time').text('STOP');
+                    $(".chrono").find('#time').text('00:00');
                 }
             }
         }

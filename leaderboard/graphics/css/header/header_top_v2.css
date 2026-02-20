@@ -43,6 +43,7 @@
     width: var(--width_box_heat);
     height: 100px;
     color: var(--tx_second_color);
+    letter-spacing: var(--letter_spacing);
     /* box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; */
 }
 

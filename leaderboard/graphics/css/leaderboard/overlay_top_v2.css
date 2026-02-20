@@ -132,12 +132,12 @@
     overflow: hidden;
     text-overflow: ellipsis;
     min-width: 180px;
-    letter-spacing: letter_spacing;
+    letter-spacing: var(--letter_spacing);
 }
 
 .leaderboard .athlete .firstName {
     font-family: var(--firstName-select);
-    font-size: 16px;
+    font-size: var(--sizeFontAthlete_top);
     font-weight: 200;
     padding-right: 2px;
 }
