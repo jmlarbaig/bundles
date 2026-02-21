@@ -32,7 +32,7 @@
 
 .leaderboard:nth-child(2) {
     width: var(--width_calc_top);
-    overflow: hidden;
+    /* overflow: hidden; */
     position: relative;
     display: flex;
     flex-direction: column;
