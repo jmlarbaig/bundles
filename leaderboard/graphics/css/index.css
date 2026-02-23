@@ -157,6 +157,8 @@
         --colorFontCountdownTimer: rgb(0, 0, 0);
         --familyFontTimer-select: 'Typographica';
         --mainTop_color: rgb(0, 0, 0);
+
+        --positionYFont_popup_top: 0px;
     }
 
 

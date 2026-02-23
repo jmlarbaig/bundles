@@ -141,9 +141,9 @@ function updateTime() {
 }
 
 function resetTimer() {
-    $(".box_chrono").css("background-color", Clrs.chrono_color)
+    // $(".box_chrono").css("background-color", Clrs.chrono_color)
     $(".box_chrono").css("color", Clrs.tx_chrono_color)
-    $(".chrono").css("background-color", Clrs.chrono_color)
+    // $(".chrono").css("background-color", Clrs.chrono_color)
     $(".chrono").css("color", Clrs.tx_chrono_color)
     document.getElementById("time").innerHTML = "00:00";
     sonLaunch = false;

@@ -196,9 +196,9 @@
     overflow: hidden;
     text-overflow: ellipsis;
     font-size: var(--sizeFont_popup_top);
-    padding-top: 10px;
-    padding-bottom: 10px;
-    height: var(--height_popup_top);
+    padding-top: 2px;
+    padding-bottom: 2px;
+    /* height: var(--height_popup_top); */
     -moz-transition-duration: 1s;
     -webkit-transition-duration: 1s;
     -ms-transition-duration: 1s;

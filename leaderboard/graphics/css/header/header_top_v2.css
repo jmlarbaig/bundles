@@ -19,7 +19,7 @@
     text-align: right;
     width: 150px;
     height: 150px;
-    background-color: var(--box_logo_color);
+    /* background-color: var(--box_logo_color); */
     text-align: center;
 }
 
