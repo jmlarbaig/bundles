@@ -130,6 +130,26 @@ body {
     width: 10%;
 }
 
+.leaderboard .battery {
+    visibility: visible;
+    text-align: center;
+    width: 10%;
+}
+
+.leaderboard .signal {
+    visibility: visible;
+    text-align: center;
+    width: 10%;
+}
+
+.leaderboard .rank {
+    visibility: visible;
+    text-align: center;
+    width: 10%;
+    align-items: center;
+    text-align: center;
+}
+
 .leaderboard .state {
     visibility: visible;
     text-align: center;

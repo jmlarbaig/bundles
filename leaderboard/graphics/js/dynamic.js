@@ -6,7 +6,7 @@ let best = []
 function updateDynamics(newScoring, status) {
     try {
 
-        // console.log("updateDynamics", status)
+        console.log("updateDynamics", status)
 
         let arrayWAP = []
         Object.values(athletesDivision).forEach((elemAth, key) => {
@@ -128,7 +128,7 @@ function updateDynamics(newScoring, status) {
                         // initialRankChange(elemAth[i], ".popup")
                         if (overlay != 'versus_hyperfit') {
                             showRepMvtInScore(elemAth[i])
-                            if (!overlay.includes("commentator")) {
+                            if (!overlay.includes("commentator") && overlay != "sk") {
                                 hideMvtInPopup(elemAth[i])
                                 hideRepMvtInScore(elemAth[i])
                                 initialRankChange(elemAth[i], ".ath")
@@ -142,7 +142,7 @@ function updateDynamics(newScoring, status) {
                     case 'R':
                         if (overlay != 'versus_hyperfit') {
                             showRepMvtInScore(elemAth[i])
-                            if (!overlay.includes("commentator")) {
+                            if (!overlay.includes("commentator") && overlay != "sk") {
                                 hideMvtInPopup(elemAth[i])
                                 hideRepMvtInScore(elemAth[i])
                                 initialRankChange(elemAth[i], ".ath")
@@ -159,12 +159,12 @@ function updateDynamics(newScoring, status) {
                         switch (elemAth[i].status) {
                             case '0':
 
-                                if (overlay != 'commentator' && overlay != 'versus_hyperfit') {
+                                if (overlay != 'commentator' && overlay != 'versus_hyperfit' && overlay != 'sk') {
                                     elemAth[i].$item.find(".lane").hide()
                                 }
                                 if (overlay != 'versus_hyperfit') {
                                     showRepMvtInScore(elemAth[i])
-                                    if (!overlay.includes("commentator")) {
+                                    if (!overlay.includes("commentator") && overlay != "sk") {
                                         noJudge(elemAth[i])
                                         hideMvtInPopup(elemAth[i])
                                         hideRepMvtInScore(elemAth[i])
@@ -188,7 +188,7 @@ function updateDynamics(newScoring, status) {
                                 }
                                 break;
                             case 'S':
-                                if (overlay != 'versus_hyperfit' && overlay != 'commentator') {
+                                if (overlay != 'versus_hyperfit' && overlay != 'commentator' && overlay != 'sk') {
                                     showRepMvtInScore(elemAth[i])
                                     hideMvtInPopup(elemAth[i])
                                     hideRepMvtInScore(elemAth[i])
@@ -196,10 +196,10 @@ function updateDynamics(newScoring, status) {
                                 }
                                 break;
                             case 'W':
-                                if (overlay != 'commentator') {
+                                if (overlay != 'commentator' && overlay != 'sk') {
                                     setupLeaderboard.value.lane ? elemAth[i].$item.find(".lane").show() : elemAth[i].$item.find(".lane").hide()
                                 }
-                                if (overlay != 'versus_hyperfit' && overlay != 'commentator') {
+                                if (overlay != 'versus_hyperfit' && overlay != 'commentator' && overlay != 'sk') {
                                     withJudge(elemAth[i])
                                 }
 
@@ -231,6 +231,7 @@ function updateDynamics(newScoring, status) {
                                             showRepMax(elemAth[i])
                                             overlay == 'overlay_wpa' && hideRank(elemAth[i])
                                             overlay == 'commentator' && hideRank(elemAth[i])
+                                            overlay == 'sk' && hideRank(elemAth[i])
                                             break;
                                         default:
                                             showRepMvtInScore(elemAth[i])
@@ -252,7 +253,7 @@ function updateDynamics(newScoring, status) {
                                         changeFunction(overlay, elemAth[i])
                                     }
                                     if (setupLeaderboard.value.scoreConfig == 'rel_score' || setupLeaderboard.value.scoreConfig == 'abs_score') {
-                                        if (overlay == 'progression' || overlay == 'commentator' || overlay == 'leaderboard') {
+                                        if (overlay != 'progression' && overlay != 'commentator' && overlay != 'leaderboard' && overlay != 'sk') {
                                             hideColMvt(elemAth[i])
                                         }
                                     }
@@ -266,7 +267,7 @@ function updateDynamics(newScoring, status) {
 
                                 break;
                             case 'F':
-                                if (overlay != 'commentator') {
+                                if (overlay != 'commentator' && overlay != 'sk') {
                                     setupLeaderboard.value.lane ? elemAth[i].$item.find(".lane").show() : elemAth[i].$item.find(".lane").hide()
                                 }
                                 if (!alreadyPassed) {
@@ -354,7 +355,7 @@ function updateDynamics(newScoring, status) {
                 // }
             }
 
-            if (overlay !== 'commentator') {
+            if (overlay !== 'commentator' && overlay != 'sk') {
                 $("#leaderboard" + key + " #athletes").height(height_tot)
                 $("#leaderboard" + key).height(height_tot + $("#leaderboard" + key + " .header").height() + 15)
             }

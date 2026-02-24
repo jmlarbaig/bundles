@@ -1045,7 +1045,7 @@ function showRepMvtInScore(elementAth) {
         default:
     }
 
-    if (elementAth.currentMvt.mvtNames.toUpperCase() != "WORKOUT" && (setupLeaderboard.value.showMvt || overlay.includes("commentator"))) {
+    if (elementAth.currentMvt.mvtNames.toUpperCase() != "WORKOUT" && (setupLeaderboard.value.showMvt || overlay.includes("commentator") || overlay.includes("sk"))) {
         // console.log("SHOW MVTS IN SCORE CONFIG : ", setupLeaderboard.value.showMvt)
         showMvtInPopup(elementAth)
     } else {
@@ -1068,7 +1068,7 @@ function hideRepMvtInScore(elementAth) {
 }
 
 function hideColMvt(elementAth) {
-    // elementAth.$item.find(".popup").hide();
+    elementAth.$item.find(".popup").hide();
 }
 
 function showMvtInPopup(elementAth) {

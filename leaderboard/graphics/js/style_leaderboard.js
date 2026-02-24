@@ -366,12 +366,15 @@ function headerScoringKairos(divisions, indexDivision, repTarget) {
         '<tr>' +
         '<th fixed-side scope="col" class="lane box">LANE</th>' +
         '<th fixed-side scope="col" class="state box">STATE</th>' +
-        '<th scope="col" class="box popup text-nowrap text-truncate">BATTERY</th>' +
+        '<th scope="col" class="box battery text-nowrap text-truncate">BATTERY</th>' +
         '<th fixed-side scope="col" class="timeAth box">SIGNAL</th>' +
         '<th fixed-side scope="col" class="repAth box">REP</th>' +
         '<th scope="col" class="box score align-items-xl-center">IP</th>' +
         '<th scope="col" class="flag box">FLAG</th>' +
         '<th scope="col" class="box text-nowrap text-truncate text-left name">NAME</th>' +
+        '<th scope="col" class="truncate box rank">Rank</th>' +
+        '<th scope="col" class="truncate box score align-items-xl-center">Scores</th>' +
+        '<th scope="col" class="truncate box popup text-nowrap text-truncate">Movement</th>' +
         '</tr>' +
         '</thead>' +
         '<tbody id="athletes" class="athletes">' +
@@ -395,12 +398,15 @@ function scoringKairos(data) {
         '<tr class="athlete zero" id="lane' + data.lane + '">' +
         '<td class="lane">' + data.lane + '</td>' +
         '<td class="state"></td>' +
-        '<td class="score align-items-xl-center"></td>' +
-        '<td class="popup text-nowrap text-truncate"></td>' +
+        '<td class="battery align-items-xl-center"></td>' +
+        '<td class="signal text-nowrap text-truncate"></td>' +
         '<td class="timeAth"></td>' +
         '<td class="repAth"></td>' +
         '<td class="flag">' + '<div class="box_flag"> </div> ' + '</td>' +
         '<td class="text-nowrap text-truncate text-left name" onclick="requestPing()" id="request_' + data.lane + '">' + name + '</td>' +
+        '<td class="truncate rank">' + parseInt(data.CurrentRank) + '</td>' +
+        '<td class="truncate score align-items-xl-center">' + data.score_abs + '</td>' +
+        '<td class="truncate popup text-nowrap text-truncate"></td>' +
         '</tr>'
     );
 
