@@ -236,7 +236,7 @@ function headerCommentator(divisions, indexDivision, repTarget) {
         '<th scope="col" class="truncate box text-nowrap text-truncate text-left name">NAME</th>' +
         // '<th scope="col" class="truncate box Opoint">O. Points</th>' +
         // '<th scope="col" class="truncate box Orank">O. Rank</th>' +
-        '<th scope="col" class="truncate box reppersec">Rep/Sec</th>' +
+        '<th scope="col" class="truncate box reppersec">Rep/Min</th>' +
         '<th scope="col" class="truncate box rank">Rank</th>' +
         '<th scope="col" class="truncate box rounds text-nowrap text-truncate">Rounds</th>' +
         '<th scope="col" class="truncate box score align-items-xl-center">Scores</th>' +
@@ -373,6 +373,7 @@ function headerScoringKairos(divisions, indexDivision, repTarget) {
         '<th scope="col" class="flag box">FLAG</th>' +
         '<th scope="col" class="box text-nowrap text-truncate text-left name">NAME</th>' +
         '<th scope="col" class="truncate box rank">Rank</th>' +
+        '<th scope="col" class="truncate box reppersec">Rep/Min</th>' +
         '<th scope="col" class="truncate box score align-items-xl-center">Scores</th>' +
         '<th scope="col" class="truncate box popup text-nowrap text-truncate">Movement</th>' +
         '</tr>' +
@@ -405,6 +406,7 @@ function scoringKairos(data) {
         '<td class="flag">' + '<div class="box_flag"> </div> ' + '</td>' +
         '<td class="text-nowrap text-truncate text-left name" onclick="requestPing()" id="request_' + data.lane + '">' + name + '</td>' +
         '<td class="truncate rank">' + parseInt(data.CurrentRank) + '</td>' +
+        '<td class="truncate reppersec"></td>' +
         '<td class="truncate score align-items-xl-center">' + data.score_abs + '</td>' +
         '<td class="truncate popup text-nowrap text-truncate"></td>' +
         '</tr>'

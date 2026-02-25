@@ -168,6 +168,11 @@ body {
     width: 10%;
 }
 
+.reppersec {
+    z-index: 10;
+    text-align: center;
+}
+
 .leaderboard .flag {
     text-align: center;
     width: 60px;

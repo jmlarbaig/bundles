@@ -907,15 +907,45 @@ function treatFinishStatus(elementAth) {
     let result = elementAth.result;
     var t = result.toString().split(':');
 
-    if (t[0] != "00") {
-        result = t[0] + ":" + t[1] + ":" + t[2].substring(0, 2);
+    switch (setupLeaderboard.value.timeFormat) {
+        case 'hh-mm-ss-msms':
+            result = t[0] + ":" + t[1] + ":" + t[2].substring(0, 5);
+            break;
+        case 'hh-mm-ss-ms':
+            result = t[0] + ":" + t[1] + ":" + t[2].substring(0, 4);
+            break;
+        case 'hh-mm-ss':
+            result = t[0] + ":" + t[1] + ":" + t[2].substring(0, 2);
+            break;
+        case 'mm-ss-msms':
+            result = t[1] + ":" + t[2].substring(0, 5);
+            break;
+        case 'mm-ss-ms':
+            result = t[1] + ":" + t[2].substring(0, 4);
+            break;
+        case 'mm-ss':
+            result = t[1] + ":" + t[2].substring(0, 2);
+            break;
+        case 'ss-msms':
+            result = t[2].substring(0, 5);
+            break;
+        case 'ss-ms':
+            result = t[2].substring(0, 4);
+            break;
+        default:
+            result = t[0] + ":" + t[1] + ":" + t[2].substring(0, 2);
+            break;
     }
-    else if (t[1] != "00") {
-        result = t[1] + ":" + t[2].substring(0, 2);
-    }
-    else {
-        result = "00:" + t[2].substring(0, 2);
-    }
+
+    // if (t[0] != "00") {
+    //     result = t[0] + ":" + t[1] + ":" + t[2].substring(0, 2);
+    // }
+    // else if (t[1] != "00") {
+    //     result = t[1] + ":" + t[2].substring(0, 2);
+    // }
+    // else {
+    //     result = "00:" + t[2].substring(0, 2);
+    // }
 
     // console.log("Resultat Final : ", result)
 
