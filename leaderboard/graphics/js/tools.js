@@ -1104,7 +1104,10 @@ function hideColMvt(elementAth) {
 function showMvtInPopup(elementAth) {
     const reg = new RegExp("\(([^\)]+)\).", "g")
     let mvt = elementAth.currentMvt.mvtNames.replace(/(([^\)]+)\).)/g, "")
-    // console.log(mvt)
+    if (overlay.includes('commentator') || overlay.includes('sk')) {
+        let rep = elementAth.currentMvt.repTarget != 0 ? ((elementAth.currentMvt.scoreAbsMvt + "/" + elementAth.currentMvt.repTarget)) : elementAth.currentMvt.scoreAbsMvt
+        mvt = rep + " " + mvt
+    }
     elementAth.$item.find(".popup").show();
     elementAth.$item.find(".popup").text(mvt);
     elementAth.$item.find(".popup_top").show();
@@ -1159,6 +1162,12 @@ function treatDisplayMvtForOthers(elementAth, idToCompare, roundsToCompare) {
     let textTomvt = repTarget + ' ' + mvt;
 
     console.log("TEXTE TO MVt : ", textTomvt)
+
+    if (overlay == 'commentator' || overlay.includes('sk')) {
+        let rep = elementAth.currentMvt.repTarget != 0 ? ((elementAth.currentMvt.scoreAbsMvt + "/" + elementAth.currentMvt.repTarget)) : elementAth.currentMvt.scoreAbsMvt
+        textTomvt = rep + ' ' + mvt;
+    }
+
     // console.log("COMPARE ID : ", elementAth.currentMvt.id, " TO ", idToCompare)
     // console.log("COMPARE ROUNDs : ", elementAth.currentMvt.rounds, " TO ", roundsToCompare)
     console.log(elementAth.currentMvt.id != idToCompare && elementAth.currentMvt.rounds != roundsToCompare)
@@ -1210,7 +1219,10 @@ function treatDisplayMvtFirst(elementAth) {
         textTomvt = elementAth.currentMvt.scoreRelMvt + ' ' + mvt;
     }
 
-    console.log("TEXTE TO MVt : ", textTomvt)
+    if (overlay == 'commentator' || overlay.includes('sk')) {
+        let rep = elementAth.currentMvt.repTarget != 0 ? ((elementAth.currentMvt.scoreAbsMvt + "/" + elementAth.currentMvt.repTarget)) : elementAth.currentMvt.scoreAbsMvt
+        textTomvt = rep + ' ' + mvt;
+    }
 
     if (elementAth.currentMvt.mvtNames == "" || elementAth.currentMvt.mvtNames.includes("Workout")) {
         overlay != "versus" && elementAth.$item.find(".popup").hide();

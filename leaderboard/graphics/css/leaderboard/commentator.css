@@ -169,6 +169,10 @@ thead .score {
     background-color: white;
     z-index: 10;
     color: black;
+    word-wrap: break-word;
+    /* ancien */
+    overflow-wrap: break-word;
+    /* recommandé */
 }
 
 .rounds {

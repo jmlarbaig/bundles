@@ -3,6 +3,12 @@ const UrlChange = nodecg.Replicant('UrlChange');
 const UrlChange_internal = nodecg.Replicant('UrlChange_internal')
 
 
+const backgroundOverlay = nodecg.Replicant('assets:backgroundOverlay', 'leaderboard')
+
+const backgroundTimer = nodecg.Replicant('assets:backgroundTimer', 'leaderboard')
+
+const mainSponsors = nodecg.Replicant('assets:mainSponsor', 'connector')
+
 const setupLeaderboard = nodecg.Replicant('setupLeaderboard')
 
 const logoEvent = nodecg.Replicant('assets:logoEvent');
@@ -13,11 +19,7 @@ const athletesHeat = nodecg.Replicant('athletesHeat')
 
 const s_athletes = nodecg.Replicant('s_athletes', 'connector');
 
-const mainSponsors = nodecg.Replicant('assets:mainSponsor', 'connector')
 
-const backgroundOverlay = nodecg.Replicant('assets:backgroundOverlay', 'leaderboard')
-
-const backgroundTimer = nodecg.Replicant('assets:backgroundTimer', 'leaderboard')
 
 const hyperfitPoints = nodecg.Replicant('hyperfitPoints')
 
@@ -100,7 +102,7 @@ nodecg.readReplicant('setupLeaderboard', (value) => {
             if (document.getElementById(e).type != 'select-one') {
                 document.getElementById(e).checked = value[e];
             } else {
-                $(e).val(value[e]);
+                $(e).val(value[e]).trigger('change');
             }
         })
     } catch (err) {
@@ -113,7 +115,7 @@ setupLeaderboard.on('change', (newValue, oldValue) => {
         if (document.getElementById(e).type != 'select-one') {
             document.getElementById(e).checked = newValue[e];
         } else {
-            $("#" + e).val(newValue[e]);
+            $("#" + e).val(newValue[e]).trigger('change');
         }
     })
 })
