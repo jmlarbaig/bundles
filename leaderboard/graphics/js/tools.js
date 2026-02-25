@@ -1168,9 +1168,6 @@ function treatDisplayMvtForOthers(elementAth, idToCompare, roundsToCompare) {
         textTomvt = rep + ' ' + mvt;
     }
 
-    // console.log("COMPARE ID : ", elementAth.currentMvt.id, " TO ", idToCompare)
-    // console.log("COMPARE ROUNDs : ", elementAth.currentMvt.rounds, " TO ", roundsToCompare)
-    console.log(elementAth.currentMvt.id != idToCompare && elementAth.currentMvt.rounds != roundsToCompare)
     if (elementAth.currentMvt.id != idToCompare || elementAth.currentMvt.rounds != roundsToCompare) {
         // console.log("DISPLAY MVTS FOR OTHERS")
         if (heat.typeWod == 'amrap' && !Number.isNaN(elementAth.currentMvt.rounds)) {
@@ -1194,8 +1191,10 @@ function treatDisplayMvtForOthers(elementAth, idToCompare, roundsToCompare) {
         // }
     }
     else {
-        elementAth.$item.find(".popup").hide();
-        elementAth.$item.find(".popup_top").hide();
+        if (!overlay.includes("commentator") && !overlay.includes("sk")) {
+            elementAth.$item.find(".popup").hide();
+            elementAth.$item.find(".popup_top").hide();
+        }
     }
 }
 
