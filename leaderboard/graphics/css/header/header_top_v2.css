@@ -147,7 +147,7 @@
     content: " // ";
 } */
 
-.header .box_heat .heat .heat_content .box_mainSponsor {
+.header .box_mainSponsor {
 
     position: absolute;
     top: var(--y_sponsor_top);
@@ -161,7 +161,7 @@
 
 
 
-.header .box_heat .heat .heat_content .box_mainSponsor .mainSponsor {
+.header .box_mainSponsor .mainSponsor {
     padding: 10px 10px 10px 10px;
     width: var(--width_sponsor_top);
     height: var(--height_sponsor_top);

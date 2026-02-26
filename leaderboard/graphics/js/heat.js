@@ -79,10 +79,10 @@ function styleHeat_top(element) {
         // '<div id="division" class="detail"> RX\'D </div>' +
         '<div id="mvt" class="text-nowrap text-truncate"></div>' +
         '</div>' +
-        '<div class="box_mainSponsor">' +
-        // '<div class="presented" id="prt">' + varPresented + '</div>' +
-        '<div class="mainSponsor">' +
-        '</div>' +
+        // '<div class="box_mainSponsor">' +
+        // // '<div class="presented" id="prt">' + varPresented + '</div>' +
+        // '<div class="mainSponsor">' +
+        // '</div>' +
         '</div>' +
         '</div>'
     );
