@@ -139,7 +139,7 @@ function treatDisplayName(displayName) {
     let newName = "";
     if (heat.formatWod == "individual") {
         let splitName = splitFullName(displayName);
-        switch (setupLeaderboard.value.nameSelect) {
+        switch (setupFlat.nameSelect) {
             case 'first':
                 newName = '<div class="name"><span class="firstName">' + splitName.title + ' </span><span class="lastName"> ' + splitName.firstName + '</span></div>';
                 break;
@@ -649,10 +649,10 @@ function launchAutomaticSchedule() {
 
         // nodecg.sendMessageToBundle('heat_result', 'connector', { workoutHeatSelected: eventInfos.value.workoutId, heatSelected: eventInfos.value.heatId, num_heats: 10 })
 
-        let config = setupLeaderboard.value;
+        let config = setupFlat;
         // console.log("before")
         // console.table(configBefore)
-        configBefore = setupLeaderboard.value;
+        configBefore = setupFlat;
 
         config.box_chrono = false;
         config.box_heat = false;
@@ -660,11 +660,11 @@ function launchAutomaticSchedule() {
         config.box_bandeau = false;
         config.attributionLane = false;
 
-        setupLeaderboard.value = config;
+        setupFlat = config;
 
         timerAutomatic3 = setTimeout(() => {
 
-            let config = setupLeaderboard.value;
+            let config = setupFlat;
 
             // config.box_chrono = configBefore.box_chrono;
             // config.box_heat = configBefore.box_heat;
@@ -672,7 +672,7 @@ function launchAutomaticSchedule() {
             // config.heatResults = false;
 
 
-            setupLeaderboard.value = configBefore;
+            setupFlat = configBefore;
 
         }, 10000)
     }, 2000)
@@ -907,7 +907,7 @@ function treatFinishStatus(elementAth) {
     let result = elementAth.result;
     var t = result.toString().split(':');
 
-    switch (setupLeaderboard.value.timeFormat) {
+    switch (setupFlat.timeFormat) {
         case 'hh-mm-ss-msms':
             result = t[0] + ":" + t[1] + ":" + t[2].substring(0, 5);
             break;
@@ -985,7 +985,7 @@ function treatTimeCapStatus(elementAth) {
         elementAth.$item.find(".popup_top").hide();
         elementAth.$item.find(".score").show();
         if (overlay == 'overlay_side') {
-            elementAth.$item.find(".score").text(text + ' ' + setupLeaderboard.value.unitSelect);
+            elementAth.$item.find(".score").text(text + ' ' + setupFlat.unitSelect);
         } else {
             elementAth.$item.find(".score").text(text);
         }
@@ -993,8 +993,8 @@ function treatTimeCapStatus(elementAth) {
         elementAth.$item.find(".popup").show();
         elementAth.$item.find(".popup_top").show();
         elementAth.$item.find(".score").text(text);
-        elementAth.$item.find(".popup").text(result + ' ' + setupLeaderboard.value.unitSelect);
-        elementAth.$item.find(".popup_top").text(result + ' ' + setupLeaderboard.value.unitSelect);
+        elementAth.$item.find(".popup").text(result + ' ' + setupFlat.unitSelect);
+        elementAth.$item.find(".popup_top").text(result + ' ' + setupFlat.unitSelect);
     }
 }
 
@@ -1003,12 +1003,12 @@ function treatTextMvt(mvts) {
     if (overlay.includes("versus") && heat.typeWod != 'repmax') {
         if (mvts != "") {
             $('.box_mvt').slideDown(1000)
-            $('.box_mvt').find('#mvt').html(mvts)
+            $('.box_mvt').find('.mvt').html(mvts)
         } else {
             $('.box_mvt').hide()
         }
     } else {
-        $('#mvt').html(mvts)
+        $('.mvt').html(mvts)
         $('.mvt').html(mvts)
     }
 }
@@ -1025,9 +1025,9 @@ function showRepMax(elementAth) {
 
     if (elementAth.currentMvt.repTarget != elementAth.currentMvt.scoreAbsMvt && overlay != 'overlay_wpa') {
         if (elementAth.currentMvt.repTarget != 0) {
-            elementAth.$item.find(".popup").html('ATTEMPTS &#10140; ' + elementAth.currentMvt.repTarget + ' ' + setupLeaderboard.value.unitSelect);
+            elementAth.$item.find(".popup").html('ATTEMPTS &#10140; ' + elementAth.currentMvt.repTarget + ' ' + setupFlat.unitSelect);
             overlay == 'versus' ? elementAth.$item.find(".popup").slideDown(1000) : elementAth.$item.find(".popup").show();
-            elementAth.$item.find(".popup_top").html('ATTEMPTS &#10140; ' + elementAth.currentMvt.repTarget + ' ' + setupLeaderboard.value.unitSelect);
+            elementAth.$item.find(".popup_top").html('ATTEMPTS &#10140; ' + elementAth.currentMvt.repTarget + ' ' + setupFlat.unitSelect);
             overlay == 'versus' ? elementAth.$item.find(".popup_top").slideDown(1000) : elementAth.$item.find(".popup_top").fadeIn(1000);
         }
     } else {
@@ -1037,12 +1037,12 @@ function showRepMax(elementAth) {
         overlay == 'versus' ? elementAth.$item.find(".popup_top").slideUp(1000) : elementAth.$item.find(".popup_top").fadeOut(1000);
     }
     // console.log('SCORE ABS MVT : ' + elementAth.currentMvt.scoreAbsMvt)
-    elementAth.$item.find(".score").text(elementAth.currentMvt.scoreAbsMvt + ' ' + setupLeaderboard.value.unitSelect);
+    elementAth.$item.find(".score").text(elementAth.currentMvt.scoreAbsMvt + ' ' + setupFlat.unitSelect);
 }
 
 function showRepMvtInScore(elementAth) {
     elementAth.$item.find(".score").show();
-    switch (setupLeaderboard.value.scoreConfig) {
+    switch (setupFlat.scoreConfig) {
         case 'abs_score':
             elementAth.$item.find(".score").text(elementAth.score_abs)
 
@@ -1075,11 +1075,11 @@ function showRepMvtInScore(elementAth) {
         default:
     }
 
-    if (elementAth.currentMvt.mvtNames.toUpperCase() != "WORKOUT" && (setupLeaderboard.value.showMvt || overlay.includes("commentator") || overlay.includes("sk"))) {
-        // console.log("SHOW MVTS IN SCORE CONFIG : ", setupLeaderboard.value.showMvt)
+    if (elementAth.currentMvt.mvtNames.toUpperCase() != "WORKOUT" && (setupFlat.showMvt || overlay.includes("commentator") || overlay.includes("sk"))) {
+        // console.log("SHOW MVTS IN SCORE CONFIG : ", setupFlat.showMvt)
         showMvtInPopup(elementAth)
     } else {
-        // console.log("HIDE MVTS IN SCORE CONFIG : ", setupLeaderboard.value.showMvt)
+        // console.log("HIDE MVTS IN SCORE CONFIG : ", setupFlat.showMvt)
         hideMvtInPopup(elementAth)
     }
 
@@ -1093,7 +1093,7 @@ function showRepPerSec(elementAth) {
 
 function hideRepMvtInScore(elementAth) {
     if (!overlay.includes("overlay_top")) {
-        elementAth.$item.find(".score").hide();
+        // elementAth.$item.find(".score").hide();
     }
 }
 
@@ -1136,7 +1136,7 @@ function treatLeaderboardAuto() {
 
                     $('.box_mvt').slideUp(1000)
                 }
-                if (setupLeaderboard.value.automaticSchedule) {
+                if (setupFlat.automaticSchedule) {
                     launchAutomaticSchedule()
                 }
             }, 5000)
@@ -1184,7 +1184,7 @@ function treatDisplayMvtForOthers(elementAth, idToCompare, roundsToCompare) {
             elementAth.$item.find(".popup_top").text(textTomvt);
         }
         // if (overlay != "overlay_wpa") {
-        //     if (setupLeaderboard.value.scoreConfig == "mvt_score" || setupLeaderboard.value.scoreConfig == "mvt_total_score") {
+        //     if (setupFlat.scoreConfig == "mvt_score" || setupFlat.scoreConfig == "mvt_total_score") {
         //         elementAth.$item.find(".popup").show();
         //         elementAth.$item.find(".popup_top").show();
         //     }
@@ -1251,13 +1251,13 @@ function treatDisplayMvtFirst(elementAth) {
 }
 
 function hiddenAthlete(elementAth) {
-    if (setupLeaderboard.value.hiddenAthlete) {
+    if (setupFlat.hiddenAthlete) {
         if (elementAth.CurrentRank > 1 && elementAth.$item.is(':visible')) {
             setTimeout(() => {
                 elementAth.$item.fadeOut(1000);
             }, 5000)
         }
-    } else if (!setupLeaderboard.value.hiddenAthlete && !elementAth.$item.is(':visible')) {
+    } else if (!setupFlat.hiddenAthlete && !elementAth.$item.is(':visible')) {
         setTimeout(() => {
             elementAth.$item.fadeIn(1000);
         }, 100)
@@ -1351,7 +1351,7 @@ function treatResultTimeWPA(elementAth) {
 function treatResultDisplayRepWPA(score) {
     let r = [0, 0];
 
-    switch (setupLeaderboard.value.scoreConfig) {
+    switch (setupFlat.scoreConfig) {
         case 'abs_score':
             r[0] = score[0].rep
             r[1] = score[1].rep
@@ -1377,7 +1377,7 @@ function treatResultDisplayRepWPA(score) {
 
 
     let m = 'TOTAL';
-    if (setupLeaderboard.value.timeConfig == 'avg') {
+    if (setupFlat.timeConfig == 'avg') {
         m = 'AVERAGE'
     }
 

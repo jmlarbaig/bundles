@@ -1,5 +1,5 @@
 .leaderboards {
-    background-color: rgb(232, 232, 232);
+    background-color: var(--background-color-leaderboard);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -18,17 +18,17 @@
 
 .leaderboard .header {
     text-transform: uppercase;
-    height: 40px;
-    padding: 10px 10px;
+    height: var(--height-header);
+    padding: var(--padding-header);
     font-weight: 900;
-    font-size: 1.2em;
+    font-size: var(--size-font-leaderboard);
     display: flex;
     flex-direction: row;
     align-items: center;
     background-color: var(--second_color);
     color: var(--tx_second_color);
-    border-bottom: 2px rgb(181, 210, 36) solid;
-    border-top: 2px rgb(181, 210, 36) solid;
+    border-bottom: var(--border-width-header) var(--border-color-accent) solid;
+    border-top: var(--border-width-header) var(--border-color-accent) solid;
     -moz-transition-duration: 0.7s;
     -webkit-transition-duration: 0.7s;
     -ms-transition-duration: 0.7s;
@@ -36,12 +36,12 @@
 
 
 .leaderboard .division {
-    width: 15%;
+    width: var(--width-division);
 }
 
 
 .leaderboard #mvt {
-    width: 70%;
+    width: var(--width-mvt);
     text-transform: capitalize;
     padding: 0px 5px;
 }
@@ -50,7 +50,7 @@
     -moz-transition-duration: 0.7s;
     -webkit-transition-duration: 0.7s;
     -ms-transition-duration: 0.7s;
-    color: rgb(181, 210, 36);
+    color: var(--first-color-mvt);
     padding-right: 10px;
     /* padding: 10px; */
 }
@@ -67,7 +67,7 @@
 .leaderboard .repTar {
     text-align: right;
     /* margin: auto; */
-    width: 15%;
+    width: var(--width-repTar);
     justify-content: end;
     align-items: center;
     /* background-color: var(--second_color); */
@@ -76,7 +76,7 @@
 
 div.dataTables_wrapper {
     border-collapse: collapse;
-    font-size: 1.2em;
+    font-size: var(--size-font-leaderboard);
     width: 100%;
     margin: auto;
     table-layout: fixed;
@@ -89,54 +89,53 @@ div.dataTables_wrapper td {
 }
 
 .lane {
-    background-color: white;
+    background-color: var(--background-color-lane);
     z-index: 10;
     /* width: 100px; */
 }
 
 .flag {
-    background-color: white;
+    background-color: var(--background-color-lane);
     z-index: 10;
-    height: 20px;
+    height: var(--height-flag);
 }
 
 .box_flag {
     z-index: 10;
-    height: 20px;
+    height: var(--height-flag);
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
 }
 
 .name {
-    background-color: white;
+    background-color: var(--background-color-name);
+    color: var(--color-name);
     z-index: 10;
     text-align: left;
 }
 
-.name:hover {
-    background-color: grey;
-    color: white;
+/* .name:hover {
+    background-color: var(--background-color-name-hover);
+    color: var(--color-name-hover);
     cursor: pointer;
-}
+} */
 
 .reppersec {
-    background-color: white;
+    background-color: var(--background-color-reppersec);
+    color: var(--color-reppersec);
+    font-family: var(--font-reppersec);
+    font-size: var(--size-font-reppersec);
     z-index: 10;
     text-align: center;
 }
 
 th {
-    background-color: white;
+    background-color: var(--background-color-lane);
     z-index: 10;
     text-align: center;
 }
 
-.bestStat {
-    background-color: green;
-    color: white;
-    font-weight: bold;
-}
 
 .Opoint {
     /* width: 70px; */
@@ -154,21 +153,20 @@ th {
 }
 
 thead .score {
-    background-color: white;
-    color: black;
+    background-color: var(--background-color-score);
+    color: var(--color-score);
 }
 
 .score {
-    background-color: white;
+    background-color: var(--background-color-score);
     z-index: 10;
-    color: black;
+    color: var(--color-score);
 }
 
 .popup {
-    background-color: white;
-    background-color: white;
+    background-color: var(--background-color-popup);
     z-index: 10;
-    color: black;
+    color: var(--color-popup);
     word-wrap: break-word;
     /* ancien */
     overflow-wrap: break-word;
@@ -176,13 +174,14 @@ thead .score {
 }
 
 .rounds {
-    background-color: white;
-    background-color: white;
+    background-color: var(--background-color-lane);
 }
 
 .bestStat {
-    background-color: green;
-    color: white;
+    font-size: var(--size-font-best-stat);
+    background-color: var(--background-color-best-stat);
+    color: var(--color-best-stat);
+    font-family: var(--font-best-stat);
 }
 
 .truncate {

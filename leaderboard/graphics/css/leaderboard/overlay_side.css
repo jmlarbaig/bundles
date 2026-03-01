@@ -1,8 +1,20 @@
+body {
+    background-color: var(--background-color-body);
+    /* font-family: var(--font-select); */
+    background-size: cover;
+    zoom: var(--zoom);
+
+}
+
+.nobody {
+    background-color: var(--background-color-body);
+}
+
 .leaderboards {
     position: absolute;
-    top: var(--position_y_leaderboard);
-    left: var(--position_x_leaderboard);
-    font-size: var(--SizeNameoverlaySide);
+    top: var(--position-y-leaderboard);
+    left: var(--position-x-leaderboard);
+    font-size: var(--size-font-leaderboard);
     transition: all 0.7s ease;
     height: calc(1000px);
     overflow: hidden;
@@ -59,49 +71,50 @@
 
 
 .leaderboard .header {
-    font-family: 'Slenco', sans-serif;
     position: absolute;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
     /* height: 30px; */
     font-weight: 900;
-    font-size: var(--SizeFontHeaderOverlaySide);
+    /* font-size: var(--size-font-division); */
     display: flex;
     flex-direction: row;
     align-items: left;
     padding-left: 15px;
-    background: linear-gradient(90deg, rgba(40, 40, 40, 0.85) 0%, rgba(60, 60, 60, 0.7) 100%);
-    color: white;
-    /* border-bottom: 2px solid var(--second_color, #ffffff); */
     left: 2px;
     transition: all 0.7s ease;
-    width: 179px;
     border-top-left-radius: 4px;
     border-top-right-radius: 4px;
+    background: var(--background-color-division);
 }
 
 
 .leaderboard .division {
-    font-size: var(--SizeFontDivisionOverlaySide);
-    width: 150px;
+    font-family: var(--font-division);
+    font-size: var(--size-font-division);
+    width: var(--width-division);
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    color: var(--color-division);
+    background: var(--background-color-division);
 }
 
 .leaderboard .repTar {
+    font-family: var(--font-repTar);
+    color: var(--color-repTar);
     text-align: right;
     margin: auto;
-    font-size: var(--SizeFontRepTargetOverlaySide);
+    font-size: var(--size-font-repTar);
     padding-right: 10px;
 }
 
-#mvt::before {
+.mvt::before {
     content: '';
     /* border-left: 4px solid rgba(105, 105, 105, 0.712); */
     /* margin: 20px; */
 }
 
-#mvt {
+.mvt {
     font-weight: 800;
     -moz-transition-duration: 0.7s;
     -webkit-transition-duration: 0.7s;
@@ -113,25 +126,25 @@
     text-transform: capitalize;
 }
 
-#mvt span {
+.mvt span {
     padding: 10px;
     letter-spacing: var(--letter_spacing);
     font-family: var(--othersFontWorkout-select);
 }
 
-#mvt span:first-child {
+.mvt span:first-child {
 
     color: var(--firstMvt_color);
     font-weight: 800;
     font-family: var(--firstFontWorkout-select);
 }
 
-#mvt span:first-child::before {
+.mvt span:first-child::before {
     content: "•";
 }
 
 .leaderboard .athletes {
-    color: var(--tx_second_color);
+    /* color: var(--tx_second_color); */
     display: flex;
     padding: 2px;
     flex-direction: column;
@@ -154,10 +167,13 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    background-color: rgba(10, 10, 10, 0.7);
-    color: var(--tx_main_color);
+    background-color: var(--background-color-ath);
+    color: var(--color-ath);
     /* margin: auto; */
     overflow: hidden;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     /* margin: 2px; */
     /* box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); */
     /* border-radius: 10px 10px 10px 0px; */
@@ -168,7 +184,6 @@
 }
 
 .leaderboard .athlete .rank {
-    /* text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); */
     padding: 2px 8px;
     text-align: center;
     width: 45px;
@@ -178,22 +193,23 @@
     overflow: hidden;
     text-overflow: ellipsis;
     font-weight: bold;
-    /* background-color: #ffffff;
-    color: black; */
-    /* margin: 5px; */
+    color: transparent;
+    -webkit-text-stroke: 1px var(--color-rank);
+    font-size: var(--size-font-rank);
 }
 
 .leaderboard .athlete .lane {
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
     padding: 2px 5px;
     text-align: left;
-    width: var(--px_lane);
+    width: var(--width-lane);
     filter: blur(0px);
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    font-size: var(--SizeLaneoverlaySide);
-    color: white;
+    font-size: var(--size-font-lane);
+    color: var(--color-lane);
+    background-color: var(--background-color-lane);
 }
 
 .leaderboard .athlete .name {
@@ -201,14 +217,16 @@
     padding: 2px 4px;
     text-transform: uppercase;
     font-weight: 900;
-    width: var(--px_name);
-    /* min-width: 130px; */
-    max-width: var(--px_name);
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
     transition: all 0.7s ease;
     letter-spacing: 0.5px;
+    font-size: var(--size-font-name);
+    color: var(--color-name);
+    background-color: var(--background-color-name);
+    width: var(--width-name);
+    max-width: var(--width-name);
 }
 
 .triangle {
@@ -219,7 +237,6 @@
 
 .leaderboard .athlete .score {
     padding: 2px 12px;
-    width: var(--px_score);
     max-width: 120px;
     text-align: center;
     /* border-radius: var(--border, 0); */
@@ -230,11 +247,16 @@
     transition: all 0.7s ease;
     font-weight: bold;
     background-color: rgba(255, 255, 255, 0.1);
+    font-size: var(--size-font-score);
+    color: var(--color-score);
+    background-color: var(--background-color-score);
+    width: var(--width-score);
 }
 
 .leaderboard .athlete .flag {
     padding: 5px 8px;
-    width: 46px;
+    height: var(--height-flag);
+    width: var(--width-flag);
     align-items: center;
     display: flex;
     justify-content: center;
@@ -242,8 +264,8 @@
 
 .leaderboard .athlete .flag .box_flag {
     border-radius: 50%;
-    height: 32px;
-    width: 32px;
+    height: var(--height-box-flag);
+    width: var(--width-box-flag);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -257,43 +279,43 @@
 }
 
 .leaderboard .athlete:nth-child(1) .flag .box_flag {
-    border: 2px solid var(--gold-color);
+    border: 2px solid var(--first-athlete-background-color);
     box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
 }
 
 .leaderboard .athlete:nth-child(2) .flag .box_flag {
-    border: 2px solid var(--silver-color);
+    border: 2px solid var(--second-athlete-background-color);
 }
 
 .leaderboard .athlete:nth-child(3) .flag .box_flag {
-    border: 2px solid var(--bronze-color);
+    border: 2px solid var(--third-athlete-background-color);
 }
 
 .rounds {
-    width: 45px;
-    max-width: 45px;
+    width: var(--width-round);
+    max-width: var(--width-round);
+    color: var(--color-round);
+    background-color: var(--background-color-round);
     text-align: center;
-    background-color: white;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
 }
 
 .popup {
-    /* text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); */
     text-transform: uppercase;
     text-align: left;
     padding: 2px;
     padding-left: 15px;
-    font-size: var(--sizeFontPopupOverlaySide);
-    /* height: 30px; */
-    color: var(--tx_second_color);
-    /* background-color: rgba(49, 49, 49, 0.64); */
-    background-color: var(--second_color);
     transition: all 0.7s ease;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    font-size: var(--size-font-popup);
+    font-family: var(--font-popup);
+    color: var(--color-popup);
+    background-color: var(--background-color-popup);
+    width: var(--width-popup);
 }
 
 .leaderboard .athletes .powered {
@@ -303,11 +325,12 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    background-color: var(--second_color);
-    color: var(--tx_second_color);
     height: var(--height_ath_side);
-    font-size: 12px;
-    width: 300px;
+    font-size: var(--size-font-powered);
+    font-family: var(--font-powered);
+    color: var(--color-powered);
+    background-color: var(--background-color-powered);
+    width: var(--width-powered);
 }
 
 .sponsorLogo {
@@ -335,13 +358,14 @@
 
 .mainSponsor {
     position: absolute;
-    top: var(--position_y_sponsor);
-    left: var(--position_x_sponsor);
+    top: var(--position-y-main-sponsor);
+    left: var(--position-x-main-sponsor);
     z-index: 10;
 }
 
 .mainSponsor img {
-    max-height: 60px;
+    max-height: var(--height-main-sponsor);
+    max-width: var(--width-main-sponsor);
     opacity: 0.9;
     filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.4));
     transition: var(--transition-fast);

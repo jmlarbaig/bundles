@@ -1,37 +1,47 @@
 'use strict';
 
-const colorFile = __dirname + '/colorDefaut.json'
-
 const fs = require('fs');
 
 module.exports = function (nodecg) {
+    const configs = JSON.parse(fs.readFileSync(__dirname + '/configs.json'));
 
-    const Colors = nodecg.Replicant('Colors')
+    const configsReplicants = nodecg.Replicant('configs', { defaultValue: configs });
+    configsReplicants.value = configs;
 
-    if (fs.existsSync(colorFile)) {
-        try {
-            Colors.value = JSON.parse(fs.readFileSync(colorFile))
+    console.log('Initializing configuration extension with configs:', configs);
+
+    configs.forEach(([filename, name, event]) => {
+        const filepath = __dirname + '/' + filename;
+        const replicant = nodecg.Replicant(name);
+
+        if (fs.existsSync(filepath)) {
+            try {
+                replicant.value = JSON.parse(fs.readFileSync(filepath));
+            } catch (err) {
+                console.error(err);
+            }
+        } else {
+            console.log(`Creating the file: ${filename}`);
+            fs.writeFileSync(filepath, JSON.stringify(replicant.value ?? {}), null, 4);
         }
-        catch (err) {
-            console.error(err)
-        }
-    } else {
-        console.log("Creating the file")
-        var val = JSON.stringify(Colors.value)
-        if (val == undefined) {
-            val = {}
-        }
-        fs.writeFileSync(colorFile, val.toString(), null, 4);
-    }
 
-    nodecg.listenFor('colorOverwrite', (value, ack) => {
+        nodecg.listenFor(event, (value) => {
+            // Merge uniquement les values dans le replicant existant
+            if (replicant.value) {
+                Object.entries(value).forEach(([sectionKey, section]) => {
+                    if (!replicant.value[sectionKey]) return;
+                    section.element.forEach((el, i) => {
+                        replicant.value[sectionKey].element[i].value = el.value;
+                    });
+                });
+            } else {
+                replicant.value = value;
+            }
 
-        let data = JSON.stringify(value);
-        fs.writeFile(colorFile, data, 'utf8', function (err) {
-            if (err) throw err;
-            console.log('complete');
-        })
-        Colors.value = value
-    })
-
+            // Sauvegarde uniquement les values à plat
+            fs.writeFile(filepath, JSON.stringify(value, null, 2), 'utf8', (err) => {
+                if (err) throw err;
+            });
+        });
+    });
 };

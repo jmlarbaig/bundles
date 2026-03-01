@@ -41,7 +41,7 @@ function updateDynamics(newScoring, status) {
                         elemAth.$item.find(".score").text(Mvt_name[elemAth.lane].scoreAbsMvt + "/" + Mvt_name[elemAth.lane].repTarget);
                     }
 
-                    setupLeaderboard.value.scoreConfig && elemAth.$item.find(".score").text(elemAth.score_abs)
+                    setupFlat.scoreConfig && elemAth.$item.find(".score").text(elemAth.score_abs)
                 }
                 else {
                     elemAth.$item.find(".score").text(elemAth.score_abs)

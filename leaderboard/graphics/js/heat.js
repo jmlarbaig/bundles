@@ -1,9 +1,9 @@
 function resetHeat(data) {
 
     try {
-        var $list = $("#heat");
-        $list.find("#division").remove();
-        $list.find("#workout").remove();
+        var $list = $(".box_heat");
+        $list.find(".heat").remove();
+        $list.find(".workout").remove();
         $list.find(".heat_content").remove();
 
         let $item;
@@ -17,8 +17,6 @@ function resetHeat(data) {
                 // $item = styleHeat_wpa(data)
                 break;
             case 'overlay_side':
-                $item = styleHeat_side(data)
-                break;
             case 'overlay_side_v1':
                 $item = styleHeat_side(data)
                 break;
@@ -45,7 +43,7 @@ function resetHeat(data) {
         }
 
         if (overlay.includes('overlay')) {
-            setupLeaderboard.value.heat != true ? $("#box_heat").hide() : "";
+            setupFlat.heat != true ? $(".box_heat").hide() : "";
         }
 
         $list.append($item);
@@ -74,10 +72,10 @@ function styleHeat_top(element) {
     let $item = $(
         '<div class="heat_content">' +
         '<div class="details fade-right">' +
-        '<div id="workout" class="detail" > ' + element.externalName + ' //</div>' +
+        '<div class="detail workout" > ' + element.externalName + ' //</div>' +
         // '<div id="heat" class="detail"> // ' + element.heatName + ' // </div>' +
         // '<div id="division" class="detail"> RX\'D </div>' +
-        '<div id="mvt" class="text-nowrap text-truncate"></div>' +
+        '<div id="mvt" class="mvt text-nowrap text-truncate"></div>' +
         '</div>' +
         // '<div class="box_mainSponsor">' +
         // // '<div class="presented" id="prt">' + varPresented + '</div>' +
@@ -107,8 +105,8 @@ function styleHeat_wpa(element) {
 
 function styleHeat_side(element) {
     let $item = $(
-        '<div id="workout" class="m-auto text-nowrap text-truncate" > ' + element.externalName + ' </div>' +
-        '<div id="division" class="m-auto text-nowrap text-truncate"> ' + element.heatName + '</div>'
+        '<div id="workout" class="m-auto text-nowrap text-truncate workout" > ' + element.externalName + ' </div>' +
+        '<div id="heat" class="m-auto text-nowrap text-truncate heat"> ' + element.heatName + '</div>'
 
     );
     return $item

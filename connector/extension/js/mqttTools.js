@@ -173,6 +173,9 @@ module.exports = (nodecg) => {
                 minos.type = 1;
                 minos.battery = (mes[2])
                 minos.signal = (mes[3])
+                if (mes.length >= 4) {
+                    minos.connectivity = (mes[4])
+                }
 
                 tableOfMinosOnFloor[minos.ip] = minos;
 
@@ -364,7 +367,8 @@ module.exports = (nodecg) => {
         'battery': 0,
         'status': 0,
         'time': 0,
-        'signal': ''
+        'signal': '',
+        'connectivity': ''
     }
 
 

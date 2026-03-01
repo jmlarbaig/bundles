@@ -31,7 +31,7 @@ function resetWod() {
         var $list = $("#wod");
         $list.find(".wod_box").remove();
 
-        setupLeaderboard.value.wod != true ? $("#wod").hide() : ""
+        setupFlat.wod != true ? $("#wod").hide() : ""
 
         for (let wod of workoutNames) {
             var $item = $(

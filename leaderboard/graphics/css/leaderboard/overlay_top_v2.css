@@ -4,8 +4,8 @@
     font-size: 1rem;
     height: 50px;
     width: var(--width_calc_top);
-    top: var(--y_leaderboard_top);
-    left: var(--x_leaderboard_top);
+    top: var(--position-y-leaderboard);
+    left: var(--position-x-leaderboard);
 }
 
 .leaderboardsBottom {
@@ -47,7 +47,6 @@
     display: flex;
     flex-direction: row;
     font-weight: 900;
-    font-size: var(--sizeFontAthlete_top);
     -moz-transition-duration: 0.7s;
     -webkit-transition-duration: 0.7s;
     -ms-transition-duration: 0.7s;
@@ -61,11 +60,7 @@
     display: flex;
     flex-direction: column;
     width: fit-content;
-    color: var(--tx_main_color);
-    font-family: var(--fontAthlete-select);
     margin: 5px;
-    font-size: 28px;
-    /* border: solid white 1px; */
     padding: 2px;
 }
 
@@ -87,13 +82,12 @@
     align-items: center;
     justify-content: center;
     text-align: center;
-    width: 45px;
+    width: var(--width-rank);
     margin: auto;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
     border-right: solid 2px rgb(255, 255, 255);
-
 }
 
 .leaderboard .athlete .ath_sub {
@@ -103,23 +97,23 @@
 }
 
 .leaderboard .athlete .lane {
-    height: var(--height_ath_top);
+    height: var(--height-lane);
     display: flex;
     align-items: center;
     text-align: center;
-    width: var(--widthLane_top);
+    width: var(--width-lane);
     margin: auto;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
     justify-content: center;
     text-align: center;
-    background-color: white;
-    color: black;
+    background-color: var(--background-color-lane);
+    color: var(--color-lane);
 }
 
 .leaderboard .athlete .name {
-    height: var(--height_ath_top);
+    height: var(--height-lane);
     display: flex;
     align-items: baseline;
     text-align: center;
@@ -132,19 +126,19 @@
     overflow: hidden;
     text-overflow: ellipsis;
     min-width: 180px;
-    letter-spacing: var(--letter_spacing);
+    letter-spacing: var(--letter-spacing-first-name);
 }
 
 .leaderboard .athlete .firstName {
-    font-family: var(--firstName-select);
-    font-size: var(--sizeFontAthlete_top);
+    font-family: var(--font-first-name);
+    font-size: var(--size-font-first-name);
     font-weight: 200;
     padding-right: 2px;
 }
 
 .leaderboard .athlete .lastName {
-    font-family: var(--lastName-select);
-    font-size: var(--sizeFontAthlete_top);
+    font-family: var(--font-last-name);
+    font-size: var(--size-font-last-name);
     font-weight: 800;
     padding-left: 2px;
 }
@@ -170,8 +164,8 @@
     height: 42px;
     background-color: white;
     color: black;
-    font-size: var(--sizeFontScore_top);
-    font-family: var(--lastName-select);
+    font-size: var(--size-font-score);
+    font-family: var(--font-score);
 }
 
 

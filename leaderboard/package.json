@@ -179,6 +179,85 @@
           "jpg",
           "jpeg"
         ]
+      },
+      {
+        "name": "backgroundAthlete",
+        "title": "Background Athlete",
+        "allowedTypes": [
+          "png",
+          "jpg",
+          "jpeg"
+        ]
+      },
+      {
+        "name": "setup_file",
+        "title": "Setup File",
+        "allowedTypes": [
+          "json"
+        ]
+      },
+      {
+        "name": "overlay_side_1_setup",
+        "title": "Overlay Side 1 Setup",
+        "allowedTypes": [
+          "json"
+        ]
+      },
+      {
+        "name": "overlay_side_2_setup",
+        "title": "Overlay Side 2 Setup",
+        "allowedTypes": [
+          "json"
+        ]
+      },
+      {
+        "name": "overlay_top_1_setup",
+        "title": "Overlay Top 1 Setup",
+        "allowedTypes": [
+          "json"
+        ]
+      },
+      {
+        "name": "overlay_top_2_setup",
+        "title": "Overlay Top 2 Setup",
+        "allowedTypes": [
+          "json"
+        ]
+      },
+      {
+        "name": "commentator_setup",
+        "title": "Commentator Setup",
+        "allowedTypes": [
+          "json"
+        ]
+      },
+      {
+        "name": "bigscreen_setup",
+        "title": "Bigscreen Setup",
+        "allowedTypes": [
+          "json"
+        ]
+      },
+      {
+        "name": "timer_setup",
+        "title": "Timer Setup",
+        "allowedTypes": [
+          "json"
+        ]
+      },
+      {
+        "name": "hyperfit_setup",
+        "title": "Hyperfit Setup",
+        "allowedTypes": [
+          "json"
+        ]
+      },
+      {
+        "name": "wza_setup",
+        "title": "WZA Setup",
+        "allowedTypes": [
+          "json"
+        ]
       }
     ]
   },

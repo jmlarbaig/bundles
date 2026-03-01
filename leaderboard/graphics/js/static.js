@@ -23,7 +23,7 @@ function resetLeaderboard(newData) {
         // ! On prend le tableau
 
         if (overlay.search("overlay") >= 0) {
-            setupLeaderboard.value.leaderboards != true ? $(".leaderboards").hide() : ""
+            setupFlat.leaderboards != true ? $(".leaderboards").hide() : ""
         }
 
         if (overlay == "overlay_wpa") {
@@ -104,7 +104,7 @@ function resetLeaderboard(newData) {
                     $tabItem = headerSide(divisionsNames, indexDivision, repTarget)
                     break;
                 case 'overlay_side_v1':
-                    $tabItem = headerSide(divisionsNames, indexDivision, repTarget)
+                    $tabItem = headerSideV1(divisionsNames, indexDivision, repTarget)
                     break;
                 case 'overlay_top':
                 case 'overlay_top_v2':
@@ -195,7 +195,7 @@ function resetLeaderboard(newData) {
                         $item = overlaySide(elementAth)
                         break;
                     case 'overlay_side_v1':
-                        $item = overlaySide(elementAth)
+                        $item = overlaySideV1(elementAth)
                         break;
                     case 'overlay_top':
                     case 'overlay_top_v2':
@@ -294,19 +294,19 @@ function resetLeaderboard(newData) {
 
                         // $('.leaderboard').slideDown(1000)
 
-                        if (setupLeaderboard.value.automaticSchedule) {
+                        if (setupFlat.automaticSchedule) {
 
-                            let config = setupLeaderboard.value;
+                            let config = setupFlat;
 
                             config.box_chrono = true;
                             config.box_heat = true;
-                            setupLeaderboard.value = config;
+                            setupFlat = config;
 
                         } else {
-                            let config = setupLeaderboard.value;
+                            let config = setupFlat;
 
                             if (!config.box_chrono || !config.box_heat) {
-                                setupLeaderboard.value = config;
+                                setupFlat = config;
                             }
 
                             $('.box_chrono').slideDown(1000)
@@ -358,7 +358,7 @@ function resetLeaderboard(newData) {
             $('.box_bandeau').append(bandeau(indexDivision))
             $('#bandeau' + indexDivision).html(listOfAth.toString().replaceAll(',', ' • ').replaceAll('_', ' ').toUpperCase())
 
-            setupLeaderboard.value.bandeau ? $('.box_bandeau').slideDown() : $('.box_bandeau').hide()
+            setupFlat.bandeau ? $('.box_bandeau').slideDown() : $('.box_bandeau').hide()
 
 
         })

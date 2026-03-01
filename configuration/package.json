@@ -22,9 +22,9 @@
     "compatibleRange": "^1.9.0||^2",
     "dashboardPanels": [
       {
-        "name": "configuration",
-        "title": "Parameters",
-        "file": "configuration.html",
+        "name": "dashboard",
+        "title": "Dashboard Configuration",
+        "file": "dashboard.html",
         "fullbleed": true,
         "headerColor": "#525F78"
       }
@@ -41,6 +41,69 @@
       {
         "name": "config",
         "title": "Configuration File",
+        "allowedTypes": [
+          "json"
+        ]
+      },
+      {
+        "name": "overlay_side_1_config",
+        "title": "Overlay Side 1 Configuration",
+        "allowedTypes": [
+          "json"
+        ]
+      },
+      {
+        "name": "overlay_side_2_config",
+        "title": "Overlay Side 2 Configuration",
+        "allowedTypes": [
+          "json"
+        ]
+      },
+      {
+        "name": "overlay_top_1_config",
+        "title": "Overlay Top 1 Configuration",
+        "allowedTypes": [
+          "json"
+        ]
+      },
+      {
+        "name": "overlay_top_2_config",
+        "title": "Overlay Top 2 Configuration",
+        "allowedTypes": [
+          "json"
+        ]
+      },
+      {
+        "name": "commentator_config",
+        "title": "Commentator Configuration",
+        "allowedTypes": [
+          "json"
+        ]
+      },
+      {
+        "name": "bigscreen_config",
+        "title": "Bigscreen Configuration",
+        "allowedTypes": [
+          "json"
+        ]
+      },
+      {
+        "name": "timer_config",
+        "title": "Timer Configuration",
+        "allowedTypes": [
+          "json"
+        ]
+      },
+      {
+        "name": "hyperfit_config",
+        "title": "Hyperfit Configuration",
+        "allowedTypes": [
+          "json"
+        ]
+      },
+      {
+        "name": "wza_config",
+        "title": "WZA Configuration",
         "allowedTypes": [
           "json"
         ]

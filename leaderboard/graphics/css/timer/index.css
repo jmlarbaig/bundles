@@ -1,6 +1,6 @@
 .box_logo {
-    opacity: 80%;
-    filter: blur(50px);
+    opacity: var(--opacity-logo-bg);
+    filter: blur(var(--blur-logo-bg));
     position: absolute;
     height: 100%;
     width: 100%;
@@ -13,12 +13,12 @@
 .logo {
     background-size: contain;
     position: absolute;
-    width: 300px;
-    height: 300px;
+    width: var(--width-logo);
+    height: var(--height-logo);
     background-position: center;
     background-repeat: no-repeat;
-    top: 30px;
-    left: 25%;
+    top: var(--position-y-logo);
+    left: var(--position-x-logo);
     -webkit-transform: translate(-50%);
     transform: translate(-50%);
     z-index: 40;
@@ -28,12 +28,12 @@
     position: absolute;
     top: var(--yValueTimer);
     left: var(--xValueTimer);
-    width: 1400px;
-    padding: 50px;
+    width: var(--width-chrono);
+    padding: var(--padding-chrono);
     -webkit-transform: translate(-50%);
     transform: translate(-50%);
     text-align: center;
-    border-radius: 15px;
+    border-radius: var(--border-radius-chrono);
     /* background-color: var(--main-color); */
     /* box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px; */
 }
@@ -41,37 +41,37 @@
 .chrono {
     margin: 0px;
     padding: 0px;
-    text-shadow: 2px 2px 4px #000000;
-    font-size: var(--SizeFontChronoTimer);
+    text-shadow: var(--text-shadow-chrono);
+    font-size: var(--size-font-chrono);
     font-family: var(--familyFontTimer-select);
 }
 
 #cap {
-    text-shadow: 2px 2px 4px #000000;
-    border-radius: 10px;
-    font-size: 5rem;
-    color: white;
+    text-shadow: var(--text-shadow-chrono);
+    border-radius: var(--border-radius-cap);
+    font-size: var(--size-font-timecap);
+    color: var(--color-timecap);
     position: relative;
-    top: -100px;
+    top: var(--position-top-cap);
 }
 
 .mainSponsor {
     background-size: contain;
     position: absolute;
-    width: 300px;
-    height: 300px;
+    width: var(--width-main-sponsor);
+    height: var(--height-main-sponsor);
     background-position: center;
     background-repeat: no-repeat;
-    top: 30px;
-    left: 75%;
+    top: var(--position-y-main-sponsor);
+    left: var(--position-x-main-sponsor);
     -webkit-transform: translate(-50%);
     transform: translate(-50%);
 }
 
 @media (max-width: 1000px) {
     .box_logo {
-        opacity: 80%;
-        filter: blur(50px);
+        opacity: var(--opacity-logo-bg);
+        filter: blur(var(--blur-logo-bg));
         position: absolute;
         height: 100%;
         width: 100%;
@@ -84,55 +84,55 @@
     .logo {
         background-size: contain;
         position: absolute;
-        width: 100px;
-        height: 100px;
+        width: var(--width-logo-mobile);
+        height: var(--height-logo-mobile);
         background-position: center;
         background-repeat: no-repeat;
-        top: 30px;
-        left: 25%;
+        top: var(--position-y-logo);
+        left: var(--position-x-logo);
         -webkit-transform: translate(-50%);
         transform: translate(-50%);
     }
 
     .box_chrono {
         position: absolute;
-        top: 100px;
+        top: var(--position-y-chrono-mobile);
         left: 50%;
-        width: 1400px;
-        padding: 50px;
+        width: var(--width-chrono);
+        padding: var(--padding-chrono);
         -webkit-transform: translate(-50%);
         transform: translate(-50%);
         text-align: center;
-        border-radius: 15px;
+        border-radius: var(--border-radius-chrono);
         /* background-color: var(--main-color);
         box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px; */
     }
 
     .chrono {
-        text-shadow: 2px 2px 4px #000000;
-        font-size: 8rem;
+        text-shadow: var(--text-shadow-chrono);
+        font-size: var(--size-font-chrono-mobile);
         font-family: var(--familyFontTimer);
         margin: -50px 0px -50px 0px;
     }
 
     #cap {
-        text-shadow: 2px 2px 4px #000000;
-        border-radius: 10px;
-        top: 30px;
+        text-shadow: var(--text-shadow-chrono);
+        border-radius: var(--border-radius-cap);
+        top: var(--position-top-cap-mobile);
         font-size: 0;
         /* background-color: black; */
-        color: white;
+        color: var(--color-timecap);
     }
 
     .mainSponsor {
         background-size: contain;
         position: absolute;
-        top: 30px;
-        width: 100px;
-        height: 100px;
+        top: var(--position-y-main-sponsor);
+        width: var(--width-main-sponsor-mobile);
+        height: var(--height-main-sponsor-mobile);
         background-position: center;
         background-repeat: no-repeat;
-        left: 75%;
+        left: var(--position-x-main-sponsor);
         -webkit-transform: translate(-50%);
         transform: translate(-50%);
     }

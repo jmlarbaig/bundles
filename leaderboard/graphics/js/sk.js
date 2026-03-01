@@ -17,10 +17,11 @@ dataMinos.on('change', (newValue, oldValue) => {
                     '<tr class="athlete counter zero" id="aht' + minos.ip + '">' +
                     '<td class="lane"></td>' +
                     '<td class="state"></td>' +
-                    '<td class="popup text-nowrap text-truncate"></td>' +
-                    '<td class="timeAth"></td>' +
+                    '<td class="battery text-nowrap text-truncate"></td>' +
+                    '<td class="signal"></td>' +
                     '<td class="repAth"></td>' +
-                    '<td class="score align-items-xl-center"></td>' +
+                    '<td class="ip"></td>' +
+                    '<td class="way"></td>' +
                     '<td class="flag" onclick="deleteMinos()"></td>' +
                     '<td class="text-nowrap text-truncate text-left name"><button onclick="deleteMinos()" id="delete_' + minos.ip + '">PING</button><button onclick="showModal()" id="lane_reject_' + minos.lane + '_' + minos.ip + '">&times;</button></td>' +
                     '</tr>'
@@ -28,11 +29,12 @@ dataMinos.on('change', (newValue, oldValue) => {
                 $('#lane' + minos.lane).after($item)
             }
             $('#aht' + minos.ip).find('.lane').text(treatType(minos.type))
-            $('#aht' + minos.ip).find('.score').text(minos.ip)
-            $('#aht' + minos.ip).find('.popup').text(minos.battery + ' %')
+            $('#aht' + minos.ip).find('.ip').text(minos.ip)
+            $('#aht' + minos.ip).find('.way').text(minos.connectivity)
+            $('#aht' + minos.ip).find('.battery').text(minos.battery + ' %')
             $('#aht' + minos.ip).find('.state').text(minos.status)
             // $('#aht'+minos.ip).find('.timeAth').text(msToTimeSK(minos.time))
-            $('#aht' + minos.ip).find('.timeAth').text(minos.signal)
+            $('#aht' + minos.ip).find('.signal').text(minos.signal)
             console.log(minos.rep)
             $('#aht' + minos.ip).find('.repAth').text(minos.rep)
             BatteryLevel(minos.ip, minos.battery)

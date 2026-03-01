@@ -1,14 +1,14 @@
 .box_logo {
     position: absolute;
-    top: var(--position_y_logo);
-    left: var(--position_x_logo);
-    width: var(--widthLogoEvent);
-    height: var(--widthLogoEvent);
+    top: var(--position-y-logo);
+    left: var(--position-x-logo);
+    width: var(--width-logo);
+    height: var(--height-logo);
 }
 
 .logo {
-    width: var(--widthLogoEvent);
-    height: var(--widthLogoEvent);
+    width: var(--width-logo);
+    height: var(--height-logo);
     background-position: center;
     background-repeat: no-repeat;
     background-size: contain;
@@ -18,12 +18,7 @@
     display: flex;
     text-shadow: 2px 2px 4px #000000;
     text-align: left;
-    /* box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; */
     position: absolute;
-    /* background-color: var(--chrono_color); */
-    color: white;
-    top: var(--position_y_chrono);
-    left: var(--position_x_chrono);
     margin: auto;
     align-items: center;
     padding: 10px auto;
@@ -31,30 +26,36 @@
     -moz-transition-duration: 0.7s;
     -webkit-transition-duration: 0.7s;
     -ms-transition-duration: 0.7s;
+    top: var(--position-y-chrono);
+    left: var(--position-x-chrono);
+    background-color: var(--background-color-chrono);
 }
 
 .chrono {
     display: flex;
-    flex-direction: var(--flex_direction_timer_cap);
+    flex-direction: column;
     align-items: center;
 }
 
-#time {
+.time {
     text-align: center;
     width: 120px;
-    font-family: "Digit";
-    font-size: var(--size_font_chrono);
+    font-family: var(--font-chrono);
     margin: auto;
+    font-family: var(--font-chrono);
+    font-size: var(--size-font-chrono);
+    color: var(--color-chrono);
     /* border-bottom: solid white 1px; */
 }
 
-#cap {
-    font-size: var(--size_font_cap);
+.cap {
     font-style: italic;
     padding: 0px 10px;
-    /* background-color: black; */
-    color: white;
     margin: 0px auto;
+    font-family: var(--font-timecap);
+    background-color: var(--background-color-timecap);
+    color: var(--color-timecap);
+    font-size: var(--size-font-timecap);
 }
 
 .box_heat {
@@ -71,23 +72,35 @@
     width: 1000px;
 }
 
-#heat {}
-
-#workout {
+.heat {
     position: relative;
-    top: var(--position_y_workout);
-    left: var(--position_x_workout);
+    top: var(--position-y-heat);
+    left: var(--position-x-heat);
+}
+
+.workout {
+    position: relative;
+    top: var(--position-y-workout);
+    left: var(--position-x-workout);
+    font-size: var(--size-font-workout);
+    font-family: var(--font-workout);
+    color: var(--color-workout);
+    background-color: var(--background-color-workout);
+    width: var(--width-workout);
     margin: auto;
-    font-size: var(--SizeFontWorkoutNameOverlaySide);
     font-weight: 800;
 }
 
-#division {
+.division {
     position: relative;
-    top: var(--position_y_heat);
-    left: var(--position_x_heat);
     margin: auto;
-    font-size: var(--SizeFontHeatNameOverlaySide);
+    top: var(--position-y-division);
+    left: var(--position-x-division);
+    font-size: var(--size-font-division);
+    font-family: var(--font-division);
+    color: var(--color-division);
+    background-color: var(--background-color-division);
+    width: var(--width-division);
     font-weight: 600;
     font-style: italic;
     text-transform: uppercase;
@@ -99,13 +112,15 @@
     align-items: center;
     justify-content: flex-start;
     text-transform: uppercase;
-    /* padding: 5px 2px 5px 2px; */
+    font-size: var(--size-font-heat);
+    font-family: var(--font-heat);
+    color: var(--color-heat);
+    background-color: var(--background-color-heat);
 }
 
 .heatlow {
     width: fit-content;
-    min-width: 250px;
-    /* max-width: 350px; */
+    min-width: var(--width-heat);
     overflow: hidden;
     margin-left: 10px;
     margin-right: 10px;
@@ -114,19 +129,17 @@
 
 .mainSponsor {
     position: absolute;
-    left: 20px;
-    bottom: 40px;
+    top: var(--position-y-main-sponsor);
+    left: var(--position-x-main-sponsor);
     margin-right: 5px;
-    width: 200px;
+    max-height: var(--height-main-sponsor);
+    max-width: var(--width-main-sponsor);
     text-align: center;
     margin-top: 5px;
-    height: 60px;
     background-repeat: no-repeat;
     background-size: contain;
     /* <------ */
     background-position: center center;
-    /* optional, center the image */
-    /* box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; */
 }
 
 .target {

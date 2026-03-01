@@ -3,9 +3,6 @@
 const fs = require('fs');
 const url = require('url')
 
-const setupFile = __dirname + '/setupFile.json'
-
-
 module.exports = function (nodecg) {
 
     const router = nodecg.Router();
@@ -55,30 +52,46 @@ module.exports = function (nodecg) {
         }));
     });
 
-    //nodecg.mount('/leaderboard', router);
+    const configs = JSON.parse(fs.readFileSync(__dirname + '/configs.json'));
 
+    const configsReplicants = nodecg.Replicant('configs', { defaultValue: configs });
+    configsReplicants.value = configs;
 
-    const setupLeaderboard = nodecg.Replicant('setupLeaderboard')
+    const activeSetup = nodecg.Replicant('activeSetup', { defaultValue: '' });
 
-    if (fs.existsSync(setupFile)) {
-        try {
-            setupLeaderboard.value = JSON.parse(fs.readFileSync(setupFile))
+    console.log('Initializing leaderboard setup extension with configs:', configs);
+
+    configs.forEach(([filename, name, event]) => {
+        const filepath = __dirname + '/' + filename;
+        const replicant = nodecg.Replicant(name);
+
+        if (fs.existsSync(filepath)) {
+            try {
+                replicant.value = JSON.parse(fs.readFileSync(filepath));
+            } catch (err) {
+                console.error(err);
+            }
+        } else {
+            console.log(`Creating the file: ${filename}`);
+            fs.writeFileSync(filepath, JSON.stringify(replicant.value ?? {}), null, 4);
         }
-        catch (err) {
-            console.error(err)
-        }
-    } else {
-        console.log("Creating the file")
-        fs.writeFileSync(setupFile, "{}");
-    }
 
-    nodecg.listenFor('setupFile', (value, ack) => {
-        let data = JSON.stringify(value);
-        fs.writeFile(setupFile, data, 'utf8', function (err) {
-            if (err) throw err;
-            console.log('complete');
-        })
-        setupLeaderboard.value = value
-    })
+        nodecg.listenFor(event, (value) => {
+            if (replicant.value) {
+                Object.entries(value).forEach(([sectionKey, section]) => {
+                    if (!replicant.value[sectionKey]) return;
+                    section.element.forEach((el, i) => {
+                        replicant.value[sectionKey].element[i].value = el.value;
+                    });
+                });
+            } else {
+                replicant.value = value;
+            }
+
+            fs.writeFile(filepath, JSON.stringify(value, null, 2), 'utf8', (err) => {
+                if (err) throw err;
+            });
+        });
+    });
 
 };

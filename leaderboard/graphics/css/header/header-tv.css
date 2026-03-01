@@ -1,46 +1,46 @@
 .header {
-    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+    box-shadow: var(--box-shadow-header-tv);
     position: absolute;
     width: 100%;
-    height: 100px;
+    height: var(--height-header-tv);
     z-index: 20;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     background-color: var(--main_color);
     color: var(--tx-main_color);
-    padding: 10px 0px;
+    padding: var(--padding-header-tv);
 }
 
 .box_logo {
     margin: auto auto;
-    height: 100px;
+    height: var(--height-box-logo-tv);
     /* z-index: 21; */
 }
 
 .logo {
-    height: 100px;
-    width: 100px;
+    height: var(--height-logo-tv);
+    width: var(--width-logo-tv);
     background-position: center;
     background-repeat: no-repeat;
     background-size: contain;
 }
 
 .box_chrono {
-    border: solid 2px white;
-    border-radius: 10%;
-    width: 15%;
+    border: solid var(--border-width-chrono-tv) var(--border-color-chrono-tv);
+    border-radius: var(--border-radius-chrono-tv);
+    width: var(--width-chrono-tv);
     /* height: 90px; */
     transform-origin: 50% 50%;
     text-align: center;
     align-items: center;
     z-index: 30;
-    background-color: rgb(210, 210, 210);
-    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+    background-color: var(--background-color-chrono-tv);
+    box-shadow: var(--box-shadow-chrono-tv);
 }
 
 .chrono {
-    font-size: 5em;
+    font-size: var(--font-size-chrono-tv);
 }
 
 #time {
@@ -48,15 +48,15 @@
 }
 
 #cap {
-    font-size: 0em;
-    color: black;
+    font-size: var(--font-size-cap-tv);
+    color: var(--color-cap-tv);
 }
 
 .box_heat {
-    color: white;
-    width: 70%;
-    padding: 5px;
-    padding-left: 30px;
+    color: var(--color-heat-tv);
+    width: var(--width-heat-tv);
+    padding: var(--padding-heat-tv);
+    padding-left: var(--padding-left-heat-tv);
 }
 
 .heat_content {
@@ -67,30 +67,30 @@
 .details {
     display: flex;
     flex-direction: column;
-    width: 50%;
+    width: var(--width-details-tv);
 }
 
 .details #workout {
-    font-size: 2.5em;
+    font-size: var(--font-size-workout-tv);
 }
 
 .details #division {
-    font-size: 2em;
+    font-size: var(--font-size-division-tv);
 }
 
 .box_mainSponsor {
-    padding-top: 5px;
+    padding-top: var(--padding-top-main-sponsor-tv);
     display: flex;
     flex-direction: row;
 }
 
 .presented {
-    padding-right: 20px;
+    padding-right: var(--padding-right-presented-tv);
 }
 
 .mainSponsor {
-    width: 150px;
-    height: 60px;
+    width: var(--width-main-sponsor-tv);
+    height: var(--height-main-sponsor-tv);
     background-position: center;
     background-repeat: no-repeat;
     background-size: contain;
@@ -103,21 +103,21 @@
 }
 
 .FV {
-    margin: 0px 5px;
+    margin: var(--margin-fvsk-tv);
     background-image: url('../../img/PRESTA/FV-logo.png');
-    background-position: 2px 5px;
+    background-position: var(--background-position-fv-tv);
     background-size: contain;
     background-repeat: no-repeat;
-    width: 200px;
-    height: 100px;
+    width: var(--width-fv-tv);
+    height: var(--height-fv-tv);
 }
 
 .SK {
-    margin: 0px 5px;
+    margin: var(--margin-fvsk-tv);
     background-image: url('../../img/PRESTA/SK-logo.png');
     background-position: top;
     background-size: contain;
     background-repeat: no-repeat;
-    width: 170px;
-    height: 100px;
+    width: var(--width-sk-tv);
+    height: var(--height-sk-tv);
 }

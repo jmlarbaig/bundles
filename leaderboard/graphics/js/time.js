@@ -7,7 +7,7 @@ let onChronoBefore = false;
 
 function updateTime() {
 
-    let Ft_Ap = setupLeaderboard.value.fortimeAmrap;
+    let Ft_Ap = setupFlat.fortimeAmrap;
 
     let timer = parseInt(timerNTP.value) + (adjustT.value || 0)
 
@@ -42,7 +42,7 @@ function updateTime() {
     if (timeDiffTimeCap <= 0 && timeDiffStart >= 0 && timeDiffEnd > 0 && startTime != 0) {
         onChronoBefore = true;
         if (overlay != 'lane' && overlay != 'timer') {
-            $('#cap').fadeIn(1000)
+            $('.cap').fadeIn(1000)
         }
 
         if (audioReady && timeDiffStart < 1000 && timeDiffStart > 0) {
@@ -60,7 +60,7 @@ function updateTime() {
     } else if (timeDiffStart < 0 && startTime != 0) {
         onChronoBefore = true;
         if (overlay != 'lane' && overlay != 'timer') {
-            $('#cap').fadeOut(1000)
+            $('.cap').fadeOut(1000)
         }
         if (overlay == 'overlay_side' || overlay == 'overlay_side_v1' || overlay == 'overlay_wpa') {
             // $(".chrono").css("color", "rgb(255,50,80")
@@ -91,7 +91,7 @@ function updateTime() {
         }
     } else {
         if (overlay != 'lane' && overlay != 'timer') {
-            $('#cap').fadeOut(1000)
+            $('.cap').fadeOut(1000)
         }
         if (audioReady && timeDiffTimeCap > 0 && timeDiffTimeCap < 1000) {
             console.log('sound launch')
@@ -135,7 +135,7 @@ function updateTime() {
     //     }
     // }
     if (!chrono.includes('undefined')) {
-        document.getElementById("time").innerHTML = chrono;
+        $(".time").text(chrono);
     }
 
 }
@@ -145,7 +145,7 @@ function resetTimer() {
     $(".box_chrono").css("color", Clrs.tx_chrono_color)
     // $(".chrono").css("background-color", Clrs.chrono_color)
     $(".chrono").css("color", Clrs.tx_chrono_color)
-    document.getElementById("time").innerHTML = "00:00";
+    $(".time").text("00:00");
     sonLaunch = false;
     console.log("reset sonLaunch")
 }
@@ -154,19 +154,20 @@ function resetTimer() {
 function showTime(Cap) {
     try {
         let $list = $(".chrono");
-        $list.find("#time").remove();
-        $list.find("#cap").remove();
+        $list.find(".time").remove();
+        $list.find(".cap").remove();
 
         let $item = $(
-            '<div id="time">00:00</div>' +
-            '<div id="cap">Timecap ' + Cap + '</div>'
+            '<div class="time">00:00</div>' +
+            '<div class="cap">Timecap ' + Cap + '</div>'
         );
-
-        !setupLeaderboard.value.chrono && $("#box_chrono").hide();
         $list.append($item);
-        $(".chrono").find('#cap').hide();
+        if (overlay.includes('overlay')) {
+            !setupFlat.chrono && $(".box_chrono").hide();
+            $(".chrono").find('.cap').hide();
+        }
         if (overlay == 'timer') {
-            $(".chrono").find('#cap').remove();
+            $(".chrono").find('.cap').remove();
         }
 
     }

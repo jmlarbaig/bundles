@@ -1,31 +1,29 @@
 .box_logo {
     position: absolute;
-    top: var(--position_y_logo_v1);
-    left: var(--position_x_logo_v1);
-    width: var(--widthLogoEvent_v1);
-    height: var(--widthLogoEvent_v1);
-    -moz-transition-duration: 0.7s;
-    -webkit-transition-duration: 0.7s;
-    -ms-transition-duration: 0.7s;
+    top: var(--position-y-logo);
+    left: var(--position-x-logo);
+    width: var(--width-logo);
+    height: var(--height-logo);
 }
 
 .logo {
-    width: var(--widthLogoEvent_v1);
-    height: var(--widthLogoEvent_v1);
+    width: var(--width-logo);
+    height: var(--height-logo);
     background-position: center;
     background-repeat: no-repeat;
     background-size: contain;
 }
 
 .box_chrono {
-    text-align: center;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    display: flex;
+    text-shadow: 2px 2px 2px #000000;
+    text-align: left;
+    /* box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; */
     position: absolute;
-    background-color: var(--chrono_color);
-    color: var(--tx_chrono_color);
-    top: var(--position_y_chrono_v1);
-    left: var(--position_x_chrono_v1);
-    width: 150px;
+    /* background-color: var(--chrono_color); */
+    color: white;
+    top: var(--position-y-chrono);
+    left: var(--position-x-chrono);
     margin: auto;
     align-items: center;
     padding: 10px auto;
@@ -35,47 +33,67 @@
     -ms-transition-duration: 0.7s;
 }
 
-#time {
-    font-size: 2em;
-    padding: 10px 0px;
+.chrono {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.time {
+    text-align: center;
+    width: 120px;
+    font-family: "Digit";
+    font-size: var(--size-font-chrono);
     margin: auto;
     /* border-bottom: solid white 1px; */
 }
 
-#cap {
-    padding: 10px;
-    background-color: black;
-    color: white;
+.cap {
+    font-size: var(--size-font-timecap);
+    font-style: italic;
+    padding: 0px 10px;
+    /* background-color: black; */
+    color: var(--color-timecap);
+    background-color: var(--background-color-timecap);
+    font-family: var(--font-timecap);
     margin: 0px auto;
 }
 
-#heat {
-    position: absolute;
+.box_heat {
+    position: relative;
+
+    font-family: Slenco;
     font-weight: 800;
-    top: var(--position_y_heat_v1);
-    /* font-family: montserrat;    */
-    left: var(--position_x_heat_v1);
+    top: 0px;
+    left: 0px;
     font-size: 1.4rem;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    color: var(--tx_main_color);
-    background-color: var(--main_color);
+    /* box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; */
+    text-shadow: 2px 2px 4px #000000;
     height: 75px;
-    width: max-content;
+    width: 1000px;
 }
 
-#workout {
+.heat {
+    position: relative;
+    top: var(--position-y-heat);
+    left: var(--position-x-heat);
     margin: auto;
-    font-size: 1.6em;
-    font-weight: 800;
-}
-
-#division {
-    margin: auto;
-    font-size: 1em;
+    font-size: var(--size-font-division);
     font-weight: 600;
     font-style: italic;
     text-transform: uppercase;
 }
+
+.workout {
+    position: relative;
+    top: var(--position-y-workout);
+    left: var(--position-x-workout);
+    margin: auto;
+    font-size: var(--size-font-workout);
+    color: var(--color-workout);
+    font-weight: 800;
+}
+
 
 .heat_name {
     display: flex;
@@ -89,25 +107,26 @@
 .heatlow {
     width: fit-content;
     min-width: 250px;
-    max-width: 350px;
+    /* max-width: 350px; */
     overflow: hidden;
     margin-left: 10px;
-    background-color: var(--main_color);
-    color: var(--tx-main-color);
+    margin-right: 10px;
 }
 
 
 .mainSponsor {
-    margin-right: 5px;
-    width: 200px;
+    position: absolute;
+    left: var(--position-x-main-sponsor);
+    top: var(position-y-main-sponsor);
+    width: var(--width-main-sponsor);
     text-align: center;
-    margin-top: 5px;
-    height: 60px;
+    height: var(--height-main-sponsor);
     background-repeat: no-repeat;
     background-size: contain;
     /* <------ */
     background-position: center center;
     /* optional, center the image */
+    /* box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; */
 }
 
 .target {
@@ -115,4 +134,9 @@
     padding-bottom: 5px;
     width: 50px;
     max-width: 50px;
+}
+
+.box_svg {
+    position: absolute;
+    z-index: -10;
 }

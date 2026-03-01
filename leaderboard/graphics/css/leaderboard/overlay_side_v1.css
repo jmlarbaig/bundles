@@ -1,22 +1,38 @@
+body {
+    background-color: var(--background-color-body);
+    /* font-family: var(--font-select); */
+    background-size: cover;
+    zoom: var(--zoom);
+}
+
+.nobody {
+    background-color: var(--background-color-body);
+}
+
+
 .leaderboards {
-    font-size: 1rem;
-    -moz-transition-duration: 0.7s;
-    -webkit-transition-duration: 0.7s;
-    -ms-transition-duration: 0.7s;
+    position: absolute;
+    top: var(--position-y-leaderboard);
+    left: var(--position-x-leaderboard);
+    font-size: var(--size-font-leaderboard);
+    transition: all 0.7s ease;
+    height: calc(1000px);
+    overflow: hidden;
+    /* font-family: 'okta', sans-serif; */
 }
 
 .leaderboard {
-    top: var(--position_y_leaderboard_v1);
-    left: var(--position_x_leaderboard_v1);
     position: relative;
     display: flex;
     flex-direction: column;
     opacity: 92%;
-    width: 300px;
-    -moz-transition-duration: 0.7s;
-    -webkit-transition-duration: 0.7s;
-    -ms-transition-duration: 0.7s;
+    width: 500px;
+    transition: all 0.7s ease;
+    /* box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4); */
+    border-radius: 4px;
+    overflow: hidden;
 }
+
 
 /* .leaderboard:nth-child(1){
     top:var(--position_y_leaderboard);
@@ -44,38 +60,40 @@
     -ms-transition-duration: 0.7s;
 } */
 
-.leaderboard:nth-child(3) {
+/* .leaderboard:nth-child(3) {
 
     display: none;
 }
 
 .leaderboard:nth-child(4) {
     display: none;
-}
+} */
 
 
 .leaderboard .header {
-    height: 35px;
-    font-weight: 900;
-    font-size: 20px;
+    font-family: 'Slenco', sans-serif;
+    position: absolute;
+    /* text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); */
+
     display: flex;
     flex-direction: row;
-    align-items: center;
-    padding-left: 10px;
-    background-color: var(--second_color);
-    color: var(--tx_second_color);
-    border-bottom: 2px white solid;
-    padding-bottom: 5px;
-    padding-top: 5px;
-    -moz-transition-duration: 0.7s;
-    -webkit-transition-duration: 0.7s;
-    -ms-transition-duration: 0.7s;
+    align-items: left;
+    padding-left: 15px;
+    background-color: var(--background-color-division);
+    color: white;
+    left: 2px;
+    transition: all 0.7s ease;
+    width: 179px;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
 }
 
 
 .leaderboard .division {
-    font-size: 16px;
-    width: 200px;
+    font-size: var(--size-font-division);
+    width: var(--width-division);
+    color: var(--color-division);
+    font-family: var(--font-division);
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -84,151 +102,416 @@
 .leaderboard .repTar {
     text-align: right;
     margin: auto;
-    font-size: 14px;
-    background-color: var(--second_color);
+    font-size: var(--SizeFontRepTargetOverlaySide);
     padding-right: 10px;
+    color: var(--color-repTar);
+    font-size: var(--size-font-repTar);
+    font-family: var(--font-repTar);
+}
+
+.mvt::before {
+    content: '';
+    /* border-left: 4px solid rgba(105, 105, 105, 0.712); */
+    /* margin: 20px; */
+}
+
+.mvt {
+    font-weight: 800;
+    -moz-transition-duration: 0.7s;
+    -webkit-transition-duration: 0.7s;
+    -ms-transition-duration: 0.7s;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    /* color: var(--restMvt_color); */
+    text-transform: capitalize;
+}
+
+.mvt span {
+    padding: 10px;
+    letter-spacing: var(--letter-spacing-mvt);
+    font-family: var(--font-others-mvt);
+}
+
+.mvt span:first-child {
+    color: var(--first-color-mvt);
+    font-weight: 800;
+    font-family: var(--font-first-mvt);
+}
+
+.mvt span:first-child::before {
+    content: "•";
 }
 
 .leaderboard .athletes {
+    font-family: var(--lastName-select);
     color: var(--tx_second_color);
     display: flex;
+    /* padding: 2px; */
     flex-direction: column;
+    align-items: flex-start;
     font-weight: 900;
-    font-size: 20px;
-    -moz-transition-duration: 0.7s;
-    -webkit-transition-duration: 0.7s;
-    -ms-transition-duration: 0.7s;
+    transition: all 0.7s ease;
+    margin: 0px 0px;
+    gap: 4px;
 }
 
 .leaderboard .athlete {
-    -moz-transition-duration: 0.7s;
-    -webkit-transition-duration: 0.7s;
-    -ms-transition-duration: 0.7s;
+    transition: all 0.7s ease;
     position: absolute;
     display: flex;
     flex-direction: column;
+    /* margin: 5px 0px; */
 }
 
 .leaderboard .athletes .ath {
+    margin-bottom: 14px;
     display: flex;
     flex-direction: row;
     align-items: center;
-    height: var(--height_ath_side);
-    background-color: var(--main_color);
+    background-color: rgba(10, 10, 10, 0.7);
     color: var(--tx_main_color);
-    margin: auto;
+    /* margin: auto; */
+    overflow: hidden;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    /* margin: 2px; */
+    /* box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); */
+    /* border-radius: 10px 10px 10px 0px; */
+}
+
+.leaderboard .athlete .subrank {
+    padding: 2px;
 }
 
 .leaderboard .athlete .rank {
-    padding: 5px 0px 0px 5px;
+    /* text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); */
+    padding: 2px 8px;
     text-align: center;
     width: 45px;
     padding-right: 7px;
-    border-right: 2px solid white;
-    height: var(--height_ath_side);
+    border-radius: 10px 0px 10px 0px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    font-weight: bold;
+    color: transparent;
+    -webkit-text-stroke: 1px var(--color_rank);
+    font-size: var(--size_font_rank);
+    font-family: var(--font_rank);
+    background-color: var(--background_color_rank);
+    color: var(--color_rank);
 }
 
 .leaderboard .athlete .lane {
-    /* haut left right bas */
-    padding: 5px 5px 5px 5px;
-    text-align: center;
-    width: 50px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+    padding: 2px 5px;
+    text-align: left;
+    width: var(--px_lane);
     filter: blur(0px);
-    height: var(--height_ath_side);
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    font-size: var(--SizeLaneoverlaySide);
+    color: transparent;
+    -webkit-text-stroke: 1px var(--color_lane);
+    background-color: var(--color_lane);
 }
 
 .leaderboard .athlete .name {
-    /* haut rigth bas left */
-    padding: 5px 10px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+    padding: 2px 4px;
     text-transform: uppercase;
     font-weight: 900;
-    width: var(--px_name_v1);
-    min-width: 200px;
-    max-width: var(--px_name_v1);
-    height: var(--height_ath_side);
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    transition: all 0.7s ease;
+    letter-spacing: 0.5px;
+    font-size: var(--size-font-name);
+    color: var(--color-name);
+    background-color: var(--background-color-name);
+    width: var(--width-name);
+    max-width: var(--width-name);
+}
 
-    -moz-transition-duration: 0.7s;
-    -webkit-transition-duration: 0.7s;
-    -ms-transition-duration: 0.7s;
+.triangle {
+    position: absolute;
+    left: 1px;
+    background-color: rgba(0, 0, 0, 0.0);
 }
 
 .leaderboard .athlete .score {
-    /* haut left right bas */
-    padding: 5px 10px 10px 5px;
-    width: 80px;
+    /* padding: 2px 12px; */
     max-width: 120px;
     text-align: center;
-    border-radius: --(border);
-    height: var(--height_ath_side);
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    transition: all 0.7s ease;
+    font-weight: bold;
+    width: var(--width-score);
+    font-size: var(--size_font_score);
+    color: var(--color_score);
+    font-family: var(--font-score);
+    background-color: var(--background-color-score);
 }
 
 .leaderboard .athlete .flag {
-    /* haut left right bas */
-    padding: 5px 5px 5px 5px;
-    height: var(--height_ath_side);
-    width: 40px;
+    padding: 5px 8px;
+    height: var(--height-flag);
+    width: var(--width-flag);
     align-items: center;
+    display: flex;
+    justify-content: center;
 }
 
 .leaderboard .athlete .flag .box_flag {
-    border-radius: 50px;
-    height: 30px;
-    width: 30px;
+    border-radius: 50%;
+    height: var(--height-box-flag);
+    width: var(--width-box-flag);
     background-position: center;
     background-repeat: no-repeat;
-    background-size: contain;
+    background-size: cover;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+    transition: var(--transition-fast);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.leaderboard .athlete:hover .flag .box_flag {
+    transform: scale(1.15);
+}
+
+.leaderboard .athlete:nth-child(1) .flag .box_flag {
+    border: 2px solid var(--gold-color);
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+}
+
+.leaderboard .athlete:nth-child(2) .flag .box_flag {
+    border: 2px solid var(--silver-color);
+}
+
+.leaderboard .athlete:nth-child(3) .flag .box_flag {
+    border: 2px solid var(--bronze-color);
 }
 
 .rounds {
-    width: 45px;
-    max-width: 45px;
+    width: var(--width-round);
+    max-width: var(--width-round);
+    color: var(--color-round);
+    background-color: var(--background-color-round);
     text-align: center;
-    background-color: white;
-    height: var(--height_ath_side);
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
 }
 
 .popup {
-    /* haut left right bas */
+    /* text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); */
     text-transform: uppercase;
-    text-align: center;
-    font-size: 14px;
-    height: 20px;
-    color: var(--tx_second_color);
-    background-color: var(--second_color);
-    -moz-transition-duration: 1s;
-    -webkit-transition-duration: 1s;
-    -ms-transition-duration: 1s;
+    text-align: left;
+    padding: 2px;
+    padding-left: 15px;
+    transition: all 0.7s ease;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    font-size: var(--size-font-popup);
+    font-family: var(--font-popup);
+    color: var(--color-popup);
+    background-color: var(--background-color-popup);
+    width: var(--width-popup);
 }
 
 .leaderboard .athletes .powered {
-    /* haut left right bas */
     padding: 0px 10px 0px 10px;
     text-align: center;
     align-items: center;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    background-color: var(--second_color);
-    color: var(--tx_second_color);
     height: var(--height_ath_side);
+    font-size: var(--size-font-powered);
+    font-family: var(--font-powered);
+    color: var(--color-powered);
+    background-color: var(--background-color-powered);
+    width: var(--width-powered);
     font-size: 12px;
     width: 300px;
+}
+
+.sponsorLogo {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: var(--spacing-md);
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    z-index: 10;
+}
+
+.sponsorLogo img {
+    max-height: 40px;
+    opacity: 0.9;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+    transition: var(--transition-fast);
+}
+
+.sponsorLogo img:hover {
+    opacity: 1;
+    transform: scale(1.05);
+}
+
+.mainSponsor {
+    position: absolute;
+    top: var(--position-y-main-sponsor);
+    left: var(--position-x-main-sponsor);
+    z-index: 10;
+}
+
+.mainSponsor img {
+    max-height: var(--height-main-sponsor);
+    max-width: var(--width-main-sponsor);
+    opacity: 0.9;
+    filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.4));
+    transition: var(--transition-fast);
+}
+
+.mainSponsor img:hover {
+    opacity: 1;
+    transform: scale(1.05);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    to {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+}
+
+.animate-in {
+    animation: fadeIn 0.5s forwards;
+}
+
+.animate-out {
+    animation: fadeOut 0.5s forwards;
+}
+
+.leaderboard .athlete.first-place {
+    position: relative;
+}
+
+.leaderboard .athlete.first-place .ath {
+    background: linear-gradient(90deg, rgba(212, 175, 55, 0.7) 0%, rgba(10, 10, 10, 0.7) 100%);
+}
+
+.leaderboard .athlete:hover .ath {
+    transform: translateX(5px);
+    transition: transform 0.3s ease;
+}
+
+/* Styles pour les transitions de classement */
+@keyframes pulseGreen {
+    0% {
+        background-color: rgba(10, 10, 10, 0.7);
+    }
+
+    50% {
+        background-color: rgba(40, 167, 69, 0.7);
+    }
+
+    100% {
+        background-color: rgba(10, 10, 10, 0.7);
+    }
+}
+
+@keyframes pulseRed {
+    0% {
+        background-color: rgba(10, 10, 10, 0.7);
+    }
+
+    50% {
+        background-color: rgba(220, 53, 69, 0.7);
+    }
+
+    100% {
+        background-color: rgba(10, 10, 10, 0.7);
+    }
+}
+
+@keyframes slideInNew {
+    0% {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* Style pour quand un athlète gagne des places */
+.leaderboard .athlete.rank-improved .ath {
+    animation: pulseGreen 2s ease;
+}
+
+.leaderboard .athlete.rank-improved .rank::after {
+    content: "↑";
+    color: #28a745;
+    margin-left: 4px;
+    font-weight: bold;
+}
+
+/* Style pour quand un athlète perd des places */
+.leaderboard .athlete.rank-decreased .ath {
+    animation: pulseRed 2s ease;
+}
+
+.leaderboard .athlete.rank-decreased .rank::after {
+    content: "↓";
+    color: #dc3545;
+    margin-left: 4px;
+    font-weight: bold;
+}
+
+/* Style pour les nouveaux athlètes */
+.leaderboard .athlete.new-athlete {
+    animation: slideInNew 1s ease forwards;
+}
+
+.leaderboard .athlete.new-athlete .name {
+    position: relative;
+}
+
+.leaderboard .athlete.new-athlete .name::after {
+    content: "NEW";
+    position: absolute;
+    top: -10px;
+    right: 5px;
+    background-color: var(--accent-color, #ff5722);
+    color: white;
+    font-size: 10px;
+    padding: 2px 4px;
+    border-radius: 4px;
+    animation: fadeOut 3s ease forwards;
 }

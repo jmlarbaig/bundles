@@ -1,6 +1,76 @@
 
 // Header Side
 
+function headerSideV1(divisions, indexDivision, repTarget) {
+    //! Ajouter la séparation ici
+    const reps = treatReptarget(repTarget[indexDivision])
+    // var reps = 0;
+
+    var $headerSide = $(
+        '<div id="leaderboard' + indexDivision + '" class="leaderboard">' +
+        '<div class="header">' +
+        '<div class="text-nowrap text-truncate text-left division">' + divisions[indexDivision] + '</div>' +
+        // '<div class="repTar text-nowrap text-truncate repTarget' + [indexDivision] + '">' + reps + '</div>' +
+        // ' <div id="mvt" class="text-nowrap text-truncate text-left"></div>' +
+        '</div>' +
+        '<div id="athletes" class="athletes">' +
+        '</div>' +
+        '</div>'
+    );
+    return $headerSide
+}
+
+
+function overlaySideV1(data) {
+
+    let name = treatDisplayName(data.displayName);
+    let flag = data.countryCode != "LOGO" ? ("https://flagcdn.com/" + data.countryCode.toLowerCase() + '.svg') : (logoEvent.value[0].url);
+
+    let backgroundImage = "";
+    if (backgroundAthlete.value != undefined) {
+        console.log("backgroundAthlete.value", backgroundAthlete.value)
+        backgroundImage = 'url(' + backgroundAthlete.value[0].url + ')'
+    }
+
+
+    let $item = $(
+        '<div class="athlete" id="aht' + data.lane + '">' +
+        '<div class="popup text-nowrap text-truncate">' + '</div>' +
+        '<div class="ath" style="background-image: ' + backgroundImage + '">' +
+        '<div class="triangle"></div>' +
+        '<div class="subrank"><div class="rank text-nowrap text-truncate"> ' + '</div></div>' +
+        '<div class="lane text-nowrap text-truncate">L' + data.lane + '</div>' +
+        '<div class="flag">' + '<div class="box_flag" ></div> ' + '</div>' +
+        // '<div class="text-nowrap text-truncate text-left name">' + name + '</div>' +
+        name +
+        '<div class="score text-nowrap text-center text-truncate"></div>' +
+        '<div class="text-nowrap text-truncate rounds">' + '</div>' +
+        '</div>' +
+
+        '</div>'
+    );
+
+    $item.find(".box_flag").css('background-image', 'url(' + flag + ')')
+    $item.find(".rounds").hide();
+    // $item.find(".score").hide();
+    $item.find(".popup").hide();
+    $item.find(".lane").hide();
+
+
+    $item.find(".triangle").hide();
+
+    !setupFlat.flag ? $item.find(".flag").hide() : "";
+    // !setupFlat.lane ? $item.find(".lane").hide() : "";
+    // !setupFlat.lane ? $item.find(".rank").text(data.lane) : "";
+    $item.find(".rank").text(data.lane)
+    // $item.hide();
+
+    return $item
+}
+
+
+// Header Side
+
 function headerSide(divisions, indexDivision, repTarget) {
     //! Ajouter la séparation ici
     const reps = treatReptarget(repTarget[indexDivision])
@@ -26,11 +96,17 @@ function overlaySide(data) {
     let name = treatDisplayName(data.displayName);
     let flag = data.countryCode != "LOGO" ? ("https://flagcdn.com/" + data.countryCode.toLowerCase() + '.svg') : (logoEvent.value[0].url);
 
+    let backgroundImage = "";
+    // if (backgroundAthlete.value != undefined) {
+    //     console.log("backgroundAthlete.value", backgroundAthlete.value)
+    //     backgroundImage = 'url(' + backgroundAthlete.value[0].url + ')'
+    // }
+
 
     let $item = $(
         '<div class="athlete" id="aht' + data.lane + '">' +
         '<div class="popup text-nowrap text-truncate">' + '</div>' +
-        '<div class="ath">' +
+        '<div class="ath" style="background-image: ' + backgroundImage + '">' +
         '<div class="triangle"></div>' +
         '<div class="subrank"><div class="rank text-nowrap text-truncate"> ' + '</div></div>' +
         '<div class="lane text-nowrap text-truncate">L' + data.lane + '</div>' +
@@ -46,16 +122,16 @@ function overlaySide(data) {
 
     $item.find(".box_flag").css('background-image', 'url(' + flag + ')')
     $item.find(".rounds").hide();
-    $item.find(".score").hide();
+    // $item.find(".score").hide();
     $item.find(".popup").hide();
     $item.find(".lane").hide();
 
 
     $item.find(".triangle").hide();
 
-    !setupLeaderboard.value.flag ? $item.find(".flag").hide() : "";
-    // !setupLeaderboard.value.lane ? $item.find(".lane").hide() : "";
-    // !setupLeaderboard.value.lane ? $item.find(".rank").text(data.lane) : "";
+    !setupFlat.flag ? $item.find(".flag").hide() : "";
+    // !setupFlat.lane ? $item.find(".lane").hide() : "";
+    // !setupFlat.lane ? $item.find(".rank").text(data.lane) : "";
     $item.find(".rank").text(data.lane)
     // $item.hide();
 
@@ -104,10 +180,12 @@ function overlayTop(data) {
         '<div class="popup initial_rank_top">' + '</div>' +
         '</div>'
     );
+
+    console.log("setupFlat", setupFlat)
     $item.find(".box_flag").css('background-image', 'url(' + flag + ')')
     $item.find(".popup").hide();
-    !setupLeaderboard.value.flag && $item.find(".flag").hide()
-    !setupLeaderboard.value.lane && $item.find(".lane").hide()
+    !setupFlat.flag && $item.find(".flag").hide()
+    !setupFlat.lane && $item.find(".lane").hide()
     // $item.hide();
 
     return $item
@@ -162,10 +240,10 @@ function leaderboardTV(data) {
     $item.find(".rounds").hide();
     $item.find(".score").hide();
     $item.find(".popup").hide();
-    !setupLeaderboard.value.flag ? $item.find(".flag").hide() : "";
-    !setupLeaderboard.value.lane ? $item.find(".lane").hide() : "";
-    !setupLeaderboard.value.lane ? $item.find(".rank").text(data.lane) : "";
-    !setupLeaderboard.value.affiliate ? $item.find(".affiliate").hide() : "";
+    !setupFlat.flag ? $item.find(".flag").hide() : "";
+    !setupFlat.lane ? $item.find(".lane").hide() : "";
+    !setupFlat.lane ? $item.find(".rank").text(data.lane) : "";
+    !setupFlat.affiliate ? $item.find(".affiliate").hide() : "";
     // $item.hide();
 
     return $item
@@ -206,10 +284,10 @@ function progressView(data) {
     $item.find(".rounds").hide();
     $item.find(".score").hide();
     $item.find(".popup").hide();
-    !setupLeaderboard.value.flag ? $item.find(".flag").hide() : "";
-    !setupLeaderboard.value.lane ? $item.find(".lane").hide() : "";
-    !setupLeaderboard.value.lane ? $item.find(".rank").text(data.lane) : "";
-    !setupLeaderboard.value.affiliate ? $item.find(".affiliate").hide() : "";
+    !setupFlat.flag ? $item.find(".flag").hide() : "";
+    !setupFlat.lane ? $item.find(".lane").hide() : "";
+    !setupFlat.lane ? $item.find(".rank").text(data.lane) : "";
+    !setupFlat.affiliate ? $item.find(".affiliate").hide() : "";
 
     // $item.hide();
 
@@ -369,7 +447,8 @@ function headerScoringKairos(divisions, indexDivision, repTarget) {
         '<th scope="col" class="box battery text-nowrap text-truncate">BATTERY</th>' +
         '<th fixed-side scope="col" class="timeAth box">SIGNAL</th>' +
         '<th fixed-side scope="col" class="repAth box">REP</th>' +
-        '<th scope="col" class="box score align-items-xl-center">IP</th>' +
+        '<th scope="col" class="box  align-items-xl-center">IP</th>' +
+        '<th scope="col" class="box way align-items-xl-center">Link</th>' +
         '<th scope="col" class="flag box">FLAG</th>' +
         '<th scope="col" class="box text-nowrap text-truncate text-left name">NAME</th>' +
         '<th scope="col" class="truncate box rank">Rank</th>' +
@@ -403,6 +482,8 @@ function scoringKairos(data) {
         '<td class="signal text-nowrap text-truncate"></td>' +
         '<td class="timeAth"></td>' +
         '<td class="repAth"></td>' +
+        '<td class="ip"></td>' +
+        '<td class="way"></td>' +
         '<td class="flag">' + '<div class="box_flag"> </div> ' + '</td>' +
         '<td class="text-nowrap text-truncate text-left name" onclick="requestPing()" id="request_' + data.lane + '">' + name + '</td>' +
         '<td class="truncate rank">' + parseInt(data.CurrentRank) + '</td>' +
@@ -448,8 +529,8 @@ function laneOverlay(data) {
 
     $item.find(".box_flag").css('background-image', 'url(' + flag + ')')
     $item.find(".popup").hide();
-    !setupLeaderboard.value.flag && $item.find(".flag").hide()
-    !setupLeaderboard.value.lane && $item.find(".lane").hide()
+    !setupFlat.flag && $item.find(".flag").hide()
+    !setupFlat.lane && $item.find(".lane").hide()
     // $item.hide();
 
     return $item
@@ -494,8 +575,8 @@ function leaderboardVersus(data) {
     );
     $item.find(".box_flag").css('background-image', 'url(' + flag + ')')
     $item.find(".popup").hide();
-    !setupLeaderboard.value.flag && $item.find(".flag").hide()
-    !setupLeaderboard.value.lane && $item.find(".lane").hide()
+    !setupFlat.flag && $item.find(".flag").hide()
+    !setupFlat.lane && $item.find(".lane").hide()
 
     return $item
 }
@@ -646,7 +727,6 @@ function leaderboardVersusSideWPA(data) {
         backgroundImage = 'url(' + pathTobgimg + ')'
     }
 
-    console.log(" Leaderboard Versus Display", data.affiliate, pathTobgimg, backgroundImage)
 
     let $item = $(
         '<div class="athlete" id="aht' + data.lane + '">' +
@@ -670,9 +750,9 @@ function leaderboardVersusSideWPA(data) {
     $item.find(".score").hide();
     $item.find(".popup").hide();
     heat.typeWod != 'repmax' ? $item.find(".rank").show() : $item.find(".rank").hide();
-    !setupLeaderboard.value.flag ? $item.find(".flag").hide() : "";
-    !setupLeaderboard.value.lane ? $item.find(".lane").hide() : "";
-    !setupLeaderboard.value.lane ? $item.find(".rank").text(data.lane) : "";
+    !setupFlat.flag ? $item.find(".flag").hide() : "";
+    !setupFlat.lane ? $item.find(".lane").hide() : "";
+    !setupFlat.lane ? $item.find(".rank").text(data.lane) : "";
     // $item.hide();
 
     return $item

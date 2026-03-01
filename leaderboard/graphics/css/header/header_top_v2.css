@@ -14,11 +14,11 @@
 .header .box_logo {
     z-index: 50;
     position: absolute;
-    top: 0px;
-    left: 0px;
+    top: var(--position-y-logo);
+    left: var(--position-x-logo);
     text-align: right;
-    width: 150px;
-    height: 150px;
+    width: var(--width-logo);
+    height: var(--heigth-logo);
     /* background-color: var(--box_logo_color); */
     text-align: center;
 }
@@ -26,8 +26,8 @@
 .header .box_logo .logo {
     margin: auto;
     padding: 15px;
-    width: var(--widthLogoEvent_top);
-    height: 150px;
+    width: var(--width-logo);
+    height: var(--heigth-logo);
     background-repeat: no-repeat;
     background-size: contain;
     /* <------ */
@@ -38,52 +38,47 @@
 .header .box_heat {
     z-index: 40;
     position: absolute;
-    top: 0px;
-    left: 150px;
+    top: var(--position-y-workout);
+    left: var(--position-x-workout);
     width: var(--width_box_heat);
     height: 100px;
-    color: var(--tx_second_color);
-    letter-spacing: var(--letter_spacing);
+    /* color: var(--tx_second_color); */
+    letter-spacing: var(--letter-spacing-font-workout);
     /* box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; */
 }
 
-.header .box_heat #workout {
-    color: var(--mainTop_color);
+.header .box_heat .workout {
+    color: var(--color-workout);
+    font-size: var(--size-font-workout);
+    font-family: var(--font-workout);
 }
 
 .header .box_heat .heat {
     color: white;
-}
-
-.header .box_heat #division {
-    color: var(--mainTop_color);
-}
-
-.header .box_heat .heat {
     display: inline-block;
     width: var(--width_box_heat);
     height: 100px;
 }
 
-.header .box_heat .heat .heat_content {
+.header .box_heat .heat_content {
     display: flex;
     flex-direction: row;
     height: 75px;
 }
 
-.header .box_heat .heat .heat_content .details {
-    position: absolute;
+.header .box_heat .heat_content .details {
+    /* position: absolute;
     top: 18px;
-    left: 260px;
-    font-size: var(--sizeFontWorkoutHeat_top);
+    left: 260px; */
+    font-size: var(--size-font-workout);
     display: flex;
     flex-wrap: nowrap;
     flex-direction: row;
-    align-items: center;
+    align-items: baseline;
     width: 1210px;
 }
 
-.header .box_heat .heat .heat_content .details .detail {
+.header .box_heat .heat_content .details .detail {
     min-width: fit-content;
     padding-right: 5px;
     white-space: nowrap;
@@ -115,7 +110,7 @@
 }
 
 
-.header .box_heat .heat .heat_content .details #mvt {
+.header .box_heat .heat_content .details .mvt {
     font-weight: 800;
     -moz-transition-duration: 0.7s;
     -webkit-transition-duration: 0.7s;
@@ -123,23 +118,23 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    color: var(--restMvt_color);
+    color: var(--others-color-mvt);
     text-transform: uppercase;
     letter-spacing: 0.1px;
 }
 
-#mvt span {
+.mvt span {
     padding: 10px;
-    letter-spacing: var(--letter_spacing);
-    font-family: var(--othersFontWorkout-select);
-    font-size: var(--sizeFontOthersMvt_top);
+    letter-spacing: var(--letter-spacing-mvt);
+    font-family: var(--font-others-mvt);
+    font-size: var(--size-font-mvt);
 }
 
-#mvt span:first-child {
-    color: var(--firstMvt_color);
+.mvt span:first-child {
+    color: var(--first-color-mvt);
     font-weight: 800;
-    font-size: var(--sizeFontFirstMvt_top);
-    font-family: var(--firstFontWorkout-select);
+    font-size: var(--size-font-mvt);
+    font-family: var(--font-first-mvt);
 }
 
 /* 
@@ -150,8 +145,8 @@
 .header .box_mainSponsor {
 
     position: absolute;
-    top: var(--y_sponsor_top);
-    left: var(--x_sponsor_top);
+    top: var(--position-y-main-sponsor);
+    left: var(--position-x-main-sponsor);
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -163,8 +158,8 @@
 
 .header .box_mainSponsor .mainSponsor {
     padding: 10px 10px 10px 10px;
-    width: var(--width_sponsor_top);
-    height: var(--height_sponsor_top);
+    width: var(--width-main-sponsor);
+    height: var(--height-main-sponsor);
     background-repeat: no-repeat;
     background-size: contain;
     /* <------ */
@@ -175,27 +170,26 @@
 .header .box_chrono {
     z-index: 2;
     position: absolute;
-    top: var(--yChrono_top);
-    left: var(--xChrono_top);
-    width: 150px;
-    height: 50px;
-    font-size: var(--sizeFontChrono_top);
+    top: var(--position-y-chrono);
+    left: var(--position-x-chrono);
     /* box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; */
     /* background-color: var(--chrono_color); */
-    color: var(--tx_chrono_color);
-    font-family: var(--fontChrono-select);
 }
 
 .header .box_chrono .chrono {
     margin: 5px auto;
     width: 120px;
     text-align: center;
+    color: var(--color-chrono);
+    font-family: var(--font-chrono);
+    font-size: var(--size-font-chrono);
 }
 
-.header .box_chrono .chrono #cap {
-    font-size: var(--sizeFontTimecap_top);
+.header .box_chrono .chrono .cap {
+    font-size: var(--size-font-timecap);
     /* background-color: var(--main_color); */
-    color: var(--tx_main_color);
+    font-family: var(--font-timecap);
+    color: var(--color-timecap);
     margin: 1px auto;
     width: 120px;
     padding: 5px;

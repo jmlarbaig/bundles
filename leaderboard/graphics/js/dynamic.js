@@ -82,10 +82,10 @@ function updateDynamics(newScoring, status) {
 
 
             })
-            if (setupLeaderboard.value.timeConfig == 'avg' && arrayWAP[0].time != 0) {
+            if (setupFlat.timeConfig == 'avg' && arrayWAP[0].time != 0) {
                 arrayWAP[0].time = Math.round(arrayWAP[0].time / averageIndex[0]);
             }
-            if (setupLeaderboard.value.timeConfig == 'avg' && arrayWAP[1].time != 0) {
+            if (setupFlat.timeConfig == 'avg' && arrayWAP[1].time != 0) {
                 arrayWAP[1].time = Math.round(arrayWAP[1].time / averageIndex[1]);
             }
 
@@ -106,7 +106,7 @@ function updateDynamics(newScoring, status) {
             // on trie les athlètes en fonction du status
             switch (status) {
                 case 'W':
-                    setupLeaderboard.value.rankingConfig == 'rank' ? elemAth.sort(ascendingRank) : elemAth.sort(ascendingLane)
+                    setupFlat.rankingConfig == 'rank' ? elemAth.sort(ascendingRank) : elemAth.sort(ascendingLane)
                     break;
                 case 'T':
                     elemAth.sort(ascendingRank);
@@ -177,7 +177,7 @@ function updateDynamics(newScoring, status) {
                                         break;
                                     default:
                                         // showRepMvtInScore(elemAth[i])
-                                        if (setupLeaderboard.value.scoreConfig == 'mvt_score') {
+                                        if (setupFlat.scoreConfig == 'mvt_score') {
                                             if (i != 0) {
                                                 // treatDisplayMvtForOthers(elemAth[i], elemAth[i - 1].currentMvt.id)
                                             } else {
@@ -197,7 +197,7 @@ function updateDynamics(newScoring, status) {
                                 break;
                             case 'W':
                                 if (overlay != 'commentator' && overlay != 'sk') {
-                                    setupLeaderboard.value.lane ? elemAth[i].$item.find(".lane").show() : elemAth[i].$item.find(".lane").hide()
+                                    setupFlat.lane ? elemAth[i].$item.find(".lane").show() : elemAth[i].$item.find(".lane").hide()
                                 }
                                 if (overlay != 'versus_hyperfit' && overlay != 'commentator' && overlay != 'sk') {
                                     withJudge(elemAth[i])
@@ -236,7 +236,7 @@ function updateDynamics(newScoring, status) {
                                         default:
                                             showRepMvtInScore(elemAth[i])
                                             showRepPerSec(elemAth[i])
-                                            // if (setupLeaderboard.value.scoreConfig == 'mvt_score') {
+                                            // if (setupFlat.scoreConfig == 'mvt_score') {
                                             if (overlay == 'versus_hyperfit') {
                                                 treatDisplayMvtFirst(elemAth[i])
                                             } else {
@@ -252,7 +252,7 @@ function updateDynamics(newScoring, status) {
                                     if (overlay != 'overlay_wpa') {
                                         changeFunction(overlay, elemAth[i])
                                     }
-                                    if (setupLeaderboard.value.scoreConfig == 'rel_score' || setupLeaderboard.value.scoreConfig == 'abs_score') {
+                                    if (setupFlat.scoreConfig == 'rel_score' || setupFlat.scoreConfig == 'abs_score') {
                                         if (overlay != 'progression' && overlay != 'commentator' && overlay != 'leaderboard' && overlay != 'sk') {
                                             hideColMvt(elemAth[i])
                                         }
@@ -268,7 +268,7 @@ function updateDynamics(newScoring, status) {
                                 break;
                             case 'F':
                                 if (overlay != 'commentator' && overlay != 'sk') {
-                                    setupLeaderboard.value.lane ? elemAth[i].$item.find(".lane").show() : elemAth[i].$item.find(".lane").hide()
+                                    setupFlat.lane ? elemAth[i].$item.find(".lane").show() : elemAth[i].$item.find(".lane").hide()
                                 }
                                 if (!alreadyPassed) {
                                     // treatTextMvt('FINISH')
@@ -290,7 +290,7 @@ function updateDynamics(newScoring, status) {
                                 break;
                             case 'T':
                                 if (overlay != 'commentator') {
-                                    setupLeaderboard.value.lane ? elemAth[i].$item.find(".lane").show() : elemAth[i].$item.find(".lane").hide()
+                                    setupFlat.lane ? elemAth[i].$item.find(".lane").show() : elemAth[i].$item.find(".lane").hide()
                                 }
                                 console.log("pop T")
                                 if (overlay != 'overlay_wpa') {
@@ -326,7 +326,7 @@ function updateDynamics(newScoring, status) {
                         }
                         treatLeaderboardAuto()
                         if (overlay.includes('overlay_top')) {
-                            $('#mvt').text('')
+                            // $('#mvt').text('')
                             $('.mvt').text('')
                         }
                         break;

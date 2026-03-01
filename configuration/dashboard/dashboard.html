@@ -3,12 +3,12 @@
 
 <head>
 	<meta charset="UTF-8">
-	<title>Setup Dashboard</title>
+	<title>Configuration Dashboard</title>
 	<link rel="stylesheet"
 		href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Barlow+Condensed:wght@400;600;700;800&display=swap">
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 	<link rel="stylesheet" href="/bundles/configuration/dashboard/css/configuration.css">
-	<script src="./js/setup.js"></script>
+	<script src="/bundles/configuration/dashboard/js/configuration.js"></script>
 </head>
 
 <body>
@@ -17,11 +17,11 @@
 
 		<!-- TOPBAR -->
 		<header class="topbar">
-			<div class="topbar-logo">SETUP<span>/</span>PANEL</div>
+			<div class="topbar-logo">CFG<span>/</span>PANEL</div>
 			<div class="topbar-sep"></div>
 
 			<div class="dash-selector-wrap">
-				<span class="dash-label">Setup</span>
+				<span class="dash-label">Overlay</span>
 				<select id="dashboard-select">
 					<option value="">— select —</option>
 				</select>
@@ -43,7 +43,7 @@
 		<nav class="sidebar" id="sidebar">
 			<div class="empty-state" style="height:100%">
 				<div class="empty-icon">⬡</div>
-				<span>Select a setup</span>
+				<span>Select an overlay</span>
 			</div>
 		</nav>
 
@@ -51,7 +51,7 @@
 		<main class="main" id="main">
 			<div class="empty-state">
 				<div class="empty-icon">◈</div>
-				<span>No setup selected</span>
+				<span>No overlay selected</span>
 			</div>
 		</main>
 

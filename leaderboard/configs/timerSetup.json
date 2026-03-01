@@ -1,0 +1,239 @@
+{
+  "overlay_items": {
+    "title": "Items Overlay",
+    "icon": "◆",
+    "element": [
+      {
+        "name": "box_logo",
+        "title": "Event Logo",
+        "type": "boolean",
+        "value": false
+      },
+      {
+        "name": "box_heat",
+        "title": "Heat",
+        "type": "boolean",
+        "value": false
+      },
+      {
+        "name": "box_chrono",
+        "title": "Chrono",
+        "type": "boolean",
+        "value": false
+      },
+      {
+        "name": "leaderboards",
+        "title": "Leaderboard",
+        "type": "boolean",
+        "value": false
+      },
+      {
+        "name": "box_bandeau",
+        "title": "Bandeau Défilant",
+        "type": "boolean",
+        "value": false
+      },
+      {
+        "name": "lowerthird",
+        "title": "Lowerthird",
+        "type": "boolean",
+        "value": false
+      },
+      {
+        "name": "nameSelect",
+        "title": "Style name",
+        "type": "select",
+        "value": "first",
+        "options": [
+          "first",
+          "last",
+          "pointFirst",
+          "full"
+        ]
+      },
+      {
+        "name": "unitSelect",
+        "title": "Unit",
+        "type": "select",
+        "value": "",
+        "options": [
+          "",
+          "Reps",
+          "KG",
+          "LBS"
+        ]
+      },
+      {
+        "name": "timeFormat",
+        "title": "Time format",
+        "type": "select",
+        "value": "",
+        "options": [
+          "",
+          "hh-mm-ss-msms",
+          "hh-mm-ss-ms",
+          "hh-mm-ss",
+          "mm-ss-msms",
+          "mm-ss-ms",
+          "mm-ss",
+          "ss-msms",
+          "ss-ms"
+        ]
+      },
+      {
+        "name": "overlayBackgroundSelect",
+        "title": "Overlay Background",
+        "type": "select",
+        "value": "",
+        "options": []
+      },
+      {
+        "name": "backgroundTimerSelect",
+        "title": "Background Timer",
+        "type": "select",
+        "value": "",
+        "options": []
+      },
+      {
+        "name": "mainSponsorSelect",
+        "title": "Main Sponsor",
+        "type": "select",
+        "value": "",
+        "options": []
+      }
+    ]
+  },
+  "competition_corner": {
+    "title": "Competition Corner",
+    "icon": "◈",
+    "element": [
+      {
+        "name": "attributionLane",
+        "title": "Atribution Lane",
+        "type": "boolean",
+        "value": false
+      },
+      {
+        "name": "heatResults",
+        "title": "Heat results",
+        "type": "boolean",
+        "value": false
+      },
+      {
+        "name": "overallStandingDivwod",
+        "title": "Overall Standing Results by Division/Workout",
+        "type": "boolean",
+        "value": false
+      }
+    ]
+  },
+  "leaderboard_items": {
+    "title": "Items Leaderboard",
+    "icon": "◇",
+    "element": [
+      {
+        "name": "lane",
+        "title": "Lane",
+        "type": "boolean",
+        "value": false
+      },
+      {
+        "name": "showMvt",
+        "title": "Mvt",
+        "type": "boolean",
+        "value": false
+      },
+      {
+        "name": "affiliate",
+        "title": "Affiliation",
+        "type": "boolean",
+        "value": false
+      },
+      {
+        "name": "flag",
+        "title": "Flag",
+        "type": "boolean",
+        "value": false
+      },
+      {
+        "name": "hiddenAthlete",
+        "title": "Hidden Athlete Feature",
+        "type": "boolean",
+        "value": false
+      }
+    ]
+  },
+  "chrono_config": {
+    "title": "Configuration Chrono",
+    "icon": "⏱",
+    "element": [
+      {
+        "name": "fortimeAmrap",
+        "title": "Fortime / Amrap",
+        "type": "boolean",
+        "value": false
+      },
+      {
+        "name": "manualChrono",
+        "title": "Show Manual Timer",
+        "type": "boolean",
+        "value": false
+      },
+      {
+        "name": "scoreConfig",
+        "title": "Scoring",
+        "type": "select",
+        "value": "abs_score",
+        "options": [
+          "abs_score",
+          "rel_score",
+          "remain_mvt",
+          "mvt_score",
+          "mvt_total_score"
+        ]
+      },
+      {
+        "name": "rankingConfig",
+        "title": "Ranking Configuration",
+        "type": "select",
+        "value": "rank",
+        "options": [
+          "rank",
+          "lane"
+        ]
+      },
+      {
+        "name": "timeConfig",
+        "title": "WPA - TIME AVG // ACC",
+        "type": "select",
+        "value": "avg",
+        "options": [
+          "avg",
+          "acc"
+        ]
+      },
+      {
+        "name": "viewConfig",
+        "title": "WPA - TEAM or INDIV/TEAM",
+        "type": "select",
+        "value": "team",
+        "options": [
+          "team",
+          "indiv"
+        ]
+      }
+    ]
+  },
+  "automatic_config": {
+    "title": "Configuration Automatique",
+    "icon": "⚙",
+    "element": [
+      {
+        "name": "automaticSchedule",
+        "title": "Activate Automatique",
+        "type": "boolean",
+        "value": false
+      }
+    ]
+  }
+}
