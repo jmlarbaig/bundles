@@ -452,6 +452,46 @@
       }
     ]
   },
+  "athlete": {
+    "title": "Athlete Container Config",
+    "element": [
+      {
+        "title": "Color",
+        "name": "color-athlete",
+        "value": "#ffffff",
+        "type": "color",
+        "css": "color"
+      },
+      {
+        "title": "Background Color",
+        "name": "background-color-athlete",
+        "value": "transparent",
+        "type": "color",
+        "css": "background-color"
+      },
+      {
+        "title": "Width container",
+        "name": "width-athlete",
+        "value": "405px",
+        "type": "number",
+        "css": "width"
+      },
+      {
+        "title": "Padding container",
+        "name": "padding-athlete",
+        "value": "2px",
+        "type": "number",
+        "css": "padding"
+      },
+      {
+        "title": "Margin container",
+        "name": "margin-athlete",
+        "value": "5px",
+        "type": "number",
+        "css": "margin"
+      }
+    ]
+  },
   "name": {
     "title": "Name Config",
     "element": [
@@ -521,6 +561,13 @@
         "value": "transparent",
         "type": "color",
         "css": "background-color"
+      },
+      {
+        "title": "Width",
+        "name": "width-name",
+        "value": "255px",
+        "type": "number",
+        "css": "width"
       }
     ]
   },
@@ -602,7 +649,40 @@
       {
         "title": "Width Lane",
         "name": "width-lane",
-        "value": "66px",
+        "value": "50px",
+        "type": "number",
+        "css": "width"
+      }
+    ]
+  },
+  "flag": {
+    "title": "Flag config",
+    "element": [
+      {
+        "title": "Height Box Flag",
+        "name": "height-box-flag",
+        "value": "30px",
+        "type": "number",
+        "css": "height"
+      },
+      {
+        "title": "Width Box Flag",
+        "name": "width-box-flag",
+        "value": "30px",
+        "type": "number",
+        "css": "width"
+      },
+      {
+        "title": "Height Flag",
+        "name": "height-flag",
+        "value": "30px",
+        "type": "number",
+        "css": "height"
+      },
+      {
+        "title": "Width Flag",
+        "name": "width-flag",
+        "value": "50px",
         "type": "number",
         "css": "width"
       }

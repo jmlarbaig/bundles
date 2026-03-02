@@ -29,25 +29,12 @@ body {
     left: 0px;
 }
 
-.leaderboard:nth-child(1) {
-    width: var(--width_calc_top);
-    /* overflow: hidden; */
+.leaderboard {
+    overflow: hidden;
     position: relative;
     display: flex;
     flex-direction: column;
-    /* box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; */
-    -moz-transition-duration: 0.7s;
-    -webkit-transition-duration: 0.7s;
-    -ms-transition-duration: 0.7s;
-}
-
-.leaderboard:nth-child(2) {
     width: var(--width_calc_top);
-    /* overflow: hidden; */
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    /* box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; */
     -moz-transition-duration: 0.7s;
     -webkit-transition-duration: 0.7s;
     -ms-transition-duration: 0.7s;
@@ -60,7 +47,7 @@ body {
     font-weight: 900;
     -moz-transition-duration: 0.7s;
     -webkit-transition-duration: 0.7s;
-    -ms-transition-duration: 0.7s;
+    -ms-transition-duration: 0.7;
 }
 
 .leaderboard .athlete {
@@ -71,8 +58,11 @@ body {
     display: flex;
     flex-direction: column;
     width: fit-content;
-    margin: 5px;
-    padding: 2px;
+    margin: var(--margin-athlete);
+    padding: var(--padding-athlete);
+    width: var(--width-athlete);
+    background-color: var(--background-color-athlete);
+    color: var(--color-athlete);
 }
 
 .leaderboard .athletes .ath {
@@ -104,7 +94,7 @@ body {
 .leaderboard .athlete .ath_sub {
     display: flex;
     flex-direction: row;
-    width: 180px;
+    min-width: var(--width-name);
 }
 
 .leaderboard .athlete .lane {
@@ -129,14 +119,14 @@ body {
     align-items: baseline;
     text-align: center;
     position: relative;
-    bottom: -6px;
+    bottom: -3px;
     justify-content: center;
     text-transform: uppercase;
     font-weight: 900;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    min-width: 180px;
+    min-width: var(--width-name);
     letter-spacing: var(--letter-spacing-first-name);
 }
 
@@ -156,6 +146,27 @@ body {
 
 .leaderboard .athlete .name .initial {
     font-weight: 100;
+}
+
+.leaderboard .athlete .flag {
+    padding: 5px 8px;
+    height: var(--height-flag);
+    width: var(--width-flag);
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+.leaderboard .athlete .flag .box_flag {
+    border-radius: 50%;
+    height: var(--height-box-flag);
+    width: var(--width-box-flag);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+    transition: var(--transition-fast);
+    border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 .leaderboard .athlete .score {

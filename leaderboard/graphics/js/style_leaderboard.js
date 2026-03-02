@@ -41,7 +41,6 @@ function overlaySideV1(data) {
         '<div class="subrank"><div class="rank text-nowrap text-truncate"> ' + '</div></div>' +
         '<div class="lane text-nowrap text-truncate">L' + data.lane + '</div>' +
         '<div class="flag">' + '<div class="box_flag" ></div> ' + '</div>' +
-        // '<div class="text-nowrap text-truncate text-left name">' + name + '</div>' +
         name +
         '<div class="score text-nowrap text-center text-truncate"></div>' +
         '<div class="text-nowrap text-truncate rounds">' + '</div>' +
@@ -111,7 +110,6 @@ function overlaySide(data) {
         '<div class="subrank"><div class="rank text-nowrap text-truncate"> ' + '</div></div>' +
         '<div class="lane text-nowrap text-truncate">L' + data.lane + '</div>' +
         '<div class="flag">' + '<div class="box_flag" ></div> ' + '</div>' +
-        // '<div class="text-nowrap text-truncate text-left name">' + name + '</div>' +
         name +
         '<div class="score text-nowrap text-center text-truncate"></div>' +
         '<div class="text-nowrap text-truncate rounds">' + '</div>' +
@@ -171,6 +169,7 @@ function overlayTop(data) {
         '<div class="athlete" id="aht' + data.lane + '">' +
         '<div class="ath initial_rank_top_ath">' +
         '<div class="rank initial_rank_top">' + data.lane + '</div>' +
+        '<div class="flag">' + '<div class="box_flag" ></div> ' + '</div>' +
         '<div class="ath_sub initial_rank_top">' +
         name +
         '<div class="lane">#' + data.lane + '</div>' +

@@ -30,25 +30,12 @@ body {
     left: 0px;
 }
 
-.leaderboard:nth-child(1) {
+.leaderboard {
     width: var(--width_calc_top);
     overflow: hidden;
     position: relative;
     display: flex;
     flex-direction: column;
-    /* box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; */
-    -moz-transition-duration: 0.7s;
-    -webkit-transition-duration: 0.7s;
-    -ms-transition-duration: 0.7s;
-}
-
-.leaderboard:nth-child(2) {
-    width: var(--width_calc_top);
-    overflow: hidden;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    /* box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; */
     -moz-transition-duration: 0.7s;
     -webkit-transition-duration: 0.7s;
     -ms-transition-duration: 0.7s;
@@ -149,6 +136,27 @@ body {
     -webkit-box-shadow: 7px 2px 23px -20px rgba(0, 0, 0, 1) inset;
     -moz-box-shadow: 7px 2px 23px -20px rgba(0, 0, 0, 1) inset;
     height: 50px;
+}
+
+.leaderboard .athlete .flag {
+    padding: 5px 8px;
+    height: var(--height-flag);
+    width: var(--width-flag);
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+.leaderboard .athlete .flag .box_flag {
+    border-radius: 50%;
+    height: var(--height-box-flag);
+    width: var(--width-box-flag);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+    transition: var(--transition-fast);
+    border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 

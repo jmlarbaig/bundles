@@ -360,7 +360,7 @@ function reposition(leaderboard, athletes) {
 function repoLeft(lead_, aths_) {
     let y = 0;
     let margin = 0
-    Object.values(aths_).forEach(elm => {
+    Object.values(aths_).forEach((elm, index) => {
         if (elm.$item.css('margin') != '') {
             margin = parseInt(elm.$item.css('margin').replace('px', ''))
         } else {
@@ -373,6 +373,13 @@ function repoLeft(lead_, aths_) {
             } else {
                 y += elm.$item.width() + (2 * margin);
             }
+        }
+        console.log("SetupFlat : ", setupFlat.numberAthletes)
+        console.log("index : ", index)
+        if (setupFlat != undefined && setupFlat != {} && (setupFlat.numberAthletes - 1) == index) {
+            console.log("J'y suis")
+            console.log("css : ", $('.leaderboard').width())
+            $('.leaderboard').width(y)
         }
     })
 }

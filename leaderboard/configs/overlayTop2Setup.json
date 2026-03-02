@@ -46,6 +46,12 @@
         "value": false
       },
       {
+        "name": "numberAthletes",
+        "title": "Numbers of athlete show",
+        "type": "number",
+        "value": 2
+      },
+      {
         "name": "nameSelect",
         "title": "Style name",
         "type": "select",
