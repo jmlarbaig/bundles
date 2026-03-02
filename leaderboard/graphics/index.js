@@ -83,6 +83,12 @@ function handleSetupChange(newValue, oldValue) {
         }
     })
 
+    if (newValue.nameSelect != '' && s_athletes != undefined) {
+
+        console.log(s_athletes.value)
+        refreshDisplayName(s_athletes.value)
+    }
+
     if (newValue.mainSponsorSelect != '') {
         $(".mainSponsor").css("background-image", "url(" + newValue.mainSponsorSelect + ")");
         if (!$(".mainSponsor").is(':visible')) {

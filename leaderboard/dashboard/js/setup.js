@@ -20,15 +20,15 @@ let assetReplicants = {};
 
 function setupDashboard(configEntry) {
     const [filename, name, event, assetName] = configEntry;
-    
+
     if (!setupReplicants[name]) {
         setupReplicants[name] = nodecg.Replicant(name);
     }
-    
+
     if (assetName && !assetReplicants[assetName]) {
         const AssetReplicant = nodecg.Replicant(`assets:${assetName}`);
         assetReplicants[assetName] = AssetReplicant;
-        
+
         AssetReplicant.on('change', (newValue, oldValue) => {
             if (activeSetup.value !== name) return;
             if (newValue.length > 0 && newValue != oldValue) {
@@ -39,18 +39,18 @@ function setupDashboard(configEntry) {
             }
         });
     }
-    
+
     const replicant = setupReplicants[name];
     const replicantHandler = (value) => {
         if (activeSetup.value !== name) return;
         if (!value) return;
-        
+
         Object.entries(value).forEach(([sectionKey, section]) => {
             if (!section.element) return;
             section.element.forEach((el) => {
                 const elem = document.getElementById(el.name);
                 if (!elem) return;
-                
+
                 if (el.type === 'boolean') {
                     elem.checked = !!el.value;
                     const valSpan = document.getElementById(`toggle-val-${el.name}`);
@@ -65,12 +65,12 @@ function setupDashboard(configEntry) {
             });
         });
     };
-    
+
     if (!replicant._setupHandlerAttached) {
         replicant.on('change', replicantHandler);
         replicant._setupHandlerAttached = true;
     }
-    
+
     activeSetup._currentEvent = event;
     activeSetup._currentName = name;
 }
@@ -312,10 +312,20 @@ function resetConfig() {
 // POPULATE ASSET SELECTS
 // ════════════════════════════════════════
 function populateAssetSelects() {
+    const currentSetup = activeSetup.value ? setupReplicants[activeSetup.value] : null;
+    const setupData = currentSetup?.value || {};
+
     if (backgroundOverlay.value && backgroundOverlay.value.length > 0) {
         const sel = document.getElementById('overlayBackgroundSelect');
         if (sel) {
-            const currentVal = sel.value;
+            let savedVal = sel.value;
+            Object.values(setupData).forEach(section => {
+                if (section.element) {
+                    const elem = section.element.find(e => e.name === 'overlayBackgroundSelect');
+                    if (elem) savedVal = elem.value;
+                }
+            });
+
             sel.innerHTML = '<option value="">Please, choose overlay</option>';
             backgroundOverlay.value.forEach(e => {
                 const opt = document.createElement('option');
@@ -323,14 +333,21 @@ function populateAssetSelects() {
                 opt.textContent = e.name;
                 sel.appendChild(opt);
             });
-            if (currentVal) sel.value = currentVal;
+            if (savedVal) sel.value = savedVal;
         }
     }
 
     if (backgroundTimer.value && backgroundTimer.value.length > 0) {
         const sel = document.getElementById('backgroundTimerSelect');
         if (sel) {
-            const currentVal = sel.value;
+            let savedVal = sel.value;
+            Object.values(setupData).forEach(section => {
+                if (section.element) {
+                    const elem = section.element.find(e => e.name === 'backgroundTimerSelect');
+                    if (elem) savedVal = elem.value;
+                }
+            });
+
             sel.innerHTML = '<option value="">Please, choose background</option>';
             backgroundTimer.value.forEach(e => {
                 const opt = document.createElement('option');
@@ -338,14 +355,21 @@ function populateAssetSelects() {
                 opt.textContent = e.name;
                 sel.appendChild(opt);
             });
-            if (currentVal) sel.value = currentVal;
+            if (savedVal) sel.value = savedVal;
         }
     }
 
     if (mainSponsors.value && mainSponsors.value.length > 0) {
         const sel = document.getElementById('mainSponsorSelect');
         if (sel) {
-            const currentVal = sel.value;
+            let savedVal = sel.value;
+            Object.values(setupData).forEach(section => {
+                if (section.element) {
+                    const elem = section.element.find(e => e.name === 'mainSponsorSelect');
+                    if (elem) savedVal = elem.value;
+                }
+            });
+
             sel.innerHTML = '<option value="">Please, choose sponsor</option>';
             mainSponsors.value.forEach(e => {
                 const opt = document.createElement('option');
@@ -353,7 +377,7 @@ function populateAssetSelects() {
                 opt.textContent = e.name;
                 sel.appendChild(opt);
             });
-            if (currentVal) sel.value = currentVal;
+            if (savedVal) sel.value = savedVal;
         }
     }
 }

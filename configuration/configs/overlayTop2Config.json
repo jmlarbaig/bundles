@@ -647,6 +647,13 @@
         "value": "50px",
         "type": "number",
         "css": "width"
+      },
+      {
+        "name": "padding-score",
+        "title": "Padding",
+        "type": "number",
+        "value": "0px",
+        "css": "padding"
       }
     ]
   },

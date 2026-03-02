@@ -52,11 +52,13 @@ function resetHeat(data) {
             $(".mainSponsor").hide()
             $(".mainSponsor").css("background-image", "url(" + mainSponsors.value[0].url + ")");
             if (!$('.mainSponsor').is(':visible')) {
-                $(".mainSponsor").fadeIn(1000)
+                $(".mainSponsor").slideDown(1000)
             }
         }
         else {
-            $(".mainSponsor").slideUp(1000)
+            if (!$('.mainSponsor').is(':visible')) {
+                $(".mainSponsor").slideUp(1000)
+            }
         }
 
 

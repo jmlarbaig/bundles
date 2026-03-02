@@ -144,6 +144,7 @@ function showSection(key) {
             <span class="section-icon">${section.icon || '◆'}</span>
             <h2 class="section-title">${section.title}</h2>
             <span class="section-meta">${section.element.length} fields</span>
+            <button class="btn-add" onclick="addParam('${key}')" title="Add parameter">+</button>
         </div>
         <div class="fields-grid" id="fields-grid"></div>
     `;
@@ -169,6 +170,7 @@ function buildCard(sectionKey, el, index) {
         <div class="field-label">
             <span class="field-title">${el.title}</span>
             <span class="field-id">${el.name}</span>
+            <button class="btn-delete" onclick="deleteParam('${sectionKey}', ${index})" title="Delete parameter">×</button>
         </div>
     `;
     card.appendChild(buildInput(sectionKey, el, index));
@@ -447,6 +449,81 @@ Fonts.on('change', (newValue, oldValue) => {
     if (newValue === oldValue) return;
     applyFonts();
 });
+
+// ════════════════════════════════════════
+// ADD PARAMETER
+// ════════════════════════════════════════
+function addParam(sectionKey) {
+    const modal = document.getElementById('param-modal');
+    const form = document.getElementById('param-form');
+
+    form.reset();
+    modal.style.display = 'flex';
+
+    form.onsubmit = (e) => {
+        e.preventDefault();
+
+        const name = document.getElementById('param-name').value.trim();
+        const title = document.getElementById('param-title').value.trim();
+        const type = document.getElementById('param-type').value;
+        const cssProperty = document.getElementById('param-css').value.trim();
+        const value = document.getElementById('param-value').value.trim();
+
+        if (!name || !title) {
+            showToast('Name and Title are required');
+            return;
+        }
+
+        const newParam = {
+            name: name,
+            title: title,
+            type: type,
+            value: value || (type === 'boolean' ? false : type === 'number' ? '0px' : type === 'color' ? '#000000' : ''),
+            css: cssProperty || (type === 'select' ? '' : getDefaultCssProperty(type))
+        };
+
+        if (type === 'select') {
+            newParam.options = [];
+        }
+
+        configData[sectionKey].element.push(newParam);
+        modal.style.display = 'none';
+        showSection(sectionKey);
+        buildNav();
+        changedCount++;
+        document.getElementById('bar-changes').textContent = `${changedCount} change${changedCount > 1 ? 's' : ''}`;
+        showToast('Parameter added');
+    };
+}
+
+function getDefaultCssProperty(type) {
+    switch (type) {
+        case 'color': return 'color';
+        case 'number': return 'width';
+        case 'text': return 'font-family';
+        case 'boolean': return '';
+        default: return '';
+    }
+}
+
+function closeModal() {
+    document.getElementById('param-modal').style.display = 'none';
+}
+
+// ════════════════════════════════════════
+// DELETE PARAMETER
+// ════════════════════════════════════════
+function deleteParam(sectionKey, index) {
+    const param = configData[sectionKey].element[index];
+    if (confirm(`Delete parameter "${param.title}" (${param.name})?\n\nWarning: This may break CSS references if this variable is used in stylesheets.`)) {
+        configData[sectionKey].element.splice(index, 1);
+        showSection(sectionKey);
+        buildNav();
+        changedCount++;
+        document.getElementById('bar-changes').textContent = `${changedCount} change${changedCount > 1 ? 's' : ''}`;
+        showToast('Parameter deleted');
+    }
+}
 
 // ════════════════════════════════════════
 // CHRONO

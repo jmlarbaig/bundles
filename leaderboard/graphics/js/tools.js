@@ -163,6 +163,18 @@ function treatDisplayName(displayName) {
     return newName;
 }
 
+function refreshDisplayName(dataAthlete) {
+    console.log('DataAthlete', dataAthlete)
+    dataAthlete.forEach((athlete) => {
+        let newName = treatDisplayName(athlete.displayName);
+        console.log("newName", newName)
+        console.log("athlete.lane", athlete.lane)
+        $(".leaderboards").find("#aht" + athlete.lane).find(".name").find("span").remove();
+        console.log("find name", $(".leaderboards").find("#aht" + athlete.lane).find(".name"))
+        $(".leaderboards").find("#aht" + athlete.lane).find(".name").replaceWith(newName);
+    });
+}
+
 
 function splitFullName(fullName) {
     if (!fullName || !fullName.trim()) {

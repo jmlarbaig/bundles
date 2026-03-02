@@ -7,25 +7,37 @@
         "name": "box_logo",
         "title": "Event Logo",
         "type": "boolean",
-        "value": true
+        "value": false
       },
       {
-        "name": "box_heat",
+        "name": "workout",
+        "title": "Workout",
+        "type": "boolean",
+        "value": false
+      },
+      {
+        "name": "heat",
         "title": "Heat",
         "type": "boolean",
-        "value": true
+        "value": false
       },
       {
-        "name": "box_chrono",
+        "name": "chrono",
         "title": "Chrono",
         "type": "boolean",
-        "value": true
+        "value": false
+      },
+      {
+        "name": "cap",
+        "title": "Cap",
+        "type": "boolean",
+        "value": false
       },
       {
         "name": "leaderboards",
         "title": "Leaderboard",
         "type": "boolean",
-        "value": true
+        "value": false
       },
       {
         "name": "box_bandeau",
@@ -34,16 +46,10 @@
         "value": false
       },
       {
-        "name": "lowerthird",
-        "title": "Lowerthird",
-        "type": "boolean",
-        "value": false
-      },
-      {
         "name": "nameSelect",
         "title": "Style name",
         "type": "select",
-        "value": "pointFirst",
+        "value": "first",
         "options": [
           "first",
           "last",
@@ -88,42 +94,11 @@
         "options": []
       },
       {
-        "name": "backgroundTimerSelect",
-        "title": "Background Timer",
-        "type": "select",
-        "value": "",
-        "options": []
-      },
-      {
         "name": "mainSponsorSelect",
         "title": "Main Sponsor",
         "type": "select",
         "value": "",
         "options": []
-      }
-    ]
-  },
-  "competition_corner": {
-    "title": "Competition Corner",
-    "icon": "◈",
-    "element": [
-      {
-        "name": "attributionLane",
-        "title": "Atribution Lane",
-        "type": "boolean",
-        "value": false
-      },
-      {
-        "name": "heatResults",
-        "title": "Heat results",
-        "type": "boolean",
-        "value": false
-      },
-      {
-        "name": "overallStandingDivwod",
-        "title": "Overall Standing Results by Division/Workout",
-        "type": "boolean",
-        "value": false
       }
     ]
   },
@@ -135,47 +110,23 @@
         "name": "lane",
         "title": "Lane",
         "type": "boolean",
-        "value": true
-      },
-      {
-        "name": "showMvt",
-        "title": "Mvt",
-        "type": "boolean",
-        "value": true
+        "value": false
       },
       {
         "name": "affiliate",
         "title": "Affiliation",
         "type": "boolean",
-        "value": true
+        "value": false
       },
       {
         "name": "flag",
         "title": "Flag",
         "type": "boolean",
-        "value": true
-      },
-      {
-        "name": "hiddenAthlete",
-        "title": "Hidden Athlete Feature",
-        "type": "boolean",
-        "value": false
-      }
-    ]
-  },
-  "chrono_config": {
-    "title": "Configuration Chrono",
-    "icon": "⏱",
-    "element": [
-      {
-        "name": "fortimeAmrap",
-        "title": "Fortime / Amrap",
-        "type": "boolean",
         "value": false
       },
       {
-        "name": "manualChrono",
-        "title": "Show Manual Timer",
+        "name": "showMvt",
+        "title": "Mvt",
         "type": "boolean",
         "value": false
       },
@@ -203,34 +154,62 @@
         ]
       },
       {
-        "name": "timeConfig",
-        "title": "WPA - TIME AVG // ACC",
-        "type": "select",
-        "value": "avg",
-        "options": [
-          "avg",
-          "acc"
-        ]
+        "name": "hiddenAthlete",
+        "title": "Hidden Athlete Feature",
+        "type": "boolean",
+        "value": false
+      }
+    ]
+  },
+  "chrono_config": {
+    "title": "Configuration Chrono",
+    "icon": "⏱",
+    "element": [
+      {
+        "name": "fortimeAmrap",
+        "title": "Fortime / Amrap",
+        "type": "boolean",
+        "value": false
       },
       {
-        "name": "viewConfig",
-        "title": "WPA - TEAM or INDIV/TEAM",
-        "type": "select",
-        "value": "team",
-        "options": [
-          "team",
-          "indiv"
-        ]
+        "name": "manualChrono",
+        "title": "Show Manual Timer",
+        "type": "boolean",
+        "value": false
+      }
+    ]
+  },
+  "competition_corner": {
+    "title": "Competition Corner",
+    "icon": "◈",
+    "element": [
+      {
+        "name": "attributionLane",
+        "title": "Atribution Lane",
+        "type": "boolean",
+        "value": false
+      },
+      {
+        "name": "heatResults",
+        "title": "Heat results",
+        "type": "boolean",
+        "value": false
+      },
+      {
+        "name": "overallStandingDivwod",
+        "title": "Overall Standing Results by Division/Workout",
+        "type": "boolean",
+        "value": false
       }
     ]
   },
   "automatic_config": {
-    "title": "Configuration Automatique",
+    "title": "Gestion Automatique",
     "icon": "⚙",
     "element": [
       {
         "name": "automaticSchedule",
-        "title": "Activate Automatique",
+        "title": "Activation Gestion Automatique",
         "type": "boolean",
         "value": false
       }

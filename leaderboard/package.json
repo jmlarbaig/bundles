@@ -25,10 +25,7 @@
         "name": "overlay-control",
         "title": "Overlay Control",
         "file": "overlay.html",
-        "fullbleed": false,
-        "width": 7,
-        "headerColor": "#525F78",
-        "workspace": "Main Workspace"
+        "fullbleed": true
       },
       {
         "name": "timer",

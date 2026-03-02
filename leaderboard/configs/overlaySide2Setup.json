@@ -7,25 +7,37 @@
         "name": "box_logo",
         "title": "Event Logo",
         "type": "boolean",
-        "value": true
+        "value": false
       },
       {
-        "name": "box_heat",
+        "name": "workout",
+        "title": "Workout",
+        "type": "boolean",
+        "value": false
+      },
+      {
+        "name": "heat",
         "title": "Heat",
         "type": "boolean",
-        "value": true
+        "value": false
       },
       {
-        "name": "box_chrono",
+        "name": "chrono",
         "title": "Chrono",
         "type": "boolean",
-        "value": true
+        "value": false
+      },
+      {
+        "name": "cap",
+        "title": "Cap",
+        "type": "boolean",
+        "value": false
       },
       {
         "name": "leaderboards",
         "title": "Leaderboard",
         "type": "boolean",
-        "value": true
+        "value": false
       },
       {
         "name": "box_bandeau",
@@ -34,16 +46,10 @@
         "value": false
       },
       {
-        "name": "lowerthird",
-        "title": "Lowerthird",
-        "type": "boolean",
-        "value": false
-      },
-      {
         "name": "nameSelect",
         "title": "Style name",
         "type": "select",
-        "value": "pointFirst",
+        "value": "first",
         "options": [
           "first",
           "last",
@@ -67,7 +73,7 @@
         "name": "timeFormat",
         "title": "Time format",
         "type": "select",
-        "value": "mm-ss-ms",
+        "value": "",
         "options": [
           "",
           "hh-mm-ss-msms",
@@ -84,13 +90,6 @@
         "name": "overlayBackgroundSelect",
         "title": "Overlay Background",
         "type": "select",
-        "value": "/assets/leaderboard/backgroundOverlay/Miami_2026_BG.png",
-        "options": []
-      },
-      {
-        "name": "backgroundTimerSelect",
-        "title": "Background Timer",
-        "type": "select",
         "value": "",
         "options": []
       },
@@ -98,8 +97,85 @@
         "name": "mainSponsorSelect",
         "title": "Main Sponsor",
         "type": "select",
-        "value": "/assets/connector/mainSponsor/31343C.png",
+        "value": "",
         "options": []
+      }
+    ]
+  },
+  "leaderboard_items": {
+    "title": "Items Leaderboard",
+    "icon": "◇",
+    "element": [
+      {
+        "name": "lane",
+        "title": "Lane",
+        "type": "boolean",
+        "value": false
+      },
+      {
+        "name": "affiliate",
+        "title": "Affiliation",
+        "type": "boolean",
+        "value": false
+      },
+      {
+        "name": "flag",
+        "title": "Flag",
+        "type": "boolean",
+        "value": false
+      },
+      {
+        "name": "showMvt",
+        "title": "Mvt",
+        "type": "boolean",
+        "value": false
+      },
+      {
+        "name": "scoreConfig",
+        "title": "Scoring",
+        "type": "select",
+        "value": "abs_score",
+        "options": [
+          "abs_score",
+          "rel_score",
+          "remain_mvt",
+          "mvt_score",
+          "mvt_total_score"
+        ]
+      },
+      {
+        "name": "rankingConfig",
+        "title": "Ranking Configuration",
+        "type": "select",
+        "value": "rank",
+        "options": [
+          "rank",
+          "lane"
+        ]
+      },
+      {
+        "name": "hiddenAthlete",
+        "title": "Hidden Athlete Feature",
+        "type": "boolean",
+        "value": false
+      }
+    ]
+  },
+  "chrono_config": {
+    "title": "Configuration Chrono",
+    "icon": "⏱",
+    "element": [
+      {
+        "name": "fortimeAmrap",
+        "title": "Fortime / Amrap",
+        "type": "boolean",
+        "value": false
+      },
+      {
+        "name": "manualChrono",
+        "title": "Show Manual Timer",
+        "type": "boolean",
+        "value": false
       }
     ]
   },
@@ -127,110 +203,13 @@
       }
     ]
   },
-  "leaderboard_items": {
-    "title": "Items Leaderboard",
-    "icon": "◇",
-    "element": [
-      {
-        "name": "lane",
-        "title": "Lane",
-        "type": "boolean",
-        "value": false
-      },
-      {
-        "name": "showMvt",
-        "title": "Mvt",
-        "type": "boolean",
-        "value": true
-      },
-      {
-        "name": "affiliate",
-        "title": "Affiliation",
-        "type": "boolean",
-        "value": false
-      },
-      {
-        "name": "flag",
-        "title": "Flag",
-        "type": "boolean",
-        "value": false
-      },
-      {
-        "name": "hiddenAthlete",
-        "title": "Hidden Athlete Feature",
-        "type": "boolean",
-        "value": false
-      }
-    ]
-  },
-  "chrono_config": {
-    "title": "Configuration Chrono",
-    "icon": "⏱",
-    "element": [
-      {
-        "name": "fortimeAmrap",
-        "title": "Fortime / Amrap",
-        "type": "boolean",
-        "value": false
-      },
-      {
-        "name": "manualChrono",
-        "title": "Show Manual Timer",
-        "type": "boolean",
-        "value": false
-      },
-      {
-        "name": "scoreConfig",
-        "title": "Scoring",
-        "type": "select",
-        "value": "rel_score",
-        "options": [
-          "abs_score",
-          "rel_score",
-          "remain_mvt",
-          "mvt_score",
-          "mvt_total_score"
-        ]
-      },
-      {
-        "name": "rankingConfig",
-        "title": "Ranking Configuration",
-        "type": "select",
-        "value": "lane",
-        "options": [
-          "rank",
-          "lane"
-        ]
-      },
-      {
-        "name": "timeConfig",
-        "title": "WPA - TIME AVG // ACC",
-        "type": "select",
-        "value": "avg",
-        "options": [
-          "avg",
-          "acc"
-        ]
-      },
-      {
-        "name": "viewConfig",
-        "title": "WPA - TEAM or INDIV/TEAM",
-        "type": "select",
-        "value": "team",
-        "options": [
-          "team",
-          "indiv"
-        ]
-      }
-    ]
-  },
   "automatic_config": {
-    "title": "Configuration Automatique",
+    "title": "Gestion Automatique",
     "icon": "⚙",
     "element": [
       {
         "name": "automaticSchedule",
-        "title": "Activate Automatique",
+        "title": "Activation Gestion Automatique",
         "type": "boolean",
         "value": false
       }
