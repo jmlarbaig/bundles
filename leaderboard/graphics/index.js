@@ -20,7 +20,7 @@ let timerInterval = null;
 let dataTime;
 let athletesDivison;
 let Mvt_name = []
-let height_top = 100;
+let height_top = 200;
 let root = document.documentElement;
 let Clrs = {}
 let chrono;

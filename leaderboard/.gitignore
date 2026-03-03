@@ -3,5 +3,5 @@ coverage
 bower_components
 
 # Configuration and Setup files
-configs/*.json
-configs/.gitkeep
+configs
+configs/

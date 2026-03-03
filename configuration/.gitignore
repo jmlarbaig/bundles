@@ -4,5 +4,5 @@ bower_components
 
 colorDefaut.json
 # Configuration and Setup files
-configs/*.json
-configs/.gitkeep
+configs
+configs/
