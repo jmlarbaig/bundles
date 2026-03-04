@@ -45,7 +45,7 @@ function msToTime(s) {
     var hrs = ((s - mins) / 60);
     if (secs < 10) { secs = '0' + (secs) }
     if (mins < 10) { mins = '0' + mins }
-    console.log("Timer : ", mins + ':' + secs)
+    // console.log("Timer : ", mins + ':' + secs)
     return mins + ':' + secs;
 }
 
@@ -146,9 +146,9 @@ function treatDisplayName(displayName) {
             case 'last':
                 newName = '<div class="name"><span class="firstName">' + splitName.title + ' </span><span class="lastName"> ' + splitName.lastName + '</span></div>';
                 break;
-            case 'pointFirst':
+            case 'f.Last':
                 pointFirstName = splitName.firstName.substring(0, 1) + ". "
-                console.log(splitName.title)
+                // console.log(splitName.title)
                 newName = '<div class="name"><span class="firstName">' + splitName.title + ' </span><span class="firstName">' + pointFirstName + ' </span><span class="lastName"> ' + splitName.lastName + '</span></div>';
                 break;
             case 'full':
@@ -164,13 +164,13 @@ function treatDisplayName(displayName) {
 }
 
 function refreshDisplayName(dataAthlete) {
-    console.log('DataAthlete', dataAthlete)
+    // console.log('DataAthlete', dataAthlete)
     dataAthlete.forEach((athlete) => {
         let newName = treatDisplayName(athlete.displayName);
-        console.log("newName", newName)
-        console.log("athlete.lane", athlete.lane)
+        // console.log("newName", newName)
+        // console.log("athlete.lane", athlete.lane)
         $(".leaderboards").find("#aht" + athlete.lane).find(".name").find("span").remove();
-        console.log("find name", $(".leaderboards").find("#aht" + athlete.lane).find(".name"))
+        // console.log("find name", $(".leaderboards").find("#aht" + athlete.lane).find(".name"))
         $(".leaderboards").find("#aht" + athlete.lane).find(".name").replaceWith(newName);
     });
 }
@@ -213,17 +213,17 @@ function splitFullName(fullName) {
     // --- TRAITEMENT ---
 
     const parts = fullName.trim().replace(/\s+/g, ' ').split(' ').map(p => p.toLowerCase());
-    console.log("Parts:", parts);
+    // console.log("Parts:", parts);
     let title = '';
     let remaining = [...parts];
 
     // Extraire les titres en début de chaîne (peut y en avoir plusieurs ex: "Dr. Prof.")
     while (remaining.length > 0 && allTitles.includes(remaining[0].toLowerCase().replace(',', ''))) {
-        console.log("Found title:", remaining[0]);
+        // console.log("Found title:", remaining[0]);
         title += (title ? ' ' : '') + remaining.shift();
     }
 
-    console.log("Title:", title, "Remaining:", remaining);
+    // console.log("Title:", title, "Remaining:", remaining);
 
     if (remaining.length === 0) return { title, firstName: '', lastName: '' };
     if (remaining.length === 1) return { title, firstName: remaining[0], lastName: '' };
@@ -374,11 +374,11 @@ function repoLeft(lead_, aths_) {
                 y += elm.$item.width() + (2 * margin);
             }
         }
-        console.log("SetupFlat : ", setupFlat.numberAthletes)
-        console.log("index : ", index)
+        // console.log("SetupFlat : ", setupFlat.numberAthletes)
+        // console.log("index : ", index)
         if (setupFlat != undefined && setupFlat != {} && (setupFlat.numberAthletes - 1) == index) {
-            console.log("J'y suis")
-            console.log("css : ", $('.leaderboard').width())
+            // console.log("J'y suis")
+            // console.log("css : ", $('.leaderboard').width())
             $('.leaderboard').width(y)
         }
     })
@@ -405,7 +405,7 @@ function repoTop(lead_, aths_) {
                 // if (elm.status != '0') {
                 !elm.$item.is(':visible') && elm.$item.show()
                 elm.$item.css("top", y + "px");
-                console.table("Aths : ", elm.$item.height())
+                // console.table("Aths : ", elm.$item.height())
                 y += elm.$item.height();
                 y += parseInt(elm.$item.css('margin').split(' ')[0].replace('px', ''));
             } else {
@@ -1180,7 +1180,7 @@ function treatDisplayMvtForOthers(elementAth, idToCompare, roundsToCompare) {
 
     let textTomvt = repTarget + ' ' + mvt;
 
-    console.log("TEXTE TO MVt : ", textTomvt)
+    // console.log("TEXTE TO MVt : ", textTomvt)
 
     if (overlay == 'commentator' || overlay.includes('sk')) {
         let rep = elementAth.currentMvt.repTarget != 0 ? ((elementAth.currentMvt.scoreAbsMvt + "/" + elementAth.currentMvt.repTarget)) : elementAth.currentMvt.scoreAbsMvt

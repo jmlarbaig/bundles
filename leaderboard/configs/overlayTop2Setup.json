@@ -55,11 +55,11 @@
         "name": "nameSelect",
         "title": "Style name",
         "type": "select",
-        "value": "pointFirst",
+        "value": "f.Last",
         "options": [
           "first",
           "last",
-          "pointFirst",
+          "f.Last",
           "full"
         ]
       },
@@ -97,6 +97,13 @@
         "title": "Overlay Background",
         "type": "select",
         "value": "/assets/leaderboard/backgroundOverlay/CFG_bg.png",
+        "options": []
+      },
+      {
+        "name": "logoEventSelect",
+        "title": "Logo Event",
+        "type": "select",
+        "value": "/assets/connector/logoEvent/ANG_BLK_26.png",
         "options": []
       },
       {

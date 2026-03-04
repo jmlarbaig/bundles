@@ -84,7 +84,7 @@ body {
     justify-content: center;
     text-align: center;
     width: var(--width-rank);
-    margin: auto;
+    /* margin: auto; */
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -103,7 +103,7 @@ body {
     align-items: center;
     text-align: center;
     width: var(--width-lane);
-    margin: auto;
+    /* margin: auto; */
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -118,8 +118,8 @@ body {
     display: flex;
     align-items: baseline;
     text-align: center;
-    position: relative;
-    bottom: -2px;
+    /* position: relative;
+    bottom: -2px; */
     justify-content: center;
     text-transform: uppercase;
     font-weight: 900;

@@ -17,28 +17,28 @@
       {
         "title": "Position X",
         "name": "position-x-logo",
-        "value": "20px",
+        "value": "46px",
         "type": "number",
         "css": "left"
       },
       {
         "title": "Position Y",
         "name": "position-y-logo",
-        "value": "-8px",
+        "value": "-37px",
         "type": "number",
         "css": "top"
       },
       {
         "title": "Width",
         "name": "width-logo",
-        "value": "130px",
+        "value": "200px",
         "type": "number",
         "css": "width"
       },
       {
         "title": "Height",
         "name": "height-logo",
-        "value": "130px",
+        "value": "200px",
         "type": "number",
         "css": "height"
       }
@@ -498,7 +498,7 @@
       {
         "title": "First Name Size Font",
         "name": "size-font-first-name",
-        "value": "20px",
+        "value": "30px",
         "type": "number",
         "css": "font-size"
       },
@@ -535,7 +535,7 @@
       {
         "title": "Last Name Size Font",
         "name": "size-font-last-name",
-        "value": "27px",
+        "value": "30px",
         "type": "number",
         "css": "font-size"
       },
@@ -565,7 +565,7 @@
       {
         "title": "Width",
         "name": "width-name",
-        "value": "255px",
+        "value": "300px",
         "type": "number",
         "css": "width"
       }
@@ -577,7 +577,7 @@
       {
         "title": "Size Font",
         "name": "size-font-rank",
-        "value": "27px",
+        "value": "30px",
         "type": "number",
         "css": "font-size"
       },
@@ -619,7 +619,7 @@
       {
         "title": "Size Font",
         "name": "size-font-lane",
-        "value": "28px",
+        "value": "30px",
         "type": "number",
         "css": "font-size"
       },
@@ -694,7 +694,7 @@
       {
         "title": "Size Font",
         "name": "size-font-score",
-        "value": "20px",
+        "value": "30px",
         "type": "number",
         "css": "font-size"
       },

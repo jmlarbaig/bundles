@@ -12,13 +12,13 @@
 /* top | right | bottom | left */
 
 .header .box_logo {
-    z-index: 50;
+    z-index: 200;
     position: absolute;
     top: var(--position-y-logo);
     left: var(--position-x-logo);
     text-align: right;
     width: var(--width-logo);
-    height: var(--heigth-logo);
+    height: var(--height-logo);
     /* background-color: var(--box_logo_color); */
     text-align: center;
 }
@@ -27,7 +27,7 @@
     margin: auto;
     padding: 15px;
     width: var(--width-logo);
-    height: var(--heigth-logo);
+    height: var(--height-logo);
     background-repeat: no-repeat;
     background-size: contain;
     /* <------ */
@@ -178,7 +178,7 @@
 
 .header .box_chrono .chrono {
     margin: 5px auto;
-    width: 120px;
+    width: fit-content;
     text-align: center;
     color: var(--color-chrono);
     font-family: var(--font-chrono);
@@ -191,7 +191,7 @@
     font-family: var(--font-timecap);
     color: var(--color-timecap);
     margin: 1px auto;
-    width: 120px;
+    width: fit-content;
     padding: 5px;
     text-align: center;
 }

@@ -14,6 +14,7 @@ const activeSetup = nodecg.Replicant('activeSetup');
 const backgroundOverlay = nodecg.Replicant('assets:backgroundOverlay', 'leaderboard');
 const backgroundTimer = nodecg.Replicant('assets:backgroundTimer', 'leaderboard');
 const mainSponsors = nodecg.Replicant('assets:mainSponsor', 'connector');
+const logoEvent = nodecg.Replicant('assets:logoEvent', 'connector');
 
 let setupReplicants = {};
 let assetReplicants = {};
@@ -359,6 +360,30 @@ function populateAssetSelects() {
         }
     }
 
+
+
+    if (logoEvent.value && logoEvent.value.length > 0) {
+        const sel = document.getElementById('logoEventSelect');
+        if (sel) {
+            let savedVal = sel.value;
+            Object.values(setupData).forEach(section => {
+                if (section.element) {
+                    const elem = section.element.find(e => e.name === 'logoEventSelect');
+                    if (elem) savedVal = elem.value;
+                }
+            });
+
+            sel.innerHTML = '<option value="">Please, choose sponsor</option>';
+            logoEvent.value.forEach(e => {
+                const opt = document.createElement('option');
+                opt.value = e.url;
+                opt.textContent = e.name;
+                sel.appendChild(opt);
+            });
+            if (savedVal) sel.value = savedVal;
+        }
+    }
+
     if (mainSponsors.value && mainSponsors.value.length > 0) {
         const sel = document.getElementById('mainSponsorSelect');
         if (sel) {
@@ -385,6 +410,7 @@ function populateAssetSelects() {
 backgroundOverlay.on('change', () => populateAssetSelects());
 backgroundTimer.on('change', () => populateAssetSelects());
 mainSponsors.on('change', () => populateAssetSelects());
+logoEvent.on('change', () => populateAssetSelects());
 
 // ════════════════════════════════════════
 // TOAST

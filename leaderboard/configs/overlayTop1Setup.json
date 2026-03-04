@@ -59,7 +59,7 @@
         "options": [
           "first",
           "last",
-          "pointFirst",
+          "f.Last",
           "full"
         ]
       },
@@ -95,6 +95,13 @@
       {
         "name": "overlayBackgroundSelect",
         "title": "Overlay Background",
+        "type": "select",
+        "value": "",
+        "options": []
+      },
+      {
+        "name": "logoSelect",
+        "title": "Logo Event",
         "type": "select",
         "value": "",
         "options": []

@@ -89,6 +89,16 @@ function handleSetupChange(newValue, oldValue) {
         refreshDisplayName(s_athletes.value)
     }
 
+    if (newValue.logoEventSelect != '') {
+        $(".logo").css("background-image", "url(" + newValue.logoEventSelect + ")");
+        if (!$(".logo").is(':visible')) {
+            $(".logo").fadeIn()
+        }
+    }
+    else {
+        $(".logo").fadeOut()
+    }
+
     if (newValue.mainSponsorSelect != '') {
         $(".mainSponsor").css("background-image", "url(" + newValue.mainSponsorSelect + ")");
         if (!$(".mainSponsor").is(':visible')) {
@@ -675,17 +685,17 @@ backgroundOverlay.on('change', (newValue) => {
     // }
 })
 
-mainSponsors.on('change', (newValue) => {
-    if (newValue.length > 0) {
-        console.log(newValue[0].url)
+// mainSponsors.on('change', (newValue) => {
+//     if (newValue.length > 0) {
+//         console.log(newValue[0].url)
 
-        $(".mainSponsor").css("background-image", "url(" + newValue[0].url + ")");
-        $(".mainSponsor").toggle("slide")
-    }
-    else {
-        $(".mainSponsor").toggle("slide")
-    }
-})
+//         $(".mainSponsor").css("background-image", "url(" + newValue[0].url + ")");
+//         $(".mainSponsor").toggle("slide")
+//     }
+//     else {
+//         $(".mainSponsor").toggle("slide")
+//     }
+// })
 
 
 bottomSponsors.on('change', (newValue) => {

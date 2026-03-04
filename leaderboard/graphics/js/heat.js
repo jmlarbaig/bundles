@@ -48,18 +48,18 @@ function resetHeat(data) {
 
         $list.append($item);
 
-        if (mainSponsors.value.length > 0) {
-            $(".mainSponsor").hide()
-            $(".mainSponsor").css("background-image", "url(" + mainSponsors.value[0].url + ")");
-            if (!$('.mainSponsor').is(':visible')) {
-                $(".mainSponsor").slideDown(1000)
-            }
-        }
-        else {
-            if (!$('.mainSponsor').is(':visible')) {
-                $(".mainSponsor").slideUp(1000)
-            }
-        }
+        // if (mainSponsors.value.length > 0) {
+        //     $(".mainSponsor").hide()
+        //     $(".mainSponsor").css("background-image", "url(" + mainSponsors.value[0].url + ")");
+        //     if (!$('.mainSponsor').is(':visible')) {
+        //         $(".mainSponsor").slideDown(1000)
+        //     }
+        // }
+        // else {
+        //     if (!$('.mainSponsor').is(':visible')) {
+        //         $(".mainSponsor").slideUp(1000)
+        //     }
+        // }
 
 
     }

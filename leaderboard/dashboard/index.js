@@ -9,9 +9,9 @@ const backgroundTimer = nodecg.Replicant('assets:backgroundTimer', 'leaderboard'
 
 const mainSponsors = nodecg.Replicant('assets:mainSponsor', 'connector')
 
-const setupLeaderboard = nodecg.Replicant('setupLeaderboard')
+const logoEvent = nodecg.Replicant('assets:logoEvent', 'connector');
 
-const logoEvent = nodecg.Replicant('assets:logoEvent');
+const setupLeaderboard = nodecg.Replicant('setupLeaderboard')
 
 const ipAddress = nodecg.Replicant('ipAddress', 'connector')
 
@@ -133,6 +133,33 @@ function uncheckedParameters() {
         }
     }
 }
+
+
+logoEvent.on('change', (newValue, oldValue) => {
+    console.log(newValue)
+    $("#logoEventSelect option").remove()
+
+    if (newValue.length > 0) {
+
+        $('#logoEventSelect').append($('<option>', {
+            value: '',
+            text: 'Please, choose sponsor'
+        }));
+        newValue.forEach((e, i) => {
+
+            $('#logoEventSelect').append($('<option>', {
+                value: e.url,
+                text: e.name
+            }));
+        })
+    } else {
+
+        $('#logoEventSelect').append($('<option>', {
+            value: '',
+            text: 'No sponsor'
+        }));
+    }
+})
 
 mainSponsors.on('change', (newValue, oldValue) => {
     console.log(newValue)
