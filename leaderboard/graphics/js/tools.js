@@ -120,16 +120,20 @@ function typeWorkout(data) {
 
 function treatReptarget(repTarget) {
     var textRep = ""
-    if (heat.typeWod == "amrap") {
-        textRep = "MAX REPS"
-    }
-    else if (heat.typeWod == "time") {
-        if (repTarget == undefined) {
-            textRep = "FOR TIME";
+    if (repTarget == undefined) {
+        if (heat.typeWod == "amrap") {
+            textRep = "MAX REPS"
         }
-        else {
-            textRep = repTarget + " REPS";
+        else if (heat.typeWod == "time") {
+            if (repTarget == undefined) {
+                textRep = "FOR TIME";
+            }
+            else {
+                textRep = repTarget + " REPS";
+            }
         }
+    } else {
+        textRep = repTarget
     }
     return textRep
 }
@@ -1349,7 +1353,7 @@ function changeLaneToRank(elementAth) {
 
 function changeRankToLane(elementAth) {
     elementAth.OldRank = elementAth.CurrentRank
-    elementAth.$item.find(".rank").text(elementAth.lane);
+    // elementAth.$item.find(".rank").text(elementAth.lane);
     eraseInitialRank(elementAth, ".rank")
     eraseInitialRank(elementAth, ".ath")
     eraseInitialRank(elementAth, ".popup")

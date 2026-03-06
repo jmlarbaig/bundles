@@ -72,7 +72,6 @@ function overlaySideV1(data) {
 
 function headerSide(divisions, indexDivision, repTarget) {
     //! Ajouter la séparation ici
-    const reps = treatReptarget(repTarget[indexDivision])
     // var reps = 0;
 
     var $headerSide = $(
@@ -96,10 +95,10 @@ function overlaySide(data) {
     let flag = data.countryCode != "LOGO" ? ("https://flagcdn.com/" + data.countryCode.toLowerCase() + '.svg') : (logoEvent.value[0].url);
 
     let backgroundImage = "";
-    // if (backgroundAthlete.value != undefined) {
-    //     console.log("backgroundAthlete.value", backgroundAthlete.value)
-    //     backgroundImage = 'url(' + backgroundAthlete.value[0].url + ')'
-    // }
+    if (backgroundAthlete.value != undefined) {
+        console.log("backgroundAthlete.value", backgroundAthlete.value)
+        backgroundImage = 'url(' + backgroundAthlete.value[0].url + ')'
+    }
 
 
     let $item = $(

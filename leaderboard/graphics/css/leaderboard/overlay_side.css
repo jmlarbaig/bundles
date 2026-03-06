@@ -99,49 +99,18 @@ body {
     background: var(--background-color-division);
 }
 
-.leaderboard .repTar {
+.repTar {
     font-family: var(--font-repTar);
     color: var(--color-repTar);
     text-align: right;
     margin: auto;
     font-size: var(--size-font-repTar);
     padding-right: 10px;
+    position: absolute;
+    top: var(--top-reptar);
+    left: var(--left-reptar);
 }
 
-.mvt::before {
-    content: '';
-    /* border-left: 4px solid rgba(105, 105, 105, 0.712); */
-    /* margin: 20px; */
-}
-
-.mvt {
-    font-weight: 800;
-    -moz-transition-duration: 0.7s;
-    -webkit-transition-duration: 0.7s;
-    -ms-transition-duration: 0.7s;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    /* color: var(--restMvt_color); */
-    text-transform: capitalize;
-}
-
-.mvt span {
-    padding: 10px;
-    letter-spacing: var(--letter_spacing);
-    font-family: var(--othersFontWorkout-select);
-}
-
-.mvt span:first-child {
-
-    color: var(--firstMvt_color);
-    font-weight: 800;
-    font-family: var(--firstFontWorkout-select);
-}
-
-.mvt span:first-child::before {
-    content: "•";
-}
 
 .leaderboard .athletes {
     /* color: var(--tx_second_color); */

@@ -165,7 +165,7 @@ function updateDynamics(newScoring, status) {
                                 if (overlay != 'versus_hyperfit') {
                                     showRepMvtInScore(elemAth[i])
                                     if (!overlay.includes("commentator") && overlay != "sk") {
-                                        noJudge(elemAth[i])
+                                        // noJudge(elemAth[i])
                                         hideMvtInPopup(elemAth[i])
                                         hideRepMvtInScore(elemAth[i])
                                         changeRankToLane(elemAth[i])
@@ -336,7 +336,7 @@ function updateDynamics(newScoring, status) {
                 if (overlay.includes('overlay_top')) {
                     height_tot = height_top
                 } else {
-                    (height_tot += elemAth[i].$item.height() + 10)
+                    (height_tot += elemAth[i].$item.height() + 10 + parseInt(elemAth[i].$item.css('margin-top')))
                 }
 
 

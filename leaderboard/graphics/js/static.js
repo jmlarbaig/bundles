@@ -139,6 +139,12 @@ function resetLeaderboard(newData) {
                     break;
             }
 
+            if (overlay.includes('overlay')) {
+                const reps = treatReptarget(repTarget[indexDivision])
+                $(".header").find('.repTar').text(reps);
+                setupFlat.repTar == true ? $(".header").find('.repTar').show() : $(".header").find('.repTar').hide();
+            }
+
             if (overlay == "versus" || overlay == "overlay_wpa") {
                 console.log("$tabItemBox : ", $tabItemBox)
                 indexDivision == 0 && $tabBox.append($tabItemBox);
