@@ -364,7 +364,7 @@ module.exports = (nodecg) => {
         'rep': 0,
         'ip': 0,
         'lane': 0,
-        'battery': '',
+        'battery': 0,
         'status': 0,
         'time': 0,
         'signal': '',

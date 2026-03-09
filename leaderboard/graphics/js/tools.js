@@ -844,7 +844,6 @@ function changeColorAth(ath, element) {
                 ath.$item.find(element).addClass('third_rank_ath')
                 ath.$item.find(element).toggleClass('second_rank_ath first_rank_ath other_rank_ath', false)
             } else {
-
                 ath.$item.find(element).addClass('third_rank_ath_top')
                 ath.$item.find(element).toggleClass('first_rank_ath_top second_rank_ath_top other_rank_ath_top', false)
             }
