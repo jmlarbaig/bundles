@@ -16,6 +16,8 @@ const backgroundTimer = nodecg.Replicant('assets:backgroundTimer', 'leaderboard'
 const mainSponsors = nodecg.Replicant('assets:mainSponsor', 'connector');
 const logoEvent = nodecg.Replicant('assets:logoEvent', 'connector');
 
+const TopScore = nodecg.Replicant('TopScore', 'connector');
+
 let setupReplicants = {};
 let assetReplicants = {};
 
@@ -439,3 +441,27 @@ NodeCG.waitForReplicants(configsReplicants, activeSetup).then(() => {
         }
     }
 });
+
+// ════════════════════════════════════════
+// Top score
+// ════════════════════════════════════════
+
+TopScore.on('change', (newValue, oldValue) => {
+    if (newValue != undefined && newValue.length > 0) {
+        let index = 0;
+        console.log("Score To Beat : ", newValue)
+        if (newValue[0] != null) {
+            if (!newValue[0].hasOwnProperty('error')) {
+                for (let teams of newValue[0]) {
+                    $('.repTarget').html('Refresh Score To Beat : ' + teams.scores[0].score)
+                    index++
+                }
+            }
+        }
+    }
+})
+
+function refreshScoreToBeat() {
+    console.log('Refresh in ')
+    nodecg.sendMessage('scoreToBeatRefresh', s_athletes)
+}

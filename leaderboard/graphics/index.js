@@ -641,15 +641,13 @@ listWarmpUp.on('change', (newValue, oldValue) => {
 
 
 TopScore.on('change', (newValue, oldValue) => {
-    // console.log("top Score = ",newValue[0][0].scores[0].score)
     if (newValue != undefined && newValue.length > 0) {
         let index = 0;
-        console.log(newValue)
         if (newValue[0] != null) {
             if (!newValue[0].hasOwnProperty('error')) {
                 for (let teams of newValue[0]) {
-                    console.log("top index =", index)
-                    $('.repTarget' + index).html("-> " + teams.scores[0].score)
+                    console.log("best score : ", teams.scores[0].score)
+                    $('.repTar').text(teams.scores[0].score)
                     index++
                 }
             }

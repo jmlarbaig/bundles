@@ -378,11 +378,7 @@ function repoLeft(lead_, aths_) {
                 y += elm.$item.width() + (2 * margin);
             }
         }
-        // console.log("SetupFlat : ", setupFlat.numberAthletes)
-        // console.log("index : ", index)
         if (setupFlat != undefined && setupFlat != {} && (setupFlat.numberAthletes - 1) == index) {
-            // console.log("J'y suis")
-            // console.log("css : ", $('.leaderboard').width())
             $('.leaderboard').width(y)
         }
     })
@@ -403,18 +399,18 @@ function repoTop(lead_, aths_) {
     // console.log("height Ath : ", y)
     // console.log("Lead : ", lead_)
     // console.table("Aths : ", aths_)
-    Object.values(aths_).forEach(elm => {
+    Object.values(aths_).forEach((elm, index) => {
         if (elm.$item.find(lead_) != undefined) {
-            if (true) {
-                // if (elm.status != '0') {
-                !elm.$item.is(':visible') && elm.$item.show()
-                elm.$item.css("top", y + "px");
-                // console.table("Aths : ", elm.$item.height())
-                y += elm.$item.height();
-                y += parseInt(elm.$item.css('margin').split(' ')[0].replace('px', ''));
-            } else {
-                // elm.$item.hide();
-            }
+            // if (elm.status != '0') {
+            !elm.$item.is(':visible') && elm.$item.show()
+            elm.$item.css("top", y + "px");
+            // console.table("Aths : ", elm.$item.height())
+            y += elm.$item.height();
+            y += parseInt(elm.$item.css('margin').replace('px', ''));
+        }
+        if (setupFlat != undefined && setupFlat != {} && (setupFlat.numberAthletes - 1) == index) {
+            console.log("Height leaderboard : ", y)
+            $('.leaderboard').height(y)
         }
     })
 }
@@ -871,24 +867,26 @@ function changeColorAth(ath, element) {
 
 function changeRank(elementAth) {
     if (overlay == 'overlay_side' || overlay == 'overlay_side_v1') {
-        if (elementAth.CurrentRank != elementAth.OldRank && elementAth.score_abs != 0) {
-            if (elementAth.CurrentRank < elementAth.OldRank) {
-                // elementAth.$item.find('.rank').addClass('up_rank')
-                elementAth.$item.find('.triangle').addClass('up_rank')
-                elementAth.$item.find('.triangle').addClass('triangle-up')
-            } else if (elementAth.CurrentRank > elementAth.OldRank) {
-                // elementAth.$item.find('.rank').addClass('down_rank')
-                elementAth.$item.find('.triangle').addClass('triangle-down')
-                elementAth.$item.find('.triangle').addClass('triangle-down')
+        if (setupFlat != undefined && setupFlat.triangleShow) {
+            if (elementAth.CurrentRank != elementAth.OldRank && elementAth.score_abs != 0) {
+                if (elementAth.CurrentRank < elementAth.OldRank) {
+                    // elementAth.$item.find('.rank').addClass('up_rank')
+                    elementAth.$item.find('.triangle').addClass('up_rank')
+                    elementAth.$item.find('.triangle').addClass('triangle-up')
+                } else if (elementAth.CurrentRank > elementAth.OldRank) {
+                    // elementAth.$item.find('.rank').addClass('down_rank')
+                    elementAth.$item.find('.triangle').addClass('triangle-down')
+                    elementAth.$item.find('.triangle').addClass('triangle-down')
 
+                }
+                elementAth.$item.find('.triangle').show()
+                setTimeout(() => {
+                    // elementAth.$item.find('.rank').removeClass('up_rank down_rank')
+                    elementAth.$item.find('.triangle').removeClass('triangle-down triangle-up')
+                    elementAth.$item.find('.triangle').hide()
+
+                }, 1500)
             }
-            elementAth.$item.find('.triangle').show()
-            setTimeout(() => {
-                // elementAth.$item.find('.rank').removeClass('up_rank down_rank')
-                elementAth.$item.find('.triangle').removeClass('triangle-down triangle-up')
-                elementAth.$item.find('.triangle').hide()
-
-            }, 1500)
         }
     }
 

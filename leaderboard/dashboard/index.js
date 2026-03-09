@@ -21,6 +21,9 @@ const s_athletes = nodecg.Replicant('s_athletes', 'connector');
 
 
 
+
+
+
 const hyperfitPoints = nodecg.Replicant('hyperfitPoints')
 
 var participantEvent = {}
@@ -254,6 +257,7 @@ s_athletes.on('change', (newValue, oldValue) => {
     }
 
 })
+
 
 hyperfitPoints.on('change', (newValue, oldValue) => {
     console.log(newValue)

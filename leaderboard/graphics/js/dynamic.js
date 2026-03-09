@@ -356,8 +356,8 @@ function updateDynamics(newScoring, status) {
             }
 
             if (overlay !== 'commentator' && overlay != 'sk') {
-                $("#leaderboard" + key + " #athletes").height(height_tot)
-                $("#leaderboard" + key).height(height_tot + $("#leaderboard" + key + " .header").height() + 15)
+                // $("#leaderboard" + key + " #athletes").height(height_tot)
+                // $("#leaderboard" + key).height(height_tot + $("#leaderboard" + key + " .header").height() + 15)
             }
 
         })

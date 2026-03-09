@@ -231,6 +231,14 @@ module.exports = (nodecg, Connected) => {
         }
     })
 
+    nodecg.listenFor('scoreToBeatRefresh', 'leaderboard', value => {
+
+        console.log(static)
+        if (static.workoutId != 0 && static.athletes.length > 0) {
+            updateScoreToBeat(static.workoutId, static.athletes)
+        }
+    })
+
     async function updateScoreToBeat(workoutId, athletes) {
         let divisionName = [];
         let divisionId = [];
