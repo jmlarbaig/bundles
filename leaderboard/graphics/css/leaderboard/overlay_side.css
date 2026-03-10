@@ -155,7 +155,7 @@ body {
 .leaderboard .athlete .rank {
     padding: 2px 8px;
     text-align: center;
-    width: 45px;
+    width: var(--width-rank);
     padding-right: 7px;
     border-radius: 10px 0px 10px 0px;
     white-space: nowrap;
