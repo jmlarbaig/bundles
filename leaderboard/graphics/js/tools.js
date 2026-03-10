@@ -378,7 +378,7 @@ function repoLeft(lead_, aths_) {
                 y += elm.$item.width() + (2 * margin);
             }
         }
-        if (setupFlat != undefined && setupFlat != {} && (setupFlat.numberAthletes - 1) == index) {
+        if (setupFlat != undefined && setupFlat != {} && ((setupFlat.numberAthletes - 1) == index || aths_.length == index)) {
             $('.leaderboard').width(y)
         }
     })
@@ -408,7 +408,7 @@ function repoTop(lead_, aths_) {
             y += elm.$item.height();
             y += parseInt(elm.$item.css('margin').replace('px', ''));
         }
-        if (setupFlat != undefined && setupFlat != {} && (setupFlat.numberAthletes - 1) == index) {
+        if (setupFlat != undefined && setupFlat != {} && ((setupFlat.numberAthletes - 1) == index || aths_.length == index)) {
             console.log("Height leaderboard : ", y)
             $('.leaderboard').height(y)
         }
