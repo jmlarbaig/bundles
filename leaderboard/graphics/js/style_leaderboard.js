@@ -478,7 +478,7 @@ function scoringKairos(data) {
         '<td class="state"></td>' +
         '<td class="battery align-items-xl-center"></td>' +
         '<td class="signal text-nowrap text-truncate"></td>' +
-        '<td class="timeAth"></td>' +
+        // '<td class="timeAth"></td>' +
         '<td class="repAth"></td>' +
         '<td class="ip"></td>' +
         '<td class="way"></td>' +

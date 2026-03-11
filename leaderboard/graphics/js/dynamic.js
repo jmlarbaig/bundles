@@ -128,6 +128,7 @@ function updateDynamics(newScoring, status) {
                         // initialRankChange(elemAth[i], ".popup")
                         if (overlay != 'versus_hyperfit') {
                             showRepMvtInScore(elemAth[i])
+                            treatTextMvt("");
                             if (!overlay.includes("commentator") && overlay != "sk") {
                                 hideMvtInPopup(elemAth[i])
                                 hideRepMvtInScore(elemAth[i])

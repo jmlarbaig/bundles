@@ -24,6 +24,7 @@ dataMinos.on('change', (newValue, oldValue) => {
                     '<td class="way"></td>' +
                     '<td class="flag" onclick="deleteMinos()"></td>' +
                     '<td class="text-nowrap text-truncate text-left name"><button onclick="deleteMinos()" id="delete_' + minos.ip + '">PING</button><button onclick="showModal()" id="lane_reject_' + minos.lane + '_' + minos.ip + '">&times;</button></td>' +
+
                     '</tr>'
                 );
                 $('#lane' + minos.lane).after($item)

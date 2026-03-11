@@ -146,6 +146,7 @@ function resetTimer() {
     // $(".chrono").css("background-color", Clrs.chrono_color)
     $(".chrono").css("color", Clrs.tx_chrono_color)
     $(".time").text("00:00");
+
     sonLaunch = false;
     console.log("reset sonLaunch")
 }
