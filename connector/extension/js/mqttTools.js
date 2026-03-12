@@ -339,6 +339,7 @@ module.exports = (nodecg) => {
 
             console.log(lane)
             console.log(_ip)
+            console.log(`kairos/${_eventId}/${_floorId}/minos/${_ip}/laneAction`)
 
             client.publish(`kairos/${_eventId}/${_floorId}/minos/${_ip}/laneAction`, `reject`);
         }

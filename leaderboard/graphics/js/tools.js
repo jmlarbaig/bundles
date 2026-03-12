@@ -1024,6 +1024,7 @@ function treatTimeCapStatus(elementAth) {
 
 
 function treatTextMvt(mvts) {
+    mvts = mvts.replace(/\(.*?\)/g, '');
     if (overlay.includes("versus") && heat.typeWod != 'repmax') {
         if (mvts != "") {
             $('.box_mvt').slideDown(1000)
@@ -1039,8 +1040,8 @@ function treatTextMvt(mvts) {
 
 
 function showSprint(elementAth) {
-    elementAth.$item.find(".popup").text("FINISH");
-    elementAth.$item.find(".popup").show();
+    // elementAth.$item.find(".popup").text("FINISH");
+    // elementAth.$item.find(".popup").show();
     elementAth.$item.find(".score").text(chrono);
 }
 
