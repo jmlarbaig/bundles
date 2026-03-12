@@ -337,7 +337,9 @@ function updateDynamics(newScoring, status) {
                 if (overlay.includes('overlay_top')) {
                     height_tot = height_top
                 } else {
-                    (height_tot += elemAth[i].$item.height() + 10 + parseInt(elemAth[i].$item.css('margin-top')))
+                    // if (setupFlat != undefined && setupFlat != {} && ((setupFlat.numberAthletes - 1) == i || (elemAth.length - 1) == i)) {
+                    //     (height_tot += elemAth[i].$item.height() + 10 + parseInt(elemAth[i].$item.css('margin-top')))
+                    // }
                 }
 
 

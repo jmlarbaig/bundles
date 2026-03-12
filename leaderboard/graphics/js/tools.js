@@ -380,7 +380,7 @@ function repoLeft(lead_, aths_) {
         }
         console.log("ath legnth", aths_.length)
         console.log("index", index)
-        if (setupFlat != undefined && setupFlat != {} && ((setupFlat.numberAthletes - 1) == index || (aths_.length - 1) == index)) {
+        if (setupFlat != undefined && setupFlat != {} && ((setupFlat.numberAthletes - 1) == index || (aths_.length - 1) < index) || (aths_.length - 1 < setupFlat.numberAthletes)) {
             $('.leaderboard').width(y)
         }
     })
@@ -410,7 +410,9 @@ function repoTop(lead_, aths_) {
             y += elm.$item.height();
             y += parseInt(elm.$item.css('margin').replace('px', ''));
         }
-        if (setupFlat != undefined && setupFlat != {} && ((setupFlat.numberAthletes - 1) == index || (aths_.length - 1) == index)) {
+        console.log("ath legnth", aths_.length)
+        console.log("index", index)
+        if (setupFlat != undefined && setupFlat != {} && ((setupFlat.numberAthletes - 1) == index || (aths_.length - 1) < index) || (aths_.length - 1 < setupFlat.numberAthletes)) {
             console.log("Height leaderboard : ", y)
             $('.leaderboard').height(y)
         }
