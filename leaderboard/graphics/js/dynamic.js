@@ -232,8 +232,8 @@ function updateDynamics(newScoring, status) {
                                         case 'repmax':
                                             showRepMax(elemAth[i])
                                             overlay == 'overlay_wpa' && hideRank(elemAth[i])
-                                            overlay == 'commentator' && hideRank(elemAth[i])
-                                            overlay == 'sk' && hideRank(elemAth[i])
+                                            // overlay == 'commentator' && hideRank(elemAth[i])
+                                            // overlay == 'sk' && hideRank(elemAth[i])
                                             break;
                                         default:
                                             showRepMvtInScore(elemAth[i])
@@ -375,7 +375,6 @@ function updateDynamics(newScoring, status) {
 function changeFunction(overlay, elementAth) {
     switch (overlay) {
         case 'progression':
-        case 'commentator':
         case 'leaderboard':
             treatBigScreenMvt(elementAth);
             changeColor(elementAth, ".popup")
@@ -404,6 +403,7 @@ function changeFunction(overlay, elementAth) {
         case 'overlay_top_v2':
             changeColorAth(elementAth, ".ath")
             break;
+        case 'commentator':
         default:
             changeColor(elementAth, ".popup")
             changeColor(elementAth, ".rank")

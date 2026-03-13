@@ -1314,20 +1314,22 @@ function treatPerfArray(elementAth) {
                 }
                 html += text;
             }
+            if (heat.typeWod != 'repmax') {
 
-            // Extraire le temps absolu pour comparaison ex: "00:40.7 (00:40.7)" → 40.7s
-            const firstTime = Object.values(rounds)[0]; // "00:40.7 (00:40.7)"
-            const absolute = firstTime.split(" ")[1].replaceAll('(', '').replaceAll(')', '');   // "00:40.7"
-            const [min, sec] = absolute.split(":");
-            const totalSeconds = parseFloat(min) * 60 + parseFloat(sec);
+                // Extraire le temps absolu pour comparaison ex: "00:40.7 (00:40.7)" → 40.7s
+                const firstTime = Object.values(rounds)[0]; // "00:40.7 (00:40.7)"
+                const absolute = firstTime.split(" ")[1].replaceAll('(', '').replaceAll(')', '');   // "00:40.7"
+                const [min, sec] = absolute.split(":");
+                const totalSeconds = parseFloat(min) * 60 + parseFloat(sec);
 
-            // Stocker le meilleur temps global par mouvement
-            if (best[key] === undefined || totalSeconds < best[key]) {
-                best[key] = totalSeconds;
+                // Stocker le meilleur temps global par mouvement
+                if (best[key] === undefined || totalSeconds < best[key]) {
+                    best[key] = totalSeconds;
+                }
+
+                // Stocker le temps de cet athlète pour ce mouvement
+                bestPerf[elementAth.lane][key] = totalSeconds;
             }
-
-            // Stocker le temps de cet athlète pour ce mouvement
-            bestPerf[elementAth.lane][key] = totalSeconds;
 
             // Mettre à jour le HTML
             elementAth.$item.find("#mvt_id_" + key + "_" + elementAth.lane).html(html);
