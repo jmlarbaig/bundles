@@ -1063,7 +1063,17 @@ function showRepMax(elementAth) {
         }
     }
     // console.log('SCORE ABS MVT : ' + elementAth.currentMvt.scoreAbsMvt)
-    elementAth.$item.find(".score").text(elementAth.currentMvt.scoreAbsMvt + ' ' + setupFlat.unitSelect);
+    switch (setupFlat.scoreConfig) {
+        case 'abs_score':
+            elementAth.$item.find(".score").text(elementAth.score_abs);
+            break;
+        case 'rel_score':
+            elementAth.$item.find(".score").text(elementAth.score_rel)
+            break;
+        default:
+            elementAth.$item.find(".score").text(elementAth.score_abs);
+            break;
+    }
 }
 
 function showRepMvtInScore(elementAth) {
