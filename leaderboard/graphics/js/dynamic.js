@@ -215,7 +215,8 @@ function updateDynamics(newScoring, status) {
 
                                 // console.log(elemAth[i].currentMvt)
                                 // ON CHECK SI ON EST AU SPRINT
-                                if (elemAth[i].currentMvt.mvtNames.toUpperCase().includes("SPRINT") || elemAth[i].currentMvt.mvtNames.toUpperCase().includes("FINISH")) {
+                                // if (elemAth[i].currentMvt.mvtNames.toUpperCase().includes("SPRINT") || elemAth[i].currentMvt.mvtNames.toUpperCase().includes("FINISH")) {
+                                if (false) {
                                     showSprint(elemAth[i])
                                 } else {
 
