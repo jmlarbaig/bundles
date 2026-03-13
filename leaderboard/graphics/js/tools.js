@@ -1047,19 +1047,20 @@ function showSprint(elementAth) {
 
 function showRepMax(elementAth) {
     // console.log('REP TARGET : ' + elementAth.currentMvt.repTarget)
-
-    if (elementAth.currentMvt.repTarget != elementAth.currentMvt.scoreAbsMvt && overlay != 'overlay_wpa') {
-        if (elementAth.currentMvt.repTarget != 0) {
-            elementAth.$item.find(".popup").html('ATTEMPTS &#10140; ' + elementAth.currentMvt.repTarget + ' ' + setupFlat.unitSelect);
-            overlay == 'versus' ? elementAth.$item.find(".popup").slideDown(1000) : elementAth.$item.find(".popup").show();
-            elementAth.$item.find(".popup_top").html('ATTEMPTS &#10140; ' + elementAth.currentMvt.repTarget + ' ' + setupFlat.unitSelect);
-            overlay == 'versus' ? elementAth.$item.find(".popup_top").slideDown(1000) : elementAth.$item.find(".popup_top").fadeIn(1000);
+    if (setupFlat.showMvt) {
+        if (elementAth.currentMvt.repTarget != elementAth.currentMvt.scoreAbsMvt && overlay != 'overlay_wpa') {
+            if (elementAth.currentMvt.repTarget != 0) {
+                elementAth.$item.find(".popup").html('ATTEMPTS &#10140; ' + elementAth.currentMvt.repTarget + ' ' + setupFlat.unitSelect);
+                overlay == 'versus' ? elementAth.$item.find(".popup").slideDown(1000) : elementAth.$item.find(".popup").show();
+                elementAth.$item.find(".popup_top").html('ATTEMPTS &#10140; ' + elementAth.currentMvt.repTarget + ' ' + setupFlat.unitSelect);
+                overlay == 'versus' ? elementAth.$item.find(".popup_top").slideDown(1000) : elementAth.$item.find(".popup_top").fadeIn(1000);
+            }
+        } else {
+            elementAth.$item.find(".popup").html('');
+            overlay == 'versus' ? elementAth.$item.find(".popup").slideUp(1000) : elementAth.$item.find(".popup").fadeOut(1000);
+            elementAth.$item.find(".popup_top").html('');
+            overlay == 'versus' ? elementAth.$item.find(".popup_top").slideUp(1000) : elementAth.$item.find(".popup_top").fadeOut(1000);
         }
-    } else {
-        elementAth.$item.find(".popup").html('');
-        overlay == 'versus' ? elementAth.$item.find(".popup").slideUp(1000) : elementAth.$item.find(".popup").fadeOut(1000);
-        elementAth.$item.find(".popup_top").html('');
-        overlay == 'versus' ? elementAth.$item.find(".popup_top").slideUp(1000) : elementAth.$item.find(".popup_top").fadeOut(1000);
     }
     // console.log('SCORE ABS MVT : ' + elementAth.currentMvt.scoreAbsMvt)
     elementAth.$item.find(".score").text(elementAth.currentMvt.scoreAbsMvt + ' ' + setupFlat.unitSelect);
