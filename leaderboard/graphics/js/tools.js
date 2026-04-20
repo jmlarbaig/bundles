@@ -1064,6 +1064,9 @@ function showRepMax(elementAth) {
     } else {
         elementAth.$item.find(".popup").hide();
         elementAth.$item.find(".popup_top").hide();
+    }else {
+        elementAth.$item.find(".popup").hide();
+        elementAth.$item.find(".popup_top").hide();
     }
     // console.log('SCORE ABS MVT : ' + elementAth.currentMvt.scoreAbsMvt)
     switch (setupFlat.scoreConfig) {

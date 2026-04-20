@@ -43,11 +43,11 @@
     font-size: var(--font-size-chrono-tv);
 }
 
-#time {
+.time {
     /* padding: 5px; */
 }
 
-#cap {
+.cap {
     font-size: var(--font-size-cap-tv);
     color: var(--color-cap-tv);
 }
