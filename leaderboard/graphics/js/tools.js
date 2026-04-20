@@ -1061,6 +1061,9 @@ function showRepMax(elementAth) {
             elementAth.$item.find(".popup_top").html('');
             overlay == 'versus' ? elementAth.$item.find(".popup_top").slideUp(1000) : elementAth.$item.find(".popup_top").fadeOut(1000);
         }
+    } else {
+        elementAth.$item.find(".popup").hide();
+        elementAth.$item.find(".popup_top").hide();
     }
     // console.log('SCORE ABS MVT : ' + elementAth.currentMvt.scoreAbsMvt)
     switch (setupFlat.scoreConfig) {
