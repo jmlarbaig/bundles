@@ -1,0 +1,61 @@
+.col-rank-live {
+    width: 52px;
+    text-align: center;
+}
+
+.rank-cell {
+    width: 52px;
+    text-align: center;
+    padding: 0;
+}
+
+.rank-inner {
+    height: 100%;
+    min-height: 56px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1px;
+}
+
+.rank-num {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 20px;
+    font-weight: 800;
+    line-height: 1;
+}
+
+.rank-1-txt {
+    color: #f0c040;
+}
+
+.rank-2-txt {
+    color: #a0b0c0;
+}
+
+.rank-3-txt {
+    color: #c08050;
+}
+
+.rank-n-txt {
+    color: #404060;
+}
+
+.rank-change {
+    font-size: 7px;
+    font-weight: 700;
+    letter-spacing: .04em;
+}
+
+.rank-up {
+    color: #3ecf6a;
+}
+
+.rank-down {
+    color: #f0603a;
+}
+
+.rank-same {
+    color: #404060;
+}

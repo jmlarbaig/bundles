@@ -73,6 +73,7 @@ function handleSetupChange(newValue, oldValue) {
                 authorize = true
             }
         }
+
         switch (authorize) {
             case true:
                 $('.' + params).fadeIn(1000)
@@ -85,7 +86,6 @@ function handleSetupChange(newValue, oldValue) {
 
     if (newValue.nameSelect != '' && s_athletes != undefined) {
 
-        console.log(s_athletes.value)
         refreshDisplayName(s_athletes.value)
     }
 

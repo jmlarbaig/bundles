@@ -1,0 +1,24 @@
+.col-cumulative {
+    width: 76px;
+    text-align: center;
+}
+
+.cumul-cell {
+    text-align: center;
+    padding: 10px 8px;
+}
+
+.cumul-val {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: #e8e8f0;
+}
+
+.cumul-label {
+    font-size: 7px;
+    color: #404060;
+    font-weight: 600;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+}

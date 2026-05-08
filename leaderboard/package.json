@@ -75,87 +75,87 @@
     ],
     "graphics": [
       {
-        "file": "overlay_side.html",
+        "file": "overlay-side-v2/overlay_side.html",
         "width": 1920,
         "height": 1080
       },
       {
-        "file": "overlay_wpa.html",
+        "file": "wza/overlay_wpa.html",
         "width": 1920,
         "height": 1080
       },
       {
-        "file": "overlay_side_v1.html",
+        "file": "overlay-side-v1/overlay_side_v1.html",
         "width": 1920,
         "height": 1080
       },
       {
-        "file": "overlay_top.html",
+        "file": "overlay-top-v1/overlay_top.html",
         "width": 1920,
         "height": 1080
       },
       {
-        "file": "overlay_top_v2.html",
+        "file": "overlay-top-v2/overlay_top_v2.html",
         "width": 1920,
         "height": 1080
       },
       {
-        "file": "progression.html",
+        "file": "bigscreen/progression.html",
         "width": 1920,
         "height": 1080
       },
       {
-        "file": "leaderboard.html",
+        "file": "bigscreen/leaderboard.html",
         "width": 1920,
         "height": 1080
       },
       {
-        "file": "commentator.html",
+        "file": "cis/commentator.html",
         "width": 1920,
         "height": 1080
       },
       {
-        "file": "sk.html",
+        "file": "sk/sk.html",
         "width": 1920,
         "height": 1080
       },
       {
-        "file": "echo.html",
+        "file": "echo/echo.html",
         "width": 1920,
         "height": 1080
       },
       {
-        "file": "lane.html",
+        "file": "lane/lane.html",
         "width": 1920,
         "height": 1080
       },
       {
-        "file": "versus.html",
+        "file": "versus/versus.html",
         "width": 1920,
         "height": 1080
       },
       {
-        "file": "head_judge.html",
+        "file": "sk/head_judge.html",
         "width": 1920,
         "height": 1080
       },
       {
-        "file": "lane_presentation.html",
+        "file": "lane-3d/lane_presentation.html",
         "width": 1920,
         "height": 1080
       },
       {
-        "file": "timer_interval.html",
+        "file": "timer/timer_interval.html",
         "width": 1920,
         "height": 1080
       },
       {
-        "file": "timer.html",
+        "file": "timer/timer.html",
         "width": 1920,
         "height": 1080
       },
       {
-        "file": "versus_hyperfit.html",
+        "file": "hyperfit/versus_hyperfit.html",
         "width": 1920,
         "height": 1080
       }

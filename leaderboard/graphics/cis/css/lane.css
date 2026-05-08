@@ -1,0 +1,17 @@
+.col-lane {
+    width: 42px;
+    text-align: center;
+}
+
+.lane-inner {
+    height: 100%;
+    min-height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 16px;
+    font-weight: 800;
+    color: #4a9eff;
+    background: #0d1525;
+}

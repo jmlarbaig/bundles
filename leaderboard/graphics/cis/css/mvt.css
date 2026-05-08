@@ -1,0 +1,176 @@
+  .col-mvt {
+      min-width: 108px;
+      text-align: center;
+  }
+
+  .col-mvt.active-col-header {
+      color: #4a9eff;
+      background: #0a1020;
+      border-bottom: 2px solid #4a9eff;
+  }
+
+  .col-mvt.done-col {
+      color: #303050;
+  }
+
+  .mvt-cell {
+      text-align: center;
+      padding: 8px 10px;
+      vertical-align: middle;
+  }
+
+  .mvt-done {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1px;
+  }
+
+  .mvt-cycle {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      color: #e8e8f0;
+  }
+
+  .mvt-cumul {
+      font-size: 9px;
+      color: #404060;
+      font-weight: 600;
+  }
+
+  .mvt-empty {
+      color: #252535;
+      font-size: 11px;
+      font-weight: 600;
+      font-family: 'Barlow Condensed', sans-serif;
+  }
+
+  .mvt-cell.fastest {
+      background: #081408 !important;
+      border-left: 2px solid #1d5c30;
+      border-right: 2px solid #1d5c30 !important;
+  }
+
+  .mvt-cell.fastest .mvt-cycle {
+      color: #3ecf6a;
+  }
+
+  .mvt-cell.fastest .mvt-cumul {
+      color: #1d5c30;
+  }
+
+  .fastest-indicator {
+      font-size: 7px;
+      font-weight: 700;
+      color: #1d5c30;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      margin-top: 2px;
+  }
+
+  .fastest-row th {
+      background: #0a100a;
+      border-bottom: 2px solid #1a2e1a;
+      padding: 4px 10px;
+  }
+
+  .fastest-cell {
+      text-align: center;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      color: #3ecf6a;
+      letter-spacing: .04em;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+  }
+
+  .fastest-badge {
+      font-size: 7px;
+      font-weight: 700;
+      letter-spacing: .08em;
+      color: #1d5c30;
+      text-transform: uppercase;
+  }
+
+  .fastest-empty {
+      color: #1a2e1a;
+      font-size: 10px;
+  }
+
+  .fastest-label-cell {
+      font-size: 7px;
+      font-weight: 700;
+      color: #1d5c30;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+  }
+
+  .mvt-cell.active-col {
+      background: #0d1525;
+  }
+
+  .mvt-active {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2px;
+  }
+
+  .mvt-active-val {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      color: #4a9eff;
+  }
+
+  .mvt-active-reps {
+      font-size: 8px;
+      font-weight: 600;
+      color: #2a4060;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+  }
+
+  .mvt-active-dot {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: #4a9eff;
+      animation: pulse-g 1s infinite;
+      margin: 0 auto;
+  }
+
+  .mvt-cell.fin-cell {
+      background: #1a1200;
+      padding: 0;
+  }
+
+  .fin-inner {
+      height: 100%;
+      min-height: 56px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1px;
+      padding: 6px 10px;
+  }
+
+  .fin-badge {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 11px;
+      font-weight: 800;
+      color: #f0a030;
+      letter-spacing: .12em;
+  }
+
+  .fin-time {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      color: #f0c040;
+  }

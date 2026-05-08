@@ -1,0 +1,128 @@
+.cis-wrap {
+    background: #07070f;
+    border-radius: 10px;
+    overflow: hidden;
+    font-family: 'Barlow', sans-serif;
+}
+
+
+.header {
+    background: #0d0d1a;
+    border-bottom: 1px solid #1a1a2e;
+    padding: 10px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+}
+
+.cis-header-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.cis-event-name {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 16px;
+    font-weight: 800;
+    color: #e8e8f0;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+}
+
+.cis-heat-info {
+    font-size: 9px;
+    font-weight: 600;
+    color: #b0b8d0;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    margin-top: 1px;
+}
+
+.cis-live-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #f03a3a;
+    animation: pulse-r 1s infinite;
+}
+
+.time {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 26px;
+    font-weight: 800;
+    color: #e8e8f0;
+    letter-spacing: .04em;
+}
+
+.cis-clock-label {
+    font-size: 8px;
+    font-weight: 600;
+    color: #b0b8d0;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+}
+
+.cis-stat-val {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: #e8e8f0;
+}
+
+.cis-stat-label {
+    font-size: 7px;
+    font-weight: 600;
+    color: #b0b8d0;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+}
+
+.cis-stat-divider {
+    width: 1px;
+    height: 28px;
+    background: #1a1a2e;
+}
+
+.cis-header-right {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.cis-stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1px;
+}
+
+.cis-header-center {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+
+
+.controlHeat {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 20px 10px;
+    background-color: rgb(163, 163, 163);
+}
+
+.controlHeat .col {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.hours {
+    font-size: 24px;
+}

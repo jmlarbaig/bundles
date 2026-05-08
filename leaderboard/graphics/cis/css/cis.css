@@ -1,0 +1,63 @@
+.leaderboards {
+    overflow-x: auto;
+    padding-bottom: 4px;
+}
+
+.cis-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 1020px;
+}
+
+.cis-table tbody tr {
+    border-bottom: 1px solid #111120;
+}
+
+.cis-table tbody td {
+    padding: 0;
+    border-right: 1px solid #111120;
+    vertical-align: stretch;
+}
+
+.cis-table thead tr {
+    background: #0d0d1a;
+    border-bottom: 2px solid #1a1a2e;
+}
+
+.cis-table thead th {
+    padding: 7px 10px;
+    text-align: left;
+    font-size: 8px;
+    font-weight: 700;
+    letter-spacing: .1em;
+    color: #606080;
+    text-transform: uppercase;
+    white-space: nowrap;
+    border-right: 1px solid #111120;
+}
+
+
+
+.s0 {
+    position: sticky;
+    left: 0;
+    z-index: 2;
+}
+
+.s42 {
+    position: sticky;
+    left: 42px;
+    z-index: 2;
+}
+
+.s94 {
+    position: sticky;
+    left: 94px;
+    z-index: 2;
+}
+
+.s214 {
+    position: sticky;
+    left: 214px;
+    z-index: 2;
+}
