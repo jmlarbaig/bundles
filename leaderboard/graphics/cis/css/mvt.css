@@ -10,7 +10,7 @@
   }
 
   .col-mvt.done-col {
-      color: #303050;
+      color: #e8e8f0;
   }
 
   .mvt-cell {
@@ -35,7 +35,7 @@
 
   .mvt-cumul {
       font-size: 9px;
-      color: #404060;
+      color: #e8e8f0;
       font-weight: 600;
   }
 

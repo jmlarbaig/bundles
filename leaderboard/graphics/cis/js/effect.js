@@ -259,7 +259,7 @@ function treatPerfArray(elementAth) {
         for (const [round, time] of Object.entries(rounds)) {
             let text = `<div class="mvt-cycle">${round.replaceAll('-', '')} : ${time.split(' ')[0].replaceAll('(', '').replaceAll(')', '')}</div><div class="mvt-cumul">${time.split(' ')[1] !== undefined ? time.split(' ')[1] : ''}</div></div>`;
             if (heat.typeWod == 'time') {
-                text = text.toLowerCase().replaceAll('rd 1:', '');
+                text = text.toLowerCase().replaceAll('rd 1 :', '');
             }
             html += text;
         }
