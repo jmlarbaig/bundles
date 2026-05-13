@@ -257,7 +257,18 @@ function treatPerfArray(elementAth) {
         let html = '';
 
         for (const [round, time] of Object.entries(rounds)) {
-            let text = `<div class="mvt-cycle">${round.replaceAll('-', '')} : ${time.split(' ')[0].replaceAll('(', '').replaceAll(')', '')}</div><div class="mvt-cumul">${time.split(' ')[1] !== undefined ? time.split(' ')[1] : ''}</div></div>`;
+
+            let timeAbsolute = '';
+            let timeRelative = '';
+
+            if (time.split(' ')[1] !== undefined) {
+                timeAbsolute = time.split(' ')[1].replaceAll('(', '').replaceAll(')', '');
+                timeRelative = time.split(' ')[0];
+            } else {
+                timeAbsolute = time.split(' ')[0].replaceAll('(', '').replaceAll(')', '');
+                timeRelative = '';
+            }
+            let text = `<div class="mvt-cycle">${round.replaceAll('-', '')} : ${timeAbsolute}</div><div class="mvt-cumul">${timeRelative}</div></div>`;
             if (heat.typeWod == 'time') {
                 text = text.toLowerCase().replaceAll('rd 1 :', '');
             }
@@ -296,7 +307,7 @@ function treatPerfArray(elementAth) {
                 $("#mvt_id_" + key + "_" + lane).addClass('fastest');
                 // Mettre à jour le header HTML tableau pour ce mouvement
                 let displayBest = formatTime(best[key]);
-                $('body').find("#header_fastest_" + key).html('<div class="fastest-cell">' + displayBest + ' <span class="fastest-badge">L' + lane + '</span></div>');
+                $('body').find("#header_fastest_" + key).html('<div class="fastest-cell">' + displayBest + '</div>');
             }
         }
     }

@@ -27,7 +27,7 @@
 .cis-table thead th {
     padding: 7px 10px;
     text-align: left;
-    font-size: 8px;
+    font-size: 10px;
     font-weight: 700;
     letter-spacing: .1em;
     color: #e8e8f0;
@@ -35,7 +35,6 @@
     white-space: nowrap;
     border-right: 1px solid #111120;
 }
-
 
 
 .s0 {

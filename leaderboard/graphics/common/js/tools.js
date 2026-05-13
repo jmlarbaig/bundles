@@ -139,7 +139,7 @@ function treatDisplayName(displayName) {
 
     }
     else {
-        newName = '<div class="name"><span class="lastName"> ' + displayName.toLowerCase().replace("crossfit", "") + '</span></div>';
+        newName = '<div class="name"><span class="lastName"> ' + displayName.toLowerCase() + '</span></div>';
     }
     return newName;
 }

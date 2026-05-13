@@ -50,7 +50,7 @@ function updateTime() {
             $(".chrono").find('.cap').hide();
         }
 
-        $('body').find('#cis-clock-label').text('ELAPSED');
+        $('body').find('#cis-clock-label').text(heat.timecap);
 
         if (audioReady && timeDiffStart < 1000 && timeDiffStart > 0) {
             console.log('sound launch')
@@ -84,7 +84,7 @@ function updateTime() {
         if (sec < 10) {
             secS = '0' + sec;
         }
-        if (overlay == 'timer' || overlay == 'sk') {
+        if (overlay == 'timer' || overlay == 'sk' || overlay == 'commentator') {
             chrono = '' + minS + ':' + secS;
         }
         else {

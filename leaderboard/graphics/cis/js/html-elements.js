@@ -64,7 +64,7 @@ function createStatsHeader(iDiv) {
         workouts[iDiv].mvt_id.forEach((id, index) => {
             if (index == 0) {
                 let $item_header = $(
-                    '<th class="col-mvt stats_name" id="header_stats_' + index + '">MVT ' + (index + 1) + '<br><span style="font-size:7px;font-weight:400;ccolor: #e8e8f0;">' + (workouts[iDiv].mvt_reps[index] != 0 ? workouts[iDiv].mvt_reps[index] : '') + ' ' + workouts[iDiv].mvt_names[index] + '</span></th>'
+                    '<th class="col-mvt stats_name" id="header_stats_' + index + '">MVT ' + (index + 1) + '<br><span style="font-size:8px;font-weight:400;ccolor: #e8e8f0;">' + (workouts[iDiv].mvt_reps[index] != 0 ? workouts[iDiv].mvt_reps[index] : '') + ' ' + workouts[iDiv].mvt_names[index] + '</span></th>'
                 )
                 $stat_header.find('.col-cumulative').after($item_header)
 
@@ -76,7 +76,7 @@ function createStatsHeader(iDiv) {
 
             } else {
                 let $item_header = $(
-                    '<th class="col-mvt stats_name" id="header_stats_' + index + '">MVT ' + (index + 1) + '<br><span style="font-size:7px;font-weight:400;ccolor: #e8e8f0; ">' + (workouts[iDiv].mvt_reps[index] != 0 ? workouts[iDiv].mvt_reps[index] : '') + ' ' + workouts[iDiv].mvt_names[index] + '</span></th>'
+                    '<th class="col-mvt stats_name" id="header_stats_' + index + '">MVT ' + (index + 1) + '<br><span style="font-size:8px;font-weight:400;ccolor: #e8e8f0; ">' + (workouts[iDiv].mvt_reps[index] != 0 ? workouts[iDiv].mvt_reps[index] : '') + ' ' + workouts[iDiv].mvt_names[index] + '</span></th>'
                 )
                 $stat_header.find('#header_stats_' + (index - 1)).after($item_header)
 

@@ -390,12 +390,8 @@ function registerDependentHandlers() {
     statusHeat.on('change', (newValue, oldValue) => {
         if (JSON.stringify(newValue) !== JSON.stringify(oldValue)) {
             // resetLeaderboard(s_athletes.value);
-            if (newValue.status == '0') {
-                bestPerf = [];
-                resetLeaderboard(s_athletes.value);
-            }
+
             var timer2 = setInterval(() => {
-                console.log('statusHeat change', newValue)
                 if (tc != undefined && tc.length > 0) {
                     clearInterval(timer2)
                     timer2 = null;
