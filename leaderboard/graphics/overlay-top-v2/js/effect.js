@@ -129,8 +129,15 @@ function refreshRepPerSec(elementAth) {
 }
 
 function refreshCurrentMvtInStandby(elementAth) {
+    hideCurrentMvt(elementAth)
     return;
 }
+
+function hideCurrentMvt(elementAth) {
+    elementAth.$item.find(".popup").text('');
+    elementAth.$item.find(".popup").hide();
+}
+
 
 
 function refreshCurrentMvtInProgress(elementAth) {

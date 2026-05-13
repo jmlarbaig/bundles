@@ -47,7 +47,6 @@ function statusWW(ath, athBefore, alreadyPassed, index) {
         default:
             // Case for amrap and for time
             refreshCurrentMvtInProgress(ath)
-            refreshCurrentMvtInStandby(ath)
             break;
     }
 
