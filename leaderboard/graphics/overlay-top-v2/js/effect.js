@@ -108,15 +108,16 @@ function treatBigScreenMvt(elementAth) {
 function treatTextMvt(mvts) {
     mvts = mvts.replace(/\(.*?\)/g, '');
     if (heat.typeWod != 'repmax') {
+        console.log("Workout in Standby")
         if (mvts != "") {
-            $('.box_mvt').slideDown(1000)
-            $('.box_mvt').find('.mvt').html(mvts)
+            $('.heat_content').slideDown(1000)
+            $('.heat_content').find('.mvt').html(mvts)
         } else {
             $('.box_mvt').hide()
         }
     } else {
-        $('.mvt').html(mvts)
-        $('.mvt').html(mvts)
+        $('.heat_content').find('.mvt').html(mvts)
+        $('.heat_content').find('.mvt').html(mvts)
     }
 }
 
@@ -152,6 +153,7 @@ function refreshCurrentMvtFinish(elementAth) {
         case "F":
             score = treatTimeResult(elementAth.result)
             elementAth.$item.find(".popup").text(score)
+            elementAth.$item.find(".popup").show();
             break;
         case "T":
         default:

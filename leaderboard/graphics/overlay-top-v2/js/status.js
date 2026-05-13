@@ -33,6 +33,7 @@ function statusWW(ath, athBefore, alreadyPassed, index) {
     refreshUpDown(ath)
 
     if (ath.result == "" && !alreadyPassed) {
+        console.log("Athlete in movement but no result yet, we take the current movement")
         treatTextMvt(ath.currentMvt.arrayMvt.toString().replaceAll(',', '-').replaceAll('_', ' ').replace('-', ''));
         if (ath.CurrentRank == 1) {
             alreadyPassed = true;
@@ -46,6 +47,7 @@ function statusWW(ath, athBefore, alreadyPassed, index) {
         default:
             // Case for amrap and for time
             refreshCurrentMvtInProgress(ath)
+            refreshCurrentMvtInStandby(ath)
             break;
     }
 

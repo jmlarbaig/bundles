@@ -325,6 +325,18 @@ function reposition(leaderboard, athletes) {
 function repoLeft(lead_, aths_) {
     let y = 0;
     let margin = 0
+    let padding = 0;
+    let widthOfLeaderboard = 0;
+    let widthOfAthlete = 0;
+    let numberOfAthlete = 1;
+    widthOfLeaderboard = parseInt($('.leaderboard').width());
+    if (setupFlat != undefined && setupFlat != {}) {
+        let numberOfAthlete = setupFlat.numberAthletes;
+        widthOfAthlete = widthOfLeaderboard / numberOfAthlete;
+        margin = parseInt($('.athlete').css('margin').replace('px', ''))
+        $('.athlete').width(widthOfAthlete - (2 * margin));
+        // $('.athlete').find('.name').css('min-width', 100 + 'px');
+    }
     Object.values(aths_).forEach((elm, index) => {
         if (elm.$item.css('margin') != '') {
             margin = parseInt(elm.$item.css('margin').replace('px', ''))
@@ -339,9 +351,9 @@ function repoLeft(lead_, aths_) {
                 y += elm.$item.width() + (2 * margin);
             }
         }
-        if (setupFlat != undefined && setupFlat != {} && ((setupFlat.numberAthletes - 1) == index || (aths_.length - 1) < index) || (aths_.length - 1 < setupFlat.numberAthletes)) {
-            $('.leaderboard').width(y)
-        }
+        // if (setupFlat != undefined && setupFlat != {} && ((setupFlat.numberAthletes - 1) == index || (aths_.length - 1) < index) || (aths_.length - 1 < setupFlat.numberAthletes)) {
+        //     $('.leaderboard').width(y)
+        // }
     })
 }
 
