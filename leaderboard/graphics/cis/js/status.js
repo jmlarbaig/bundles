@@ -1,9 +1,19 @@
 function statusO(ath) {
     refreshCurrentMvtInStandby(ath)
+    resetPerfArray(ath)
+    resetHeaderPerfArray()
+    resetPace(ath)
+    refreshRank(ath)
+    refreshCummulative(ath)
 }
 
 function statusR(ath) {
     refreshCurrentMvtInStandby(ath)
+    resetPerfArray(ath)
+    resetHeaderPerfArray()
+    resetPace(ath)
+    refreshRank(ath)
+    refreshCummulative(ath)
 }
 
 function statusW0(ath) {
@@ -51,18 +61,21 @@ function statusWW(ath, athBefore, alreadyPassed, index) {
 
 function statusWF(ath) {
 
+    refreshRepPerSec(ath)
     refreshRank(ath);
     refreshCummulative(ath);
     refreshCurrentMvtFinish(ath)
 }
 
 function statusWT(ath) {
+    refreshRepPerSec(ath)
     refreshRank(ath);
     refreshCummulative(ath);
     refreshCurrentMvtFinish(ath)
 }
 
 function statusT(ath) {
+    refreshRepPerSec(ath)
     refreshRank(ath);
     refreshCummulative(ath);
     refreshCurrentMvtFinish(ath)

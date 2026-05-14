@@ -246,7 +246,23 @@ function refreshRepMax(elementAth) {
     elementAth.$item.find('.progress-bar-fill').hide();
 }
 
+function resetHeaderPerfArray() {
+    bestPerf = [];
+    best = [];
+    $('.fastest-cell').empty();
+    $('.col-mvt').removeClass('active-col-header');
+}
 
+function resetPerfArray(elementAth) {
+    bestPerf[elementAth.lane] = [];
+    elementAth.$item.find(".mvt_id").empty();
+    elementAth.$item.find(".mvt_id").removeClass('active-col');
+    elementAth.$item.find(".mvt_id").removeClass("fastest");
+}
+
+function resetPace(elementAth) {
+    elementAth.$item.find(".pace-val").text("");
+}
 
 function treatPerfArray(elementAth) {
     if (bestPerf[elementAth.lane] == undefined) {
