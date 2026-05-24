@@ -116,19 +116,29 @@ body {
 
 .leaderboard .athlete .name {
     height: var(--height-lane);
+
     display: flex;
     align-items: baseline;
-    text-align: center;
-    /* position: relative;
-    bottom: -2px; */
     justify-content: center;
+
+    text-align: center;
     text-transform: uppercase;
     font-weight: 900;
+    letter-spacing: var(--letter-spacing-first-name);
+
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    /* min-width: var(--width-name); */
-    letter-spacing: var(--letter-spacing-first-name);
+
+    min-width: 0;
+    /* IMPORTANT en flex */
+}
+
+.name span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    min-width: 0;
 }
 
 .leaderboard .athlete .firstName {
