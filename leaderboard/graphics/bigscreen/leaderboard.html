@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
+
     <!-- JQUERY -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 
@@ -25,28 +26,39 @@
     <script src="https://cdn.jsdelivr.net/npm/humanparser@2.7.0/index.min.js"></script>
 
 
+    <script src="./js/library/qrcode_JS/qrcode.min.js" type="text/javascript"></script>
+
     <title>Leaderboard</title>
+    <link rel="icon" type="image/x-icon" href="../assets/images/favicon.png">
 
-    <link rel="stylesheet" href="css/index.css">
-    <link rel="stylesheet" href="css/colors.css">
-    <link rel="stylesheet" href="css/video.css">
 
-    <link rel="stylesheet" href="css/header/header-tv.css">
-    <link rel="stylesheet" href="css/leaderboard/leaderboard.css">
 
-    <script src="./assets/flag.js" type="text/javascript"></script>
+    <!-- local CSS -->
+    <link rel="stylesheet" href="../common/css/index.css">
+    <link rel="stylesheet" href="css/leaderboard.css">
+    <link rel="stylesheet" href="css/cumulative.css">
+    <link rel="stylesheet" href="css/lane.css">
+    <link rel="stylesheet" href="css/name.css">
+    <link rel="stylesheet" href="css/pace.css">
+    <link rel="stylesheet" href="css/rank.css">
+    <link rel="stylesheet" href="css/header.css">
 
-    <script src="./js/tools.js" type="text/javascript"></script>
-    <script src="./js/style_leaderboard.js" type="text/javascript"></script>
-    <script src="./js/heat.js" type="text/javascript"></script>
-    <script src="./js/time.js" type="text/javascript"></script>
-    <script src="./js/static.js" type="text/javascript"></script>
-    <script src="./js/dynamic.js" type="text/javascript"></script>
+    <!-- local Assets -->
+    <script src="../assets/flag.js" type="text/javascript"></script>
 
+    <!-- local Javascript -->
+    <script src="js/html-elements.js" type="text/javascript"></script>
+    <script src="js/status.js" type="text/javascript"></script>
+    <script src="js/effect.js" type="text/javascript"></script>
+
+    <script src="../common/js/dynamic.js" type="text/javascript"></script>
+    <script src="../common/js/static.js" type="text/javascript"></script>
+    <script src="../common/js/tools.js" type="text/javascript"></script>
+    <script src="../common/js/heat.js" type="text/javascript"></script>
+    <script src="../common/js/time.js" type="text/javascript"></script>
 </head>
 
 <body class="nobody">
-
     <div class="flex-container">
         <div class="flex-item video-content">
             <video id="video" autoplay muted>
@@ -74,10 +86,13 @@
 
     <div class="leaderboards" id="leaderboards"></div>
 
+    <div class="lowerthird" id="lowerthird"></div>
 
     <div class="sponsorLogo" id="sponsorLogo"></div>
 
-    <script src="./index.js" type="text/javascript"></script>
+
+    <script src="../index.js" type="text/javascript"></script>
+
 
 </body>
 

@@ -229,9 +229,10 @@ function updateDynamics(newScoring, status) {
                                 // changeFunction(overlay, elemAth[i])
                                 // hideColMvt(elemAth[i]);
 
+                                handleFirstAthleteWithoutResult(elemAth)
 
-                                let athleteBefore = i != 0 ? elemAth[i - 1] : null
-                                alreadyPassed = statusWW(elemAth[i], athleteBefore, alreadyPassed)
+                                // let athleteBefore = i != 0 ? elemAth[i - 1] : null
+                                // alreadyPassed = statusWW(elemAth[i], athleteBefore, alreadyPassed)
 
                                 break;
                             case 'F':

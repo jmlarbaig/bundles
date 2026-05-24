@@ -1,225 +1,60 @@
-body {
-    background-color: var(--background-color-body);
-    /* font-family: var(--font-select); */
-    background-size: cover;
-    zoom: var(--zoom);
-}
-
-.nobody {
-    background-color: var(--background-color-body);
-}
-
-.leaderboards {
-    position: relative;
-    width: 100%;
-    background-color: var(--background-color-leaderboards);
-    font-size: var(--font-size-leaderboards);
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    -moz-transition-duration: 0.7s;
-    -webkit-transition-duration: 0.7s;
-    -ms-transition-duration: 0.7s;
-    top: var(--top-leaderboards);
-    height: 100%;
-    padding: var(--padding-leaderboards);
-}
-
 .leaderboard {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    opacity: var(--opacity-leaderboard);
-    width: 100%;
-    -moz-transition-duration: 0.7s;
-    -webkit-transition-duration: 0.7s;
-    -ms-transition-duration: 0.7s;
-    margin: var(--margin-leaderboard);
-}
-
-.leaderboard .header {
-    padding: var(--padding-header);
-    font-weight: var(--font-weight-header);
-    font-size: var(--font-size-header);
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    background-color: var(--second_color);
-    color: var(--tx_second_color);
-    border-bottom: var(--border-bottom-width-header) var(--border-bottom-color-header) solid;
-    -moz-transition-duration: 0.7s;
-    -webkit-transition-duration: 0.7s;
-    -ms-transition-duration: 0.7s;
-}
-
-
-.leaderboard .division {
-    font-size: var(--font-size-division);
-    width: var(--width-division);
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
-
-.leaderboard .mvt {
-    width: var(--width-mvt);
-    text-transform: capitalize;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
-.leaderboard .mvt span:nth-child(1) {
-    -moz-transition-duration: 0.7s;
-    -webkit-transition-duration: 0.7s;
-    -ms-transition-duration: 0.7s;
-    border: solid var(--border-width-mvt-first) var(--border-color-mvt-first);
-    padding: var(--padding-mvt-first);
-}
-
-.leaderboard .repTar {
-    text-align: right;
-    margin: auto;
-    width: var(--width-repTar);
-    background-color: var(--second_color);
-}
-
-.leaderboard .athletes {
-    color: var(--tx_second_color);
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    font-weight: var(--font-weight-athletes);
-    font-size: var(--font-size-athletes);
-    -moz-transition-duration: 0.7s;
-    -webkit-transition-duration: 0.7s;
-    -ms-transition-duration: 0.7s;
-}
-
-.leaderboard .athlete {
-    -moz-transition-duration: 0.7s;
-    -webkit-transition-duration: 0.7s;
-    -ms-transition-duration: 0.7s;
     position: absolute;
+    left: 10px;
+    top: 10px;
+    width: 1920px;
+    height: 1080px;
+}
+
+.headerCells {
+    position: absolute;
+    left: 36px;
+    top: 0px;
+    right: 36px;
+    height: 100px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    color: aliceblue
+}
+
+.titleCell {
+    font-family: "Rajdhani; sans-serif";
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 1px;
+    letter-spacing: 0.4px;
+    color: #e8e8f0;
+    text-align: center;
+    flex: 0px 0px auto;
+}
+
+.athletes {
+    position: absolute;
+    left: 0px;
+    top: 20px;
+    right: 0px;
     display: flex;
     flex-direction: column;
+    gap: 4px;
+}
+
+.athlete {
+    display: flex;
+    flex-direction: row;
+    gap: 4px;
+    position: relative;
     width: 100%;
-}
-
-.leaderboard .athletes .ath {
-    font-size: var(--font-size-ath);
-    align-items: center;
-    margin: var(--margin-ath);
+    height: 60px;
+    border-radius: 20px;
+    background: #111120;
+    background-color: #111120;
+    overflow: hidden;
     display: flex;
     flex-direction: row;
-    /* padding: 10px 0px; */
-    background-color: var(--main_color);
-    color: var(--tx_main_color);
-    box-shadow: var(--box-shadow-ath);
-
-}
-
-.leaderboard .athlete .rank {
-    padding: var(--padding-rank);
-    text-align: center;
-    width: var(--width-rank);
-    border-right: var(--border-right-width-rank) solid var(--border-right-color-rank);
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
-.leaderboard .athlete .lane {
-    /* haut left right bas */
-    padding: var(--padding-lane);
-    text-align: center;
-    width: var(--width-lane);
-    filter: blur(0px);
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
-.leaderboard .athlete .name {
-    /* haut rigth bas left */
-    padding: var(--padding-name);
-    text-transform: uppercase;
-    font-weight: var(--font-weight-name);
-    width: var(--width-name);
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
-.leaderboard .athlete .affiliate {
-    /* haut rigth bas left */
-    padding: var(--padding-affiliate);
-    text-transform: uppercase;
-    font-weight: var(--font-weight-affiliate);
-    width: var(--width-affiliate);
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
-.leaderboard .athlete .score {
-    /* haut left right bas */
-    padding: var(--padding-score);
-    width: var(--width-score);
-    text-align: center;
-    border-radius: --(border);
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
-.leaderboard .athlete .popup {
-    /* haut left right bas */
-    text-transform: uppercase;
-    padding: var(--padding-popup);
-    width: var(--width-popup);
-    text-align: center;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
-.leaderboard .athlete .flag {
-    /* haut left right bas */
-    padding: var(--padding-flag);
-    width: var(--width-flag);
     align-items: center;
-}
-
-.leaderboard .athlete .flag .box_flag {
-    border-radius: var(--border-radius-box-flag);
-    height: var(--height-box-flag);
-    width: var(--width-box-flag);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: contain;
-}
-
-.rounds {
-    width: var(--width-rounds);
-    max-width: var(--max-width-rounds);
-    text-align: center;
-    background-color: var(--background-color-rounds);
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
-.leaderboard .athletes .powered {
-    /* haut left right bas */
-    padding: var(--padding-powered);
-    text-align: center;
-    align-items: center;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    background-color: var(--second_color);
-    color: var(--tx_second_color);
-    font-size: var(--font-size-powered);
-    width: var(--width-powered);
+    gap: 20px;
+    padding-left: 20px;
+    padding-right: 40px
 }

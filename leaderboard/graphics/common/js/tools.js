@@ -122,24 +122,24 @@ function treatDisplayName(displayName) {
         let splitName = splitFullName(displayName);
         switch (setupFlat.nameSelect) {
             case 'first':
-                newName = '<div class="name"><span class="firstName">' + splitName.title + ' </span><span class="lastName"> ' + splitName.firstName + '</span></div>';
+                newName = '<div class="name laneCell"><span class="firstName">' + splitName.title + ' </span><span class="lastName"> ' + splitName.firstName + '</span></div>';
                 break;
             case 'last':
-                newName = '<div class="name"><span class="firstName">' + splitName.title + ' </span><span class="lastName"> ' + splitName.lastName + '</span></div>';
+                newName = '<div class="name laneCell"><span class="firstName">' + splitName.title + ' </span><span class="lastName"> ' + splitName.lastName + '</span></div>';
                 break;
             case 'f.Last':
                 pointFirstName = splitName.firstName.substring(0, 1) + ". "
                 // console.log(splitName.title)
-                newName = '<div class="name"><span class="firstName">' + splitName.title + ' </span><span class="firstName">' + pointFirstName + ' </span><span class="lastName"> ' + splitName.lastName + '</span></div>';
+                newName = '<div class="name laneCell"><span class="firstName">' + splitName.title + ' </span><span class="firstName">' + pointFirstName + ' </span><span class="lastName"> ' + splitName.lastName + '</span></div>';
                 break;
             case 'full':
-                newName = '<div class="name"><span class="firstName">' + splitName.title + ' </span><span class="firstName">' + splitName.firstName + ' </span><span class="lastName"> ' + splitName.lastName + '</span></div>';
+                newName = '<div class="name laneCell"><span class="firstName">' + splitName.title + ' </span><span class="firstName">' + splitName.firstName + ' </span><span class="lastName"> ' + splitName.lastName + '</span></div>';
                 break;
         }
 
     }
     else {
-        newName = '<div class="name"><span class="lastName"> ' + displayName.toLowerCase() + '</span></div>';
+        newName = '<div class="name laneCell"><span class="lastName"> ' + displayName.toLowerCase() + '</span></div>';
     }
     return newName;
 }

@@ -1,0 +1,7 @@
+.titleLane {
+    width: 80px;
+}
+
+.laneCell {
+    flex: 1 1 auto;
+}

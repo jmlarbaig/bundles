@@ -25,6 +25,25 @@ function statusWS(ath) {
     refreshCurrentMvtInStandby(ath)
 }
 
+function handleFirstAthleteWithoutResult(elemAth) {
+    const athlete = elemAth
+        .filter(a => a.result === "")
+        .sort((a, b) => a.CurrentRank - b.CurrentRank)[0];
+
+    if (!athlete) {
+        treatTextMvt("");
+    } else {
+        treatTextMvt(
+            athlete.currentMvt.arrayMvt
+                .toString()
+                .replaceAll(',', '-')
+                .replaceAll('_', ' ')
+                .replace('-', '')
+        );
+    }
+
+}
+
 function statusWW(ath, athBefore, alreadyPassed, index) {
 
     console.log("Athlete in Mvt / Workout in Standby")
@@ -32,13 +51,10 @@ function statusWW(ath, athBefore, alreadyPassed, index) {
     refreshRank(ath)
     refreshUpDown(ath)
 
-    if (ath.result == "" && !alreadyPassed) {
-        console.log("Athlete in movement but no result yet, we take the current movement")
-        treatTextMvt(ath.currentMvt.arrayMvt.toString().replaceAll(',', '-').replaceAll('_', ' ').replace('-', ''));
-        if (ath.CurrentRank == 1) {
-            alreadyPassed = true;
-        }
-    }
+    // if (ath.result == "" && !alreadyPassed) {
+    //     treatTextMvt(ath.currentMvt.arrayMvt.toString().replaceAll(',', '-').replaceAll('_', ' ').replace('-', ''));
+    //     alreadyPassed = true;
+    // }
 
     switch (heat.typeWod) {
         case 'repmax':
@@ -52,11 +68,13 @@ function statusWW(ath, athBefore, alreadyPassed, index) {
 
     refreshCummulative(ath)
 
-    return alreadyPassed;
+    // return alreadyPassed;
 }
 
 function statusWF(ath) {
     console.log("Athlete Finish / Workout in progress")
+    // Fait pour faire disparaitre les athletes après le premier pour diffuser les suivants
+    hiddenAthlete(ath)
     refreshRank(ath);
     refreshCummulative(ath);
     refreshCurrentMvtFinish(ath)

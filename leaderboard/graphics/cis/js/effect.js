@@ -108,7 +108,7 @@ function refreshCummulative(elementAth, state) {
             score = elementAth.result
             break;
         case "W":
-            state = "RUNNING"
+            state = ""
             break;
         default:
             state = ""

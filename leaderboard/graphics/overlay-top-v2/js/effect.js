@@ -382,3 +382,13 @@ function treatDisplayMvtFirst(elementAth) {
 
 
 }
+
+
+
+function hiddenAthlete(elementAth) {
+    if (elementAth.CurrentRank > 1 && elementAth.$item.is(':visible')) {
+        setTimeout(() => {
+            elementAth.$item.fadeOut(1000);
+        }, 5000)
+    }
+}

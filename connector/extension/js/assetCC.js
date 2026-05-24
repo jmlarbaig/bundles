@@ -33,7 +33,7 @@ module.exports = (nodecg) => {
     const crossfitAthlete = nodecg.Replicant('crossfitAthlete')
 
     crossfitAthlete.on('change', (newValue, oldValue) => {
-        if (newValue.length > 0) {
+        if (newValue != null && newValue.length > 0) {
             if (JSON.stringify(newValue) != JSON.stringify(oldValue)) {
                 let ath = [];
                 let liste_cc = { 'Team': [], 'Individual': [] }
