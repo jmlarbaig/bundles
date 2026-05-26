@@ -9,7 +9,7 @@ function statusR(ath) {
 }
 
 function statusW0(ath) {
-    console.log("Athlete not logged in / Workout in progress")
+    // console.log("Athlete not logged in / Workout in progress")
     // switch (heat.typeWod) {
     //     case 'repmax':
     //         refreshRepMax(ath)
@@ -44,7 +44,7 @@ function handleFirstAthleteWithoutResult(elemAth) {
 
 }
 
-function statusWW(ath, athBefore, alreadyPassed, index) {
+function statusWW(ath) {
 
     console.log("Athlete in Mvt / Workout in Standby")
 

@@ -232,7 +232,7 @@ function updateDynamics(newScoring, status) {
                                 handleFirstAthleteWithoutResult(elemAth)
 
                                 // let athleteBefore = i != 0 ? elemAth[i - 1] : null
-                                // alreadyPassed = statusWW(elemAth[i], athleteBefore, alreadyPassed)
+                                statusWW(elemAth[i])
 
                                 break;
                             case 'F':
