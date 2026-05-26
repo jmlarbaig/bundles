@@ -25,24 +25,7 @@ function statusWS(ath) {
     refreshCurrentMvtInStandby(ath)
 }
 
-function handleFirstAthleteWithoutResult(elemAth) {
-    const athlete = elemAth
-        .filter(a => a.result === "")
-        .sort((a, b) => a.CurrentRank - b.CurrentRank)[0];
 
-    if (!athlete) {
-        treatTextMvt("");
-    } else {
-        treatTextMvt(
-            athlete.currentMvt.arrayMvt
-                .toString()
-                .replaceAll(',', '-')
-                .replaceAll('_', ' ')
-                .replace('-', '')
-        );
-    }
-
-}
 
 function statusWW(ath) {
 
@@ -51,10 +34,6 @@ function statusWW(ath) {
     refreshRank(ath)
     refreshUpDown(ath)
 
-    // if (ath.result == "" && !alreadyPassed) {
-    //     treatTextMvt(ath.currentMvt.arrayMvt.toString().replaceAll(',', '-').replaceAll('_', ' ').replace('-', ''));
-    //     alreadyPassed = true;
-    // }
 
     switch (heat.typeWod) {
         case 'repmax':
@@ -68,7 +47,6 @@ function statusWW(ath) {
 
     refreshCummulative(ath)
 
-    // return alreadyPassed;
 }
 
 function statusWF(ath) {

@@ -31,17 +31,11 @@ function statusWS(ath) {
     refreshCurrentMvtInStandby(ath)
 }
 
-function statusWW(ath, athBefore, alreadyPassed, index) {
+function statusWW(ath) {
 
     refreshRank(ath)
     refreshUpDown(ath)
 
-    if (ath.result == "" && !alreadyPassed) {
-        treatTextMvt(ath.currentMvt.arrayMvt.toString().replaceAll(',', '-').replaceAll('_', ' ').replace('-', ''));
-        if (ath.CurrentRank == 1) {
-            alreadyPassed = true;
-        }
-    }
 
     switch (heat.typeWod) {
         case 'repmax':
@@ -56,7 +50,6 @@ function statusWW(ath, athBefore, alreadyPassed, index) {
 
     refreshCummulative(ath)
 
-    return alreadyPassed;
 }
 
 function statusWF(ath) {

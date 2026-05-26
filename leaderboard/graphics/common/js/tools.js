@@ -385,6 +385,25 @@ function withJudge(ath) {
     ath.$item.css('opacity', '1');
 }
 
+function handleFirstAthleteWithoutResult(elemAth) {
+    const athlete = elemAth
+        .filter(a => a.result === "")
+        .sort((a, b) => a.CurrentRank - b.CurrentRank)[0];
+
+    if (!athlete) {
+        treatTextMvt("");
+    } else {
+        treatTextMvt(
+            athlete.currentMvt.arrayMvt
+                .toString()
+                .replaceAll(',', '-')
+                .replaceAll('_', ' ')
+                .replace('-', '')
+        );
+    }
+
+}
+
 function repoWpa(lead_, aths_) {
     //initialisation la position de départ
     let y = parseInt($(lead_ + " .header").css('height').replace('px', ''));
