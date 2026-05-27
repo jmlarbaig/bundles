@@ -23,6 +23,11 @@ function refreshRank(elementAth) {
 
 }
 
+
+function handleFirstAthleteWithoutResult(elemAth) {
+    return;
+}
+
 function refreshUpDown(elementAth) {
     if (elementAth.CurrentRank != elementAth.OldRank && elementAth.score_abs != 0) {
         if (elementAth.CurrentRank < elementAth.OldRank) {

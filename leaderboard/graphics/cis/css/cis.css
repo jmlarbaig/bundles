@@ -41,22 +41,26 @@
     position: sticky;
     left: 0;
     z-index: 2;
+    background: #0d0d1a;
 }
 
 .s42 {
     position: sticky;
     left: 42px;
     z-index: 2;
+    background: #0d0d1a;
 }
 
 .s94 {
     position: sticky;
-    left: 94px;
+    left: 161px;
     z-index: 2;
+    background: #0d0d1a;
 }
 
 .s214 {
     position: sticky;
     left: 214px;
     z-index: 2;
+    background: #0d0d1a;
 }
