@@ -162,8 +162,7 @@ body {
     overflow: hidden;
     text-overflow: ellipsis;
     font-weight: bold;
-    color: transparent;
-    -webkit-text-stroke: 1px var(--color-rank);
+    color: var(--color-rank);
     font-size: var(--size-font-rank);
 }
 

@@ -5,6 +5,7 @@ module.exports = (nodecg, Connected) => {
     let athletesDataCC = null;
     let static = {};
     let idEvent = 0;
+    let previousStatus = null;
 
     // const listeAthlete = nodecg.Replicant('listeAthlete', { defaultValue: {'Team':[], 'Individual':[]}, persistent: false })
     const listCis = nodecg.Replicant('CIS', { defaultValue: {}, persistent: true })
@@ -36,6 +37,10 @@ module.exports = (nodecg, Connected) => {
     const TopScore = nodecg.Replicant('TopScore')
     const WorkoutInfos = nodecg.Replicant('WorkoutInfos');
     const token = nodecg.Replicant('TOKEN', { defaultValue: null, persistent: false });
+
+    // Replicants pour les données dynamiques
+    const d_athletes = nodecg.Replicant('d_athletes');
+    const statusHeat = nodecg.Replicant('status');
 
     function connectionCC(user, passwd, event) {
         console.log("Connecting to CC with user:", user, "passwd : ", passwd, " and event:", event);
@@ -106,6 +111,62 @@ module.exports = (nodecg, Connected) => {
         }
     })
 
+    // Automatisation basée sur le changement de statut (W -> T)
+    statusHeat.on('change', (newValue, oldValue) => {
+        if (!newValue || !token.value) return
+
+        const currentStatus = newValue.status
+        
+        // Détection du passage de W (Waiting) à T (Terminé)
+        if (previousStatus === 'W' && currentStatus === 'T') {
+            console.log('Heat terminé (W -> T), mise à jour automatique des résultats...')
+            
+            if (static.workoutId && static.heatId) {
+                // Automatisation: Heat Results avec tri par rank basé sur d_athletes
+                cc.loadHeatResults(idEvent, static.workoutId, static.heatId, 0, 10).then((results) => {
+                    // Tri par rank depuis d_athletes
+                    if (results && results.participants && Array.isArray(results.participants)) {
+                        results.participants.sort((a, b) => {
+                            const rankA = parseInt(a.rank) || 999999
+                            const rankB = parseInt(b.rank) || 999999
+                            return rankA - rankB
+                        })
+                    }
+                    HeatResults.value = results
+                    console.log('Heat Results auto-updated (W->T) for workout:', static.workoutId, 'heat:', static.heatId)
+                }).catch(err => {
+                    console.error('Error loading heat results:', err)
+                })
+
+                // Automatisation: Overall Division Workout
+                if (static.athletes && static.athletes.length > 0 && static.athletes[0].division) {
+                    const divisionName = static.athletes[0].division
+                    const division = Divisions.value?.find(d => d.title === divisionName)
+                    
+                    if (division) {
+                        cc.loadDivisionWorkoutResults(idEvent, division.id, static.workoutId, 0, 10).then((results) => {
+                            // Tri par rank
+                            if (results && results.athletesResults && Array.isArray(results.athletesResults)) {
+                                results.athletesResults.sort((a, b) => {
+                                    const rankA = parseInt(a.rank) || 999999
+                                    const rankB = parseInt(b.rank) || 999999
+                                    return rankA - rankB
+                                })
+                            }
+                            OSDivisionWorkout.value = results
+                            console.log('Overall Division Workout auto-updated (W->T) for division:', divisionName, 'workout:', static.workoutId)
+                        }).catch(err => {
+                            console.error('Error loading division workout results:', err)
+                        })
+                    }
+                }
+            }
+        }
+        
+        // Mise à jour du statut précédent
+        previousStatus = currentStatus
+    })
+
     nodecg.listenFor('actualiser-heatResults', (value, ack) => {
         cc.loadHeatResultsFromFileCC().then((value) => {
             HeatResultsFromCC.value = value
@@ -123,6 +184,7 @@ module.exports = (nodecg, Connected) => {
             OSResultFromCC.value = value
         })
     })
+    
 
     nodecg.listenFor('attribution_lane', (value, ack) => {
         if (token.value != null) {
@@ -150,6 +212,14 @@ module.exports = (nodecg, Connected) => {
             let lower = value.num_osdivwod - 10;
             let higher = value.num_osdivwod
             cc.loadDivisionWorkoutResults(idEvent, value.selectedDivision, value.workoutDivisionSelected, lower, higher).then((results) => {
+                // Tri par rank
+                if (results && results.athletesResults && Array.isArray(results.athletesResults)) {
+                    results.athletesResults.sort((a, b) => {
+                        const rankA = parseInt(a.rank) || 999999
+                        const rankB = parseInt(b.rank) || 999999
+                        return rankA - rankB
+                    })
+                }
                 OSDivisionWorkout.value = results
                 if (ack && !ack.handled) {
                     ack(null, results.totalRecordsCount);
@@ -171,6 +241,14 @@ module.exports = (nodecg, Connected) => {
             let lower = value.num_heats - 10;
             let higher = value.num_heats
             cc.loadHeatResults(idEvent, value.workoutHeatSelected, value.heatSelected, lower, higher).then((results) => {
+                // Tri par rank
+                if (results && results.participants && Array.isArray(results.participants)) {
+                    results.participants.sort((a, b) => {
+                        const rankA = parseInt(a.rank) || 999999
+                        const rankB = parseInt(b.rank) || 999999
+                        return rankA - rankB
+                    })
+                }
                 HeatResults.value = results
                 if (ack && !ack.handled) {
                     ack(null, results.totalRecordsCount);

@@ -21,24 +21,30 @@
     <!-- Human Parser -->
     <script src="https://cdn.jsdelivr.net/npm/humanparser@2.7.0/index.min.js"></script>
 
-    <title>Leaderboard</title>
+    <title>Overlay Side</title>
+    <link rel="icon" type="image/x-icon" href="../assets/images/favicon.png">
 
-    <link rel="stylesheet" href="css/index.css">
+
+    <!-- local CSS -->
+    <link rel="stylesheet" href="../common/css/index.css">
+    <link rel="stylesheet" href="../common/css/video.css">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/overlay.css">
     <link rel="stylesheet" href="css/colors.css">
-    <link rel="stylesheet" href="css/video.css">
 
-    <link rel="stylesheet" href="css/header/header_side.css">
-    <link rel="stylesheet" href="css/leaderboard/overlay_side.css">
 
-    <script src="./assets/flag.js" type="text/javascript"></script>
+    <!-- local Assets -->
+    <script src="../assets/flag.js" type="text/javascript"></script>
 
-    <script src="./js/wod.js" type="text/javascript"></script>
-    <script src="./js/heat.js" type="text/javascript"></script>
-    <script src="./js/time.js" type="text/javascript"></script>
-    <script src="./js/tools.js" type="text/javascript"></script>
-    <script src="./js/style_leaderboard.js" type="text/javascript"></script>
-    <script src="./js/static.js" type="text/javascript"></script>
-    <script src="./js/dynamic.js" type="text/javascript"></script>
+    <!-- local Javascript -->
+    <script src="./js/html-elements.js" type="text/javascript"></script>
+    <script src="./js/effect.js" type="text/javascript"></script>
+    <script src="./js/status.js" type="text/javascript"></script>
+
+    <script src="../common/js/dynamic.js" type="text/javascript"></script>
+    <script src="../common/js/static.js" type="text/javascript"></script>
+    <script src="../common/js/tools.js" type="text/javascript"></script>
+    <script src="../common/js/time.js" type="text/javascript"></script>
 
 </head>
 
@@ -69,14 +75,7 @@
         </div>
         <div class="repTar text-nowrap text-truncate" style="display: none;"></div>
     </div>
-    <!-- 
-    <div class="box_svg" id="box_svg" style="display: none;">
-        <svg height="1080" width="1920">
-            <line x1="80" y1="10" x2="80" y2="100" style="stroke:rgb(213, 213, 213);stroke-width:2" />
-            <line x1="80" y1="150" x2="80" y2="970" style="stroke:rgb(213, 213, 213);stroke-width:2" />
-            <line x1="80" y1="1050" x2="80" y2="1070" style="stroke:rgb(213, 213, 213);stroke-width:2" />
-        </svg>
-    </div> -->
+
 
     <div class="leaderboards" id="leaderboards" style="display: none;"></div>
 
@@ -86,23 +85,8 @@
 
     <div class="mainSponsor"></div>
 
-    <!-- <div id="mvt" class="text-nowrap text-truncate text-left"></div> -->
 
-    <!-- Template pour la création dynamique des éléments du leaderboard -->
-    <template id="athlete-template">
-        <div class="athlete">
-            <div class="ath">
-                <div class="rank"></div>
-                <div class="name"></div>
-                <div class="score"></div>
-                <div class="flag">
-                    <div class="box_flag"></div>
-                </div>
-            </div>
-        </div>
-    </template>
-
-    <script src="./index.js" type="text/javascript"></script>
+    <script src="../index.js" type="text/javascript"></script>
 </body>
 
 </html>

@@ -13,6 +13,8 @@ const OSDivisionWorkout = nodecg.Replicant('OSDivisionWorkout', 'connector')
 const sponsorForCC = nodecg.Replicant('sponsorForCC')
 const configForCC = nodecg.Replicant('configForCC')
 
+const s_athletes = nodecg.Replicant('s_athletes', 'connector')
+
 let root = document.documentElement;
 let overlay = ''
 let eventLogo;
@@ -113,4 +115,30 @@ Colors.on('change', (newValue, oldValue) => {
 
         root.style.setProperty("--" + color, _color);
     })
+})
+
+// Dans toolsCC.js, après la définition des replicants
+s_athletes.on('change', (newValue, oldValue) => {
+    if (!newValue || !token.value) return
+
+    // Vérifier si le workout ou heat a changé
+    const workoutChanged = oldValue?.workoutId !== newValue.workoutId
+    const heatChanged = oldValue?.heatId !== newValue.heatId
+
+    if (workoutChanged || heatChanged) {
+        // Charger automatiquement les heat results
+        if (newValue.workoutId && newValue.heatId) {
+            cc.loadHeatResults(idEvent, newValue.workoutId, newValue.heatId, 0, 10)
+                .then(results => HeatResults.value = results)
+        }
+
+        // Charger automatiquement overall division workout
+        if (newValue.athletes?.[0]?.division && newValue.workoutId) {
+            const division = Divisions.value?.find(d => d.title === newValue.athletes[0].division)
+            if (division) {
+                cc.loadDivisionWorkoutResults(idEvent, division.id, newValue.workoutId, 0, 10)
+                    .then(results => OSDivisionWorkout.value = results)
+            }
+        }
+    }
 })

@@ -24,7 +24,6 @@ function handleFirstAthleteWithoutResult(elemAth) {
                 .replace('-', '')
         );
     }
-
 }
 
 
@@ -319,88 +318,48 @@ function showRepMvtInScore(elementAth) {
 
 
 
-function treatDisplayMvtForOthers(elementAth, idToCompare, roundsToCompare) {
-    // Si l'athlète présent avant est à un mouvement différent de toi, on affiche le mouvement)
-    let repTarget = elementAth.currentMvt.repTarget;
-
-    if (repTarget == 0) {
-        repTarget = "MAX"
-    }
-    let mvt = elementAth.currentMvt.mvtNames.replace(/(([^\)]+)\).)/g, "")
-
-    let nextMvt = ''
-    if (elementAth.currentMvt.arrayMvt.length > 2) {
-        nextMvt = elementAth.currentMvt.arrayMvt[1].replace('<span>', "").replace('</span>', "")
+// Affiche le mouvement uniquement pour le premier athlète dans ce mouvement
+// Cache le popup pour les autres athlètes dans le même mouvement
+function displayMvtForAthlete(elementAth, isFirstInMvt = true) {
+    // Si mouvement vide ou "Workout", cacher le popup
+    if (elementAth.currentMvt.mvtNames == "" || elementAth.currentMvt.mvtNames.includes("Workout")) {
+        elementAth.$item.find(".popup").hide();
+        return;
     }
 
+    // Si ce n'est pas le premier athlète dans ce mouvement, cacher le popup
+    if (!isFirstInMvt) {
+        elementAth.$item.find(".popup").hide();
+        return;
+    }
+
+    // Préparation du texte du mouvement
+    let repTarget = elementAth.currentMvt.repTarget == 0 ? "MAX" : elementAth.currentMvt.repTarget;
+    let mvt = elementAth.currentMvt.mvtNames.replace(/(([^\)]+)\).)/g, "");
     let textTomvt = repTarget + ' ' + mvt;
 
-
-    if (overlay == 'commentator' || overlay.includes('sk')) {
-        let rep = elementAth.currentMvt.repTarget != 0 ? ((elementAth.currentMvt.scoreAbsMvt + "/" + elementAth.currentMvt.repTarget)) : elementAth.currentMvt.scoreAbsMvt
-        textTomvt = rep + ' ' + mvt;
-    }
-
-    if (elementAth.currentMvt.id != idToCompare || elementAth.currentMvt.rounds != roundsToCompare) {
-        if (heat.typeWod == 'amrap' && !Number.isNaN(elementAth.currentMvt.rounds)) {
-            if (mvt.includes('Rd')) {
-                elementAth.$item.find(".popup").text(textTomvt);
-                elementAth.$item.find(".popup_top").text(textTomvt);
-            } else {
-                elementAth.$item.find(".rounds").text("R" + (elementAth.currentMvt.rounds));
-                elementAth.$item.find(".popup").text("R" + (elementAth.currentMvt.rounds) + ' - ' + textTomvt);
-                elementAth.$item.find(".popup_top").text("R" + (elementAth.currentMvt.rounds) + ' - ' + textTomvt);
-            }
-        } else {
-            elementAth.$item.find(".popup").text(textTomvt);
-            elementAth.$item.find(".popup_top").text(textTomvt);
-        }
-    }
-}
-
-function treatDisplayMvtFirst(elementAth) {
-    let mvt = elementAth.currentMvt.mvtNames.replace(/(([^\)]+)\).)/g, "")
-    let repTarget = elementAth.currentMvt.repTarget;
-
-    if (repTarget == 0) {
-        repTarget = "MAX"
-    }
-    // console.log(mvt)
-    let nextMvt = ''
-    if (elementAth.currentMvt.arrayMvt.length > 2) {
-        nextMvt = elementAth.currentMvt.arrayMvt[1].replace('<span>', "").replace('</span>', "")
-    }
-
-    // let textTomvt = repTarget + ' ' + mvt + ' THEN ' + nextMvt;
-
-    let textTomvt = repTarget + ' ' + mvt;
-    if (overlay == 'versus_hyperfit') {
-        textTomvt = elementAth.currentMvt.scoreRelMvt + ' ' + mvt;
-    }
-
-    if (overlay == 'commentator' || overlay.includes('sk')) {
-        let rep = elementAth.currentMvt.repTarget != 0 ? ((elementAth.currentMvt.scoreAbsMvt + "/" + elementAth.currentMvt.repTarget)) : elementAth.currentMvt.scoreAbsMvt
-        textTomvt = rep + ' ' + mvt;
-    }
-
-
+    // Affichage pour AMRAP avec rounds
     if (heat.typeWod == 'amrap' && !Number.isNaN(elementAth.currentMvt.rounds)) {
-        if (heat.typeWod == 'amrap' && !Number.isNaN(elementAth.currentMvt.rounds)) {
-            if (mvt.includes('Rd')) {
-                elementAth.$item.find(".popup").text(textTomvt);
-                elementAth.$item.find(".popup_top").text(textTomvt);
-            } else {
-                elementAth.$item.find(".popup").text("R" + (elementAth.currentMvt.rounds) + ' - ' + textTomvt);
-                elementAth.$item.find(".popup_top").text("R" + (elementAth.currentMvt.rounds) + ' - ' + textTomvt);
-            }
+        if (mvt.includes('Rd')) {
+            elementAth.$item.find(".popup").text(textTomvt);
+        } else {
+            elementAth.$item.find(".rounds").text("R" + elementAth.currentMvt.rounds);
+            elementAth.$item.find(".popup").text("R" + elementAth.currentMvt.rounds + ' - ' + textTomvt);
         }
     } else {
+        // Affichage standard
         elementAth.$item.find(".popup").text(textTomvt);
-        elementAth.$item.find(".popup_top").text(textTomvt);
     }
 
-
+    // Afficher le popup
+    elementAth.$item.find(".popup").show();
 }
+
+function refreshMvt(elementAth, idToCompare, roundsToCompare) {
+    const isFirstInMvt = (elementAth.currentMvt.id != idToCompare || elementAth.currentMvt.rounds != roundsToCompare);
+    displayMvtForAthlete(elementAth, isFirstInMvt);
+}
+
 
 
 
