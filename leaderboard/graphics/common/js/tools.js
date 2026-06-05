@@ -367,10 +367,7 @@ function repoTop(lead_, aths_) {
             y += elm.$item.height();
             y += parseInt(elm.$item.css('margin').replace('px', ''));
         }
-        console.log("ath legnth", aths_.length)
-        console.log("index", index)
         if (setupFlat != undefined && setupFlat != {} && ((setupFlat.numberAthletes - 1) == index || (aths_.length - 1) < index) || (aths_.length - 1 < setupFlat.numberAthletes)) {
-            console.log("Height leaderboard : ", y)
             $('.leaderboard').height(y)
         }
     })
@@ -660,4 +657,22 @@ function treatTimeResult(result) {
     }
 
     return result;
+}
+
+
+
+function treatCapResult(result) {
+    // On supprime le CAP 
+    let score = result.toUpperCase().replaceAll('CAP ', '')
+
+    // En fonction du type de wod, on supprime la décimale
+    switch (heat.typeWod) {
+        case 'repmax':
+            break;
+        default:
+            // Case for amrap and for time
+            score = score.split('.')[0]
+            break;
+    }
+    return score;
 }

@@ -54,14 +54,14 @@ function statusWF(ath) {
     // Fait pour faire disparaitre les athletes après le premier pour diffuser les suivants
     hiddenAthlete(ath)
     refreshRank(ath);
-    refreshCummulative(ath);
+    refreshCummulativeFinish(ath);
     refreshCurrentMvtFinish(ath)
 }
 
 function statusWT(ath) {
     console.log("Athlete TIME CAP / Workout in progress")
     refreshRank(ath);
-    refreshCummulative(ath);
+    refreshCummulativeFinish(ath);
     refreshCurrentMvtFinish(ath)
 }
 
@@ -70,7 +70,7 @@ function statusT(ath) {
     // Classement mise à jour
     refreshRank(ath);
 
-    refreshCummulative(ath);
+    refreshCummulativeFinish(ath);
     refreshCurrentMvtFinish(ath)
 }
 

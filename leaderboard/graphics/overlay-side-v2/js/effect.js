@@ -98,34 +98,20 @@ function refreshCummulative(elementAth, state) {
         default:
     }
 
+    elementAth.$item.find(".score").text(score)
+}
+
+function refreshCummulativeFinish(elementAth) {
     switch (elementAth.status) {
         case "F":
             score = treatFinishStatus(elementAth.result)
             break;
-        case "T":
-            // On est en timecap donc format => CAP 10.9
-            // On supprime le CAP 
-            score = elementAth.result.toUpperCase().replaceAll('CAP ', '')
-
-            // En fonction du type de wod, on supprime la décimale
-            switch (heat.typeWod) {
-                case 'repmax':
-                    break;
-                default:
-                    // Case for amrap and for time
-                    score = score.split('.')[0]
-                    break;
-            }
-            break;
-        case "W":
-        case "0":
-        case "S":
         default:
-            state = ""
+            score = treatCapResult(elementAth.result)
     }
-
     elementAth.$item.find(".score").text(score)
 }
+
 
 
 function treatBigScreenMvt(elementAth) {

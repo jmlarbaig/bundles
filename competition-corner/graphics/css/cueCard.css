@@ -1,9 +1,9 @@
 :root {
     --zoom: 100%;
-    --lane_ass_background_header: #a85f5f;
-    --lane_ass_text_header: white;
-    --lane_ass_background: #000000;
-    --lane_ass_text: white;
+    --lane-ass-background-header: var(--lane-ass-background-header);
+    --lane-ass-text-header: var(--lane-ass-text-header);
+    --lane-ass-background: var(--lane-ass-background);
+    --lane-ass-text: var(--lane-ass-text);
 }
 
 
@@ -123,7 +123,7 @@ body {
 }
 
 .cue-card-table__table-wrapper {
-    background-color: var(--lane_ass_background);
+    background-color: var(--lane-ass-background);
     -webkit-border-radius: 0;
     border-radius: 0;
 }
@@ -164,7 +164,7 @@ body {
 }
 
 .cue-card-table__header.header-without-background {
-    background-color: var(--lane_ass_background_header);
+    background-color: var(--lane-ass-background-header);
     -webkit-box-shadow: inset .5px .9px 0 #fff;
     box-shadow: inset .5px .9px 0 #fff
 }
@@ -209,7 +209,7 @@ body {
 
 .cc-table__header__logo-text {
     width: 900px;
-    color: var(--lane_ass_text);
+    color: var(--lane-ass-text);
     font-family: "Roboto Condensed", sans-serif;
     font-size: 53px;
     font-weight: 700;
@@ -230,7 +230,7 @@ body {
 .header-without-background .cc-table__header__logo-text {
     width: 900px;
     text-shadow: none;
-    color: var(--lane_ass_text_header)
+    color: var(--lane-ass-text-header)
 }
 
 .cc-table__header__workout {
@@ -261,7 +261,7 @@ body {
     position: relative;
     z-index: 3;
     overflow: hidden;
-    color: var(--lane_ass_text);
+    color: var(--lane-ass-text);
     font-family: "Roboto Condensed", sans-serif;
     font-size: 39px;
     font-weight: 700;
@@ -275,7 +275,7 @@ body {
 }
 
 .header-without-background .cc-table__header__workout {
-    color: var(--lane_ass_text_header)
+    color: var(--lane-ass-text-header)
 }
 
 .cc-table__header__workout>span {
@@ -410,7 +410,7 @@ body {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
-    color: var(--lane_ass_text);
+    color: var(--lane-ass-text);
     font-family: "Roboto Condensed", sans-serif;
     font-size: 25px;
     font-weight: 600;

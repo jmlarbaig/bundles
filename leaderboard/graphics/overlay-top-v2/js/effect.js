@@ -87,6 +87,7 @@ function refreshCummulative(elementAth, state) {
         default:
     }
 
+
     switch (elementAth.status) {
         case "F":
             score = 'FIN'
@@ -114,6 +115,10 @@ function refreshCummulative(elementAth, state) {
     }
 
     elementAth.$item.find(".score").text(score)
+}
+
+function refreshCummulativeFinish(elementAth) {
+    elementAth.$item.find(".score").text('FIN')
 }
 
 
@@ -177,13 +182,14 @@ function refreshCurrentMvtFinish(elementAth) {
     switch (elementAth.status) {
         case "F":
             score = treatTimeResult(elementAth.result)
-            elementAth.$item.find(".popup").text(score)
-            elementAth.$item.find(".popup").show();
+        case "T":            // On est en timecap donc format => CAP 10.9
+            score = treatCapResult(elementAth.result)
             break;
-        case "T":
         default:
+            break;
     }
-
+    elementAth.$item.find(".popup").text(score)
+    elementAth.$item.find(".popup").show();
 
 
 }
