@@ -118,19 +118,7 @@ function treatBigScreenMvt(elementAth) {
 
 
 function treatTextMvt(mvts) {
-    mvts = mvts.replace(/\(.*?\)/g, '');
-    if (heat.typeWod != 'repmax') {
-        console.log("Workout in Standby")
-        if (mvts != "") {
-            $('.heat_content').slideDown(1000)
-            $('.heat_content').find('.mvt').html(mvts)
-        } else {
-            $('.box_mvt').hide()
-        }
-    } else {
-        $('.heat_content').find('.mvt').html(mvts)
-        $('.heat_content').find('.mvt').html(mvts)
-    }
+    return;
 }
 
 
@@ -153,82 +141,26 @@ function hideCurrentMvt(elementAth) {
 
 
 function refreshCurrentMvtInProgress(elementAth) {
-    let mvtName = elementAth.currentMvt.mvtNames.replace(/(([^\)]+)\).)/g, "")
-    let rep = 0;
-    let pourcent = 0;
-
-    rep = elementAth.currentMvt.repTarget != 0 ? ((elementAth.currentMvt.scoreAbsMvt + "/" + elementAth.currentMvt.repTarget)) : elementAth.currentMvt.scoreAbsMvt
-    mvt = rep + " " + mvtName
-
-    elementAth.$item.find(".popup").text(mvt);
+    return;
 }
 
 function refreshCurrentMvtFinish(elementAth) {
-
-    let score = '';
-    let $item = '';
-    switch (elementAth.status) {
-        case "F":
-            score = treatTimeResult(elementAth.result)
-            elementAth.$item.find(".popup").text(score)
-            elementAth.$item.find(".popup").show();
-            break;
-        case "T":
-        default:
-    }
-
-
+    return;
 
 }
 
 
 function refreshRepMax(elementAth) {
-    let score = 0;
-
-    if (elementAth.currentMvt.repTarget != 0) {
-        score = 'ATTEMPTS ' + elementAth.currentMvt.repTarget + ' ' + setupFlat.unitSelect;
-    }
-
-
-    if (elementAth.currentMvt.repTarget != elementAth.currentMvt.scoreAbsMvt) {
-        if (elementAth.currentMvt.repTarget != 0) {
-            elementAth.$item.find(".popup").text(score);
-            elementAth.$item.find(".popup").show();
-        } else {
-            elementAth.$item.find(".popup").text('');
-        }
-    } else {
-        elementAth.$item.find(".popup").text('');
-    }
-
+    return;
 }
 
 
 function changeColorFinishAth(ath, element) {
-    if (ath.CurrentRank == 1) {
-        ath.$item.find(element).addClass('finish_first_rank_ath_top')
-        ath.$item.find(element).removeClass('initial_rank_top_ath finish_rank_ath_top second_rank_ath_top third_rank_ath_top other_rank_ath_top', false)
-    } else {
-        ath.$item.find(element).addClass('finish_rank_ath_top')
-        ath.$item.find(element).removeClass('initial_rank_ath finish_first_rank_ath_top first_rank_ath_top second_rank_ath_top third_rank_ath_top other_rank_ath_top', false)
-    }
+    return;
 }
 
 function changeColorAth(ath, element) {
-
-    let rank = ath.CurrentRank
-    rank != 1 ? rank = 4 : rank
-
-    switch (rank) {
-        case 1:
-            ath.$item.find(element).addClass('first_rank_ath_top')
-            ath.$item.find(element).removeClass('initial_rank_top_ath second_rank_ath_top third_rank_ath_top other_rank_ath_top', false)
-            break;
-        default:
-            ath.$item.find(element).addClass('initial_rank_top_ath')
-            ath.$item.find(element).removeClass('first_rank_ath_top second_rank_ath_top third_rank_ath_top other_rank_ath_top', false)
-            break;
-    }
+    return;
 }
 
 
@@ -273,108 +205,15 @@ function treatFinishStatus(elementAth) {
 
 
 function showRepMvtInScore(elementAth) {
-    elementAth.$item.find(".score").show();
-    switch (setupFlat.scoreConfig) {
-        case 'abs_score':
-            elementAth.$item.find(".score").text(elementAth.score_abs)
-
-            break;
-        case 'rel_score':
-            elementAth.$item.find(".score").text(elementAth.score_rel)
-
-            break;
-        case 'mvt_score':
-            elementAth.$item.find(".score").text(elementAth.currentMvt.scoreAbsMvt);
-
-            break;
-        case 'mvt_total_score':
-            if (elementAth.currentMvt.mvtNames.toUpperCase() != "WORKOUT") {
-                if (heat.typeWod == "amrap") {
-                    elementAth.$item.find(".score").text((elementAth.currentMvt.totalReps != 0 ? (elementAth.score_abs) : elementAth.score_abs) + ' (-' + (elementAth.currentMvt.repTarget - elementAth.currentMvt.scoreAbsMvt) + ')');
-                } else {
-                    elementAth.$item.find(".score").text((elementAth.currentMvt.totalReps != 0 ? ("-" + (workouts[0].total_reps - elementAth.score_abs)) : elementAth.score_abs) + ' (-' + (elementAth.currentMvt.repTarget - elementAth.currentMvt.scoreAbsMvt) + ')');
-                }
-            } else {
-                elementAth.$item.find(".score").text(elementAth.currentMvt.scoreAbsMvt);
-            }
-            break;
-        case 'remain_mvt':
-            if (elementAth.currentMvt.mvtNames.toUpperCase() != "WORKOUT") {
-                elementAth.$item.find(".score").text(elementAth.currentMvt.repTarget != 0 ? ("-" + (elementAth.currentMvt.repTarget - elementAth.currentMvt.scoreAbsMvt)) : elementAth.currentMvt.scoreAbsMvt);
-            } else {
-                elementAth.$item.find(".score").text(elementAth.currentMvt.scoreAbsMvt);
-            }
-        default:
-    }
-
+    return;
 }
 
 
 
 function treatDisplayMvtForOthers(elementAth, idToCompare, roundsToCompare) {
-    // Si l'athlète présent avant est à un mouvement différent de toi, on affiche le mouvement)
-    let repTarget = elementAth.currentMvt.repTarget;
-
-    if (repTarget == 0) {
-        repTarget = "MAX"
-    }
-    let mvt = elementAth.currentMvt.mvtNames.replace(/(([^\)]+)\).)/g, "")
-
-    let nextMvt = ''
-    if (elementAth.currentMvt.arrayMvt.length > 2) {
-        nextMvt = elementAth.currentMvt.arrayMvt[1].replace('<span>', "").replace('</span>', "")
-    }
-
-    let textTomvt = repTarget + ' ' + mvt;
-
-
-    if (elementAth.currentMvt.id != idToCompare || elementAth.currentMvt.rounds != roundsToCompare) {
-        if (heat.typeWod == 'amrap' && !Number.isNaN(elementAth.currentMvt.rounds)) {
-            if (mvt.includes('Rd')) {
-                elementAth.$item.find(".popup").text(textTomvt);
-                elementAth.$item.find(".popup_top").text(textTomvt);
-            } else {
-                elementAth.$item.find(".rounds").text("R" + (elementAth.currentMvt.rounds));
-                elementAth.$item.find(".popup").text("R" + (elementAth.currentMvt.rounds) + ' - ' + textTomvt);
-                elementAth.$item.find(".popup_top").text("R" + (elementAth.currentMvt.rounds) + ' - ' + textTomvt);
-            }
-        } else {
-            elementAth.$item.find(".popup").text(textTomvt);
-            elementAth.$item.find(".popup_top").text(textTomvt);
-        }
-    }
+    return;
 }
 
 function treatDisplayMvtFirst(elementAth) {
-    let mvt = elementAth.currentMvt.mvtNames.replace(/(([^\)]+)\).)/g, "")
-    let repTarget = elementAth.currentMvt.repTarget;
-
-    if (repTarget == 0) {
-        repTarget = "MAX"
-    }
-    // console.log(mvt)
-    let nextMvt = ''
-    if (elementAth.currentMvt.arrayMvt.length > 2) {
-        nextMvt = elementAth.currentMvt.arrayMvt[1].replace('<span>', "").replace('</span>', "")
-    }
-
-    // let textTomvt = repTarget + ' ' + mvt + ' THEN ' + nextMvt;
-
-    let textTomvt = repTarget + ' ' + mvt;
-
-
-    if (heat.typeWod == 'amrap' && !Number.isNaN(elementAth.currentMvt.rounds)) {
-        if (heat.typeWod == 'amrap' && !Number.isNaN(elementAth.currentMvt.rounds)) {
-            if (mvt.includes('Rd')) {
-                elementAth.$item.find(".popup").text(textTomvt);
-                elementAth.$item.find(".popup_top").text(textTomvt);
-            } else {
-                elementAth.$item.find(".popup").text("R" + (elementAth.currentMvt.rounds) + ' - ' + textTomvt);
-                elementAth.$item.find(".popup_top").text("R" + (elementAth.currentMvt.rounds) + ' - ' + textTomvt);
-            }
-        }
-    } else {
-        elementAth.$item.find(".popup").text(textTomvt);
-        elementAth.$item.find(".popup_top").text(textTomvt);
-    }
+    return;
 }

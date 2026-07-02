@@ -1,123 +1,110 @@
+.cis-wrap {
+    background: #07070f;
+    border-radius: 10px;
+    overflow: hidden;
+    font-family: 'Barlow', sans-serif;
+}
+
+
 .header {
-    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
-    width: 100%;
-    height: 100px;
-    z-index: 20;
+    background: #0d0d1a;
+    border-bottom: 1px solid #1a1a2e;
+    padding: 10px 16px;
     display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    background-color: black;
-    color: white;
-    padding: 10px 0px;
-}
-
-.box_logo {
-    margin: auto auto;
-    height: 100px;
-    /* z-index: 21; */
-}
-
-.logo {
-    height: 100px;
-    width: 100px;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: contain;
-}
-
-.box_chrono {
-    border: solid 2px white;
-    width: 15%;
-    height: 80px;
-    transform-origin: 50% 50%;
-    text-align: center;
     align-items: center;
-    z-index: 30;
-    background-color: rgb(210, 210, 210);
-    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+    justify-content: space-between;
+    gap: 16px;
 }
 
-.chrono {
-    font-size: 2em;
-}
-
-#time {
-    padding: 5px;
-}
-
-#cap {
-    font-size: 0.4em;
-    color: black;
-}
-
-.box_heat {
-    width: 70%;
-    padding: 5px;
-    padding-left: 30px;
-}
-
-.heat_content {
+.cis-header-left {
     display: flex;
-    flex-direction: row;
+    align-items: center;
+    gap: 12px;
 }
 
-.details {
+.cis-event-name {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 16px;
+    font-weight: 800;
+    color: #e8e8f0;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+}
+
+.cis-heat-info {
+    font-size: 9px;
+    font-weight: 600;
+    color: #b0b8d0;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    margin-top: 1px;
+}
+
+.cis-live-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #f03a3a;
+    animation: pulse-r 1s infinite;
+}
+
+.time {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 26px;
+    font-weight: 800;
+    color: #e8e8f0;
+    letter-spacing: .04em;
+}
+
+.cis-clock-label {
+    font-size: 8px;
+    font-weight: 600;
+    color: #b0b8d0;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+}
+
+.cis-stat-val {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: #e8e8f0;
+}
+
+.cis-stat-label {
+    font-size: 7px;
+    font-weight: 600;
+    color: #b0b8d0;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+}
+
+.cis-stat-divider {
+    width: 1px;
+    height: 28px;
+    background: #1a1a2e;
+}
+
+.cis-header-right {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.cis-stat {
     display: flex;
     flex-direction: column;
-    width: 50%;
+    align-items: center;
+    gap: 1px;
 }
 
-.details #workout {
-    font-size: 1.6em;
-}
-
-.details #division {
-    font-size: 1.2em;
-}
-
-.box_mainSponsor {
-    padding-top: 5px;
+.cis-header-center {
     display: flex;
-    flex-direction: row;
+    align-items: center;
+    gap: 6px;
 }
 
-.presented {
-    padding-right: 20px;
-}
 
-.mainSponsor {
-    width: 150px;
-    height: 60px;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: contain;
-}
-
-.box_FVSK {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-}
-
-.FV {
-    margin: 0px 5px;
-    background-image: url('../../img/PRESTA/FV-logo.png');
-    background-position: 2px 5px;
-    background-size: contain;
-    background-repeat: no-repeat;
-    width: 200px;
-    height: 100px;
-}
-
-.SK {
-    margin: 0px 5px;
-    background-image: url('../../img/PRESTA/SK-logo.png');
-    background-position: top;
-    background-size: contain;
-    background-repeat: no-repeat;
-    width: 170px;
-    height: 100px;
-}
 
 .controlHeat {
     display: flex;
@@ -126,24 +113,10 @@
     justify-content: space-between;
     flex-wrap: wrap;
     padding: 20px 10px;
-    background-color: rgb(255, 255, 255);
+    background-color: rgb(163, 163, 163);
 }
 
-.controlHeat div {
-    width: max-content;
-    padding: 10px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.controlHeat .box {
-    border: solid 2px black;
-}
-
-.controlHeat .log-button button {
-    width: 400px;
-    height: 50px;
+.controlHeat .col {
     padding: 10px;
     display: flex;
     flex-direction: column;

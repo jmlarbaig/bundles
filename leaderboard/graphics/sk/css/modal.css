@@ -1,196 +1,118 @@
 /* The Modal (background) */
-.modal {
+.modal-confirm {
   display: none;
   /* Hidden by default */
   position: fixed;
   /* Stay in place */
   z-index: 100;
   /* Sit on top */
-  margin: auto;
-  width: 90%;
-  /* Full width */
-  height: 90%;
-  /* Full height */
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
   overflow: auto;
-  /* Enable scroll if needed */
-  background-color: rgb(0, 0, 0);
-  /* Fallback color */
-  background-color: rgba(0, 0, 0, 0.4);
-  /* Black w/ opacity */
+  background-color: rgba(0, 0, 0, 0.6);
+  /* Black w/ opacity, slightly darker for contrast */
+  align-items: center;
+  justify-content: center;
 }
 
-/* Modal Content/Box */
-.modal-content {
-  background-color: #fefefe;
-  margin: 15% auto;
-  /* 15% from the top and centered */
+/* Modal Content */
+.modal-confirm-content {
+  background-color: #14161c;
+  color: rgba(255, 255, 255, 0.92);
+  margin: auto;
   padding: 20px;
-  border: 1px solid #888;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
   width: 90%;
-  /* Could be more or less, depending on screen size */
+  max-width: 420px;
+  box-sizing: border-box;
+}
+
+.modal-confirm-content h3 {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.45);
+  margin: 0 0 14px 0;
+  font-weight: 500;
+}
+
+.modal-confirm-content h3::before {
+  content: "!";
+  flex-shrink: 0;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background-color: rgba(226, 75, 74, 0.18);
+  color: #f7c1c1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.modal-confirm-content p {
+  font-size: 16px;
+  line-height: 1.5;
+  margin: 0 0 20px 0;
 }
 
 /* The Close Button */
-.close {
-  color: #fff;
-  background-color: #000;
+.modal-confirm-content .close {
+  color: rgba(255, 255, 255, 0.6);
+  background-color: rgba(255, 255, 255, 0.06);
   float: right;
-  font-size: 24px;
+  font-size: 18px;
   font-weight: bold;
-  width: 32px;
-  height: 32px;
-  line-height: 32px;
+  width: 28px;
+  height: 28px;
+  line-height: 28px;
   text-align: center;
   border-radius: 50%;
-  /* bouton rond */
   cursor: pointer;
 }
 
-.close:hover,
-.close:focus {
-  color: black;
+.modal-confirm-content .close:hover,
+.modal-confirm-content .close:focus {
+  color: #fff;
+  background-color: rgba(255, 255, 255, 0.14);
   text-decoration: none;
   cursor: pointer;
 }
 
-.modal .box_infos {
-  display: flex;
-  flex-direction: row;
+/* Buttons */
+.modal-confirm-content button {
+  height: 40px;
+  min-width: 90px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  margin-right: 10px;
+  border: none;
 }
 
-.modal .box_infos .avatar {
-  position: absolute;
-  background-position: center;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  width: 40%;
-  height: 500px;
-  overflow: hidden;
+.modal-confirm-content button.danger {
+  background-color: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  color: rgba(255, 255, 255, 0.85);
 }
 
-
-.modal .infos {
-  position: relative;
-  width: 40%;
-  padding-left: 10px;
-  background-color: rgba(222, 222, 222, 0.774);
-  color: black;
-  margin: auto;
+.modal-confirm-content button.danger:hover {
+  background-color: rgba(255, 255, 255, 0.06);
 }
 
-.modal .sup {
-  width: 50%;
+.modal-confirm-content button.success {
+  background-color: rgba(226, 75, 74, 0.18);
+  color: #f7c1c1;
 }
 
-.modal .workouts {
-  position: relative;
-  width: 100%;
-  text-align: left;
-  margin: 40px 10px;
-  border-spacing: 10px;
-  border-collapse: collapse;
-}
-
-.modal .wod {
-  padding: 10px;
-}
-
-.modal .workouts tr:nth-child(even) {
-  background-color: #888;
-  color: white;
-}
-
-.modal .workouts tr:nth-child(odd) {
-  background-color: rgb(232, 232, 232);
-  color: black;
-}
-
-.modal .events {
-  position: relative;
-  width: 100%;
-  text-align: left;
-  margin: 40px 10px;
-  border-spacing: 10px;
-  border-collapse: collapse;
-}
-
-.modal .events tr:nth-child(even) {
-  background-color: #888;
-  color: white;
-}
-
-.modal .events tr:nth-child(odd) {
-  background-color: rgb(232, 232, 232);
-  color: black;
-}
-
-
-.modal .athletes {
-  display: flex;
-  flex-direction: column;
-}
-
-.modal .athlete {
-  margin: 10px;
-  display: flex;
-  flex-direction: row;
-}
-
-.modal .first {
-  width: 50%;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-}
-
-.modal .athletes .first .avatar {
-  position: absolute;
-  background-position: center;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  width: 45%;
-  height: 400px;
-  overflow: hidden;
-}
-
-.modal .second {
-  width: 50%;
-  display: flex;
-  flex-direction: column;
-}
-
-.modal .second .events {
-  width: 100%;
-}
-
-.modal .second .benchmarks {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-}
-
-.modal .second .benchmarks .benchmark {
-  margin: 10px 5px;
-}
-
-.modal .details {
-  background-color: rgba(136, 136, 136, 0.463);
-  color: white;
-  position: relative;
-  margin: auto;
-  display: flex;
-  flex-direction: column;
-}
-
-.modal .box_infos .sup .benchmarks {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  text-align: center;
-}
-
-.modal .box_infos .sup .benchmarks .benchmark {
-  padding: 10px;
+.modal-confirm-content button.success:hover {
+  background-color: rgba(226, 75, 74, 0.28);
 }

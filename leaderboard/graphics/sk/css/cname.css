@@ -1,0 +1,19 @@
+  .cname {
+      font-family: 'Saira', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: var(--text)
+  }
+
+  .cname.sub {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--muted);
+      letter-spacing: .08em
+  }
+
+  .parent.off .cname {
+      color: var(--muted)
+  }

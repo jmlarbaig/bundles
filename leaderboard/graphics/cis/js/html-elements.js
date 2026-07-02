@@ -24,6 +24,7 @@ function createHeaderLeaderboard(divisions, indexDivision, repTarget) {
 
     var $headerTop = $(
         '<div id="leaderboard' + indexDivision + '" class="leaderboard">' +
+        '<div class="headerLeaderboard">' + '<div class="division">' + divisions[indexDivision] + '</div>' + '</div>' +
         '<table id="table' + indexDivision + '" class="cis-table">' +
         '<thead>' +
         '<tr class="first-tr">' +

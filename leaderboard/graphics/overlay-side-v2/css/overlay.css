@@ -24,13 +24,14 @@ body {
 .leaderboard {
     position: relative;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     opacity: 92%;
     width: 500px;
     transition: all 0.7s ease;
     /* box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4); */
     border-radius: 4px;
     overflow: hidden;
+    margin-bottom: 10px;
 }
 
 
@@ -71,8 +72,7 @@ body {
 
 
 .leaderboard .header {
-    position: absolute;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    /* text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); */
     /* height: 30px; */
     font-weight: 900;
     /* font-size: var(--size-font-division); */
@@ -97,6 +97,8 @@ body {
     text-overflow: ellipsis;
     color: var(--color-division);
     background: var(--background-color-division);
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
 }
 
 .repTar {

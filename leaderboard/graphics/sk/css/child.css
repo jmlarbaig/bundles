@@ -1,0 +1,119 @@
+/* ----- child device rows ----- */
+.grp .kids {
+    display: none;
+}
+
+.grp.open .kids {
+    display: block;
+}
+
+.child {
+    min-height: 54px;
+    background: rgba(255, 255, 255, .018)
+}
+
+.child::before {
+    background: transparent !important
+}
+
+.child:hover {
+    background: rgba(255, 255, 255, .03)
+}
+
+.lane.dev {
+    padding-left: 22px;
+    gap: 8px
+}
+
+.dline {
+    width: 13px;
+    height: 13px;
+    border-left: 1px solid var(--line-strong);
+    border-bottom: 1px solid var(--line-strong);
+    border-bottom-left-radius: 5px;
+    margin-right: 4px;
+    flex: 0 0 auto
+}
+
+.dicon {
+    font-size: 13px;
+    flex: 0 0 auto
+}
+
+.dmeta {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    min-width: 0
+}
+
+.dlabel {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: .04em;
+    white-space: nowrap
+}
+
+.ddet {
+    font-size: 8.5px;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: var(--muted-2);
+    font-weight: 600
+}
+
+
+.child .lane {
+    grid-column: 1
+}
+
+.child .batt {
+    grid-column: 2
+}
+
+.child .sig {
+    grid-column: 3
+}
+
+.child .ip {
+    grid-column: 4;
+    font-size: 11px
+}
+
+.child .cspan {
+    grid-column: 5;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    min-width: 200px;
+}
+
+.child .cspan .code {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px;
+    color: var(--text)
+}
+
+.child .cspan .crole {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px
+}
+
+.child .cspan .repcell .rep {
+    font-size: 16px
+}
+
+.child .cip {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--muted)
+}
+
+.child .ping {
+    grid-column: 7;
+}
+
+.child .reject {
+    grid-column: 8;
+}

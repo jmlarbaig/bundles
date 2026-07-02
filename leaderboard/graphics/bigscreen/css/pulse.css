@@ -1,0 +1,12 @@
+.pulseTop {
+    position: absolute;
+    left: -120px;
+    bottom: 10px;
+    width: 2286px;
+    height: 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0px;
+    pointer-events: none;
+}

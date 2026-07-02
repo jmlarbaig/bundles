@@ -1,0 +1,48 @@
+  .wk-rank {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1px
+  }
+
+  .wk-rnum {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 21px;
+      font-weight: 800;
+      line-height: 1
+  }
+
+  .r1 {
+      color: #f0c040
+  }
+
+  .r2 {
+      color: #a0b0c0
+  }
+
+  .r3 {
+      color: #c08050
+  }
+
+  .rn {
+      color: #7a7aa0
+  }
+
+  .wk-dlt {
+      font-size: 8px;
+      font-weight: 700;
+      letter-spacing: .04em
+  }
+
+  .up {
+      color: #3ecf6a
+  }
+
+  .down {
+      color: #f0603a
+  }
+
+  .same {
+      color: #404060
+  }

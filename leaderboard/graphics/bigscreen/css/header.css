@@ -1,0 +1,21 @@
+.header {
+    position: absolute;
+    left: 20px;
+    top: 20px;
+    width: 1920px;
+    height: 80px;
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    gap: 20px;
+    padding: 0px 50px;
+}
+
+.box_heat {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 4px;
+    flex: 1 1 0%;
+    min-width: 0px;
+}

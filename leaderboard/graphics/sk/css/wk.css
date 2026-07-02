@@ -1,0 +1,29 @@
+  /* lighter scoring weight (equipment should read louder than the leaderboard) */
+  .wk-rnum {
+      font-size: 16px;
+      font-weight: 700
+  }
+
+  .wk-mname {
+      font-size: 13px;
+      color: #c3c5d6
+  }
+
+  .wk-mdot {
+      box-shadow: none;
+      opacity: .8
+  }
+
+  .wk-pv {
+      font-size: 15px;
+      font-weight: 600;
+      color: #6fa8d8
+  }
+
+  .wk-fill.active {
+      background: #3f7fb8
+  }
+
+  .wk-track {
+      background: rgba(255, 255, 255, .06)
+  }

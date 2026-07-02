@@ -122,24 +122,24 @@ function treatDisplayName(displayName) {
         let splitName = splitFullName(displayName);
         switch (setupFlat.nameSelect) {
             case 'first':
-                newName = '<div class="name laneCell"><span class="firstName">' + splitName.title + ' </span><span class="lastName"> ' + splitName.firstName + '</span></div>';
+                newName = '<div class="name nameCell nameItem"><span class="firstName">' + splitName.title + ' </span><span class="lastName"> ' + splitName.firstName + '</span></div>';
                 break;
             case 'last':
-                newName = '<div class="name laneCell"><span class="firstName">' + splitName.title + ' </span><span class="lastName"> ' + splitName.lastName + '</span></div>';
+                newName = '<div class="name nameCell nameItem"><span class="firstName">' + splitName.title + ' </span><span class="lastName"> ' + splitName.lastName + '</span></div>';
                 break;
             case 'f.Last':
                 pointFirstName = splitName.firstName.substring(0, 1) + ". "
                 // console.log(splitName.title)
-                newName = '<div class="name laneCell"><span class="firstName">' + splitName.title + ' </span><span class="firstName">' + pointFirstName + ' </span><span class="lastName"> ' + splitName.lastName + '</span></div>';
+                newName = '<div class="name nameCell nameItem"><span class="firstName">' + splitName.title + ' </span><span class="firstName">' + pointFirstName + ' </span><span class="lastName"> ' + splitName.lastName + '</span></div>';
                 break;
             case 'full':
-                newName = '<div class="name laneCell"><span class="firstName">' + splitName.title + ' </span><span class="firstName">' + splitName.firstName + ' </span><span class="lastName"> ' + splitName.lastName + '</span></div>';
+                newName = '<div class="name nameCell nameItem"><span class="firstName">' + splitName.title + ' </span><span class="firstName">' + splitName.firstName + ' </span><span class="lastName"> ' + splitName.lastName + '</span></div>';
                 break;
         }
 
     }
     else {
-        newName = '<div class="name laneCell"><span class="lastName"> ' + displayName.toLowerCase() + '</span></div>';
+        newName = '<div class="name nameCell nameItem"><span class="lastName"> ' + displayName.toLowerCase() + '</span></div>';
     }
     return newName;
 }
@@ -359,7 +359,8 @@ function repoLeft(lead_, aths_) {
 
 function repoTop(lead_, aths_) {
     //initialisation la position de départ
-    let y = parseInt($(lead_ + " .header").css('height').replace('px', ''));
+    // let y = parseInt($(lead_ + " .header").css('height').replace('px', ''));
+    let y = 0;
     Object.values(aths_).forEach((elm, index) => {
         if (elm.$item.find(lead_) != undefined) {
             !elm.$item.is(':visible') && elm.$item.show()

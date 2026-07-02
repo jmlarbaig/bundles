@@ -1,0 +1,38 @@
+  .foot {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 2px 8px;
+      font-size: 11px;
+      color: var(--muted);
+      letter-spacing: .08em
+  }
+
+  .foot .upd {
+      font-family: 'IBM Plex Mono', monospace
+  }
+
+  .legend {
+      display: flex;
+      align-items: center;
+      gap: 14px
+  }
+
+  .legend .grp2 {
+      display: flex;
+      align-items: center;
+      gap: 6px
+  }
+
+  .legend i {
+      width: 9px;
+      height: 9px;
+      border-radius: 2px;
+      display: inline-block
+  }
+
+  .legend b {
+      font-weight: 500;
+      letter-spacing: .06em;
+      color: var(--muted)
+  }

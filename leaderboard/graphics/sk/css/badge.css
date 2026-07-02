@@ -1,0 +1,72 @@
+  .vbadge {
+      display: inline-flex;
+      align-items: center;
+      font-family: 'Saira Condensed', sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      padding: 3px 7px;
+      border-radius: 5px;
+      line-height: 1;
+      flex-shrink: 0;
+      border: 1px solid transparent
+  }
+
+  .vb-ok {
+      color: #2fd98a;
+      background: rgba(52, 211, 153, .14);
+      border-color: rgba(52, 211, 153, .3)
+  }
+
+  .vb-live {
+      color: #5bc8ff;
+      background: rgba(56, 189, 248, .14);
+      border-color: rgba(56, 189, 248, .32)
+  }
+
+  .vb-warn {
+      color: #ffb061;
+      background: rgba(251, 146, 60, .15);
+      border-color: rgba(251, 146, 60, .34)
+  }
+
+  .vb-crit {
+      color: #ff6b86;
+      background: rgba(248, 85, 107, .16);
+      border-color: rgba(248, 85, 107, .38)
+  }
+
+  .vb-off {
+      color: #8b93a7;
+      background: rgba(139, 147, 167, .14);
+      border-color: rgba(139, 147, 167, .3)
+  }
+
+  .vb-fin {
+      color: #f0c040;
+      background: rgba(240, 192, 64, .14);
+      border-color: rgba(240, 192, 64, .32)
+  }
+
+  .wk-athlete {
+      display: flex;
+      align-items: center;
+      gap: 9px
+  }
+
+  .wk-athlete .aname {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      color: #e8e8f0;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis
+  }
+
+  .parent.off .wk-athlete .aname {
+      color: var(--muted)
+  }

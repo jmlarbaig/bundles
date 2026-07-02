@@ -38,11 +38,11 @@ function updateDynamics(newScoring, status) {
                 }
 
                 // On traite les mouvements
-                elemAth[i].currentMvt = TreatMvt(elemAth[i]);
-
-
-                //On traite le tableau des scores
-                treatPerfArray(elemAth[i])
+                if (overlay == "commentator") {
+                    elemAth[i].currentMvt = TreatMvt(elemAth[i]);
+                    //On traite le tableau des scores
+                    treatPerfArray(elemAth[i])
+                }
 
                 // WZAP logic
                 if (overlay === 'overlay_wza') {

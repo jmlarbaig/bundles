@@ -2,140 +2,185 @@
 <html lang="en">
 
 <head>
-	<!-- Required meta tags -->
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-	<title>Scoring Kairos</title>
 
 	<!-- JQUERY -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 
 	<!-- Latest compiled and minified CSS -->
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css"
-		integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+	<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css"
+		integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous"> -->
 
 	<!-- Optional theme -->
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap-theme.min.css"
-		integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ" crossorigin="anonymous">
+	<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap-theme.min.css"
+		integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ" crossorigin="anonymous"> -->
 
 	<!-- Latest compiled and minified JavaScript -->
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/js/bootstrap.min.js"
 		integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd"
 		crossorigin="anonymous"></script>
-
 	<!-- Human Parser -->
 	<script src="https://cdn.jsdelivr.net/npm/humanparser@2.7.0/index.min.js"></script>
 
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.css">
+
+	<script type="text/javascript" charset="utf8"
+		src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.js"></script>
+	<script type="text/javascript" charset="utf8"
+		src="https://cdn.datatables.net/fixedcolumns/4.2.1/js/dataTables.fixedColumns.min.js"></script>
+
+	<title>Monitoring Floor</title>
+	<link rel="icon" type="image/x-icon" href="../assets/images/favicon.png">
+
+
+
 	<!-- local CSS -->
 	<link rel="stylesheet" href="../common/css/index.css">
-	<link rel="stylesheet" href="../common/css/button.css">
-	<link rel="stylesheet" href="css/header.css">
-	<link rel="stylesheet" href="css/sk.css">
+	<link rel="stylesheet" href="css/action-bar.css">
+	<link rel="stylesheet" href="css/background.css">
+	<link rel="stylesheet" href="css/badge.css">
+	<link rel="stylesheet" href="css/battery.css">
+	<link rel="stylesheet" href="css/child.css">
+	<link rel="stylesheet" href="css/clock.css">
+	<link rel="stylesheet" href="css/cname.css">
 	<link rel="stylesheet" href="css/confirm.css">
+	<link rel="stylesheet" href="css/connection-type.css">
+	<link rel="stylesheet" href="css/counter.css">
+	<link rel="stylesheet" href="css/cumulative.css">
+	<link rel="stylesheet" href="css/current-mvt.css">
+	<link rel="stylesheet" href="css/division.css">
+	<link rel="stylesheet" href="css/foot.css">
+	<link rel="stylesheet" href="css/header.css">
+	<link rel="stylesheet" href="css/ip.css">
+	<link rel="stylesheet" href="css/issues.css">
+	<link rel="stylesheet" href="css/lane.css">
+	<link rel="stylesheet" href="css/link.css">
 	<link rel="stylesheet" href="css/modal.css">
+	<link rel="stylesheet" href="css/mvt.css">
+	<link rel="stylesheet" href="css/name.css">
+	<link rel="stylesheet" href="css/pace.css">
+	<link rel="stylesheet" href="css/rank.css">
+	<link rel="stylesheet" href="css/signal.css">
+	<link rel="stylesheet" href="css/table.css">
+	<link rel="stylesheet" href="css/tiles.css">
+	<link rel="stylesheet" href="css/topbar.css">
+	<link rel="stylesheet" href="css/wk.css">
+
+
 
 
 	<!-- local Assets -->
 	<script src="../assets/flag.js" type="text/javascript"></script>
 
 	<!-- local Javascript -->
-	<script src="./js/html-elements.js" type="text/javascript"></script>
-	<script src="./js/effect.js" type="text/javascript"></script>
-	<script src="./js/status.js" type="text/javascript"></script>
-	<script src="./js/wod.js" type="text/javascript"></script>
+	<script src="js/html-elements.js" type="text/javascript"></script>
+	<script src="js/status.js" type="text/javascript"></script>
+	<script src="js/effect.js" type="text/javascript"></script>
+	<script src="js/time-day.js" type="text/javascript"></script>
+	<script src="js/sk.js" type="text/javascript"></script>
 
 	<script src="../common/js/dynamic.js" type="text/javascript"></script>
 	<script src="../common/js/static.js" type="text/javascript"></script>
 	<script src="../common/js/tools.js" type="text/javascript"></script>
+	<!-- <script src="../common/js/heat.js" type="text/javascript"></script> -->
 	<script src="../common/js/time.js" type="text/javascript"></script>
 
 </head>
 
-<body class="nobody">
-	<div class="header">
-		<div class="box_logo">
-			<div id="logo" class="logo"></div>
-		</div>
-		<div class="box_chrono">
-			<div id="chrono" class="chrono"></div>
+<body style="background:#0d0d1a;">
+	<div class="cis-wrap">
+		<!-- ===== TOP BAR ===== -->
+		<header class="topbar">
+			<div class="topbar-row">
+				<div class="brand">
+					<!-- Competition Corner Logo — SVG recreation of double chevron + C -->
+					<div
+						style="width:40px;height:40px;background:#111;border-radius:8px;border:1px solid #2a2a3a;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+						<div style="width:24px;height:24px;display:flex;align-items:center;justify-content:center;">
+							<img src="../assets/images/logo.png" style="height:100%;" alt="Competition Corner Live">
+						</div>
+					</div>
+					<div class="brand-txt">
+						<div class="name">Competition Corner Live</div>
+						<div class="sub">Device Diagnostics</div>
+					</div>
+				</div>
+				<div class="counter" id="counter">
+					<div class="ring">
+						<svg width="46" height="46" viewBox="0 0 46 46">
+							<circle class="bg-arc" cx="23" cy="23" r="19" fill="none" stroke-width="5" />
+							<circle class="fg-arc" id="ringArc" cx="23" cy="23" r="19" fill="none" stroke-width="5"
+								stroke-linecap="round" stroke-dasharray="119.4" stroke-dashoffset="35.8" />
+						</svg>
+					</div>
+					<div>
+						<div class="nums"><span id="active-count">8</span><span class="tot" id="athletes-count"></span>
+						</div>
+						<div class="lbl">Lanes Live · <b id="devsum">15/17 devices</b></div>
+					</div>
+				</div>
+			</div>
+			<div class="tiles">
+				<div class="tile">
+					<div class="k">Current Workout</div>
+					<div class="v workout" id="workoutName"></div>
+				</div>
+				<div class="tile">
+					<div class="k">Heat</div>
+					<div class="v" id="heatNumber"></div>
+				</div>
+				<div class="tile">
+					<div class="k">Time of Day</div>
+					<div class="v" id="timeOfDay"></div>
+				</div>
+				<div class="tile">
+					<div class="k"><span class="live-dot"></span>Workout Clock</div>
+					<div class="v clock-v chrono"><span class="time"></span><span class="cap"></span>
+					</div>
+				</div>
+			</div>
+		</header>
+
+		<!-- ===== ACTION / ALERT BAR ===== -->
+		<div id="alertbar" class="alertbar"></div>
+
+		<section class="grid">
+			<div class="tablebar">
+				<span class="tbtitle">Lanes &amp; Devices</span>
+				<button id="toggleAll" onclick="toggleAllLanes()">Expand all</button>
+			</div>
+			<div class="leaderboards" id="leaderboards"></div>
+		</section>
+
+		<!-- The Modal -->
+		<div id="myModal-Confirm" class="modal-confirm">
+			<!-- Modal content -->
+			<div class="modal-confirm-content">
+				<span class="close">&times;</span>
+				<h3>BE CAREFUL</h3>
+				<p id="textConfirmation"></p>
+				<button class="danger" onclick="closeModal()">NO</button>
+				<button class="success" onclick="confirmChoice()">YES</button>
+			</div>
 		</div>
 
-		<div class="box_heat">
-			<div id="heat" class="heat"></div>
+		<div class="foot">
+			<span class="legend"><b style="letter-spacing:.18em;color:var(--muted-2)">BATTERY</b>
+				<span class="grp2"><i style="background:var(--bad)"></i><b>&lt;30%</b></span>
+				<span class="grp2"><i style="background:var(--orange)"></i><b>30–69%</b></span>
+				<span class="grp2"><i style="background:var(--ok)"></i><b>70%+</b></span></span>
+			<span class="upd">LAST PING · <span id="lastUpd"></span></span>
 		</div>
-
 	</div>
 
-	<div>
-		<div class="controlHeat">
-			<div class="log-button">
-				<button type='button' class="info btn" id='reloadWorkouts' onclick="showModal()">Reload
-					Workout</button>
-			</div>
-			<div class="col input-form">
-				<label for="workoutsMqtt">Workout Selection</label>
-				<select id="workoutsMqtt" class="workouts">
-					<option value="0">NO WORKOUT LOADED</option>
-				</select>
-			</div>
-			<div class="col input-form">
-				<label for="heatsMqtt">Heat Selection</label>
-				<select id="heatsMqtt" class="heat">
-					<option value="0">NO HEAT LOADED</option>
-				</select>
-			</div>
-			<div class="col log-button">
-				<button type='button' class="danger btn" id='changeHeat' onclick="showModal()">Change Heat</button>
-			</div>
+
+	<script src="js/modal.js" type="text/javascript"></script>
+	<script src="../index.js" type="text/javascript"></script>
 
 
-			<div class="col box">
-				<label>Time Cap Workout</label>
-				<div id="timeCapKairos">00:00</div>
-			</div>
-
-			<div class="col stateTimer box">
-				<label>State Heat</label>
-				<div id="stateTimer"></div>
-			</div>
-
-
-
-			<div class="col box">
-				<label>Hours</label>
-				<div class="hours">00:00:00</div>
-			</div>
-			<div class="col log-button">
-				<button type='button' class="success btn" id='startChrono' onclick="startChrono()">Start Chrono</button>
-			</div>
-
-
-			<div class="col">
-				<label for="countTimer">Count before timer</label>
-				<input type="number" id="countTimer" value="11" />
-			</div>
-			<div class="log-button">
-				<button type='button' class="danger btn" id='resetChrono' onclick="showModal()">Reset Chrono</button>
-			</div>
-		</div>
-	</div>
-
-	<div class="leaderboards" id="leaderboards"></div>
-
-	<!-- The Modal -->
-	<div id="myModal-Confirm" class="modal-confirm">
-		<!-- Modal content -->
-		<div class="modal-confirm-content">
-			<span class="close">&times;</span>
-			<h3>BE CAREFUL</h3>
-			<p id="textConfirmation"></p>
-			<button class="danger" onclick="closeModal()">NO</button>
-			<button class="success" onclick="confirmChoice()">YES</button>
-		</div>
-	</div>
-	<script src='js/confirm.js'></script>
-	<script src="../index.js"></script>
-	<script src='js/sk.js'></script>
+</body>
 
 </html>

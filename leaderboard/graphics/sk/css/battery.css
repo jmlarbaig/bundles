@@ -1,0 +1,57 @@
+.batt {
+    display: flex;
+    align-items: center;
+    gap: 4px
+}
+
+.bicon-v {
+    width: 14px;
+    height: 22px;
+    flex-shrink: 0;
+    display: block
+}
+
+.bslot {
+    width: 11px;
+    height: 18px;
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center
+}
+
+.bslot svg {
+    width: 11px;
+    height: 18px;
+    display: block;
+    animation: boltp 1.6s ease-in-out infinite
+}
+
+@keyframes boltp {
+
+    0%,
+    100% {
+        opacity: 1
+    }
+
+    50% {
+        opacity: .3
+    }
+}
+
+.batt .pct {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px;
+    font-weight: 500;
+    min-width: 34px;
+    color: var(--muted);
+    margin-left: 3px
+}
+
+.rollcap {
+    font-size: 8px;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: var(--muted-2);
+    font-weight: 600;
+    margin-left: 2px
+}

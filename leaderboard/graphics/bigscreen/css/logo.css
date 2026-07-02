@@ -1,0 +1,24 @@
+.box_logo {
+    width: 80px;
+    height: 80px;
+    border-radius: 16px;
+    background: rgb(255, 184, 0);
+    border: 1px solid rgba(255, 255, 255, 0.85);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
+    overflow: hidden;
+}
+
+.logo {
+    margin: auto;
+    padding: 2px;
+    width: 80px;
+    height: 80px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    /* <------ */
+    background-position: center;
+    background-origin: content-box;
+}

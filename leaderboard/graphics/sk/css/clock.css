@@ -1,0 +1,44 @@
+  .clock-v {
+      display: flex;
+      align-items: baseline;
+      gap: 9px
+  }
+
+  .clock-v .cap {
+      font-size: 12px;
+      color: var(--muted);
+      letter-spacing: .04em
+  }
+
+  #workoutClock.warn {
+      color: var(--warn)
+  }
+
+  #workoutClock.bad {
+      color: var(--bad)
+  }
+
+  .live-dot {
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--bad);
+      margin-right: 7px;
+      vertical-align: middle;
+      animation: pulse 1.6s infinite
+  }
+
+  @keyframes pulse {
+      0% {
+          box-shadow: 0 0 0 0 rgba(248, 85, 107, .55)
+      }
+
+      70% {
+          box-shadow: 0 0 0 8px rgba(248, 85, 107, 0)
+      }
+
+      100% {
+          box-shadow: 0 0 0 0 rgba(248, 85, 107, 0)
+      }
+  }

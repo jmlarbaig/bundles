@@ -1,10 +1,8 @@
 function createHeaderHeatStyle(element) {
     let $item = $(
         '<div class="heat_content">' +
-        '<div class="details">' +
-        '<div id="workout" class="detail" > ' + element.externalName + ' </div>' +
-        '<div id="division" class="detail"> ' + element.heatName + ' </div>' +
-        '</div>' +
+        '<div id="workout"  > ' + element.externalName + ' </div>' +
+        '<div id="division" > ' + element.heatName + ' </div>' +
         '</div>'
     );
     return $item
@@ -25,8 +23,8 @@ function createHeaderLeaderboard(divisions, indexDivision, repTarget) {
         '<div class="headerCells">' +
         // '<div class="text-nowrap text-truncate text-left division">' + divisions[indexDivision] + '</div>' +
         '<div class="titleCell titleLane">Lane</div>' +
-        '<div class="titleCell titleAthlete">Athlete</div>' +
-        '<div class="titleCell titleReps">Reps</div>' +
+        '<div class="titleCell titleName">Athlete</div>' +
+        '<div class="titleCell titleScore"></div>' +
         '<div class="titleCell titleRank">Rank</div>' +
         '</div>' +
         '<div id="athletes" class="athletes">' +
@@ -45,12 +43,19 @@ function createOverlayLeaderboard(data) {
 
     let $item = $(
         '<div class="athlete" id="aht' + data.lane + '">' +
-        // '<div class="popup text-nowrap text-truncate">' + '</div>' +
-        '<div class="laneCell lane text-nowrap text-truncate">L' + data.lane + '</div>' +
+        '<div class=athleteDetails>' +
+        '<div class=athleteGroup>' +
+        '<div class="athleteRow"></div>' +
+        '<div class="laneCell laneItem lane ">L' + data.lane + '</div>' +
         name +
-        '<div class="scoreCell score text-nowrap text-center text-truncate"></div>' +
-        '<div class="rankCell rank text-nowrap text-truncate"> ' + data.rank + '</div>' +
+        '<div class="scoreCell score scoreItem"></div>' +
+        '</div></div>' +
+        '<div class="rankDetails">' +
+        '<div class="upOrdownItem"></div>' +
+        '<div class="rankCell rank rankItem"> ' + data.rank + '</div>' +
+        '</div>' +
         '</div>'
+
     );
 
     // $item.hide();

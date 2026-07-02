@@ -1,0 +1,45 @@
+  /* ---------- TOP BAR ---------- */
+  .topbar {
+      background: linear-gradient(180deg, var(--panel), var(--panel-2));
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+  }
+
+  .topbar-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 16px 22px
+  }
+
+  .brand {
+      display: flex;
+      align-items: center;
+      gap: 18px
+  }
+
+  .brand .logo {
+      height: 48px;
+      width: auto;
+      display: block
+  }
+
+  .brand-txt .name {
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      line-height: 1
+  }
+
+  .brand-txt .sub {
+      font-size: 11px;
+      letter-spacing: .32em;
+      color: var(--muted);
+      text-transform: uppercase;
+      margin-top: 6px;
+      font-weight: 600
+  }

@@ -143,6 +143,8 @@ function resetLeaderboard(newData) {
 
             Object.values(elementDiv).forEach((elementAth, indexAthletes) => {
 
+                console.log(elementDiv)
+
                 // Pour le bandeau du bas
                 listOfAth.push("<span>#" + elementAth.lane + " - " + elementAth.displayName + "</span>")
 
@@ -157,7 +159,7 @@ function resetLeaderboard(newData) {
 
                 elementAth.$item = $item;
                 if (overlay != "overlay_wpa" && elementDiv.length <= 2) {
-                    elementAth.$item.hide()
+                    // elementAth.$item.hide()
                 }
 
 
@@ -206,7 +208,7 @@ function resetLeaderboard(newData) {
 
             $('.box_bandeau').hide()
             $('.box_bandeau').find('.bandeau').remove()
-            $('.box_bandeau').append(bandeau(indexDivision))
+            // $('.box_bandeau').append(bandeau(indexDivision))
             $('#bandeau' + indexDivision).html(listOfAth.toString().replaceAll(',', ' • ').replaceAll('_', ' ').toUpperCase())
 
             setupFlat.bandeau ? $('.box_bandeau').slideDown() : $('.box_bandeau').hide()
@@ -238,6 +240,9 @@ function resetHeat(data) {
             var $list = $(".cis-info-header-left");
             $list.empty();
             $list.append($item);
+        } else if (overlay === 'sk') {
+            $('body').find('#workoutName').text(data.externalName)
+            $('body').find('#heatNumber').text(data.heatName)
         } else {
             var $list = $(".box_heat");
             $list.empty();

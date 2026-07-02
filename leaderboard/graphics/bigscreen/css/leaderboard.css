@@ -1,9 +1,9 @@
 .leaderboard {
     position: absolute;
-    left: 10px;
-    top: 10px;
-    width: 1920px;
-    height: 1080px;
+    left: 20px;
+    top: 140px;
+    width: 1840px;
+    height: 516px;
 }
 
 .headerCells {
@@ -11,12 +11,10 @@
     left: 36px;
     top: 0px;
     right: 36px;
-    height: 100px;
+    height: 16px;
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-between;
-    color: aliceblue
 }
 
 .titleCell {
@@ -27,13 +25,14 @@
     letter-spacing: 0.4px;
     color: #e8e8f0;
     text-align: center;
-    flex: 0px 0px auto;
 }
+
+
 
 .athletes {
     position: absolute;
     left: 0px;
-    top: 20px;
+    top: 36px;
     right: 0px;
     display: flex;
     flex-direction: column;
@@ -44,17 +43,32 @@
     display: flex;
     flex-direction: row;
     gap: 4px;
+}
+
+.athleteDetails {
+    flex: 1 1 0%;
+    min-width: 0px;
+}
+
+.athleteGroup {
     position: relative;
     width: 100%;
-    height: 60px;
-    border-radius: 20px;
-    background: #111120;
-    background-color: #111120;
+    height: 56.5px;
+    border-radius: 24px;
     overflow: hidden;
     display: flex;
     flex-direction: row;
     align-items: center;
     gap: 20px;
     padding-left: 20px;
-    padding-right: 40px
+    padding-right: 40px;
+}
+
+.athleteRow {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 97.0492%;
+    height: 100%;
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0.1) 0%, transparent 100%);
 }

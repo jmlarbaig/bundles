@@ -1,0 +1,33 @@
+  .sigico {
+      width: 22px;
+      height: 17px;
+      flex-shrink: 0
+  }
+
+  .conn {
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+      margin-left: 9px;
+      font-size: 8px;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      vertical-align: middle;
+      white-space: nowrap;
+      flex-shrink: 0
+  }
+
+  .conn svg {
+      width: 13px;
+      height: 13px;
+      display: block
+  }
+
+  .conn.wifi {
+      color: var(--accent)
+  }
+
+  .conn.lte {
+      color: #c4b5fd
+  }

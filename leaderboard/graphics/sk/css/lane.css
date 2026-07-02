@@ -1,0 +1,43 @@
+  .lane {
+      display: flex;
+      align-items: center;
+      gap: 11px
+  }
+
+  .chev {
+      display: inline-block;
+      width: 13px;
+      text-align: center;
+      color: var(--muted);
+      transition: transform .22s;
+      font-size: 11px
+  }
+
+  .grp.open .parent .chev {
+      transform: rotate(90deg)
+  }
+
+  .lane .no {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 28px;
+      font-weight: 600;
+      min-width: 34px;
+      line-height: 1
+  }
+
+  .dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%
+  }
+
+  .pcount {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 11px;
+      color: var(--muted);
+      background: rgba(255, 255, 255, .06);
+      border: 1px solid var(--line-strong);
+      border-radius: 20px;
+      padding: 2px 9px;
+      letter-spacing: .04em
+  }

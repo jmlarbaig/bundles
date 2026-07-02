@@ -1,0 +1,53 @@
+  .link {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      flex-wrap: wrap
+  }
+
+  .link .code {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 13px;
+      color: var(--text)
+  }
+
+  .parent.off .link .code {
+      color: var(--bad);
+      letter-spacing: .12em;
+      font-size: 12px
+  }
+
+  .badge,
+  .chip {
+      font-size: 9px;
+      letter-spacing: .13em;
+      text-transform: uppercase;
+      font-weight: 600;
+      padding: 3px 7px;
+      border-radius: 5px;
+      border: 1px solid var(--line-strong)
+  }
+
+  .badge.wifi {
+      color: var(--accent);
+      background: rgba(56, 189, 248, .08);
+      border-color: rgba(56, 189, 248, .25)
+  }
+
+  .badge.mobile {
+      color: #c4b5fd;
+      background: rgba(167, 139, 250, .08);
+      border-color: rgba(167, 139, 250, .25)
+  }
+
+  .chip.cnt {
+      color: var(--ok);
+      background: rgba(52, 211, 153, .08);
+      border-color: rgba(52, 211, 153, .28)
+  }
+
+  .chip.fin {
+      color: var(--finish);
+      background: rgba(167, 139, 250, .09);
+      border-color: rgba(167, 139, 250, .3)
+  }

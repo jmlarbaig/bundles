@@ -1,50 +1,42 @@
 
+// Header Styler
+
 function createHeaderHeatStyle(element) {
     let $item = $(
-        '<div class="heat_content">' +
-        '<div class="details">' +
-        '<div id="workout" class="detail" > ' + element.externalName + ' </div>' +
-        '<div id="division" class="detail"> ' + element.heatName + ' </div>' +
-        '</div>' +
+        '<div class="cis-info-header-left">' +
+        '<div class="cis-event-name" > ' + element.externalName + ' - <span id="cis-division"></span></div>' +
+        '<div class="cis-heat-info"> ' + element.heatName + ' &nbsp;·&nbsp; <span id="total-reps"></span> &nbsp;·&nbsp; <span class="cis-name-stage">Platform Stage</span></div>' +
         '</div>'
     );
     return $item
 }
 
 
+// Header Table
+
 function createHeaderLeaderboard(divisions, indexDivision, repTarget) {
     //! Ajouter la séparation ici
     const reps = treatReptarget(repTarget[indexDivision])
+
+    console.log("divisions[indexDivision] : ", divisions[indexDivision])
+    $('body').find('#cis-division').text(divisions[indexDivision])
     // var reps = 0;
 
     var $headerTop = $(
         '<div id="leaderboard' + indexDivision + '" class="leaderboard">' +
-        '<div class="header">' +
-        '<div class="text-nowrap text-truncate text-left division">' + divisions[indexDivision] + '</div>' +
-        '<div id="mvt" class="text-nowrap text-truncate text-left"></div>' +
-        '<div class="text-nowrap text-truncate" id="heatSize">0 Minos/' + (heatSize || 0) + ' Athletes</div>' +
+        '<div class="headerLeaderboard">' + '<div class="division">' + divisions[indexDivision] + '</div>' + '</div>' +
+        '<div class="ghead">' +
+        '<span>Lane</span>' +
+        '<span>Battery</span>' +
+        '<span>Signal</span>' +
+        '<span>Devices</span>' +
+        '<span>Athletes</span>' +
+        '<span style="text-align:center;color:#f0c040">Rank</span>' +
+        '<span>Current Movement</span>' +
+        '<span class="text-align:center">Rep/Min</span>' +
+        '<span class="text-align:center">Cumulative</span>' +
         '</div>' +
-        '<table>' +
-        '<thead>' +
-        '<tr>' +
-        '<th fixed-side scope="col" class="lane box">LANE</th>' +
-        '<th fixed-side scope="col" class="state box">STATE</th>' +
-        '<th scope="col" class="box battery text-nowrap text-truncate">BATTERY</th>' +
-        '<th fixed-side scope="col" class="timeAth box">SIGNAL</th>' +
-        '<th fixed-side scope="col" class="repAth box">REP</th>' +
-        '<th scope="col" class="box  align-items-xl-center">IP</th>' +
-        '<th scope="col" class="box way align-items-xl-center">Link</th>' +
-        '<th scope="col" class="flag box">FLAG</th>' +
-        '<th scope="col" class="box text-nowrap text-truncate text-left name">NAME</th>' +
-        '<th scope="col" class="truncate box rank">Rank</th>' +
-        '<th scope="col" class="truncate box reppersec">Rep/Min</th>' +
-        '<th scope="col" class="truncate box score align-items-xl-center">Scores</th>' +
-        '<th scope="col" class="truncate box popup text-nowrap text-truncate">Movement</th>' +
-        '</tr>' +
-        '</thead>' +
-        '<tbody id="athletes" class="athletes">' +
-        '</tbody>' +
-        '</table>' +
+        '<div id="athletes" class="athletes"></div>' +
         '</div>'
 
     );
@@ -53,34 +45,30 @@ function createHeaderLeaderboard(divisions, indexDivision, repTarget) {
     return $headerTop
 }
 
+// CIS table style  
 
 function createOverlayLeaderboard(data) {
 
     let name = treatDisplayName(data.displayName);
-    let flag = data.countryCode != "LOGO" ? ("https://flagcdn.com/" + data.countryCode.toLowerCase() + '.svg') : (logoEvent.value[0].url);
+
 
     let $item = $(
-        '<tr class="athlete zero" id="lane' + data.lane + '">' +
-        '<td class="lane">' + data.lane + '</td>' +
-        '<td class="state"></td>' +
-        '<td class="battery align-items-xl-center"></td>' +
-        '<td class="signal text-nowrap text-truncate"></td>' +
-        // '<td class="timeAth"></td>' +
-        '<td class="repAth"></td>' +
-        '<td class="ip"></td>' +
-        '<td class="way"></td>' +
-        '<td class="flag">' + '<div class="box_flag"> </div> ' + '</td>' +
-        '<td class="text-nowrap text-truncate text-left name" onclick="requestPing()" id="request_' + data.lane + '">' + name + '</td>' +
-        '<td class="truncate rank">' + parseInt(data.CurrentRank) + '</td>' +
-        '<td class="truncate reppersec"></td>' +
-        '<td class="truncate score align-items-xl-center">' + data.score_abs + '</td>' +
-        '<td class="truncate popup text-nowrap text-truncate"></td>' +
-        '</tr>'
+        '<div class="athlete grp is-crit" id="ath' + data.lane + '">' +
+        '<div class="row parent off"  onclick="toggleLane(' + data.lane + ')">' +
+        '<div class="lane"><span class="chev" style="visibility:hidden">▶</span><div class="no">' + data.lane + '</div><span class="vbadge vb-off">OFFLINE</span></div>' +
+        '<div class="batt"> <span class="na">-</span> </div>' +
+        '<div class="sig"> <span class="na">-</span> </div>' +
+        '<div class="ip">' + '<div class="devstrip">' + '<span class="dchip missing" title="Rep Counter - MISSING"> </span>' + '<span class="dchip missing" title="Buzzer - MISSING"> </span>' + '</div>' + '</div>' +
+        '<div class="wk-athlete"><span class="aname">' + name + '</span></div>' +
+        '<div class="wk-rank"><div class="wk-rnum rn" data-lane>' + data.lane + '</div></div>' +
+        '<div class="wk-mvt"><div class="wk-moff">' + "No live data" + '</div></div>' +
+        '<div class="wk-pace"><div class="wk-pv">-</div><div class="wk-pl">rep/min</div></div>' +
+        '<div class="wk-cum"><div class="wk-cv">-</div><div class="wk-cl">Offline</div></div>' +
+        '</div>' +
+        '<div class="kids"></div>' +
+        '</div>'
     );
 
-    $item.find(".box_flag").css('background-image', 'url(' + flag + ')')
-    $item.find(".rounds").hide();
-    // $item.hide();
 
     return $item
 }

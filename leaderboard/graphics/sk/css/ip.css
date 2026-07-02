@@ -1,0 +1,28 @@
+  .ip {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 13px;
+      color: var(--text)
+  }
+
+  .ip.muted {
+      color: var(--muted-2);
+      font-family: 'Saira', sans-serif;
+      font-size: 11px;
+      letter-spacing: .12em;
+      text-transform: uppercase
+  }
+
+  .ipstat {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 12px;
+      letter-spacing: .02em
+  }
+
+  .ipstat.ok {
+      color: var(--muted)
+  }
+
+  .ipstat.bad {
+      color: #ff6b86;
+      font-weight: 600
+  }

@@ -1,0 +1,42 @@
+<div style="min-height: 420px; background: rgba(0,0,0,0.6); display: flex; align-items: center; justify-content: center; font-family: var(--font-sans);">
+
+  <div style="width: 420px; background: #14161c; border: 0.5px solid rgba(255,255,255,0.08); border-radius: var(--border-radius-lg); overflow: hidden;">
+
+    <div style="display: flex; align-items: flex-start; justify-content: space-between; padding: 20px 20px 0 20px;">
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <div style="width: 34px; height: 34px; border-radius: 50%; background: var(--color-background-danger); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+          <i class="ti ti-alert-triangle" style="font-size: 18px; color: var(--color-text-danger);" aria-hidden="true"></i>
+        </div>
+        <p style="font-size: 13px; letter-spacing: 0.06em; color: rgba(255,255,255,0.45); margin: 0; text-transform: uppercase;">Be careful</p>
+      </div>
+      <button aria-label="Close" style="width: 28px; height: 28px; border-radius: 50%; border: none; background: rgba(255,255,255,0.06); color: rgba(255,255,255,0.6); display: flex; align-items: center; justify-content: center; cursor: pointer; padding: 0;">
+        <i class="ti ti-x" style="font-size: 16px;" aria-hidden="true"></i>
+      </button>
+    </div>
+
+    <div style="padding: 14px 20px 20px 20px;">
+      <p style="font-size: 16px; line-height: 1.5; color: rgba(255,255,255,0.92); margin: 0 0 4px;">
+        Are you sure you want to reject this lane?
+      </p>
+      <div style="display: flex; align-items: center; gap: 8px; margin-top: 10px;">
+        <span style="font-size: 13px; font-weight: 500; background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.75); padding: 4px 10px; border-radius: var(--border-radius-md);">Lane 1</span>
+        <i class="ti ti-chevron-right" style="font-size: 14px; color: rgba(255,255,255,0.3);" aria-hidden="true"></i>
+        <span style="font-size: 13px; font-weight: 500; background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.75); padding: 4px 10px; border-radius: var(--border-radius-md);">test</span>
+      </div>
+      <p style="font-size: 13px; color: rgba(255,255,255,0.4); margin: 12px 0 0; line-height: 1.5;">
+        The device will be removed from the competition and won't be able to send data for this lane anymore.
+      </p>
+    </div>
+
+    <div style="display: flex; gap: 10px; padding: 0 20px 20px 20px;">
+      <button style="flex: 1; height: 40px; border-radius: var(--border-radius-md); border: 0.5px solid rgba(255,255,255,0.14); background: transparent; color: rgba(255,255,255,0.85); font-size: 14px; font-weight: 500; cursor: pointer;">
+        Cancel
+      </button>
+      <button style="flex: 1; height: 40px; border-radius: var(--border-radius-md); border: none; background: var(--color-background-danger); color: var(--color-text-danger); font-size: 14px; font-weight: 500; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 6px;">
+        <i class="ti ti-ban" style="font-size: 16px;" aria-hidden="true"></i>
+        Reject lane
+      </button>
+    </div>
+
+  </div>
+</div>

@@ -14,7 +14,10 @@ function showModal() {
     choiceUser = event.target.id;
     if (event.target.id.includes("reject")) {
         console.log(choiceUser)
-        $('#textConfirmation').html('Are you sur to REJECT LANE .. IP .. ?')
+        let laneInfo = choiceUser.replace("lane_reject_", "").split("_");
+        let lane = laneInfo[0];
+        let ip = laneInfo[1];
+        $('#textConfirmation').html('Are you sure to REJECT LANE ' + lane + ' / ' + ip + '?')
     } else {
         switch (event.target.id) {
             case "reloadWorkouts":
