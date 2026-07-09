@@ -238,12 +238,13 @@ function treatWorkouts(data) {
     auth = {}
 
     for (let workout of data) {
-        const { description, mvt_id, mvt_names, mvt_reps, mvt_units, increments, total_reps, rounds, rep_per_rounds, division, mvt_type } = workout
+        // console.log('workout', workout)
+        const { description, mvt_id, mvt_names, mvt_reps, mvt_units, increments, total_reps, rounds, rep_per_rounds, divisionName, mvt_type } = workout
 
         if (mvt_id.length > 0) {
-            auth[division] = true
+            auth[divisionName] = true
         } else {
-            auth[division] = false
+            auth[divisionName] = false
         }
 
     }
@@ -414,7 +415,7 @@ function fetchNewData(data, lane) {
 
 function TreatMvt(elementAth) {
     let currentMvt = {}
-    if ((auth[elementAth.division] || heat.typeWod == 'repmax') && workouts.length > 0 && workouts.find((element) => element.division == elementAth.division).mvt_id.length > 1) {
+    if ((auth[elementAth.division] || heat.typeWod == 'repmax') && workouts.length > 0 && workouts.find((element) => element.divisionName == elementAth.division).mvt_id.length > 1) {
         if (elementAth.result == "") {
             switch (heat.typeWod) {
                 case 'amrap':
@@ -457,7 +458,7 @@ function mvtIndexFinish(division) {
     let index = 0;
     let arrayMvt = [];
     for (let wod of workouts) {
-        if (wod.division == division) {
+        if (wod.divisionName == division) {
 
             return ({
                 'scoreAbsMvt': wod.totalRep,
@@ -479,7 +480,7 @@ function mvtIndexForTime(nbrReps, division) {
     let index = 0;
     let arrayMvt = [];
     for (let wod of workouts) {
-        if (wod.division == division) {
+        if (wod.divisionName == division) {
             if (res != 0) {
                 if (res == wod.total_reps && wod.mvt_names[wod.mvt_names.length - 1] == "Sprint") {
                     res = 0
@@ -519,7 +520,7 @@ function mvtIndexAmrap(nbrReps, division) {
     let repAmrap = 0;
     let arrayMvt = [];
     for (let wod of workouts) {
-        if (wod.division == division) {
+        if (wod.divisionName == division) {
             let totalRep = wod.total_reps;
             if (res != 0) {
                 if (wod.mvt_reps[index] == 0) {

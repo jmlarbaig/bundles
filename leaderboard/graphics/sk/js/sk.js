@@ -28,12 +28,12 @@ dataMinos.on('change', (newValue, oldValue) => {
                     '<div class="reject"><button onclick="showModal()" id="lane_reject_' + minos.lane + '_' + minos.ip + '">REJECT LANE &times;</button></div>' +
                     '</div>'
                 );
-                $('#ath' + minos.lane).find('.kids').append($item)
+                $('#ath' + minos.lane).find('.row').append($item)
             } else {
-                $('#judge-' + minos.ip).find('.lane').html($itemIcon)
-                $('#judge-' + minos.ip).find('.batt').html($itemBattery)
-                $('#judge-' + minos.ip).find('.sig').html($itemSignal)
-                $('#judge-' + minos.ip).find('.cspan').html('<span class="crole" style="color:var(--ok)">' + $itemIcon + '</span><span class="code"></span>' + $itemRep)
+                // $('#judge-' + minos.ip).find('.lane').html($itemIcon)
+                // $('#judge-' + minos.ip).find('.batt').html($itemBattery)
+                // $('#judge-' + minos.ip).find('.sig').html($itemSignal)
+                // $('#judge-' + minos.ip).find('.cspan').html('<span class="crole" style="color:var(--ok)">' + $itemIcon + '</span><span class="code"></span>' + $itemRep)
             }
 
             if (tableOfMinos[minos.ip] != null) {
@@ -65,7 +65,7 @@ function buildBattery(battery) {
     }
 
 
-    return '<div class="batt" title="Battery ' + battery + '%">' + $item + '<span class="bslot"></span><span class="pct">' + minos.battery + '%</span></div>'
+    return '<div class="batt" title="Battery ' + battery + '%">' + $item + '<span class="bslot"></span><span class="pct">' + battery + '%</span></div>'
 }
 
 function buildSignal(connectivity, signal) {
@@ -146,7 +146,7 @@ function buildIcon(type) {
             $item = '<span class="ricon" style="width:15px"><svg viewBox="0 0 16 22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><rect x="3" y="1.5" width="10" height="19" rx="2.2" ></rect ><line x1="6.6" y1="4.4" x2="9.4" y2="4.4"></line><circle cx="8" cy="17.4" r="0.9" fill="currentColor" stroke="none"></circle></svg ></span>'
             break;
     }
-    return '<span class="dline"></span>' + $item + ' < span class="dicon" style = "color:var(--ok)" ></span > <span class="dot" style="background:var(--ok);margin-left:2px;"></span></div >' + $item
+    return '<span class="dline"></span>' + $item + ' <span class="dicon" style = "color:var(--ok)" ></span > <span class="dot" style="background:var(--ok);margin-left:2px;"></span>'
 }
 
 function buildIconParent(ip, type) {

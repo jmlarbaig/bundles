@@ -38,9 +38,9 @@ function updateDynamics(newScoring, status) {
                 }
 
                 // On traite les mouvements
+                elemAth[i].currentMvt = TreatMvt(elemAth[i]);
+                //On traite le tableau des scores
                 if (overlay == "commentator") {
-                    elemAth[i].currentMvt = TreatMvt(elemAth[i]);
-                    //On traite le tableau des scores
                     treatPerfArray(elemAth[i])
                 }
 
