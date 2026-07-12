@@ -13,16 +13,21 @@ function handleFirstAthleteWithoutResult(elemAth) {
         .filter(a => a.result === "")
         .sort((a, b) => a.CurrentRank - b.CurrentRank)[0];
 
+
     if (!athlete) {
         treatTextMvt("");
     } else {
-        treatTextMvt(
-            athlete.currentMvt.arrayMvt
-                .toString()
-                .replaceAll(',', '-')
-                .replaceAll('_', ' ')
-                .replace('-', '')
-        );
+        if (athlete.currentMvt.arrayMvt.toString() == "" || athlete.currentMvt.arrayMvt.toString().includes("Object")) {
+            treatTextMvt("");
+        } else {
+            treatTextMvt(
+                athlete.currentMvt.arrayMvt
+                    .toString()
+                    .replaceAll(',', '-')
+                    .replaceAll('_', ' ')
+                    .replace('-', '')
+            );
+        }
     }
 }
 
