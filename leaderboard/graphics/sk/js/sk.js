@@ -3,6 +3,7 @@ const dataMinos = nodecg.Replicant('dataMinos', 'connector')
 
 let tableOfMinos = []
 let minosOnFloor = 0;
+let athleteWithMinos = 0
 
 dataMinos.on('change', (newValue, oldValue) => {
     console.log("newValue : ", newValue)
@@ -15,6 +16,7 @@ dataMinos.on('change', (newValue, oldValue) => {
         let $itemBattery = buildBattery(minos.battery)
         let $itemIcon = buildIcon(minos.type)
         let $itemRep = buildRep(minos.type, minos.lane, minos.rep)
+        let $itemState = buildStateLane(true, false)
         if (minos != null) {
             if ($('#judge-' + minos.ip).length == 0) {
                 let $item = $(
@@ -28,12 +30,15 @@ dataMinos.on('change', (newValue, oldValue) => {
                     '<div class="reject"><button onclick="showModal()" id="lane_reject_' + minos.lane + '_' + minos.ip + '">REJECT LANE &times;</button></div>' +
                     '</div>'
                 );
-                $('#ath' + minos.lane).find('.row').append($item)
+                $('#ath' + minos.lane).find('.kids').append($item)
+                $('#ath' + minos.lane).find('.parent').removeClass('off')
+                $('#ath' + minos.lane).find('.vbadge').replaceWith($itemState)
+                athleteWithMinos++;
             } else {
-                // $('#judge-' + minos.ip).find('.lane').html($itemIcon)
-                // $('#judge-' + minos.ip).find('.batt').html($itemBattery)
-                // $('#judge-' + minos.ip).find('.sig').html($itemSignal)
-                // $('#judge-' + minos.ip).find('.cspan').html('<span class="crole" style="color:var(--ok)">' + $itemIcon + '</span><span class="code"></span>' + $itemRep)
+                $('#judge-' + minos.ip).find('.lane').html($itemIcon)
+                $('#judge-' + minos.ip).find('.batt').html($itemBattery)
+                $('#judge-' + minos.ip).find('.sig').html($itemSignal)
+                $('#judge-' + minos.ip).find('.cspan').html('<span class="crole" style="color:var(--ok)">' + $itemIcon + '</span><span class="code"></span>' + $itemRep)
             }
 
             if (tableOfMinos[minos.ip] != null) {
@@ -41,16 +46,35 @@ dataMinos.on('change', (newValue, oldValue) => {
                 tableOfMinos[minos.ip] = null
             }
 
-            $('#heatSize').text(`${$('.counter').length} Counter/${heatSize} Athletes`)
 
             tableOfMinos[minos.ip] = setTimeout(() => {
+                $itemState = buildStateLane(false, false)
+
+                athleteWithMinos--;
                 $('#judge-' + minos.ip).remove()
-                $('#heatSize').text(`${$('.counter').length} Counter/${heatSize} Athletes`)
+                $('#ath' + minos.lane).find('.parent').addClass('off')
+                $('#ath' + minos.lane).find('.vbadge').replaceWith($itemState)
+                $('#active-count').text(`${$('.child').length}`)
             }, 6000)
+
+
+
+            $('#active-count').text(`${athleteWithMinos}`)
         }
     })
     // }
 })
+
+function buildStateLane(isOnline, areIssue) {
+    let $item = '<span class="vbadge vb-off">OFFLINE</span>'
+    if (isOnline) {
+        $item = '<span class="vbadge vb-live">LIVE</span>'
+    }
+    if (areIssue) {
+        $item = '<span class="vbadge vb-warn">ISSUE</span>'
+    }
+    return $item;
+}
 
 function buildBattery(battery) {
     let $item = ''
@@ -75,7 +99,7 @@ function buildSignal(connectivity, signal) {
     console.log(signalText)
 
     if (connectivity == 'mobile') {
-        if (signalText > -50) {
+        if (signalText >= -50) {
             $item = '<svg class="sigico" viewBox="0 0 23 18"><rect x="1" y="11" width="3.6" height="6" rx="1" fill="var(--ok)"></rect><rect x="6.4" y="8" width="3.6" height="9" rx="1" fill="var(--ok)"></rect><rect x="11.8" y="5" width="3.6" height="12" rx="1" fill="var(--ok)"></rect><rect x="17.200000000000003" y="2" width="3.6" height="15" rx="1" fill="var(--ok)"></rect></svg>' +
                 '<div class="sig"><div class="val"><span>' + signalText + '<small>dBm</small></span><span class="tier" style="color:var(--good)">Excellent</span></div>'
         } else if (signalText >= -70 && signalText < -50) {
@@ -85,7 +109,6 @@ function buildSignal(connectivity, signal) {
             $item =
                 '<svg class="sigico" viewBox="0 0 23 18"><rect x="1" y="11" width="3.6" height="6" rx="1" fill="var(--warn)"></rect><rect x="6.4" y="8" width="3.6" height="9" rx="1" fill="var(--warn)"></rect><rect x="11.8" y="5" width="3.6" height="12" rx="1" fill="rgba(255,255,255,.16)"></rect><rect x="17.200000000000003" y="2" width="3.6" height="15" rx="1" fill="rgba(255,255,255,.16)"></rect></svg>' +
                 '<div class="sig"><div class="val"><span>' + signalText + '<small>dBm</small></span><span class="tier" style="color:var(--warn)">Fair</span></div>'
-
         } else {
             $item =
                 '< svg class="sigico" viewBox = "0 0 23 18" ><rect x="1" y="11" width="3.6" height="6" rx="1" fill="var(--bad)"></rect><rect x="6.4" y="8" width="3.6" height="9" rx="1" fill="rgba(255,255,255,.16)"></rect><rect x="11.8" y="5" width="3.6" height="12" rx="1" fill="rgba(255,255,255,.16)"></rect><rect x="17.200000000000003" y="2" width="3.6" height="15" rx="1" fill="rgba(255,255,255,.16)"></rect></svg > ' +
@@ -93,7 +116,7 @@ function buildSignal(connectivity, signal) {
         }
     }
     else if (connectivity == 'wifi') {
-        if (signalText > -50) {
+        if (signalText >= -50 && signalText < 0) {
             $item =
                 '<svg class="sigico" viewBox="0 0 24 22" fill="none" stroke-linecap="round" stroke-width="2.4"><path d="M3 8a14 14 0 0 1 18 0" stroke="var(--ok)"></path><path d="M6.3 11.8a9.2 9.2 0 0 1 11.4 0" stroke="var(--ok)"></path><path d="M9.4 15.4a4.6 4.6 0 0 1 5.2 0" stroke="var(--ok)"></path><circle cx="12" cy="18.8" r="1.5" fill="var(--ok)" stroke="none"></circle></svg>' +
                 '<div class="val"><span>' + signalText + '<small>dBm</small></span><span class="tier" style="color:var(--ok)">Excellent</span></div>'

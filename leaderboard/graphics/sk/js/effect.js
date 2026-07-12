@@ -1,10 +1,10 @@
 treatAthleteStatistic = (elemAth) => {
-    let athleteCount = Object.keys(elemAth).length;
-    let athleteRunning = Object.values(elemAth).filter(athlete => athlete.status === 'W').length;
+    let athleteCount = Object.values(elemAth).length;
+    // let athleteRunning = Object.values(elemAth).filter(athlete => athlete.status === 'W').length;
     let athleteFinished = Object.values(elemAth).filter(athlete => athlete.status === 'F').length;
 
     $('#athletes-count').text('/' + athleteCount);
-    $('#active-count').text(athleteRunning);
+    // $('#active-count').text(athleteRunning);
     $('#finished-count').text(athleteFinished);
     $('#total-reps').text(workouts[0].total_reps + " total reps");
 }
