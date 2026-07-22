@@ -38,9 +38,9 @@
   }
 
   .vb-off {
-      color: #8b93a7;
-      background: rgba(139, 147, 167, .14);
-      border-color: rgba(139, 147, 167, .3)
+      color: #ff6b86;
+      background: rgba(248, 85, 107, .16);
+      border-color: rgba(248, 85, 107, .38)
   }
 
   .vb-fin {

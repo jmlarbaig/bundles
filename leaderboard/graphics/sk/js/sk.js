@@ -1,16 +1,65 @@
 
 const dataMinos = nodecg.Replicant('dataMinos', 'connector')
 
+$(document).ready(function () {
+    setInterval(() => {
+        console.log("updateBadge()")
+        updateBadge()
+    }, 1000)
+})
+
 let tableOfMinos = []
 let minosOnFloor = 0;
 let athleteWithMinos = 0
 
+let statusesByPerson = {}; // contiendra au plus 3 statuts par personne
+
+function addStatus(judgeId, newStatus) {
+    if (!statusesByPerson[judgeId]) {
+        statusesByPerson[judgeId] = [];
+    }
+
+
+    const personStatuses = statusesByPerson[judgeId];
+    const lastStatus = personStatuses[personStatuses.length - 1];
+
+
+    // on ignore si c'est le même statut que le précédent
+    if (lastStatus === newStatus) {
+        return;
+    }
+
+    statusesByPerson[judgeId].push(newStatus);
+    if (statusesByPerson[judgeId].length > 3) {
+        statusesByPerson[judgeId].shift(); // retire le plus ancien
+    }
+
+    render(judgeId);
+}
+
+function render(judgeId) {
+    const personDiv = document.createElement('div');
+    personDiv.className = 'person-block';
+
+    let $item = $('#judge-' + judgeId).find('.state-minos')
+    $item.html('') // Clear previous content
+
+    Object.entries(statusesByPerson).forEach(([personId, statuses]) => {
+        statuses.forEach((s, i) => {
+            const div = document.createElement('div');
+            div.textContent = s;
+            div.className = i === statuses.length - 1 ? 'status latest' : 'status old';
+            personDiv.appendChild(div);
+        });
+
+        $item.html('') // Clear previous content
+        $item.append(personDiv);
+    });
+}
+
+
 dataMinos.on('change', (newValue, oldValue) => {
-    console.log("newValue : ", newValue)
     Object.values(newValue).forEach((minos) => {
-        console.log("minos : ", minos)
-        console.log("minos == undefined : ", minos == undefined)
-        console.log("minos == {} : ", minos == {})
         if (Object.keys(minos).length === 0) return;
         let $itemSignal = buildSignal(minos.connectivity, minos.signal)
         let $itemBattery = buildBattery(minos.battery)
@@ -28,22 +77,30 @@ dataMinos.on('change', (newValue, oldValue) => {
                     '<div class="cspan"><span class="crole" style="color:var(--ok)">' + $itemIcon + '</span><span class="code"></span>' + $itemRep + '</div>' +
                     '<div class="ping"><button onclick="deleteMinos()" id="delete_' + minos.ip + '">PING</button></div>' +
                     '<div class="reject"><button onclick="showModal()" id="lane_reject_' + minos.lane + '_' + minos.ip + '">REJECT LANE &times;</button></div>' +
+                    '<div class="state-minos">' + minos.scorePosted + '</div>' +
                     '</div>'
                 );
                 $('#ath' + minos.lane).find('.kids').append($item)
                 $('#ath' + minos.lane).find('.parent').removeClass('off')
                 $('#ath' + minos.lane).find('.vbadge').replaceWith($itemState)
+                $('#ath' + minos.lane).find('.buildStateMessage').html($itemStateMessage)
                 athleteWithMinos++;
             } else {
+                $('#judge-' + minos.ip).appendTo($('#ath' + minos.lane).find('.kids'))
                 $('#judge-' + minos.ip).find('.lane').html($itemIcon)
                 $('#judge-' + minos.ip).find('.batt').html($itemBattery)
                 $('#judge-' + minos.ip).find('.sig').html($itemSignal)
                 $('#judge-' + minos.ip).find('.cspan').html('<span class="crole" style="color:var(--ok)">' + $itemIcon + '</span><span class="code"></span>' + $itemRep)
+                $('#judge-' + minos.ip).find('.state-minos').html(minos.scorePosted)
             }
 
             if (tableOfMinos[minos.ip] != null) {
+                // addStatus(minos.ip, minos.scorePosted)
+                $('#judge-' + minos.ip).find('.state-minos').html(minos.scorePosted)
+                //UPDATE LANE
                 clearTimeout(tableOfMinos[minos.ip])
                 tableOfMinos[minos.ip] = null
+                $('#judge-' + minos.ip).find('.sig').html($itemSignal)
             }
 
 
@@ -65,6 +122,32 @@ dataMinos.on('change', (newValue, oldValue) => {
     // }
 })
 
+function updateBadge() {
+    let isLive = false;
+    $('.leaderboard').each(function () {
+        let $athletes = $(this).find('.athlete').each(function () {
+            console.log($(this).find('.kids').find('.row').length)
+            let numberOfDevice = $(this).find('.kids').find('.row').length;
+            console.log("numberOfDevice : ", numberOfDevice)
+            if (numberOfDevice > 0) {
+                isLive = true
+                $(this).find('.parent').removeClass('off')
+            } else {
+                isLive = false
+                $(this).find('.parent').addClass('off')
+            }
+
+            let $itemState = buildStateLane(isLive, false)
+            $(this).find('.vbadge').replaceWith($itemState)
+        })
+    })
+}
+
+
+function buildStateMessage(message) {
+    return '<span class="vbadge vb-msg">' + message + '</span>'
+}
+
 function buildStateLane(isOnline, areIssue) {
     let $item = '<span class="vbadge vb-off">OFFLINE</span>'
     if (isOnline) {
@@ -73,6 +156,7 @@ function buildStateLane(isOnline, areIssue) {
     if (areIssue) {
         $item = '<span class="vbadge vb-warn">ISSUE</span>'
     }
+    console.log("buildStateLane() : ", $item)
     return $item;
 }
 

@@ -73,3 +73,24 @@ function createOverlayLeaderboard(data) {
     return $item
 }
 
+
+function createCardMobileAlone(data) {
+
+    let name = treatDisplayName(data.displayName);
+
+    let $item = $(
+        '<div class="athlete grp is-crit" id="ath' + data.lane + '">' +
+        '<div class="row parent off"  onclick="toggleLane(' + data.lane + ')">' +
+        '<div class="lane"><span class="chev" style="visibility:hidden">▶</span><div class="no">' + data.lane + '</div><span class="vbadge vb-off">OFFLINE</span></div>' +
+        '<div class="batt"> <span class="na">-</span> </div>' +
+        '<div class="sig"> <span class="na">-</span> </div>' +
+        '<div class="ip">' + '<div class="devstrip">' + '<span class="dchip missing" title="Rep Counter - MISSING"> </span>' + '<span class="dchip missing" title="Buzzer - MISSING"> </span>' + '</div>' + '</div>' +
+        '<div class="wk-athlete"><span class="aname">' + name + '</span></div>' +
+        '<div class="wk-rank"><div class="wk-rnum rn" data-lane>' + data.lane + '</div></div>' +
+        '<div class="wk-mvt"><div class="wk-moff">' + "No live data" + '</div></div>' +
+        '<div class="wk-pace"><div class="wk-pv">-</div><div class="wk-pl">rep/min</div></div>' +
+        '<div class="wk-cum"><div class="wk-cv">-</div><div class="wk-cl">Offline</div></div>' +
+        '<div class="kids"></div>' +
+        '</div>'
+    );
+}

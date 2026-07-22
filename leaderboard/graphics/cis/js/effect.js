@@ -188,6 +188,8 @@ function refreshCurrentMvtInProgress(elementAth) {
     // 
     let $item = '<div class="mvt-active"><div class="mvt-active-dot"></div><div class="mvt-active-val">' + rep + ' reps</div></div>'
 
+    console.log(elementAth)
+
     elementAth.$item.find('#mvt_id_' + elementAth.currentMvt.id + '_' + elementAth.lane).html($item)
     elementAth.$item.find('#mvt_id_' + elementAth.currentMvt.id + '_' + elementAth.lane).addClass('active-col')
 

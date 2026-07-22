@@ -524,13 +524,12 @@ function mvtIndexAmrap(nbrReps, division) {
             let totalRep = wod.total_reps;
             if (res != 0) {
                 if (wod.mvt_reps[index] == 0) {
-
                     rounds = 1;
                     repTarget = wod.mvt_reps[0] || 'MAX'
                     repMvt = 0;
                     return ({ 'scoreAbsMvt': (wod.mvt_reps[index] + res) || res, 'scoreRelMvt': res, 'id': wod.mvt_id[index] || 0, 'repTarget': 'MAX' || res, 'mvtNames': wod.mvt_names[index].replaceAll('_', ' ') || 'WORKOUT', 'rounds': (rounds + 1) || 1, 'totalReps': (wod.total_reps) || res, 'arrayMvt': arrayMvt || {} })
                 } else {
-                    if (totalRep != 0) {
+                    if (totalRep != 0 && !wod.mvt_reps.includes(0)) {
                         rounds = Math.floor(res / totalRep) + 1;
                         if (rounds > 1) {
                             res -= totalRep * (rounds - 1);

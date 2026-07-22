@@ -81,9 +81,9 @@ module.exports = (nodecg) => {
         });
 
         client.on('message', function (topic, message) {
-            console.log('Heure de la requete :', msToTime(Date.now()))
+            // console.log('Heure de la requete :', msToTime(Date.now()))
             message = message.toString()
-            console.log(topic)
+            // console.log(topic)
 
 
             if (topic.includes('eventId')) {
@@ -176,6 +176,9 @@ module.exports = (nodecg) => {
                 if (mes.length >= 4) {
                     minos.connectivity = (mes[4])
                 }
+                if (mes.length >= 6) {
+                    minos.scorePosted = (mes[6])
+                }
 
                 tableOfMinosOnFloor[minos.ip] = minos;
 
@@ -185,7 +188,6 @@ module.exports = (nodecg) => {
                     tableOfMinosOnFloor[minos.ip].time = tableOfMinosLaneOnFloor[minos.lane].time;
                 }
 
-                console.log("Minos connected : ", tableOfMinosOnFloor)
 
                 dataMinos.value = { ...tableOfMinosOnFloor }
 
@@ -337,9 +339,9 @@ module.exports = (nodecg) => {
                 _ip = "0".concat(_i[1].toString());
             }
 
-            console.log(lane)
-            console.log(_ip)
-            console.log(`kairos/${_eventId}/${_floorId}/minos/${_ip}/laneAction`)
+            // console.log(lane)
+            // console.log(_ip)
+            // console.log(`kairos/${_eventId}/${_floorId}/minos/${_ip}/laneAction`)
 
             client.publish(`kairos/${_eventId}/${_floorId}/minos/${_ip}/laneAction`, `reject`);
         }
@@ -369,7 +371,8 @@ module.exports = (nodecg) => {
         'status': 0,
         'time': 0,
         'signal': '',
-        'connectivity': ''
+        'connectivity': '',
+        'scorePosted': ''
     }
 
 
