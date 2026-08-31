@@ -29,14 +29,11 @@ function updateTime() {
     // console.log('timeDiffStart', timeDiffStart, 'timeDiffTimeCap', timeDiffTimeCap, 'timeDiffEnd', timeDiffEnd);
 
 
-    if (overlay == 'overlay_side' || overlay == 'overlay_side_v1' || overlay == 'overlay_wpa') {
+    if (overlay == 'overlay_side' || overlay == 'overlay_side_v1') {
         $(".chrono").css("color", "rgb(255,255,255")
     } else if (overlay == "timer") {
         $(".box_chrono").css("color", Clrs.colorFontTimer)
         $(".chrono").css("color", Clrs.colorFontTimer)
-    } else {
-        $(".box_chrono").css("color", Clrs.tx_chrono_color)
-        $(".chrono").css("color", Clrs.tx_chrono_color)
     }
 
     if (timeDiffTimeCap <= 0 && timeDiffStart >= 0 && timeDiffEnd > 0 && startTime != 0) {
@@ -126,8 +123,10 @@ function updateTime() {
 }
 
 function resetTimer() {
-    $(".box_chrono").css("color", Clrs.tx_chrono_color)
-    $(".chrono").css("color", Clrs.tx_chrono_color)
+    if (overlay != "overlay_wza") {
+        $(".box_chrono").css("color", Clrs.tx_chrono_color)
+        $(".chrono").css("color", Clrs.tx_chrono_color)
+    }
     $(".time").text("00:00");
 
     sonLaunch = false;

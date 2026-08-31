@@ -276,7 +276,6 @@ function treatDivisions(divisions, newAth) {
         let _athletes = new Array();
         for (let i = 0; i < newAth.length; i++) {
             if (newAth[i] != undefined) {
-                // if (overlay != 'overlay_wpa') {
                 if (newAth[i].division == divisions[y]) {
                     _athletes.push(JSON.parse(JSON.stringify(athletes_init)));
                     _athletes[_athletes.length - 1] = { ..._athletes[i], ...newAth[i] }
@@ -310,7 +309,7 @@ function reposition(leaderboard, athletes) {
         case 'overlay_top_v2':
             repoLeft(leaderboard, athletes)
             break;
-        case 'overlay_wpa':
+        case 'overlay_wza':
             repoWpa(leaderboard, athletes);
             break;
         case 'overlay_side_v1':
@@ -390,7 +389,8 @@ function repoWpa(lead_, aths_) {
     let y = parseInt($(lead_ + " .header").css('height').replace('px', ''));
     Object.values(aths_).forEach(elm => {
         if (elm.$item.find(lead_) != undefined) {
-            if (elm.status != '0') {
+            // NEED TO CHANGE THIS CONDITION TO AVOID BUGS WHEN ATHLETE IS NOT IN THE LEADERBOARD
+            if (elm.status != 'P') {
                 !elm.$item.is(':visible') && elm.$item.show()
                 elm.$item.css("top", y + "px");
                 y += elm.$item.height();

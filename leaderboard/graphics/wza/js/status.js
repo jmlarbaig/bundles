@@ -1,5 +1,5 @@
 function statusO(ath) {
-    console.log("Workout stopped")
+    console.log("Workout 0")
     refreshCurrentMvtInStandby(ath)
 }
 
@@ -9,7 +9,15 @@ function statusR(ath) {
 }
 
 function statusW0(ath) {
-    console.log("Workout started")
+    // console.log("Athlete not logged in / Workout in progress")
+    // switch (heat.typeWod) {
+    //     case 'repmax':
+    //         refreshRepMax(ath)
+    //         break;
+    //     default:
+    //         refreshCurrentMvtInProgress(ath)
+    //         break;
+    // }
 }
 
 function statusWS(ath) {
@@ -37,6 +45,7 @@ function statusWW(ath) {
             break;
     }
 
+    // showRepMvtInScore(ath)
     refreshCummulative(ath)
 
 }
@@ -44,17 +53,16 @@ function statusWW(ath) {
 function statusWF(ath) {
     console.log("Athlete Finish / Workout in progress")
     // Fait pour faire disparaitre les athletes après le premier pour diffuser les suivants
-    hiddenAthlete(ath)
     refreshRank(ath);
     refreshCummulativeFinish(ath);
-    refreshCurrentMvtFinish(ath)
+    // refreshCurrentMvtFinish(ath)
 }
 
 function statusWT(ath) {
     console.log("Athlete TIME CAP / Workout in progress")
     refreshRank(ath);
     refreshCummulativeFinish(ath);
-    refreshCurrentMvtFinish(ath)
+    // refreshCurrentMvtFinish(ath)
 }
 
 function statusT(ath) {
@@ -63,6 +71,6 @@ function statusT(ath) {
     refreshRank(ath);
 
     refreshCummulativeFinish(ath);
-    refreshCurrentMvtFinish(ath)
+    // refreshCurrentMvtFinish(ath)
 }
 

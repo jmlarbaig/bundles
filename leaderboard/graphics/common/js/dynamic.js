@@ -132,8 +132,12 @@ function updateDynamics(newScoring, status) {
                         break;
                 }
 
+                if (overlay == "overlay_wza") {
+                    treatResultDisplayResultWPA(arrayWAP)
+                }
+
                 // Traitement de la position des athletes sur le leaderboard
-                if (overlay != "versus" || overlay != 'overlay_wpa') {
+                if (overlay != "versus") {
                     if (elemAth.length > 2) {
                         reposition("#leaderboard" + key, elemAth);
                     }

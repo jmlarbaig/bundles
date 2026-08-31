@@ -9,10 +9,10 @@ var height_tot = 0
 
 
 function resetLeaderboard(newData) {
-    console.log("Start resetLeaderboard")
     try {
 
-        if (overlay == "overlay_wpa") {
+        console.log("resetLeaderboard newData = ", newData)
+        if (overlay == "overlay_wza") {
             $("#ath_left").find('.score').text('')
             $("#ath_right").find('.score').text('')
         }
@@ -26,7 +26,7 @@ function resetLeaderboard(newData) {
             setupFlat.leaderboards != true ? $(".leaderboards").hide() : ""
         }
 
-        if (overlay == "overlay_wpa") {
+        if (overlay == "overlay_wza") {
             $('.rank').hide()
             $("#ath_left").find('.score').text('')
             $("#ath_right").find('.score').text('')
@@ -45,7 +45,7 @@ function resetLeaderboard(newData) {
         let listOfAth = [];
 
         console.log("data.athletes : ", data.athletes)
-        // if (overlay != 'overlay_wpa') {
+        // if (overlay != 'overlay_wza') {
         for (let athletes of data.athletes) {
             if (!divisionsNames.includes(athletes.division)) {
                 divisionsNames.push(athletes.division)
@@ -56,7 +56,7 @@ function resetLeaderboard(newData) {
 
         //! on retient le rep targets
 
-        // if (overlay != 'overlay_wpa') {
+        // if (overlay != 'overlay_wza') {
         for (let y = 0; y < divisionsNames.length; y++) {
             for (let wod of workouts) {
                 if (divisionsNames[y] == wod.division) {
@@ -77,9 +77,6 @@ function resetLeaderboard(newData) {
         var $tab = $(".leaderboards")
         $tab.find(".leaderboard").remove();
 
-
-
-
         // ! On crée un leaderboard par division
         Object.values(athletesDivision).forEach((elementDiv, indexDivision) => {
 
@@ -91,11 +88,10 @@ function resetLeaderboard(newData) {
             $tabItem = createHeaderLeaderboard(divisionsNames, indexDivision, repTarget);
 
             // à rajouter avec un return 
-            // $tabItemBox = headerVersusTopWPA();
+            $tabItemBox = createHeaderVersusTopWPA();
 
 
-            if (overlay == "versus" || overlay == "overlay_wpa") {
-                console.log("$tabItemBox : ", $tabItemBox)
+            if (overlay == "versus" || overlay == "overlay_wza") {
                 indexDivision == 0 && $tabBox.append($tabItemBox);
                 if (athletesDivision[0].length > 2) {
                     $tab.append($tabItem);
@@ -125,7 +121,7 @@ function resetLeaderboard(newData) {
             let $list;
             if (overlay.includes("versus")) {
                 $list = $("#leaderboard" + indexDivision);
-            } else if (overlay == "overlay_wpa") {
+            } else if (overlay == "overlay_wza") {
                 $listBox = $("#topLeaderboard")
                 $list = $("#leaderboard" + indexDivision + " #athletes");
                 if (athletesDivision[0].length > 2) {
@@ -154,33 +150,30 @@ function resetLeaderboard(newData) {
                 $item = createOverlayLeaderboard(elementAth)
 
                 // A rajouter avec return
-                // $itemBox = leaderboardVersusTopSTWPA();
-
-
-                elementAth.$item = $item;
-                if (overlay != "overlay_wpa" && elementDiv.length <= 2) {
-                    // elementAth.$item.hide()
-                }
-
-
-                if (overlay.includes("versus")) {
+                if (overlay == "overlay_wza") {
+                    console.log("elementDiv.length = ", elementDiv.length)
+                    if (elementDiv.length > 2) {
+                        $itemBox = createTopLeaderboardWPA();
+                        indexAthletes == 0 && $listBox.append($itemBox);
+                        elementAth.$item = $item;
+                        $list.append($item);
+                    } else if (elementDiv.length <= 2) {
+                        $itemBox = leaderboardVersusTopWPA(elementAth)
+                        elementAth.$item = $itemBox;
+                        $listBox.append($itemBox);
+                    }
+                } else if (overlay.includes("versus")) {
                     if (indexAthletes == 0 || indexAthletes == 1) {
                         $list.append($item);
                     }
-                } else if (overlay == "overlay_wpa") {
-                    if (elementDiv.length > 2) {
-                        indexAthletes == 0 && $listBox.append($itemBox);
-                        $list.append($item);
-                    } else {
-                        $listBox.append($item);
-                    }
                 } else {
-
+                    elementAth.$item = $item;
                     $list.append($item);
+                }
 
-                    if (overlay == 'commentator') {
-                        createStats(elementAth, indexDivision);
-                    }
+
+                if (overlay == 'commentator') {
+                    createStats(elementAth, indexDivision);
                 }
 
                 $('.leaderboards').find('.box_mvt').hide()

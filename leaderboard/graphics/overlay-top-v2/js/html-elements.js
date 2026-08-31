@@ -52,7 +52,6 @@ function createOverlayLeaderboard(data) {
         '</div>'
     );
 
-    console.log("setupFlat", setupFlat)
     $item.find(".box_flag").css('background-image', 'url(' + flag + ')')
     $item.find(".popup").hide();
     !setupFlat.flag && $item.find(".flag").hide()

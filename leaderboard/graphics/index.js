@@ -290,7 +290,7 @@ function registerDependentHandlers() {
         if (newValue != undefined && JSON.stringify(newValue) !== JSON.stringify(oldValue)) {
             if (JSON.stringify(newValue) !== JSON.stringify(oldValue)) {
                 resetHeat(newValue);
-                if (overlay == 'overlay_wpa') {
+                if (overlay == 'overlay_wza') {
                     resetLeaderboard(s_athletes.value)
                 }
                 console.log('eventInfos change', newValue)

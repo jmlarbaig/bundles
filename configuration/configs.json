@@ -81,6 +81,6 @@
         "WzaConfig",
         "wzaOverwrite",
         "wza_config",
-        "wza"
+        "overlay_wza"
     ]
 ]

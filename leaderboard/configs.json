@@ -88,6 +88,6 @@
         "WzaSetup",
         "wzaSetupOverwrite",
         "wza_setup",
-        "wza"
+        "overlay_wza"
     ]
 ]
