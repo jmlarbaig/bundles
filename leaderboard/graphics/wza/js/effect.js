@@ -379,124 +379,114 @@ function hiddenAthlete(elementAth) {
 
 }
 
-
+function getTeamSelector(index) {
+    const team = teamInArray[index];
+    if (!team) {
+        console.warn(`getTeamSelector: pas d'équipe pour l'index ${index}`);
+        return null;
+    }
+    return `#ahtTop${team.name}`;
+}
 
 
 function treatResultTimeWPA(elementAth) {
     let time = 0;
     let index = 0;
     if (elementAth.result != "" && elementAth.result.includes(':')) {
-        time = timeToTimestamp(elementAth.result)
+        time = timeToTimestamp(elementAth.result);
         index++;
     }
     return { time, index };
 }
 
-function treatResultDisplayRepWPA(score) {
-    let r = [0, 0];
+function computeRepScores(score, scoreConfig) {
+    const [a, b] = score;
 
-    switch (setupFlat.scoreConfig) {
+    switch (scoreConfig) {
         case 'abs_score':
-            r[0] = score[0].rep
-            r[1] = score[1].rep
-            break;
+            return [a.rep, b.rep];
+
         case 'mvt_score':
-        case 'rel_score':
-            if (score[0].rep > score[1].rep) {
-                r[0] = score[0].rep
-                r[1] = score[1].rep - score[0].rep
-            } else if (score[0].rep < score[1].rep) {
-                r[0] = score[0].rep - score[1].rep
-                r[1] = score[1].rep
-            } else {
-                r[0] = score[0].rep
-                r[1] = score[1].rep
-            }
-            break;
+        case 'rel_score': {
+            const diff = a.rep - b.rep;
+            if (diff > 0) return [diff, 0];
+            if (diff < 0) return [0, -diff];
+            return [a.rep, b.rep];
+        }
+
         case 'remain_score':
-            r[0] = score[0].total_reps - score[0].rep
-            r[1] = score[1].total_reps - score[1].rep
-            break;
-    }
+            return [a.total_reps - a.rep, b.total_reps - b.rep];
 
-
-    let m = 'TOTAL';
-    if (setupFlat.timeConfig == 'avg') {
-        m = 'AVERAGE'
-    }
-
-    if (score[0].time != 0) {
-        $("#ahtTop1").find('.popup_top').show()
-        $("#ahtTop1").find('.popup_top').text("TIME " + m + ": " + msToTime2(score[0].time))
-        $("#ahtTop1").find('.score').text(msToTime2(score[0].time))
-    } else {
-        $("#ahtTop1").find('.popup_top').hide()
-        $("#ahtTop1").find('.popup_top').text('')
-        $("#ahtTop1").find('.score').text(r[0])
-    }
-    if (score[1].time != 0) {
-        $("#ahtTop2").find('.popup_top').show()
-        $("#ahtTop2").find('.popup_top').text("TIME " + m + ": " + msToTime2(score[1].time))
-        $("#ahtTop2").find('.score').text(msToTime2(score[1].time))
-    } else {
-        $("#ahtTop2").find('.popup_top').hide()
-        $("#ahtTop2").find('.popup_top').text('')
-        $("#ahtTop2").find('.score').text(r[1])
+        default:
+            console.warn(`computeRepScores: scoreConfig inconnu "${scoreConfig}"`);
+            return [0, 0];
     }
 }
 
+function treatResultDisplayRepWPA(score) {
+    const r = computeRepScores(score, setupFlat.scoreConfig);
+    const modeLabel = setupFlat.timeConfig === 'avg' ? 'AVERAGE' : 'TOTAL';
+
+    score.forEach((scoreEntry, i) => {
+        const selector = getTeamSelector(i);
+        if (!selector) return;
+
+        const $el = $(selector);
+        const $popup = $el.find('.popup_top');
+        const $score = $el.find('.scoreTop');
+
+        if (scoreEntry.time != 0) {
+            const timeStr = msToTime2(scoreEntry.time);
+            $popup.show().text(`TIME ${modeLabel}: ${timeStr}`);
+            $score.text(timeStr);
+        } else {
+            $popup.hide().text('');
+            $score.text(r[i]);
+        }
+    });
+}
 
 function treatResultDisplayResultWPA(score) {
+    score.forEach((scoreEntry, i) => {
+        const selector = getTeamSelector(i);
+        if (!selector) return;
 
-    var index = 0;
-    if (score[index].time != 0) {
-        $("#ahtTop1").find('.popup_top').show()
-        $("#ahtTop1").find('.score').text(msToTime2(score[index].time))
-        $("#ahtTop1").find('.popup_top').text(score[index].rep)
-    } else {
-        $("#ahtTop1").find('.popup_top').hide()
-        $("#ahtTop1").find('.popup_top').text('')
-        let n = score[index].rep
-        if (heat.typeWod == 'repmax') {
-            n = score[index].rep
+        const $el = $(selector);
+        const $popup = $el.find('.popup_top');
+        const $score = $el.find('.scoreTop');
+
+        if (scoreEntry.time != 0) {
+            $popup.show().text(scoreEntry.rep);
+            $score.text(msToTime2(scoreEntry.time));
+        } else {
+            $popup.hide().text('');
+            let n = scoreEntry.rep;
+            if (heat.typeWod == 'repmax') {
+                n = scoreEntry.rep;
+            }
+            $score.text(n);
         }
-        $("#ahtTop1").find('.score').text(n)
-    }
-
-    index++
-
-    if (score[index].time != 0) {
-        $("#ahtTop2").find('.popup_top').show()
-        $("#ahtTop2").find('.score').text(msToTime2(score[index].time))
-        $("#ahtTop2").find('.popup_top').text(score[index].rep)
-    } else {
-        $("#ahtTop2").find('.popup_top').hide()
-        $("#ahtTop2").find('.popup_top').text('')
-        let n = score[index].rep
-        if (heat.typeWod == 'repmax') {
-            n = score[index].rep
-        }
-        $("#ahtTop2").find('.score').text(n)
-    }
+    });
 }
-
 
 function hideWaitingWPA(score) {
-    $("#ahtTop1").find('.popup_top').hide()
-    // $("#ahtTop1").find('.score').text(score[0].rep)
-    $("#ahtTop1").find('.score').text("TYR")
-    $("#ahtTop2").find('.popup_top').hide()
-    // $("#ahtTop2").find('.score').text(score[1].rep)
-    $("#ahtTop2").find('.score').text("TYR")
+    teamInArray.forEach((team, i) => {
+        const selector = getTeamSelector(i);
+        if (!selector) return;
 
+        const $el = $(selector);
+        $el.find('.popup_top').hide();
+        $el.find('.scoreTop').text("TYR");
+    });
 }
 
-
 function hideResultWPA(score) {
-    $("#ahtTop1").find('.popup_top').hide()
-    // $("#ahtTop1").find('.score').text(score[0].rep)
-    $("#ahtTop1").find('.score').text("STBY")
-    $("#ahtTop2").find('.popup_top').hide()
-    // $("#ahtTop2").find('.score').text(score[1].rep)
-    $("#ahtTop2").find('.score').text("STBY")
+    teamInArray.forEach((team, i) => {
+        const selector = getTeamSelector(i);
+        if (!selector) return;
+
+        const $el = $(selector);
+        $el.find('.popup_top').hide();
+        $el.find('.scoreTop').text("STBY");
+    });
 }

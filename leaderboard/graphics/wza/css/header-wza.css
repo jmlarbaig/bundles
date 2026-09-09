@@ -16,6 +16,9 @@ body {
     width: 1920px;
     /* color: white; */
     font-family: var(--fontWorkout-select);
+    font-family: "manifold-cf", sans-serif;
+    font-weight: 800;
+    font-style: normal;
     /* box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; */
     /* background: linear-gradient(90deg, var(--first_linear_gradient) 0%, var(--second_linear_gradient) 18%, var(--first_linear_gradient) 35%, var(--second_linear_gradient) 66%, var(--first_linear_gradient) 100%); */
 }

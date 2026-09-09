@@ -93,7 +93,7 @@ function resetLeaderboard(newData) {
 
             if (overlay == "versus" || overlay == "overlay_wza") {
                 indexDivision == 0 && $tabBox.append($tabItemBox);
-                if (athletesDivision[0].length > 2) {
+                if (athletesDivision[0].length > 4) {
                     $tab.append($tabItem);
                 } else {
                     indexDivision == 0 && $tab.append($tabItem);
@@ -124,7 +124,7 @@ function resetLeaderboard(newData) {
             } else if (overlay == "overlay_wza") {
                 $listBox = $("#topLeaderboard")
                 $list = $("#leaderboard" + indexDivision + " #athletes");
-                if (athletesDivision[0].length > 2) {
+                if (athletesDivision[0].length > 4) {
                     $listBox.find(".athleteTop").remove();
                 } else {
                     indexDivision == 0 && $listBox.find(".athleteTop").remove();
@@ -152,7 +152,7 @@ function resetLeaderboard(newData) {
                 // A rajouter avec return
                 if (overlay == "overlay_wza") {
                     console.log("elementDiv.length = ", elementDiv.length)
-                    if (elementDiv.length > 2) {
+                    if (elementDiv.length > 4) {
                         $itemBox = createTopLeaderboardWPA();
                         indexAthletes == 0 && $listBox.append($itemBox);
                         elementAth.$item = $item;

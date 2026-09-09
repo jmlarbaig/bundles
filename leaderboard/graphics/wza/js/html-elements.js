@@ -2,8 +2,8 @@ function createHeaderHeatStyle(element) {
     let $item = $(
         '<div class="heat_content">' +
         '<div class="details">' +
-        '<div class="detail workout" > ' + element.externalName + ' //</div>' +
-        '<div id="mvt" class="mvt text-nowrap text-truncate"></div>' +
+        // '<div class="detail workout" > ' + element.externalName + ' //</div>' +
+        // '<div id="mvt" class="mvt text-nowrap text-truncate"></div>' +
         '</div>' +
         '</div>' +
         '</div>'
@@ -52,52 +52,31 @@ function createHeaderLeaderboard(divisions, indexDivision) {
     return $headerTop
 }
 
-function createTopLeaderboardWPA() {
-    let $item = $(
-        '<div class="athleteTop" id="ahtTop1">' +
-        '<div class="athTop_detail">' +
-        '<div class="athTop">' +
-        '<div class="name"></div>' +
-        '<div class="score"></div>' +
-        '</div>' +
-        // '<div class="popup_top initial_rank_versus">' + '</div>' +
-        '</div>' +
-        '</div>' +
-        '<div class="athleteTop" id="ahtTop2">' +
-        '<div class="athTop_detail">' +
-        '<div class="athTop">' +
-        '<div class="name"></div>' +
-        '<div class="score"></div>' +
-        '</div>' +
-        // '<div class="popup_top initial_rank_versus">' + '</div>' +
-        '</div>' +
-        '</div>'
-    );
-    $item.find(".popup_top").hide();
 
-    return $item
+function createTopLeaderboardWPA() {
+    let $item = $('<div id="athletesTopLeaderboard' + '" class="athletesTopLeaderboard">' + '</div>');
+    teamInArray.forEach((teamName) => {
+        const $athlete = $(
+            `<div class="athleteTop" id="ahtTop${teamName.name}">` +
+            '<div class="athTop" style="background-color: ' + teamName["background-color"] + '; color: ' + teamName.color + ';">' +
+            '<div class="nameTop">' + teamName.name + '</div>' +
+            '<div class="scoreTop"></div>' +
+            '</div>' +
+            '</div>'
+        );
+        $item.append($athlete);
+    });
+
+
+    return $item;
 }
 
 
 function leaderboardVersusTopWPA(data) {
     let name = '   ';
-    if (!data.displayName.toLowerCase().includes('world') && !data.displayName.toLowerCase().includes('north')) {
+    if (!teamInArray.includes(data.displayName)) {
         name = treatDisplayName(data.displayName);
-    } else {
-        // name = data.displayName.replaceAll('team', '').replaceAll('Team', '').replaceAll('TEAM', '')
     }
-
-    // let pathTobgimg = "./../img/"
-    // let backgroundImage = "";
-    // if (data.affiliate != undefined) {
-    //     if (data.affiliate.toLowerCase().includes('world')) {
-    //         pathTobgimg = "./../assets/wza/cadre_world.png"
-    //     } else if (data.affiliate.toLowerCase().includes('north')) {
-    //         pathTobgimg = "./../assets/wza/cadre_north_america.png"
-    //     }
-    //     backgroundImage = 'url(' + pathTobgimg + ')'
-    // }
-
 
     let $item = $(
         '<div class="athleteTop" id="ahtTop' + data.lane + '">' +
@@ -123,26 +102,30 @@ function createOverlayLeaderboard(data) {
     let name = treatDisplayName(data.displayName);
     let flag = data.countryCode != "LOGO" ? ("https://flagcdn.com/" + data.countryCode.toLowerCase() + '.svg') : (logoEvent.value[0].url);
 
-    let pathTobgimg = "./../img/"
-    let backgroundImage = "";
-    if (data.affiliate != undefined) {
-        if (data.affiliate.toLowerCase().includes('world')) {
-            pathTobgimg = "./../assets/wza/cadre_world.png"
-        } else if (data.affiliate.toLowerCase().includes('north')) {
-            pathTobgimg = "./../assets/wza/cadre_north_america.png"
-        }
-        backgroundImage = 'url(' + pathTobgimg + ')'
+    // let pathTobgimg = "./../img/"
+    // let backgroundImage = "";
+    // if (data.affiliate != undefined) {
+    //     if (data.affiliate.toLowerCase().includes('world')) {
+    //         pathTobgimg = "./../assets/wza/cadre_world.png"
+    //     } else if (data.affiliate.toLowerCase().includes('north')) {
+    //         pathTobgimg = "./../assets/wza/cadre_north_america.png"
+    //     }
+    //     backgroundImage = 'url(' + pathTobgimg + ')'
+    // }
+
+    let backgroundColor = "";
+    let colorName = "";
+    if (teamInArray.some(team => team.name === data.affiliate)) {
+        let team = teamInArray.find(team => team.name === data.affiliate);
+        backgroundColor = team["background-color"];
+        colorName = team.color;
     }
 
-
     let $item = $(
-        '<div class="athlete" id="aht' + data.lane + '">' +
+        '<div class="athlete" style="background-color: ' + backgroundColor + '; id="aht' + data.lane + '">' +
         '<div class="popup text-nowrap text-truncate">' + '</div>' +
         '<div class="ath">' +
-        '<div class="rank text-nowrap text-truncate"> ' + '</div>' +
-        // '<div class="lane text-nowrap text-truncate"># ' + data.lane + '</div>' +
-        '<div class="flag">' + '<div class="box_flag" ></div> ' + '</div>' +
-        // '<div class="text-nowrap text-truncate text-left name">' + name + '</div>' +
+        '<div class="rank text-nowrap text-truncate"> ' + data.lane + '</div>' +
         name +
         '<div class="score text-nowrap text-center text-truncate"></div>' +
         '<div class="text-nowrap text-truncate rounds">' + '</div>' +
@@ -150,7 +133,13 @@ function createOverlayLeaderboard(data) {
         '</div>'
     );
 
-    $item.find('.ath').css('background-image', backgroundImage)
+    // $item.find('.ath').css('background-image', backgroundImage)
+    // $item.find('.ath').css('background-color', backgroundColor);
+
+    if (colorName != "") {
+
+        $item.find(".ath .name").css('color', colorName);
+    }
 
     $item.find(".box_flag").css('background-image', 'url(' + flag + ')')
     $item.find(".rounds").hide();
@@ -158,7 +147,7 @@ function createOverlayLeaderboard(data) {
     $item.find(".popup").hide();
     heat.typeWod != 'repmax' ? $item.find(".rank").show() : $item.find(".rank").hide();
     !setupFlat.flag ? $item.find(".flag").hide() : "";
-    !setupFlat.lane ? $item.find(".lane").hide() : "";
+    // !setupFlat.lane ? $item.find(".lane").hide() : "";
     !setupFlat.lane ? $item.find(".rank").text(data.lane) : "";
     // $item.hide();
 

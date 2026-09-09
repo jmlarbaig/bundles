@@ -3,19 +3,29 @@ var percent = 0;
 let bestPerf = []
 let best = []
 
+let teamInArray = [{ "name": "PRVN", "background-color": "black", color: "white" },
+{ "name": "OUTCAST", "background-color": "#535353", color: "white" },
+{ "name": "TTT", "background-color": "#cf5341", color: "white" },
+{ "name": "BRUTE", "background-color": "#c775af", color: "white" }]
+
+
+
+let arrayWAP = []
+
 function updateDynamics(newScoring, status) {
     try {
         // Premier traitement pour l'affichage
 
-        let arrayWAP = []
+        arrayWAP = []
         Object.values(athletesDivision).forEach((elemAth, key) => {
 
             cr = 0;
             height_tot = 0;
 
 
-            arrayWAP[0] = { rep: 0, time: 0, status: 'F', total_reps: workouts[0].total_reps }
-            arrayWAP[1] = { rep: 0, time: 0, status: 'F', total_reps: workouts[0].total_reps }
+            for (let i = 0; i < teamInArray.length; i++) {
+                arrayWAP.push({ rep: 0, time: 0, status: 'F', total_reps: workouts[0].total_reps })
+            }
 
             // on fait 2 each => 1 pour mettre à jour les datas, l'autre pour l'affichage des données.  
 
@@ -46,30 +56,25 @@ function updateDynamics(newScoring, status) {
 
                 // WZAP logic
                 if (overlay === 'overlay_wza') {
-                    if (elemAth[i].affiliate.toLowerCase().includes("north")) {
-                        arrayWAP[0].rep += parseInt(elemAth[i].score_abs)
-                        arrayWAP[0].time += treatResultTimeWPA(elemAth[i]).time
-                        if (arrayWAP[0].status == 'F') {
-                            arrayWAP[0].status = elemAth[i].status == 'F' ? 'F' : 'W'
+                    if (teamInArray.includes(elemAth[i].affiliate)) {
+                        let teamIndex = teamInArray.indexOf(elemAth[i].affiliate);
+                        arrayWAP[teamIndex].rep += parseInt(elemAth[i].score_abs)
+                        arrayWAP[teamIndex].time += treatResultTimeWPA(elemAth[i]).time
+                        if (arrayWAP[teamIndex].status == 'F') {
+                            arrayWAP[teamIndex].status = elemAth[i].status == 'F' ? 'F' : 'W'
                         }
-                        averageIndex[0] += treatResultTimeWPA(elemAth[i]).index
-                    } else if (elemAth[i].affiliate.toLowerCase().includes("world")) {
-                        arrayWAP[1].rep += parseInt(elemAth[i].score_abs)
-                        arrayWAP[1].time += treatResultTimeWPA(elemAth[i]).time
-                        averageIndex[1] += treatResultTimeWPA(elemAth[i]).index
-                        if (arrayWAP[1].status == 'F') {
-                            arrayWAP[1].status = elemAth[i].status == 'F' ? 'F' : 'T'
-                        }
+                        averageIndex[teamIndex] += treatResultTimeWPA(elemAth[i]).index
                     }
                 }
             })
 
             if (overlay === 'overlay_wza') {
-                if (setupFlat.timeConfig == 'avg' && arrayWAP[0].time != 0) {
-                    arrayWAP[0].time = Math.round(arrayWAP[0].time / averageIndex[0]);
-                }
-                if (setupFlat.timeConfig == 'avg' && arrayWAP[1].time != 0) {
-                    arrayWAP[1].time = Math.round(arrayWAP[1].time / averageIndex[1]);
+                if (setupFlat.timeConfig == 'avg') {
+                    for (let i = 0; i < arrayWAP.length; i++) {
+                        if (arrayWAP[i].time != 0) {
+                            arrayWAP[i].time = Math.round(arrayWAP[i].time / averageIndex[i]);
+                        }
+                    }
                 }
             }
         })

@@ -310,6 +310,7 @@ function reposition(leaderboard, athletes) {
             repoLeft(leaderboard, athletes)
             break;
         case 'overlay_wza':
+            console.log("repoWpa", leaderboard, athletes)
             repoWpa(leaderboard, athletes);
             break;
         case 'overlay_side_v1':
@@ -394,11 +395,16 @@ function repoWpa(lead_, aths_) {
                 !elm.$item.is(':visible') && elm.$item.show()
                 elm.$item.css("top", y + "px");
                 y += elm.$item.height();
-                y += parseInt(elm.$item.css('margin').split(' ')[0].replace('px', ''));
+                y += parseInt(elm.$item.css('margin').split(' ')[0].replace('px', '')) * 2;
+                y += parseInt(elm.$item.css('padding').split(' ')[0].replace('px', '')) * 2;
             } else {
                 elm.$item.hide();
             }
         }
+        console.log("y", y)
+        $('.leaderboard').height(y)
+        $('.athletes').height(y)
+
     })
 }
 
