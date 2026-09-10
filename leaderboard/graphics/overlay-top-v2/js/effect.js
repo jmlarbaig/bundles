@@ -13,9 +13,9 @@ function handleFirstAthleteWithoutResult(elemAth) {
         .filter(a => a.result === "")
         .sort((a, b) => a.CurrentRank - b.CurrentRank)[0];
 
-
+    console.log("handleFirstAthleteWithoutResult athlete = ", athlete)
     if (!athlete) {
-        treatTextMvt("");
+        treatTextMvt("TEST");
     } else {
         if (athlete.currentMvt.arrayMvt.toString() == "" || athlete.currentMvt.arrayMvt.toString().includes("Object")) {
             treatTextMvt("");
@@ -136,7 +136,6 @@ function treatBigScreenMvt(elementAth) {
 function treatTextMvt(mvts) {
     mvts = mvts.replace(/\(.*?\)/g, '');
     if (heat.typeWod != 'repmax') {
-        console.log("Workout in Standby")
         if (mvts != "") {
             $('.heat_content').slideDown(1000)
             $('.heat_content').find('.mvt').html(mvts)

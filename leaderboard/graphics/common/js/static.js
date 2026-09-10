@@ -87,8 +87,10 @@ function resetLeaderboard(newData) {
             let $tabItem;
             $tabItem = createHeaderLeaderboard(divisionsNames, indexDivision, repTarget);
 
-            // à rajouter avec un return 
-            $tabItemBox = createHeaderVersusTopWPA();
+            if (overlay == "overlay_wza") {
+                // à rajouter avec un return 
+                $tabItemBox = createHeaderVersusTopWPA();
+            }
 
 
             if (overlay == "versus" || overlay == "overlay_wza") {

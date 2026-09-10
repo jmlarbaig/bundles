@@ -421,17 +421,25 @@ function fetchNewData(data, lane) {
 
 function TreatMvt(elementAth) {
     let currentMvt = {}
-    if ((auth[elementAth.division] || heat.typeWod == 'repmax') && workouts.length > 0 && workouts.find((element) => element.divisionName == elementAth.division).mvt_id.length > 1) {
+
+    console.log("Treat Mvt")
+    if ((auth[elementAth.division] || heat.typeWod == 'repmax') && workouts.length > 0 && workouts.find((element) => element.divisionName == elementAth.division).mvt_names[0].toLowerCase() != "workout") {
         if (elementAth.result == "") {
             switch (heat.typeWod) {
                 case 'amrap':
+
+                    console.log("Amrap")
                     currentMvt = mvtIndexAmrap(elementAth.score_abs, elementAth.division, elementAth.log_round_time[0].length + 1)
                     break;
                 case 'repmax':
+
+                    console.log("RepMax")
                     // console.log('Load' + elementAth.loadAttempted)
                     currentMvt = mvtIndexRepMax(elementAth.score_abs, elementAth.loadAttempted)
                     break;
                 case 'time':
+
+                    console.log("Time")
                     currentMvt = mvtIndexForTime(elementAth.score_abs, elementAth.division)
                     break;
                 default:
@@ -488,12 +496,19 @@ function mvtIndexForTime(nbrReps, division) {
     for (let wod of workouts) {
         if (wod.divisionName == division) {
             if (res != 0) {
+                console.log("1 res = ", res, "wod.total_reps = ", wod.total_reps, "wod.mvt_names[wod.mvt_names.length - 1] = ", wod.mvt_names[wod.mvt_names.length - 1])
                 if (res == wod.total_reps && wod.mvt_names[wod.mvt_names.length - 1] == "Sprint") {
+                    console.log("2 res = ", res, "wod.total_reps = ", wod.total_reps, "wod.mvt_names[wod.mvt_names.length - 1] = ", wod.mvt_names[wod.mvt_names.length - 1])
+
                     res = 0
                     index = wod.mvt_names.length - 1
                 }
                 else {
+                    console.log("3 res = ", res, "wod.total_reps = ", wod.total_reps, "wod.mvt_names[wod.mvt_names.length - 1] = ", wod.mvt_names[wod.mvt_names.length - 1])
+
                     while (res >= 0) {
+                        console.log("4 res = ", res, "wod.total_reps = ", wod.total_reps, "wod.mvt_names[wod.mvt_names.length - 1] = ", wod.mvt_names[wod.mvt_names.length - 1])
+
                         res = (res - wod.mvt_reps[index])
                         if (res >= 0) {
                             index++;
@@ -502,6 +517,8 @@ function mvtIndexForTime(nbrReps, division) {
                 }
             }
             else {
+                console.log("5 res = ", res, "wod.total_reps = ", wod.total_reps, "wod.mvt_names[wod.mvt_names.length - 1] = ", wod.mvt_names[wod.mvt_names.length - 1])
+
                 index = 0
                 res = -wod.mvt_reps[index];
             }
