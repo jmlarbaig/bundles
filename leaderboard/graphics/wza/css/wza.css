@@ -42,7 +42,11 @@
     background-size: contain;
     display: flex;
     flex-direction: row;
-    align-items: baseline;
+    align-items: center;
+    font-family: "manifold-cf", sans-serif;
+    font-weight: 800;
+    font-style: normal;
+    text-transform: uppercase;
 }
 
 .athTop .rank {
@@ -54,7 +58,9 @@
     font-size: 20px;
     /* min-width: 250px; */
     min-width: 100px;
-
+    font-family: "manifold-cf", sans-serif;
+    font-weight: 800;
+    font-style: normal;
     /* font-size: var(--sizeFontAthlete_top); */
 }
 
@@ -68,6 +74,10 @@
     color: black;
     background-color: white;
     font-size: var(--sizeFontScore_top);
+    font-family: "manifold-cf", sans-serif;
+    font-weight: 800;
+    font-style: normal;
+
     /* box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px; */
 }
 
@@ -160,7 +170,6 @@
 }
 
 .leaderboard .athletes {
-    color: var(--tx_second_color);
     display: flex;
     flex-direction: column;
     font-weight: 900;
@@ -199,6 +208,9 @@
     /* margin: 8px 0px; */
     border-bottom: #ffffff solid 1.5px;
     /* padding: 10px 0px; */
+    font-family: "manifold-cf", sans-serif;
+    font-weight: 800;
+    font-style: normal;
 }
 
 .leaderboard .athlete .rank {
@@ -214,6 +226,8 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    color: transparent;
+    -webkit-text-stroke: 1px #ffffff;
 }
 
 .leaderboard .athlete .lane {
@@ -227,6 +241,9 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    color: transparent;
+    -webkit-text-stroke: 2px #ffffff;
+    /* épaisseur + couleur du contour */
 }
 
 .leaderboard .athlete .name {

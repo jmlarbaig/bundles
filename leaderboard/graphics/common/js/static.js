@@ -108,7 +108,6 @@ function resetLeaderboard(newData) {
 
                     $tabItem.show()
                 } else {
-
                     setTimeout(() => {
                         $tabItem.show(1000)
                     })
@@ -159,7 +158,7 @@ function resetLeaderboard(newData) {
                         indexAthletes == 0 && $listBox.append($itemBox);
                         elementAth.$item = $item;
                         $list.append($item);
-                    } else if (elementDiv.length <= 2) {
+                    } else if (elementDiv.length <= 4) {
                         $itemBox = leaderboardVersusTopWPA(elementAth)
                         elementAth.$item = $itemBox;
                         $listBox.append($itemBox);

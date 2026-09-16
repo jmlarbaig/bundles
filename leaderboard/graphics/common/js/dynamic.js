@@ -3,20 +3,22 @@ var percent = 0;
 let bestPerf = []
 let best = []
 
-let teamInArray = [{ "name": "PRVN", "background-color": "black", color: "white" },
-{ "name": "OUTCAST", "background-color": "#535353", color: "white" },
-{ "name": "TTT", "background-color": "#cf5341", color: "white" },
-{ "name": "BRUTE", "background-color": "#c775af", color: "white" }]
+let teamInArray = [{ "name": "PRVN", "background-color": "#000000", "background-color-overlay": "#000000d2", color: "white" },
+{ "name": "OUTCAST", "background-color": "#535353", "background-color-overlay": "#535353ba", color: "white" },
+{ "name": "TTT", "background-color": "#c2351f", "background-color-overlay": "#c2351fb4", color: "white" },
+{ "name": "BRUTE", "background-color": "#c775ae", "background-color-overlay": "#c775aec8", color: "white" }]
 
 
 
 let arrayWAP = []
+let averageIndex = []
 
 function updateDynamics(newScoring, status) {
     try {
         // Premier traitement pour l'affichage
 
         arrayWAP = []
+        averageIndex = [];
         Object.values(athletesDivision).forEach((elemAth, key) => {
 
             cr = 0;
@@ -25,13 +27,13 @@ function updateDynamics(newScoring, status) {
 
             for (let i = 0; i < teamInArray.length; i++) {
                 arrayWAP.push({ rep: 0, time: 0, status: 'F', total_reps: workouts[0].total_reps })
+                averageIndex.push(0)
             }
 
             // on fait 2 each => 1 pour mettre à jour les datas, l'autre pour l'affichage des données.  
 
             // ON traite les datas quelque soit le status
 
-            let averageIndex = [0, 0];
 
             Object.keys(elemAth).forEach(i => {
 
@@ -55,9 +57,12 @@ function updateDynamics(newScoring, status) {
                 }
 
                 // WZAP logic
-                if (overlay === 'overlay_wza') {
-                    if (teamInArray.includes(elemAth[i].affiliate)) {
-                        let teamIndex = teamInArray.indexOf(elemAth[i].affiliate);
+                if (overlay == 'overlay_wza') {
+
+                    let teamIndex = teamInArray.findIndex(team => team.name === elemAth[i].affiliate);
+                    if (teamIndex !== -1) {
+                        console.log("teamIndex", teamIndex, elemAth[i].affiliate, elemAth[i].score_abs)
+                        console.log("Parse Int score_abs", parseInt(elemAth[i].score_abs))
                         arrayWAP[teamIndex].rep += parseInt(elemAth[i].score_abs)
                         arrayWAP[teamIndex].time += treatResultTimeWPA(elemAth[i]).time
                         if (arrayWAP[teamIndex].status == 'F') {
@@ -68,7 +73,7 @@ function updateDynamics(newScoring, status) {
                 }
             })
 
-            if (overlay === 'overlay_wza') {
+            if (overlay == 'overlay_wza') {
                 if (setupFlat.timeConfig == 'avg') {
                     for (let i = 0; i < arrayWAP.length; i++) {
                         if (arrayWAP[i].time != 0) {

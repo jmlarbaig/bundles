@@ -310,7 +310,7 @@ function reposition(leaderboard, athletes) {
             repoLeft(leaderboard, athletes)
             break;
         case 'overlay_wza':
-            console.log("repoWpa", leaderboard, athletes)
+            // console.log("repoWpa", leaderboard, athletes)
             repoWpa(leaderboard, athletes);
             break;
         case 'overlay_side_v1':
@@ -401,7 +401,7 @@ function repoWpa(lead_, aths_) {
                 elm.$item.hide();
             }
         }
-        console.log("y", y)
+        // console.log("y", y)
         $('.leaderboard').height(y)
         $('.athletes').height(y)
 

@@ -120,6 +120,7 @@ function refreshCummulative(elementAth, state) {
     }
 
     elementAth.$item.find(".score").text(score)
+
 }
 
 function refreshCummulativeFinish(elementAth) {
@@ -162,9 +163,9 @@ function refreshCurrentMvtInStandby(elementAth) {
 }
 
 function hideCurrentMvt(elementAth) {
-    console.log("item", elementAth.$item)
-    elementAth.$item.find(".popup").text('');
-    elementAth.$item.find(".popup").hide();
+    // console.log("item", elementAth.$item)
+    // elementAth.$item.find(".popup").text('');
+    // elementAth.$item.find(".popup").hide();
 }
 
 
@@ -436,7 +437,7 @@ function treatResultDisplayRepWPA(score) {
         const $score = $el.find('.scoreTop');
 
         if (scoreEntry.time != 0) {
-            const timeStr = msToTime2(scoreEntry.time);
+            const timeStr = msToTime(scoreEntry.time);
             $popup.show().text(`TIME ${modeLabel}: ${timeStr}`);
             $score.text(timeStr);
         } else {
@@ -447,9 +448,12 @@ function treatResultDisplayRepWPA(score) {
 }
 
 function treatResultDisplayResultWPA(score) {
+    console.log("treatResultDisplayResultWPA score = ", score)
     score.forEach((scoreEntry, i) => {
         const selector = getTeamSelector(i);
         if (!selector) return;
+
+        console.log("selector = ", selector)
 
         const $el = $(selector);
         const $popup = $el.find('.popup_top');
@@ -457,7 +461,7 @@ function treatResultDisplayResultWPA(score) {
 
         if (scoreEntry.time != 0) {
             $popup.show().text(scoreEntry.rep);
-            $score.text(msToTime2(scoreEntry.time));
+            $score.text(msToTime(scoreEntry.time));
         } else {
             $popup.hide().text('');
             let n = scoreEntry.rep;

@@ -78,24 +78,30 @@ function leaderboardVersusTopWPA(data) {
         name = treatDisplayName(data.displayName);
     }
 
-    let $item = $(
-        '<div class="athleteTop" id="ahtTop' + data.lane + '">' +
-        '<div class="athTop_detail">' +
-        '<div class="athTop">' +
-        // '<div class="name">' + name + '</div>' +
-        name +
-        // '<div class="name"></div>' +
-        '<div class="score">0</div>' +
-        '</div>' +
-        // '<div class="popup_top initial_rank_versus">' + '</div>' +
+    if (!teamInArray.some(team => team.name === data.affiliate)) {
+        name = treatDisplayName(data.affiliate);
+    }
+
+    let backgroundColor = "";
+    let colorName = "";
+    if (teamInArray.some(team => team.name === data.affiliate)) {
+        let team = teamInArray.find(team => team.name === data.affiliate);
+        backgroundColor = team["background-color"];
+        colorName = team.color;
+    }
+
+    let $itemBox = $(
+        '<div class="athleteTop" id="ahtTop' + data.displayName.toUpperCase() + '">' +
+        '<div class="athTop" style="background-color: ' + backgroundColor + '; color: ' + colorName + ';">' +
+        '<div class="nameTop">' + name + '</div>' +
+        '<div class="scoreTop">0</div>' +
         '</div>' +
         '</div>'
     );
-    // $item.find('.athTop').css('background-image', backgroundImage)
-    $item.find(".popup_top").hide();
 
-    return $item
+    return $itemBox
 }
+
 
 function createOverlayLeaderboard(data) {
 
@@ -117,7 +123,7 @@ function createOverlayLeaderboard(data) {
     let colorName = "";
     if (teamInArray.some(team => team.name === data.affiliate)) {
         let team = teamInArray.find(team => team.name === data.affiliate);
-        backgroundColor = team["background-color"];
+        backgroundColor = team["background-color-overlay"];
         colorName = team.color;
     }
 
