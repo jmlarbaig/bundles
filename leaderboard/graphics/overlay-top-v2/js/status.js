@@ -61,7 +61,6 @@ function statusT(ath) {
     console.log("Workout finish")
     // Classement mise à jour
     refreshRank(ath);
-
     refreshCummulativeFinish(ath);
     refreshCurrentMvtFinish(ath)
 }
