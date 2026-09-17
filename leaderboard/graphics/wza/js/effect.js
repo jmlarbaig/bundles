@@ -136,7 +136,11 @@ function refreshCummulativeFinish(elementAth) {
         default:
             break;
     }
-    elementAth.$item.find(".score").text(score)
+    if (elementAth.$item.find(".scoreTop").length > 0) {
+        elementAth.$item.find(".scoreTop").text(score)
+    } else {
+        elementAth.$item.find(".score").text(score)
+    }
 }
 
 
