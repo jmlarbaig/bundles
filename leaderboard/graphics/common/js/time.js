@@ -7,6 +7,7 @@ let onChronoBefore = false;
 
 function updateTime() {
 
+    console.log('updateTime called with startTime:', startTime, 'endTime:', endTime, 'adjustT.value:', adjustT.value);
     let Ft_Ap = setupFlat.fortimeAmrap;
 
     let timer = parseInt(timerNTP.value) + (adjustT.value || 0)

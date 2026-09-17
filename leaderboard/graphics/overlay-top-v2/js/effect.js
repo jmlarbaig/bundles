@@ -179,6 +179,13 @@ function refreshCurrentMvtInProgress(elementAth) {
 
 }
 
+function refreshTimeSlowestBetter(elementAth) {
+    console.log("Refresh Time Slowest Better")
+    let score = treatRepToSeconds(elementAth.score_abs);
+    console.log("Score : ", score)
+    elementAth.$item.find('.score').text(score)
+}
+
 function refreshCurrentMvtFinish(elementAth) {
 
     let score = '';

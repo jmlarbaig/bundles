@@ -38,15 +38,18 @@ function statusWW(ath) {
     switch (heat.typeWod) {
         case 'repmax':
             refreshRepMax(ath)
+            refreshCummulative(ath)
+            break;
+        case 'time_slowest_better':
+            refreshTimeSlowestBetter(ath)
             break;
         default:
             // Case for amrap and for time
             refreshCurrentMvtInProgress(ath)
+            refreshCummulative(ath)
             break;
     }
 
-    // showRepMvtInScore(ath)
-    refreshCummulative(ath)
 
 }
 
@@ -66,7 +69,7 @@ function statusWT(ath) {
 }
 
 function statusT(ath) {
-    console.log("Workout finish")
+    // console.log("Workout finish")
     // Classement mise à jour
     refreshRank(ath);
 

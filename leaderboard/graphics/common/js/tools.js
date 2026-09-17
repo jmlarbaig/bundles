@@ -422,24 +422,24 @@ function fetchNewData(data, lane) {
 function TreatMvt(elementAth) {
     let currentMvt = {}
 
-    console.log("Treat Mvt")
+    // console.log("Treat Mvt")
     if ((auth[elementAth.division] || heat.typeWod == 'repmax') && workouts.length > 0 && workouts.find((element) => element.divisionName == elementAth.division).mvt_names[0].toLowerCase() != "workout") {
         if (elementAth.result == "") {
             switch (heat.typeWod) {
                 case 'amrap':
 
-                    console.log("Amrap")
+                    // console.log("Amrap")
                     currentMvt = mvtIndexAmrap(elementAth.score_abs, elementAth.division, elementAth.log_round_time[0].length + 1)
                     break;
                 case 'repmax':
 
-                    console.log("RepMax")
+                    // console.log("RepMax")
                     // console.log('Load' + elementAth.loadAttempted)
                     currentMvt = mvtIndexRepMax(elementAth.score_abs, elementAth.loadAttempted)
                     break;
                 case 'time':
 
-                    console.log("Time")
+                    // console.log("Time")
                     currentMvt = mvtIndexForTime(elementAth.score_abs, elementAth.division)
                     break;
                 default:
@@ -517,7 +517,7 @@ function mvtIndexForTime(nbrReps, division) {
                 }
             }
             else {
-                console.log("5 res = ", res, "wod.total_reps = ", wod.total_reps, "wod.mvt_names[wod.mvt_names.length - 1] = ", wod.mvt_names[wod.mvt_names.length - 1])
+                // console.log("5 res = ", res, "wod.total_reps = ", wod.total_reps, "wod.mvt_names[wod.mvt_names.length - 1] = ", wod.mvt_names[wod.mvt_names.length - 1])
 
                 index = 0
                 res = -wod.mvt_reps[index];
@@ -699,4 +699,17 @@ function treatCapResult(result) {
             break;
     }
     return score;
+}
+
+
+
+function treatRepToSeconds(score) {
+    const minutes = Math.floor((score % 3600) / 60);
+    const secondes = Math.floor(score % 60);
+
+    const pad = (n) => String(n).padStart(2, '0');
+    console.log(`${pad(minutes)}:${pad(secondes)}`)
+
+    return `${pad(minutes)}:${pad(secondes)}`;
+
 }

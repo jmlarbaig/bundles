@@ -129,6 +129,7 @@ function refreshCummulativeFinish(elementAth) {
     switch (elementAth.status) {
         case "F":
             score = treatTimeResult(elementAth.result)
+            break;
         case "T":            // On est en timecap donc format => CAP 10.9
             score = treatCapResult(elementAth.result)
             break;
@@ -192,6 +193,12 @@ function refreshCurrentMvtInProgress(elementAth) {
 
     elementAth.$item.find(".popup").text(mvt);
 
+}
+
+function refreshTimeSlowestBetter(ath) {
+    console.log("Refresh Time Slowest Better")
+    let score = treatRepToSeconds(ath.score_abs);
+    ath.$item.find('.score').text(score)
 }
 
 function refreshCurrentMvtFinish(elementAth) {
@@ -461,12 +468,12 @@ function treatResultDisplayRepWPA(score) {
 }
 
 function treatResultDisplayResultWPA(score) {
-    console.log("treatResultDisplayResultWPA score = ", score)
+    // console.log("treatResultDisplayResultWPA score = ", score)
     score.forEach((scoreEntry, i) => {
         const selector = getTeamSelector(i);
         if (!selector) return;
 
-        console.log("selector = ", selector)
+        // console.log("selector = ", selector)
 
         const $el = $(selector);
         const $popup = $el.find('.popup_top');

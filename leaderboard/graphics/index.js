@@ -31,6 +31,7 @@ let timerAutomatic1 = null;
 let timerAutomatic2 = null;
 let timerAutomatic3 = null;
 let timerAutomatic4 = null;
+let newTimeCapGlobal = '00:00';
 
 
 let showDrapeau;
@@ -39,6 +40,8 @@ let varPresented;
 
 const backgroundAthlete = nodecg.Replicant('assets:backgroundAthlete', 'leaderboard')
 const backgroundOverlay = nodecg.Replicant('assets:backgroundOverlay', 'leaderboard')
+
+const lastTimeCap = nodecg.Replicant('lastTimeCap')
 
 const timerNTP = nodecg.Replicant('timerNTP', 'connector');
 
@@ -134,13 +137,13 @@ function handleSetupChange(newValue, oldValue) {
         if (statusHeat && statusHeat.value != undefined && statusHeat.value.PosixTimeStart !== undefined) {
             ntpStartTime = statusHeat.value.PosixTimeStart
             startTime = parseInt(ntpStartTime);
-            launchTimer()
+            // launchTimer(startTime, heat.timecap)
         }
     } else {
         if (timerLaunch != null) {
             clearInterval(timerLaunch)
             timerLaunch = null;
-            resetTimer();
+            // resetTimer();
         }
     }
 
@@ -314,7 +317,7 @@ function registerDependentHandlers() {
             heat = typeWorkout(newValue)
             sonLaunch = false;
             sonFinishLaunch = false;
-            launchTimer()
+            // launchTimer(startTime, heat.timecap)
             showTime(heat.timecap)
             if (overlay == 'sk' || overlay == 'head_judge') {
                 $('#timeCapKairos').text(newValue[0].timeCap)
@@ -397,10 +400,8 @@ function registerDependentHandlers() {
                     timer2 = null;
                     $(".chrono").find('#cap').text("CAP " + tc[1] + "'" + (tc[0] != "00" ? tc[0] : ''));
                     if (newValue.PosixTimeStart !== ntpStartTime) {
-                        newHeat = false
-                        ntpStartTime = newValue.PosixTimeStart
-                        startTime = parseInt(ntpStartTime);
-                        launchTimer();
+                        launchTimer(parseInt(newValue.PosixTimeStart) - 1000, newTimeCapGlobal)
+                        // launchTimer();
                     }
                     statusWorkout = newValue.status
                     if (overlay == 'sk' || overlay == 'head_judge') {
@@ -593,30 +594,38 @@ let startTime = 0;
 let endTime;
 let timerLaunch = null;
 
-function launchTimer() {
-    var launchInter = setInterval(() => {
-        if (heat != {}) {
-            if (startTime != 0 && heat.timecap != undefined && heat.timecap != '00:00') {
-                var timecapIn = ((parseInt(tc.length ? parseInt(tc[1]) : 0) * 60) + parseInt(tc.length ? parseInt(tc[2]) : 0)) * 1000;
-                endTime = parseInt(startTime) + parseInt(timecapIn)
-                console.log('endTime', endTime, 'startTime', startTime, 'timecapIn', timecapIn)
-                if (timerLaunch != null) {
-                    clearInterval(timerLaunch)
-                    timerLaunch = null;
-                }
-                timerLaunch = setInterval(updateTime, 100);
+function launchTimer(startTimeLocal, timecapLocal) {
 
-                clearInterval(launchInter);
-                launchInter = null;
-            } else {
-                if (timerLaunch != null) {
-                    clearInterval(timerLaunch)
-                    timerLaunch = null;
-                    $(".chrono").find('#time').text('00:00');
-                }
+    if (heat != {}) {
+        console.log('heat.timecap:', heat.timecap, 'lastTimeCap.value:', lastTimeCap.value, 'timecapLocal:', timecapLocal);
+        if (startTimeLocal != 0 && timecapLocal != undefined) {
+            if (timecapLocal == '00:00') {
+                console.log('timecapLocal is 00:00, using lastTimeCap.value instead');
+                timecapLocal = lastTimeCap.value;
+            }
+            lastTimeCap.value = timecapLocal;
+            var timecapIn = ((parseInt(timecapLocal.split(':')[0]) * 60) + parseInt(timecapLocal.split(':')[1])) * 1000;
+            endTime = parseInt(startTimeLocal) + parseInt(timecapIn)
+            console.log('endTime', endTime, 'startTime', startTimeLocal, 'timecapIn', timecapIn)
+            if (timerLaunch != null) {
+                console.log('Starting timer with startTime:', startTimeLocal, 'and timecap:', timecapLocal);
+                clearInterval(timerLaunch)
+                timerLaunch = null;
+            }
+            console.log('Starting timer with startTime:', startTimeLocal, 'and timecap:', timecapLocal);
+            startTime = parseInt(startTimeLocal);
+
+            timerLaunch = setInterval(updateTime, 100);
+
+
+        } else {
+            if (timerLaunch != null) {
+                clearInterval(timerLaunch)
+                timerLaunch = null;
+                $(".chrono").find('#time').text('00:00');
             }
         }
-    }, 1000);
+    }
 }
 
 // Handlers pour statusHeat, manualChrono et d_athletes sont maintenant dans registerDependentHandlers()
@@ -927,6 +936,21 @@ chronoState.on('change', (newValue) => {
     }
 
 })
+
+nodecg.listenFor('newRequestTimer', 'connector', (data) => {
+    console.log('newRequestTimer : ', data)
+    let newTimeCap = data.newTimeCap.replaceAll('.', ':');
+    let startTimeRequest = data.chrono;
+    let countdown = data.countdown;
+
+    console.log('newRequestTimer : ', newTimeCap, startTimeRequest, countdown)
+
+    launchTimer(startTimeRequest, newTimeCap)
+
+})
+
+
+
 
 
 hyperfitPoints.on('change', (newValue, oldValue) => {

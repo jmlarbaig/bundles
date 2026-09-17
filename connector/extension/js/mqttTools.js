@@ -23,6 +23,7 @@ module.exports = (nodecg) => {
     let _currentHeat = {}
     let chrono = '';
     let countdown = 10000;
+    let newTimeCap = '';
 
     let receivedHeats;
     let lastWorkouts;
@@ -131,6 +132,9 @@ module.exports = (nodecg) => {
                     if (message != '0') {
                         chrono = message.split(';')[2]
                         countdown = parseInt(message.split(';')[1])
+                        newTimeCap = message.split(';')[0]
+                        console.log("chrono = ", chrono, "countdown = ", countdown, "newTimeCap = ", newTimeCap)
+                        nodecg.sendMessage('newRequestTimer', { chrono: chrono, countdown: countdown, newTimeCap: newTimeCap })
                     } else {
                         chrono = 0;
                     }

@@ -30,15 +30,18 @@ function statusWW(ath) {
     switch (heat.typeWod) {
         case 'repmax':
             refreshRepMax(ath)
+            refreshCummulative(ath)
+            break;
+        case 'time_slowest_better':
+            console.log('Ath : ', ath)
+            refreshTimeSlowestBetter(ath)
             break;
         default:
             // Case for amrap and for time
             refreshCurrentMvtInProgress(ath)
+            refreshCummulative(ath)
             break;
     }
-
-    refreshCummulative(ath)
-
 }
 
 function statusWF(ath) {

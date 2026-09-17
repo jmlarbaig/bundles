@@ -41,6 +41,9 @@ function statusWW(ath) {
         case 'repmax':
             refreshRepMax(ath)
             break;
+        case 'time_slowest_better':
+            refreshTimeSlowestBetter(ath)
+            break;
         default:
             // Case for amrap and for time
             refreshCurrentMvtInProgress(ath)

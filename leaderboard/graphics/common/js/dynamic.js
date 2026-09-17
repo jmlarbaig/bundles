@@ -61,12 +61,13 @@ function updateDynamics(newScoring, status) {
 
                     let teamIndex = teamInArray.findIndex(team => team.name === elemAth[i].affiliate);
                     if (teamIndex !== -1) {
-                        console.log("teamIndex", teamIndex, elemAth[i].affiliate, elemAth[i].score_abs)
-                        console.log("Parse Int score_abs", parseInt(elemAth[i].score_abs))
                         arrayWAP[teamIndex].rep += parseInt(elemAth[i].score_abs)
                         arrayWAP[teamIndex].time += treatResultTimeWPA(elemAth[i]).time
                         if (arrayWAP[teamIndex].status == 'F') {
                             arrayWAP[teamIndex].status = elemAth[i].status == 'F' ? 'F' : 'W'
+                            if (elemAth[i].status == 'T') {
+                                arrayWAP[teamIndex].time += (arrayWAP[teamIndex].total_reps - parseInt(elemAth[i].score_abs)) * 1000
+                            }
                         }
                         averageIndex[teamIndex] += treatResultTimeWPA(elemAth[i]).index
                     }

@@ -204,6 +204,12 @@ function refreshCurrentMvtInProgress(elementAth) {
 
 }
 
+function refreshTimeSlowestBetter(elementAth) {
+    console.log("Refresh Time Slowest Better")
+    let score = treatRepToSeconds(elementAth.score_abs);
+    elementAth.$item.find('.score').text(score)
+}
+
 function refreshCurrentMvtFinish(elementAth) {
 
     let score = '';

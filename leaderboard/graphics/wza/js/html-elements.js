@@ -99,6 +99,9 @@ function leaderboardVersusTopWPA(data) {
         '</div>'
     );
 
+    $itemBox.find(".name").addClass("nameTop");
+    $itemBox.find(".name").removeClass("name");
+
     return $itemBox
 }
 
