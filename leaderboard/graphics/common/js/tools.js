@@ -19,21 +19,19 @@ function timeToDateTime(time) {
 }
 
 function timeToTimestamp(time) {
-    // trame : 00:00:06.10
-    var times = time.split(':');
-    if (times.length == 3) {
-        var hours = parseInt(times[0]) * 3600;
-        var minutes = parseInt(times[1]) * 60000;
-        var secmili = times[2].split('.');
-        var seconds = parseInt(secmili[0]) * 1000;
-        var mili = parseInt(secmili[1]);
+    // trame : 00:00:06.10 (hh:mm:ss.fraction)
+    const parts = time.split(':');
+    if (parts.length !== 3) return NaN;
 
+    const [secStr, fracStr = ''] = parts[2].split('.');
 
-        var timestamp = hours + minutes + seconds + mili;
+    const hours = parseInt(parts[0], 10) * 3600000;
+    const minutes = parseInt(parts[1], 10) * 60000;
+    const seconds = parseInt(secStr, 10) * 1000;
+    // ".10" -> "100" -> 100 ms (on complète/tronque à 3 chiffres)
+    const millis = parseInt(fracStr.padEnd(3, '0').slice(0, 3), 10);
 
-        // Pas de milliseconds dans le constructeur Date
-        return timestamp;
-    }
+    return hours + minutes + seconds + millis;
 }
 
 
@@ -496,18 +494,18 @@ function mvtIndexForTime(nbrReps, division) {
     for (let wod of workouts) {
         if (wod.divisionName == division) {
             if (res != 0) {
-                console.log("1 res = ", res, "wod.total_reps = ", wod.total_reps, "wod.mvt_names[wod.mvt_names.length - 1] = ", wod.mvt_names[wod.mvt_names.length - 1])
+                // console.log("1 res = ", res, "wod.total_reps = ", wod.total_reps, "wod.mvt_names[wod.mvt_names.length - 1] = ", wod.mvt_names[wod.mvt_names.length - 1])
                 if (res == wod.total_reps && wod.mvt_names[wod.mvt_names.length - 1] == "Sprint") {
-                    console.log("2 res = ", res, "wod.total_reps = ", wod.total_reps, "wod.mvt_names[wod.mvt_names.length - 1] = ", wod.mvt_names[wod.mvt_names.length - 1])
+                    // console.log("2 res = ", res, "wod.total_reps = ", wod.total_reps, "wod.mvt_names[wod.mvt_names.length - 1] = ", wod.mvt_names[wod.mvt_names.length - 1])
 
                     res = 0
                     index = wod.mvt_names.length - 1
                 }
                 else {
-                    console.log("3 res = ", res, "wod.total_reps = ", wod.total_reps, "wod.mvt_names[wod.mvt_names.length - 1] = ", wod.mvt_names[wod.mvt_names.length - 1])
+                    // console.log("3 res = ", res, "wod.total_reps = ", wod.total_reps, "wod.mvt_names[wod.mvt_names.length - 1] = ", wod.mvt_names[wod.mvt_names.length - 1])
 
                     while (res >= 0) {
-                        console.log("4 res = ", res, "wod.total_reps = ", wod.total_reps, "wod.mvt_names[wod.mvt_names.length - 1] = ", wod.mvt_names[wod.mvt_names.length - 1])
+                        // console.log("4 res = ", res, "wod.total_reps = ", wod.total_reps, "wod.mvt_names[wod.mvt_names.length - 1] = ", wod.mvt_names[wod.mvt_names.length - 1])
 
                         res = (res - wod.mvt_reps[index])
                         if (res >= 0) {

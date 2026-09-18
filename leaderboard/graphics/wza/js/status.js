@@ -28,28 +28,27 @@ function statusWS(ath) {
 
 
 function statusWW(ath) {
-
-    console.log("Athlete in Mvt / Workout in Standby")
-
+    console.log("Workout in progress")
     refreshRank(ath)
     refreshUpDown(ath)
-
-
+    console.log("heat.typeWod = ", heat.typeWod)
     switch (heat.typeWod) {
         case 'repmax':
+            console.log("Refresh Rep Max")
             refreshRepMax(ath)
             refreshCummulative(ath)
             break;
         case 'time_slowest_better':
+            console.log("Refresh Time Slowest Better")
             refreshTimeSlowestBetter(ath)
             break;
         default:
             // Case for amrap and for time
+            console.log("Refresh Current Mvt In Progress")
             refreshCurrentMvtInProgress(ath)
             refreshCummulative(ath)
             break;
     }
-
 
 }
 

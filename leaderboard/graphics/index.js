@@ -400,7 +400,7 @@ function registerDependentHandlers() {
                     timer2 = null;
                     $(".chrono").find('#cap').text("CAP " + tc[1] + "'" + (tc[0] != "00" ? tc[0] : ''));
                     if (newValue.PosixTimeStart !== ntpStartTime) {
-                        launchTimer(parseInt(newValue.PosixTimeStart) - 1000, newTimeCapGlobal)
+                        launchTimer(parseInt(newValue.PosixTimeStart) - 1000, lastTimeCap.value);
                         // launchTimer();
                     }
                     statusWorkout = newValue.status
@@ -602,6 +602,7 @@ function launchTimer(startTimeLocal, timecapLocal) {
             if (timecapLocal == '00:00') {
                 console.log('timecapLocal is 00:00, using lastTimeCap.value instead');
                 timecapLocal = lastTimeCap.value;
+
             }
             lastTimeCap.value = timecapLocal;
             var timecapIn = ((parseInt(timecapLocal.split(':')[0]) * 60) + parseInt(timecapLocal.split(':')[1])) * 1000;
@@ -939,7 +940,7 @@ chronoState.on('change', (newValue) => {
 
 nodecg.listenFor('newRequestTimer', 'connector', (data) => {
     console.log('newRequestTimer : ', data)
-    let newTimeCap = data.newTimeCap.replaceAll('.', ':');
+    let newTimeCap = data.newTimeCap.replaceAll('.', ':').replaceAll('+', '').replaceAll('-', '');
     let startTimeRequest = data.chrono;
     let countdown = data.countdown;
 

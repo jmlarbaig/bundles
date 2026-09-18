@@ -61,13 +61,29 @@ function updateDynamics(newScoring, status) {
 
                     let teamIndex = teamInArray.findIndex(team => team.name === elemAth[i].affiliate);
                     if (teamIndex !== -1) {
-                        arrayWAP[teamIndex].rep += parseInt(elemAth[i].score_abs)
-                        arrayWAP[teamIndex].time += treatResultTimeWPA(elemAth[i]).time
+                        // arrayWAP[teamIndex].rep += parseInt(elemAth[i].score_abs)
+                        // arrayWAP[teamIndex].time += treatResultTimeWPA(elemAth[i]).time
                         if (arrayWAP[teamIndex].status == 'F') {
-                            arrayWAP[teamIndex].status = elemAth[i].status == 'F' ? 'F' : 'W'
-                            if (elemAth[i].status == 'T' && (heat.typeWod == 'time' || heat.typeWod == 'time_slowest_better')) {
-                                arrayWAP[teamIndex].time += (arrayWAP[teamIndex].total_reps - parseInt(elemAth[i].score_abs)) * 1000
+                            // arrayWAP[teamIndex].status = elemAth[i].status == 'F' ? 'F' : 'W'
+                            if (elemAth[i].status == 'F') {
+                                arrayWAP[teamIndex].time += treatResultTimeWPA(elemAth[i]).time
+                            } else {
+                                arrayWAP[teamIndex].rep += parseInt(elemAth[i].score_abs)
                             }
+
+                            console.log("teamIndex = ", teamIndex, " arrayWAP[teamIndex] = ", arrayWAP[teamIndex], " elemAth[i] = ", elemAth[i])
+
+                            if (status == "T" && (elemAth[i].status == 'T' || elemAth[i].status == '0' || elemAth[i].status == 'S') && (heat.typeWod == 'time' || heat.typeWod == 'time_slowest_better')) {
+                                let ti = lastTimeCap.value;
+                                let timeCapInS = parseInt(ti.split(':')[0]) * 60 + parseInt(ti.split(':')[1])
+                                console.log("timeCapInS: ", timeCapInS * 1000)
+                                let miseReps = parseInt(arrayWAP[teamIndex].total_reps) - parseInt(elemAth[i].score_abs)
+                                console.log("Mise reps: ", miseReps)
+                                let timeAdded = (miseReps * 1000) + (timeCapInS * 1000)
+                                console.log("Temps ajouté pour l'équipe: ", timeAdded)
+                                arrayWAP[teamIndex].time += timeAdded;
+                            }
+
                         }
                         // console.log('teamIndex', teamIndex, 'arrayWAP[teamIndex]', arrayWAP[teamIndex], 'elemAth[i]', elemAth[i])
                         averageIndex[teamIndex] += treatResultTimeWPA(elemAth[i]).index
@@ -144,7 +160,9 @@ function updateDynamics(newScoring, status) {
                         break;
                 }
 
-                if (overlay == "overlay_wza") {
+                console.log("overlay = ", overlay, " athletesDivision.length = ", elemAth.length, " teamInArray.length = ", teamInArray.length)
+                if (overlay == "overlay_wza" && elemAth.length > teamInArray.length) {
+                    console.log("overlay_wza treatResultDisplayResultWPA")
                     treatResultDisplayResultWPA(arrayWAP)
                 }
 

@@ -12,22 +12,23 @@ function updateTime() {
 
     let timer = parseInt(timerNTP.value) + (adjustT.value || 0)
 
+    let sens = (heat.typeWod == 'time' || heat.typeWod == 'time_slowest_better') ? 'up' : 'down';
+
+
     if (newHeat) {
         console.log('newHeat is true, setting timer to startTime', startTime, endTime, adjustT.value);
-        // timer = endTime
-        // adjustT.value = 0
         sonLaunch = false;
         sonFinishLaunch = false;
         console.log("reset sonLaunch")
     }
 
-    // console.log('timer', timer, 'adjustT', adjustT.value, 'endTime', endTime, 'startTime', startTime);
+    console.log('timer', timer, 'adjustT', adjustT.value, 'endTime', endTime, 'startTime', startTime);
 
     let timeDiffStart = timer - startTime;
     let timeDiffTimeCap = timer - endTime;
     let timeDiffEnd = endTime - timer;
 
-    // console.log('timeDiffStart', timeDiffStart, 'timeDiffTimeCap', timeDiffTimeCap, 'timeDiffEnd', timeDiffEnd);
+    console.log('timeDiffStart', timeDiffStart, 'timeDiffTimeCap', timeDiffTimeCap, 'timeDiffEnd', timeDiffEnd);
 
 
     if (overlay == 'overlay_side' || overlay == 'overlay_side_v1') {
@@ -54,9 +55,8 @@ function updateTime() {
             console.log('sound launch')
             // son_standby.play();
         }
-        if (heat.typeWod == "amrap" || Ft_Ap) {
-            // chrono = msToTime(timeDiffEnd)
-            chrono = msToTime(timeDiffStart);
+        if (sens == 'down') {
+            chrono = msToTime(timeDiffEnd)
         }
         else {
             chrono = msToTime(timeDiffStart);

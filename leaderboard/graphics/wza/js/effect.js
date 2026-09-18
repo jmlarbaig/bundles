@@ -120,9 +120,13 @@ function refreshCummulative(elementAth, state) {
             state = ""
     }
 
-    elementAth.$item.find(".score").text(score)
-
+    if (elementAth.$item.find(".score").length > 0) {
+        elementAth.$item.find(".score").text(score)
+    } else {
+        elementAth.$item.find(".scoreTop").text(score)
+    }
 }
+
 
 function refreshCummulativeFinish(elementAth) {
     let score = '';
@@ -200,9 +204,16 @@ function refreshCurrentMvtInProgress(elementAth) {
 }
 
 function refreshTimeSlowestBetter(ath) {
-    console.log("Refresh Time Slowest Better")
     let score = treatRepToSeconds(ath.score_abs);
-    ath.$item.find('.score').text(score)
+    console.log("Refresh Time Slowest Better ath = ", ath)
+    console.log("Refresh Time Slowest Better score = ", score)
+    if (ath.$item.find('.score').$length > 0) {
+        console.log("Refresh Time Slowest Better score ")
+        ath.$item.find('.score').text(score)
+    } else {
+        console.log("Refresh Time Slowest Better scoreTop ")
+        ath.$item.find('.scoreTop').text(score)
+    }
 }
 
 function refreshCurrentMvtFinish(elementAth) {
@@ -449,6 +460,7 @@ function computeRepScores(score, scoreConfig) {
 }
 
 function treatResultDisplayRepWPA(score) {
+    // console.log("treatResultDisplayRepWPA score ")
     const r = computeRepScores(score, setupFlat.scoreConfig);
     const modeLabel = setupFlat.timeConfig === 'avg' ? 'AVERAGE' : 'TOTAL';
 
@@ -482,6 +494,9 @@ function treatResultDisplayResultWPA(score) {
         const $el = $(selector);
         const $popup = $el.find('.popup_top');
         const $score = $el.find('.scoreTop');
+
+        // console.log("scoreEntry = ", scoreEntry)
+        // console.log("scoreEntry.time = ", msToTime(scoreEntry.time))
 
         if (scoreEntry.time != 0) {
             $popup.show().text(scoreEntry.rep);
