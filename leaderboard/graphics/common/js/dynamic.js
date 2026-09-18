@@ -65,10 +65,11 @@ function updateDynamics(newScoring, status) {
                         arrayWAP[teamIndex].time += treatResultTimeWPA(elemAth[i]).time
                         if (arrayWAP[teamIndex].status == 'F') {
                             arrayWAP[teamIndex].status = elemAth[i].status == 'F' ? 'F' : 'W'
-                            if (elemAth[i].status == 'T') {
+                            if (elemAth[i].status == 'T' && (heat.typeWod == 'time' || heat.typeWod == 'time_slowest_better')) {
                                 arrayWAP[teamIndex].time += (arrayWAP[teamIndex].total_reps - parseInt(elemAth[i].score_abs)) * 1000
                             }
                         }
+                        // console.log('teamIndex', teamIndex, 'arrayWAP[teamIndex]', arrayWAP[teamIndex], 'elemAth[i]', elemAth[i])
                         averageIndex[teamIndex] += treatResultTimeWPA(elemAth[i]).index
                     }
                 }

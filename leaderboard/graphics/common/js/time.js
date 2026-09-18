@@ -13,9 +13,9 @@ function updateTime() {
     let timer = parseInt(timerNTP.value) + (adjustT.value || 0)
 
     if (newHeat) {
-        console.log('newHeat is true, setting timer to startTime');
-        timer = endTime
-        adjustT.value = 0
+        console.log('newHeat is true, setting timer to startTime', startTime, endTime, adjustT.value);
+        // timer = endTime
+        // adjustT.value = 0
         sonLaunch = false;
         sonFinishLaunch = false;
         console.log("reset sonLaunch")
