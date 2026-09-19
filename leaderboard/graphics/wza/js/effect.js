@@ -205,8 +205,6 @@ function refreshCurrentMvtInProgress(elementAth) {
 
 function refreshTimeSlowestBetter(ath) {
     let score = treatRepToSeconds(ath.score_abs);
-    console.log("Refresh Time Slowest Better ath = ", ath)
-    console.log("Refresh Time Slowest Better score = ", score)
     if (ath.$item.find('.score').$length > 0) {
         console.log("Refresh Time Slowest Better score ")
         ath.$item.find('.score').text(score)
@@ -225,6 +223,7 @@ function refreshCurrentMvtFinish(elementAth) {
         case "F":
             score = treatTimeResult(elementAth.result)
         case "T":            // On est en timecap donc format => CAP 10.9
+            console.log("Result : ", elementAth.result, "Score : ", elementAth.score_abs)
             score = treatCapResult(elementAth.result)
             break;
         default:

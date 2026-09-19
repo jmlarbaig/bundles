@@ -71,16 +71,15 @@ function updateDynamics(newScoring, status) {
                                 arrayWAP[teamIndex].rep += parseInt(elemAth[i].score_abs)
                             }
 
-                            console.log("teamIndex = ", teamIndex, " arrayWAP[teamIndex] = ", arrayWAP[teamIndex], " elemAth[i] = ", elemAth[i])
+                            // console.log("teamIndex = ", teamIndex, " arrayWAP[teamIndex] = ", arrayWAP[teamIndex], " elemAth[i] = ", elemAth[i])
 
                             if (status == "T" && (elemAth[i].status == 'T' || elemAth[i].status == '0' || elemAth[i].status == 'S') && (heat.typeWod == 'time' || heat.typeWod == 'time_slowest_better')) {
                                 let ti = lastTimeCap.value;
                                 let timeCapInS = parseInt(ti.split(':')[0]) * 60 + parseInt(ti.split(':')[1])
-                                console.log("timeCapInS: ", timeCapInS * 1000)
+                                // console.log("timeCapInS: ", timeCapInS * 1000)
                                 let miseReps = parseInt(arrayWAP[teamIndex].total_reps) - parseInt(elemAth[i].score_abs)
-                                console.log("Mise reps: ", miseReps)
+                                // console.log("Mise reps: ", miseReps)
                                 let timeAdded = (miseReps * 1000) + (timeCapInS * 1000)
-                                console.log("Temps ajouté pour l'équipe: ", timeAdded)
                                 arrayWAP[teamIndex].time += timeAdded;
                             }
 
@@ -160,9 +159,9 @@ function updateDynamics(newScoring, status) {
                         break;
                 }
 
-                console.log("overlay = ", overlay, " athletesDivision.length = ", elemAth.length, " teamInArray.length = ", teamInArray.length)
+                // console.log("overlay = ", overlay, " athletesDivision.length = ", elemAth.length, " teamInArray.length = ", teamInArray.length)
                 if (overlay == "overlay_wza" && elemAth.length > teamInArray.length) {
-                    console.log("overlay_wza treatResultDisplayResultWPA")
+                    // console.log("overlay_wza treatResultDisplayResultWPA")
                     treatResultDisplayResultWPA(arrayWAP)
                 }
 

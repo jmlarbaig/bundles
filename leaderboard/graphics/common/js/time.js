@@ -7,7 +7,7 @@ let onChronoBefore = false;
 
 function updateTime() {
 
-    console.log('updateTime called with startTime:', startTime, 'endTime:', endTime, 'adjustT.value:', adjustT.value);
+    // console.log('updateTime called with startTime:', startTime, 'endTime:', endTime, 'adjustT.value:', adjustT.value);
     let Ft_Ap = setupFlat.fortimeAmrap;
 
     let timer = parseInt(timerNTP.value) + (adjustT.value || 0)
@@ -22,7 +22,7 @@ function updateTime() {
         console.log("reset sonLaunch")
     }
 
-    console.log('timer', timer, 'adjustT', adjustT.value, 'endTime', endTime, 'startTime', startTime);
+    // console.log('timer', timer, 'adjustT', adjustT.value, 'endTime', endTime, 'startTime', startTime);
 
     let timeDiffStart = timer - startTime;
     let timeDiffTimeCap = timer - endTime;

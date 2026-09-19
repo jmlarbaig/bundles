@@ -691,6 +691,9 @@ function treatCapResult(result) {
     switch (heat.typeWod) {
         case 'repmax':
             break;
+        case 'time_slowest_better':
+            score = treatRepToSeconds(result)
+            break;
         default:
             // Case for amrap and for time
             score = score.split('.')[0]
