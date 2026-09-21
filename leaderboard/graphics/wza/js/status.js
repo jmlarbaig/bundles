@@ -45,7 +45,7 @@ function statusWW(ath) {
         default:
             // Case for amrap and for time
             // console.log("Refresh Current Mvt In Progress")
-            refreshCurrentMvtInProgress(ath)
+            // refreshCurrentMvtInProgress(ath)
             refreshCummulative(ath)
             break;
     }
