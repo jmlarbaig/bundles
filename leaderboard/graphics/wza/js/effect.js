@@ -40,7 +40,7 @@ function refreshRank(elementAth) {
     }
 
     // Ajouter la gestion des couleurs à cet endroit
-    changeColorAth(elementAth, ".ath")
+    // changeColorAth(elementAth, ".athleteTop")
 
     elementAth.$item.find(".rank").text(elementAth.CurrentRank)
 }
@@ -95,7 +95,7 @@ function refreshCummulative(elementAth, state) {
 
     switch (elementAth.status) {
         case "F":
-            console.log("refreshCummulative elementAth.result = ", elementAth.result)
+            // console.log("refreshCummulative elementAth.result = ", elementAth.result)
             score = treatTimeResult(elementAth.result)
             break;
         case "T":
@@ -206,16 +206,16 @@ function refreshCurrentMvtInProgress(elementAth) {
 function refreshTimeSlowestBetter(ath) {
     let score = treatRepToSeconds(ath.score_abs);
     if (ath.$item.find('.score').$length > 0) {
-        console.log("Refresh Time Slowest Better score ")
+        // console.log("Refresh Time Slowest Better score ")
         ath.$item.find('.score').text(score)
     } else {
-        console.log("Refresh Time Slowest Better scoreTop ")
+        // console.log("Refresh Time Slowest Better scoreTop ")
         ath.$item.find('.scoreTop').text(score)
     }
 }
 
 function refreshCurrentMvtFinish(elementAth) {
-    console.log("refreshCurrentMvtFinish elementAth.currentMvt = ", elementAth.currentMvt)
+    // console.log("refreshCurrentMvtFinish elementAth.currentMvt = ", elementAth.currentMvt)
 
     let score = '';
     let $item = '';
@@ -223,7 +223,7 @@ function refreshCurrentMvtFinish(elementAth) {
         case "F":
             score = treatTimeResult(elementAth.result)
         case "T":            // On est en timecap donc format => CAP 10.9
-            console.log("Result : ", elementAth.result, "Score : ", elementAth.score_abs)
+            // console.log("Result : ", elementAth.result, "Score : ", elementAth.score_abs)
             score = treatCapResult(elementAth.result)
             break;
         default:
@@ -275,16 +275,32 @@ function changeColorAth(ath, element) {
 
     switch (rank) {
         case 1:
-            ath.$item.find(element).addClass('first_rank_ath_top')
-            ath.$item.find(element).removeClass('initial_rank_top_ath second_rank_ath_top third_rank_ath_top other_rank_ath_top', false)
+            ath.$item.find(element).addClass('first-rank')
             break;
         default:
-            ath.$item.find(element).addClass('initial_rank_top_ath')
-            ath.$item.find(element).removeClass('first_rank_ath_top second_rank_ath_top third_rank_ath_top other_rank_ath_top', false)
+            ath.$item.find(element).removeClass('first-rank', false)
             break;
     }
 }
 
+function changeColorAthTop(ath, element) {
+
+    let rank = ath.CurrentRank
+    rank != 1 ? rank = 4 : rank
+
+    // console.log("Rank :", rank)
+
+    switch (rank) {
+        case 1:
+            // console.log("Add class")
+            element.addClass('first-rank')
+            break;
+        default:
+            // console.log("Remove class")
+            element.removeClass('first-rank', false)
+            break;
+    }
+}
 
 
 
@@ -464,6 +480,7 @@ function treatResultDisplayRepWPA(score) {
     const modeLabel = setupFlat.timeConfig === 'avg' ? 'AVERAGE' : 'TOTAL';
 
     score.forEach((scoreEntry, i) => {
+        console.log("ScoreEntry : ", score);
         const selector = getTeamSelector(i);
         if (!selector) return;
 
@@ -479,6 +496,14 @@ function treatResultDisplayRepWPA(score) {
             $popup.hide().text('');
             $score.text(r[i]);
         }
+
+        if (status != '0' || status != "R") {
+
+            changeColorAthTop(scoreEntry, $el)
+        }
+
+
+
     });
 }
 
@@ -508,6 +533,12 @@ function treatResultDisplayResultWPA(score) {
             }
             $score.text(n);
         }
+
+        if (status != '0' || status != "R") {
+
+            changeColorAthTop(scoreEntry, $el)
+        }
+
     });
 }
 

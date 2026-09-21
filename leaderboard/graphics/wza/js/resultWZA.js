@@ -5,8 +5,8 @@ function treatResultWZA(athletesDivision) {
         height_tot = 0;
 
 
-        arrayWAP[0] = { rep: 0, time: 0, status: 'F', total_reps: workouts[0].total_reps }
-        arrayWAP[1] = { rep: 0, time: 0, status: 'F', total_reps: workouts[0].total_reps }
+        arrayWAP[0] = { rep: 0, time: 0, status: 'F', total_reps: workouts[0].total_reps, CurrentRank: 0 }
+        arrayWAP[1] = { rep: 0, time: 0, status: 'F', total_reps: workouts[0].total_reps, CurrentRank: 0 }
 
         // on fait 2 each => 1 pour mettre à jour les datas, l'autre pour l'affichage des données.  
 

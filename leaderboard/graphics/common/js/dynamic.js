@@ -3,6 +3,43 @@ var percent = 0;
 let bestPerf = []
 let best = []
 
+const statusOrder = { F: 0, T: 1, W: 2 };
+const hasTime = (ath) => Number(ath.time) > 0;
+
+
+const compare = (a, b) => {
+    // 1. Statut : F, puis T, puis W
+    if (a.status !== b.status) {
+        return statusOrder[a.status] - statusOrder[b.status];
+    }
+
+    // 2. W uniquement : plus d'athlètes ayant fini = mieux classé
+    if (a.status === 'W') {
+        const finishDiff =
+            (Number(b.numberOfAthleteFinish) || 0) - (Number(a.numberOfAthleteFinish) || 0);
+        if (finishDiff !== 0) return finishDiff;
+    }
+
+    // 3. Celui qui a un temps passe avant celui qui n'en a pas
+    if (hasTime(a) !== hasTime(b)) {
+        return hasTime(a) ? -1 : 1;
+    }
+
+    // 4. Les deux ont un temps : le plus petit en premier
+    if (hasTime(a) && Number(a.time) !== Number(b.time)) {
+        return Number(a.time) - Number(b.time);
+    }
+
+    // 5. W uniquement : à égalité, le plus de reps en premier
+    if (a.status === 'W') {
+        return Number(b.rep) - Number(a.rep);
+    }
+
+    return 0;
+};
+
+
+
 let teamInArray = [{ "name": "PRVN", "background-color": "#000000", "background-color-overlay": "#000000d2", color: "white" },
 { "name": "OUTCAST", "background-color": "#535353", "background-color-overlay": "#535353ba", color: "white" },
 { "name": "TTT", "background-color": "#c2351f", "background-color-overlay": "#c2351fb4", color: "white" },
@@ -26,7 +63,7 @@ function updateDynamics(newScoring, status) {
 
 
             for (let i = 0; i < teamInArray.length; i++) {
-                arrayWAP.push({ rep: 0, time: 0, status: 'F', total_reps: workouts[0].total_reps })
+                arrayWAP.push({ rep: 0, time: 0, status: 'F', total_reps: workouts[0].total_reps, CurrentRank: 0, numberOfAthleteFinish: 0 })
                 averageIndex.push(0)
             }
 
@@ -64,8 +101,9 @@ function updateDynamics(newScoring, status) {
                         // arrayWAP[teamIndex].rep += parseInt(elemAth[i].score_abs)
                         // arrayWAP[teamIndex].time += treatResultTimeWPA(elemAth[i]).time
                         if (arrayWAP[teamIndex].status == 'F') {
-                            // arrayWAP[teamIndex].status = elemAth[i].status == 'F' ? 'F' : 'W'
+                            arrayWAP[teamIndex].status = elemAth[i].status == 'F' ? 'F' : 'W'
                             if (elemAth[i].status == 'F') {
+                                arrayWAP[teamIndex].numberOfAthleteFinish += 1;
                                 arrayWAP[teamIndex].time += treatResultTimeWPA(elemAth[i]).time
                             } else {
                                 arrayWAP[teamIndex].rep += parseInt(elemAth[i].score_abs)
@@ -91,6 +129,18 @@ function updateDynamics(newScoring, status) {
             })
 
             if (overlay == 'overlay_wza') {
+
+
+                if (status != '0' && status != 'R') {
+                    // Tri d'une copie (arrayWAP garde son ordre)
+                    [...arrayWAP]
+                        .sort(compare)
+                        .forEach((item, index) => {
+                            item.CurrentRank = index + 1;
+                        });
+                }
+
+
                 if (setupFlat.timeConfig == 'avg') {
                     for (let i = 0; i < arrayWAP.length; i++) {
                         if (arrayWAP[i].time != 0) {
