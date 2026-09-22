@@ -189,6 +189,7 @@
     position: absolute;
     display: flex;
     flex-direction: column;
+    border-bottom: #ffffff solid 1.5px;
 }
 
 .leaderboard .athletes .ath {
@@ -207,7 +208,6 @@
     margin: auto;
     font-size: var(--sizeFontAthlete_top);
     /* margin: 8px 0px; */
-    border-bottom: #ffffff solid 1.5px;
     /* padding: 10px 0px; */
     font-family: "manifold-cf", sans-serif;
     font-weight: 800;

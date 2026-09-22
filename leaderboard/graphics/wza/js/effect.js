@@ -122,9 +122,9 @@ function refreshCummulative(elementAth, state) {
 
     if (elementAth.$item.find(".score").length > 0) {
         elementAth.$item.find(".score").text(score)
-        changeColorAthTop(elementAth, elementAth.$item)
     } else {
         elementAth.$item.find(".scoreTop").text(score)
+        changeColorAthTop(elementAth, elementAth.$item)
     }
 }
 
@@ -275,20 +275,24 @@ function changeColorAth(ath, element) {
     let rank = ath.CurrentRank
     rank != 1 ? rank = 4 : rank
 
-    switch (rank) {
-        case 1:
-            ath.$item.find(element).addClass('first-rank')
-            break;
-        default:
-            ath.$item.find(element).removeClass('first-rank', false)
-            break;
-    }
+    // switch (rank) {
+    //     case 1:
+    //         ath.$item.find(element).addClass('first-rank')
+    //         break;
+    //     default:
+    //         ath.$item.find(element).removeClass('first-rank', false)
+    //         break;
+    // }
 }
 
 function changeColorAthTop(ath, element) {
 
     let rank = ath.CurrentRank
-    rank != 1 ? rank = 4 : rank
+    if (heat.typeWod == "time_slowest_better") {
+        rank != 4 ? rank = 4 : 1
+    } else {
+        rank != 1 ? rank = 4 : rank
+    }
 
     // console.log("Rank :", rank)
 
@@ -504,8 +508,6 @@ function treatResultDisplayRepWPA(score) {
             changeColorAthTop(scoreEntry, $el)
         }
 
-
-
     });
 }
 
@@ -529,10 +531,7 @@ function treatResultDisplayResultWPA(score) {
             $score.text(msToTime(scoreEntry.time));
         } else {
             $popup.hide().text('');
-            let n = scoreEntry.rep;
-            if (heat.typeWod == 'repmax') {
-                n = scoreEntry.rep;
-            }
+            let n = scoreEntry.rep != 0 ? scoreEntry.rep : '-'
             $score.text(n);
         }
 

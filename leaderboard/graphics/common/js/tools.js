@@ -667,6 +667,9 @@ function treatTimeResult(result) {
         case 'mm-ss':
             result = t[1] + ":" + t[2].substring(0, 2);
             break;
+        case 'm-ss':
+            result = t[1].substring(1, 2) + ":" + t[2].substring(0, 2);
+            break;
         case 'ss-msms':
             result = t[2].substring(0, 5);
             break;
@@ -708,9 +711,10 @@ function treatRepToSeconds(score) {
     const minutes = Math.floor((score % 3600) / 60);
     const secondes = Math.floor(score % 60);
 
-    const pad = (n) => String(n).padStart(2, '0');
-    console.log(`${pad(minutes)}:${pad(secondes)}`)
+    const padSeconds = (n) => String(n).padStart(2, '0');
+    const padMinutes = (n) => String(n).padStart(1, '0');
+    console.log(`${padMinutes(minutes)}:${padSeconds(secondes)}`)
 
-    return `${pad(minutes)}:${pad(secondes)}`;
+    return `${padMinutes(minutes)}:${padSeconds(secondes)}`;
 
 }
