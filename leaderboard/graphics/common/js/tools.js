@@ -385,16 +385,18 @@ function withJudge(ath) {
 
 function repoWpa(lead_, aths_) {
     //initialisation la position de départ
-    let y = parseInt($(lead_ + " .header").css('height').replace('px', ''));
+    let y = parseFloat($(lead_ + " .header").css('height').replace('px', ''));
     Object.values(aths_).forEach(elm => {
         if (elm.$item.find(lead_) != undefined) {
             // NEED TO CHANGE THIS CONDITION TO AVOID BUGS WHEN ATHLETE IS NOT IN THE LEADERBOARD
             if (elm.status != 'P') {
                 !elm.$item.is(':visible') && elm.$item.show()
                 elm.$item.css("top", y + "px");
-                y += elm.$item.height();
-                y += parseInt(elm.$item.css('margin').split(' ')[0].replace('px', '')) * 2;
-                y += parseInt(elm.$item.css('padding').split(' ')[0].replace('px', '')) * 2;
+                y += (elm.$item.height());
+                y += (parseFloat(elm.$item.css('margin').split(' ')[0].replace('px', '')) * 2);
+                y += (parseFloat(elm.$item.css('padding').split(' ')[0].replace('px', '')) * 2);
+                y += (parseFloat(elm.$item.css('border-bottom').split(' ')[0].replace('px', '')));
+
             } else {
                 elm.$item.hide();
             }
