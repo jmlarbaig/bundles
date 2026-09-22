@@ -29,6 +29,7 @@ function statusWS(ath) {
 
 function statusWW(ath) {
     console.log("Workout in progress")
+
     refreshRank(ath)
     refreshUpDown(ath)
     // console.log("heat.typeWod = ", heat.typeWod)

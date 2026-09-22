@@ -122,6 +122,7 @@ function refreshCummulative(elementAth, state) {
 
     if (elementAth.$item.find(".score").length > 0) {
         elementAth.$item.find(".score").text(score)
+        changeColorAthTop(elementAth, elementAth.$item)
     } else {
         elementAth.$item.find(".scoreTop").text(score)
     }
@@ -142,6 +143,7 @@ function refreshCummulativeFinish(elementAth) {
     }
     if (elementAth.$item.find(".scoreTop").length > 0) {
         elementAth.$item.find(".scoreTop").text(score)
+        changeColorAthTop(elementAth, elementAth.$item)
     } else {
         elementAth.$item.find(".score").text(score)
     }

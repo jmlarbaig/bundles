@@ -39,6 +39,16 @@ const compare = (a, b) => {
 };
 
 
+let athletesToHide = [
+    'Olivia Kerstetter',
+    'Anikha Greer',
+    'Emma Lawson',
+    'Arielle Loewen']
+
+let workoutIdWhenHide = 131626;
+let heatIdWhenHide = 559923139;
+
+
 
 let teamInArray = [{ "name": "PRVN", "background-color": "#000000", "background-color-overlay": "#000000d2", color: "white" },
 { "name": "OUTCAST", "background-color": "#535353", "background-color-overlay": "#535353ba", color: "white" },
@@ -51,6 +61,7 @@ let arrayWAP = []
 let averageIndex = []
 
 function updateDynamics(newScoring, status) {
+
     try {
         // Premier traitement pour l'affichage
 
@@ -74,7 +85,6 @@ function updateDynamics(newScoring, status) {
 
             Object.keys(elemAth).forEach(i => {
 
-
                 //On met en mémoire l'ancien rank
                 elemAth[i].OldRank = elemAth[i].CurrentRank
 
@@ -97,31 +107,46 @@ function updateDynamics(newScoring, status) {
                 if (overlay == 'overlay_wza') {
 
                     let teamIndex = teamInArray.findIndex(team => team.name === elemAth[i].affiliate);
+                    console.log("team Index : ", teamIndex)
                     if (teamIndex !== -1) {
-                        // arrayWAP[teamIndex].rep += parseInt(elemAth[i].score_abs)
+                        console.log("Valide")
+                        console.log("arrayWAP[teamIndex].status : ", arrayWAP[teamIndex].status)
+                        arrayWAP[teamIndex].rep += parseInt(elemAth[i].score_abs)
                         // arrayWAP[teamIndex].time += treatResultTimeWPA(elemAth[i]).time
-                        if (arrayWAP[teamIndex].status == 'F') {
-                            arrayWAP[teamIndex].status = elemAth[i].status == 'F' ? 'F' : 'W'
-                            if (elemAth[i].status == 'F') {
-                                arrayWAP[teamIndex].numberOfAthleteFinish += 1;
-                                arrayWAP[teamIndex].time += treatResultTimeWPA(elemAth[i]).time
-                            } else {
-                                arrayWAP[teamIndex].rep += parseInt(elemAth[i].score_abs)
-                            }
+                        // if (arrayWAP[teamIndex].status == 'F') {
 
-                            // console.log("teamIndex = ", teamIndex, " arrayWAP[teamIndex] = ", arrayWAP[teamIndex], " elemAth[i] = ", elemAth[i])
 
-                            if (status == "T" && (elemAth[i].status == 'T' || elemAth[i].status == '0' || elemAth[i].status == 'S') && (heat.typeWod == 'time' || heat.typeWod == 'time_slowest_better')) {
-                                let ti = lastTimeCap.value;
-                                let timeCapInS = parseInt(ti.split(':')[0]) * 60 + parseInt(ti.split(':')[1])
-                                // console.log("timeCapInS: ", timeCapInS * 1000)
-                                let miseReps = parseInt(arrayWAP[teamIndex].total_reps) - parseInt(elemAth[i].score_abs)
-                                // console.log("Mise reps: ", miseReps)
-                                let timeAdded = (miseReps * 1000) + (timeCapInS * 1000)
-                                arrayWAP[teamIndex].time += timeAdded;
-                            }
-
+                        if (elemAth[i].status == 'F' && arrayWAP[teamIndex].status == 'W') {
+                            arrayWAP[teamIndex].status = 'W'
+                        } else {
+                            arrayWAP[teamIndex].status = elemAth[i].status == 'F' ? 'F' : 'W';
                         }
+
+
+                        if (elemAth[i].status == 'F') {
+                            arrayWAP[teamIndex].numberOfAthleteFinish += 1;
+                            arrayWAP[teamIndex].time += treatResultTimeWPA(elemAth[i]).time
+                        }
+
+                        console.log("status : ", status)
+
+                        console.log("elemAth[i].status : ", elemAth[i].status)
+
+                        if (status == "T" && (elemAth[i].status == 'T' || elemAth[i].status == '0' || elemAth[i].status == 'S') && (heat.typeWod == 'time' || heat.typeWod == 'time_slowest_better')) {
+                            console.log("Je rajoute les missedReps")
+
+
+                            let ti = lastTimeCap.value;
+                            let timeCapInS = parseInt(ti.split(':')[0]) * 60 + parseInt(ti.split(':')[1])
+                            console.log("timeCapInS: ", timeCapInS * 1000)
+                            let miseReps = parseInt(arrayWAP[teamIndex].total_reps) - parseInt(elemAth[i].score_abs)
+                            console.log("Mise reps: ", miseReps)
+                            let timeAdded = (miseReps * 1000) + (timeCapInS * 1000)
+                            arrayWAP[teamIndex].time += timeAdded;
+                            console.log("arrayWAP :", arrayWAP)
+                        }
+
+                        // }
                         // console.log('teamIndex', teamIndex, 'arrayWAP[teamIndex]', arrayWAP[teamIndex], 'elemAth[i]', elemAth[i])
                         averageIndex[teamIndex] += treatResultTimeWPA(elemAth[i]).index
                     }
@@ -224,6 +249,13 @@ function updateDynamics(newScoring, status) {
                 if (overlay.includes('overlay_top')) {
                     height_tot = height_top
                 }
+
+
+                if (heat.heatId == heatIdWhenHide && athletesToHide.includes(elemAth.displayName) && elemAth.score_abs >= 150) {
+                    elemAth.$item.hide();
+                }
+
+
             })
         })
     }
