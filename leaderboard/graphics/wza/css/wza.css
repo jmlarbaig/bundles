@@ -189,7 +189,7 @@
     position: absolute;
     display: flex;
     flex-direction: column;
-    border-bottom: #ffffff solid 1.5px;
+    /* border-bottom: #ffffff solid 1.5px; */
 }
 
 .leaderboard .athletes .ath {
