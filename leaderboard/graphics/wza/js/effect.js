@@ -124,7 +124,7 @@ function refreshCummulative(elementAth, state) {
         elementAth.$item.find(".score").text(score)
     } else {
         elementAth.$item.find(".scoreTop").text(score)
-        changeColorAthTop(elementAth, elementAth.$item)
+        changeColorAthTop(elementAth, elementAth.$item.find(".athTopBorder"))
     }
 }
 
@@ -143,7 +143,7 @@ function refreshCummulativeFinish(elementAth) {
     }
     if (elementAth.$item.find(".scoreTop").length > 0) {
         elementAth.$item.find(".scoreTop").text(score)
-        changeColorAthTop(elementAth, elementAth.$item)
+        changeColorAthTop(elementAth, elementAth.$item.find('.athTopBorder'))
     } else {
         elementAth.$item.find(".score").text(score)
     }
@@ -505,7 +505,7 @@ function treatResultDisplayRepWPA(score) {
 
         if (status != '0' || status != "R") {
 
-            changeColorAthTop(scoreEntry, $el)
+            changeColorAthTop(scoreEntry, $el.find('athTopBorder'))
         }
 
     });
@@ -522,13 +522,14 @@ function treatResultDisplayResultWPA(score) {
         const $el = $(selector);
         const $popup = $el.find('.popupTop');
         const $score = $el.find('.scoreTop');
+        const $border = $el.find('.athTopBorder');
 
         const reps = scoreEntry.rep
 
         // console.log("scoreEntry = ", scoreEntry)
         // console.log("scoreEntry.time = ", msToTime(scoreEntry.time))
 
-        if (scoreEntry.time != 0) {
+        if (scoreEntry.time != 0 && scoreEntry.numberOfAthleteFinish == scoreEntry.numberOfAthleteInTeam) {
             $popup.show().text(scoreEntry.rep);
             $score.text(msToTime(scoreEntry.time));
         } else {
@@ -551,9 +552,10 @@ function treatResultDisplayResultWPA(score) {
             $popup.hide().text('')
         }
 
-        if (status != '0' || status != "R") {
 
-            changeColorAthTop(scoreEntry, $el)
+
+        if (status != '0' || status != "R") {
+            changeColorAthTop(scoreEntry, $border)
         }
 
     });
@@ -579,4 +581,235 @@ function hideResultWPA(score) {
         $el.find('.popup_top').hide();
         $el.find('.scoreTop').text("STBY");
     });
+}
+
+
+function buildProgressBar(containerId, numSegments) {
+    const container = document.getElementById(containerId);
+    container.innerHTML = ''; // reset
+
+    for (let i = 0; i < numSegments; i++) {
+        const segment = document.createElement('div');
+        segment.className = 'segment';
+        segment.dataset.athlete = i + 1;
+
+        const fill = document.createElement('div');
+        fill.className = 'segment-fill';
+        fill.style.width = '0%';
+
+        segment.appendChild(fill);
+        container.appendChild(segment);
+    }
+}
+
+function updateSegment(containerId, athleteIndex, repsDone, repsTotal) {
+    const percent = Math.min((repsDone / repsTotal) * 100, 100);
+    const fills = document.querySelectorAll(`#${containerId} .segment-fill`);
+    fills[athleteIndex].style.width = percent + '%';
+}
+
+function updateLabel(labelId, finished, total) {
+    document.getElementById(labelId).textContent = `${finished} OF ${total} FINISHED`;
+}
+
+
+function renderTeamProgress(team) {
+    const $container = $('#ahtTop' + team.name);
+    if ($container.length === 0) return; // le bloc DOM n'existe pas pour cette team
+
+    const $segmentsContainer = $container.find('.progress-segments');
+    const $label = $container.find('.progress-label');
+
+    team.athletes.forEach(ath => {
+        const segId = 'segment-' + team.name + '-' + ath.lane;
+        let $segment = $('#' + segId);
+
+        if ($segment.length === 0) {
+            $segment = $('<div class="segment"></div>').attr('id', segId);
+            $segment.append('<div class="segment-fill"></div>');
+            $segmentsContainer.append($segment);
+        }
+
+        const percent = ath.repsTotal > 0
+            ? Math.min((ath.repsDone / ath.repsTotal) * 100, 100)
+            : 0;
+
+        $segment.find('.segment-fill').css('width', percent + '%');
+    });
+
+    // Retire les segments des athlètes qui ne sont plus dans team.athletes
+    const currentIds = team.athletes.map(a => 'segment-' + team.name + '-' + a.lane);
+    $segmentsContainer.children('.segment').each(function () {
+        if (!currentIds.includes(this.id)) {
+            $(this).remove();
+        }
+    });
+
+    // Refresh du label
+    const finishedCount = team.athletes.filter(a => a.status === 'F').length;
+    $label.text(finishedCount + ' OF ' + team.athletes.length + ' FINISHED');
+}
+
+function renderAthleteSegments(teamWAP, $segmentsContainer, $label) {
+    const color = teamWAP.backgroundColor || '#ffffff';
+
+    teamWAP.athletes.forEach(ath => {
+        const $segment = $('<div class="segment"></div>'); // flex:1 par défaut via CSS
+        const percent = ath.repsTotal > 0
+            ? Math.min((ath.repsDone / ath.repsTotal) * 100, 100)
+            : 0;
+
+        const $fill = $('<div class="segment-fill"></div>')
+            .css('width', percent + '%')
+            .css('background-color', color);
+
+        $segment.append($fill);
+        $segmentsContainer.append($segment);
+    });
+
+    const finishedCount = teamWAP.athletes.filter(a => a.status === 'F').length;
+    $label.append('<span>' + finishedCount + ' OF ' + teamWAP.athletes.length + ' FINISHED</span>');
+}
+
+
+function buildMovementProgressBar(teamWAP) {
+    // Plus de division dans arrayWAP → on prend le wod par défaut
+    const wod = workouts[0];
+    if (!wod || !wod.mvt_names) return null;
+
+    const movements = wod.mvt_names.map((name, i) => ({
+        name: name,
+        reps: wod.mvt_reps[i]
+    }));
+
+    const repsDone = teamWAP.rep || 0; // <-- rep, pas score_abs
+
+    let cumulative = 0;
+    let currentMvtIndex = 0;
+    let currentMvtProgress = 0;
+    let found = false;
+
+    for (let i = 0; i < movements.length; i++) {
+        const target = movements[i].reps;
+        if (repsDone >= cumulative + target) {
+            cumulative += target;
+        } else {
+            currentMvtIndex = i;
+            currentMvtProgress = repsDone - cumulative;
+            found = true;
+            break;
+        }
+    }
+
+    if (!found) {
+        currentMvtIndex = movements.length - 1;
+        currentMvtProgress = movements[currentMvtIndex].reps;
+    }
+
+    return {
+        movements,
+        currentMvtIndex,
+        currentMvtProgress,
+        totalReps: wod.total_reps,
+        repsToGo: Math.max(wod.total_reps - repsDone, 0),
+        currentMvtName: movements[currentMvtIndex].name
+    };
+}
+
+function renderMovementSegments(teamWAP, $segmentsContainer, $label) {
+    const wod = workouts[0];
+    if (!wod || !wod.mvt_names) return;
+
+    const data = buildMovementProgressBar(teamWAP);
+    if (!data) return;
+
+    const color = teamWAP.backgroundColor || '#ffffff';
+
+    let fillPercent = 0;
+    data.movements.forEach((mvt, index) => {
+        const widthPercent = (mvt.reps / data.totalReps) * 94;
+        const $segment = $('<div class="segment"></div>').css('flex', '0 0 ' + widthPercent + '%');
+        fillPercent = 0
+        if (index < data.currentMvtIndex) {
+            fillPercent = 100;
+        } else if (index === data.currentMvtIndex) {
+            fillPercent = mvt.reps > 0
+                ? Math.min((data.currentMvtProgress / mvt.reps) * 100, 100)
+                : 0;
+        }
+
+        const $fill = $('<div class="segment-fill"></div>')
+            .css('width', fillPercent + '%')
+            .css('background-color', color);
+
+        $segment.append($fill);
+        $segmentsContainer.append($segment);
+    });
+
+    if (fillPercent == 100) {
+        $label.append('');
+        $label.append('');
+    } else {
+        $label.append('<span>ON ' + data.currentMvtName.toUpperCase() + '</span>');
+        $label.append('<span>' + data.repsToGo + ' TO GO</span>');
+    }
+}
+
+function renderTeamMovementProgress(teamWAP) {
+    const teamName = teamWAP.affiliate;
+    const $container = $('#ahtTop' + teamName);
+    if ($container.length === 0) return;
+
+    const color = teamWAP.backgroundColor || '#ffffff';
+
+    const $segmentsContainer = $container.find('.progress-segments');
+    const $label = $container.find('.progress-label');
+
+    const data = buildMovementProgressBar(teamWAP);
+    if (!data) return;
+
+    $segmentsContainer.empty();
+
+    data.movements.forEach((mvt, index) => {
+        const widthPercent = (mvt.reps / data.totalReps) * 100;
+        const $segment = $('<div class="segment"></div>').css('flex', '0 0 ' + widthPercent + '%');
+
+        let fillPercent = 0;
+        if (index < data.currentMvtIndex) {
+            fillPercent = 100;
+        } else if (index === data.currentMvtIndex) {
+            fillPercent = mvt.reps > 0
+                ? Math.min((data.currentMvtProgress / mvt.reps) * 100, 100)
+                : 0;
+        }
+
+        const $fill = $('<div class="segment-fill"></div>')
+            .css('width', fillPercent + '%')
+            .css('background-color', color);
+
+        $segment.append($fill);
+        $segmentsContainer.append($segment);
+    });
+
+    $label.empty();
+    $label.append('<span>ON ' + data.currentMvtName.toUpperCase() + '</span>');
+    $label.append('<span>' + data.repsToGo + ' TO GO</span>');
+}
+
+function renderTeamCard(teamWAP, isDetailedMode) {
+    const teamName = teamWAP.affiliate;
+    const $container = $('#ahtTop' + teamName);
+    if ($container.length === 0) return;
+
+    const $segmentsContainer = $container.find('.progress-segments');
+    const $label = $container.find('.progress-label');
+
+    $segmentsContainer.empty();
+    $label.empty();
+
+    if (isDetailedMode) {
+        renderAthleteSegments(teamWAP, $segmentsContainer, $label);
+    } else {
+        renderMovementSegments(teamWAP, $segmentsContainer, $label);
+    }
 }

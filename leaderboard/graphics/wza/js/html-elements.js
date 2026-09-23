@@ -58,11 +58,17 @@ function createTopLeaderboardWPA() {
     teamInArray.forEach((teamName) => {
         const $athlete = $(
             `<div class="athleteTop" id="ahtTop${teamName.name}">` +
+            '<div class="athTopBorder">' +
             '<div class="athTop" style="background-color: ' + teamName["background-color"] + '; color: ' + teamName.color + ';">' +
             '<div class="nameTop">' + teamName.name + '</div>' +
             '<div class="scoreTop"></div>' +
             '</div>' +
+            '</div>' +
             '<div class="popupTop"></div>' +
+            '<div class="team-progress" > ' +
+            '<div class="progress-segments"></div>' +
+            '<div class="progress-label"></div>' +
+            '</div>' +
             '</div>'
         );
         $item.append($athlete);
@@ -93,9 +99,17 @@ function leaderboardVersusTopWPA(data) {
 
     let $itemBox = $(
         '<div class="athleteTop" id="ahtTop' + data.displayName.toUpperCase() + '">' +
+        '<div class="athTopBorder">' +
         '<div class="athTop" style="background-color: ' + backgroundColor + '; color: ' + colorName + ';">' +
         '<div class="nameTop">' + name + '</div>' +
-        '<div class="scoreTop">0</div>' +
+        '<div class="scoreTop">-</div>' +
+        '</div>' +
+        '</div>' +
+        '<div class="popupTop"></div>' +
+        '<div class="team-progress" > ' +
+        '<div class="progress-segments"></div>' +
+        '<div class="progress-label"></div>' +
+        '</div>' +
         '</div>' +
         '</div>'
     );
