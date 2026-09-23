@@ -74,7 +74,7 @@ function updateDynamics(newScoring, status) {
 
 
             for (let i = 0; i < teamInArray.length; i++) {
-                arrayWAP.push({ rep: 0, time: 0, status: 'F', total_reps: workouts[0].total_reps, CurrentRank: 0, numberOfAthleteFinish: 0 })
+                arrayWAP.push({ rep: 0, time: 0, status: 'F', total_reps: workouts[0].total_reps, CurrentRank: 0, numberOfAthleteFinish: 0, numberOfAthleteInTeam: 0 })
                 averageIndex.push(0)
             }
 
@@ -109,8 +109,9 @@ function updateDynamics(newScoring, status) {
                     let teamIndex = teamInArray.findIndex(team => team.name === elemAth[i].affiliate);
                     console.log("team Index : ", teamIndex)
                     if (teamIndex !== -1) {
-                        console.log("Valide")
-                        console.log("arrayWAP[teamIndex].status : ", arrayWAP[teamIndex].status)
+
+                        arrayWAP[teamIndex].numberOfAthleteInTeam += 1;
+
                         arrayWAP[teamIndex].rep += parseInt(elemAth[i].score_abs)
                         // arrayWAP[teamIndex].time += treatResultTimeWPA(elemAth[i]).time
                         // if (arrayWAP[teamIndex].status == 'F') {

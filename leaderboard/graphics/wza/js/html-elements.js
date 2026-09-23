@@ -62,6 +62,7 @@ function createTopLeaderboardWPA() {
             '<div class="nameTop">' + teamName.name + '</div>' +
             '<div class="scoreTop"></div>' +
             '</div>' +
+            '<div class="popupTop"></div>' +
             '</div>'
         );
         $item.append($athlete);

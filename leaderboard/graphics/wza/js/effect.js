@@ -520,8 +520,10 @@ function treatResultDisplayResultWPA(score) {
         // console.log("selector = ", selector)
 
         const $el = $(selector);
-        const $popup = $el.find('.popup_top');
+        const $popup = $el.find('.popupTop');
         const $score = $el.find('.scoreTop');
+
+        const reps = scoreEntry.rep
 
         // console.log("scoreEntry = ", scoreEntry)
         // console.log("scoreEntry.time = ", msToTime(scoreEntry.time))
@@ -530,9 +532,23 @@ function treatResultDisplayResultWPA(score) {
             $popup.show().text(scoreEntry.rep);
             $score.text(msToTime(scoreEntry.time));
         } else {
-            $popup.hide().text('');
             let n = scoreEntry.rep != 0 ? scoreEntry.rep : '-'
             $score.text(n);
+        }
+
+        if (scoreEntry.status == "W") {
+            let repRemaining = 0
+            if (heat.typeWod == "time") {
+                repRemaining = ((scoreEntry.numberOfAthleteInTeam - scoreEntry.numberOfAthleteFinish) * scoreEntry.total_reps) - reps
+            }
+            else {
+                repRemaining = reps;
+            }
+
+            $popup.show().text('Remaining: ' + repRemaining)
+            $popup.hide().text('')
+        } else {
+            $popup.hide().text('')
         }
 
         if (status != '0' || status != "R") {

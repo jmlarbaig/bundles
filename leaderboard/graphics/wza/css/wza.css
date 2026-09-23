@@ -25,13 +25,31 @@
 .athleteTop {
     display: flex;
     margin: 0px 0px;
-    flex-direction: row;
+    flex-direction: column;
     text-align: left;
     margin: 0px 10px;
     padding: 5px;
 }
 
-.athTop_detail {}
+
+.athleteTop .popupTop {
+
+    /* haut left right bas */
+    text-shadow: 2px 2px 4px #000000;
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 14px;
+    color: white;
+    background-color: rgba(49, 49, 49, 0.787);
+    -moz-transition-duration: 1s;
+    -webkit-transition-duration: 1s;
+    -ms-transition-duration: 1s;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+}
+
 
 
 .athTop {
