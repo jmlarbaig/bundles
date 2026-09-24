@@ -131,7 +131,6 @@ function refreshCummulative(elementAth, state) {
 
 function refreshCummulativeFinish(elementAth) {
     let score = '';
-    console.log(elementAth)
     switch (elementAth.status) {
         case "F":
             score = treatTimeResult(elementAth.result)
@@ -655,8 +654,11 @@ function renderTeamProgress(team) {
 function renderAthleteSegments(teamWAP, $segmentsContainer, $label) {
     const color = teamWAP.backgroundColor || '#ffffff';
 
-    teamWAP.athletes.forEach(ath => {
-        const $segment = $('<div class="segment"></div>'); // flex:1 par défaut via CSS
+    // Tri stable par lane pour garantir un ordre d'affichage constant
+    const sortedAthletes = [...teamWAP.athletes].sort((a, b) => a.lane - b.lane);
+
+    sortedAthletes.forEach(ath => {
+        const $segment = $('<div class="segment"></div>');
         const percent = ath.repsTotal > 0
             ? Math.min((ath.repsDone / ath.repsTotal) * 100, 100)
             : 0;
@@ -729,7 +731,7 @@ function renderMovementSegments(teamWAP, $segmentsContainer, $label) {
 
     let fillPercent = 0;
     data.movements.forEach((mvt, index) => {
-        const widthPercent = (mvt.reps / data.totalReps) * 94;
+        const widthPercent = (mvt.reps / data.totalReps) * 100;
         const $segment = $('<div class="segment"></div>').css('flex', '0 0 ' + widthPercent + '%');
         fillPercent = 0
         if (index < data.currentMvtIndex) {

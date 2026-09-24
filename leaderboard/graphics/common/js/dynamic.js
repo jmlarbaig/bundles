@@ -121,7 +121,7 @@ function updateDynamics(newScoring, status) {
                     treatPerfArray(elemAth[i])
                 }
 
-                console.log(elemAth)
+                // console.log(elemAth)
 
                 // WZAP logic
                 if (overlay == 'overlay_wza') {
@@ -145,7 +145,7 @@ function updateDynamics(newScoring, status) {
                             status: elemAth[i].status
                         });
 
-                        if (elemAth[i].status == 'F') {
+                        if (elemAth[i].status == 'F' || status == 'T') {
                             teamWAP.numberOfAthleteFinish += 1;
                             teamWAP.time += treatResultTimeWPA(elemAth[i]).time;
                         }
@@ -154,8 +154,11 @@ function updateDynamics(newScoring, status) {
                             let ti = lastTimeCap.value;
                             let timeCapInS = parseInt(ti.split(':')[0]) * 60 + parseInt(ti.split(':')[1]);
                             let missedReps = parseInt(teamWAP.total_reps) - parseInt(elemAth[i].score_abs);
+                            console.log(missedReps)
                             teamWAP.time += (missedReps * 1000) + (timeCapInS * 1000);
                         }
+
+                        console.log(teamWAP.time)
 
                         averageIndex[teamIndex] += treatResultTimeWPA(elemAth[i]).index;
                     }

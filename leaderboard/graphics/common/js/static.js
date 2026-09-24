@@ -12,10 +12,7 @@ function resetLeaderboard(newData) {
     try {
 
         console.log("resetLeaderboard newData = ", newData)
-        if (overlay == "overlay_wza") {
-            $("#ath_left").find('.score').text('')
-            $("#ath_right").find('.score').text('')
-        }
+
 
         var data = { athletes: "" }
         data.athletes = newData
@@ -24,12 +21,11 @@ function resetLeaderboard(newData) {
 
         if (overlay.search("overlay") >= 0) {
             setupFlat.leaderboards != true ? $(".leaderboards").hide() : ""
+            setupFlat.topLeaderboard != true ? $(".topLeaderboards").hide() : ""
         }
 
         if (overlay == "overlay_wza") {
             $('.rank').hide()
-            $("#ath_left").find('.score').text('')
-            $("#ath_right").find('.score').text('')
         }
 
 
@@ -71,8 +67,8 @@ function resetLeaderboard(newData) {
         // ! On crée un tableau par division
         athletesDivision = treatDivisions(divisionsNames, data.athletes)
 
-        var $tabBox = $(".box_heat")
-        $tabBox.find(".topLeaderboard").remove();
+        var $tabBox = $(".topLeaderboard")
+        $tabBox.find(".topLeaderboard").empty();
 
         var $tab = $(".leaderboards")
         $tab.find(".leaderboard").remove();
@@ -94,7 +90,9 @@ function resetLeaderboard(newData) {
 
 
             if (overlay == "versus" || overlay == "overlay_wza") {
-                indexDivision == 0 && $tabBox.append($tabItemBox);
+                if (!$('.athletesTopLeaderboard').length) {
+                    // indexDivision == 0 && $tabBox.prepend($tabItemBox);
+                }
                 if (athletesDivision[0].length > 4) {
                     $tab.append($tabItem);
                 } else {

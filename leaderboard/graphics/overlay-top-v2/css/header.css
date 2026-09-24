@@ -1,17 +1,6 @@
-.header {
-    display: block;
-    position: absolute;
-    top: 0px;
-    left: -10px;
-    width: var(--width_top);
-    height: 100px;
-    color: var(--tx_second_color);
-    font-family: var(--fontWorkoutTop-select);
-}
-
 /* top | right | bottom | left */
 
-.header .box_logo {
+.box_logo {
     z-index: 200;
     position: absolute;
     top: var(--position-y-logo);
@@ -23,7 +12,7 @@
     text-align: center;
 }
 
-.header .box_logo .logo {
+.box_logo .logo {
     margin: auto;
     padding: 15px;
     width: var(--width-logo);
@@ -35,7 +24,7 @@
     background-origin: content-box;
 }
 
-.header .box_heat {
+.box_heat {
     z-index: 40;
     position: absolute;
     top: var(--position-y-workout);
@@ -47,26 +36,26 @@
     /* box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; */
 }
 
-.header .box_heat .workout {
+.box_heat .workout {
     color: var(--color-workout);
     font-size: var(--size-font-workout);
     font-family: var(--font-workout);
 }
 
-.header .box_heat .heat {
+.box_heat .heat {
     color: white;
     display: inline-block;
     width: var(--width_box_heat);
     height: 100px;
 }
 
-.header .box_heat .heat_content {
+.box_heat .heat_content {
     display: flex;
     flex-direction: row;
     height: 75px;
 }
 
-.header .box_heat .heat_content .details {
+.box_heat .heat_content .details {
     /* position: absolute;
     top: 18px;
     left: 260px; */
@@ -78,7 +67,7 @@
     width: 1210px;
 }
 
-.header .box_heat .heat_content .details .detail {
+.box_heat .heat_content .details .detail {
     min-width: fit-content;
     padding-right: 5px;
     white-space: nowrap;
@@ -110,7 +99,7 @@
 }
 
 
-.header .box_heat .heat_content .details .mvt {
+.box_heat .heat_content .details .mvt {
     font-weight: 800;
     -moz-transition-duration: 0.7s;
     -webkit-transition-duration: 0.7s;
@@ -142,7 +131,7 @@
     content: " // ";
 } */
 
-.header .box_mainSponsor {
+.box_mainSponsor {
 
     position: absolute;
     top: var(--position-y-main-sponsor);
@@ -156,7 +145,7 @@
 
 
 
-.header .box_mainSponsor .mainSponsor {
+.box_mainSponsor .mainSponsor {
     padding: 10px 10px 10px 10px;
     width: var(--width-main-sponsor);
     height: var(--height-main-sponsor);
@@ -167,7 +156,7 @@
     background-origin: content-box;
 }
 
-.header .box_chrono {
+.box_chrono {
     z-index: 2;
     position: absolute;
     top: var(--position-y-chrono);
@@ -176,7 +165,7 @@
     /* background-color: var(--chrono_color); */
 }
 
-.header .box_chrono .chrono {
+.box_chrono .chrono {
     margin: 5px auto;
     width: fit-content;
     text-align: center;
@@ -185,7 +174,7 @@
     font-size: var(--size-font-chrono);
 }
 
-.header .box_chrono .chrono .cap {
+.box_chrono .chrono .cap {
     font-size: var(--size-font-timecap);
     /* background-color: var(--main_color); */
     font-family: var(--font-timecap);

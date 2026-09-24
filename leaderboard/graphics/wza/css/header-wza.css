@@ -24,15 +24,18 @@ body {
 
 /* top | right | bottom | left */
 
-.header .box_logo {
+.box_logo {
     margin: 0px 25px;
     z-index: 50;
     text-align: right;
     height: 120px;
     text-align: center;
+    font-family: "manifold-cf", sans-serif;
+    font-weight: 800;
+    font-style: normal;
 }
 
-.header .box_logo .logo {
+.box_logo .logo {
     margin: auto;
     width: var(--widthLogoEvent_top);
     height: var(--widthLogoEvent_top);
@@ -43,15 +46,16 @@ body {
     background-origin: content-box;
 }
 
-.header .box_heat {
+.box_heat {
     right: 100px;
     z-index: 40;
     height: 110px;
+    font-family: "manifold-cf", sans-serif;
+    font-weight: 800;
+    font-style: normal;
 }
 
-.header .box_heat .heat {}
-
-.header .box_heat .heat .heat_content {
+.box_heat .heat .heat_content {
     display: flex;
     flex-direction: row;
     height: 50px;
@@ -59,7 +63,7 @@ body {
 }
 
 
-.header .box_heat .heat .heat_content .details {
+.box_heat .heat .heat_content .details {
     word-spacing: 40px;
     display: flex;
     flex-wrap: nowrap;
@@ -72,7 +76,7 @@ body {
     color: var(--detailHeader);
 }
 
-.header .box_heat .heat .heat_content .details .detail {
+.box_heat .heat .heat_content .details .detail {
     min-width: fit-content;
     padding-right: 5px;
     white-space: nowrap;
@@ -103,7 +107,7 @@ body {
     margin: 20px;
 }
 
-.header .box_heat .heat .heat_content .details #mvt {
+.box_heat .heat .heat_content .details #mvt {
     font-weight: 800;
     -moz-transition-duration: 0.7s;
     -webkit-transition-duration: 0.7s;
@@ -133,7 +137,7 @@ body {
     content: "•";
 }
 
-.header .box_mainSponsor {
+.box_mainSponsor {
     width: 430px;
     height: 100px;
     padding: 20px;
@@ -145,7 +149,7 @@ body {
     position: relative;
 }
 
-.header .box_mainSponsor .presented {
+.box_mainSponsor .presented {
     padding: 10px 10px 10px 10px;
     width: 200px;
     font-size: var(--size_font_presented);
@@ -155,7 +159,7 @@ body {
 
 
 
-.header .box_mainSponsor .mainSponsor {
+.box_mainSponsor .mainSponsor {
     /* padding: 10px 10px 10px 10px; */
     width: 230px;
     height: 100px;
@@ -166,16 +170,19 @@ body {
     background-origin: content-box;
 }
 
-.header .box_chrono {
+.box_chrono {
     position: absolute;
     z-index: 2;
     width: 180px;
     height: 80px;
     margin: 0px 25px;
     display: flex;
+    font-family: "manifold-cf", sans-serif;
+    font-weight: 800;
+    font-style: normal;
 }
 
-.header .box_chrono .chrono {
+.box_chrono .chrono {
     position: absolute;
     margin: auto;
     width: 150px;
@@ -185,7 +192,7 @@ body {
     align-items: center;
 }
 
-.header .box_chrono .chrono #cap {
+.box_chrono .chrono #cap {
     margin: 1px auto;
     width: 150px;
     padding: 5px;

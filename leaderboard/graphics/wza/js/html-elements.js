@@ -2,8 +2,6 @@ function createHeaderHeatStyle(element) {
     let $item = $(
         '<div class="heat_content">' +
         '<div class="details">' +
-        // '<div class="detail workout" > ' + element.externalName + ' //</div>' +
-        // '<div id="mvt" class="mvt text-nowrap text-truncate"></div>' +
         '</div>' +
         '</div>' +
         '</div>'
