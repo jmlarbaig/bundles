@@ -131,6 +131,7 @@ function refreshCummulative(elementAth, state) {
 
 function refreshCummulativeFinish(elementAth) {
     let score = '';
+    console.log(elementAth)
     switch (elementAth.status) {
         case "F":
             score = treatTimeResult(elementAth.result)
@@ -139,6 +140,7 @@ function refreshCummulativeFinish(elementAth) {
             score = treatCapResult(elementAth.result)
             break;
         default:
+            score = elementAth.score_abs
             break;
     }
     if (elementAth.$item.find(".scoreTop").length > 0) {

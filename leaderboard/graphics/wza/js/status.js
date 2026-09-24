@@ -69,7 +69,7 @@ function statusWT(ath) {
 }
 
 function statusT(ath) {
-    // console.log("Workout finish")
+    console.log("Workout finish")
     // Classement mise à jour
     refreshRank(ath);
 
