@@ -672,7 +672,7 @@ function renderAthleteSegments(teamWAP, $segmentsContainer, $label) {
     });
 
     const finishedCount = teamWAP.athletes.filter(a => a.status === 'F').length;
-    $label.append('<span>' + finishedCount + ' OF ' + teamWAP.athletes.length + ' FINISHED</span>');
+    // $label.append('<span>' + finishedCount + ' OF ' + teamWAP.athletes.length + ' FINISHED</span>');
 }
 
 
