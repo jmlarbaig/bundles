@@ -196,7 +196,7 @@ function buildSignal(connectivity, signal) {
         } else {
             $item =
                 '< svg class="sigico" viewBox = "0 0 23 18" ><rect x="1" y="11" width="3.6" height="6" rx="1" fill="var(--bad)"></rect><rect x="6.4" y="8" width="3.6" height="9" rx="1" fill="rgba(255,255,255,.16)"></rect><rect x="11.8" y="5" width="3.6" height="12" rx="1" fill="rgba(255,255,255,.16)"></rect><rect x="17.200000000000003" y="2" width="3.6" height="15" rx="1" fill="rgba(255,255,255,.16)"></rect></svg > ' +
-                '<div class="val"><span>' + signalText + '<small>dBm</small></span><span class="tier" style="color:var(--bad)">Poor</span></div>'
+                '<div class="sig"><div class="val"><span>' + signalText + '<small>dBm</small></span><span class="tier" style="color:var(--bad)">Poor</span></div>'
         }
     }
     else if (connectivity == 'wifi') {

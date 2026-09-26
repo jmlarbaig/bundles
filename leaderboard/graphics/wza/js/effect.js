@@ -729,11 +729,25 @@ function renderMovementSegments(teamWAP, $segmentsContainer, $label) {
 
     const color = teamWAP.backgroundColor || '#ffffff';
 
-    let fillPercent = 0;
+    // Largeur réelle du container en px
+    const widthSegmentContainer = $segmentsContainer.width();
+
+    // Nombre de gaps entre segments (CSS gap: 2px sur .progress-segments)
+    const gapSize = parseFloat($segmentsContainer.css('gap')) || 0;
+    const totalGapWidth = gapSize * (data.movements.length - 1);
+    const availableWidth = widthSegmentContainer - totalGapWidth;
+
+    let lastFillPercent = 0;
+
     data.movements.forEach((mvt, index) => {
-        const widthPercent = (mvt.reps / data.totalReps) * 100;
-        const $segment = $('<div class="segment"></div>').css('flex', '0 0 ' + widthPercent + '%');
-        fillPercent = 0
+        // Largeur en px proportionnelle aux reps du mouvement
+        const segmentWidthPx = (mvt.reps / data.totalReps) * availableWidth;
+
+        const $segment = $('<div class="segment"></div>')
+            .css('flex', '0 0 auto')
+            .css('width', segmentWidthPx + 'px');
+
+        let fillPercent = 0;
         if (index < data.currentMvtIndex) {
             fillPercent = 100;
         } else if (index === data.currentMvtIndex) {
@@ -741,6 +755,7 @@ function renderMovementSegments(teamWAP, $segmentsContainer, $label) {
                 ? Math.min((data.currentMvtProgress / mvt.reps) * 100, 100)
                 : 0;
         }
+        lastFillPercent = fillPercent;
 
         const $fill = $('<div class="segment-fill"></div>')
             .css('width', fillPercent + '%')
@@ -750,9 +765,9 @@ function renderMovementSegments(teamWAP, $segmentsContainer, $label) {
         $segmentsContainer.append($segment);
     });
 
-    if (fillPercent == 100) {
-        $label.append('');
-        $label.append('');
+    $label.empty();
+    if (lastFillPercent == 100) {
+        // workout terminé, on peut choisir de ne rien afficher ou un message dédié
     } else {
         $label.append('<span>ON ' + data.currentMvtName.toUpperCase() + '</span>');
         $label.append('<span>' + data.repsToGo + ' TO GO</span>');

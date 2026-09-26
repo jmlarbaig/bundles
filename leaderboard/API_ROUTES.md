@@ -1,5 +1,7 @@
 # API Routes - Leaderboard Bundle
 
+<!-- markdownlint-disable MD024 -->
+
 Documentation des routes API POST pour contrôler les différents overlays du bundle leaderboard.
 
 ## 📋 Table des matières
@@ -257,6 +259,7 @@ Mêmes routes que `overlay_side_v1`, remplacer `overlay_side_v1` par `sk`.
 **Replicant:** `BigScreenSetup`
 
 #### overlay_items
+
 - `POST /leaderboard/bigscreen/overlay_items/box_logo` (boolean)
 - `POST /leaderboard/bigscreen/overlay_items/workout` (boolean)
 - `POST /leaderboard/bigscreen/overlay_items/heat` (boolean)
@@ -272,6 +275,7 @@ Mêmes routes que `overlay_side_v1`, remplacer `overlay_side_v1` par `sk`.
 - `POST /leaderboard/bigscreen/overlay_items/mainSponsorSelect` (select)
 
 #### leaderboard_items
+
 - `POST /leaderboard/bigscreen/leaderboard_items/lane` (boolean)
 - `POST /leaderboard/bigscreen/leaderboard_items/affiliate` (boolean)
 - `POST /leaderboard/bigscreen/leaderboard_items/flag` (boolean)
@@ -281,15 +285,18 @@ Mêmes routes que `overlay_side_v1`, remplacer `overlay_side_v1` par `sk`.
 - `POST /leaderboard/bigscreen/leaderboard_items/hiddenAthlete` (boolean)
 
 #### chrono_config
+
 - `POST /leaderboard/bigscreen/chrono_config/fortimeAmrap` (boolean)
 - `POST /leaderboard/bigscreen/chrono_config/manualChrono` (boolean)
 
 #### competition_corner
+
 - `POST /leaderboard/bigscreen/competition_corner/attributionLane` (boolean)
 - `POST /leaderboard/bigscreen/competition_corner/heatResults` (boolean)
 - `POST /leaderboard/bigscreen/competition_corner/overallStandingDivwod` (boolean)
 
 #### automatic_config
+
 - `POST /leaderboard/bigscreen/automatic_config/automaticSchedule` (boolean)
 
 **Note:** Les routes pour `leaderboard` et `progression` sont identiques, remplacer `bigscreen` par `leaderboard` ou `progression`.
@@ -301,6 +308,7 @@ Mêmes routes que `overlay_side_v1`, remplacer `overlay_side_v1` par `sk`.
 **Replicant:** `TimerSetup`
 
 #### overlay_items
+
 - `POST /leaderboard/timer/overlay_items/box_logo` (boolean)
 - `POST /leaderboard/timer/overlay_items/workout` (boolean)
 - `POST /leaderboard/timer/overlay_items/heat` (boolean)
@@ -311,6 +319,7 @@ Mêmes routes que `overlay_side_v1`, remplacer `overlay_side_v1` par `sk`.
 - `POST /leaderboard/timer/overlay_items/mainSponsorSelect` (select)
 
 #### chrono_config
+
 - `POST /leaderboard/timer/chrono_config/fortimeAmrap` (boolean)
 - `POST /leaderboard/timer/chrono_config/manualChrono` (boolean)
 
