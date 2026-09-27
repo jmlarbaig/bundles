@@ -41,10 +41,10 @@ const compare = (a, b) => {
 
 
 let athletesToHide = [
-    'Olivia Kerstetter',
-    'Anikha Greer',
-    'Emma Lawson',
-    'Arielle Loewen']
+    'Kerstetter',
+    'Greer',
+    'Lawson',
+    'Loewen']
 
 let workoutIdWhenHide = 131626;
 let heatIdWhenHide = 559923139;
@@ -150,7 +150,7 @@ function updateDynamics(newScoring, status) {
                             teamWAP.time += treatResultTimeWPA(elemAth[i]).time;
                         }
 
-                        if (status == "T" && (elemAth[i].status == 'T' || elemAth[i].status == '0' || elemAth[i].status == 'S') && (heat.typeWod == 'time' || heat.typeWod == 'time_slowest_better')) {
+                        if (status == "T" && (elemAth[i].status == 'T' || elemAth[i].status == '0' || elemAth[i].status == 'S') && (heat.typeWod == 'time' || heat.typeWod == 'time_slowest_better') && (workoutId != workoutIdWhenHide)) {
                             let ti = lastTimeCap.value;
                             let timeCapInS = parseInt(ti.split(':')[0]) * 60 + parseInt(ti.split(':')[1]);
                             let missedReps = parseInt(teamWAP.total_reps) - parseInt(elemAth[i].score_abs);
@@ -274,9 +274,12 @@ function updateDynamics(newScoring, status) {
                     height_tot = height_top
                 }
 
+                if (workoutId == workoutIdWhenHide && elemAth[i].score_abs >= 150) {
+                    if (elemAth[i].$item.is(':visible')) {
+                        console.log("J'ysuis")
+                        elemAth[i].$item.fadeOut(1000);
 
-                if (heat.heatId == heatIdWhenHide && athletesToHide.includes(elemAth.displayName) && elemAth.score_abs >= 150) {
-                    elemAth.$item.hide();
+                    }
                 }
 
 

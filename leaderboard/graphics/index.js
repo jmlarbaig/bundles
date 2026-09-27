@@ -14,6 +14,7 @@ let startTimeNTP;
 let heatId;
 let heat_Name;
 let heatName;
+let workoutId = 0
 let resetVar = false;
 let athletes_final = new Array();
 let timerInterval = null;
@@ -297,6 +298,7 @@ function registerDependentHandlers() {
                     resetLeaderboard(s_athletes.value)
                 }
                 console.log('eventInfos change', newValue)
+                workoutId = newValue.workoutId
                 if (newValue.heatId != heat.heatId) {
                     if ($('#box_svg').is(':visible')) {
                         $('#box_svg').slideUp(1000)

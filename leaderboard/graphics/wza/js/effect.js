@@ -529,8 +529,9 @@ function treatResultDisplayResultWPA(score) {
 
         // console.log("scoreEntry = ", scoreEntry)
         // console.log("scoreEntry.time = ", msToTime(scoreEntry.time))
-
-        if (scoreEntry.time != 0 && scoreEntry.numberOfAthleteFinish == scoreEntry.numberOfAthleteInTeam) {
+        console.log(setupFlat.showTime)
+        console.log(scoreEntry)
+        if (scoreEntry.time != 0 && (scoreEntry.numberOfAthleteFinish == scoreEntry.numberOfAthleteInTeam || setupFlat.showTime)) {
             $popup.show().text(scoreEntry.rep);
             $score.text(msToTime(scoreEntry.time));
         } else {
@@ -547,7 +548,7 @@ function treatResultDisplayResultWPA(score) {
                 repRemaining = reps;
             }
 
-            $popup.show().text('Remaining: ' + repRemaining)
+            // $popup.show().text('Remaining: ' + repRemaining)
             $popup.hide().text('')
         } else {
             $popup.hide().text('')
