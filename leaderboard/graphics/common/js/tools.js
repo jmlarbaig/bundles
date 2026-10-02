@@ -524,12 +524,17 @@ function mvtIndexForTime(nbrReps, division) {
                 res = -wod.mvt_reps[index];
             }
             for (let i = index; i < wod.mvt_names.length; i++) {
-                mvtToUP = wod.mvt_names[i].toLowerCase();
-                let r = 'MAX';
-                if (wod.mvt_reps[i] != 0) {
-                    r = wod.mvt_reps[i].toString().toLowerCase()
+                if (wod.broadcast_name[i] != "") {
+                    mvtToUP = wod.broadcast_name[i];
+                } else {
+                    mvtToUP = wod.mvt_names[i].toLowerCase();
+                    let r = 'MAX';
+                    if (wod.mvt_reps[i] != 0) {
+                        r = wod.mvt_reps[i].toString().toLowerCase()
+                    }
+                    mvtToUP = r + ' ' + wod.broadcast_name[i].toLowerCase()
                 }
-                arrayMvt.push("<span>" + r + ' ' + wod.mvt_names[i].toLowerCase() + "</span>")
+                arrayMvt.push("<span>" + mvtToUP + "</span>")
             }
             return ({ 'scoreAbsMvt': wod.mvt_reps[index] + res, 'scoreRelMvt': res, 'id': wod.mvt_id[index], 'repTarget': wod.mvt_reps[index], 'rounds': 0, 'totalReps': wod.total_reps, 'mvtNames': wod.mvt_names[index], 'arrayMvt': arrayMvt })
         }
@@ -582,12 +587,17 @@ function mvtIndexAmrap(nbrReps, division) {
                 repMvt = 0;
             }
             for (let i = index; i < wod.mvt_names.length; i++) {
-                mvtToUP = wod.mvt_names[i].toLowerCase();
-                let r = 'MAX';
-                if (wod.mvt_reps[i] != 0) {
-                    r = wod.mvt_reps[i].toString().toLowerCase()
+                if (wod.broadcast_name[i] != "") {
+                    mvtToUP = wod.broadcast_name[i];
+                } else {
+                    mvtToUP = wod.mvt_names[i].toLowerCase();
+                    let r = 'MAX';
+                    if (wod.mvt_reps[i] != 0) {
+                        r = wod.mvt_reps[i].toString().toLowerCase()
+                    }
+                    mvtToUP = r + ' ' + wod.broadcast_name[i].toLowerCase()
                 }
-                arrayMvt.push("<span>" + r + ' ' + wod.mvt_names[i].toLowerCase() + "</span>")
+                arrayMvt.push("<span>" + mvtToUP + "</span>")
             }
             return ({ 'scoreAbsMvt': repMvt, 'scoreRelMvt': repAmrap, 'id': wod.mvt_id[index] || 0, 'repTarget': repTarget || res, 'mvtNames': wod.mvt_names[index].replaceAll('_', ' ') || 'WORKOUT', 'rounds': (rounds) || 0, 'totalReps': totalRep || nbrReps, 'arrayMvt': arrayMvt || {} })
         }
@@ -600,12 +610,17 @@ function mvtIndexRepMax(nbrReps, loadAttempted) {
     let arrayMvt = [];
     for (let wod of workouts) {
         for (let i = index; i < wod.mvt_names.length; i++) {
-            mvtToUP = wod.mvt_names[i].toLowerCase() != 'workout' ? wod.mvt_names[i].toLowerCase() : 'BARBELL';
-            let r = wod.mvt_names[i].toLowerCase() != 'workout' ? 'MAX' : '';
-            if (wod.mvt_reps[i] != 0) {
-                r = wod.mvt_reps[i].toString().toLowerCase()
+            if (wod.broadcast_name[i] != "") {
+                mvtToUP = wod.broadcast_name[i];
+            } else {
+                mvtToUP = wod.mvt_names[i].toLowerCase();
+                let r = 'MAX';
+                if (wod.mvt_reps[i] != 0) {
+                    r = wod.mvt_reps[i].toString().toLowerCase()
+                }
+                mvtToUP = r + ' ' + wod.broadcast_name[i].toLowerCase()
             }
-            arrayMvt.push("<span>" + r + ' ' + mvtToUP + "</span>")
+            arrayMvt.push("<span>" + mvtToUP + "</span>")
         }
         return ({ 'scoreAbsMvt': nbrReps, 'scoreRelMvt': nbrReps, 'id': 0, 'repTarget': loadAttempted, 'rounds': 0, 'totalReps': 1, 'mvtNames': 'Barbell', 'arrayMvt': arrayMvt })
     }
