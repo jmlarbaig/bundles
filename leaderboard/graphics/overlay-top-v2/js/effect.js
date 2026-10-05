@@ -209,8 +209,10 @@ function refreshCurrentMvtFinish(elementAth) {
 function refreshRepMax(elementAth) {
     let score = 0;
 
+    let isWeight = (setupFlat.unitSelect == "kg" || setupFlat.unitSelect == "lb") ? true : false;
+
     if (elementAth.currentMvt.repTarget != 0) {
-        score = 'ATTEMPTS ' + elementAth.currentMvt.repTarget + ' ' + setupFlat.unitSelect;
+        score = (isWeight ? 'ATTEMPTS ' : '') + elementAth.currentMvt.repTarget + ' ' + setupFlat.unitSelect;
     }
 
 
