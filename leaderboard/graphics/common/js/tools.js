@@ -133,6 +133,11 @@ function treatDisplayName(displayName) {
             case 'full':
                 newName = '<div class="name nameCell nameItem"><span class="firstName">' + splitName.title + ' </span><span class="firstName">' + splitName.firstName + ' </span><span class="lastName"> ' + splitName.lastName + '</span></div>';
                 break;
+
+            case 'first.l':
+                pointLastName = splitName.lastName.substring(0, 1) + ". "
+                newName = '<div class="name nameCell nameItem"><span class="firstName">' + splitName.title + ' </span><span class="firstName">' + splitName.firstName + ' </span><span class="lastName"> ' + pointLastName + '</span></div>';
+                break;
         }
 
     }
