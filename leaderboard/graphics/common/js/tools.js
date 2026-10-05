@@ -338,8 +338,8 @@ function repoLeft(lead_, aths_) {
         let numberOfAthlete = setupFlat.numberAthletes;
         widthOfAthlete = widthOfLeaderboard / numberOfAthlete;
         margin = parseInt($('.athlete').css('margin').replace('px', ''))
-        $('.athlete').width(widthOfAthlete - (2 * margin));
-        // $('.athlete').find('.name').css('min-width', 100 + 'px');
+        padding = parseInt($('.athlete').css('padding').replace('px', ''))
+        $('.athlete').width(widthOfAthlete - (2 * margin) - (2 * padding));
     }
     Object.values(aths_).forEach((elm, index) => {
         if (elm.$item.css('margin') != '') {
@@ -347,12 +347,17 @@ function repoLeft(lead_, aths_) {
         } else {
             margin = 0;
         }
+        if (elm.$item.css('padding') != '') {
+            padding = parseInt(elm.$item.css('padding').replace('px', ''))
+        } else {
+            padding = 0;
+        }
         if (elm.$item.find(lead_) != undefined) {
             elm.$item.css("left", y + "px");
             if (elm.$item.is(':hidden')) {
-                y += 0 + margin
+                y += 0;
             } else {
-                y += elm.$item.width() + (2 * margin);
+                y += elm.$item.width() + (2 * margin) + (2 * padding);
             }
         }
         // if (setupFlat != undefined && setupFlat != {} && ((setupFlat.numberAthletes - 1) == index || (aths_.length - 1) < index) || (aths_.length - 1 < setupFlat.numberAthletes)) {

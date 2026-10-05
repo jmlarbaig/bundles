@@ -248,6 +248,11 @@ function updateDynamics(newScoring, status) {
                         break;
                     case 'T':
                         statusT(elemAth[i])
+
+                        if (overlay.includes('overlay_top')) {
+
+
+                        }
                         break;
                     default:
                         break;
@@ -276,9 +281,7 @@ function updateDynamics(newScoring, status) {
 
                 if (overlay == 'overlay_wza' && workoutId == workoutIdWhenHide && elemAth[i].score_abs >= 150) {
                     if (elemAth[i].$item.is(':visible')) {
-                        console.log("J'ysuis")
                         elemAth[i].$item.fadeOut(1000);
-
                     }
                 }
 

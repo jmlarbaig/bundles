@@ -389,3 +389,16 @@ function hiddenAthlete(elementAth) {
         }, 5000)
     }
 }
+
+let delai = 3000; // délai initial pour le premier athlète à disparaître
+let nbCaches = 0; // compteur pour le nombre d'athlètes cachés
+
+function hiddentAthleteInFinish(elementAth) {
+    if (elementAth.$item.is(':visible')) {
+        const groupe = Math.floor(nbCaches / setupFlat.numberAthletes);
+        setTimeout(() => {
+            elementAth.$item.fadeOut(1000);
+        }, delai * (groupe + 1));
+        nbCaches++;
+    }
+}

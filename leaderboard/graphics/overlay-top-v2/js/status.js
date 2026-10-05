@@ -66,5 +66,7 @@ function statusT(ath) {
     refreshRank(ath);
     refreshCummulativeFinish(ath);
     refreshCurrentMvtFinish(ath)
+    hiddentAthleteInFinish(ath)
+
 }
 

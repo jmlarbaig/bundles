@@ -113,7 +113,7 @@
 }
 
 .mvt span {
-    padding: 10px;
+    padding: 0px 10px;
     letter-spacing: var(--letter-spacing-mvt);
     font-family: var(--font-others-mvt);
     font-size: var(--size-font-mvt);
@@ -121,6 +121,7 @@
 
 .mvt span:first-child {
     color: var(--first-color-mvt);
+    border: var(--border-color-first-mvt) solid var(--first-border-thickness-mvt);
     font-weight: 800;
     font-size: var(--size-font-mvt);
     font-family: var(--font-first-mvt);
