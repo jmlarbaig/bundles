@@ -200,7 +200,7 @@ function refreshCurrentMvtFinish(elementAth) {
             break;
     }
     elementAth.$item.find(".popup").text(score)
-    elementAth.$item.find(".popup").show();
+    setupFlat.showMvt == true ? elementAth.$item.find(".popup").show() : elementAth.$item.find(".popup").hide();
 
 
 }
@@ -219,7 +219,7 @@ function refreshRepMax(elementAth) {
     if (elementAth.currentMvt.repTarget != elementAth.currentMvt.scoreAbsMvt) {
         if (elementAth.currentMvt.repTarget != 0) {
             elementAth.$item.find(".popup").text(score);
-            elementAth.$item.find(".popup").show();
+            setupFlat.showMvt == true ? elementAth.$item.find(".popup").show() : elementAth.$item.find(".popup").hide();
         } else {
             elementAth.$item.find(".popup").text('');
         }
@@ -371,7 +371,7 @@ function displayMvtForAthlete(elementAth, isFirstInMvt = true) {
     }
 
     // Afficher le popup
-    elementAth.$item.find(".popup").show();
+    setupFlat.showMvt == true ? elementAth.$item.find(".popup").show() : elementAth.$item.find(".popup").hide();
 }
 
 function refreshMvt(elementAth, idToCompare, roundsToCompare) {
