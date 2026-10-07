@@ -200,7 +200,7 @@ function refreshCurrentMvtFinish(elementAth) {
             break;
     }
     elementAth.$item.find(".popup").text(score)
-    setupFlat.showMvt == true ? elementAth.$item.find(".popup").show() : elementAth.$item.find(".popup").hide();
+    elementAth.$item.find(".popup").show()
 
 
 }
